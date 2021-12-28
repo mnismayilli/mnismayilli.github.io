@@ -1,0 +1,455 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title> Calculator </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-8XB2EHXR95"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-8XB2EHXR95');
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.png" alt="" /></span><span class="title">Mehman Ismayilli</span>
+								</a>
+								<h2>PhD Candidate Economics </h2> 
+								<hr class="solid">
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+						</div>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="research.html">Research</a></li>
+						<li><a href="generic.html">Teaching</a></li>
+						<li><a href="cv.html">CV</a></li>
+						<li><a href="taxcalc.html"></a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h2>Calculator</h2>
+							<p>Calculator for Transfer of Attention Exchange (TAX) and Cumulative Prospect Theory models. This calculator is developed by Mehman Ismayilli on the basis of DMCALC of Prof. Michael Birnbaum. You can access the original version and
+								other calculators in this <a href="http://psych.fullerton.edu/mbirnbaum/programs.htm#fort">link</a></p>
+							<hr class="solid">
+							<section>
+								<HEAD>
+									<TITLE>Decision Models-TAX, and CPT Calculator</TITLE>
+									<SCRIPT LANGUAGE="JavaScript1.1">
+										//*************************************************
+										// MAKE ARRAY IN OLDER BROWSERS
+										function makeArray(n) {
+											for (var i = 1; i <= n; i++) { this[i] = 0 }
+											return this
+										}
+										//*******Function to set parameters
+										function parameters(form) {
+											var GAMMA = .7; form.GAMMA.value = .7;
+											var BETA = 1.0; form.BETA.value = 1.0;
+											var DELTA = -1.0; form.DELTA.value = -1.0;
+											var GAMMA1 = .61; form.GAMMA1.value = .61;
+											var BETA1 = .88; form.BETA1.value = .88;
+											var C1 = .724; form.C1.value = .724;
+											return this.form;
+										}
+										//********	START GIANT PRIMARY FUNCTION   ********************
+										function compute(form) {
+								
+											// ************************** ERROR STRINGS
+											var warn = " WARNING!!";
+											var err1 = "  Probabilities Must Add to 1.00000";
+											var err2 = "  Enter 2-5 Outcomes. "
+											var err3 = "  You left one or more blanks.  Parameters are reset to priors";
+											var err4 = "  Outcomes Must Be Ranked From Lowest to Highest, Left to Right.";
+											var err5 = "  Check For Missing Outcome or Probability.";
+											var err8 = "  You left one or more blanks.  Parameters are reset to priors";
+											var err9 = "  Sorry! This program only takes positive outcomes.";
+											//*************************************************
+											//                  Initialize tags to zero.
+											var tag = 0;
+											var tag2 = 0;
+											var tag3 = 0;
+											//****INITIALIZE ARRAYS FROM FORM VALUES*********
+											var prob = new makeArray(5);
+											prob[0] = 0;
+											prob[1] = (form.p1.value * 1.0);
+											prob[2] = (form.p2.value * 1.0);
+											prob[3] = (form.p3.value * 1.0);
+											prob[4] = (form.p4.value * 1.0);
+											prob[5] = (form.p5.value * 1.0);
+											var out = new makeArray(5);
+											out[0] = 0;
+											out[1] = (form.v1.value * 1.0);
+											out[2] = (form.v2.value * 1.0);
+											out[3] = (form.v3.value * 1.0);
+											out[4] = (form.v4.value * 1.0);
+											out[5] = (form.v5.value * 1.0);
+											var cp = new makeArray(5)
+								
+											//***** INITIALIZE PARAMETERS FOR MODELS ***************
+								
+											var n = (form.outs.value * 1);
+											var GAMMA = form.GAMMA.value * 1.0;
+											var BETA = form.BETA.value * 1.0;
+											var DELTA = form.DELTA.value * 1.0;
+											var GAMMA1 = form.GAMMA1.value * 1.0;
+											var BETA1 = form.BETA1.value * 1.0;
+											var C1 = form.C1.value * 1.0;
+								
+											//*********************************************
+											var ev = 0.0;
+											var pred = 0.0;
+											var sump = 0.0;
+											var temp = 0.0;
+											var temp1 = 0.0;
+											var temp2 = 0.0;
+											//************** CHECK GAMBLE OUTCOME NUMBER
+											if (form.v1.value == null || form.v1.value.length == 0) { alert(err2); tag = 1; }
+											//*************************************************
+											// NOW CHECK FOR CORRECT # FOR OUTCOMES
+											if (n < 2 || n > 5) { alert(err2); tag = 1; }
+											//******  CHECK THAT PROBS SUM TO 1.000 and Calculate EV  ********
+											for (var i = 0; i < n + 1; i++) {
+												sump = sump + prob[i];
+												cp[i] = 0.0;
+												ev = ev + prob[i] * out[i];
+											}
+											if (sump != 1.000000) { alert(warn + err1); tag = 1; }
+											//**************CHECK RANKING*****************************
+											for (i = 0; i < n; i++) {
+												if (out[i] > out[i + 1]) { alert(err4); tag = 1; }
+												if (out[i] < 0) { alert(err9); tag = 1; }
+											}
+											//************** CHECK ALL VALUES AND PROBS ENTERED *********
+											for (i = 1; i < n + 1; i++) {
+												if (out[i] == "" || prob[i] == "") { alert(warn + err5); tag = 1; }
+											}
+											//************CHECK FOR PARAMETERS, SET TO DEFAULT IF NOT PRESENT****
+											if (GAMMA == "" || BETA == "" || DELTA == "") {
+												alert(err3);
+												parameters(form);
+											}
+											if (GAMMA1 == "" || BETA1 == "" || C1 == "") {
+												alert(err8);
+												parameters(form);
+											}
+											//**INITIALIZE VARIABLES NEEDED FOR CWT AND CPT CALCULATIONS
+								
+											var P = 0.0;
+											var PJ = 0.0;
+											var WA = 0.0;
+											var sumw = 0.0;
+											var sumx = 0.0;
+											var sumcpt = 0.0;
+											var omeg = 0.0;
+											var sumtx = 0.0
+											// ****Here are Calculations for CPT
+											var cptot = 0.0;
+											var pg = 0.0; var pog = 0.0; var WP = 0.0;
+											var pq = 0.0; var poq = 0.0; var WQ = 0.0;
+											for (i = n; i > 0; i--) {
+												cptot = cptot + prob[i];
+												cp[i] = cptot;
+											}
+											cp[0] = 1;
+											cp[(n + 1)] = 0.0;
+											for (i = n; i > 0; i--) {
+												pg = C1 * Math.pow((cp[i]), GAMMA1);
+												pog = Math.pow((1.0 - cp[i]), GAMMA1);
+												WP = pg / (pg + pog);
+												pq = C1 * Math.pow((cp[(i + 1)]), GAMMA1);
+												poq = Math.pow((1.0 - cp[(i + 1)]), GAMMA1);
+												WQ = pq / (pq + poq);
+												sumcpt = sumcpt + (WP - WQ) * Math.pow(out[i], BETA1);
+											}
+											form.CPTPRED.value = Math.pow(sumcpt, (1.0 / BETA1));
+											//********************************************************
+											//*********HERE THE TAX MODEL PREDICTIONS ARE CALCULATED
+											//********************************************************
+											for (i = 1; i < n + 1; i++) {
+												P = prob[i];
+												WA = Math.pow(P, GAMMA);
+												sumw = sumw + WA;
+												sumx = sumx + WA * Math.pow(out[i], BETA);
+												for (j = i + 1; j < n + 1; j++) {
+													PJ = prob[j];
+													if (DELTA < 0) { omeg = DELTA * (1.0 / (n + 1.0)) * Math.pow(PJ, GAMMA); }
+													if (DELTA >= 0) { omeg = DELTA * (1.0 / (n + 1.0)) * Math.pow(P, GAMMA); }
+													sumx = sumx + omeg * (Math.pow(out[j], BETA) - Math.pow(out[i], BETA));
+												}
+											}
+											sumx = sumx / sumw;
+											pred = Math.pow(sumx, (1.0 / BETA));
+											form.PRED.value = pred;
+											form.EV.value = ev
+											//**********************************************************
+											//****** GENERATE OUTPUT IN NEW FORM IF NO ERROR 'TAGS' ENCOUNTERED ****
+											if (tag == 0) { return (this.form); }
+										}
+									//***************************************************
+									//*********************** END OF SCRIPTING *************
+									//****************************************************
+									</SCRIPT>
+								</HEAD>
+								<div class="body">
+									<h1>
+										Choice set
+									</h1>
+									<table>
+										<tr>
+											<td width=45%>
+												<h2>
+													Lottery A
+												</h2>
+												<FORM method=POST>
+													<div>
+														<p text-align="left">Enter number of branches: &nbsp;<INPUT TYPE=TEXT NAME=outs SIZE=2
+																maxlength=1>
+														</p>
+														</CENTER>
+														<table>
+															<tr>
+																<td>
+																	<p><b>CWT Parameters</b></p>
+																	<dl>
+																		<dt>&gamma;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=GAMMA SIZE=6 maxlength=6></dd>
+																		<dt>&beta;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=BETA SIZE=6 maxlength=6></dd>
+																		<dt>&theta;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=DELTA SIZE=6 maxlength=6></dd>
+																	</dl>
+																</td>
+																<td>
+								
+																</td>
+																<td>
+																	<p> <b>CPT Parameters</b> </p>
+																	<dl>
+																		<dt> &gamma; </dt> 
+																		<dd><INPUT TYPE=TEXT NAME=GAMMA1 SIZE=6 maxlength=6></dd>
+																		<dt>&beta;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=BETA1 SIZE=6 maxlength=6></dd>
+																		<dt>&delta;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=C1 SIZE=6 maxlength=6></dd>
+																	</dl>
+																</td>
+															</tr>
+														</table>
+														<p>
+															<INPUT TYPE="button" class="button button1" VALUE="Set Values"
+																	OnClick="parameters(this.form)">
+														</p>
+														<hr>
+														<div>
+															<h3>Lottery inputs</h3>
+															<p><b>Lottery returns</b></p>
+															<p> Enter the lottery returns in ascending order (i.e. rank from the lowest to the highest)
+															</p>
+															<p>
+																<INPUT TYPE=TEXT NAME=v1 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=v2 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=v3 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=v4 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=v5 SIZE=7 maxlength=7>
+															</p>
+															<p><b>Probabilities</b></p>
+															<p> Enter the corresponding probabilities </p>
+															<p>
+																<INPUT TYPE=TEXT NAME=p1 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=p2 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=p3 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=p4 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=p5 SIZE=7 maxlength=7>
+															</p>
+															<h3>Estimations</h3>
+															<p>
+																<INPUT TYPE="button" class="button button1" VALUE="Compute"
+																	OnClick="compute(this.form)">
+															</p>
+															<p>
+																CWT estimation: <INPUT TYPE=TEXT NAME=PRED SIZE=7 maxlength=7>
+																CPT estimation: <INPUT TYPE=TEXT NAME=CPTPRED SIZE=7 maxlength=7>
+																EU estimation: <INPUT TYPE=TEXT NAME=EV SIZE=7 maxlength=7>
+															</p>
+														</div>
+												</FORM>
+											</td>
+											<td>
+											</td>
+											<td width=45%>
+												<h2>
+													Lottery B
+												</h2>
+												<FORM method=POST>
+													<div>
+														<p text-align="left">Enter number of branches: &nbsp;<INPUT TYPE=TEXT NAME=outs SIZE=2
+																maxlength=1>
+														</p>
+														</CENTER>
+														<table>
+															<tr>
+																<td>
+																	<p><b>CWT Parameters</b></p>
+																	<dl>
+																		<dt>&gamma;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=GAMMA SIZE=6 maxlength=6></dd>
+																		<dt>&beta;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=BETA SIZE=6 maxlength=6></dd>
+																		<dt>&theta;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=DELTA SIZE=6 maxlength=6></dd>
+																	</dl>
+																</td>
+																<td>
+								
+																</td>
+																<td>
+																	<p> <b>CPT Parameters</b> </p>
+																	<dl>
+																		<dt> &gamma; </dt> 
+																		<dd><INPUT TYPE=TEXT NAME=GAMMA1 SIZE=6 maxlength=6></dd>
+																		<dt>&beta;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=BETA1 SIZE=6 maxlength=6></dd>
+																		<dt>&delta;</dt>
+																		<dd><INPUT TYPE=TEXT NAME=C1 SIZE=6 maxlength=6></dd>
+																	</dl>
+																</td>
+															</tr>
+														</table>
+														<p>
+															<INPUT TYPE="button" class="button button1" VALUE="Set Values"
+																	OnClick="parameters(this.form)">
+														</p>
+														<hr>
+														<div>
+															<h3>Lottery inputs</h3>
+															<p><b>Lottery returns</b></p>
+															<p> Enter the lottery returns in ascending order (i.e. rank from the lowest to the highest)
+															</p>
+															<p>
+																<INPUT TYPE=TEXT NAME=v1 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=v2 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=v3 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=v4 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=v5 SIZE=7 maxlength=7>
+															</p>
+															<p><b>Probabilities</b></p>
+															<p> Enter the corresponding probabilities </p>
+															<p>
+																<INPUT TYPE=TEXT NAME=p1 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=p2 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=p3 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=p4 SIZE=7 maxlength=7>
+																<INPUT TYPE=TEXT NAME=p5 SIZE=7 maxlength=7>
+															</p>
+															<h3>Estimations</h3>
+															<p>
+																<INPUT TYPE="button" class="button button1" VALUE="Compute"
+																	OnClick="compute(this.form)">
+															</p>
+															<p>
+																CWT estimation: <INPUT TYPE=TEXT NAME=PRED SIZE=7 maxlength=7>
+																CPT estimation: <INPUT TYPE=TEXT NAME=CPTPRED SIZE=7 maxlength=7>
+																EU estimation: <INPUT TYPE=TEXT NAME=EV SIZE=7 maxlength=7>
+															</p>
+														</div>
+												</FORM>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</section>
+							<section>
+								<div>
+									<h3>How to use the calculator</h3>
+									<ul>
+										<li>You need to set up configural weight and cumulative prospect theory probability distribution weights initially. If you press "Set Values" button, the calculator automatically sets the parameters of the models to the default values that are already estimated and published in the literature. </li>
+										<li>Enter the amount of branches of the lottery that should be between 2 and 5.</li>
+										<li>The calculator calculates the lotteries that their outcomes are in a non-negative domain. Enter lottery outcomes in an ascending order and their corresponding probabilities underneath. For instance, if a lottery returns £20 with probability 0.6 and £30 with probability 0.4, then you should enter 20 into the most left cell and 30 into the subsequent and their probabilities under their corresponding cells (i.e., 0.6 to the  most left and 0.4 to the subsequent cell).</li>
+										<li>When you set up everything correctly, click on "Compute" button and the results will be shown below.</li>
+										<li>&gamma; probability weighting</li>
+										<li>&beta;  curvature of utility function </li>
+										<li>&delta; indices for risk-preference in the CPT </li>
+										<li>&theta; denotes direction of attention in the TAX model. Here, &theta; less than zero corresponds to risk-aversion, while greater than zero to risk-seeking. If &theta; =0, the TAX model converges to Subjective weighted average utility (SWAU) model.</li>
+										</ul>
+								</div>
+								<div>
+									<h3>Further information</h3>
+									<p>I borrowed explanation of Prof Birnbaum regarding the parameters of the model.</p>
+									<i>
+										<p>
+											"This calculator computes predictions of the Configural Weight, TAX model described in Birnbaum (1997), Birnbaum and Chavez (1997), and Birnbaum (1998). It also computes predictions for the model of Cumulative Prospect Theory (Tversky & Kahneman, 1992), using the weighting function suggested by Lattimore, et al. (1992), and incorporated in CPT by Tversky and Wakker (1995). For two outcomes, this CPT weighting function is a special case of the configural weight model of Birnbaum, et al. (1992, Equation 4) in which S(p) is a power function of p, with exponent GAMMA. Although CPT and CWT models are difficult to distinguish for the case of n=2 outcome gambles, they are quite different for n greater than 2. As shown in Birnbaum (1997; 1998) and tested in Birnbaum and Chavez (1997), the Configural weight, TAX model is similar to, but distinct from the RAM Configural weight model of Birnbaum and McIntosh (1996), which is implemented in <a href="http://psych.fullerton.edu/mbirnbaum/dmcalc2.htm">DMCALC2</a> and in another on-line <a href="http://psych.fullerton.edu/mbirnbaum/cwtcalculator.htm">RAM model calculator.</a>"
+										</p>
+									</i>
+								</div>
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<section>
+							<h2>Contact details</h2>
+							<dd>
+								<dt>University of Warwick</dt>
+								<dt>Department of Economics, Social Science Building, S1.123</dt>
+								<dt>mehman.ismayilli@warwick.ac.uk</dt>
+							</dd>
+						</section>
+						<section>
+							<h2>Follow</h2>
+							<ul class="icons">
+								<li><a href="https://twitter.com/IsmayilliMehman" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="https://github.com/mnismayilli" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/mismayilli/" class="icon brands style2 fa-linkedin-in"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+						<ul class="copyright">
+							<li>&copy; Mehman Ismayilli. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
