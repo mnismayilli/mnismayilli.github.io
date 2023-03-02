@@ -5,7 +5,7 @@ description: About me
 bodyClass: page-about
 ---
 
-Detailed [CV here](https://drive.google.com/file/d/17603_QK80snj8_-ITL-ukG7Jms3tWTn-/view?usp=sharing).
+Detailed [CV here](https://mnismayilli.github.io/main.pdf).
 
 # Education
 
