@@ -9,7 +9,7 @@
     margin-bottom: 20px;
   }
   strong {
-    font-width: bold;
+    font-weight: bold;
   }
   em {
     font-style: italic;
@@ -26,6 +26,7 @@
     font-weight: normal;
     margin-top: 30px;
     margin-bottom: 20px;
+    text-align: justify;
   }
   h2 {
     font-family: $font-family-base;
@@ -33,6 +34,7 @@
     font-weight: normal;
     line-height: 1.4;
     margin-top: 30px;
+    text-align: justify;
   }
   h3 {
     font-family: $font-family-base;
@@ -40,6 +42,7 @@
     line-height: 1.4;
     font-weight: normal;
     margin-top: 30px;
+    text-align: justify;
   }
   ul,
   ol {
@@ -60,10 +63,12 @@
     line-height: 1.56;
     margin-left: 20px;
     color: $steel;
+    text-align: justify;
   }
   hr {
     border: none;
     border-bottom: 1px solid $white-offset;
+    text-align: justify;
   }
   table {
     width: 100%;
@@ -88,6 +93,7 @@
   blockquote {
     padding: 0 1em;
     color: $steel;
+    text-align: justify;
     border-left: .25em solid $secondary;
   }
 }

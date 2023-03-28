@@ -26,6 +26,17 @@ August 2010 -- June 2014
 
 > Graduate with distinction, GPA: 92/100
 
+# Work experience
+### Teaching Fellow, _University of Warwick_, UK
+October 2021 -- Present
+
+### Graduate Teaching Assistant, _University of Leicester_, UK
+September 2017 -- September 2020
+
+### Teaching Assistant, _London Business School_, UK
+March 2018 -- May 2021
+
+
 # Scholarship
 - Macquire Scholarship
 - University of Leicester Departmental Scholarship

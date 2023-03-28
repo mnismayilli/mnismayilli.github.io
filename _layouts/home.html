@@ -7,10 +7,12 @@ bodyClass: "page-home"
   <div class="container">
     <div class="row justify-content-start">
       <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1">
+        <div class="justified-text">
         {{ content }}
         {% if page.show_call_box %}
           {% include call.html show_button=true %}
         {% endif %}
+      </div>
       </div>
       {% if page.intro_image %}
       <div class="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
