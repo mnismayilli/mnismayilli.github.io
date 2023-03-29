@@ -6,7 +6,7 @@ main:
     url: "/about/"
     weight: 2
   - name: "Research"
-    url: "/services/"
+    url: "/research/"
     weight: 3
   - name: "Contact"
     url: "/contact/"
@@ -20,7 +20,7 @@ footer:
     url: "/about/"
     weight: 2
   - name: "Research"
-    url: "/services/"
+    url: "/research/"
     weight: 3
   - name: "Contact"
     url: "/contact/"
