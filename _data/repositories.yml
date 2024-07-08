@@ -1,0 +1,9 @@
+github_users:
+  - mnismayilli
+  - ind-econ
+
+repo_description_lines_max: 2
+
+github_repos:
+  - mnismayilli/PyTorch
+  - ind-econ/ind-econ.github.io
