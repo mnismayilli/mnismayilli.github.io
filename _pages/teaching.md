@@ -12,6 +12,16 @@ nav_order: 2
 
 ___
 
+## University of Manchester
+
+### Seminars
+
+- EC10071 Advanced Mathematics
+- EC10171 Principles of Microeconomic Theory I
+- EC20001 Managerial Economics I
+- EC20021 Microeconomics III
+
+
 ## University of Warwick
 
 ### Lectures

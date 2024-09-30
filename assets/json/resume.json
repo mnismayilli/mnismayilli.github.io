@@ -105,13 +105,30 @@
   
   "startDate": "2021-10-01",
   
-  "endDate": "",
+  "endDate": "2024-08-31",
   
   "summary": "FHEA & Postgraduate Diploma in Curriculum Design in Higher Education",
   
   "highlights": ["Engaging in active research in industrial & experimental economics","Delivering lectures in industrial organisation with focus on behavioural economics and advanced game theory", "Delivering seminars on intermediate microecononomics, mathematical economics, development economics", "Supervising bachelor's and master's degree students dissertations in industrial economics, financial economics & development economics", "Representing department in Open Days", "Delivering lectures & workshops on the Widening participation and Outreach events", "Academic supervision"]
   
-  }
+  },
+  {
+  
+    "name": "University of Manchester Department of Economics",
+    
+    "position": "Economics Teaching Associate",
+    
+    "url": "",
+    
+    "startDate": "2024-09-01",
+    
+    "endDate": "",
+    
+    "summary": "",
+    
+    "highlights": ["Engaging in active research in industrial & experimental economics","Delivering seminars on intermediate microecononomics, mathematical economics, development economics", "Supervising master's degree students dissertations in my area of research", "Representing department in Open Days", "Academic supervision"]
+    
+    }
   
   ],
   

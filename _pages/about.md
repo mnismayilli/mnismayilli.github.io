@@ -21,4 +21,18 @@ I hold my MSc in Financial Economics from the University of Glasgow and my Bache
 
 I am a **Fellow** of the Advance HE, **FHEA**.
 
-I currently work as a Teaching Fellow at the University of Warwick Department of Economics, where I deliver lectures and seminars on various quantitative economics modules, including industrial economics with a focus on behavioural economics, intermediate microeconomics, advanced game theory, and development economics. Also, I supervise thesis projects of bachelor’s and master’s degree students in my area of specialisation.
+I currently work as a Teaching Associate at the University of Manchester Department of Economics, where I deliver seminars on various quantitative economics modules, including managerrial economics, intermediate microeconomics, advanced maths, and macroeconomics. Also, I supervise MSc thesis projects in my area of specialisation.
+
+**My office hours in Term 1 Academic year 2024-2025**
+
+_In-person_
+
+- Mondays 10:00 – 11:00 ALB Glass Room 3.077
+- Tuesdays 11:00 – 12:00 ALB Glass Room 3.008 
+- Fridays 13:00 – 14:00 ALB Glass Room 3.077
+
+[Link to book in-person office hours](https://outlook.office.com/bookwithme/user/8d32af087f78416f9aa9cf90261b0d9b@manchester.ac.uk/meetingtype/ORT8H2gr9UWTAFRahJ2hyA2?anonymous&ep=mcard) 
+
+_Online_
+- Mondays 11:00 - 12:00 online on (MS Teams)
+[Link to book online office hours](https://outlook.office.com/bookwithme/user/8d32af087f78416f9aa9cf90261b0d9b@manchester.ac.uk/meetingtype/oPfIw5_wX0Oh5X1WuGpuZg2?anonymous&ep=mcard)
