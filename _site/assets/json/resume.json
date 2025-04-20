@@ -3,7 +3,7 @@
   "name": "Mehman Ismayilli",
   "label": "Economist",
   "image": "",
-  "email": "ismayilli.mehman@hotmail.com",
+  "email": "ismayilli.mehman[at]hotmail.com",
   "phone": "",
   "url": "https://mnismayilli.github.io",
   
@@ -11,15 +11,15 @@
   
   "location": {
   
-  "address": "University of Warwick Department of Economics",
+  "address": "University of Manchester Department of Economics",
   
-  "postalCode": "CV4 7AL",
+  "postalCode": "M13 9PL",
   
-  "city": "Coventry",
+  "city": "Manchester",
   
   "countryCode": "United Kingdom",
   
-  "region": "Warwickshire"
+  "region": "Greater Manchester"
   
   },
   
@@ -55,7 +55,7 @@
   
   "summary": "AFHEA",
   
-  "highlights": ["Delivering seminars on microecononomics & maths for economics", "Supervising master's degree thesis projects"]
+  "highlights": ["Delivering seminars on Microecononomics & Maths for economics", "Supervising master's degree thesis projects"]
   
   },
   
@@ -105,13 +105,30 @@
   
   "startDate": "2021-10-01",
   
-  "endDate": "",
+  "endDate": "2024-08-31",
   
-  "summary": "FHEA & Postgraduate Diploma in Curriculum Design in Higher Education",
+  "summary": "FHEA & Postgraduate Diploma in Curriculum Development in Higher Education",
   
   "highlights": ["Engaging in active research in industrial & experimental economics","Delivering lectures in industrial organisation with focus on behavioural economics and advanced game theory", "Delivering seminars on intermediate microecononomics, mathematical economics, development economics", "Supervising bachelor's and master's degree students dissertations in industrial economics, financial economics & development economics", "Representing department in Open Days", "Delivering lectures & workshops on the Widening participation and Outreach events", "Academic supervision"]
   
-  }
+  },
+  {
+  
+    "name": "University of Manchester Department of Economics",
+    
+    "position": "Economics Teaching Associate",
+    
+    "url": "",
+    
+    "startDate": "2024-09-01",
+    
+    "endDate": "",
+    
+    "summary": "",
+    
+    "highlights": ["Engaging in active research in industrial & experimental economics","Delivering seminars on intermediate microecononomics, mathematical economics, development economics", "Supervising master's degree students dissertations in my area of research", "Representing department in Open Days", "Academic supervision"]
+    
+    }
   
   ],
   
@@ -119,7 +136,7 @@
   
   {
   
-  "institution": "Qafqaz University (now: Baku Engineering University)",
+  "institution": "Baku Engineering University (Qafqaz University)",
   
   "location": "Baku, Azerbaijan",
   
@@ -127,7 +144,7 @@
   
   "area": "Economics, Corporate Finance",
   
-  "studyType": "Bachelor's degree in World Economy",
+  "studyType": "Bachelor's degree in Economics",
   
   "startDate": "2010-09-01",
   
@@ -149,7 +166,7 @@
   
   "area": "Thesis: The 1980s US Financial Deregulation and its impacts to the US Manufacturing",
   
-  "studyType": "MSc in Financial Economics",
+  "studyType": "Master of Science in Financial Economics",
   
   "startDate": "2014-09-01",
   
@@ -171,7 +188,7 @@
   
   "area": "Thesis: Essays in Experimental Economics and Industrial Organisation",
   
-  "studyType": "PhD",
+  "studyType": "Doctor of Philosophy in Economics",
   
   "startDate": "2017-09-01",
   
@@ -179,7 +196,7 @@
   
   "score": "",
   
-  "courses": ["Supervisors: Dr Subir Bose, Piercarlo Zanchettin, Jacob Seifert"]
+  "courses": ["Supervisors: Subir Bose, Piercarlo Zanchettin, Jacob Seifert"]
   
   }
   
@@ -189,7 +206,7 @@
   
   {
   
-  "name": "Industrial Economics",
+  "name": "Industrial Economist",
   
   "icon": "fa-solid fa-tag",
   

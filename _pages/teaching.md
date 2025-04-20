@@ -16,10 +16,11 @@ ___
 
 ### Seminars
 
-- EC10071 Advanced Mathematics
-- EC10171 Principles of Microeconomic Theory I
-- EC20001 Managerial Economics I
-- EC20021 Microeconomics III
+- ECON10192 Introduction to Mathematical Economics
+- ECON10071 Advanced Mathematics
+- ECON10171 Principles of Microeconomic Theory I
+- ECON20001 Managerial Economics I
+- ECON20021 Microeconomics III
 
 
 ## University of Warwick
@@ -28,6 +29,7 @@ ___
 
 - EC231 Industrial Organisation: Strategic Behaviour
 - EC301 Mathematical Economics 2: Dynamics, Uncertainty & Asymmetrical Information
+- EC941 MSc Game Theory
 
 ### Seminars
 
@@ -50,7 +52,7 @@ ___
 
 ## London Business School
 
-- Advanced Microeconomics for PhD students
+- P226 Advanced Microeconomics for PhD students
 
 ## University of Leicester
 
