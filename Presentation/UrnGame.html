@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Urn MLE Game</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    button, select {
+      margin: 10px 5px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .marble {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 3px;
+      border: 1px solid #333;
+    }
+    .panel {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+    h2 {
+      margin-top: 30px;
+      color: #333;
+    }
+    .likelihood-info {
+      margin-top: 20px;
+      padding: 10px;
+      background: #fefefe;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+<h1>Urn Game: Estimate Number of Marbles</h1>
+<button onclick="drawMarble()" id="drawBtn">Select a Marble</button>
+<button onclick="resetGame()">Reset</button>
+<div class="panel" id="marbleDisplay"></div>
+<div class="panel" id="estimatePanel" style="display:none;"></div>
+<h2>Estimate the Number of Marbles</h2>
+<select id="userGuess" onchange="updateLikelihood()" disabled>
+  <option value="-">-- Choose your estimate --</option>
+</select>
+<label style="margin-left: 10px;"><input type="checkbox" id="showLikCheckbox" onchange="toggleLikelihood()"> Show Likelihood Function</label>
+<h2>Likelihood Function Visualization</h2>
+<canvas id="likelihoodCanvas" width="800" height="400" style="display:none;"></canvas>
+<div id="likelihoodDetails" class="likelihood-info"></div>
+<script>
+let colorList = ['red', 'green', 'blue', 'black', 'cyan', 'magenta', 'yellow', 'brown', 'orange', 'pink', 'purple'];
+let trueN, selectedFromUrn, set, marbles = [], seen = new Set(), k = 0;
+let chartInstance;
+
+function initializeUrn() {
+  trueN = Math.floor(Math.random() * 11) + 5;
+  selectedFromUrn = Array.from({length: trueN + 1}, () => Math.floor(Math.random() * trueN));
+  set = [];
+  for (let i = 0; i < selectedFromUrn.length; i++) {
+    let sub = selectedFromUrn.slice(0, i+1);
+    if (new Set(sub).size !== sub.length) {
+      set = sub;
+      break;
+    }
+  }
+  k = 0;
+  seen.clear();
+  marbles = set.map(i => colorList[i % colorList.length]);
+}
+
+function drawMarble() {
+  if (k >= marbles.length) return;
+
+  const color = marbles[k];
+  
+  if (seen.has(color)) {
+    // Repeated color found, stop drawing
+    k++; // include the repeated marble in the display
+    displayMarbles();
+    showEstimatePrompt();
+    enableUserGuess();
+    document.getElementById("drawBtn").disabled = true; // Disable further drawing
+    return;
+  }
+
+  seen.add(color);
+  k++;
+  displayMarbles();
+}
+
+function displayMarbles() {
+  const container = document.getElementById("marbleDisplay");
+  container.innerHTML = marbles.slice(0, k).map(color => `<div class="marble" style="background:${color}"></div>`).join('');
+}
+
+function showEstimatePrompt() {
+  const panel = document.getElementById("estimatePanel");
+  panel.style.display = 'block';
+  panel.innerHTML = `<p>Based on seeing <strong>${k - 1}</strong> different marbles before a repeat, estimate the number of marbles in the urn:</p>`;
+}
+
+function enableUserGuess() {
+  const select = document.getElementById("userGuess");
+  for (let i = 1; i <= 100; i++) {
+    let option = document.createElement("option");
+    option.value = i;
+    option.text = i;
+    select.appendChild(option);
+  }
+  select.disabled = false;
+}
+
+function lik(x) {
+  if (k < 2 || x <= k - 2) return 0;
+  let product = 1;
+  for (let i = 1; i <= k - 2; i++) {
+    product *= (x - i);
+  }
+  return product * (k - 1) / Math.pow(x, k - 1);
+}
+
+function MLE() {
+  if (k === 2) return 1;
+  if (k === 3) return 2;
+  let maxVal = -Infinity, mle = k-1;
+  for (let i = k-1; i <= 8 * k; i++) {
+    const val = lik(i);
+    if (val > maxVal) {
+      maxVal = val;
+      mle = i;
+    }
+  }
+  return mle;
+}
+
+function updateLikelihood() {
+  const j = parseInt(document.getElementById("userGuess").value);
+  if (isNaN(j) || j === '-') return;
+  const prob = lik(j).toFixed(6);
+  const details = document.getElementById("likelihoodDetails");
+  details.innerHTML = `<strong>Likelihood Function Result:</strong><br>
+    P(k = ${k-1} | n = ${j}) = <strong>${prob}</strong>`;
+  if (document.getElementById("showLikCheckbox").checked) drawLikelihood();
+}
+
+function drawLikelihood() {
+  const ctx = document.getElementById("likelihoodCanvas").getContext('2d');
+  const labels = [], data = [];
+  let maxLik = -Infinity, mle = k-1;
+  for (let i = k-1; i <= 8 * k; i++) {
+    const value = lik(i);
+    labels.push(i);
+    data.push(value);
+    if (value > maxLik) {
+      maxLik = value;
+      mle = i;
+    }
+  }
+  if (chartInstance) chartInstance.destroy();
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Likelihood P(k | n)',
+          data: data,
+          fill: true,
+          borderColor: 'blue',
+          backgroundColor: 'rgba(0, 0, 255, 0.1)',
+          tension: 0.3,
+          pointRadius: 2
+        },
+        {
+          label: 'MLE',
+          data: labels.map(n => n === mle ? lik(n) : null),
+          borderColor: 'red',
+          backgroundColor: 'red',
+          pointRadius: 6,
+          type: 'scatter',
+          showLine: false
+        }
+      ]
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'Likelihood Function vs. Number of Marbles (n)'
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `n = ${context.label}, Likelihood = ${context.raw.toFixed(6)}`;
+            }
+          }
+        },
+        legend: {
+          display: true
+        }
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Number of Marbles (n)'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Likelihood'
+          }
+        }
+      }
+    }
+  });
+  document.getElementById("likelihoodCanvas").style.display = "block";
+  const details = document.getElementById("likelihoodDetails");
+  details.innerHTML += `<br><br><strong>Maximum Likelihood Estimate:</strong><br>
+    The MLE is the value of <strong>n = ${mle}</strong> where the likelihood function reaches its maximum.<br>
+    Likelihood at MLE = <strong>${lik(mle).toFixed(6)}</strong>`;
+}
+
+function toggleLikelihood() {
+  if (document.getElementById("showLikCheckbox").checked) drawLikelihood();
+  else document.getElementById("likelihoodCanvas").style.display = "none";
+}
+
+function resetGame() {
+  initializeUrn();
+  document.getElementById("marbleDisplay").innerHTML = "";
+  document.getElementById("estimatePanel").innerHTML = "";
+  document.getElementById("estimatePanel").style.display = "none";
+  document.getElementById("userGuess").innerHTML = '<option value="-">-- Choose your estimate --</option>';
+  document.getElementById("userGuess").disabled = true;
+  document.getElementById("likelihoodCanvas").style.display = "none";
+  document.getElementById("likelihoodDetails").innerHTML = "";
+  if (chartInstance) chartInstance.destroy();
+  k = 0;
+  seen.clear();
+  document.getElementById("drawBtn").disabled = false; // ✅ Re-enable draw button
+}
+
+initializeUrn();
+</script>
+</body>
+</html>

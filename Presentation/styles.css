@@ -1,0 +1,43 @@
+/* Oxford Colors */
+:root {
+    --r-main-color: #002147;       /* Oxford Blue */
+    --r-secondary-color: #76B2B4;  /* Light Blue */
+    --r-background-color: hsl(0, 0%, 100%); /* Light Grey */
+    --r-heading-color: #002147;
+    --r-link-color: #ab09ae;
+    --r-link-color-hover: #76B2B4;
+  }
+
+ .reveal {
+  color: #FF8C00; /* Dark orange */
+}
+  .reveal {
+    color: var(--r-main-color);
+    font-size: 1.5em;
+  }
+  
+  .reveal h1, .reveal h2, .reveal h3 {
+    color: var(--r-heading-color);
+  }
+  
+  .reveal section {
+    background-color: var(--r-background-color);
+  }
+  
+  .reveal a {
+    color: var(--r-link-color);
+  }
+  
+  .reveal a:hover {
+    color: var(--r-link-color-hover);
+  }
+  
+  .reveal .logo {
+    height: 100px; /* increase as needed */
+    max-height: none;
+    width: auto;
+  }
+  .slide-header {
+    background-color: #002147;
+    color: white;
+  }
