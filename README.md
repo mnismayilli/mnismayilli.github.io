@@ -1,1 +1,1 @@
-My personal academic and professional website. It was developed based on al-falio theme. 
+My personal academic and professional website, developed based on *al-falio* theme.
