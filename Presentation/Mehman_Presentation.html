@@ -360,158 +360,125 @@ Mehman Ismayilli, PhD, FHEA
 
   <p class="date">2025-05-12</p>
 </section>
-<section id="useful-notes-links" class="slide level2">
-<h2>Useful notes &amp; links</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="in-class-discussion-interaction">In-class discussion &amp; interaction</h3>
-<ul>
-<li class="fragment">Please join Slido using:
-<ul>
-<li class="fragment">Sign-in using the <a href="https://app.sli.do/event/5EqCfteDXkd4XLL2BKZy4a">link:</a></li>
-<li class="fragment">QR code:<br>
-</li>
-<li class="fragment"><img src="images/Slido.png" width="200px"></li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<h3 class="fragment" id="post-class-discussion-board">Post-class discussion board</h3>
-<ul>
-<li class="fragment"><p>Please join Padlet using:</p>
-<ul>
-<li class="fragment"><a href="https://padlet.com/ismayillimehman/ml-discussion-board-sau21g08d8fn5sr2/wish/Ae2Ravz9A1D0anz4">Link to the question</a></li>
-<li class="fragment">QR code:</li>
-<li class="fragment"><img src="images/padletQR_code.png" width="220px"></li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="some-interactive" class="slide level2">
-<h2>Some interactive</h2>
-<iframe src="https://app.sli.do/event/5EqCfteDXkd4XLL2BKZy4a" height="100%" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido">
-</iframe>
-</section>
-<section id="intended-learning-outcomes-ilos" class="slide level2">
-<h2>Intended Learning Outcomes (ILOs)</h2>
-<ul>
-<li class="fragment">By the end of this session, you should be able to:
-<ul>
-<li class="fragment">Explain the concept of <strong>Maximum Likelihood Estimation (MLE)</strong>.</li>
-<li class="fragment">Compute the <strong>MLE</strong> for simple cases (e.g., IID data).</li>
-<li class="fragment">Understand the role of the <strong>log-likelihood function</strong> in MLE.</li>
-</ul></li>
-</ul>
-</section>
-<section id="familiarity-with-the-topic" class="slide level2">
-<h2>Familiarity with the topic</h2>
-<iframe src="https://app.sli.do/event/5EqCfteDXkd4XLL2BKZy4a" height="100%" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido">
-</iframe>
-</section>
-<section id="from-knowing-the-distribution-to-learning-from-data" class="slide level2">
-<h2>From Knowing the Distribution to Learning from Data</h2>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
 <div style="background-color:#f0f8ff; padding: 0.5em; border-radius: 2px;">
 <h3>
-<strong>What We’ve Done So Far:</strong>
+<strong> What We’ve Done So Far:</strong>
 </h3>
 <ul>
-<li class="fragment">
+<li>
 Learned key ideas in <strong>probability theory</strong>, assuming we know the full distribution (pmf/pdf):
 <ul>
-<li class="fragment">
+<li>
 How to compute <strong>moments</strong> of a random variable
 </li>
-<li class="fragment">
+<li>
 How to find <strong>cdfs</strong> and <strong>interval probabilities</strong>
 </li>
-<li class="fragment">
+<li>
 How to define and verify <strong>independence</strong>
 </li>
 </ul>
-</li><li class="fragment">
+</li><li>
 ✔️ <strong>Assumption</strong>: We know the distribution and its parameters.
 </li>
 </ul>
 </div>
+<h3 id="quiz">Quiz</h3>
+<div>
+<ul>
+<li>Do we always know probability density/mass functions (pdf/pmf) or the underlying model parameters of any data set?</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column">
+<p>Join at: <strong>slido.com</strong> - #1952 424 or with QR code:</p>
+</div><div class="column">
+<p><img src="images/Slido.png" width="160px"></p>
+</div>
+</div>
+</section>
+<section id="quiz-1" class="slide level2">
+<h2>Quiz</h2>
+<iframe src="https://wall.sli.do/event/t2T4tg9DnCt13kU84bq334/?section=b86c34f6-25c2-49a8-b38a-41ea706a5d1d" height="100%" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido">
+</iframe>
+</section>
+<section id="from-knowing-the-distribution-to-learning-from-data" class="slide level2">
+<h2>From Knowing the Distribution to Learning from Data</h2>
 <div class="fragment" style="background-color:#f2f2f2; padding: 0.5em; border-radius: 5px; margin-top: 0.5em;">
-<h3 class="fragment">
+<h3>
 <strong>Now, Let’s Get Real</strong>
 </h3>
 <ul>
-<li class="fragment" style="color: red;">
+<li style="color: red;">
 <strong>In practice, we rarely know the actual distribution or its parameters!</strong>
 </li>
-<li class="fragment">
+<li>
 What we <strong>do</strong> have is <strong>data</strong> — observations from the unknown distribution.
 </li>
-<li class="fragment">
+<li>
 Using this data, we can:
 <ul>
-<li class="fragment">
+<li>
 <strong>Infer</strong> characteristics of the distribution
 </li>
-<li class="fragment">
+<li>
 <strong>Estimate</strong> unknown quantities (like parameters or moments)
 </li>
 </ul>
-</li><li class="fragment">
+</li><li>
 🔍 <strong>Key idea</strong>: Use data to learn what we don’t know.
 </li>
 </ul>
 </div>
+<h3 class="fragment" id="methods-of-estimation">Methods of Estimation</h3>
+<ul>
+<li class="fragment"><p>Frequentist methods &amp; Bayesian estimators - <em>No single method is uniformly superior</em>.</p></li>
+<li class="fragment"><p>Today’s focus: <u>Maximum Likelihood Method</u></p>
+<ul>
+<li class="fragment">A powerful and widely used <em>frequentist</em> estimation technique</li>
+</ul></li>
+</ul>
 </section>
-<section id="quiz" class="slide level2">
-<h2>Quiz</h2>
-<iframe src="https://app.sli.do/event/5EqCfteDXkd4XLL2BKZy4a" height="100%" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido">
+<section id="intended-learning-outcomes-ilos" class="slide level2">
+<h2>Intended Learning Outcomes (ILOs)</h2>
+<div>
+<ul>
+<li>By the end of this session, you will:
+<ul>
+<li>💡 Understand the concept of <strong>Maximum Likelihood Estimation (MLE)</strong>.</li>
+<li>📉 Analyse the role of the <strong>log-likelihood function</strong> in MLE.</li>
+<li>📠 Compute the <strong>MLE</strong> for simple cases (e.g., IID data).</li>
+</ul></li>
+</ul>
+</div>
+<h3 class="incremental" id="familiarity-with-the-topic">Familiarity with the topic</h3>
+<ul>
+<li class="fragment">How familiar are you with the Maximum Likelihood?
+<ul>
+<li class="fragment">Join at: <strong>slido.com</strong> - #1952 424 or with QR code:</li>
+<li class="fragment"><img src="images/Slido.png" width="160px"></li>
+</ul></li>
+</ul>
+</section>
+<section id="familiarity-with-the-topic-quiz-outcome" class="slide level2">
+<h2>Familiarity with the topic (quiz outcome)</h2>
+<iframe src="https://wall.sli.do/event/t2T4tg9DnCt13kU84bq334/?section=b86c34f6-25c2-49a8-b38a-41ea706a5d1d" height="100%" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido">
 </iframe>
-</section>
-<section id="methods-of-estimation" class="slide level2">
-<h2>Methods of Estimation</h2>
-<ul>
-<li class="fragment">Frequentist methods &amp; Bayesian estimators</li>
-</ul>
-<blockquote class="fragment" style="text-align: center; margin-top: 2em;">
-No single method is uniformly superior
-</blockquote>
-<div class="fragment" style="text-align: center; margin-top: 2em;">
-<!-- -->
-<h3 id="section"><span style="font-size: 1.5em; font-weight: 600; color: #1e3a8a;"></span></h3>
-<p>Today’s focus: <u>Maximum Likelihood Method</u> </p>
-<div style="font-size: 1.2em; margin-top: 1em;">
-<p>A powerful and widely used frequentist estimation technique</p>
-</div>
-</div>
-</section>
-<section id="maximum-likelihood-method" class="slide level2">
-<h2>Maximum Likelihood Method</h2>
-<div class="fragment" style="background-color:#f0f8ff; padding: 1em; border-radius: 5px; margin-top: 0.5em;">
-<!-- -->
-<h3 id="setting">Setting</h3>
-<ul>
-<li class="fragment">The underlying distribution of data is <em>(supposedly)</em> known</li>
-<li class="fragment">However, the parameters of that distribution are <em>unknown</em></li>
-<li class="fragment">Goal: Estimate <strong>parameters</strong> of that distribution</li>
-</ul>
-</div>
-<div class="fragment" style="background-color:#f2f2f2; padding: 1em; border-radius: 5px; margin-top: 0.5em;">
-<!-- -->
-<h3 id="example">Example</h3>
-<ul>
-<li class="fragment">A certain random variable has distribution of <span class="math inline">N(\mu, \sigma^{2})</span> but <strong>not known</strong> mean and variance parameters.</li>
-<li class="fragment">Estimate the <em>mean</em> and <em>variance</em></li>
-<li class="fragment">Maximum likelihood method will estimate values of <span class="math inline">\mu</span> and <span class="math inline">\sigma^{2}</span> that make our observed data most likely</li>
-</ul>
-</div>
 </section>
 <section id="interactive-normal-distribution-estimation" class="slide level2">
 <h2>Interactive Normal Distribution Estimation</h2>
-<div>
-<p><label for="mu">Mean (μ):</label> <input type="range" id="mu" min="0" max="10" step="0.01" value="0" oninput="updatePlot()"> <span id="muVal">5</span></p>
+<p>A certain random variable has distribution of <span class="math inline">N(\mu, \sigma^{2})</span> but <strong>not known</strong> mean and variance parameters.<strong>Estimate the <em>mean</em> and <em>variance</em>.</strong></p>
+<div style="display: flex; gap: 20px;">
+<div style="flex: 1;">
+<p><label for="mu">Mean (μ):</label> <input type="range" id="mu" min="0" max="10" step="0.1" value="0" oninput="updatePlot()"> <span id="muVal">5</span></p>
 </div>
-<div>
-<p><label for="sigma">Standard Deviation (σ):</label> <input type="range" id="sigma" min="0.1" max="5" step="0.01" value="0" oninput="updatePlot()"> <span id="sigmaVal">2</span></p>
+<div style="flex: 1;">
+<p><label for="sigma">Standard Deviation (σ):</label> <input type="range" id="sigma" min="0.1" max="5" step="0.1" value="0" oninput="updatePlot()"> <span id="sigmaVal">3</span></p>
 </div>
-<div id="histogram" style="width:100%;height:500px;">
+</div>
+<div id="histogram" style="width:100%; height:425px; display:flex; align-items:center; justify-content:center;">
 
 </div>
 <script src="https://cdn.plot.ly/plotly-2.24.2.min.js"></script>
@@ -555,8 +522,15 @@ function updatePlot() {
     x: data,
     type: 'histogram',
     histnorm: 'probability density',
-    marker: {color: 'lightblue'},
-    name: 'Data'
+    name: 'Data',
+    marker: {
+                    color: 'rgba(0, 33, 71, 0.6)',
+                    line: {
+                        color: 'rgba(0, 33, 71, 1)',
+                        width: 1
+                    }
+                },
+                opacity: 0.7
   };
 
   const x_vals = [];
@@ -569,7 +543,7 @@ function updatePlot() {
     y: x_vals.map(x => normalDensity(x, mu, sigma)),
     mode: 'lines',
     line: {color: 'red'},
-    name: 'Normal Curve',
+    name: 'Estimated Normal Curve',
     type: 'scatter'
   };
 
@@ -577,7 +551,6 @@ function updatePlot() {
     sum + Math.log(normalDensity(x, mu, sigma)), 0).toFixed(2);
 
   Plotly.newPlot('histogram', [hist, normal], {
-    title: `Log-Likelihood: ${logLik}`,
     xaxis: {title: 'Value'},
     yaxis: {title: 'Density'}
   });
@@ -586,8 +559,7 @@ function updatePlot() {
 updatePlot();  // Initial render
 </script>
 <ul>
-<li class="fragment"><p><span class="math inline">\hat{\mu} = 5.21</span> &amp; <span class="math inline">\hat{\sigma} = 1.82</span></p></li>
-<li class="fragment"><p><a href="https://colab.research.google.com/drive/1RjP9kjG-q3UhCsT4Fn7dpNvm-d_huYxa?usp=sharing">Detailed Jupyter Notebook here</a></p></li>
+<li class="fragment"><span class="math inline">\hat{\mu} = 5.21</span> &amp; <span class="math inline">\hat{\sigma} = 1.82</span>; <a href="https://colab.research.google.com/drive/1RjP9kjG-q3UhCsT4Fn7dpNvm-d_huYxa?usp=sharing">Detailed Jupyter Notebook here</a></li>
 </ul>
 </section>
 <section id="maximum-likelihood-formal-setting" class="slide level2">
@@ -605,16 +577,9 @@ updatePlot();  // Initial render
 <li class="fragment"><p>Define <span class="math inline">\mathbf{Y} = (Y_{1}, Y_{2}, \dots, Y_{n})</span>.</p></li>
 <li class="fragment"><p>The joint <em>pdf</em> of <span class="math inline">\mathbf{Y}</span> is given by <span class="math inline">f(\mathbf{Y}; \theta)</span></p>
 <ul>
-<li class="fragment"><span class="math inline">\theta</span> contains the parameters of this pdf and can be a <em>vector</em> containing multiple parameters</li>
+<li class="fragment"><span style="color: red;"><span class="math inline">\theta</span> </span> the parameters of this pdf and can be a <em>vector</em> containing multiple parameters</li>
 </ul></li>
 </ul></li>
-</ul>
-</div>
-<div class="fragment" style="background-color:#fff9e5; padding: 0.5em; border-radius: 2px; margin-top: 0em;">
-<!-- -->
-<h3 id="problem">Problem</h3>
-<ul>
-<li class="fragment"><span style="color: red;"><strong>We do NOT know what <span class="math inline">\theta</span> is.</strong></span></li>
 </ul>
 </div>
 <div class="fragment" style="background-color:#eafce2; padding: 0.5em; border-radius: 2px; margin-top: 0em;">
@@ -625,47 +590,44 @@ updatePlot();  // Initial render
 </blockquote>
 </div>
 </section>
-<section id="likelihood-function" class="slide level2">
-<h2>Likelihood Function</h2>
-<div class="fragment" style="background-color:#f0f8ff; padding: 0.5em; border-radius: 2px; margin-top: 0em;">
-<!-- -->
-<h3 id="definition">Definition</h3>
-<ul>
-<li class="fragment">The likelihood function is simply equivalent to the probability density function (pdf): <span class="math display">L(\theta; \mathbf{Y})= f(\mathbf{Y}; \theta)</span>.
-<ul>
-<li class="fragment">This is called the <em>joint likelihood function</em>, since it is equivalent to the <em>joint pdf</em> of <span class="math inline">\mathbf{Y}</span>.</li>
-</ul></li>
-</ul>
-</div>
-<ul>
-<li class="fragment"><p>The maximum likelihood estimator of <span class="math inline">\theta</span> is <span class="math display">\hat{\theta} = \arg \max_{\theta} L(\theta; \mathbf{Y}) </span>.</p>
-<ul>
-<li class="fragment"><p>ML is based on the idea that <span class="math inline">\hat{\theta}</span> should be the value of <span class="math inline">{\theta}</span> which maximises the likelihood of observing whatever dataset we have at hand</p></li>
-<li class="fragment"><p>In other words, we are trying to find the value of <span class="math inline">\theta</span> which makes the observed data as likely as possible to have been observed.</p></li>
-</ul></li>
-</ul>
-</section>
 <section id="likelihood-function-for-iid-data" class="slide level2">
 <h2>Likelihood function for IID Data</h2>
 <blockquote class="fragment" style=" margin-top: 0em; color: black; background-color:#f0f8ff">
-<strong> When data are independently and identically distributed, the joint likelihood function is simply the product of all marginal PDFs. </strong>
+<strong> When data are independently and identically distributed (IID), the joint likelihood function is simply the product of all marginal PDFs. </strong>
 </blockquote>
 <ul>
-<li class="fragment"><p>Suppose <span class="math inline">Y_{1},\ldots, Y_{n}</span> are IID with PDF <span class="math inline">f(y; \theta)</span>. Then: <span class="math display">
-f(\mathbf{y}; \theta) = \prod_{i=1}^{n} f_{i}(y_i; \theta)
-</span></p></li>
-<li class="fragment"><p>Note that <span class="math inline">f(\mathbf{y}; \theta)</span> is the joint densities and <span class="math inline">f_{i}(y_i; \theta)</span> is for marginal densities; not the same functions</p></li>
-<li class="fragment"><p>In practice, one usually maximises the <em>log-likelihood</em> function, given by <span class="math inline">l(\theta; \mathbf{y}) \equiv \ln L (\theta; \mathbf{y})</span>: <span class="math display">\hat{\theta} = \arg \max_{\theta}l(\theta; \mathbf{y})</span>.</p></li>
-<li class="fragment"><p>log is a monotonic transformation, <span class="math inline">\ln L (\theta; \mathbf{y})</span> and <span class="math inline">L (\theta; \mathbf{y})</span> are maximised at the same <span class="math inline">\theta</span>.</p></li>
-<li class="fragment"><p>log-likelihood is usually easier to deal with in mathematical proofs in numerical optimastion</p></li>
-<li class="fragment"><p>For simple likelihoods, usually for iid data, the ML estimator is available in closed form.</p></li>
+<li class="fragment">Suppose <span class="math inline">Y_{1},\ldots, Y_{n}</span> are IID with PDF <span class="math inline">f_{i}(y; \theta)</span>. Then, joint density function is <span class="math display">f(\mathbf{y}; \theta) = \prod_{i=1}^{n} f_{i}(y_i; \theta).</span></li>
+</ul>
+<h3 class="fragment" id="log-likelihood">Log-likelihood</h3>
+<ul>
+<li class="fragment"><p>Let <span class="math inline">L (\theta; \mathbf{y}) = f(\mathbf{y}; \theta)</span>. <em>Log-Likelihood</em> function is <span class="math inline">l(\theta; \mathbf{y}) \equiv \log L (\theta; \mathbf{y})</span></p></li>
+<li class="fragment"><p>In practice, one usually maximises the <em>log-likelihood</em> function, given by <span class="math inline">l(\theta; \mathbf{y}) \equiv \log L (\theta; \mathbf{y})</span>: <span class="math display">\hat{\theta} = \arg \max_{\theta}l(\theta; \mathbf{y}) = \textcolor{orange}{ \arg \max_{\theta} \sum^{n}_{i=1} \log f_{i}(y_{i};\theta).}</span></p></li>
+<li class="fragment"><p>log is a monotonic transformation, <span class="math inline">\log L (\theta; \mathbf{y})</span> and <span class="math inline">L (\theta; \mathbf{y})</span> are maximised at the same <span class="math inline">\theta</span>.</p></li>
 <li class="fragment"><p>When not, the maximum likelihood can still be found using numerical methods. Software tools or numerical tools (e.g.&nbsp;Newton-Raphson iteration).</p></li>
 </ul>
 </section>
-<section id="marble-game-for-a-discrete-case" class="slide level2">
-<h2>Marble Game for a discrete case</h2>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<ul>
+<li class="fragment"><p>The maximum likelihood method requires the econometrician to know (or to be happy to assume to know) the true distribution underlying data.</p></li>
+<li class="fragment"><p>Solving the first order conditions yields the likelihood estimator (assuming that the likelihood is (strictly) concave)</p></li>
+</ul>
+<h3 class="fragment" id="post-class-discussion-feedback">Post-Class Discussion &amp; Feedback</h3>
+<ul>
+<li class="fragment"><p>Question: <strong>Why might ML method be useful even if the distribution we assume is actually wrong?</strong></p>
+<ul>
+<li class="fragment"><p><a href="https://padlet.com/ismayillimehman/ml-discussion-board-sau21g08d8fn5sr2">Link to the question</a></p></li>
+<li class="fragment"><p><img src="images/padletQR_code.png" width="200px"></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="marble-game---homework" class="slide level2">
+<h2>Marble Game - Homework</h2>
 <p style="font-size: 14px;">
 An urn contains n different colored marbles. Marbles are selected one at a time at random with replacement until one marble has been selected twice. What is your estimate of the number of marbles in the urn?
+</p>
+<p style="font-size: 14px;">
+<a href="https://drive.google.com/file/d/10wQV8pYKvCpL0nxF86Pi3O9yO7TS1HDP/view?usp=sharing">Link to Mathematica Notebook</a>
 </p>
 <button onclick="drawMarble()" id="drawBtn">
 Select a Marble
@@ -940,24 +902,17 @@ function resetGame() {
 
 initializeUrn();
 </script>
-</section>
-<section id="conclusion" class="slide level2">
-<h2>Conclusion</h2>
+<h3 class="fragment" id="homework">Homework</h3>
 <ul>
-<li class="fragment"><p>The maximum likelihood method requires the econometrician to know (or to be happy to assume to know) the true distribution underlying data.</p></li>
-<li class="fragment"><p>Solving the first order conditions yields the likelihood estimator (assuming that the likelihood is (strictly) concave)</p></li>
-<li class="fragment"><p>When possible, having closed-form solutions is helpful, since it saves a lot of computation time: solving first order conditions numerically can be time-consuming.</p></li>
+<li class="fragment"><p style="font-size: 14px;">
+Find the pdf of this distribution.
+</p></li>
+<li class="fragment"><p style="font-size: 14px;">
+Derive the log-likelihood function and estimate <span class="math inline">n</span> when the number of distinct marbles before a repeat, <span class="math inline">k</span> is 4. Post your detailed solutions to Blackboard discussions for feedback.
+</p></li>
 </ul>
-<h3 class="fragment" id="post-class-discussion">Post-Class Discussion</h3>
-<ul>
-<li class="fragment"><p>Question: Why might ML method be useful even if the distribution we assume is actually wrong?</p>
-<ul>
-<li class="fragment"><p><a href="https://padlet.com/ismayillimehman/ml-discussion-board-sau21g08d8fn5sr2/wish/Ae2Ravz9A1D0anz4">Link to the question</a></p></li>
-<li class="fragment"><p><img src="images/padletQR_code.png" width="200px"></p></li>
-</ul></li>
-</ul>
-<p><img src="images/oxford_logo.png" class="slide-logo"></p>
-<div class="footer footer-default">
+
+<img src="images/oxford_logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
 </div>
 </section>

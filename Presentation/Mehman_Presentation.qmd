@@ -14,155 +14,113 @@ format:
       html-math-method: katex
 incremental: true
 ---
-## Useful notes & links
 
-::: {.columns}
+## Recap
 
-::: {.column width="50%"}
+<div style="background-color:#f0f8ff; padding: 0.5em; border-radius: 2px;">
+  <h3><strong> What We've Done So Far:</strong></h3>
+  <ul>
+    <li>Learned key ideas in <strong>probability theory</strong>, assuming we know the full distribution (pmf/pdf):
+      <ul>
+        <li>How to compute <strong>moments</strong> of a random variable</li>
+        <li >How to find <strong>cdfs</strong> and <strong>interval probabilities</strong></li>
+        <li>How to define and verify <strong>independence</strong></li>
+      </ul>
+  <li>✔️ <strong>Assumption</strong>: We know the distribution and its parameters.</li>
+  </ul>
+</div>
 
-### In-class discussion & interaction
+### Quiz
+:::{.nonincremental}
+- Do we always know probability density/mass functions (pdf/pmf) or  the underlying model parameters of any data set?
+:::
 
-- Please join Slido using:
-  - Sign-in using the [link:](https://app.sli.do/event/5EqCfteDXkd4XLL2BKZy4a)
-  - QR code:  
-  - <img src="images/Slido.png" width="200px">
+:::{.columns}
+:::{.column}
+Join at: **slido.com** - #1952 424 or with QR code:
+:::
+
+:::{.column}
+<img src="images/Slido.png" width="160px">
+:::
 
 :::
 
-::: {.column width="50%"}
+---
 
-### Post-class discussion board {.fragment}
+## Quiz 
 
-- Please join Padlet using:
+<iframe src="https://wall.sli.do/event/t2T4tg9DnCt13kU84bq334/?section=b86c34f6-25c2-49a8-b38a-41ea706a5d1d" height="100%" width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
 
-  - [Link to the question](https://padlet.com/ismayillimehman/ml-discussion-board-sau21g08d8fn5sr2/wish/Ae2Ravz9A1D0anz4)
-  - QR code: 
-  - <img src="images/padletQR_code.png" width="220px">
+---
 
-:::
+## From Knowing the Distribution to Learning from Data
 
-:::
+<div class="fragment" style="background-color:#f2f2f2; padding: 0.5em; border-radius: 5px; margin-top: 0.5em;">
+  <h3><strong>Now, Let’s Get Real</strong></h3>
+  <ul>
+    <li style="color: red;"><strong>In practice, we rarely know the actual distribution or its parameters!</strong></li>
+    <li >What we <strong>do</strong> have is <strong>data</strong> — observations from the unknown distribution.</li>
+    <li >Using this data, we can:
+      <ul>
+        <li><strong>Infer</strong> characteristics of the distribution</li>
+        <li ><strong>Estimate</strong> unknown quantities (like parameters or moments)</li>
+      </ul>
+  <li>🔍 <strong>Key idea</strong>: Use data to learn what we don’t know.</li>
+  </ul>
+</div>
 
---- 
+### Methods of Estimation{.fragment}
 
-## Some interactive 
+- Frequentist methods & Bayesian estimators - *No single method is uniformly superior*.
 
-<iframe src="https://app.sli.do/event/5EqCfteDXkd4XLL2BKZy4a" height="100%" width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
+- Today's focus: <u>Maximum Likelihood Method</u>
+  - A powerful and widely used *frequentist* estimation technique
 
 ---
 
 
 ## Intended Learning Outcomes (ILOs)
 
-- By the end of this session, you should be able to:
-  - Explain the concept of **Maximum Likelihood Estimation (MLE)**.
-  - Compute the **MLE** for simple cases (e.g., IID data).
-  - Understand the role of the **log-likelihood function** in MLE.
+:::{.nonincremental}
+- By the end of this session, you will:
+  - 💡 Understand the concept of **Maximum Likelihood Estimation (MLE)**.
+  - 📉 Analyse the role of the **log-likelihood function** in MLE.
+  - 📠 Compute the **MLE** for simple cases (e.g., IID data).
+:::
+
+### Familiarity with the topic{.incremental}
+
+- How familiar are you with the Maximum Likelihood?
+  - Join at: **slido.com** - #1952 424 or with QR code:
+  - <img src="images/Slido.png" width="160px">
 
 ---
 
-## Familiarity with the topic
+## Familiarity with the topic (quiz outcome)
 
-<iframe src="https://app.sli.do/event/5EqCfteDXkd4XLL2BKZy4a" height="100%" width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
-
----
-
-
-## From Knowing the Distribution to Learning from Data
-
-<div style="background-color:#f0f8ff; padding: 0.5em; border-radius: 2px;">
-  <h3><strong>What We've Done So Far:</strong></h3>
-  <ul>
-    <li class="fragment">Learned key ideas in <strong>probability theory</strong>, assuming we know the full distribution (pmf/pdf):
-      <ul>
-        <li class="fragment">How to compute <strong>moments</strong> of a random variable</li>
-        <li class="fragment">How to find <strong>cdfs</strong> and <strong>interval probabilities</strong></li>
-        <li class="fragment">How to define and verify <strong>independence</strong></li>
-      </ul>
-  <li class="fragment">✔️ <strong>Assumption</strong>: We know the distribution and its parameters.</li>
-  </ul>
-</div>
-
-<div class="fragment" style="background-color:#f2f2f2; padding: 0.5em; border-radius: 5px; margin-top: 0.5em;">
-  <h3 class="fragment"><strong>Now, Let’s Get Real</strong></h3>
-  <ul>
-    <li class="fragment" style="color: red;"><strong>In practice, we rarely know the actual distribution or its parameters!</strong></li>
-    <li class="fragment">What we <strong>do</strong> have is <strong>data</strong> — observations from the unknown distribution.</li>
-    <li class="fragment">Using this data, we can:
-      <ul>
-        <li class="fragment"><strong>Infer</strong> characteristics of the distribution</li>
-        <li class="fragment"><strong>Estimate</strong> unknown quantities (like parameters or moments)</li>
-      </ul>
-  <li class="fragment">🔍 <strong>Key idea</strong>: Use data to learn what we don’t know.</li>
-  </ul>
-</div>
+<iframe src="https://wall.sli.do/event/t2T4tg9DnCt13kU84bq334/?section=b86c34f6-25c2-49a8-b38a-41ea706a5d1d" height="100%" width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
 
 ---
 
-## Quiz 
-
-<iframe src="https://app.sli.do/event/5EqCfteDXkd4XLL2BKZy4a" height="100%" width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
-
----
-
-## Methods of Estimation
-
-- Frequentist methods & Bayesian estimators
-
-<blockquote class="fragment" style="text-align: center; margin-top: 2em;">
-    No single method is uniformly superior
-</blockquote>
-
-<div class="fragment" style="text-align: center; margin-top: 2em;">
-
-### <span style="font-size: 1.5em; font-weight: 600; color: #1e3a8a;">
-Today's focus: <u>Maximum Likelihood Method</u>
-</span>
-
-<div style="font-size: 1.2em; margin-top: 1em;">
-A powerful and widely used frequentist estimation technique
-</div>
-
-</div>
-
----
-
-## Maximum Likelihood Method
-
-<div class="fragment" style="background-color:#f0f8ff; padding: 1em; border-radius: 5px; margin-top: 0.5em;">
-
-### Setting
-
-- The underlying distribution of data is *(supposedly)* known
-- However, the parameters of that distribution are *unknown*
-- Goal: Estimate **parameters** of that distribution
-
-</div>
-
-<div class="fragment" style="background-color:#f2f2f2; padding: 1em; border-radius: 5px; margin-top: 0.5em;">
-
-### Example
-
-- A certain random variable has distribution of $N(\mu, \sigma^{2})$ but **not known**  mean and variance parameters.
-- Estimate the *mean* and *variance*
-- Maximum likelihood method will estimate values of $\mu$ and $\sigma^{2}$ that make our observed data most likely
-</div>
----
 
 ## Interactive Normal Distribution Estimation
 
-<div>
-  <label for="mu">Mean (μ):</label>
-  <input type="range" id="mu" min="0" max="10" step="0.01" value="0" oninput="updatePlot()">
-  <span id="muVal">5</span>
-</div>
-<div>
-  <label for="sigma">Standard Deviation (σ):</label>
-  <input type="range" id="sigma" min="0.1" max="5" step="0.01" value="0" oninput="updatePlot()">
-  <span id="sigmaVal">2</span>
-</div>
+A certain random variable has distribution of $N(\mu, \sigma^{2})$ but **not known**  mean and variance parameters.**Estimate the *mean* and *variance*.**
 
-<div id="histogram" style="width:100%;height:500px;"></div>
+<div style="display: flex; gap: 20px;">
+<div style="flex: 1;">
+<label for="mu">Mean (μ):</label>
+<input type="range" id="mu" min="0" max="10" step="0.1" value="0" oninput="updatePlot()">
+<span id="muVal">5</span>
+</div>
+<div style="flex: 1;">
+<label for="sigma">Standard Deviation (σ):</label>
+<input type="range" id="sigma" min="0.1" max="5" step="0.1" value="0" oninput="updatePlot()">
+<span id="sigmaVal">3</span>
+</div>
+</div>
+<div id="histogram" style="width:100%; height:425px; display:flex; align-items:center; justify-content:center;"></div>
 <script src="https://cdn.plot.ly/plotly-2.24.2.min.js"></script>
 <script>
 // Sample data (same as set.seed(1) in R)
@@ -204,8 +162,15 @@ function updatePlot() {
     x: data,
     type: 'histogram',
     histnorm: 'probability density',
-    marker: {color: 'lightblue'},
-    name: 'Data'
+    name: 'Data',
+    marker: {
+                    color: 'rgba(0, 33, 71, 0.6)',
+                    line: {
+                        color: 'rgba(0, 33, 71, 1)',
+                        width: 1
+                    }
+                },
+                opacity: 0.7
   };
 
   const x_vals = [];
@@ -218,7 +183,7 @@ function updatePlot() {
     y: x_vals.map(x => normalDensity(x, mu, sigma)),
     mode: 'lines',
     line: {color: 'red'},
-    name: 'Normal Curve',
+    name: 'Estimated Normal Curve',
     type: 'scatter'
   };
 
@@ -226,7 +191,6 @@ function updatePlot() {
     sum + Math.log(normalDensity(x, mu, sigma)), 0).toFixed(2);
 
   Plotly.newPlot('histogram', [hist, normal], {
-    title: `Log-Likelihood: ${logLik}`,
     xaxis: {title: 'Value'},
     yaxis: {title: 'Density'}
   });
@@ -235,9 +199,7 @@ function updatePlot() {
 updatePlot();  // Initial render
 </script>
 
-- $\hat{\mu} = 5.21$ & $\hat{\sigma} = 1.82$
-
-- [Detailed Jupyter Notebook here](https://colab.research.google.com/drive/1RjP9kjG-q3UhCsT4Fn7dpNvm-d_huYxa?usp=sharing) 
+- $\hat{\mu} = 5.21$ & $\hat{\sigma} = 1.82$; [Detailed Jupyter Notebook here](https://colab.research.google.com/drive/1RjP9kjG-q3UhCsT4Fn7dpNvm-d_huYxa?usp=sharing) 
 
 
 ---
@@ -256,16 +218,9 @@ updatePlot();  // Initial render
   - Define $\mathbf{Y} = (Y_{1}, Y_{2}, \dots, Y_{n})$.
 
   - The joint *pdf* of $\mathbf{Y}$ is given by $f(\mathbf{Y}; \theta)$
-    - $\theta$ contains the parameters of this pdf and can be a *vector* containing multiple parameters
+    - <span style="color: red;">$\theta$ </span> the parameters of this pdf and can be a *vector* containing multiple parameters
 </div>
 
-<div class="fragment" style="background-color:#fff9e5; padding: 0.5em; border-radius: 2px; margin-top: 0em;">
-
-### Problem
-
-- <span style="color: red;">**We do NOT know what $\theta$ is.**</span>
-
-</div>
 
 <div class="fragment" style="background-color:#eafce2; padding: 0.5em; border-radius: 2px; margin-top: 0em;">
 ### Technique
@@ -276,51 +231,46 @@ updatePlot();  // Initial render
 </div>
 ---
 
-## Likelihood Function
-
-<div class="fragment" style="background-color:#f0f8ff; padding: 0.5em; border-radius: 2px; margin-top: 0em;">
-
-### Definition
-
-- The likelihood function is simply equivalent to the probability density function (pdf): $$L(\theta; \mathbf{Y})= f(\mathbf{Y}; \theta)$$. 
-  - This is called the *joint likelihood function*, since it is equivalent to the *joint pdf* of $\mathbf{Y}$.
-</div>
-
-- The maximum likelihood estimator of $\theta$ is 
-$$\hat{\theta} = \arg \max_{\theta} L(\theta; \mathbf{Y}) $$.
-
-  - ML is based on the idea that $\hat{\theta}$ should be the value of ${\theta}$ which maximises the likelihood of observing whatever dataset we have at hand
-
-  - In other words, we are trying to find the value of $\theta$ which makes the observed data as likely as possible to have been observed.
-
----
-
 ## Likelihood function for IID Data
 
 <blockquote class="fragment" style=" margin-top: 0em; color: black; background-color:#f0f8ff">
-<strong> When data are independently and identically distributed, the joint likelihood function is simply the product of all marginal PDFs.  </strong>
+<strong> When data are independently and identically distributed (IID), the joint likelihood function is simply the product of all marginal PDFs.  </strong>
 </blockquote>
 
-- Suppose $Y_{1},\ldots, Y_{n}$ are IID with PDF $f(y; \theta)$. Then:
-  $$
-  f(\mathbf{y}; \theta) = \prod_{i=1}^{n} f_{i}(y_i; \theta)
-  $$
+- Suppose $Y_{1},\ldots, Y_{n}$ are IID with PDF $f_{i}(y; \theta)$. Then, joint density function is $$f(\mathbf{y}; \theta) = \prod_{i=1}^{n} f_{i}(y_i; \theta).$$
 
-- Note that $f(\mathbf{y}; \theta)$ is the joint densities and $f_{i}(y_i; \theta)$ is for marginal densities; not the same functions
+### Log-likelihood{.fragment}
+- Let $L (\theta; \mathbf{y}) = f(\mathbf{y}; \theta)$. *Log-Likelihood* function is $l(\theta; \mathbf{y}) \equiv \log L (\theta; \mathbf{y})$
 
-- In practice, one usually maximises the *log-likelihood* function, given by $l(\theta; \mathbf{y}) \equiv \ln L (\theta; \mathbf{y})$: $$\hat{\theta} = \arg \max_{\theta}l(\theta; \mathbf{y})$$.
-- log is a monotonic transformation, $\ln L (\theta; \mathbf{y})$ and $L (\theta; \mathbf{y})$ are maximised at the same $\theta$. 
-- log-likelihood is usually easier to deal with in mathematical proofs in numerical optimastion
-
-- For simple likelihoods, usually for iid data, the ML estimator is available in closed form. 
+- In practice, one usually maximises the *log-likelihood* function, given by $l(\theta; \mathbf{y}) \equiv \log L (\theta; \mathbf{y})$: $$\hat{\theta} = \arg \max_{\theta}l(\theta; \mathbf{y}) = \textcolor{orange}{ \arg \max_{\theta} \sum^{n}_{i=1} \log f_{i}(y_{i};\theta).}$$
+- log is a monotonic transformation, $\log L (\theta; \mathbf{y})$ and $L (\theta; \mathbf{y})$ are maximised at the same $\theta$. 
 
 - When not, the maximum likelihood can still be found using numerical methods. Software tools or numerical tools (e.g. Newton-Raphson iteration).
 
 ---
 
-## Marble Game for a discrete case
+## Conclusion
+
+- The maximum likelihood method requires the econometrician to know (or to be happy to assume to know) the true distribution underlying data.
+
+- Solving the first order conditions yields the likelihood estimator (assuming that the likelihood is (strictly) concave)
+
+
+### Post-Class Discussion & Feedback{.fragment} 
+
+- Question: **Why might ML method be useful even if the distribution we assume is actually wrong?**
+
+  - [Link to the question](https://padlet.com/ismayillimehman/ml-discussion-board-sau21g08d8fn5sr2)
+
+  - <img src="images/padletQR_code.png" width="200px">
+
+--- 
+
+## Marble Game - Homework
 
 <p style="font-size: 14px;">An urn contains n different colored marbles. Marbles are selected one at a time at random with replacement until one marble has been selected twice. What is your estimate of the number of marbles in the urn?</p>
+
+<p style="font-size: 14px;">[Link to Mathematica Notebook](https://drive.google.com/file/d/10wQV8pYKvCpL0nxF86Pi3O9yO7TS1HDP/view?usp=sharing) </p>
 
 <button onclick="drawMarble()" id="drawBtn">Select a Marble</button>
 <button onclick="resetGame()">Reset</button>
@@ -595,21 +545,8 @@ function resetGame() {
 initializeUrn();
 </script>
 
----
+### Homework{.fragment}
 
+- <p style="font-size: 14px;"> Find the pdf of this distribution.</p>
 
-## Conclusion
-
-- The maximum likelihood method requires the econometrician to know (or to be happy to assume to know) the true distribution underlying data.
-
-- Solving the first order conditions yields the likelihood estimator (assuming that the likelihood is (strictly) concave)
-
-- When possible, having closed-form solutions is helpful, since it saves a lot of computation time: solving first order conditions numerically can be time-consuming.
-
-### Post-Class Discussion{.fragment} 
-
-- Question: Why might ML method be useful even if the distribution we assume is actually wrong?
-
-  - [Link to the question](https://padlet.com/ismayillimehman/ml-discussion-board-sau21g08d8fn5sr2/wish/Ae2Ravz9A1D0anz4)
-
-  - <img src="images/padletQR_code.png" width="200px">
+- <p style="font-size: 14px;"> Derive the log-likelihood function and estimate $n$ when the number of distinct marbles before a repeat, $k$ is 4. Post your detailed solutions to Blackboard discussions for feedback.</p>
