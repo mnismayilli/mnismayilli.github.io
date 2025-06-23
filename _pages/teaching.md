@@ -1,14 +1,14 @@
 ---
 layout: page
 permalink: /teaching/
-title: teaching
-description: My teaching experience
+title: Teaching
+description:
 nav: true
 nav_order: 2
 ---
 
-- Fellow of the Advance HE
-- Postgraduate Certificate of Curriculum Design in Higher Education (University of Warwick)
+- Fellow of the Advance HE since 2023
+- Postgraduate Certificate of Curriculum Development in Higher Education (University of Warwick) 2025
 
 ___
 

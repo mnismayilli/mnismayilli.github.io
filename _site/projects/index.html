@@ -115,7 +115,7 @@
 
           <!-- About -->
           <li class="nav-item ">
-            <a class="nav-link" href="/">about
+            <a class="nav-link" href="/">About
               
             </a>
           </li>
@@ -142,7 +142,7 @@
                 
                 <li class="nav-item ">
                   
-                  <a class="nav-link" href="/cv/">cv
+                  <a class="nav-link" href="/teaching/">Teaching
                     
                   </a>
                 </li>
@@ -154,7 +154,7 @@
                 
                 <li class="nav-item ">
                   
-                  <a class="nav-link" href="/teaching/">teaching
+                  <a class="nav-link" href="/research/">Research
                     
                   </a>
                 </li>
@@ -166,19 +166,7 @@
                 
                 <li class="nav-item ">
                   
-                  <a class="nav-link" href="/research/">research
-                    
-                  </a>
-                </li>
-              
-            
-          
-            
-              
-                
-                <li class="nav-item ">
-                  
-                  <a class="nav-link" href="/repositories/">repositories
+                  <a class="nav-link" href="/repositories/">Repositories
                     
                   </a>
                 </li>
@@ -504,34 +492,27 @@
     // add the home and posts menu items
     ninja.data = [{
         id: "nav-about",
-        title: "about",
+        title: "About",
         section: "Navigation",
         handler: () => {
           window.location.href = "/";
         },
-      },{id: "nav-cv",
-              title: "cv",
+      },{id: "nav-teaching",
+              title: "Teaching",
               description: "",
-              section: "Navigation",
-              handler: () => {
-                window.location.href = "/cv/";
-              },
-            },{id: "nav-teaching",
-              title: "teaching",
-              description: "My teaching experience",
               section: "Navigation",
               handler: () => {
                 window.location.href = "/teaching/";
               },
             },{id: "nav-research",
-              title: "research",
+              title: "Research",
               description: "A growing collection of my research.",
               section: "Navigation",
               handler: () => {
                 window.location.href = "/research/";
               },
             },{id: "nav-repositories",
-              title: "repositories",
+              title: "Repositories",
               description: "",
               section: "Navigation",
               handler: () => {
