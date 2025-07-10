@@ -43,7 +43,7 @@ const profile = "I am a lecturer in the Department of Economics at the <a href=h
 
 
 const siteConfig: SiteConfig = {
-    website: 'https://example.com',
+    website: 'https://mnismayilli.github.io',
     title: 'Mehman Ismayilli',
     subtitle: 'Economist & Educator at the University of Oxford',
     description: 'Economist & Educator at the University of Oxford',
