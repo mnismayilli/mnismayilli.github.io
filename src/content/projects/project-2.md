@@ -3,15 +3,7 @@ title: 'Strategic delay of product introductions'
 description: A theoretical study explores market inefficiencies that arise from strategic delay of product introductions. (with Subir Bose & Piercarlo Zanchettin)
 publishDate: '2022-06-15'
 isFeatured: true
-seo:
-  image:
-    src: '/project-2.jpg'
-    alt: Project preview
 ---
-
-<!-- ![Project preview](/project-2.jpg)
-
-**Note:** This case study is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/). -->
 
 ## Abstract
 

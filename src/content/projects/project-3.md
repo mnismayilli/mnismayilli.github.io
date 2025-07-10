@@ -3,9 +3,6 @@ title: 'Green Unbundling and Market Entry: Environmental Strategy in Complementa
 description: A theoretical study on commmodity bundling and environmental strategy in complementary goods markets.
 publishDate: '2025-07-10'
 isFeatured: true
-seo:
-  image:
-    src: '/project-3.jpg'
 ---
 
 ## Abstract
