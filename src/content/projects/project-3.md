@@ -1,5 +1,5 @@
 ---
-title: 'Green Unbundling and Market Entry: Environmental Strategy in Complementary Goods Markets'
+title: 'Environmental Externalities and Strategic (Un)Bundling in Complementary Goods Markets'
 description: A theoretical study on commmodity bundling and environmental strategy in complementary goods markets.
 publishDate: '2025-07-10'
 isFeatured: true
@@ -7,8 +7,6 @@ isFeatured: true
 
 ## Abstract
 
-This paper examines the strategic unbundling of complementary goods by an incumbent firm operating under environmental externalities, using recent decisions by Apple and Samsung to exclude chargers from smartphone packages as a motivating example. Challenging the conventional view that bundling deters entry in complementary goods markets, we show that incumbents may instead find it optimal to unbundle products to enhance their environmental reputation while accommodating entry.
+This paper studies how environmental externalities and asymmetric regulation shape bundling strategies in complementary goods markets. We develop a theoretical model of a two-good market in which an incumbent produces both a core product and its complement, while potential entrants supply only the complement. Production generates negative externalities addressed through Pigouvian taxation. Under symmetric regulation, the incumbent's optimal strategy is mixed bundling, which coincides with the first-best outcome. The entry of low-cost competitors from jurisdictions with weaker environmental enforcement disrupts this equilibrium: by exploiting regulatory arbitrage, these entrants supply complements at relatively lower price that do not reflect their full environmental costs. In response, the incumbent is incentivised to unbundle fully and accommodate them, thereby reducing its domestic footprint while potentially increasing global damage. We show that such environmental unbundling can reflect either genuine progress or sophisticated greenwashing, depending on whether emissions are reduced or merely relocated. The analysis highlights how domestic environmental policy can create perverse incentives and points to border-adjusted carbon taxes as a corrective instrument to bring private incentives into closer alignment with social objectives.
 
-We develop a game-theoretic model of a two-good complementary market in which production generates environmental harm, internalised through Pigouvian taxes. Consumers differ in both their valuation of consuming the goods jointly and their pre-existing ownership of one component. Our analysis shows that when all firms are subject to the same environmental regulation, mixed bundling is the profit-maximising strategy and aligns with the first-best social welfare outcome. However, when low-cost entrants operate from jurisdictions without equivalent environmental regulation, the incumbent has incentive to unbundle, accommodate such entry, and reduce its own emissions by ceasing production of the complementary good. While this strategy may lower the firm's reported environmental footprint, it leads to greater global environmental damage as imports escape regulation. We quantify this trade-off and assess policy interventions, such as border-adjusted carbon taxes and alternative tax schemes, that can better align private incentives with global welfare in the presence of regulatory asymmetries.
-
-**Key words:** bundling, complementary goods, externalities, market entry
+**Key words:** bundling; environmental externalities; greenwashing; Pigouvian taxation.

@@ -16,7 +16,7 @@ seo:
 ### Lectures
 
 - EC301 Advanced Game Theory (BSc), University of Warwick, 2023-2025
-- EC941 Game Theory (MSc), University of Warwick, 2023-2025
+- EC941 Game Theory (MSc), University of Warwick, 2025
 - EC231 Industrial Organisation (BSc/BA), University of Warwick, 2024
 
 
