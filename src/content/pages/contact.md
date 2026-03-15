@@ -2,13 +2,16 @@
 title: Get in touch
 seo:
   title: Contact
-  description: Get in touch through email or social media! Let me know how I can help.
+  description: Get in touch with Mehman Ismayilli at the University of Oxford.
 ---
 
-Thank you for reaching out! Whether you have a question, a suggestion, or just want to share your thoughts, I'm all ears. Feel free to get in touch through any of the methods below:
+Feel free to reach out by email or visit during office hours.
 
 _Email:_
-Feel free to drop me an email at [example@example.com](mailto:example@example.com), and I'll do my best to respond as soon as possible.
+[mehman.ismayilli@economics.ox.ac.uk](mailto:mehman.ismayilli@economics.ox.ac.uk)
+
+_Office:_
+Room 242, Department of Economics, University of Oxford, Manor Road, OX1 3UQ
 
 _Social Media:_
-Connect with me on social media as well. Find me on [Twitter](https://twitter.com) or [LinkedIn](https://www.linkedin.com/).
+Connect with me on [LinkedIn](https://www.linkedin.com/in/mismayilli/) or [X/Twitter](https://x.com/IsmayilliMehman).

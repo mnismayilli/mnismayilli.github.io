@@ -3,14 +3,20 @@ import { type CollectionEntry } from 'astro:content';
 import ArrowRight from '../icons/ArrowRight.astro';
 import FormattedDate from './FormattedDate.astro';
 
-type Props = { post: CollectionEntry<'blog'>; class?: string; headingLevel?: 'h2' | 'h3' };
+type Props = { 
+    post: CollectionEntry<'blog'> | CollectionEntry<'lectures'>; 
+    class?: string; 
+    headingLevel?: 'h2' | 'h3';
+    urlPrefix?: string;
+};
 
-const { post, class: className, headingLevel = 'h2' } = Astro.props;
-const { title, publishDate, updatedDate, excerpt } = post.data;
+const { post, class: className, headingLevel = 'h2', urlPrefix = '/blog' } = Astro.props;
+const { title, publishDate, updatedDate } = post.data;
+const excerpt = 'excerpt' in post.data ? post.data.excerpt : ('description' in post.data ? post.data.description : undefined);
 const TitleTag = headingLevel;
 ---
 
-<a class:list={['flex justify-between items-start gap-8 group', className]} href={`/blog/${post.id}/`}>
+<a class:list={['flex justify-between items-start gap-8 group', className]} href={`${urlPrefix}/${post.id}/`}>
     <div class="grow">
         <TitleTag
             class="text-xl leading-tight font-serif font-medium group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"

@@ -45,4 +45,18 @@ const projects = defineCollection({
     })
 });
 
-export const collections = { blog, pages, projects };
+const lectures = defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/lectures' }),
+    schema: z.object({
+        title: z.string(),
+        description: z.string().optional(),
+        publishDate: z.coerce.date(),
+        updatedDate: z.coerce.date().optional(),
+        course: z.string().optional(),
+        tags: z.array(z.string()).default([]),
+        isFeatured: z.boolean().default(false),
+        seo: seoSchema.optional()
+    })
+});
+
+export const collections = { blog, pages, projects, lectures };

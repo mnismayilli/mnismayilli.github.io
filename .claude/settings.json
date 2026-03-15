@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Read(//Users/econ0757/Library/CloudStorage/GoogleDrive-ismayilli.elhman@gmail.com/My Drive/mnismayilli.github.io/src/content/**)",
+      "Bash(rm -rf logs/ output/)",
+      "Bash(rm -f src/pages/home-about.astro)",
+      "Bash(rm -f src/content/lectures/sample-lecture.md)"
+    ],
+    "additionalDirectories": [
+      "/Users/econ0757/Library/CloudStorage/GoogleDrive-ismayilli.mehman@gmail.com/My Drive/mnismayilli.github.io/src/pages/lectures"
+    ]
+  }
+}

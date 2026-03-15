@@ -39,7 +39,7 @@ export type SiteConfig = {
     research?: string;
 };
 
-const profile = "I am a lecturer in the Department of Economics at the <a href=https://www.ox.ac.uk> University of Oxford</a> . My research interests are industrial organisation, experimental economics, and the application of machine learning in economic theory. Previously, I worked at the University of Manchester and the University of Warwick. I hold my PhD in Economics from the University of Leicester.";
+const profile = "I am a Departmental Lecturer in Economics at the <a href=https://www.economics.ox.ac.uk/people/mehman-ismayilli> University of Oxford</a>. My research interests are industrial organization, experimental economics, and the application of machine learning in economic theory. Previously, I worked at the University of Manchester and the University of Warwick. I hold my PhD in Economics from the University of Leicester.";
 
 
 const siteConfig: SiteConfig = {
@@ -60,6 +60,10 @@ const siteConfig: SiteConfig = {
             text: 'Teaching',
             href: '/teaching'
         },
+        {
+            text: 'Lecture Notes',
+            href: '/lectures'
+        },
     ],
     footerNavLinks: [
         {
@@ -74,7 +78,7 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Oxford',
-            href: 'https://www.ox.ac.uk'
+            href: 'https://www.economics.ox.ac.uk/people/mehman-ismayilli'
         },
         {
             text: 'X/Twitter',
@@ -82,17 +86,21 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero:{
-        //     image: {
-        //     src: '/mehmanismayilli.jpeg',
-        //     alt: 'Mehman Ismayilli',
-        // },
+        image: {
+            src: '/profilephoto.jpg',
+            alt: 'Mehman Ismayilli',
+        },
         text: profile,
-        // actions: [
-        //     {
-        //         text: 'Get in Touch',
-        //         href: '/contact'
-        //     }
-        // ]
+        actions: [
+            {
+                text: 'View CV',
+                href: '/about'
+            },
+            {
+                text: 'Contact',
+                href: '/contact'
+            }
+        ]
     },
     // subscribe: {
     //     title: 'Subscribe to Dante Newsletter',
