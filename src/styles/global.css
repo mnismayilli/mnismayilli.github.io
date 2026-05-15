@@ -5,19 +5,11 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
     --text-main: #171717;
     --bg-main: #f2f1ec;
     --bg-muted: #eae9e1;
     --border-main: #171717;
-}
-html.dark {
-    --text-main: #f2f1ec;
-    --bg-main: #171717;
-    --bg-muted: #242424;
-    --border-main: #f2f1ec;
 }
 
 /* Cyan */

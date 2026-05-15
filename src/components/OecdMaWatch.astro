@@ -1,0 +1,403 @@
+---
+// @ts-nocheck
+const { data, id = "oecd-ma-watch" } = Astro.props;
+
+const payload = data ?? {
+  cases: [],
+  coverage: { notes: [], liveCountries: [], liveCountryCount: 0, oecdMemberCount: 38 },
+  stats: {},
+  sources: [],
+  warnings: [],
+};
+
+const initialCases = payload.cases.slice(0, 18);
+const activeCase = initialCases[0] ?? null;
+const countries = [...new Set(payload.cases.map((caseItem) => caseItem.country))].sort();
+const authorities = payload.sources ?? [];
+const activitySeries = payload.stats?.activityByMonth ?? [];
+const activityMax = Math.max(...activitySeries.map((bucket) => bucket.count), 1);
+const payloadJson = JSON.stringify(payload).replace(/</g, "\\u003c");
+
+function fieldValue(value) {
+  if (!value) {
+    return "n/a";
+  }
+
+  if (Array.isArray(value)) {
+    return value.join("; ");
+  }
+
+  return value;
+}
+
+function summaryCopy(caseItem) {
+  if (!caseItem) {
+    return "Run the sync to pull live official case data.";
+  }
+
+  return (
+    caseItem.description ??
+    `${caseItem.authority.name} currently lists this matter as ${caseItem.sourceStatus.toLowerCase()}.`
+  );
+}
+---
+
+<section id={id} class="ma-watch-shell" data-ma-watch-root>
+  <script is:inline type="application/json" data-ma-watch-payload set:html={payloadJson}></script>
+
+  <header class="ma-hero">
+    <p class="ma-eyebrow">Competition Policy</p>
+    <h1>OECD M&amp;A Watch</h1>
+    <div class="ma-hero__infobar">
+      <div class="ma-meta-card">
+        <span class="ma-meta-card__label">Synced</span>
+        <strong>{payload.generatedAt ? new Date(payload.generatedAt).toLocaleString("en-GB") : "n/a"}</strong>
+      </div>
+      <div class="ma-meta-card">
+        <span class="ma-meta-card__label">Coverage</span>
+        <strong>{payload.coverage?.liveCountries?.join(", ") || "No sources yet"}</strong>
+      </div>
+      <div class="ma-meta-card">
+        <span class="ma-meta-card__label">Window</span>
+        <strong>New and ongoing, plus the last {payload.newWindowDays ?? 90} days</strong>
+      </div>
+      <span class="ma-hero__divider" aria-hidden="true"></span>
+      <span class="ma-soft-pill">{payload.coverage?.liveCountryCount ?? 0} live jurisdictions</span>
+      <span class="ma-soft-pill">{payload.stats?.ongoingCases ?? 0} ongoing reviews</span>
+      <span class="ma-soft-pill">{payload.stats?.newCases ?? 0} newly visible cases</span>
+    </div>
+  </header>
+
+  <section class="ma-overview" aria-label="Overview">
+    <div class="ma-section-heading">
+      <p class="ma-eyebrow">At a glance</p>
+      <h2>What stands out in the current public merger docket.</h2>
+      <p>Open reviews, recent decisions, and the authorities currently setting the pace.</p>
+    </div>
+
+    <div class="ma-summary-grid" aria-label="Summary">
+      <article class="ma-summary-card">
+        <p class="ma-eyebrow">Total tracked</p>
+        <strong>{payload.stats?.totalCases ?? 0}</strong>
+        <p>Official public cases surviving the current “new and ongoing” window.</p>
+      </article>
+      <article class="ma-summary-card">
+        <p class="ma-eyebrow">Most active authority</p>
+        <strong>{payload.stats?.mostActiveAuthority?.label ?? "n/a"}</strong>
+        <p>{payload.stats?.mostActiveAuthority?.count ?? 0} visible cases in this sync.</p>
+      </article>
+      <article class="ma-summary-card">
+        <p class="ma-eyebrow">Busiest theme</p>
+        <strong>{payload.stats?.topSector?.label ?? "n/a"}</strong>
+        <p>{payload.stats?.topSector?.count ?? 0} cases in the strongest visible cluster.</p>
+      </article>
+      <article class="ma-summary-card">
+        <p class="ma-eyebrow">Deep review count</p>
+        <strong>{payload.stats?.deepReviewCount ?? 0}</strong>
+        <p>Cases showing phase 2, remedies, references, or similarly heavy review signals.</p>
+      </article>
+    </div>
+
+    <section class="ma-spotlight-grid" aria-label="Spotlights">
+      <article class="ma-spotlight-card">
+        <p class="ma-eyebrow">Freshest case</p>
+        <h2>{payload.stats?.freshestCase?.title ?? "No cases synced yet"}</h2>
+        <p>{payload.stats?.freshestCase?.authority ?? "Sync the live sources to populate this panel."}</p>
+      </article>
+      <article class="ma-spotlight-card">
+        <p class="ma-eyebrow">Longest-running ongoing</p>
+        <h2>{payload.stats?.longestRunningCase?.title ?? "No ongoing reviews yet"}</h2>
+        <p>
+          {payload.stats?.longestRunningCase?.ageDays
+            ? `${payload.stats.longestRunningCase.ageDays} days open`
+            : "This fills once live ongoing cases are available."}
+        </p>
+      </article>
+      <article class="ma-spotlight-card ma-spotlight-card--timeline">
+        <p class="ma-eyebrow">Recent activity</p>
+        <div class="ma-activity-bars" aria-hidden="true">
+          {activitySeries.map((bucket) => (
+            <div class="ma-activity-bar" title={`${bucket.label}: ${bucket.count}`}>
+              <span style={`height:${Math.max(10, (bucket.count / activityMax) * 100)}%`}></span>
+              <small>{bucket.label}</small>
+            </div>
+          ))}
+        </div>
+      </article>
+    </section>
+  </section>
+
+  {payload.warnings?.length ? (
+    <section class="ma-warning-panel" aria-label="Warnings">
+      <p class="ma-eyebrow">Coverage notes</p>
+      <ul>
+        {payload.warnings.map((warning) => (
+          <li>{warning}</li>
+        ))}
+      </ul>
+    </section>
+  ) : null}
+
+  <section class="ma-browser-intro" aria-label="Browse cases intro">
+    <div class="ma-section-heading ma-section-heading--compact">
+      <p class="ma-eyebrow">Browse the register</p>
+      <h2>Search across authorities, compare cases, and keep one filing open while you work through the list.</h2>
+    </div>
+  </section>
+
+  <section class="ma-controls" aria-label="Filters">
+    <div class="ma-controls__row">
+      <label class="ma-field">
+        <span>Search cases</span>
+        <input
+          type="search"
+          placeholder="Getty, hospital, energy, Phase 2..."
+          data-filter-search
+        />
+      </label>
+
+      <label class="ma-field">
+        <span>Country</span>
+        <select data-filter-country>
+          <option value="all">All countries</option>
+          {countries.map((country) => (
+            <option value={country}>{country}</option>
+          ))}
+        </select>
+      </label>
+
+      <label class="ma-field">
+        <span>Authority</span>
+        <select data-filter-authority>
+          <option value="all">All authorities</option>
+          {authorities.map((authority) => (
+            <option value={authority.id}>{authority.name}</option>
+          ))}
+        </select>
+      </label>
+
+      <label class="ma-field">
+        <span>Status</span>
+        <select data-filter-status>
+          <option value="all">All statuses</option>
+          <option value="ongoing">Ongoing only</option>
+          <option value="new">Newly visible only</option>
+          <option value="completed">Completed only</option>
+        </select>
+      </label>
+
+      <label class="ma-field">
+        <span>Sort</span>
+        <select data-filter-sort>
+          <option value="priority">Priority</option>
+          <option value="freshest">Freshest first</option>
+          <option value="opened">Newest filing date</option>
+          <option value="authority">Authority A-Z</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="ma-controls__toggles">
+      <button type="button" class="ma-toggle" data-toggle-ongoing aria-pressed="false">Bias to ongoing</button>
+      <button type="button" class="ma-toggle" data-toggle-new aria-pressed="false">Bias to new</button>
+      <span class="ma-results-meta" data-results-meta>
+        Showing {initialCases.length} of {payload.cases.length} cases
+      </span>
+    </div>
+  </section>
+
+  <div class="ma-workspace">
+    <section class="ma-results-panel">
+      <div class="ma-panel-heading">
+        <div>
+          <p class="ma-eyebrow">Case list</p>
+          <h2>Current cases</h2>
+        </div>
+        <p>Prioritised by ongoing reviews, recent filings, and deeper review signals.</p>
+      </div>
+      <div class="ma-results-list" data-case-list>
+        {initialCases.length ? (
+          initialCases.map((caseItem, index) => (
+            <button
+              type="button"
+              class={`ma-case-card ${index === 0 ? "is-active" : ""}`}
+              data-case-id={caseItem.id}
+            >
+              <div class="ma-case-card__top">
+                <div class="ma-case-card__badges">
+                  <span class="ma-pill ma-pill--status">{caseItem.statusLabel}</span>
+                  <span class="ma-pill ma-pill--source">{caseItem.country}</span>
+                  <span class="ma-pill ma-pill--urgency">{caseItem.urgency}</span>
+                </div>
+                <span class="ma-case-card__cta">Open case</span>
+              </div>
+              <h3>{caseItem.title}</h3>
+              <p>{summaryCopy(caseItem)}</p>
+              <dl class="ma-case-card__facts">
+                <div>
+                  <dt>Authority</dt>
+                  <dd>{caseItem.authority.name}</dd>
+                </div>
+                <div>
+                  <dt>Filed</dt>
+                  <dd>{caseItem.displayDates?.opened ?? "n/a"}</dd>
+                </div>
+                <div>
+                  <dt>Sector</dt>
+                  <dd>{caseItem.sector ?? "n/a"}</dd>
+                </div>
+                <div>
+                  <dt>Stage</dt>
+                  <dd>{caseItem.stage ?? caseItem.sourceStatus}</dd>
+                </div>
+              </dl>
+            </button>
+          ))
+        ) : (
+          <div class="ma-empty-state">
+            <h3>No cases available yet</h3>
+            <p>Run the sync script to pull the current public merger data from the live sources.</p>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <aside class="ma-detail-panel" data-case-detail>
+      {activeCase ? (
+        <>
+          <div class="ma-detail-panel__header">
+            <div>
+              <p class="ma-eyebrow">Selected case</p>
+              <h2>{activeCase.title}</h2>
+            </div>
+            <a class="ma-detail-link" href={activeCase.link} target="_blank" rel="noreferrer">
+              Open source case
+            </a>
+          </div>
+
+          <div class="ma-detail-badges">
+            <span class="ma-pill ma-pill--status">{activeCase.statusLabel}</span>
+            <span class="ma-pill ma-pill--source">{activeCase.authority.name}</span>
+            {activeCase.stage ? <span class="ma-pill ma-pill--urgency">{activeCase.stage}</span> : null}
+          </div>
+
+          <p class="ma-detail-copy">{summaryCopy(activeCase)}</p>
+
+          <div class="ma-detail-grid">
+            <div class="ma-detail-stat">
+              <span>Country</span>
+              <strong>{activeCase.country}</strong>
+            </div>
+            <div class="ma-detail-stat">
+              <span>Filed</span>
+              <strong>{activeCase.displayDates?.opened ?? "n/a"}</strong>
+            </div>
+            <div class="ma-detail-stat">
+              <span>Updated</span>
+              <strong>{activeCase.displayDates?.updated ?? "n/a"}</strong>
+            </div>
+            <div class="ma-detail-stat">
+              <span>Sector</span>
+              <strong>{activeCase.sector ?? "n/a"}</strong>
+            </div>
+            <div class="ma-detail-stat">
+              <span>Case number</span>
+              <strong>{activeCase.caseNumber ?? "n/a"}</strong>
+            </div>
+            <div class="ma-detail-stat">
+              <span>Source status</span>
+              <strong>{activeCase.sourceStatus}</strong>
+            </div>
+          </div>
+
+          <div class="ma-detail-columns">
+            <div class="ma-detail-box">
+              <p class="ma-eyebrow">Acquirer</p>
+              <p>{fieldValue(activeCase.acquirers)}</p>
+            </div>
+            <div class="ma-detail-box">
+              <p class="ma-eyebrow">Target</p>
+              <p>{fieldValue(activeCase.targets)}</p>
+            </div>
+          </div>
+
+          {activeCase.highlights?.length ? (
+            <div class="ma-highlight-list">
+              {activeCase.highlights.map((highlight) => (
+                <span class="ma-soft-pill">{highlight}</span>
+              ))}
+            </div>
+          ) : null}
+        </>
+      ) : (
+        <div class="ma-empty-state">
+          <h3>No case selected</h3>
+          <p>Pick a case from the left column once the data has been synced.</p>
+        </div>
+      )}
+    </aside>
+  </div>
+
+  <section class="ma-coverage-panel">
+    <div class="ma-coverage-panel__copy">
+      <p class="ma-eyebrow">Coverage model</p>
+      <h2>Honest by design: live where the official public registers are dependable.</h2>
+      <p>
+        There is no single OECD-wide merger register. This build focuses on official public case
+        lists that can be synced cleanly into a static Astro deployment and still link directly to
+        the source case.
+      </p>
+      <div class="ma-highlight-list">
+        {payload.coverage?.liveCountries?.map((country) => (
+          <span class="ma-soft-pill">{country}</span>
+        ))}
+      </div>
+    </div>
+
+    <div class="ma-coverage-panel__meta">
+      <div class="ma-detail-box">
+        <p class="ma-eyebrow">OECD members</p>
+        <strong>{payload.coverage?.oecdMemberCount ?? 38}</strong>
+      </div>
+      <div class="ma-detail-box">
+        <p class="ma-eyebrow">Live jurisdictions</p>
+        <strong>{payload.coverage?.liveCountryCount ?? 0}</strong>
+      </div>
+      <div class="ma-detail-box">
+        <p class="ma-eyebrow">Official sources</p>
+        <strong>{payload.sources?.length ?? 0}</strong>
+      </div>
+    </div>
+
+    <div class="ma-source-grid">
+      {payload.sources?.map((source) => (
+        <article class="ma-source-card">
+          <p class="ma-eyebrow">{source.country}</p>
+          <h3>{source.name}</h3>
+          <p>{source.caseCount} visible cases in this sync.</p>
+          <a href={source.collectionUrl} target="_blank" rel="noreferrer">Open official collection</a>
+        </article>
+      ))}
+    </div>
+
+    {payload.coverage?.notes?.length ? (
+      <ul class="ma-note-list">
+        {payload.coverage.notes.map((note) => (
+          <li>{note}</li>
+        ))}
+      </ul>
+    ) : null}
+  </section>
+</section>
+
+<script>
+  import { initOecdMaWatch } from '../scripts/oecd-ma-watch.js';
+
+  function init() {
+    const root = document.querySelector('[data-ma-watch-root]');
+    if (root?.id) initOecdMaWatch(root.id);
+  }
+
+  init();
+  document.addEventListener('astro:after-swap', init);
+</script>

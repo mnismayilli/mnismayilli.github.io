@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import OecdMaWatch from '../components/OecdMaWatch.astro';
+import maWatchData from '../data/generated/ma-watch-data.json';
+import '../styles/ma-watch.css';
+---
+
+<BaseLayout
+  title="M&A Watch"
+  description="Track new and ongoing public merger and acquisition reviews from official OECD competition-authority sources."
+  showHeader={false}
+  fullWidth={true}
+>
+  <OecdMaWatch data={maWatchData} />
+</BaseLayout>

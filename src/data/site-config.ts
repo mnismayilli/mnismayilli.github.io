@@ -39,7 +39,7 @@ export type SiteConfig = {
     research?: string;
 };
 
-const profile = "I am a Departmental Lecturer in Economics at the <a href=https://www.economics.ox.ac.uk/people/mehman-ismayilli> University of Oxford</a>. My research interests are industrial organization, experimental economics, and the application of machine learning in economic theory. Previously, I worked at the University of Manchester and the University of Warwick. I hold my PhD in Economics from the University of Leicester.";
+const profile = "I am a Lecturer in Economics at the <a href=https://www.economics.ox.ac.uk/people/mehman-ismayilli> University of Oxford</a>. My research interests are industrial organization, experimental economics, and the application of machine learning in economic theory. Previously, I worked at the University of Manchester and the University of Warwick. I hold my PhD in Economics from the University of Leicester.";
 
 
 const siteConfig: SiteConfig = {
@@ -63,6 +63,10 @@ const siteConfig: SiteConfig = {
         {
             text: 'Lecture Notes',
             href: '/lectures'
+        },
+        {
+            text: 'M&A Watch',
+            href: '/ma-watch'
         },
     ],
     footerNavLinks: [
