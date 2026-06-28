@@ -7,6 +7,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     description="Lecture notes from my courses at Oxford"
     showHeader={false}
 >
-    <h1 class="mb-12 text-2xl leading-tight font-serif italic sm:mb-16 sm:text-4xl">Lecture Notes</h1>
-    <p class="text-base opacity-60">Lecture notes and course materials will be available here soon.</p>
+    <h1 class="mb-8 text-2xl leading-tight font-serif italic sm:mb-12 sm:text-4xl">Lecture Notes</h1>
+    <p class="mb-12 max-w-2xl text-base opacity-70 sm:mb-16">
+        Lecture slides, hands-on R supplements, and data for the courses I teach. Materials are added as
+        each course runs — browse the courses below.
+    </p>
+
+    <ul class="space-y-8">
+        <li>
+            <a class="font-serif text-xl hover:underline sm:text-2xl" href="/lectures/FE"> Advanced Financial Econometrics</a>
+            <p class="mt-1 text-sm opacity-60">Summer Intensive Module · 2026</p>
+            <p class="mt-2 max-w-2xl text-base opacity-70">
+                An intensive introduction to the econometrics of financial markets: asset returns, linear
+                time-series and volatility models, derivative pricing, and tail-risk measures, with applied
+                R supplements on real market data.
+            </p>
+        </li>
+        <li>
+            <a class="font-serif text-xl hover:underline sm:text-2xl" href="/lectures/Int_Micro">Intermediate Microeconomics</a>
+            <p class="mt-1 text-sm opacity-60">Undergraduate · 2026</p>
+            <p class="mt-2 max-w-2xl text-base opacity-70">
+                Intermediate microeconomics covering consumer and producer theory, market structure, and
+                welfare, with lecture slides and a module handbook.
+            </p>
+        </li>
+    </ul>
 </BaseLayout>

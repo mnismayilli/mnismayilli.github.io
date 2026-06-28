@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const base = '/lectures/Int_Micro';
+
+const weeks = [
+    {
+        title: 'Week 1',
+        summary: 'Foundations of intermediate microeconomics.',
+        days: [
+            { name: 'Day 1', href: `${base}/Week1/Week1_Day1.pdf` },
+            { name: 'Day 2', href: `${base}/Week1/Week1_Day2.pdf` },
+            { name: 'Day 3', href: `${base}/Week1/Week1_Day3.pdf` },
+            { name: 'Day 4', href: `${base}/Week1/Week1_Day4.pdf` },
+            { name: 'Day 5', href: `${base}/Week1/Week1_Day5.pdf` }
+        ]
+    }
+];
+---
+
+<BaseLayout
+    title="Intermediate Microeconomics"
+    description="Lecture slides and module handbook for Intermediate Microeconomics."
+    showHeader={false}
+>
+    <article class="mb-16 sm:mb-24">
+        <header class="mb-8">
+            <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">
+                Intermediate Microeconomics
+            </h1>
+        </header>
+
+        <div class="max-w-none prose sm:prose-lg">
+            <p>
+                Intermediate microeconomics covering consumer and producer theory, market structure, and
+                welfare. Each session pairs lecture slides with worked examples. Materials are added as the
+                course runs.
+            </p>
+
+            <p>
+                <a href={`${base}/Module_Handbook.pdf`}>Module Handbook (PDF)</a>
+            </p>
+
+            <h2>Lecture materials</h2>
+            {weeks.map((week) => (
+                <>
+                    <h3>{week.title}</h3>
+                    <p>{week.summary}</p>
+                    <ul>
+                        {week.days.map((day) => (
+                            <li><a href={day.href}>{day.name} — Slides (PDF)</a></li>
+                        ))}
+                    </ul>
+                </>
+            ))}
+        </div>
+
+        <p class="mt-10 text-sm">
+            <a class="text-main hover:underline" href="/lectures">← Back to Lecture Notes</a>
+        </p>
+    </article>
+</BaseLayout>
