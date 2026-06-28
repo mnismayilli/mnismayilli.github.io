@@ -31,51 +31,46 @@ const chapters = [
 <BaseLayout
     title="FI 362 · Advanced Financial Econometrics"
     description="Lecture notes, slides, R supplements, and data for FI 362 Advanced Financial Econometrics (Summer Intensive Module, 2026)."
-    showHeader={false}
 >
-    <article class="mb-16 sm:mb-24">
-        <header class="mb-8">
-            <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">
-                FI 362 · Advanced Financial Econometrics
-            </h1>
-            <p class="mt-4 text-sm opacity-60">Summer Intensive Module · 29 June – 17 July 2026 · In-person</p>
-        </header>
-
-        <div class="max-w-none prose sm:prose-lg">
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">FI362 · SJTU Summer School · 29 June – 17 July 2026</p>
+            <h1>Advanced Financial Econometrics</h1>
             <p>
-                An intensive introduction to the econometrics of financial markets. The module covers asset
-                returns and their distributional properties, linear time-series models (ARMA), volatility
-                modelling (GARCH), continuous-time processes for derivative pricing, and tail-risk measures
-                (EVT and Value-at-Risk). Each chapter pairs a set of lecture slides with a hands-on R
-                supplement applied to real market data.
+                An introduction to the econometrics of financial markets: asset returns and their
+                distributional properties, linear time-series models (ARMA), volatility modelling (GARCH),
+                continuous-time processes for derivative pricing, and tail-risk measures (EVT and
+                Value-at-Risk). Each chapter pairs lecture slides with a hands-on R supplement on real data.
             </p>
-
-            <p>
-                <a href={`${base}/FI362_Module_Handbook.pdf`}>Module Handbook (PDF)</a>
-            </p>
-
-            <h2>Lecture materials</h2>
-            <ul>
-                {chapters.map((ch) => (
-                    <li>
-                        <strong>{ch.title}</strong><br />
-                        {ch.summary}<br />
-                        <a href={ch.slides}>Slides (PDF)</a> · <a href={ch.supplement}>R supplement (HTML)</a>
-                    </li>
-                ))}
-            </ul>
-
-            <h2>Data</h2>
-            <p>Datasets used in the R supplements:</p>
-            <ul>
-                {datasets.map((d) => (
-                    <li><a href={d.href}>{d.name}</a></li>
-                ))}
-            </ul>
         </div>
+    </section>
 
-        <p class="mt-10 text-sm">
-            <a class="text-main hover:underline" href="/lectures">← Back to Lecture Notes</a>
-        </p>
-    </article>
+    <section class="section" style="padding-top: 1.5rem;">
+        <div class="container">
+            <article class="prose">
+                <p><a href={`${base}/FI362_Module_Handbook.pdf`}>Module Handbook (PDF) →</a></p>
+
+                <h2>Lecture materials</h2>
+                <ul>
+                    {chapters.map((ch) => (
+                        <li>
+                            <strong>{ch.title}</strong><br />
+                            {ch.summary}<br />
+                            <a href={ch.slides}>Slides (PDF)</a> · <a href={ch.supplement}>R supplement (HTML)</a>
+                        </li>
+                    ))}
+                </ul>
+
+                <h2>Data</h2>
+                <p>Datasets used in the R supplements:</p>
+                <ul>
+                    {datasets.map((d) => (
+                        <li><a href={d.href}>{d.name}</a></li>
+                    ))}
+                </ul>
+            </article>
+
+            <p style="margin-top: 2.5rem;"><a class="backlink" href="/lectures">← All lecture notes</a></p>
+        </div>
+    </section>
 </BaseLayout>

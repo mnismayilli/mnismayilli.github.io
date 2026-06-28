@@ -54,7 +54,7 @@ function renderCaseCard(caseItem, active) {
           <span class="ma-pill ma-pill--source">${escapeHtml(caseItem.country)}</span>
           <span class="ma-pill ma-pill--urgency">${escapeHtml(caseItem.urgency)}</span>
         </div>
-        <span class="ma-case-card__cta">Open case</span>
+        <span class="ma-case-card__cta">Open →</span>
       </div>
       <h3>${escapeHtml(caseItem.title)}</h3>
       <p>${escapeHtml(summaryCopy(caseItem))}</p>
@@ -110,7 +110,7 @@ function renderDetails(caseItem) {
         <p class="ma-eyebrow">Selected case</p>
         <h2>${escapeHtml(caseItem.title)}</h2>
       </div>
-      <a class="ma-detail-link" href="${escapeHtml(caseItem.link)}" target="_blank" rel="noreferrer">Open source case</a>
+      <a class="ma-detail-link" href="${escapeHtml(caseItem.link)}" target="_blank" rel="noreferrer">Open source</a>
     </div>
 
     <div class="ma-detail-badges">

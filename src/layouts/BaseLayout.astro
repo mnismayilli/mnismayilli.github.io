@@ -1,29 +1,45 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
 import Nav from '../components/Nav.astro';
 
 export type Props = HeadProps & { showHeader?: boolean; fullWidth?: boolean };
 
-const { showHeader = true, fullWidth = false, ...head } = Astro.props;
+const { showHeader, fullWidth, ...head } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="antialiased break-words">
+<html lang="en">
     <head>
         <BaseHead {...head} />
-        <ClientRouter />
     </head>
-    <body class="bg-main text-main">
-        <div class="flex flex-col min-h-screen px-4 md:px-8">
-            <Nav />
-            {showHeader && <Header />}
-            <main class={`grow w-full mx-auto ${fullWidth ? '' : 'max-w-3xl'}`}>
-                <slot />
-            </main>
-            <Footer />
-        </div>
+    <body>
+        <Nav path={Astro.url.pathname} />
+        <main id="main">
+            <slot />
+        </main>
+        <Footer />
+
+        <script is:inline>
+            (() => {
+                const items = document.querySelectorAll('.reveal');
+                if (!('IntersectionObserver' in window) || !items.length) {
+                    items.forEach((el) => el.classList.add('in'));
+                    return;
+                }
+                const io = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((e) => {
+                            if (e.isIntersecting) {
+                                e.target.classList.add('in');
+                                io.unobserve(e.target);
+                            }
+                        });
+                    },
+                    { rootMargin: '0px 0px -8% 0px', threshold: 0.1 }
+                );
+                items.forEach((el) => io.observe(el));
+            })();
+        </script>
     </body>
 </html>

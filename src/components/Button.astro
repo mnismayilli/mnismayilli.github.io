@@ -1,14 +1,20 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-type AnchorProps = HTMLAttributes<'a'> & { type?: never };
-type ButtonProps = HTMLAttributes<'button'> & { href?: never };
+type AnchorProps = HTMLAttributes<'a'> & { type?: never; variant?: 'solid' | 'outline' };
+type ButtonProps = HTMLAttributes<'button'> & { href?: never; variant?: 'solid' | 'outline' };
 
 type Props = ButtonProps | AnchorProps;
 
-const { href, class: className, ...rest } = Astro.props;
-const buttonClasses =
-    'inline-flex items-center justify-center px-6 py-2 font-serif leading-tight italic text-main bg-main border border-main rounded-full transition hover:bg-muted';
+const { href, class: className, variant = 'solid', ...rest } = Astro.props;
+
+const base =
+    'inline-flex items-center justify-center gap-1.5 px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2';
+const variants = {
+    solid: 'bg-accent text-white shadow-[var(--shadow-card)] hover:bg-accent-hover hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-px',
+    outline: 'border border-main text-strong bg-white hover:border-accent hover:text-accent hover:-translate-y-px'
+};
+const buttonClasses = `${base} ${variants[variant]}`;
 ---
 
 {

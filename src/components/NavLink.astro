@@ -1,14 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'> & { activeClass?: string };
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, activeClass = 'text-accent', ...props } = Astro.props;
 
 const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+const normalizedHref = typeof href === 'string' ? href.replace(/\/$/, '') : href;
+const normalizedPath = pathname.replace(/\/$/, '');
+const isActive = normalizedHref === normalizedPath || (normalizedHref !== '' && normalizedPath.startsWith(`${normalizedHref}/`));
 ---
 
-<a class:list={[className, { 'underline underline-offset-2 decoration-1': isActive }]} href={href} {...props}>
+<a class:list={[className, { [activeClass]: isActive }]} href={href} {...props}>
     <slot />
 </a>

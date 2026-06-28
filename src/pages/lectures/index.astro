@@ -1,35 +1,35 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { courses } from '../../data/courses';
 ---
 
-<BaseLayout
-    title="Lecture Notes"
-    description="Lecture notes from my courses at Oxford"
-    showHeader={false}
->
-    <h1 class="mb-8 text-2xl leading-tight font-serif italic sm:mb-12 sm:text-4xl">Lecture Notes</h1>
-    <p class="mb-12 max-w-2xl text-base opacity-70 sm:mb-16">
-        Lecture slides, hands-on R supplements, and data for the courses I teach. Materials are added as
-        each course runs — browse the courses below.
-    </p>
+<BaseLayout title="Lecture Notes" description="Lecture notes, slides, and problem sets from my courses.">
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">Shanghai Jiao Tong University · Summer School</p>
+            <h1>Lecture Notes</h1>
+            <p>
+                Lecture slides, hands-on R supplements, and problem sets for the courses I teach at the
+                <strong>Summer School of Shanghai Jiao Tong University (SJTU)</strong>. Materials are added as
+                each course runs — browse the courses below.
+            </p>
+        </div>
+    </section>
 
-    <ul class="space-y-8">
-        <li>
-            <a class="font-serif text-xl hover:underline sm:text-2xl" href="/lectures/FE"> Advanced Financial Econometrics</a>
-            <p class="mt-1 text-sm opacity-60">Summer Intensive Module · 2026</p>
-            <p class="mt-2 max-w-2xl text-base opacity-70">
-                An intensive introduction to the econometrics of financial markets: asset returns, linear
-                time-series and volatility models, derivative pricing, and tail-risk measures, with applied
-                R supplements on real market data.
-            </p>
-        </li>
-        <li>
-            <a class="font-serif text-xl hover:underline sm:text-2xl" href="/lectures/Int_Micro">Intermediate Microeconomics</a>
-            <p class="mt-1 text-sm opacity-60">Undergraduate · 2026</p>
-            <p class="mt-2 max-w-2xl text-base opacity-70">
-                Intermediate microeconomics covering consumer and producer theory, market structure, and
-                welfare, with lecture slides and a module handbook.
-            </p>
-        </li>
-    </ul>
+    <section class="section" style="padding-top: 2rem;">
+        <div class="container">
+            <div class="card-grid">
+                {
+                    courses.map((course) => (
+                        <a class="card reveal" href={course.href}>
+                            <span class="card-kicker">{course.code} · {course.level}</span>
+                            <h3>{course.title}</h3>
+                            <p>{course.blurb}</p>
+                            <span class="card-foot">Slides · problem sets →</span>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 </BaseLayout>

@@ -1,46 +1,47 @@
 ---
 import siteConfig from '../data/site-config';
 
-const socialLinks = siteConfig.socialLinks || [];
-const navLinks = siteConfig.footerNavLinks || [];
+const year = new Date().getFullYear();
+const siteLinks = siteConfig.headerNavLinks || [];
+const profileLinks = siteConfig.footerNavLinks || [];
+const social = siteConfig.socialLinks || [];
+
+// Oxford goes in the Profile column; the rest (LinkedIn, X) go under Elsewhere.
+const oxford = social.find((l) => /oxford/i.test(l.text));
+const elsewhere = social.filter((l) => !/oxford/i.test(l.text));
 ---
 
-<footer class="w-full max-w-3xl mx-auto pt-12 pb-10 sm:pt-24 sm:pb-14">
-    {
-        navLinks.length > 0 && (
-            <div class="mb-4 flex flex-wrap gap-x-6 gap-y-1">
-                {navLinks.map((link) => (
-                    <a class="font-serif hover:underline hover:underline-offset-2" href={link.href}>
-                        {link.text}
-                    </a>
-                ))}
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="brand"><span class="brand-dot"></span>{siteConfig.title}</span>
+                <p>
+                    Lecturer in Economics, University of Oxford. Industrial organization, experimental
+                    economics, and machine learning in economic theory.
+                </p>
             </div>
-        )
-    }
-    <div
-        class:list={[
-            'pt-6 flex flex-col gap-4 border-t border-dashed border-main',
-            { 'sm:flex-row-reverse sm:justify-between sm:items-center': socialLinks.length > 0 }
-        ]}
-    >
-        {
-            socialLinks.length > 0 && (
-                <div class="flex flex-wrap gap-x-4 gap-y-1">
-                    {socialLinks.map((link) => (
-                        <a
-                            class="inline-flex items-center justify-center text-sm hover:underline hover:underline-offset-2"
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferer"
-                        >
-                            {link.text}
-                        </a>
-                    ))}
+
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Site</h4>
+                    {siteLinks.map((l) => <a href={l.href} set:html={l.text} />)}
                 </div>
-            )
-        }
-        <p class="text-sm">
-            &copy; {new Date().getFullYear()}&nbsp;<a class="hover:underline hover:underline-offset-2" href="/">{siteConfig.title}</a>. All rights reserved.
-        </p>
+                <div class="footer-col">
+                    <h4>Profile</h4>
+                    {profileLinks.map((l) => <a href={l.href}>{l.text}</a>)}
+                    {oxford && <a href={oxford.href} rel="noopener">Oxford</a>}
+                </div>
+                <div class="footer-col">
+                    <h4>Elsewhere</h4>
+                    {elsewhere.map((l) => <a href={l.href} rel="noopener">{l.text}</a>)}
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-base">
+            <span>&copy; {year} {siteConfig.title}</span>
+            <span>Built with Astro · Oxford, UK</span>
+        </div>
     </div>
 </footer>

@@ -7,12 +7,19 @@ const weeks = [
     {
         title: 'Week 1',
         summary: 'Foundations of intermediate microeconomics.',
-        days: [
+        slides: [
             { name: 'Day 1', href: `${base}/Week1/Week1_Day1.pdf` },
             { name: 'Day 2', href: `${base}/Week1/Week1_Day2.pdf` },
             { name: 'Day 3', href: `${base}/Week1/Week1_Day3.pdf` },
             { name: 'Day 4', href: `${base}/Week1/Week1_Day4.pdf` },
             { name: 'Day 5', href: `${base}/Week1/Week1_Day5.pdf` }
+        ],
+        problemSets: [
+            { name: 'Problem Set 1 — Preferences', href: `${base}/Week1_ProblemSet/EC306_PS1_Preferences.pdf` },
+            { name: 'Problem Set 2 — Optimisation', href: `${base}/Week1_ProblemSet/EC306_PS2_Optimisation.pdf` },
+            { name: 'Problem Set 3 — Demand', href: `${base}/Week1_ProblemSet/EC306_PS3_Demand.pdf` },
+            { name: 'Problem Set 4 — Production', href: `${base}/Week1_ProblemSet/EC306_PS4_Production.pdf` },
+            { name: 'Problem Set 5 — Costs & Supply', href: `${base}/Week1_ProblemSet/EC306_PS5_Costs_Supply.pdf` }
         ]
     }
 ];
@@ -20,43 +27,46 @@ const weeks = [
 
 <BaseLayout
     title="Intermediate Microeconomics"
-    description="Lecture slides and module handbook for Intermediate Microeconomics."
-    showHeader={false}
+    description="Lecture slides, weekly problem sets, and module handbook for Intermediate Microeconomics."
 >
-    <article class="mb-16 sm:mb-24">
-        <header class="mb-8">
-            <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">
-                Intermediate Microeconomics
-            </h1>
-        </header>
-
-        <div class="max-w-none prose sm:prose-lg">
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">EC306 · SJTU Summer School · 2026</p>
+            <h1>Intermediate Microeconomics</h1>
             <p>
-                Intermediate microeconomics covering consumer and producer theory, market structure, and
-                welfare. Each session pairs lecture slides with worked examples. Materials are added as the
-                course runs.
+                Consumer and producer theory, market structure, and welfare. Each session pairs lecture
+                slides with a problem set for practice. Materials are added as the course runs.
             </p>
-
-            <p>
-                <a href={`${base}/Module_Handbook.pdf`}>Module Handbook (PDF)</a>
-            </p>
-
-            <h2>Lecture materials</h2>
-            {weeks.map((week) => (
-                <>
-                    <h3>{week.title}</h3>
-                    <p>{week.summary}</p>
-                    <ul>
-                        {week.days.map((day) => (
-                            <li><a href={day.href}>{day.name} — Slides (PDF)</a></li>
-                        ))}
-                    </ul>
-                </>
-            ))}
         </div>
+    </section>
 
-        <p class="mt-10 text-sm">
-            <a class="text-main hover:underline" href="/lectures">← Back to Lecture Notes</a>
-        </p>
-    </article>
+    <section class="section" style="padding-top: 1.5rem;">
+        <div class="container">
+            <article class="prose">
+                <p><a href={`${base}/Module_Handbook.pdf`}>Module Handbook (PDF) →</a></p>
+
+                <h2>Lecture materials</h2>
+                {weeks.map((week) => (
+                    <>
+                        <h3>{week.title}</h3>
+                        <p>{week.summary}</p>
+                        <h4>Lecture slides</h4>
+                        <ul>
+                            {week.slides.map((slide) => (
+                                <li><a href={slide.href}>{slide.name} — Slides (PDF)</a></li>
+                            ))}
+                        </ul>
+                        <h4>Problem sets</h4>
+                        <ul>
+                            {week.problemSets.map((ps) => (
+                                <li><a href={ps.href}>{ps.name} (PDF)</a></li>
+                            ))}
+                        </ul>
+                    </>
+                ))}
+            </article>
+
+            <p style="margin-top: 2.5rem;"><a class="backlink" href="/lectures">← All lecture notes</a></p>
+        </div>
+    </section>
 </BaseLayout>

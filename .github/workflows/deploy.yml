@@ -5,6 +5,12 @@ on:
   # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches: [ main ]
+  # Redeploy after the scheduled data sync commits new M&A Watch data.
+  # (A push made by GITHUB_TOKEN does not itself trigger the `push` event above,
+  # so this `workflow_run` trigger is what redeploys the site after a sync.)
+  workflow_run:
+    workflows: [ "Sync M&A Watch data" ]
+    types: [ completed ]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
@@ -17,6 +23,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # When triggered by the data-sync workflow, only deploy if that sync succeeded.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4

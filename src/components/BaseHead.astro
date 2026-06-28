@@ -1,6 +1,4 @@
 ---
-import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
-import newsreaderWoff2 from '@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url';
 import siteConfig from '../data/site-config';
 import '../styles/global.css';
 
@@ -42,9 +40,13 @@ function formatCanonicalURL(url: string | URL) {
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
 
-<!-- Fonts -->
-<link rel="preload" as="font" type="font/woff2" href={interWoff2} crossorigin="anonymous" />
-<link rel="preload" as="font" type="font/woff2" href={newsreaderWoff2} crossorigin="anonymous" />
+<!-- Fonts: Fraunces (display) · IBM Plex Sans (body) · IBM Plex Mono (data) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+/>
 
 <!-- Low Priority Global Metadata -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

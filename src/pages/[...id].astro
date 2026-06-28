@@ -17,15 +17,28 @@ type Props = { page: CollectionEntry<'pages'> };
 const { page } = Astro.props;
 const { title, seo } = page.data;
 const { Content } = await render(page);
+const eyebrows: Record<string, string> = {
+    about: 'Curriculum vitae',
+    teaching: 'Oxford · Shanghai Jiao Tong University',
+    contact: 'Get in touch',
+    terms: 'Legal'
+};
+const eyebrow = eyebrows[page.id] ?? 'Mehman Ismayilli';
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image} showHeader={false}>
-    <article class="mb-16 sm:mb-24">
-        <header class="mb-8">
-            <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">{title}</h1>
-        </header>
-        <div class="max-w-none prose sm:prose-lg">
-            <Content />
+<BaseLayout title={seo?.title ?? title} description={seo?.description}>
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">{eyebrow}</p>
+            <h1>{title}</h1>
         </div>
-    </article>
+    </section>
+
+    <section class="section" style="padding-top: 1.5rem;">
+        <div class="container">
+            <article class="prose">
+                <Content />
+            </article>
+        </div>
+    </section>
 </BaseLayout>

@@ -10,6 +10,11 @@ on:
 permissions:
   contents: write
 
+# Avoid overlapping runs racing to push the same file.
+concurrency:
+  group: sync-ma-data
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -23,28 +28,18 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: astro-ma-watch/package-lock.json
 
-      - name: Install sync dependencies
+      - name: Install dependencies
         run: npm ci
-        working-directory: astro-ma-watch
 
       - name: Run M&A Watch data sync
         run: node scripts/sync-ma-cases.mjs
-        working-directory: astro-ma-watch
-
-      - name: Copy fresh data to main site
-        run: |
-          cp astro-ma-watch/src/data/generated/ma-watch-data.json \
-             src/data/generated/ma-watch-data.json
 
       - name: Commit and push if data changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add \
-            src/data/generated/ma-watch-data.json \
-            astro-ma-watch/src/data/generated/ma-watch-data.json
+          git add src/data/generated/ma-watch-data.json
           if git diff --staged --quiet; then
             echo "No data changes — skipping commit."
           else

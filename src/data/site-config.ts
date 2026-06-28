@@ -7,6 +7,7 @@ export type Image = {
 export type Link = {
     text: string;
     href: string;
+    children?: Link[];
 };
 
 export type Hero = {
@@ -29,6 +30,8 @@ export type SiteConfig = {
     subtitle?: string;
     description: string;
     image?: Image;
+    email?: string;
+    office?: string;
     headerNavLinks?: Link[];
     footerNavLinks?: Link[];
     socialLinks?: Link[];
@@ -47,11 +50,9 @@ const siteConfig: SiteConfig = {
     title: 'Mehman Ismayilli',
     subtitle: 'Economist & Educator at the University of Oxford',
     description: 'Economist & Educator at the University of Oxford',
+    email: 'mehman.ismayilli@economics.ox.ac.uk',
+    office: 'Room 242, Department of Economics, University of Oxford, Manor Road, OX1 3UQ',
     headerNavLinks: [
-        {
-            text: 'Home',
-            href: '/'
-        },
         {
             text: 'Research',
             href: '/projects'
@@ -65,15 +66,19 @@ const siteConfig: SiteConfig = {
             href: '/lectures'
         },
         {
-            text: 'M&A Watch',
+            text: 'M&amp;A Watch',
             href: '/ma-watch'
-        },
+        }
     ],
     footerNavLinks: [
         {
-            text: 'About',
+            text: 'CV',
             href: '/about'
         },
+        {
+            text: 'Contact',
+            href: '/contact'
+        }
     ],
     socialLinks: [
         {

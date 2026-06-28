@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const base = '/lectures/Microeconomics';
+
+const weeks = [
+    {
+        title: 'Week 1',
+        summary: 'Foundations of microeconomics: consumer choice, demand, firm behaviour, and competitive markets.',
+        slides: [
+            { name: 'Day 1', href: `${base}/Week1/ec107-day1.pdf` },
+            { name: 'Day 2', href: `${base}/Week1/ec107-day2.pdf` },
+            { name: 'Day 3', href: `${base}/Week1/ec107-day3.pdf` },
+            { name: 'Day 4', href: `${base}/Week1/ec107-day4.pdf` }
+        ],
+        problemSets: [
+            { name: 'Problem Set 1', href: `${base}/Week1_ProblemSets/ec107_Day1_PS1.pdf` },
+            { name: 'Problem Set 2', href: `${base}/Week1_ProblemSets/ec107_Day2_PS2.pdf` },
+            { name: 'Problem Set 3', href: `${base}/Week1_ProblemSets/ec107_Day3_PS3.pdf` },
+            { name: 'Problem Set 4', href: `${base}/Week1_ProblemSets/ec107_Day4_PS4.pdf` }
+        ]
+    }
+];
+---
+
+<BaseLayout
+    title="Microeconomics"
+    description="Lecture slides, weekly problem sets, and module handbook for Microeconomics (EC107)."
+>
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">EC107 · SJTU Summer School · 2026</p>
+            <h1>Microeconomics</h1>
+            <p>
+                An introduction to microeconomic principles — consumer choice and demand, firm behaviour and
+                costs, and competitive markets. Each session pairs lecture slides with a problem set for
+                practice. Materials are added as the course runs.
+            </p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 1.5rem;">
+        <div class="container">
+            <article class="prose">
+                <p><a href={`${base}/Handbook.pdf`}>Module Handbook (PDF) →</a></p>
+
+                <h2>Lecture materials</h2>
+                {weeks.map((week) => (
+                    <>
+                        <h3>{week.title}</h3>
+                        <p>{week.summary}</p>
+                        <h4>Lecture slides</h4>
+                        <ul>
+                            {week.slides.map((slide) => (
+                                <li><a href={slide.href}>{slide.name} — Slides (PDF)</a></li>
+                            ))}
+                        </ul>
+                        <h4>Problem sets</h4>
+                        <ul>
+                            {week.problemSets.map((ps) => (
+                                <li><a href={ps.href}>{ps.name} (PDF)</a></li>
+                            ))}
+                        </ul>
+                    </>
+                ))}
+            </article>
+
+            <p style="margin-top: 2.5rem;"><a class="backlink" href="/lectures">← All lecture notes</a></p>
+        </div>
+    </section>
+</BaseLayout>
