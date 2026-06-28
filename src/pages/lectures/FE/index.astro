@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const base = '/lectures/FE';
+
+const datasets = [
+    { name: 'Data-download script (R)', href: `${base}/data/download_data.R` },
+    { name: 'Index prices — daily adjusted close', href: `${base}/data/indices_adjclose.csv` },
+    { name: 'Index prices — monthly', href: `${base}/data/indices_monthly.csv` },
+    { name: 'S&P 500 — monthly', href: `${base}/data/sp500_monthly.csv` },
+    { name: 'Individual stocks — adjusted close', href: `${base}/data/stocks_adjclose.csv` },
+    { name: 'Series metadata', href: `${base}/data/metadata.csv` }
+];
+
+const chapters = [
+    {
+        title: 'Chapter 1 — Introduction to Financial Econometrics',
+        summary: 'Asset returns and the distributional properties of returns (fat tails, non-normality).',
+        slides: `${base}/FI362_Ch1.pdf`,
+        supplement: `${base}/FI362_Ch1_Supplement.html`
+    },
+    {
+        title: 'Chapter 2 — Linear Time Series Analysis and Its Applications',
+        summary: 'Stationarity, serial correlation, ARMA modelling, diagnostics, and forecasting with real data.',
+        slides: `${base}/FI362_Ch2.pdf`,
+        supplement: `${base}/FI362_Ch2_Supplement.html`
+    }
+];
+---
+
+<BaseLayout
+    title="FI 362 · Advanced Financial Econometrics"
+    description="Lecture notes, slides, R supplements, and data for FI 362 Advanced Financial Econometrics (Summer Intensive Module, 2026)."
+    showHeader={false}
+>
+    <article class="mb-16 sm:mb-24">
+        <header class="mb-8">
+            <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">
+                FI 362 · Advanced Financial Econometrics
+            </h1>
+            <p class="mt-4 text-sm opacity-60">Summer Intensive Module · 29 June – 17 July 2026 · In-person</p>
+        </header>
+
+        <div class="max-w-none prose sm:prose-lg">
+            <p>
+                An intensive introduction to the econometrics of financial markets. The module covers asset
+                returns and their distributional properties, linear time-series models (ARMA), volatility
+                modelling (GARCH), continuous-time processes for derivative pricing, and tail-risk measures
+                (EVT and Value-at-Risk). Each chapter pairs a set of lecture slides with a hands-on R
+                supplement applied to real market data.
+            </p>
+
+            <p>
+                <a href={`${base}/FI362_Module_Handbook.pdf`}>Module Handbook (PDF)</a>
+            </p>
+
+            <h2>Lecture materials</h2>
+            <ul>
+                {chapters.map((ch) => (
+                    <li>
+                        <strong>{ch.title}</strong><br />
+                        {ch.summary}<br />
+                        <a href={ch.slides}>Slides (PDF)</a> · <a href={ch.supplement}>R supplement (HTML)</a>
+                    </li>
+                ))}
+            </ul>
+
+            <h2>Data</h2>
+            <p>Datasets used in the R supplements:</p>
+            <ul>
+                {datasets.map((d) => (
+                    <li><a href={d.href}>{d.name}</a></li>
+                ))}
+            </ul>
+        </div>
+
+        <p class="mt-10 text-sm">
+            <a class="text-main hover:underline" href="/lectures">← Back to Lecture Notes</a>
+        </p>
+    </article>
+</BaseLayout>

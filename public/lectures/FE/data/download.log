@@ -1,0 +1,48 @@
+[ 1/16] ^GSPC        (SP500)
+[ 2/16] ^IXIC        (NASDAQ)
+[ 3/16] ^DJI         (DowJones)
+[ 4/16] ^FTSE        (FTSE100)
+[ 5/16] ^GDAXI       (DAX)
+[ 6/16] ^FCHI        (CAC40)
+[ 7/16] ^N225        (Nikkei225)
+[ 8/16] ^HSI         (HangSeng)
+[ 9/16] 000001.SS    (SSEComposite)
+[10/16] ^KS11        (KOSPI)
+[11/16] ^BSESN       (Sensex)
+[12/16] AAPL         (AAPL)
+[13/16] MSFT         (MSFT)
+[14/16] AXP          (AXP)
+[15/16] CAT          (CAT)
+[16/16] SBUX         (SBUX)
+Warning messages:
+1: ^FTSE contains missing values. Some functions will not work if objects contain missing values in the middle of the series. Consider using na.omit(), na.approx(), na.fill(), etc to remove or replace them. 
+2: ^GDAXI contains missing values. Some functions will not work if objects contain missing values in the middle of the series. Consider using na.omit(), na.approx(), na.fill(), etc to remove or replace them. 
+3: ^FCHI contains missing values. Some functions will not work if objects contain missing values in the middle of the series. Consider using na.omit(), na.approx(), na.fill(), etc to remove or replace them. 
+4: ^N225 contains missing values. Some functions will not work if objects contain missing values in the middle of the series. Consider using na.omit(), na.approx(), na.fill(), etc to remove or replace them. 
+5: ^HSI contains missing values. Some functions will not work if objects contain missing values in the middle of the series. Consider using na.omit(), na.approx(), na.fill(), etc to remove or replace them. 
+6: 000001.SS contains missing values. Some functions will not work if objects contain missing values in the middle of the series. Consider using na.omit(), na.approx(), na.fill(), etc to remove or replace them. 
+7: ^KS11 contains missing values. Some functions will not work if objects contain missing values in the middle of the series. Consider using na.omit(), na.approx(), na.fill(), etc to remove or replace them. 
+8: ^BSESN contains missing values. Some functions will not work if objects contain missing values in the middle of the series. Consider using na.omit(), na.approx(), na.fill(), etc to remove or replace them. 
+wrote indices_adjclose.csv  (6900 rows x 11 series)
+wrote stocks_adjclose.csv  (6641 rows x 5 series)
+wrote indices_monthly.csv (318 months)
+wrote sp500_monthly.csv (317 months)
+
+DONE. Files in: /Users/econ0757/Library/CloudStorage/GoogleDrive-ismayilli.mehman@gmail.com/My Drive/SJTU/FE/data
+    symbol         name         region rows      start        end
+     ^GSPC        SP500  United States 6641 2000-01-03 2026-05-29
+     ^IXIC       NASDAQ  United States 6641 2000-01-03 2026-05-29
+      ^DJI     DowJones  United States 6641 2000-01-03 2026-05-29
+     ^FTSE      FTSE100 United Kingdom 6719 2000-01-04 2026-05-29
+    ^GDAXI          DAX        Germany 6747 2000-01-03 2026-05-29
+     ^FCHI        CAC40         France 6784 2000-01-03 2026-05-29
+     ^N225    Nikkei225          Japan 6589 2000-01-04 2026-06-01
+      ^HSI     HangSeng      Hong Kong 6583 2000-01-03 2026-05-29
+ 000001.SS SSEComposite          China 6519 2000-01-04 2026-05-29
+     ^KS11        KOSPI    South Korea 6603 2000-01-04 2026-06-01
+    ^BSESN       Sensex          India 6596 2000-01-03 2026-05-29
+      AAPL         AAPL  United States 6641 2000-01-03 2026-05-29
+      MSFT         MSFT  United States 6641 2000-01-03 2026-05-29
+       AXP          AXP  United States 6641 2000-01-03 2026-05-29
+       CAT          CAT  United States 6641 2000-01-03 2026-05-29
+      SBUX         SBUX  United States 6641 2000-01-03 2026-05-29
