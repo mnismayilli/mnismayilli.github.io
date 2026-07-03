@@ -3,6 +3,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const base = '/lectures/FE';
 
+const problemSets = [
+    { name: 'Problem Set 1 (PDF)', href: `${base}/FI362_ProblemSet1.pdf` }
+];
+
 const datasets = [
     { name: 'Data-download script (R)', href: `${base}/data/download_data.R` },
     { name: 'Index prices — daily adjusted close', href: `${base}/data/indices_adjclose.csv` },
@@ -58,6 +62,13 @@ const chapters = [
                             {ch.summary}<br />
                             <a href={ch.slides}>Slides (PDF)</a> · <a href={ch.supplement}>R supplement (HTML)</a>
                         </li>
+                    ))}
+                </ul>
+
+                <h2>Problem sets</h2>
+                <ul>
+                    {problemSets.map((p) => (
+                        <li><a href={p.href}>{p.name}</a></li>
                     ))}
                 </ul>
 
