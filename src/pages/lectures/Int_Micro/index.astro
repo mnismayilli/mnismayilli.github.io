@@ -6,20 +6,43 @@ const base = '/lectures/Int_Micro';
 const weeks = [
     {
         title: 'Week 1',
-        summary: 'Foundations of intermediate microeconomics.',
-        slides: [
-            { name: 'Day 1', href: `${base}/Week1/Week1_Day1.pdf` },
-            { name: 'Day 2', href: `${base}/Week1/Week1_Day2.pdf` },
-            { name: 'Day 3', href: `${base}/Week1/Week1_Day3.pdf` },
-            { name: 'Day 4', href: `${base}/Week1/Week1_Day4.pdf` },
-            { name: 'Day 5', href: `${base}/Week1/Week1_Day5.pdf` }
-        ],
-        problemSets: [
-            { name: 'Problem Set 1 — Preferences', href: `${base}/Week1_ProblemSet/EC306_PS1_Preferences.pdf` },
-            { name: 'Problem Set 2 — Optimisation', href: `${base}/Week1_ProblemSet/EC306_PS2_Optimisation.pdf` },
-            { name: 'Problem Set 3 — Demand', href: `${base}/Week1_ProblemSet/EC306_PS3_Demand.pdf` },
-            { name: 'Problem Set 4 — Production', href: `${base}/Week1_ProblemSet/EC306_PS4_Production.pdf` },
-            { name: 'Problem Set 5 — Costs & Supply', href: `${base}/Week1_ProblemSet/EC306_PS5_Costs_Supply.pdf` }
+        summary: 'Building the demand and supply curves from primitives across a five-day arc: preferences, optimisation, demand, production, and cost & supply.',
+        days: [
+            {
+                day: 'Day 1',
+                topic: 'Preferences and Utility Functions',
+                desc: 'What the consumer wants: indifference curves, the marginal rate of substitution, and utility as an ordinal representation of preferences. (Perloff Ch. 3)',
+                slides: `${base}/Week1/Week1_Day1.pdf`,
+                ps: { name: 'Problem Set 1 — Preferences', href: `${base}/Week1_ProblemSet/EC306_PS1_Preferences.pdf` }
+            },
+            {
+                day: 'Day 2',
+                topic: 'The Constrained Optimisation Problem',
+                desc: 'What the consumer can afford: the budget line and solving max u(x, y) subject to the budget to pin down the chosen bundle. (Perloff Ch. 4)',
+                slides: `${base}/Week1/Week1_Day2.pdf`,
+                ps: { name: 'Problem Set 2 — Optimisation', href: `${base}/Week1_ProblemSet/EC306_PS2_Optimisation.pdf` }
+            },
+            {
+                day: 'Day 3',
+                topic: 'Demand: Hicks, Slutsky, and Elasticity',
+                desc: 'Marshallian vs Hicksian (compensated) demand and the expenditure function, the Slutsky substitution/income decomposition, and elasticities. (Perloff Ch. 5, §2.3)',
+                slides: `${base}/Week1/Week1_Day3.pdf`,
+                ps: { name: 'Problem Set 3 — Demand', href: `${base}/Week1_ProblemSet/EC306_PS3_Demand.pdf` }
+            },
+            {
+                day: 'Day 4',
+                topic: 'Firms, Production, and Production Functions',
+                desc: "Crossing to the supply side: the firm's technology — production functions, isoquants, MRTS — and its structural parallel with consumer theory. (Perloff Ch. 6)",
+                slides: `${base}/Week1/Week1_Day4.pdf`,
+                ps: { name: 'Problem Set 4 — Production', href: `${base}/Week1_ProblemSet/EC306_PS4_Production.pdf` }
+            },
+            {
+                day: 'Day 5',
+                topic: "Costs and the Firm's Supply Curve",
+                desc: 'Input prices and cost minimisation, the short-run cost curves, and profit maximisation to derive the supply curve — completing the demand–supply diagram from first principles. (Perloff Ch. 7, §8.1–8.4)',
+                slides: `${base}/Week1/Week1_Day5.pdf`,
+                ps: { name: 'Problem Set 5 — Costs & Supply', href: `${base}/Week1_ProblemSet/EC306_PS5_Costs_Supply.pdf` }
+            }
         ]
     }
 ];
@@ -50,18 +73,23 @@ const weeks = [
                     <>
                         <h3>{week.title}</h3>
                         <p>{week.summary}</p>
-                        <h4>Lecture slides</h4>
-                        <ul>
-                            {week.slides.map((slide) => (
-                                <li><a href={slide.href}>{slide.name} — Slides (PDF)</a></li>
-                            ))}
-                        </ul>
-                        <h4>Problem sets</h4>
-                        <ul>
-                            {week.problemSets.map((ps) => (
-                                <li><a href={ps.href}>{ps.name} (PDF)</a></li>
-                            ))}
-                        </ul>
+                        <table class="toc">
+                            <thead>
+                                <tr><th>Day</th><th>Topic</th><th>Materials</th></tr>
+                            </thead>
+                            <tbody>
+                                {week.days.map((d) => (
+                                    <tr>
+                                        <td class="toc-day">{d.day}</td>
+                                        <td><strong>{d.topic}</strong><br />{d.desc}</td>
+                                        <td class="toc-links">
+                                            <a href={d.slides}>Slides (PDF)</a><br />
+                                            <a href={d.ps.href}>{d.ps.name} (PDF)</a>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </>
                 ))}
             </article>
@@ -70,3 +98,32 @@ const weeks = [
         </div>
     </section>
 </BaseLayout>
+
+<style>
+    .toc {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0 2rem;
+        font-size: 0.95rem;
+    }
+    .toc th,
+    .toc td {
+        text-align: left;
+        vertical-align: top;
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid var(--border, #e2e2e2);
+    }
+    .toc thead th {
+        border-bottom-width: 2px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    .toc-day {
+        white-space: nowrap;
+        font-weight: 600;
+    }
+    .toc-links {
+        white-space: nowrap;
+    }
+</style>

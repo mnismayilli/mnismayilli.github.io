@@ -7,33 +7,69 @@ const weeks = [
     {
         title: 'Week 1',
         summary: 'Foundations of microeconomics: consumer choice, demand, firm behaviour, and competitive markets.',
-        slides: [
-            { name: 'Day 1', href: `${base}/Week1/ec107-day1.pdf` },
-            { name: 'Day 2', href: `${base}/Week1/ec107-day2.pdf` },
-            { name: 'Day 3', href: `${base}/Week1/ec107-day3.pdf` },
-            { name: 'Day 4', href: `${base}/Week1/ec107-day4.pdf` }
-        ],
-        problemSets: [
-            { name: 'Problem Set 1', href: `${base}/Week1_ProblemSets/ec107_Day1_PS1.pdf` },
-            { name: 'Problem Set 2', href: `${base}/Week1_ProblemSets/ec107_Day2_PS2.pdf` },
-            { name: 'Problem Set 3', href: `${base}/Week1_ProblemSets/ec107_Day3_PS3.pdf` },
-            { name: 'Problem Set 4', href: `${base}/Week1_ProblemSets/ec107_Day4_PS4.pdf` }
+        days: [
+            {
+                day: 'Day 1',
+                topic: 'Ten Principles of Economics & Thinking Like an Economist',
+                desc: 'What economics is: the ten principles, opportunity cost and marginal thinking, the production possibilities frontier, and the gains from trade through comparative advantage.',
+                slides: `${base}/Week1/ec107-day1.pdf`,
+                ps: { name: 'Problem Set 1', href: `${base}/Week1_ProblemSets/ec107_Day1_PS1.pdf` }
+            },
+            {
+                day: 'Day 2',
+                topic: 'The Market Forces of Supply and Demand',
+                desc: 'How markets work: demand and supply, market equilibrium, and the comparative statics of price and quantity.',
+                slides: `${base}/Week1/ec107-day2.pdf`,
+                ps: { name: 'Problem Set 2', href: `${base}/Week1_ProblemSets/ec107_Day2_PS2.pdf` }
+            },
+            {
+                day: 'Day 3',
+                topic: 'Elasticity and Its Application',
+                desc: 'Price elasticity of demand, its link to total revenue, other elasticities (income and cross-price), and common pitfalls.',
+                slides: `${base}/Week1/ec107-day3.pdf`,
+                ps: { name: 'Problem Set 3', href: `${base}/Week1_ProblemSets/ec107_Day3_PS3.pdf` }
+            },
+            {
+                day: 'Day 4',
+                topic: 'Supply, Demand, Government Policies, and the Efficiency of Markets',
+                desc: 'Price controls, consumer and producer surplus, market efficiency, and the deadweight loss of taxes.',
+                slides: `${base}/Week1/ec107-day4.pdf`,
+                ps: { name: 'Problem Set 4', href: `${base}/Week1_ProblemSets/ec107_Day4_PS4.pdf` }
+            }
         ]
     },
     {
         title: 'Week 2',
-        summary: 'Building on the foundations: further topics in consumer and producer theory with daily problem sets.',
-        slides: [
-            { name: 'Day 1', href: `${base}/Week2/day1_slides.pdf` },
-            { name: 'Day 2', href: `${base}/Week2/day2_slides.pdf` },
-            { name: 'Day 3', href: `${base}/Week2/day3_slides.pdf` },
-            { name: 'Day 4', href: `${base}/Week2/day4_slides.pdf` }
-        ],
-        problemSets: [
-            { name: 'Problem Set 1', href: `${base}/Week2_ProblemSets/day1_exercises.pdf` },
-            { name: 'Problem Set 2', href: `${base}/Week2_ProblemSets/day2_exercises.pdf` },
-            { name: 'Problem Set 3', href: `${base}/Week2_ProblemSets/day3_exercises.pdf` },
-            { name: 'Problem Set 4', href: `${base}/Week2_ProblemSets/day4_exercises.pdf` }
+        summary: 'From the cost curves to market structure: costs of production, perfect competition, monopoly, and duopoly.',
+        days: [
+            {
+                day: 'Day 1',
+                topic: 'Costs of Production',
+                desc: "Fixed, variable and total cost, and the average and marginal cost curves that drive every production decision in the days that follow.",
+                slides: `${base}/Week2/day1_slides.pdf`,
+                ps: { name: 'Problem Set 1', href: `${base}/Week2_ProblemSets/day1_exercises.pdf` }
+            },
+            {
+                day: 'Day 2',
+                topic: 'Perfect Competition',
+                desc: "The price-taking firm's output choice, the shut-down rule, and long-run zero profit.",
+                slides: `${base}/Week2/day2_slides.pdf`,
+                ps: { name: 'Problem Set 2', href: `${base}/Week2_ProblemSets/day2_exercises.pdf` }
+            },
+            {
+                day: 'Day 3',
+                topic: 'Monopoly',
+                desc: "The single price-maker's output and pricing decisions, and the cost to society (deadweight loss).",
+                slides: `${base}/Week2/day3_slides.pdf`,
+                ps: { name: 'Problem Set 3', href: `${base}/Week2_ProblemSets/day3_exercises.pdf` }
+            },
+            {
+                day: 'Day 4',
+                topic: 'Duopoly: Two Firms',
+                desc: 'Two firms competing on price or quantity, and how the order of moves shapes the market outcome.',
+                slides: `${base}/Week2/day4_slides.pdf`,
+                ps: { name: 'Problem Set 4', href: `${base}/Week2_ProblemSets/day4_exercises.pdf` }
+            }
         ]
     }
 ];
@@ -65,18 +101,23 @@ const weeks = [
                     <>
                         <h3>{week.title}</h3>
                         <p>{week.summary}</p>
-                        <h4>Lecture slides</h4>
-                        <ul>
-                            {week.slides.map((slide) => (
-                                <li><a href={slide.href}>{slide.name} — Slides (PDF)</a></li>
-                            ))}
-                        </ul>
-                        <h4>Problem sets</h4>
-                        <ul>
-                            {week.problemSets.map((ps) => (
-                                <li><a href={ps.href}>{ps.name} (PDF)</a></li>
-                            ))}
-                        </ul>
+                        <table class="toc">
+                            <thead>
+                                <tr><th>Day</th><th>Topic</th><th>Materials</th></tr>
+                            </thead>
+                            <tbody>
+                                {week.days.map((d) => (
+                                    <tr>
+                                        <td class="toc-day">{d.day}</td>
+                                        <td><strong>{d.topic}</strong><br />{d.desc}</td>
+                                        <td class="toc-links">
+                                            <a href={d.slides}>Slides (PDF)</a><br />
+                                            <a href={d.ps.href}>{d.ps.name} (PDF)</a>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </>
                 ))}
             </article>
@@ -85,3 +126,32 @@ const weeks = [
         </div>
     </section>
 </BaseLayout>
+
+<style>
+    .toc {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0 2rem;
+        font-size: 0.95rem;
+    }
+    .toc th,
+    .toc td {
+        text-align: left;
+        vertical-align: top;
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid var(--border, #e2e2e2);
+    }
+    .toc thead th {
+        border-bottom-width: 2px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    .toc-day {
+        white-space: nowrap;
+        font-weight: 600;
+    }
+    .toc-links {
+        white-space: nowrap;
+    }
+</style>

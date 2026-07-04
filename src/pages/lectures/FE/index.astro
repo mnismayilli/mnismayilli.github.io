@@ -19,13 +19,13 @@ const datasets = [
 const chapters = [
     {
         title: 'Chapter 1 — Introduction to Financial Econometrics',
-        summary: 'Asset returns and the distributional properties of returns (fat tails, non-normality).',
+        summary: 'Asset returns and the distributional properties of returns: simple vs log returns, fat tails, skewness, and non-normality tested on real market data.',
         slides: `${base}/FI362_Ch1.pdf`,
         supplement: `${base}/FI362_Ch1_Supplement.html`
     },
     {
         title: 'Chapter 2 — Linear Time Series Analysis and Its Applications',
-        summary: 'Stationarity, serial correlation, ARMA modelling, diagnostics, and forecasting with real data.',
+        summary: 'Stationarity, serial correlation, ARMA modelling, model diagnostics, and forecasting with real data.',
         slides: `${base}/FI362_Ch2.pdf`,
         supplement: `${base}/FI362_Ch2_Supplement.html`
     }
@@ -55,15 +55,26 @@ const chapters = [
                 <p><a href={`${base}/FI362_Module_Handbook.pdf`}>Module Handbook (PDF) →</a></p>
 
                 <h2>Lecture materials</h2>
-                <ul>
-                    {chapters.map((ch) => (
-                        <li>
-                            <strong>{ch.title}</strong><br />
-                            {ch.summary}<br />
-                            <a href={ch.slides}>Slides (PDF)</a> · <a href={ch.supplement}>R supplement (HTML)</a>
-                        </li>
-                    ))}
-                </ul>
+                <table class="toc">
+                    <thead>
+                        <tr><th>Chapter</th><th>Topic</th><th>Materials</th></tr>
+                    </thead>
+                    <tbody>
+                        {chapters.map((ch) => (
+                            <tr>
+                                <td class="toc-day">{ch.title.split('—')[0].trim()}</td>
+                                <td>
+                                    <strong>{ch.title.split('—').slice(1).join('—').trim()}</strong><br />
+                                    {ch.summary}
+                                </td>
+                                <td class="toc-links">
+                                    <a href={ch.slides}>Slides (PDF)</a><br />
+                                    <a href={ch.supplement}>R supplement (HTML)</a>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
 
                 <h2>Problem sets</h2>
                 <ul>
@@ -85,3 +96,32 @@ const chapters = [
         </div>
     </section>
 </BaseLayout>
+
+<style>
+    .toc {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0 2rem;
+        font-size: 0.95rem;
+    }
+    .toc th,
+    .toc td {
+        text-align: left;
+        vertical-align: top;
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid var(--border, #e2e2e2);
+    }
+    .toc thead th {
+        border-bottom-width: 2px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    .toc-day {
+        white-space: nowrap;
+        font-weight: 600;
+    }
+    .toc-links {
+        white-space: nowrap;
+    }
+</style>
