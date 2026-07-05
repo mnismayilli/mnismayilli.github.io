@@ -21,7 +21,8 @@ const chapters = [
         title: 'Chapter 1 — Introduction to Financial Econometrics',
         summary: 'Asset returns and the distributional properties of returns: simple vs log returns, fat tails, skewness, and non-normality tested on real market data.',
         slides: `${base}/FI362_Ch1.pdf`,
-        supplement: `${base}/FI362_Ch1_Supplement.html`
+        supplement: `${base}/FI362_Ch1_Supplement.html`,
+        rSource: `${base}/Day01_Supplement.R`
     },
     {
         title: 'Chapter 2 — Linear Time Series Analysis and Its Applications',
@@ -70,6 +71,7 @@ const chapters = [
                                 <td class="toc-links">
                                     <a href={ch.slides}>Slides (PDF)</a><br />
                                     <a href={ch.supplement}>R supplement (HTML)</a>
+                                    {ch.rSource && <><br /><a href={ch.rSource}>R source (.R)</a></>}
                                 </td>
                             </tr>
                         ))}
