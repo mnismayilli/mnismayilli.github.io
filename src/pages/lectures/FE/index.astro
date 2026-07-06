@@ -4,7 +4,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 const base = '/lectures/FE';
 
 const problemSets = [
-    { name: 'Problem Set 1 (PDF)', href: `${base}/FI362_ProblemSet1.pdf` }
+    { name: 'Problem Set 1 — Returns & ARMA (PDF)', href: `${base}/Week_1/FI362_ProblemSet1.pdf` },
+    { name: 'Problem Set 2 — ARCH/GARCH (PDF)', href: `${base}/Week_2/ARCH_problemset.pdf` },
+    { name: 'Mock Midterm (PDF)', href: `${base}/Week_2/FI362_Mock_Midterm.pdf` }
 ];
 
 const datasets = [
@@ -18,17 +20,25 @@ const datasets = [
 
 const chapters = [
     {
+        week: 'Week 1',
         title: 'Chapter 1 — Introduction to Financial Econometrics',
         summary: 'Asset returns and the distributional properties of returns: simple vs log returns, fat tails, skewness, and non-normality tested on real market data.',
-        slides: `${base}/FI362_Ch1.pdf`,
-        supplement: `${base}/FI362_Ch1_Supplement.html`,
-        rSource: `${base}/Day01_Supplement.R`
+        slides: `${base}/Week_1/FI362_Ch1.pdf`,
+        supplement: `${base}/Week_1/FI362_Ch1_Supplement.html`,
+        rSource: `${base}/Week_1/Day01_Supplement.R`
     },
     {
+        week: 'Week 1',
         title: 'Chapter 2 — Linear Time Series Analysis and Its Applications',
         summary: 'Stationarity, serial correlation, ARMA modelling, model diagnostics, and forecasting with real data.',
-        slides: `${base}/FI362_Ch2.pdf`,
-        supplement: `${base}/FI362_Ch2_Supplement.html`
+        slides: `${base}/Week_1/FI362_Ch2.pdf`,
+        supplement: `${base}/Week_1/FI362_Ch2_Supplement.html`
+    },
+    {
+        week: 'Week 2',
+        title: 'Chapter 3 — Conditional Heteroskedasticity: ARCH & GARCH',
+        summary: 'Volatility clustering and time-varying variance: the ARCH and GARCH families, estimation, diagnostics, and volatility forecasting on real return series.',
+        slides: `${base}/Week_2/Day1_ARCH.pdf`
     }
 ];
 ---
@@ -53,24 +63,25 @@ const chapters = [
     <section class="section" style="padding-top: 1.5rem;">
         <div class="container">
             <article class="prose">
-                <p><a href={`${base}/FI362_Module_Handbook.pdf`}>Module Handbook (PDF) →</a></p>
+                <p><a href={`${base}/Week_1/FI362_Module_Handbook.pdf`}>Module Handbook (PDF) →</a></p>
 
                 <h2>Lecture materials</h2>
                 <table class="toc">
                     <thead>
-                        <tr><th>Chapter</th><th>Topic</th><th>Materials</th></tr>
+                        <tr><th>Week</th><th>Chapter</th><th>Topic</th><th>Materials</th></tr>
                     </thead>
                     <tbody>
                         {chapters.map((ch) => (
                             <tr>
+                                <td class="toc-day">{ch.week}</td>
                                 <td class="toc-day">{ch.title.split('—')[0].trim()}</td>
                                 <td>
                                     <strong>{ch.title.split('—').slice(1).join('—').trim()}</strong><br />
                                     {ch.summary}
                                 </td>
                                 <td class="toc-links">
-                                    <a href={ch.slides}>Slides (PDF)</a><br />
-                                    <a href={ch.supplement}>R supplement (HTML)</a>
+                                    <a href={ch.slides}>Slides (PDF)</a>
+                                    {ch.supplement && <><br /><a href={ch.supplement}>R supplement (HTML)</a></>}
                                     {ch.rSource && <><br /><a href={ch.rSource}>R source (.R)</a></>}
                                 </td>
                             </tr>
