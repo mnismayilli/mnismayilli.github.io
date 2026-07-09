@@ -16,10 +16,7 @@ const elsewhere = social.filter((l) => !/oxford/i.test(l.text));
         <div class="footer-grid">
             <div class="footer-brand">
                 <span class="brand"><span class="brand-dot"></span>{siteConfig.title}</span>
-                <p>
-                    Lecturer in Economics, University of Oxford. Industrial organization, experimental
-                    economics, and machine learning in economic theory.
-                </p>
+                <p>Lecturer in Economics, University of Oxford.</p>
             </div>
 
             <div class="footer-links">
@@ -35,6 +32,7 @@ const elsewhere = social.filter((l) => !/oxford/i.test(l.text));
                 <div class="footer-col">
                     <h4>Elsewhere</h4>
                     {elsewhere.map((l) => <a href={l.href} rel="noopener">{l.text}</a>)}
+                    <a href="https://ind-econ.github.io" rel="noopener">Network of Industrial Economists</a>
                 </div>
             </div>
         </div>

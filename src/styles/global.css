@@ -2,23 +2,24 @@
    Mehman Ismayilli — academic site
    Design system
 
-   Palette : cool paper + Oxford-navy ink, single equilibrium-blue accent
+   Palette : cool paper + dark ink, Oxford-blue accent, dark-green link ink
    Type    : Fraunces (display) / IBM Plex Sans (body) / IBM Plex Mono (data)
    Motif   : supply–demand / best-response coordinate plane, marked equilibrium
    ============================================================= */
 
 :root {
   /* ---- colour ---- */
-  --paper:        #f6f8fb;
+  --paper:        #f5f7fa;
   --surface:      #ffffff;
-  --ink:          #0f1b30;   /* near-black navy, fountain-pen ink */
-  --ink-soft:     #46536b;   /* body copy */
-  --muted:        #6e7a90;   /* captions, meta */
-  --line:         #e4e9f1;   /* hairlines */
-  --line-strong:  #cdd6e4;
-  --accent:       #2b57f6;   /* equilibrium blue — graphic marker */
-  --accent-ink:   #1f46d8;   /* link text (darker for contrast) */
-  --accent-wash:  rgba(43, 87, 246, 0.08);
+  --ink:          #04182f;   /* near-black Oxford navy, fountain-pen ink */
+  --ink-soft:     #3f4d63;   /* body copy */
+  --muted:        #66738c;   /* captions, meta */
+  --line:         #e2e7ef;   /* hairlines */
+  --line-strong:  #c8d2e1;
+  --accent:       #002147;   /* Oxford blue — graphic marker */
+  --accent-ink:   #2f6157;   /* link text — light dark greenish */
+  --accent-wash:  rgba(0, 33, 71, 0.08);
+  --accent-bright:#1d4e89;   /* lighter Oxford blue — home link accent */
   --amber:        #b4690e;   /* secondary signal (urgency / warnings) */
   --amber-wash:   rgba(180, 105, 14, 0.09);
 
@@ -106,18 +107,25 @@ main { display: block; }
   display: inline-block;
   transform: translateY(-1px);
 }
-/* brand reduced to just the equilibrium dot (home link) */
-.brand--mark {
-  width: 38px;
-  height: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background 0.18s ease;
+/* brand acts as the labelled "Home" link — a colourful pill */
+.brand--home {
+  padding: 0.34rem 0.85rem 0.34rem 0.7rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-bright) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-bright) 30%, transparent);
+  transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
-.brand--mark .brand-dot { width: 11px; height: 11px; transform: none; }
-.brand--mark:hover { background: var(--accent-wash); }
+.brand--home .brand-dot {
+  width: 9px; height: 9px;
+  background: var(--accent-bright);
+  transform: translateY(-1px);
+}
+.brand--home .brand-name { color: var(--accent-bright); font-weight: 600; }
+.brand--home:hover {
+  background: color-mix(in srgb, var(--accent-bright) 20%, transparent);
+  border-color: color-mix(in srgb, var(--accent-bright) 55%, transparent);
+  box-shadow: 0 4px 14px -6px color-mix(in srgb, var(--accent-bright) 60%, transparent);
+}
 .nav-links {
   display: flex;
   align-items: center;
@@ -211,8 +219,10 @@ main { display: block; }
 .hero-lede {
   font-size: 1.12rem;
   color: var(--ink-soft);
-  max-width: 46ch;
+  max-width: none;
   margin-bottom: 1.8rem;
+  text-align: justify;
+  hyphens: auto;
 }
 .hero-lede a {
   color: var(--accent-ink);
@@ -355,7 +365,7 @@ a.research-item:hover::before { height: calc(100% - 2.2rem); }
   letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
 }
-.research-body p { color: var(--ink-soft); font-size: 0.98rem; max-width: 64ch; }
+.research-body p { color: var(--ink-soft); font-size: 0.98rem; max-width: none; text-align: justify; hyphens: auto; }
 .research-body .with { color: var(--muted); font-style: italic; }
 .research-go {
   align-self: center;
@@ -400,7 +410,7 @@ a.card:hover {
   font-size: 1.2rem;
   letter-spacing: -0.01em;
 }
-.card p { color: var(--ink-soft); font-size: 0.95rem; }
+.card p { color: var(--ink-soft); font-size: 0.95rem; text-align: justify; hyphens: auto; }
 .card .card-foot {
   margin-top: auto;
   padding-top: 0.4rem;
@@ -419,11 +429,12 @@ a.card:hover {
   line-height: 1.02;
   margin-block: 0.6rem 0.8rem;
 }
-.page-hero p { color: var(--ink-soft); max-width: 58ch; font-size: 1.08rem; }
+.page-hero p { color: var(--ink-soft); max-width: none; font-size: 1.08rem; text-align: justify; hyphens: auto; }
 
-.prose { max-width: 70ch; }
+.prose { max-width: none; }
 .prose > * + * { margin-top: 1.1rem; }
 .prose p, .prose li { color: var(--ink-soft); }
+.prose p, .prose li { text-align: justify; hyphens: auto; }
 .prose h2 {
   font-family: var(--display);
   font-weight: 500;

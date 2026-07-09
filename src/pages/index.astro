@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import EquilibriumMotif from '../components/EquilibriumMotif.astro';
 import siteConfig from '../data/site-config';
 import { sortItemsByDateDesc } from '../utils/data-utils';
 
@@ -59,7 +58,6 @@ const sections = [
             </div>
 
             <figure class="hero-figure">
-                <EquilibriumMotif />
                 <img class="hero-photo" src="/profilephoto.jpg" alt="Mehman Ismayilli" width="270" height="302" />
             </figure>
         </div>
