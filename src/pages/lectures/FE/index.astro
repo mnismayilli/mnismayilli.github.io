@@ -7,6 +7,7 @@ const problemSets = [
     { name: 'Problem Set 1 — Returns & ARMA (PDF)', href: `${base}/Week_1/FI362_ProblemSet1.pdf` },
     { name: 'Problem Set 2 — ARCH/GARCH (PDF)', href: `${base}/Week_2/ARCH_problemset.pdf` },
     { name: 'Problem Set 3 — GARCH Variants (PDF)', href: `${base}/Week_2/GARCH_problemset.pdf` },
+    { name: 'Problem Set 4 — Nonlinear Models (PDF)', href: `${base}/Week_2/nonlinear_problem_set.pdf` },
     { name: 'Mock Midterm (PDF)', href: `${base}/Week_2/FI362_Mock_Midterm.pdf` },
     { name: 'Mock Midterm — Solutions (PDF)', href: `${base}/Week_2/FI362_Mock_Midterm_Solutions.pdf` }
 ];
@@ -60,7 +61,9 @@ const chapters = [
         week: 'Week 2',
         title: 'Chapter 4 — Nonlinear Time Series Models',
         summary: 'Threshold and regime-switching frameworks for financial time series, including motivation, model structure, and interpretation.',
-        slides: `${base}/Week_2/Week2_NonLinear.pdf`
+        slides: `${base}/Week_2/Week2_NonLinear.pdf`,
+        rSource: `${base}/Week_2/sp500_nonlinear.R`,
+        extraSource: `${base}/Week_2/sp500_nonlinear.Rmd`
     }
 ];
 ---
@@ -105,7 +108,7 @@ const chapters = [
                                     <a href={ch.slides}>Slides (PDF)</a>
                                     {ch.supplement && <><br /><a href={ch.supplement}>R supplement (HTML)</a></>}
                                     {ch.rSource && <><br /><a href={ch.rSource}>R source (.R)</a></>}
-                                    {ch.extraSource && <><br /><a href={ch.extraSource}>Regime code (.R)</a></>}
+                                    {ch.extraSource && <><br /><a href={ch.extraSource}>{ch.extraSource.endsWith('.Rmd') ? 'R notebook (.Rmd)' : 'Regime code (.R)'}</a></>}
                                 </td>
                             </tr>
                         ))}

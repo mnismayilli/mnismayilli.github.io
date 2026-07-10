@@ -1,0 +1,797 @@
+---
+title: "Nonlinear Models for the S&P 500"
+subtitle: "TAR, Markov Switching, Nonlinearity Tests, Parametric Bootstrap and Forecast Evaluation"
+author: "FI362 --- Advanced Financial Econometrics"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    code_folding: show
+    theme: readable
+  pdf_document:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,
+                      fig.width = 8, fig.height = 4.2, cache = FALSE)
+options(digits = 5)
+```
+
+# What this notebook does, and what it refuses to do
+
+This notebook implements, on real S&P 500 data, the pipeline in the accompanying
+lecture: fit a linear benchmark, work out **where** the nonlinearity lives
+(mean or variance), fit a SETAR and a Markov switching model, test linearity
+**by parametric bootstrap** rather than against a $\chi^2$ table, and then
+evaluate forecasts with tools that can actually see what a nonlinear model buys
+you.
+
+Three commitments, stated up front because they are the places where published
+work most often goes wrong:
+
+1. **Every core routine is written in base R.** Contributed packages (`tsDyn`,
+   `MSwM`) appear only as cross-checks. If you cannot see the arithmetic, you
+   cannot defend the result.
+2. **The bootstrap re-runs the entire search inside every replication.** Fixing
+   $\hat c$ inside the loop turns $\sup_c \mathrm{LR}(c)$ back into a pointwise
+   $\chi^2$ statistic and makes the test over-reject.
+3. **The Diebold--Mariano test is never applied to nested models.** An AR($p$) is
+   nested in a SETAR. Use Clark--West.
+
+```{r config}
+CFG <- list(
+  ticker      = "^GSPC",
+  start_date  = "2000-01-01",
+  end_date    = format(Sys.Date()),
+  p_max       = 5,      # max AR order
+  d_max       = 3,      # max threshold delay
+  trim        = 0.15,   # threshold grid trimmed to [0.15, 0.85] quantiles
+  B_boot      = 499,    # bootstrap replications (999 or 1999 for final results)
+  burn_in     = 300,
+  window      = 1000,   # rolling estimation window
+  max_origins = 1000,   # cap on OOS origins (run time)
+  refit_every = 20,
+  seed        = 20260710
+)
+set.seed(CFG$seed)
+
+have <- function(pkg) requireNamespace(pkg, quietly = TRUE)
+opt <- list(quantmod = have("quantmod"), tseries = have("tseries"),
+            tsDyn = have("tsDyn"), MSwM = have("MSwM"))
+opt
+```
+
+---
+
+# Data: from prices to log returns
+
+We use $r_t = 100 \times \Delta \log P_t$, in **percent**.
+
+Why percent, and not decimals? Purely numerical. In decimals the conditional
+variance of a daily return is around $10^{-4}$; the Markov switching likelihood
+then has parameters separated by four orders of magnitude and `optim()` fails to
+converge. Scaling by 100 is not cosmetic --- it is the difference between a
+model that estimates and one that does not.
+
+```{r data}
+get_sp500 <- function(cfg = CFG) {
+  if (opt$quantmod) {
+    out <- try({
+      px <- quantmod::getSymbols(cfg$ticker, src = "yahoo",
+                                 from = cfg$start_date, to = cfg$end_date,
+                                 auto.assign = FALSE)
+      px <- stats::na.omit(quantmod::Cl(px))
+      list(dates = as.Date(zoo::index(px))[-1],
+           r = as.numeric(100 * diff(log(as.numeric(px)))))
+    }, silent = TRUE)
+    if (!inherits(out, "try-error")) return(out)
+  }
+  message("Using a simulated fallback series (no data connection).")
+  n <- 6000; P <- matrix(c(0.99, 0.01, 0.06, 0.94), 2, 2, byrow = TRUE)
+  s <- integer(n); s[1] <- 1L
+  for (t in 2:n) s[t] <- sample.int(2, 1, prob = P[s[t - 1], ])
+  mu <- c(0.05, -0.10); sg <- c(0.70, 2.30)
+  list(dates = seq.Date(as.Date(cfg$start_date), by = "day", length.out = n),
+       r = mu[s] + sg[s] * rnorm(n))
+}
+
+dat <- get_sp500(); r <- dat$r; n <- length(r)
+c(T = n, first = as.character(min(dat$dates)), last = as.character(max(dat$dates)))
+```
+
+## Stylised facts
+
+```{r stylised}
+round(c(
+  mean     = mean(r),
+  sd       = sd(r),
+  skewness = mean((r - mean(r))^3) / sd(r)^3,
+  kurtosis = mean((r - mean(r))^4) / sd(r)^4,
+  acf1_r   = as.numeric(acf(r,   1, plot = FALSE)$acf[2]),
+  acf1_r2  = as.numeric(acf(r^2, 1, plot = FALSE)$acf[2])
+), 4)
+```
+
+The number to look at is the gap between `acf1_r` (near zero) and `acf1_r2`
+(large). Returns are close to a martingale difference **in the mean** but
+strongly dependent **in the square**. That single fact predicts almost everything
+that follows: the mean-nonlinearity tests will be borderline, the variance tests
+will reject overwhelmingly, and the MSFE gains from nonlinear mean models will
+be negligible.
+
+```{r plot-returns, fig.height=3.2}
+plot(dat$dates, r, type = "l", col = "steelblue",
+     xlab = "", ylab = "r (%)", main = "S&P 500 daily log returns")
+abline(h = 0, col = "grey60")
+```
+
+---
+
+# The linear benchmark
+
+`make_lags(y, mlag)` discards the first `mlag` observations. The argument exists
+for one reason: an AR($p$) and a SETAR with delay $d>p$ must be estimated on the
+**same effective sample**, or the likelihood ratio between them is nonsense.
+
+```{r ar}
+make_lags <- function(y, mlag) {
+  Z <- embed(y, mlag + 1)              # col 1 = y_t, col j+1 = y_{t-j}
+  list(y = Z[, 1], X = cbind(1, Z[, -1, drop = FALSE]))
+}
+
+fit_ar <- function(y, p, mlag = p) {
+  L <- make_lags(y, mlag)
+  X <- cbind(1, L$X[, 2:(p + 1), drop = FALSE])
+  b <- qr.solve(X, L$y)
+  a <- as.numeric(L$y - X %*% b); neff <- length(a)
+  list(p = p, mlag = mlag, coef = as.numeric(b), resid = a,
+       ssr = sum(a^2), sigma2 = sum(a^2)/neff, n = neff,
+       aic = neff * log(sum(a^2)/neff) + 2 * (p + 1))
+}
+
+aics <- sapply(1:CFG$p_max, function(p) fit_ar(r, p)$aic)
+p_hat <- which.min(aics); ar0 <- fit_ar(r, p_hat)
+cat("selected p =", p_hat, "\n"); round(ar0$coef, 5)
+```
+
+---
+
+# Where is the nonlinearity? Mean or variance?
+
+This ordering is not pedantry. BDS, Tsay's $F$ and the sup-LR test all reject
+against a *general* alternative. If you have not first removed conditional
+heteroskedasticity, a GARCH effect will present itself as a threshold in the
+mean and you will fit --- and publish --- the wrong model.
+
+## Engle's ARCH-LM and McLeod--Li
+
+```{r arch}
+arch_lm <- function(a, q = 12) {
+  Z <- embed(a^2, q + 1); y <- Z[, 1]; X <- cbind(1, Z[, -1, drop = FALSE])
+  fit <- lm.fit(X, y)
+  r2 <- 1 - sum(fit$residuals^2) / sum((y - mean(y))^2)
+  stat <- length(y) * r2
+  c(stat = stat, df = q, p = pchisq(stat, q, lower.tail = FALSE))
+}
+round(arch_lm(ar0$resid), 4)
+bt <- Box.test(ar0$resid^2, lag = 12, type = "Ljung-Box")   # McLeod-Li
+c(stat = unname(bt$statistic), p = unname(bt$p.value))
+```
+
+Both reject at any conventional level. That is *variance* nonlinearity.
+
+## Tsay's (1989) threshold $F$ test
+
+The trick: sort the AR design matrix by the switching variable $y_{t-d}$, run
+**recursive** least squares on the sorted rows, and test whether the predictive
+residuals are orthogonal to the regressors. If the AR is stable across regimes
+they are. The threshold $c$ never has to be estimated --- which is exactly why
+this statistic has a standard $F$ limit while $\sup_c \mathrm{LR}(c)$ does not.
+
+```{r tsay}
+tsay_F <- function(y, p, d, start_frac = 0.10) {
+  L <- make_lags(y, max(p, d))
+  yy <- L$y
+  X  <- cbind(1, L$X[, 2:(p + 1), drop = FALSE])
+  z  <- L$X[, d + 1]                       # switching variable y_{t-d}
+  o  <- order(z); yy <- yy[o]; X <- X[o, , drop = FALSE]
+  N  <- length(yy); k <- ncol(X); m0 <- max(floor(start_frac * N), k + 2)
+
+  ehat <- numeric(N - m0)
+  Xi <- X[1:m0, , drop = FALSE]; yi <- yy[1:m0]
+  Vi <- solve(crossprod(Xi)); b <- Vi %*% crossprod(Xi, yi)
+  for (i in seq_len(N - m0)) {             # recursive least squares
+    xn <- X[m0 + i, , drop = FALSE]
+    fi <- as.numeric(1 + xn %*% Vi %*% t(xn))
+    ehat[i] <- as.numeric(yy[m0 + i] - xn %*% b) / sqrt(fi)
+    Kg <- Vi %*% t(xn) / fi                # Sherman-Morrison update
+    b  <- b + Kg * as.numeric(yy[m0 + i] - xn %*% b)
+    Vi <- Vi - Kg %*% (xn %*% Vi)
+  }
+  Xe <- X[(m0 + 1):N, , drop = FALSE]
+  ssr1 <- sum(lm.fit(Xe, ehat)$residuals^2)
+  ssr0 <- sum(ehat^2)
+  Ne <- length(ehat)
+  Fs <- ((ssr0 - ssr1)/k) / (ssr1/(Ne - k))
+  c(F = Fs, p = pf(Fs, k, Ne - k, lower.tail = FALSE))
+}
+
+t(sapply(1:CFG$d_max, function(d) c(d = d, round(tsay_F(r, p_hat, d), 4))))
+```
+
+## BDS: before and after filtering the volatility
+
+```{r bds, eval=opt$tseries}
+tseries::bds.test(ar0$resid, m = 3, eps = sd(ar0$resid))
+```
+
+If you have `rugarch` or `fGarch` installed, refit a GARCH(1,1) and re-run BDS
+on the **standardised** residuals $\hat a_t / \hat h_t$. The typical outcome on
+S&P 500 data is a large drop in the BDS statistic. Interpretation: most of the
+"nonlinearity" was volatility clustering. A threshold in the mean is a *residual*
+claim that must survive this filtering.
+
+---
+
+# SETAR by conditional least squares
+
+If $c$ were known, a SETAR would be two OLS regressions on two subsamples. It is
+not known, so we **profile it out**: compute the concentrated SSR on a trimmed
+grid of candidate thresholds and take the minimiser. Trimming at 15% in each tail
+guarantees each regime retains enough observations.
+
+$\hat c$ converges at rate $T$ (super-consistent), the slopes at rate
+$\sqrt{T}$. Practical consequence: report slope standard errors *as if $c$ were
+known*. Never the reverse.
+
+```{r setar-fns}
+setar_ssr <- function(y, p, d, c_val, mlag = max(p, d)) {
+  L <- make_lags(y, mlag); yy <- L$y
+  X <- cbind(1, L$X[, 2:(p + 1), drop = FALSE]); z <- L$X[, d + 1]
+  i1 <- z <= c_val
+  if (sum(i1) < ncol(X) + 5 || sum(!i1) < ncol(X) + 5) return(NA_real_)
+  sum(lm.fit(X[i1, , drop = FALSE], yy[i1])$residuals^2) +
+  sum(lm.fit(X[!i1, , drop = FALSE], yy[!i1])$residuals^2)
+}
+
+setar_grid <- function(y, p, d, trim = CFG$trim, ngrid = 200, mlag = max(p, d)) {
+  L <- make_lags(y, mlag); z <- L$X[, d + 1]
+  g <- unique(quantile(z[z >= quantile(z, trim) & z <= quantile(z, 1 - trim)],
+                       probs = seq(0, 1, length.out = ngrid)))
+  s <- vapply(g, function(cc) setar_ssr(y, p, d, cc, mlag), numeric(1))
+  k <- which.min(s)
+  list(c_hat = as.numeric(g[k]), ssr = as.numeric(s[k]),
+       grid = as.numeric(g), ssr_path = as.numeric(s), n = length(L$y))
+}
+
+setar_fit <- function(y, p, d, c_val, mlag = max(p, d)) {
+  L <- make_lags(y, mlag); yy <- L$y
+  X <- cbind(1, L$X[, 2:(p + 1), drop = FALSE]); z <- L$X[, d + 1]
+  i1 <- z <= c_val
+  f1 <- lm.fit(X[i1, , drop = FALSE], yy[i1])
+  f2 <- lm.fit(X[!i1, , drop = FALSE], yy[!i1])
+  list(p = p, d = d, c = c_val, coef1 = f1$coefficients, coef2 = f2$coefficients,
+       sigma1 = sqrt(mean(f1$residuals^2)), sigma2 = sqrt(mean(f2$residuals^2)),
+       n1 = sum(i1), n2 = sum(!i1), n = length(yy),
+       ssr = sum(f1$residuals^2) + sum(f2$residuals^2))
+}
+```
+
+## Selecting $(p, d)$
+
+All candidates share one effective sample (`MLAG`) so their AICs are comparable.
+
+**A warning that belongs here and nowhere else:** this AIC is *not* a test of
+linearity. The SETAR was chosen by minimising over $c$; the search itself
+inflates the fit. Comparing $\mathrm{AIC}_{\text{SETAR}}$ to
+$\mathrm{AIC}_{\text{AR}}$ and declaring victory is a selection effect. That is
+what the bootstrap in the next section prices.
+
+```{r setar-select}
+MLAG <- max(CFG$p_max, CFG$d_max)
+sel <- expand.grid(p = 1:CFG$p_max, d = 1:CFG$d_max)
+sel$aic <- NA_real_; sel$c_hat <- NA_real_
+for (i in seq_len(nrow(sel))) {
+  g  <- setar_grid(r, sel$p[i], sel$d[i], mlag = MLAG)
+  fi <- setar_fit(r, sel$p[i], sel$d[i], g$c_hat, mlag = MLAG)
+  sel$aic[i]   <- fi$n * log(fi$ssr / fi$n) + 2 * (2 * (sel$p[i] + 1) + 2)
+  sel$c_hat[i] <- g$c_hat
+}
+best <- sel[which.min(sel$aic), ]; best
+setar_hat <- setar_fit(r, best$p, best$d, best$c_hat, mlag = MLAG)
+unlist(setar_hat[c("c", "sigma1", "sigma2", "n1", "n2")])
+```
+
+Read `sigma1` against `sigma2`. With $\hat c$ near zero, $\hat\sigma_1 >
+\hat\sigma_2$ says that days following a fall are more volatile than days
+following a rise --- the leverage effect, appearing inside a *mean-equation*
+model with no GARCH term anywhere.
+
+```{r ssr-profile, fig.height=3.4}
+gg <- setar_grid(r, best$p, best$d, mlag = MLAG)
+plot(gg$grid, gg$ssr_path, type = "l", col = "steelblue", lwd = 2,
+     xlab = "candidate threshold c", ylab = "concentrated SSR",
+     main = "Profile SSR: the objective the grid search minimises")
+abline(v = gg$c_hat, lty = 2, col = "firebrick")
+```
+
+The sharpness of the minimum is informative. A flat profile means $c$ is poorly
+identified and any regime interpretation is fragile, whatever the $p$-value says.
+
+## Cross-check with `tsDyn`
+
+`tsDyn::setar()` indexes the delay from **zero**: `thDelay = d - 1`.
+
+```{r tsdyn, eval=opt$tsDyn}
+chk <- tsDyn::setar(r, m = best$p, thDelay = best$d - 1, nthresh = 1,
+                    trim = CFG$trim)
+c(tsDyn = round(tsDyn::getTh(chk), 4), ours = round(best$c_hat, 4))
+```
+
+---
+
+# Markov switching: Hamilton filter and Kim smoother
+
+$$
+r_t = \mu_{s_t} + \phi\, r_{t-1} + \sigma_{s_t}\varepsilon_t, \qquad
+P = \begin{pmatrix} p_{11} & 1-p_{11} \\ 1-p_{22} & p_{22}\end{pmatrix}.
+$$
+
+Intercept and variance switch; the AR slope is common. Two implementation points
+that decide whether this converges:
+
+* **Reparametrise.** Variances through `exp`, probabilities through `plogis`, so
+  `optim()` is unconstrained. Forgetting this is the single most common cause of
+  "the MS model would not estimate".
+* **Break label switching.** $(\mu_1,\sigma_1,p_{11}) \leftrightarrow
+  (\mu_2,\sigma_2,p_{22})$ gives an identical likelihood. Impose
+  $\sigma_1 < \sigma_2$ *after* optimising, so state 1 is always "calm".
+
+The filter is two lines. Predict, then apply Bayes. The normalising constant of
+the Bayes step *is* the one-step predictive density, so the log-likelihood comes
+out of the filter for free.
+
+```{r ms-fns}
+ms_unpack <- function(par) list(mu = par[1:2], phi = par[3], sig = exp(par[4:5]),
+                                p11 = plogis(par[6]), p22 = plogis(par[7]))
+
+ms_filter <- function(par, y) {
+  th <- ms_unpack(par)
+  P  <- matrix(c(th$p11, 1 - th$p11, 1 - th$p22, th$p22), 2, 2, byrow = TRUE)
+  n <- length(y); den <- 2 - th$p11 - th$p22
+  xi <- c((1 - th$p22)/den, (1 - th$p11)/den)          # ergodic start
+  xp <- xf <- matrix(NA_real_, n, 2); llv <- numeric(n)
+  for (t in 2:n) {
+    pred <- as.vector(crossprod(P, xi))                # xi_{t|t-1} = P' xi_{t-1|t-1}
+    eta  <- dnorm(y[t], th$mu + th$phi * y[t - 1], th$sig)
+    num  <- pred * eta; f <- sum(num)
+    if (!is.finite(f) || f <= 0) return(NULL)
+    xp[t, ] <- pred; xf[t, ] <- num/f; llv[t] <- log(f); xi <- num/f
+  }
+  list(loglik = sum(llv[-1]), xi_pred = xp, xi_filt = xf, P = P, theta = th)
+}
+ms_negll <- function(par, y) { o <- ms_filter(par, y)
+  if (is.null(o) || !is.finite(o$loglik)) 1e10 else -o$loglik }
+
+# Kim (1994): xi_{t|T} = xi_{t|t} * [ P %*% (xi_{t+1|T} / xi_{t+1|t}) ]
+# Note P, not P': we sum over the FUTURE state for a fixed current state.
+ms_smooth <- function(flt) {
+  xf <- flt$xi_filt; xp <- flt$xi_pred; P <- flt$P; n <- nrow(xf)
+  xs <- matrix(NA_real_, n, 2); xs[n, ] <- xf[n, ]
+  for (t in (n - 1):2) {
+    xs[t, ] <- xf[t, ] * as.vector(P %*% (xs[t + 1, ] / xp[t + 1, ]))
+    xs[t, ] <- xs[t, ] / sum(xs[t, ])
+  }
+  xs
+}
+```
+
+```{r ms-fit}
+start <- c(0.05, -0.10, 0, log(0.7), log(2.3), qlogis(0.98), qlogis(0.90))
+fit_ms <- optim(start, ms_negll, y = r, method = "BFGS",
+                control = list(maxit = 2000, reltol = 1e-10))
+th <- ms_unpack(fit_ms$par)
+if (th$sig[1] > th$sig[2]) {                       # enforce state 1 = calm
+  fit_ms$par[c(1,2)] <- fit_ms$par[c(2,1)]
+  fit_ms$par[c(4,5)] <- fit_ms$par[c(5,4)]
+  fit_ms$par[c(6,7)] <- fit_ms$par[c(7,6)]
+  th <- ms_unpack(fit_ms$par)
+}
+flt <- ms_filter(fit_ms$par, r); sm <- ms_smooth(flt)
+
+den <- 2 - th$p11 - th$p22
+data.frame(
+  quantity = c("mu1","mu2","sigma1","sigma2","phi","p11","p22",
+               "E[dur 1]","E[dur 2]","pi1","pi2","logLik"),
+  value = round(c(th$mu, th$sig, th$phi, th$p11, th$p22,
+                  1/(1 - th$p11), 1/(1 - th$p22),
+                  (1 - th$p22)/den, (1 - th$p11)/den, flt$loglik), 4))
+```
+
+## Three sanity checks, in order
+
+1. $p_{11}, p_{22} > 0.9$. Regimes should be *persistent states*, not dummies for
+   outliers.
+2. $1/(1-\hat p_{22}) > 5$ days. If the turbulent regime dies in two days it is
+   picking up jumps, not volatility clustering. Remedy: allow GARCH within
+   regimes.
+3. $\pi_2$ roughly $0.1$--$0.3$. A turbulent regime occupying half the sample is
+   not a crisis regime.
+
+## Crisis dating
+
+The smoothed probability of the high-variance regime is the model's own,
+entirely data-driven, crisis chronology. Check it against 2008, March 2020 and
+2022. If it does not line up, something is wrong --- with the model, or with the
+data.
+
+```{r ms-plot, fig.height=3.4}
+plot(dat$dates[-1], sm[-1, 2], type = "l", col = "firebrick", ylim = c(0, 1),
+     xlab = "", ylab = expression(Pr(s[t] == 2 ~ "|" ~ F[T])),
+     main = "Smoothed probability of the turbulent regime")
+abline(h = 0.5, lty = 2)
+```
+
+```{r ms-dating}
+crisis <- dat$dates[which(sm[, 2] > 0.5)]
+round(mean(sm[-1, 2] > 0.5), 3)          # share of days in the turbulent state
+head(sort(table(format(crisis, "%Y")), decreasing = TRUE), 6)
+```
+
+---
+
+# Testing linearity: the Davies problem and the parametric bootstrap
+
+Under $H_0$ (AR($p$)) the likelihood is **exactly flat in $c$**. The threshold is
+a nuisance parameter present only under the alternative. Consequently
+$\mathrm{LR}(c)$ is a *stochastic process* indexed by $c$, and
+$\sup_c \mathrm{LR}(c)$ converges to the supremum of a squared Gaussian process
+whose covariance kernel depends on the DGP and on the grid. It is **not**
+$\chi^2$, and because a supremum can only increase a statistic, the true null
+distribution lies to the *right* of the $\chi^2$ you were about to use.
+
+```{r suplr}
+sup_LR <- function(y, p, d, trim = CFG$trim, mlag = max(p, d)) {
+  ar_f <- fit_ar(y, p, mlag = mlag)                 # same effective sample
+  g    <- setar_grid(y, p, d, trim, mlag = mlag)    # ... as the SETAR
+  g$n * (log(ar_f$ssr) - log(g$ssr))
+}
+```
+
+## Simulating the null
+
+The innovation scheme is not a detail. Daily S&P 500 returns have strong ARCH.
+An i.i.d. residual bootstrap reshuffles $\hat a_t$ and **destroys volatility
+clustering**: the bootstrap samples are too calm, extreme values of $y_{t-d}$
+that drive large $\sup_c \mathrm{LR}$ are too rare, the simulated null is too
+tight, and the test **over-rejects**. You will find a threshold where there is
+only GARCH.
+
+The wild bootstrap $a_t^* = \hat a_t \eta_t$ preserves the conditional variance
+pattern and is the safe default. Better still: bootstrap under an AR--GARCH null.
+
+```{r boot}
+sim_ar_null <- function(arfit, T_out, burn = CFG$burn_in,
+                        scheme = c("wild","residual","parametric")) {
+  scheme <- match.arg(scheme); p <- arfit$p; b <- arfit$coef
+  N <- T_out + burn + p
+  e <- switch(scheme,
+    parametric = rnorm(N, 0, sqrt(arfit$sigma2)),
+    residual   = sample(arfit$resid, N, replace = TRUE),
+    wild       = sample(arfit$resid, N, replace = TRUE) * rnorm(N))
+  y <- numeric(N); dn <- 1 - sum(b[-1])
+  y[1:p] <- if (abs(dn) > 1e-6) b[1]/dn else 0
+  for (t in (p + 1):N) y[t] <- b[1] + sum(b[-1] * y[(t - 1):(t - p)]) + e[t]
+  y[(burn + p + 1):N]
+}
+
+boot_supLR <- function(y, p, d, B = CFG$B_boot, scheme = "wild",
+                       mlag = max(p, d)) {
+  obs <- sup_LR(y, p, d, mlag = mlag)
+  arf <- fit_ar(y, p, mlag = mlag); Tn <- length(y)
+  stars <- vapply(seq_len(B), function(b) {
+    ys <- sim_ar_null(arf, Tn, scheme = scheme)
+    sup_LR(ys, p, d, mlag = mlag)     # <-- FULL procedure, grid search included
+  }, numeric(1))
+  list(stat = obs, boot = stars, crit95 = unname(quantile(stars, 0.95)),
+       p_value = (1 + sum(stars >= obs)) / (1 + B), scheme = scheme, B = B)
+}
+```
+
+The $(1 + \#)/(1 + B)$ form is exactly valid in finite samples. Choose $B$ so
+that $\alpha(1+B)$ is an integer: 499, 999, 1999. Not 500.
+
+```{r boot-run}
+bt_wild <- boot_supLR(r, best$p, best$d, scheme = "wild",     mlag = MLAG)
+bt_resi <- boot_supLR(r, best$p, best$d, scheme = "residual", mlag = MLAG)
+data.frame(
+  scheme  = c("wild", "residual", "naive chi^2"),
+  crit95  = round(c(bt_wild$crit95, bt_resi$crit95, qchisq(0.95, best$p + 1)), 3),
+  p_value = round(c(bt_wild$p_value, bt_resi$p_value,
+                    pchisq(bt_wild$stat, best$p + 1, lower.tail = FALSE)), 4))
+```
+
+```{r boot-plot, fig.height=3.6}
+hist(bt_wild$boot, breaks = 40, freq = FALSE, col = "grey85", border = "white",
+     xlab = "sup-LR", main = "Bootstrap null vs the naive chi-square")
+curve(dchisq(x, best$p + 1), add = TRUE, col = "red", lwd = 2)
+abline(v = bt_wild$stat, lty = 2, lwd = 2)
+legend("topright", c("bootstrap null","chi-square (naive)","observed"),
+       col = c("grey60","red","black"), lwd = c(6,2,2), lty = c(1,1,2), bty = "n")
+```
+
+**Report the $p$-value together with the null DGP that generated it.** A
+threshold test is only as credible as its null. If the wild-bootstrap $p$-value
+is large while the residual-bootstrap $p$-value is tiny, you have found GARCH.
+
+### What happens if you cheat
+
+Fixing $c = \hat c$ inside the loop removes the supremum. The bootstrapped
+statistic becomes a pointwise LR, which is asymptotically $\chi^2$. Since
+$\sup_c \mathrm{LR}^*(c) \ge \mathrm{LR}^*(\hat c)$ always, the simulated null is
+stochastically too small and the $p$-value too small.
+
+```{r cheat}
+cheat <- vapply(seq_len(200), function(b) {
+  ys <- sim_ar_null(fit_ar(r, best$p, mlag = MLAG), n, scheme = "wild")
+  ar_s <- fit_ar(ys, best$p, mlag = MLAG)
+  s1 <- setar_ssr(ys, best$p, best$d, best$c_hat, mlag = MLAG)  # c FIXED
+  ar_s$n * (log(ar_s$ssr) - log(s1))
+}, numeric(1))
+c(correct_95  = round(bt_wild$crit95, 3),
+  cheating_95 = round(unname(quantile(cheat, 0.95, na.rm = TRUE)), 3),
+  chisq_95    = round(qchisq(0.95, best$p + 1), 3))
+```
+
+The middle number sits close to the $\chi^2$ value and far below the correct
+one. That gap *is* the size distortion.
+
+---
+
+# Forecasting
+
+## One step: easy. $h$ steps: not.
+
+For a SETAR at $h=1$ the regime is known --- you observe $y_{T+1-d}$. At $h=2$
+the regime depends on the *random* $y_{T+2-d}$, and since the map $f$ is
+nonlinear, $\mathbb{E}[f(Y)] \neq f(\mathbb{E}[Y])$. Iterating the point forecast
+through the skeleton is simply wrong, and it discards the interesting object: the
+predictive density, which is a mixture and is often skewed.
+
+```{r setar-fc}
+setar_forecast1 <- function(fit, ylast) {
+  b <- if (ylast[fit$d] <= fit$c) fit$coef1 else fit$coef2
+  as.numeric(b[1] + sum(b[-1] * ylast[1:fit$p]))
+}
+
+setar_forecast_mc <- function(fit, yhist, h, M = 5000, resid_pool = NULL) {
+  pmax <- max(fit$p, fit$d); paths <- matrix(NA_real_, M, h)
+  for (m in 1:M) {
+    yl <- rev(tail(yhist, pmax))                 # yl[1] = y_T
+    for (j in 1:h) {
+      low <- yl[fit$d] <= fit$c
+      b  <- if (low) fit$coef1 else fit$coef2
+      sg <- if (low) fit$sigma1 else fit$sigma2
+      e  <- if (is.null(resid_pool)) rnorm(1) else sample(resid_pool, 1)
+      yn <- b[1] + sum(b[-1] * yl[1:fit$p]) + sg * e
+      yl <- c(yn, yl[-pmax]); paths[m, j] <- yn
+    }
+  }
+  paths
+}
+```
+
+## Markov switching: closed form for the regime, mixture for the density
+
+$$
+\xi_{T+h|T} = (P')^h \xi_{T|T}, \qquad
+\mathrm{Var}(r_{T+h}\mid\mathcal{F}_T)
+= \underbrace{\sum_j \xi_j \sigma_j^2}_{\text{within}}
++ \underbrace{\sum_j \xi_j (m_j - \bar m)^2}_{\text{across}}.
+$$
+
+```{r ms-fc}
+ms_forecast1 <- function(th, xi_T, ylast) {
+  P <- matrix(c(th$p11, 1 - th$p11, 1 - th$p22, th$p22), 2, 2, byrow = TRUE)
+  xi1 <- as.vector(crossprod(P, xi_T))
+  m_j <- th$mu + th$phi * ylast; mbar <- sum(xi1 * m_j)
+  list(xi = xi1, mean = mbar,
+       var = sum(xi1 * th$sig^2) + sum(xi1 * (m_j - mbar)^2),
+       comp_mean = m_j, comp_sd = th$sig)
+}
+ms_dens <- function(x, fc) sum(fc$xi * dnorm(x, fc$comp_mean, fc$comp_sd))
+ms_cdf  <- function(x, fc) sum(fc$xi * pnorm(x, fc$comp_mean, fc$comp_sd))
+ms_quantile <- function(a, fc)
+  uniroot(function(x) ms_cdf(x, fc) - a,
+          c(min(fc$comp_mean) - 12*max(fc$comp_sd),
+            max(fc$comp_mean) + 12*max(fc$comp_sd)))$root
+
+fc <- ms_forecast1(th, flt$xi_filt[n, ], r[n])
+c(xi1 = fc$xi[1], mean = fc$mean, sd = sqrt(fc$var),
+  VaR1_mixture = ms_quantile(0.01, fc),
+  VaR1_gaussian = qnorm(0.01, fc$mean, sqrt(fc$var)))
+```
+
+The Gaussian comparator has, by construction, the **same mean and the same
+variance**. It therefore has identical MSFE and an identical Mincer--Zarnowitz
+regression. Its 1% VaR is different. Point-forecast evaluation is structurally
+blind to this; that is the argument for evaluating densities.
+
+```{r dens-plot, fig.height=3.4}
+xs <- seq(fc$mean - 6*sqrt(fc$var), fc$mean + 6*sqrt(fc$var), length.out = 600)
+plot(xs, sapply(xs, ms_dens, fc = fc), type = "l", lwd = 2, col = "firebrick",
+     xlab = "r_{T+1} (%)", ylab = "density",
+     main = "Predictive density: MS mixture vs matched Gaussian")
+lines(xs, dnorm(xs, fc$mean, sqrt(fc$var)), lwd = 2, col = "steelblue")
+legend("topright", c("MS mixture","matched Gaussian"),
+       col = c("firebrick","steelblue"), lwd = 2, bty = "n")
+```
+
+---
+
+# Rolling out-of-sample exercise
+
+Three design rules, each easy to break and expensive to break:
+
+* Re-estimate **everything** inside the window --- $p$, $d$, $c$, and the MS
+  parameters. Choosing $p$ once on the full sample is look-ahead bias.
+* Nonlinear models need **long windows**. With a 500-day window the crash regime
+  may never appear in-sample, and the model degenerates to its linear special
+  case.
+* `refit_every` re-estimates only every $k$ origins. This mimics a real desk and
+  keeps run time finite. Set it to 1 for the textbook-pure version.
+
+```{r oos, cache=TRUE}
+R_win <- CFG$window
+origins <- seq(R_win, n - 1)
+if (length(origins) > CFG$max_origins) origins <- tail(origins, CFG$max_origins)
+P_oos <- length(origins); actual <- r[origins + 1]
+f_ar <- f_st <- f_ms <- rep(NA_real_, P_oos)
+ls_ar <- ls_st <- ls_ms <- pit <- rep(NA_real_, P_oos)
+par_ms <- fit_ms$par
+
+for (i in seq_along(origins)) {
+  t0 <- origins[i]; yw <- r[(t0 - R_win + 1):t0]
+  if ((i - 1) %% CFG$refit_every == 0) {
+    arw <- fit_ar(yw, p_hat, mlag = MLAG)
+    gw  <- setar_grid(yw, p_hat, best$d, mlag = MLAG)
+    stw <- setar_fit(yw, p_hat, best$d, gw$c_hat, mlag = MLAG)
+    msw <- try(optim(par_ms, ms_negll, y = yw, method = "BFGS",
+                     control = list(maxit = 1000)), silent = TRUE)
+    if (!inherits(msw, "try-error")) par_ms <- msw$par
+    thw <- ms_unpack(par_ms)
+    if (thw$sig[1] > thw$sig[2]) {
+      par_ms[c(1,2)] <- par_ms[c(2,1)]; par_ms[c(4,5)] <- par_ms[c(5,4)]
+      par_ms[c(6,7)] <- par_ms[c(7,6)]; thw <- ms_unpack(par_ms)
+    }
+  }
+  fw <- ms_filter(par_ms, yw); if (is.null(fw)) next
+  yl <- rev(tail(yw, max(p_hat, best$d)))
+  f_ar[i] <- arw$coef[1] + sum(arw$coef[-1] * yl[1:p_hat])
+  f_st[i] <- setar_forecast1(stw, yl)
+  sg_st   <- if (yl[stw$d] <= stw$c) stw$sigma1 else stw$sigma2
+  fci     <- ms_forecast1(thw, fw$xi_filt[length(yw), ], yw[length(yw)])
+  f_ms[i] <- fci$mean
+  ls_ar[i] <- dnorm(actual[i], f_ar[i], sqrt(arw$sigma2), log = TRUE)
+  ls_st[i] <- dnorm(actual[i], f_st[i], sg_st, log = TRUE)
+  ls_ms[i] <- log(ms_dens(actual[i], fci))
+  pit[i]   <- ms_cdf(actual[i], fci)
+}
+
+ok <- complete.cases(f_ar, f_st, f_ms)
+e_ar <- actual[ok] - f_ar[ok]; e_st <- actual[ok] - f_st[ok]
+e_ms <- actual[ok] - f_ms[ok]
+data.frame(model = c("AR","SETAR","MS"),
+           MSFE = round(c(mean(e_ar^2), mean(e_st^2), mean(e_ms^2)), 5),
+           MAE  = round(c(mean(abs(e_ar)), mean(abs(e_st)), mean(abs(e_ms))), 5),
+           logscore = round(c(mean(ls_ar[ok]), mean(ls_st[ok]),
+                              mean(ls_ms[ok])), 4))
+```
+
+Expected pattern: MSFE essentially tied; log score clearly better for the MS
+model. **Nonlinear models earn their keep in the density and in the signs, not in
+the mean squared error.**
+
+---
+
+# Forecast evaluation
+
+## Diebold--Mariano --- and when it is illegal
+
+```{r dm}
+dm_test <- function(e1, e2, h = 1, power = 2, hln = TRUE) {
+  d <- abs(e1)^power - abs(e2)^power; P <- length(d); dbar <- mean(d)
+  g <- acf(d, lag.max = max(h - 1, 1), type = "covariance", plot = FALSE)$acf
+  lrv <- g[1] + if (h > 1) 2 * sum(g[2:h]) else 0
+  stat <- dbar / sqrt(lrv / P)
+  if (hln) {
+    stat <- stat * sqrt((P + 1 - 2*h + h*(h - 1)/P) / P)
+    pv <- 2 * pt(-abs(stat), df = P - 1)
+  } else pv <- 2 * pnorm(-abs(stat))
+  c(DM = stat, p = pv, dbar = dbar)
+}
+```
+
+An AR($p$) is **nested** in a SETAR: set $\phi^{(1)} = \phi^{(2)}$. Under the
+null the two forecasts converge to each other, so $\bar d \to 0$ *and*
+$\mathrm{Var}(d_t) \to 0$ at the same rate. The DM statistic is degenerate and
+badly undersized: "fail to reject" carries almost no information. Worse, under
+the null the larger model's forecasts contain pure estimation noise, which
+mechanically raises its MSFE and pushes $\bar d$ the wrong way.
+
+Clark--West subtracts exactly that noise term, $(\hat r_1 - \hat r_2)^2$. It is a
+**one-sided** test.
+
+```{r cw}
+cw_test <- function(y, f_small, f_large, h = 1) {
+  ft <- (y - f_small)^2 - ((y - f_large)^2 - (f_small - f_large)^2)
+  P <- length(ft); fbar <- mean(ft)
+  g <- acf(ft, lag.max = max(h - 1, 1), type = "covariance", plot = FALSE)$acf
+  lrv <- g[1] + if (h > 1) 2 * sum(g[2:h]) else 0
+  stat <- fbar / sqrt(lrv / P)
+  c(CW = stat, p_one_sided = pnorm(stat, lower.tail = FALSE), fbar = fbar)
+}
+
+rbind(
+  "DM  SETAR vs MS (non-nested: legitimate)" = round(dm_test(e_st, e_ms), 4),
+  "DM  AR vs SETAR (NESTED: uninformative)"  = round(dm_test(e_ar, e_st), 4))
+round(cw_test(actual[ok], f_ar[ok], f_st[ok]), 4)
+```
+
+## Directional accuracy: Pesaran--Timmermann
+
+For returns, sign accuracy often matters more than MSFE. A model can be poor at
+levels and profitable at signs.
+
+```{r pt}
+pt_test <- function(y, f) {
+  keep <- y != 0 & f != 0; y <- y[keep]; f <- f[keep]; P <- length(y)
+  Phat <- mean(sign(y) == sign(f))
+  py <- mean(y > 0); pf <- mean(f > 0)
+  Ps <- py*pf + (1 - py)*(1 - pf)
+  vP  <- Ps*(1 - Ps)/P
+  vPs <- ((2*py - 1)^2 * pf*(1 - pf) + (2*pf - 1)^2 * py*(1 - py) +
+            4*py*pf*(1 - py)*(1 - pf)/P) / P
+  stat <- (Phat - Ps) / sqrt(max(vP - vPs, .Machine$double.eps))
+  c(hit_rate = Phat, PT = stat, p = pnorm(stat, lower.tail = FALSE))
+}
+rbind(AR = round(pt_test(actual[ok], f_ar[ok]), 4),
+      SETAR = round(pt_test(actual[ok], f_st[ok]), 4),
+      MS = round(pt_test(actual[ok], f_ms[ok]), 4))
+```
+
+## Density evaluation: the PIT
+
+If the density forecast is correctly specified, $u_t = F_t(r_t)$ is i.i.d.
+$U(0,1)$. A **U-shaped** histogram means the intervals are too narrow (tails
+underestimated); a **hump** means they are too wide. Uniformity and independence
+are separate hypotheses and both must hold.
+
+```{r pit, fig.height=3.4}
+u <- pit[ok]
+hist(u, breaks = 20, freq = FALSE, col = "grey85", border = "white",
+     xlab = "PIT", main = "PIT of the MS density forecast")
+abline(h = 1, col = "red", lwd = 2)
+ks.test(u, "punif")
+Box.test(u - mean(u), lag = 10, type = "Ljung-Box")
+```
+
+---
+
+# Checklist before you believe any of this
+
+1. Was the AR order re-selected inside the rolling window? *(look-ahead bias)*
+2. Did the bootstrap re-run the grid search over $c$ in **every** draw?
+3. Is the bootstrap null DGP reported alongside the $p$-value?
+4. Is the DM test being applied to nested models? *(it must not be)*
+5. Is a nonlinear model being judged on MSFE alone? *(it should not be)*
+6. Does the MS crisis dating line up with 2008, 2020 and 2022?
+7. Is the profile-SSR minimum sharp, or is $\hat c$ barely identified?
+
+```{r session}
+sessionInfo()
+```
