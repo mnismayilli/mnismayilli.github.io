@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Distributional Properties of Returns – Time Series Analysis in Financial Econometrics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/03-linear-ts.html" rel="next">
+<link href="../chapters/01-returns.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c94efcbe7087408ea84692b584c735f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-fca680cf785cbab9ed9b1a0a99de9537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c94efcbe7087408ea84692b584c735f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-distribution.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributional Properties of Returns</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Time Series Analysis in Financial Econometrics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-returns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Asset Returns: Simple and Log</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-distribution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributional Properties of Returns</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-linear-ts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Time Series Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-ma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Moving-Average Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-arma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ARMA Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-unit-root.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Unit-Root Nonstationarity</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/08-arima.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ARIMA Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/09-arch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">ARCH Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/10-garch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GARCH Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/11-garch-est.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimating and Evaluating Volatility Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15-extreme-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Extreme Values, Quantiles, and Value at Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Options: Contracts, Payoffs, and the Greeks</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/13-continuous-time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Continuous-Time Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/12-nonlinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonlinear Models</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-moments" id="toc-sec-moments" class="nav-link active" data-scroll-target="#sec-moments"><span class="header-section-number">2.1</span> The first four moments</a></li>
+  <li><a href="#sec-summary" id="toc-sec-summary" class="nav-link" data-scroll-target="#sec-summary"><span class="header-section-number">2.2</span> A summary of our six series</a></li>
+  <li><a href="#sec-fat-tails" id="toc-sec-fat-tails" class="nav-link" data-scroll-target="#sec-fat-tails"><span class="header-section-number">2.3</span> Fat tails, made concrete</a></li>
+  <li><a href="#sec-visual" id="toc-sec-visual" class="nav-link" data-scroll-target="#sec-visual"><span class="header-section-number">2.4</span> Seeing it: histograms and Q–Q plots</a>
+  <ul class="collapse">
+  <li><a href="#sec-qq-grid" id="toc-sec-qq-grid" class="nav-link" data-scroll-target="#sec-qq-grid"><span class="header-section-number">2.4.1</span> Every series, side by side</a></li>
+  </ul></li>
+  <li><a href="#sec-jb" id="toc-sec-jb" class="nav-link" data-scroll-target="#sec-jb"><span class="header-section-number">2.5</span> The formal test: Jarque–Bera</a></li>
+  <li><a href="#sec-aggregation" id="toc-sec-aggregation" class="nav-link" data-scroll-target="#sec-aggregation"><span class="header-section-number">2.6</span> Aggregational Gaussianity</a></li>
+  <li><a href="#sec-heavy-tails" id="toc-sec-heavy-tails" class="nav-link" data-scroll-target="#sec-heavy-tails"><span class="header-section-number">2.7</span> Where this leads: heavy-tailed innovations</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-distribution" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributional Properties of Returns</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In <a href="01-returns.html" class="quarto-xref"><span>Chapter 1</span></a> we established <em>what</em> to model — log returns — and <em>why</em> — they are stationary while prices are not. This chapter asks the next question: <strong>what does the distribution of returns actually look like?</strong> The answer shapes every modelling decision that follows.</p>
+<p>The short version, which Tsay <span class="citation" data-cites="tsay2010">(<a href="#ref-tsay2010" role="doc-biblioref">Tsay 2010</a>)</span> documents and we reproduce on our own data, is that daily returns are <strong>emphatically not normal</strong>. They are <em>fat-tailed</em> — extreme days happen far more often than a bell curve allows — and mildly <em>asymmetric</em>. Getting this right is not academic: assuming normality is exactly the mistake that makes a risk model blind to crashes.</p>
+<p>All statistics in this chapter use log returns over the <strong>estimation window</strong> (through 2026-07-01), and the code needs <strong>only base R</strong>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Log returns over the estimation window; no external packages needed</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>est_return <span class="ot">&lt;-</span> <span class="cf">function</span>(sym) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">sprintf</span>(<span class="st">"data/%s.csv"</span>, sym))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(df<span class="sc">$</span>Date)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df[df<span class="sc">$</span>Date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">"2026-07-01"</span>), ]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diff</span>(<span class="fu">log</span>(df<span class="sc">$</span>Adjusted))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>symbols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd, numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> est_return(sym):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(<span class="ss">f"data/</span><span class="sc">{</span>sym<span class="sc">}</span><span class="ss">.csv"</span>, parse_dates<span class="op">=</span>[<span class="st">"Date"</span>]).set_index(<span class="st">"Date"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[df.index <span class="op">&lt;=</span> <span class="st">"2026-07-01"</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.log(df[<span class="st">"Adjusted"</span>]).diff().dropna()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>symbols <span class="op">=</span> [<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<section id="sec-moments" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-moments"><span class="header-section-number">2.1</span> The first four moments</h2>
+<p>A distribution is summarised, to a first approximation, by its first four <strong>moments</strong>. For a return <span class="math inline">\(r\)</span> with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>:</p>
+<p><span id="eq-moments"><span class="math display">\[
+\begin{aligned}
+\text{mean } \mu &amp;= E[r], &amp;
+\text{variance } \sigma^2 &amp;= E[(r-\mu)^2], \\[4pt]
+\text{skewness } S &amp;= \frac{E[(r-\mu)^3]}{\sigma^3}, &amp;
+\text{kurtosis } K &amp;= \frac{E[(r-\mu)^4]}{\sigma^4}.
+\end{aligned}
+\tag{2.1}\]</span></span></p>
+<p>The <strong>mean</strong> measures average return; the <strong>variance</strong> (whose square root <span class="math inline">\(\sigma\)</span> is the <em>volatility</em>) measures risk. <strong>Skewness</strong> measures asymmetry: <span class="math inline">\(S&lt;0\)</span> means the left tail (losses) is longer than the right. <strong>Kurtosis</strong> measures tail heaviness; it is benchmarked against the normal, for which <span class="math inline">\(K=3\)</span>. We almost always report <strong>excess kurtosis</strong> <span class="math inline">\(K-3\)</span>: positive excess kurtosis (a <em>leptokurtic</em> distribution) means fatter tails and a sharper peak than a normal with the same variance.</p>
+<p>Given a sample <span class="math inline">\(r_1,\dots,r_n\)</span>, the moments are estimated by their sample analogues:</p>
+<p><span id="eq-sample-moments"><span class="math display">\[
+\begin{aligned}
+\hat\mu &amp;= \frac{1}{n}\sum_t r_t, &amp;
+\hat\sigma^2 &amp;= \frac{1}{n-1}\sum_t (r_t-\hat\mu)^2, \\[6pt]
+\hat S &amp;= \frac{1}{(n-1)\hat\sigma^3}\sum_t (r_t-\hat\mu)^3, &amp;
+\hat K &amp;= \frac{1}{(n-1)\hat\sigma^4}\sum_t (r_t-\hat\mu)^4.
+\end{aligned}
+\tag{2.2}\]</span></span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>skew_hat <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(x); m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x); s <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">sum</span>((x <span class="sc">-</span> m)<span class="sc">^</span><span class="dv">3</span>) <span class="sc">/</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> s<span class="sc">^</span><span class="dv">3</span>) }</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>kurt_hat <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(x); m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x); s <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">sum</span>((x <span class="sc">-</span> m)<span class="sc">^</span><span class="dv">4</span>) <span class="sc">/</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> s<span class="sc">^</span><span class="dv">4</span>) }   <span class="co"># raw K; excess = K - 3</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>jb_stat  <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(x); S <span class="ot">&lt;-</span> <span class="fu">skew_hat</span>(x); K <span class="ot">&lt;-</span> <span class="fu">kurt_hat</span>(x)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                          n <span class="sc">/</span> <span class="dv">6</span> <span class="sc">*</span> (S<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (K <span class="sc">-</span> <span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">4</span>) }       <span class="co"># Jarque-Bera (eq-jb)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> skew_hat(x):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.asarray(x, <span class="bu">float</span>)<span class="op">;</span> n <span class="op">=</span> <span class="bu">len</span>(x)<span class="op">;</span> m <span class="op">=</span> x.mean()<span class="op">;</span> s <span class="op">=</span> x.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((x <span class="op">-</span> m)<span class="op">**</span><span class="dv">3</span>).<span class="bu">sum</span>() <span class="op">/</span> ((n <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> s<span class="op">**</span><span class="dv">3</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kurt_hat(x):                                   <span class="co"># raw K; excess = K - 3</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.asarray(x, <span class="bu">float</span>)<span class="op">;</span> n <span class="op">=</span> <span class="bu">len</span>(x)<span class="op">;</span> m <span class="op">=</span> x.mean()<span class="op">;</span> s <span class="op">=</span> x.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((x <span class="op">-</span> m)<span class="op">**</span><span class="dv">4</span>).<span class="bu">sum</span>() <span class="op">/</span> ((n <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> s<span class="op">**</span><span class="dv">4</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jb_stat(x):                                    <span class="co"># Jarque-Bera (eq-jb)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.asarray(x, <span class="bu">float</span>)<span class="op">;</span> n <span class="op">=</span> <span class="bu">len</span>(x)<span class="op">;</span> S <span class="op">=</span> skew_hat(x)<span class="op">;</span> K <span class="op">=</span> kurt_hat(x)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">/</span> <span class="dv">6</span> <span class="op">*</span> (S<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (K <span class="op">-</span> <span class="dv">3</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-summary" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-summary"><span class="header-section-number">2.2</span> A summary of our six series</h2>
+<p>The code below computes the four moments plus the Jarque–Bera statistic (defined in <a href="#sec-jb" class="quarto-xref"><span>Section 2.5</span></a>) for each series.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>summ <span class="ot">&lt;-</span> <span class="cf">function</span>(sym) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">est_return</span>(sym)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Series =</span> sym, <span class="at">n =</span> <span class="fu">length</span>(r),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">Mean   =</span> <span class="fu">mean</span>(r), <span class="at">SD =</span> <span class="fu">sd</span>(r), <span class="at">AnnVol =</span> <span class="fu">sd</span>(r) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">252</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">Skew   =</span> <span class="fu">skew_hat</span>(r), <span class="at">ExKurt =</span> <span class="fu">kurt_hat</span>(r) <span class="sc">-</span> <span class="dv">3</span>, <span class="at">JB =</span> <span class="fu">jb_stat</span>(r),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">Min =</span> <span class="fu">min</span>(r), <span class="at">Max =</span> <span class="fu">max</span>(r))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(symbols, summ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> summ(sym):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> est_return(sym).values</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(Series<span class="op">=</span>sym, n<span class="op">=</span><span class="bu">len</span>(r), Mean<span class="op">=</span>r.mean(), SD<span class="op">=</span>r.std(ddof<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                AnnVol<span class="op">=</span>r.std(ddof<span class="op">=</span><span class="dv">1</span>)<span class="op">*</span>np.sqrt(<span class="dv">252</span>), Skew<span class="op">=</span>skew_hat(r),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                ExKurt<span class="op">=</span>kurt_hat(r)<span class="op">-</span><span class="dv">3</span>, JB<span class="op">=</span>jb_stat(r), Min<span class="op">=</span>r.<span class="bu">min</span>(), Max<span class="op">=</span>r.<span class="bu">max</span>())</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>pd.DataFrame([summ(s) <span class="cf">for</span> s <span class="kw">in</span> symbols])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>The estimated moments (daily returns, in %, over the estimation window):</p>
+<div id="tbl-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Distributional summary of daily log returns
+</figcaption>
+<div aria-describedby="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 9%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Series</th>
+<th style="text-align: center;">Mean</th>
+<th style="text-align: center;">SD</th>
+<th style="text-align: center;">Ann. vol</th>
+<th style="text-align: center;">Skew</th>
+<th style="text-align: center;">Excess kurt</th>
+<th style="text-align: center;">Jarque–Bera</th>
+<th style="text-align: center;">Worst</th>
+<th style="text-align: center;">Best</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">0.107%</td>
+<td style="text-align: center;">1.79%</td>
+<td style="text-align: center;">28.4%</td>
+<td style="text-align: center;">−0.17</td>
+<td style="text-align: center;">6.27</td>
+<td style="text-align: center;">6,192</td>
+<td style="text-align: center;">−13.8%</td>
+<td style="text-align: center;">+14.3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSFT</td>
+<td style="text-align: center;">0.078%</td>
+<td style="text-align: center;">1.65%</td>
+<td style="text-align: center;">26.2%</td>
+<td style="text-align: center;">−0.20</td>
+<td style="text-align: center;">7.97</td>
+<td style="text-align: center;">10,013</td>
+<td style="text-align: center;">−15.9%</td>
+<td style="text-align: center;">+13.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AMZN</td>
+<td style="text-align: center;">0.083%</td>
+<td style="text-align: center;">2.07%</td>
+<td style="text-align: center;">32.8%</td>
+<td style="text-align: center;">0.03</td>
+<td style="text-align: center;">6.16</td>
+<td style="text-align: center;">5,960</td>
+<td style="text-align: center;">−15.1%</td>
+<td style="text-align: center;">+14.6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">0.046%</td>
+<td style="text-align: center;">1.09%</td>
+<td style="text-align: center;">17.4%</td>
+<td style="text-align: center;">−0.64</td>
+<td style="text-align: center;">14.34</td>
+<td style="text-align: center;">32,572</td>
+<td style="text-align: center;">−12.8%</td>
+<td style="text-align: center;">+9.1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">0.025%</td>
+<td style="text-align: center;">1.06%</td>
+<td style="text-align: center;">16.8%</td>
+<td style="text-align: center;">−0.71</td>
+<td style="text-align: center;">7.32</td>
+<td style="text-align: center;">8,722</td>
+<td style="text-align: center;">−10.8%</td>
+<td style="text-align: center;">+6.2%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GCF</td>
+<td style="text-align: center;">0.028%</td>
+<td style="text-align: center;">1.09%</td>
+<td style="text-align: center;">17.3%</td>
+<td style="text-align: center;">−0.85</td>
+<td style="text-align: center;">8.93</td>
+<td style="text-align: center;">12,966</td>
+<td style="text-align: center;">−12.1%</td>
+<td style="text-align: center;">+5.9%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Read <a href="#tbl-summary" class="quarto-xref">Table&nbsp;<span>2.1</span></a> slowly, because almost every empirical fact about financial returns is sitting in it.</p>
+<p>The <strong>means are economically small and statistically fragile</strong>. Apple earns about <span class="math inline">\(0.11\%\)</span> per day, the S&amp;P 500 about <span class="math inline">\(0.05\%\)</span>; annualised, that is a healthy <span class="math inline">\(\sim\!28\%\)</span> and <span class="math inline">\(\sim\!17\%\)</span>, but on any given day it is swamped by a standard deviation more than twenty times larger. Forecasting the <em>level</em> of returns is therefore very hard.</p>
+<p>The <strong>excess kurtosis is large and positive for every series</strong> — from roughly <span class="math inline">\(6\)</span> to <span class="math inline">\(8\)</span> for the individual stocks up to a striking <span class="math inline">\(14\)</span> for the S&amp;P 500 (normal <span class="math inline">\(=0\)</span>). These values say the tails are much heavier than normal. Notice the <em>index</em> is more leptokurtic than its <em>constituents</em>: diversification lowers day-to-day volatility (the S&amp;P’s SD is the smallest here) but does nothing to prevent market-wide crash days, which dominate the fourth moment.</p>
+<p>The <strong>skewness is negative for most series</strong> — mildly so for Apple and Microsoft (<span class="math inline">\(\approx-0.2\)</span>), essentially zero for Amazon, and more pronouncedly negative for the index and gold (<span class="math inline">\(-0.6\)</span> to <span class="math inline">\(-0.85\)</span>). Negative skew means the big moves are disproportionately <em>down</em>. Gold’s pronounced negative skew corrects the cliché that gold only spikes in crises — over this sample its sharpest daily moves were sell-offs.</p>
+</section>
+<section id="sec-fat-tails" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-fat-tails"><span class="header-section-number">2.3</span> Fat tails, made concrete</h2>
+<div class="definition">
+<p><strong>Fat tails</strong> (positive <em>excess kurtosis</em>) mean extreme moves happen far more often than a normal bell curve allows — the defining risk feature of financial returns.</p>
+</div>
+<p>“Excess kurtosis of 14” is abstract. Here is what it means in trading days. Under a normal distribution a move beyond <span class="math inline">\(3\sigma\)</span> should occur on about <span class="math inline">\(0.27\%\)</span> of days — roughly once a year; beyond <span class="math inline">\(4\sigma\)</span> essentially never (<span class="math inline">\(0.006\%\)</span>, about once in 60 years). The code counts how often our returns actually breach these thresholds.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tail_counts <span class="ot">&lt;-</span> <span class="cf">function</span>(sym) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">scale</span>(<span class="fu">est_return</span>(sym))[, <span class="dv">1</span>]           <span class="co"># standardise to mean 0, sd 1</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Series =</span> sym,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">beyond_2sd =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(z) <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">beyond_3sd =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(z) <span class="sc">&gt;</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">beyond_4sd =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(z) <span class="sc">&gt;</span> <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">worst_sd   =</span> <span class="fu">min</span>(z))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(symbols, tail_counts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tail_counts(sym):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> est_return(sym).values</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> (r <span class="op">-</span> r.mean()) <span class="op">/</span> r.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(Series<span class="op">=</span>sym, beyond_2sd<span class="op">=</span>(np.<span class="bu">abs</span>(z)<span class="op">&gt;</span><span class="dv">2</span>).mean()<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                beyond_3sd<span class="op">=</span>(np.<span class="bu">abs</span>(z)<span class="op">&gt;</span><span class="dv">3</span>).mean()<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                beyond_4sd<span class="op">=</span>(np.<span class="bu">abs</span>(z)<span class="op">&gt;</span><span class="dv">4</span>).mean()<span class="op">*</span><span class="dv">100</span>, worst_sd<span class="op">=</span>z.<span class="bu">min</span>())</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>pd.DataFrame([tail_counts(s) <span class="cf">for</span> s <span class="kw">in</span> symbols])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>The estimated tail frequencies, against the normal benchmark:</p>
+<div id="tbl-tails" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tails-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: How often returns breach <span class="math inline">\(k\sigma\)</span>, vs the normal distribution
+</figcaption>
+<div aria-describedby="tbl-tails-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Series</th>
+<th style="text-align: center;">beyond 2σ</th>
+<th style="text-align: center;">beyond 3σ</th>
+<th style="text-align: center;">beyond 4σ</th>
+<th style="text-align: center;">Worst day</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Normal (theory)</strong></td>
+<td style="text-align: center;"><strong>4.55%</strong></td>
+<td style="text-align: center;"><strong>0.27%</strong></td>
+<td style="text-align: center;"><strong>0.006%</strong></td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">4.91%</td>
+<td style="text-align: center;">1.54%</td>
+<td style="text-align: center;">0.50%</td>
+<td style="text-align: center;">−7.8σ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSFT</td>
+<td style="text-align: center;">4.85%</td>
+<td style="text-align: center;">1.41%</td>
+<td style="text-align: center;">0.58%</td>
+<td style="text-align: center;">−9.7σ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AMZN</td>
+<td style="text-align: center;">4.80%</td>
+<td style="text-align: center;">1.49%</td>
+<td style="text-align: center;">0.69%</td>
+<td style="text-align: center;">−7.4σ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">4.56%</td>
+<td style="text-align: center;">1.54%</td>
+<td style="text-align: center;">0.74%</td>
+<td style="text-align: center;">−11.7σ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">5.20%</td>
+<td style="text-align: center;">1.30%</td>
+<td style="text-align: center;">0.50%</td>
+<td style="text-align: center;">−10.3σ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GCF</td>
+<td style="text-align: center;">4.86%</td>
+<td style="text-align: center;">1.30%</td>
+<td style="text-align: center;">0.53%</td>
+<td style="text-align: center;">−11.1σ</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The <span class="math inline">\(2\sigma\)</span> counts look almost normal — around <span class="math inline">\(4.5\)</span>–<span class="math inline">\(5\%\)</span> everywhere — which is why fat tails are easy to miss if you only glance at the bulk of the data. The story is entirely in the extremes. Days beyond <span class="math inline">\(3\sigma\)</span> occur roughly <span class="math inline">\(1.3\)</span>–<span class="math inline">\(1.5\%\)</span> of the time, <strong>five times more often</strong> than normality predicts. Days beyond <span class="math inline">\(4\sigma\)</span> occur around <span class="math inline">\(0.5\)</span>–<span class="math inline">\(0.7\%\)</span> of the time — <strong>on the order of a hundred times</strong> the normal rate. And the worst single days are simply off the map: the S&amp;P 500’s worst day is a <span class="math inline">\(-11.7\sigma\)</span> event. Under a normal distribution an <span class="math inline">\(11\sigma\)</span> day has a probability with more than twenty zeros after the decimal — it would not be expected once in the history of the universe. It happened on a Monday in March 2020.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why this is the whole ballgame for risk
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A Value-at-Risk model built on the normal distribution systematically under-prices exactly the events that bankrupt you. These fat tails are the empirical reason we will (a) prefer <strong>Student-<span class="math inline">\(t\)</span></strong> innovations to Gaussian ones when we fit GARCH, and (b) treat any normal-based risk number as a floor, not an estimate.</p>
+</div>
+</div>
+</section>
+<section id="sec-visual" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-visual"><span class="header-section-number">2.4</span> Seeing it: histograms and Q–Q plots</h2>
+<p>Two pictures diagnose non-normality faster than any table. A <strong>histogram with a fitted normal curve</strong> shows the shape mismatch — too tall in the middle, too heavy in the tails. A <strong>normal quantile–quantile (Q–Q) plot</strong> is sharper: it plots the sorted data against the quantiles a normal would produce. Normal data fall on the straight line; <strong>fat tails bend the points away from the line at both ends</strong>, forming a stretched-S.</p>
+<div id="fig-hist-qq" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/ch2_hist_qq.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: S&amp;P 500 daily log returns. Left: histogram with a fitted normal density (red) — excess mass in both the peak and the tails. Right: normal Q–Q plot — the points bend sharply off the line at both ends, the signature of fat tails; the bottom-left point is the −11.7σ crash day.
+</figcaption>
+</figure>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">est_return</span>(<span class="st">"SPX"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(r, <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"grey85"</span>, <span class="at">border =</span> <span class="st">"grey65"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"S&amp;P 500 returns vs Normal"</span>, <span class="at">xlab =</span> <span class="st">"r_t"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="fu">mean</span>(r), <span class="fu">sd</span>(r)), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(r, <span class="at">main =</span> <span class="st">"Normal Q-Q plot"</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="fl">0.4</span>, <span class="at">col =</span> <span class="st">"grey40"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(r, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> est_return(<span class="st">"SPX"</span>).values</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(r, bins<span class="op">=</span><span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"0.85"</span>, edgecolor<span class="op">=</span><span class="st">"0.65"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>xs <span class="op">=</span> np.linspace(r.<span class="bu">min</span>(), r.<span class="bu">max</span>(), <span class="dv">400</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(xs, stats.norm.pdf(xs, r.mean(), r.std()), <span class="st">"r"</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"S&amp;P 500 returns vs Normal"</span>)<span class="op">;</span> ax[<span class="dv">0</span>].set_xlabel(<span class="st">"r_t"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>stats.probplot(r, dist<span class="op">=</span><span class="st">"norm"</span>, plot<span class="op">=</span>ax[<span class="dv">1</span>])<span class="op">;</span> ax[<span class="dv">1</span>].set_title(<span class="st">"Normal Q-Q plot"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>The Q–Q plot is worth internalising: the tails peel away from the line hard, and the bottom-left corner — the crash days — peels away furthest, echoing the negative skew in <a href="#tbl-summary" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</p>
+<section id="sec-qq-grid" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="sec-qq-grid"><span class="header-section-number">2.4.1</span> Every series, side by side</h3>
+<p>The S&amp;P 500 is not special here — non-normality is pervasive. <a href="#fig-qq-grid" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> shows a normal Q–Q plot for all six series, each annotated with its excess kurtosis.</p>
+<div id="fig-qq-grid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qq-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/ch2_qq_grid.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qq-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Normal Q–Q plots for all six series (estimation window). Every panel bends off the straight line at both ends — all six are fat-tailed. The S&amp;P 500 bends hardest (excess kurtosis 14.3); the lower tail bends more than the upper for the negatively-skewed series.
+</figcaption>
+</figure>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>symbols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (sym <span class="cf">in</span> symbols) {</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">est_return</span>(sym)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qqnorm</span>(r, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="fl">0.3</span>, <span class="at">col =</span> <span class="st">"grey40"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">main =</span> <span class="fu">sprintf</span>(<span class="st">"%s (exc.kurt %.1f)"</span>, sym, <span class="fu">kurt_hat</span>(r) <span class="sc">-</span> <span class="dv">3</span>))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qqline</span>(r, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>symbols <span class="op">=</span> [<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, sym <span class="kw">in</span> <span class="bu">zip</span>(ax.ravel(), symbols):</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> est_return(sym).values</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    stats.probplot(r, dist<span class="op">=</span><span class="st">"norm"</span>, plot<span class="op">=</span>a)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    a.set_title(<span class="ss">f"</span><span class="sc">{</span>sym<span class="sc">}</span><span class="ss"> (exc.kurt </span><span class="sc">{</span>kurt_hat(r)<span class="op">-</span><span class="dv">3</span><span class="sc">:.1f}</span><span class="ss">)"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>The panels rank exactly as <a href="#tbl-summary" class="quarto-xref">Table&nbsp;<span>2.1</span></a> predicted. The <strong>S&amp;P 500</strong> bends off the line most violently — its excess kurtosis of <span class="math inline">\(14.3\)</span> is a full order above the others, the diversified index’s crash-day signature. The <strong>individual stocks</strong> (<span class="math inline">\(6\)</span>–<span class="math inline">\(8\)</span>) are fat-tailed but less extreme. The two <strong>gold</strong> series bend clearly in the lower tail yet stay closer to the line in the <em>upper</em> tail — the visual signature of their pronounced negative skew, where sharp moves are disproportionately sell-offs. No series is close to normal, but each departs in its own way.</p>
+</section>
+</section>
+<section id="sec-jb" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-jb"><span class="header-section-number">2.5</span> The formal test: Jarque–Bera</h2>
+<p>Skewness and excess kurtosis combine into a single test of normality. The <strong>Jarque–Bera</strong> statistic is</p>
+<p><span id="eq-jb"><span class="math display">\[
+\text{JB} = \frac{n}{6}\left( \hat S^{2} + \frac{(\hat K - 3)^2}{4} \right),
+\tag{2.3}\]</span></span></p>
+<p>which, under the null of normality, follows a <span class="math inline">\(\chi^2\)</span> distribution with <span class="math inline">\(2\)</span> degrees of freedom. It rejects precisely when skewness or excess kurtosis is far from its normal value.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">est_return</span>(<span class="st">"SPX"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">skew_hat</span>(r); K <span class="ot">&lt;-</span> <span class="fu">kurt_hat</span>(r); JB <span class="ot">&lt;-</span> <span class="fu">jb_stat</span>(r)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">skewness =</span> S, <span class="at">excess_kurtosis =</span> K <span class="sc">-</span> <span class="dv">3</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">JB =</span> JB, <span class="at">p_value =</span> <span class="fu">pchisq</span>(JB, <span class="at">df =</span> <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> est_return(<span class="st">"SPX"</span>).values</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>S, K, JB <span class="op">=</span> skew_hat(r), kurt_hat(r), jb_stat(r)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(S, K <span class="op">-</span> <span class="dv">3</span>, JB, chi2.sf(JB, df<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What the test says
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the S&amp;P 500: skewness <span class="math inline">\(\approx -0.64\)</span>, excess kurtosis <span class="math inline">\(\approx 14.3\)</span>, giving a <strong>Jarque–Bera statistic of about 32,572</strong> against a <span class="math inline">\(5\%\)</span> critical value of <span class="math inline">\(5.99\)</span> — the <span class="math inline">\(p\)</span>-value underflows to zero. <strong>Every</strong> one of our six series is rejected this decisively. With <span class="math inline">\(n \approx 3{,}800\)</span> the test has enormous power, so read the <em>magnitude</em> (how badly normality fails), not just the yes/no verdict. Formal normality tests reject essentially any real financial series at this sample size — the skewness and kurtosis <em>estimates</em> are the more useful summary of “how far off, and in which direction.”</p>
+</div>
+</div>
+</section>
+<section id="sec-aggregation" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-aggregation"><span class="header-section-number">2.6</span> Aggregational Gaussianity</h2>
+<p>Here is a fact that reconciles our fat tails with the normal distribution. <strong>Non-normality fades as you lengthen the horizon.</strong> A weekly log return is the <em>sum</em> of five daily log returns (<a href="01-returns.html#eq-log-additive" class="quarto-xref">Equation&nbsp;<span>1.4</span></a>), a monthly return the sum of about twenty-one; sums of many random variables drift toward normality (the central limit theorem). So weekly returns are closer to normal than daily, and monthly closer still — <strong>aggregational Gaussianity</strong> <span class="citation" data-cites="cont2001">(<a href="#ref-cont2001" role="doc-biblioref">Cont 2001</a>)</span>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>agg_exkurt <span class="ot">&lt;-</span> <span class="cf">function</span>(sym) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">sprintf</span>(<span class="st">"data/%s.csv"</span>, sym)); df<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(df<span class="sc">$</span>Date)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df[df<span class="sc">$</span>Date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">"2026-07-01"</span>), ]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  lp <span class="ot">&lt;-</span> <span class="fu">log</span>(df<span class="sc">$</span>Adjusted)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  last_in <span class="ot">&lt;-</span> <span class="cf">function</span>(g) lp[<span class="fu">tapply</span>(<span class="fu">seq_along</span>(lp), g, max)]   <span class="co"># last price per period</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">diff</span>(lp)                               <span class="co"># daily</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  w <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">last_in</span>(<span class="fu">cut</span>(df<span class="sc">$</span>Date, <span class="st">"week"</span>)))    <span class="co"># weekly</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">last_in</span>(<span class="fu">cut</span>(df<span class="sc">$</span>Date, <span class="st">"month"</span>)))   <span class="co"># monthly</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Series =</span> sym, <span class="at">daily =</span> <span class="fu">kurt_hat</span>(d) <span class="sc">-</span> <span class="dv">3</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">weekly =</span> <span class="fu">kurt_hat</span>(w) <span class="sc">-</span> <span class="dv">3</span>, <span class="at">monthly =</span> <span class="fu">kurt_hat</span>(m) <span class="sc">-</span> <span class="dv">3</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">c</span>(<span class="st">"AAPL"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>), agg_exkurt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> agg_exkurt(sym):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(<span class="ss">f"data/</span><span class="sc">{</span>sym<span class="sc">}</span><span class="ss">.csv"</span>, parse_dates<span class="op">=</span>[<span class="st">"Date"</span>]).set_index(<span class="st">"Date"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[df.index <span class="op">&lt;=</span> <span class="st">"2026-07-01"</span>]<span class="op">;</span> lp <span class="op">=</span> np.log(df[<span class="st">"Adjusted"</span>])</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> lp.diff().dropna()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> lp.resample(<span class="st">"W"</span>).last().diff().dropna()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> lp.resample(<span class="st">"ME"</span>).last().diff().dropna()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(Series<span class="op">=</span>sym, daily<span class="op">=</span>kurt_hat(d)<span class="op">-</span><span class="dv">3</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                weekly<span class="op">=</span>kurt_hat(w)<span class="op">-</span><span class="dv">3</span>, monthly<span class="op">=</span>kurt_hat(m)<span class="op">-</span><span class="dv">3</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>pd.DataFrame([agg_exkurt(s) <span class="cf">for</span> s <span class="kw">in</span> [<span class="st">"AAPL"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>The estimated excess kurtosis at each frequency:</p>
+<div id="tbl-agg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-agg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.3: Excess kurtosis melts away as the horizon lengthens
+</figcaption>
+<div aria-describedby="tbl-agg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Series</th>
+<th style="text-align: center;">Daily</th>
+<th style="text-align: center;">Weekly</th>
+<th style="text-align: center;">Monthly</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">6.27</td>
+<td style="text-align: center;">1.75</td>
+<td style="text-align: center;">−0.39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">14.34</td>
+<td style="text-align: center;">6.49</td>
+<td style="text-align: center;">0.79</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">7.32</td>
+<td style="text-align: center;">2.05</td>
+<td style="text-align: center;">0.16</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The pattern is exactly as predicted. The S&amp;P 500’s excess kurtosis collapses from about <span class="math inline">\(14\)</span> daily to about <span class="math inline">\(6\)</span> weekly to under <span class="math inline">\(1\)</span> monthly; Apple’s falls from <span class="math inline">\(6\)</span> to under <span class="math inline">\(2\)</span> to essentially <span class="math inline">\(0\)</span>. <strong>At the monthly horizon the normal is a defensible approximation; at the daily horizon it is not</strong> — which is why a book about <em>daily</em> returns must take fat tails seriously from the start.</p>
+</section>
+<section id="sec-heavy-tails" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-heavy-tails"><span class="header-section-number">2.7</span> Where this leads: heavy-tailed innovations</h2>
+<p>If returns are not normal, what are they? A workhorse alternative is the <strong>Student-<span class="math inline">\(t\)</span></strong>, whose degrees-of-freedom parameter <span class="math inline">\(\nu\)</span> controls tail thickness. A standardised <span class="math inline">\(t\)</span> with <span class="math inline">\(\nu\)</span> degrees of freedom has excess kurtosis</p>
+<p><span id="eq-t-kurtosis"><span class="math display">\[
+K - 3 = \frac{6}{\nu - 4}, \qquad \nu &gt; 4,
+\tag{2.4}\]</span></span></p>
+<p>so small <span class="math inline">\(\nu\)</span> means very fat tails, and <span class="math inline">\(\nu \to \infty\)</span> collapses back to the normal. This is the distribution we hand to <code>rugarch</code> (via <code>distribution.model = "std"</code>) when Gaussian innovations prove too thin.</p>
+<p>But a crucial subtlety: <strong>not all of the measured fat-tailedness is “real” fat-tailedness in the innovations.</strong> Much of it is an artefact of <strong>volatility clustering</strong> (the calm-and-stormy alternation in <a href="01-returns.html#fig-price-vs-return" class="quarto-xref">Figure&nbsp;<span>1.2</span></a>). If volatility itself changes over time, then even returns with perfectly <em>normal</em> one-day-ahead innovations look fat-tailed when pooled into one unconditional histogram, because you are mixing calm days (small <span class="math inline">\(\sigma\)</span>) with turbulent ones (large <span class="math inline">\(\sigma\)</span>). A GARCH model captures this time-varying variance directly; the <em>leftover</em> excess kurtosis in the standardised residuals is much smaller than the <span class="math inline">\(14\)</span> we found, and <em>that</em> residual fatness is what a Student-<span class="math inline">\(t\)</span> is for. The unconditional non-normality of this chapter thus splits into two causes — changing volatility and genuinely heavy innovations — and the next several chapters separate them.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Returns are described by four <strong>moments</strong>; the normal benchmark has skewness <span class="math inline">\(0\)</span> and kurtosis <span class="math inline">\(3\)</span> (<a href="#eq-moments" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>).</li>
+<li>Our daily returns have <strong>large positive excess kurtosis</strong> (<span class="math inline">\(6\)</span>–<span class="math inline">\(14\)</span>) and <strong>mild negative skewness</strong> — fat-tailed and asymmetric; the <strong>index</strong> is more leptokurtic than its constituents.</li>
+<li>Extreme days are wildly more frequent than normality allows: <span class="math inline">\(&gt;4\sigma\)</span> days occur <span class="math inline">\(\sim\!100\times\)</span> too often, and the worst exceed <span class="math inline">\(-9\sigma\)</span>.</li>
+<li><strong>Jarque–Bera</strong> (<a href="#eq-jb" class="quarto-xref">Equation&nbsp;<span>2.3</span></a>) rejects normality for every series; read the moment estimates, not just the <span class="math inline">\(p\)</span>-value.</li>
+<li>Non-normality <strong>weakens with horizon</strong> (aggregational Gaussianity).</li>
+<li>The fix is <strong>heavier-tailed innovations</strong> (Student-<span class="math inline">\(t\)</span>, <a href="#eq-t-kurtosis" class="quarto-xref">Equation&nbsp;<span>2.4</span></a>) — but first we strip out the fat tails that are really just <strong>volatility clustering</strong>.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cont2001" class="csl-entry" role="listitem">
+Cont, Rama. 2001. <em>Empirical Properties of Asset Returns: Stylized Facts and Statistical Issues</em>. <em>Quantitative Finance</em>. Vol. 1. 2.
+</div>
+<div id="ref-tsay2010" class="csl-entry" role="listitem">
+Tsay, Ruey S. 2010. <em>Analysis of Financial Time Series</em>. 3rd ed. Hoboken, New Jersey: John Wiley &amp; Sons.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/01-returns.html" class="pagination-link" aria-label="Asset Returns: Simple and Log">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Asset Returns: Simple and Log</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/03-linear-ts.html" class="pagination-link" aria-label="Linear Time Series Analysis">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Time Series Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Time Series Analysis in Financial Econometrics</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

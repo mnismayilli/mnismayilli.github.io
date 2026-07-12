@@ -1,0 +1,132 @@
+# Preface {.unnumbered}
+
+This book is a hands-on introduction to **time series analysis in financial
+econometrics**. It follows the structure and spirit of Ruey Tsay's
+*Analysis of Financial Time Series* [@tsay2010], but with one deliberate
+difference: every concept is paired with **runnable code in both R and Python**
+and applied to **live market data that you can re-download and reproduce on your
+own machine** for any tickers you like.
+
+The goal is not just to show you *what* the models say, but to let you *rerun the
+entire pipeline yourself* — swap in your own stocks or indices, and the analysis
+regenerates end to end.
+
+## What you will need {.unnumbered}
+
+The executing engine for this book is **R** (via `knitr`). Python code is shown
+alongside every R block as copy-ready reference so you can work in whichever
+language you prefer — the two produce equivalent results, and where they differ
+(for example, different default optimizers in GARCH estimation) the text says so.
+
+**R packages**
+
+```r
+install.packages(c(
+  "quantmod",   # download prices
+  "xts", "zoo", # time-indexed data
+  "PerformanceAnalytics",
+  "tseries",    # unit-root / normality tests
+  "urca",       # unit-root tests with explicit deterministic terms
+  "forecast",   # ARIMA modelling and forecasting
+  "rugarch",    # GARCH-family volatility models
+  "FinTS"       # helper tests (e.g. ARCH-LM)
+))
+```
+
+**Python packages**
+
+```bash
+pip install yfinance pandas numpy statsmodels arch matplotlib scipy
+```
+
+## The dataset {.unnumbered}
+
+Throughout the book we work with **six daily series** over roughly fifteen years,
+chosen so that they contrast with one another:
+
+| Symbol in code | Instrument | Ticker | Role |
+|---|---|---|---|
+| `AAPL` | Apple Inc. | `AAPL` | individual stock |
+| `MSFT` | Microsoft Corp. | `MSFT` | individual stock |
+| `AMZN` | Amazon.com Inc. | `AMZN` | individual stock |
+| `SPX`  | S&P 500 index | `^GSPC` | broad US equity index |
+| `GLD`  | SPDR Gold Shares ETF | `GLD` | gold (primary) |
+| `GCF`  | COMEX gold futures | `GC=F` | gold (comparison) |
+
+: Series used throughout the book {.striped}
+
+Three individual mega-cap stocks, one broad equity index, and gold. Gold is
+included on purpose: it behaves *differently* from equities — most visibly, it
+lacks the strong "bad news raises volatility more than good news" **leverage
+effect** we will find in the stocks. That makes it a useful counter-example when
+we get to asymmetric volatility models.
+
+We keep the analysis **univariate**: each series is modelled on its own. (The
+stocks are large constituents of the S&P 500, so a multivariate treatment would
+be dominated by one common factor — a topic we flag but do not pursue here.)
+
+### Estimation and forecast windows {.unnumbered}
+
+The sample runs from **2011-07-01 to 2026-07-10**. We split it once and use the
+same convention everywhere:
+
+- **Estimation window:** data up to and including **2026-07-01** (3,771 trading
+  days for the equity-calendar series). All models are fit here.
+- **Forecast holdout:** the six trading days **2026-07-02 through 2026-07-10**
+  (2026-07-03 is the observed Independence Day market closure). We never let the
+  models see these; we compare forecasts against them.
+
+A six-day holdout is generous enough to *illustrate* volatility forecasting and
+Value-at-Risk, but far too short to *evaluate* the accuracy of return forecasts —
+a point we return to, because it is itself one of the most important lessons in
+financial time series.
+
+### Reproducing the data {.unnumbered}
+
+The CSV files live in the `data/` folder next to this book, and students can
+download them directly. To rebuild them from scratch (or to fetch *your own*
+tickers), run the download once:
+
+::: {.panel-tabset}
+
+## R
+
+```r
+library(quantmod)
+dir.create("data", showWarnings = FALSE)
+
+tickers <- c(AAPL = "AAPL", MSFT = "MSFT", AMZN = "AMZN",
+             SPX  = "^GSPC", GLD  = "GLD",  GCF = "GC=F")
+
+for (nm in names(tickers)) {
+  x  <- getSymbols(tickers[[nm]], src = "yahoo",
+                   from = "2011-07-01", to = "2026-07-11",
+                   auto.assign = FALSE)
+  df <- data.frame(Date = index(x), coredata(x))
+  colnames(df) <- c("Date","Open","High","Low","Close","Volume","Adjusted")
+  write.csv(df, file.path("data", paste0(nm, ".csv")), row.names = FALSE)
+}
+```
+
+## Python
+
+```python
+import yfinance as yf, os
+os.makedirs("data", exist_ok=True)
+tickers = {"AAPL":"AAPL","MSFT":"MSFT","AMZN":"AMZN",
+           "SPX":"^GSPC","GLD":"GLD","GCF":"GC=F"}
+for nm, sym in tickers.items():
+    yf.download(sym, start="2011-07-01", end="2026-07-11",
+                auto_adjust=False).to_csv(f"data/{nm}.csv")
+```
+
+:::
+
+::: {.callout-note}
+## Always use the **Adjusted** column
+Every return we compute uses the **adjusted close**, which corrects for
+dividends and stock splits. Using the raw close would inject artificial jumps
+on ex-dividend and split dates and contaminate the return series. This is the
+first of many places where a small data-handling choice changes the statistics
+downstream — we make it explicit in @sec-returns.
+:::

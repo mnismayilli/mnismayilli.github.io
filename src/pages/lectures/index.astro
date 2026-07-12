@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { courses } from '../../data/courses';
+import { getCourses } from '../../utils/lectures';
+
+const courses = getCourses();
 ---
 
 <BaseLayout title="Lecture Notes" description="Lecture notes, slides, and problem sets from my courses.">

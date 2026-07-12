@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; GARCH Models – Time Series Analysis in Financial Econometrics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/11-garch-est.html" rel="next">
+<link href="../chapters/09-arch.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c94efcbe7087408ea84692b584c735f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-fca680cf785cbab9ed9b1a0a99de9537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c94efcbe7087408ea84692b584c735f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/10-garch.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GARCH Models</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Time Series Analysis in Financial Econometrics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-returns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Asset Returns: Simple and Log</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributional Properties of Returns</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-linear-ts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Time Series Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-ma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Moving-Average Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-arma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ARMA Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-unit-root.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Unit-Root Nonstationarity</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/08-arima.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ARIMA Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/09-arch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">ARCH Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/10-garch.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GARCH Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/11-garch-est.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimating and Evaluating Volatility Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15-extreme-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Extreme Values, Quantiles, and Value at Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Options: Contracts, Payoffs, and the Greeks</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/13-continuous-time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Continuous-Time Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/12-nonlinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonlinear Models</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-garch-def" id="toc-sec-garch-def" class="nav-link active" data-scroll-target="#sec-garch-def"><span class="header-section-number">9.1</span> The GARCH model</a></li>
+  <li><a href="#sec-garch-properties" id="toc-sec-garch-properties" class="nav-link" data-scroll-target="#sec-garch-properties"><span class="header-section-number">9.2</span> Properties of GARCH models</a></li>
+  <li><a href="#sec-garch-fit" id="toc-sec-garch-fit" class="nav-link" data-scroll-target="#sec-garch-fit"><span class="header-section-number">9.3</span> Fitting GARCH(1,1) to the S&amp;P 500</a></li>
+  <li><a href="#sec-garch-order" id="toc-sec-garch-order" class="nav-link" data-scroll-target="#sec-garch-order"><span class="header-section-number">9.4</span> Choosing the order, and all six series</a></li>
+  <li><a href="#sec-garch-forecast" id="toc-sec-garch-forecast" class="nav-link" data-scroll-target="#sec-garch-forecast"><span class="header-section-number">9.5</span> Forecasting the variance</a>
+  <ul class="collapse">
+  <li><a href="#sec-garch-interpret" id="toc-sec-garch-interpret" class="nav-link" data-scroll-target="#sec-garch-interpret"><span class="header-section-number">9.5.1</span> What the variance forecast means for returns</a></li>
+  </ul></li>
+  <li><a href="#sec-garch-concept" id="toc-sec-garch-concept" class="nav-link" data-scroll-target="#sec-garch-concept"><span class="header-section-number">9.6</span> Concept check</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-garch" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GARCH Models</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The ARCH model of <a href="09-arch.html" class="quarto-xref"><span>Chapter 8</span></a> captured volatility clustering, but <a href="09-arch.html#tbl-arch-fits" class="quarto-xref">Table&nbsp;<span>8.2</span></a> exposed its cost: to represent the <em>persistence</em> of volatility — the fact that a shock lingers for weeks — a pure ARCH needed four to ten lagged squared shocks, and gold-futures wanted more still. Bollerslev’s <strong>GARCH</strong> model fixes this with one idea: let today’s variance depend on <strong>yesterday’s variance</strong> as well as yesterday’s shock. That single extra term captures long, smooth persistence with a handful of parameters. GARCH is ARCH made practical, and it is the workhorse volatility model in all of finance.</p>
+<p>We give it the same full treatment: definition, properties, fitting, order choice across all six series, variance forecasting, and the interpretation in terms of returns.</p>
+<section id="sec-garch-def" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="sec-garch-def"><span class="header-section-number">9.1</span> The GARCH model</h2>
+<div class="definition">
+<p>A <strong>GARCH model</strong> makes today’s variance depend on both recent squared shocks <em>and</em> recent variances — capturing long, smooth volatility persistence with few parameters.</p>
+</div>
+<p>A <strong>GARCH(<span class="math inline">\(p,q\)</span>)</strong> model keeps the ARCH terms in the squared shocks and adds autoregressive terms in the conditional variance itself:</p>
+<p><span id="eq-garch"><span class="math display">\[
+\sigma_t^2 = \alpha_0
+           + \sum_{i=1}^{q}\alpha_i\, a_{t-i}^2
+           + \sum_{j=1}^{p}\beta_j\, \sigma_{t-j}^2,
+\tag{9.1}\]</span></span></p>
+<p>with <span class="math inline">\(\alpha_0&gt;0\)</span>, <span class="math inline">\(\alpha_i,\beta_j \ge 0\)</span>. The mean model is unchanged (<a href="09-arch.html#eq-cond-decomp" class="quarto-xref">Equation&nbsp;<span>8.1</span></a>): <span class="math inline">\(a_t = \sigma_t\varepsilon_t\)</span> with <span class="math inline">\(\varepsilon_t \sim
+\text{iid}(0,1)\)</span>. By far the most used member — and the one our data will select — is the <strong>GARCH(1,1)</strong>:</p>
+<p><span id="eq-garch11"><span class="math display">\[
+\sigma_t^2 = \alpha_0 + \alpha_1 a_{t-1}^2 + \beta_1 \sigma_{t-1}^2 .
+\tag{9.2}\]</span></span></p>
+<p>Read it as a recipe for tomorrow’s variance: a baseline <span class="math inline">\(\alpha_0\)</span>, plus a <strong>reaction</strong> to the latest shock (<span class="math inline">\(\alpha_1 a_{t-1}^2\)</span>), plus a <strong>memory</strong> of where volatility already was (<span class="math inline">\(\beta_1 \sigma_{t-1}^2\)</span>). The memory term is what ARCH lacked.</p>
+</section>
+<section id="sec-garch-properties" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="sec-garch-properties"><span class="header-section-number">9.2</span> Properties of GARCH models</h2>
+<p><strong>Persistence and stationarity.</strong> Substituting repeatedly shows a GARCH(1,1) is an <strong>ARCH(<span class="math inline">\(\infty\)</span>)</strong> whose weights decay geometrically at rate <span class="math inline">\(\beta_1\)</span> — which is exactly how it mimics many ARCH lags with two parameters. The variance is stationary when</p>
+<p><span id="eq-garch-persist"><span class="math display">\[
+\alpha_1 + \beta_1 &lt; 1,
+\tag{9.3}\]</span></span></p>
+<p>and <span class="math inline">\(\alpha_1 + \beta_1\)</span> is the <strong>persistence</strong>: how much of today’s variance carries into tomorrow. The unconditional variance is <span class="math inline">\(\alpha_0/(1-\alpha_1-\beta_1)\)</span>. For daily returns the persistence is typically very close to <span class="math inline">\(1\)</span>, which is why volatility drifts in long, slow swings rather than snapping back.</p>
+<p><strong>Half-life.</strong> The speed of mean-reversion is summarised by the <strong>half-life</strong> — the number of days for a volatility shock to decay halfway back to the long-run level:</p>
+<p><span id="eq-garch-halflife"><span class="math display">\[
+\text{half-life} = \frac{\ln 0.5}{\ln(\alpha_1 + \beta_1)}.
+\tag{9.4}\]</span></span></p>
+<p>A persistence of <span class="math inline">\(0.99\)</span> is a half-life of about <span class="math inline">\(69\)</span> days; <span class="math inline">\(0.95\)</span> is about <span class="math inline">\(14\)</span>.</p>
+<p><strong>Reaction vs memory.</strong> The split between <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\beta_1\)</span> matters: <span class="math inline">\(\alpha_1\)</span> governs how sharply volatility jumps on news, <span class="math inline">\(\beta_1\)</span> how long it then lingers. Typically <span class="math inline">\(\beta_1 \gg \alpha_1\)</span> — volatility mostly <em>remembers</em>, and only nudges on each new shock. This is what makes GARCH volatility <strong>smooth</strong> where ARCH was spiky.</p>
+<p><strong>What it still misses.</strong> Standard GARCH is <strong>symmetric</strong>: <span class="math inline">\(\sigma_t^2\)</span> depends on <span class="math inline">\(a_{t-1}^2\)</span>, so a big <em>up</em> day and a big <em>down</em> day of the same size raise tomorrow’s volatility equally. Real equities show a <strong>leverage effect</strong> — bad news raises volatility more than good news — which symmetric GARCH cannot capture. That, and the role of gold as the counter-example, is the subject of the asymmetric models that follow.</p>
+</section>
+<section id="sec-garch-fit" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="sec-garch-fit"><span class="header-section-number">9.3</span> Fitting GARCH(1,1) to the S&amp;P 500</h2>
+<p>Estimated by maximum likelihood on the S&amp;P residuals, the fit is</p>
+<p><span id="eq-garch-spx"><span class="math display">\[
+\sigma_t^2 = 4.0\times 10^{-6} + 0.165\,a_{t-1}^2 + 0.799\,\sigma_{t-1}^2,
+\tag{9.5}\]</span></span></p>
+<p>so <span class="math inline">\(\hat\alpha_1 = 0.165\)</span>, <span class="math inline">\(\hat\beta_1 = 0.799\)</span>, and persistence <span class="math inline">\(\hat\alpha_1 + \hat\beta_1 = 0.96\)</span> — a volatility half-life of about <strong>19 trading days</strong>. The implied unconditional volatility, <span class="math inline">\(16.7\%\)</span> annualised, matches the sample. Compared with the ARCH(1)’s single <span class="math inline">\(\hat\alpha_1 = 0.40\)</span>, GARCH puts most of the weight on <em>memory</em> (<span class="math inline">\(\hat\beta_1 = 0.80\)</span>), which is why its fitted volatility is so much smoother.</p>
+<p><a href="#fig-garch-compare" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> makes the improvement visible. Around the 2020 crash the ARCH(6) volatility (grey) is jagged — it jerks up and down as individual squared shocks enter and leave its window — while the GARCH(1,1) volatility (red) rises and decays in one smooth, persistent arc. GARCH does with three parameters, and more realistically, what ARCH needed seven for.</p>
+<div id="fig-garch-compare" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-garch-compare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/garch_vol_compare.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-garch-compare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: S&amp;P 500 conditional volatility around the 2020 crash: ARCH(6) (grey, spiky) vs GARCH(1,1) (red, smooth). The memory term <span class="math inline">\(\beta_1\sigma_{t-1}^2\)</span> gives GARCH its smooth, persistent path.
+</figcaption>
+</figure>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rugarch)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>est_return <span class="ot">&lt;-</span> <span class="cf">function</span>(sym) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">sprintf</span>(<span class="st">"data/%s.csv"</span>, sym)); d<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(d<span class="sc">$</span>Date)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diff</span>(<span class="fu">log</span>(d<span class="sc">$</span>Adjusted[d<span class="sc">$</span>Date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">"2026-07-01"</span>)]))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fu">ugarchspec</span>(<span class="at">variance.model =</span> <span class="fu">list</span>(<span class="at">model =</span> <span class="st">"sGARCH"</span>, <span class="at">garchOrder =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mean.model =</span> <span class="fu">list</span>(<span class="at">armaOrder =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)), <span class="at">distribution.model =</span> <span class="st">"norm"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>fit  <span class="ot">&lt;-</span> <span class="fu">ugarchfit</span>(spec, <span class="fu">est_return</span>(<span class="st">"SPX"</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>fit                                                         <span class="co"># alpha1, beta1, persistence</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Box.test</span>(<span class="fu">residuals</span>(fit, <span class="at">standardize =</span> <span class="cn">TRUE</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="at">lag =</span> <span class="dv">10</span>, <span class="at">type =</span> <span class="st">"Ljung-Box"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd, numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arch <span class="im">import</span> arch_model</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> est_return(sym):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> pd.read_csv(<span class="ss">f"data/</span><span class="sc">{</span>sym<span class="sc">}</span><span class="ss">.csv"</span>, parse_dates<span class="op">=</span>[<span class="st">"Date"</span>]).set_index(<span class="st">"Date"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.log(d[d.index <span class="op">&lt;=</span> <span class="st">"2026-07-01"</span>][<span class="st">"Adjusted"</span>]).diff().dropna()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> arch_model(est_return(<span class="st">"SPX"</span>)<span class="op">*</span><span class="dv">100</span>, mean<span class="op">=</span><span class="st">"Constant"</span>, vol<span class="op">=</span><span class="st">"GARCH"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                 p<span class="op">=</span><span class="dv">1</span>, q<span class="op">=</span><span class="dv">1</span>, dist<span class="op">=</span><span class="st">"normal"</span>).fit(disp<span class="op">=</span><span class="st">"off"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(res.summary())</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((res.std_resid<span class="op">**</span><span class="dv">2</span>).autocorr(<span class="dv">1</span>))      <span class="co"># ~0: clustering absorbed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>As with ARCH, the check is in the standardised residuals: after fitting GARCH(1,1) the squared standardised residuals show no remaining autocorrelation, and the Ljung–Box and ARCH-LM tests no longer reject — the clustering is fully absorbed.</p>
+</section>
+<section id="sec-garch-order" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="sec-garch-order"><span class="header-section-number">9.4</span> Choosing the order, and all six series</h2>
+<p>For GARCH the order question has an unusually clean answer: <strong>GARCH(1,1) is almost always enough.</strong> Higher orders <span class="math inline">\((p,q)\)</span> rarely lower BIC on daily return data, and the profession treats GARCH(1,1) as the default. We confirm it by a small grid search and then fit GARCH(1,1) to every series.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BIC over a small (p,q) grid — GARCH(1,1) is the usual winner</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="cf">for</span> (q <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  spec <span class="ot">&lt;-</span> <span class="fu">ugarchspec</span>(<span class="at">variance.model =</span> <span class="fu">list</span>(<span class="at">model =</span> <span class="st">"sGARCH"</span>, <span class="at">garchOrder =</span> <span class="fu">c</span>(q, p)),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">mean.model =</span> <span class="fu">list</span>(<span class="at">armaOrder =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"GARCH(%d,%d) BIC=%.3f</span><span class="sc">\n</span><span class="st">"</span>, p, q, <span class="fu">infocriteria</span>(<span class="fu">ugarchfit</span>(spec, <span class="fu">est_return</span>(<span class="st">"SPX"</span>)))[<span class="dv">2</span>]))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p, q <span class="kw">in</span> itertools.product([<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">2</span>]):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> arch_model(est_return(<span class="st">"SPX"</span>)<span class="op">*</span><span class="dv">100</span>, vol<span class="op">=</span><span class="st">"GARCH"</span>, p<span class="op">=</span>q, q<span class="op">=</span>p).fit(disp<span class="op">=</span><span class="st">"off"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"GARCH(</span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span>q<span class="sc">}</span><span class="ss">) BIC = </span><span class="sc">{</span>res<span class="sc">.</span>bic<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tbl-garch-fits" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-garch-fits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.1: GARCH(1,1) fitted to each series
+</figcaption>
+<div aria-describedby="tbl-garch-fits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 33%">
+<col style="width: 11%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ticker</th>
+<th style="text-align: center;"><span class="math inline">\(\hat\alpha_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\hat\beta_1\)</span></th>
+<th style="text-align: center;">persistence <span class="math inline">\(\alpha_1+\beta_1\)</span></th>
+<th style="text-align: center;">half-life</th>
+<th style="text-align: center;">uncond. vol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">0.096</td>
+<td style="text-align: center;">0.854</td>
+<td style="text-align: center;">0.951</td>
+<td style="text-align: center;">14 d</td>
+<td style="text-align: center;">1.79%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSFT</td>
+<td style="text-align: center;">0.134</td>
+<td style="text-align: center;">0.791</td>
+<td style="text-align: center;">0.925</td>
+<td style="text-align: center;">9 d</td>
+<td style="text-align: center;">1.69%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AMZN</td>
+<td style="text-align: center;">0.171</td>
+<td style="text-align: center;">0.746</td>
+<td style="text-align: center;">0.917</td>
+<td style="text-align: center;">8 d</td>
+<td style="text-align: center;">2.27%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">0.165</td>
+<td style="text-align: center;">0.799</td>
+<td style="text-align: center;">0.964</td>
+<td style="text-align: center;">19 d</td>
+<td style="text-align: center;">1.05%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">0.074</td>
+<td style="text-align: center;">0.906</td>
+<td style="text-align: center;">0.981</td>
+<td style="text-align: center;">35 d</td>
+<td style="text-align: center;">1.09%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GCF</td>
+<td style="text-align: center;">0.054</td>
+<td style="text-align: center;">0.932</td>
+<td style="text-align: center;">0.986</td>
+<td style="text-align: center;">48 d</td>
+<td style="text-align: center;">1.12%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#tbl-garch-fits" class="quarto-xref">Table&nbsp;<span>9.1</span></a> is the whole case for GARCH, in six rows. Every series is captured by <strong>three parameters</strong>, versus the four-to-ten ARCH terms of <a href="09-arch.html#tbl-arch-fits" class="quarto-xref">Table&nbsp;<span>8.2</span></a>, and every persistence is <strong>high — <span class="math inline">\(0.92\)</span> to <span class="math inline">\(0.99\)</span></strong> — against ARCH’s mere <span class="math inline">\(0.49\)</span> to <span class="math inline">\(0.79\)</span>. GARCH is not just more parsimonious; it captures <em>much more</em> of the true persistence, because the memory term does the work that many ARCH lags did only approximately. In every case <span class="math inline">\(\hat\beta_1 \gg \hat\alpha_1\)</span>: volatility mostly carries forward. And the differences across assets are economically sensible — the two <strong>gold</strong> series are the most persistent (half-lives of <span class="math inline">\(35\)</span>–<span class="math inline">\(48\)</span> days: gold’s volatility regimes last a long time), while the individual stocks mean-revert faster (<span class="math inline">\(8\)</span>–<span class="math inline">\(14\)</span> days). The S&amp;P sits in between at <span class="math inline">\(19\)</span> days.</p>
+</section>
+<section id="sec-garch-forecast" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="sec-garch-forecast"><span class="header-section-number">9.5</span> Forecasting the variance</h2>
+<p>The GARCH(1,1) variance forecast has a simple closed form. One step ahead is known from the data, and beyond that the shock and variance terms merge into the persistence:</p>
+<p><span id="eq-garch-varfc"><span class="math display">\[
+\sigma_T^2(\ell) = \alpha_0 + (\alpha_1 + \beta_1)\,\sigma_T^2(\ell-1),
+\qquad \ell \ge 2,
+\tag{9.6}\]</span></span></p>
+<p>a smooth geometric reversion to the unconditional variance <span class="math inline">\(\alpha_0/(1-\alpha_1-\beta_1)\)</span> at the rate set by the persistence. Because that rate is close to <span class="math inline">\(1\)</span>, the reversion is <strong>slow</strong> — the half-lives of <a href="#tbl-garch-fits" class="quarto-xref">Table&nbsp;<span>9.1</span></a> — so today’s volatility state matters for weeks, not days. <a href="#fig-garch-volfc" class="quarto-xref">Figure&nbsp;<span>9.2</span></a> shows the two cases from our July 1 origin: the S&amp;P began calm and its forecast drifts <em>up</em> toward its long-run level over many weeks; Apple began elevated and drifts <em>down</em>. Both are smoother and far more gradual than the ARCH forecasts of the previous chapter.</p>
+<div id="fig-garch-volfc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-garch-volfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/garch_volfc.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-garch-volfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.2: GARCH(1,1) variance forecasts from 2026-07-01. The S&amp;P (calm start) drifts up toward its long-run level; Apple (elevated start) drifts down. The reversion is slow — set by the long half-lives — so the current volatility state persists for weeks.
+</figcaption>
+</figure>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">ugarchfit</span>(spec, <span class="fu">est_return</span>(<span class="st">"SPX"</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fc  <span class="ot">&lt;-</span> <span class="fu">ugarchforecast</span>(fit, <span class="at">n.ahead =</span> <span class="dv">20</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sigma</span>(fc)                              <span class="co"># forecast conditional volatility, 20 days</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> arch_model(est_return(<span class="st">"SPX"</span>)<span class="op">*</span><span class="dv">100</span>, vol<span class="op">=</span><span class="st">"GARCH"</span>, p<span class="op">=</span><span class="dv">1</span>, q<span class="op">=</span><span class="dv">1</span>).fit(disp<span class="op">=</span><span class="st">"off"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fc  <span class="op">=</span> res.forecast(horizon<span class="op">=</span><span class="dv">20</span>, reindex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.sqrt(fc.variance.values[<span class="op">-</span><span class="dv">1</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<section id="sec-garch-interpret" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="sec-garch-interpret"><span class="header-section-number">9.5.1</span> What the variance forecast means for returns</h3>
+<p>The interpretation is exactly as in <a href="09-arch.html#sec-arch-interpret" class="quarto-xref"><span>Section 8.6.1</span></a>, but now built on a smoother, more persistent, more realistic volatility. The conditional mean stays at <span class="math inline">\(\mu\)</span>; the prediction interval breathes with the forecast volatility,</p>
+<p><span id="eq-garch-interval"><span class="math display">\[
+r_{T+h} \in \mu \pm 1.96\,\sigma_T(h) \quad (95\%),
+\tag{9.7}\]</span></span></p>
+<p>and because GARCH volatility mean-reverts <em>slowly</em>, the interval stays narrow (or wide) for far longer than the ARCH interval did — a calm market is forecast to stay calm for weeks. This is the model behind the volatility forecasts and Value-at-Risk numbers used across the industry. The carousel shows the adaptive GARCH band against the constant-variance band for all six series.</p>
+<style>
+#garchretCarousel { max-width: 820px; margin: 1.2rem auto 3rem; }
+#garchretCarousel .carousel-control-prev-icon,
+#garchretCarousel .carousel-control-next-icon { filter: invert(1); background-color: rgba(0,0,0,.5); border-radius: 50%; padding: 14px; }
+#garchretCarousel .carousel-indicators { bottom: -2.4rem; }
+#garchretCarousel .carousel-indicators [data-bs-target] { background-color: #555; }
+</style>
+<div id="garchretCarousel" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#garchretCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Apple"></button>
+    <button type="button" data-bs-target="#garchretCarousel" data-bs-slide-to="1" aria-label="Microsoft"></button>
+    <button type="button" data-bs-target="#garchretCarousel" data-bs-slide-to="2" aria-label="Amazon"></button>
+    <button type="button" data-bs-target="#garchretCarousel" data-bs-slide-to="3" aria-label="S&amp;P 500"></button>
+    <button type="button" data-bs-target="#garchretCarousel" data-bs-slide-to="4" aria-label="Gold GLD"></button>
+    <button type="button" data-bs-target="#garchretCarousel" data-bs-slide-to="5" aria-label="Gold futures"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active"><img src="figs/lts_garchret_AAPL.png" class="d-block w-100" alt="Apple GARCH return interval"></div>
+    <div class="carousel-item"><img src="figs/lts_garchret_MSFT.png" class="d-block w-100" alt="Microsoft GARCH return interval"></div>
+    <div class="carousel-item"><img src="figs/lts_garchret_AMZN.png" class="d-block w-100" alt="Amazon GARCH return interval"></div>
+    <div class="carousel-item"><img src="figs/lts_garchret_SPX.png" class="d-block w-100" alt="S&amp;P 500 GARCH return interval"></div>
+    <div class="carousel-item"><img src="figs/lts_garchret_GLD.png" class="d-block w-100" alt="Gold GLD GARCH return interval"></div>
+    <div class="carousel-item"><img src="figs/lts_garchret_GCF.png" class="d-block w-100" alt="Gold futures GARCH return interval"></div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#garchretCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+  <button class="carousel-control-next" type="button" data-bs-target="#garchretCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+</div>
+<p>The story matches the ARCH chapter — calm starts (S&amp;P, Amazon) give bands tighter than the constant-variance band, elevated starts (Apple, Microsoft, gold) give wider ones — but the GARCH bands revert to the constant width <strong>much more slowly</strong>, holding their conditional shape for weeks. That slow, persistent adaptivity is why GARCH, not ARCH, is the volatility model used in practice for risk and option pricing.</p>
+</section>
+</section>
+<section id="sec-garch-concept" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="sec-garch-concept"><span class="header-section-number">9.6</span> Concept check</h2>
+<p>Decide first, then expand each answer.</p>
+<p><strong>Q1. What does GARCH add to the ARCH model, and why does it matter?</strong></p>
+<ul>
+<li><strong>(a)</strong> A term for the conditional mean.</li>
+<li><strong>(b)</strong> A lagged <em>conditional variance</em> term (<span class="math inline">\(\beta\sigma_{t-1}^2\)</span>), which captures long, smooth persistence with far fewer parameters than a high-order ARCH.</li>
+<li><strong>(c)</strong> A deterministic trend.</li>
+<li><strong>(d)</strong> Nothing new.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> The memory term makes GARCH(1,1) an ARCH(<span class="math inline">\(\infty\)</span>) with geometrically decaying weights, so it captures with three parameters what ARCH needed many lags to approximate.</p>
+</div>
+</div>
+</div>
+<p><strong>Q2. A GARCH(1,1) has <span class="math inline">\(\hat\alpha_1 = 0.16\)</span>, <span class="math inline">\(\hat\beta_1 = 0.80\)</span>. Its volatility persistence is:</strong></p>
+<ul>
+<li><strong>(a)</strong> 0.16.</li>
+<li><strong>(b)</strong> 0.80.</li>
+<li><strong>(c)</strong> 0.96 — and it is variance-stationary because that is below 1.</li>
+<li><strong>(d)</strong> 0.128.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(c).</strong> Persistence is <span class="math inline">\(\alpha_1+\beta_1 = 0.96 &lt; 1\)</span> (stationary). It implies a half-life of <span class="math inline">\(\ln 0.5/\ln 0.96 \approx 17\)</span> days.</p>
+</div>
+</div>
+</div>
+<p><strong>Q3. In most fitted GARCH(1,1) models <span class="math inline">\(\hat\beta_1 \gg \hat\alpha_1\)</span>. This means volatility:</strong></p>
+<ul>
+<li><strong>(a)</strong> reacts violently to each new shock and forgets instantly.</li>
+<li><strong>(b)</strong> mostly <em>carries forward</em> (long memory), nudged only a little by each new shock — hence its smooth path.</li>
+<li><strong>(c)</strong> is constant.</li>
+<li><strong>(d)</strong> is negative.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> <span class="math inline">\(\beta_1\)</span> is the memory weight, <span class="math inline">\(\alpha_1\)</span> the reaction. A large <span class="math inline">\(\beta_1\)</span> means today’s variance is mostly yesterday’s, giving the smooth, persistent series.</p>
+</div>
+</div>
+</div>
+<p><strong>Q4. Standard GARCH(1,1) cannot capture the <em>leverage effect</em> (bad news raising volatility more than good news) because:</strong></p>
+<ul>
+<li><strong>(a)</strong> it has too few parameters.</li>
+<li><strong>(b)</strong> it depends on <span class="math inline">\(a_{t-1}^2\)</span>, which is symmetric in the sign of the shock — up and down moves of equal size have identical effect.</li>
+<li><strong>(c)</strong> it is non-stationary.</li>
+<li><strong>(d)</strong> it ignores past shocks.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> Squaring the shock discards its sign, so symmetric GARCH treats gains and losses alike. Asymmetric models (EGARCH, GJR-GARCH) fix this — and gold, which shows little leverage effect, is the instructive counter-example.</p>
+</div>
+</div>
+</div>
+<p><strong>Q5. Why does a calm GARCH forecast stay calm much longer than a calm ARCH forecast?</strong></p>
+<ul>
+<li><strong>(a)</strong> GARCH has no mean-reversion.</li>
+<li><strong>(b)</strong> GARCH persistence (<span class="math inline">\(\alpha_1+\beta_1 \approx 0.96\)</span>) is far higher than ARCH’s, giving a long half-life, so the current state decays only slowly.</li>
+<li><strong>(c)</strong> GARCH ignores the current state.</li>
+<li><strong>(d)</strong> They revert at the same speed.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> High persistence means slow reversion (long half-life), so the conditional volatility — and therefore the return interval — holds its shape for weeks.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>GARCH(<span class="math inline">\(p,q\)</span>)</strong> (<a href="#eq-garch" class="quarto-xref">Equation&nbsp;<span>9.1</span></a>) adds lagged <strong>conditional variance</strong> to ARCH; the memory term makes GARCH(1,1) an <strong>ARCH(<span class="math inline">\(\infty\)</span>)</strong>, capturing persistence with three parameters.</li>
+<li><strong>Persistence</strong> is <span class="math inline">\(\alpha_1+\beta_1&lt;1\)</span> (<a href="#eq-garch-persist" class="quarto-xref">Equation&nbsp;<span>9.3</span></a>); on our data it is <span class="math inline">\(0.92\)</span>–<span class="math inline">\(0.99\)</span> (vs ARCH’s <span class="math inline">\(0.49\)</span>–<span class="math inline">\(0.79\)</span>), with <span class="math inline">\(\hat\beta_1\gg\hat\alpha_1\)</span> giving <strong>smooth</strong> volatility (<a href="#fig-garch-compare" class="quarto-xref">Figure&nbsp;<span>9.1</span></a>) and half-lives of <span class="math inline">\(8\)</span>–<span class="math inline">\(48\)</span> days (<a href="#tbl-garch-fits" class="quarto-xref">Table&nbsp;<span>9.1</span></a>).</li>
+<li><strong>GARCH(1,1) is the default</strong> — higher orders rarely help — and it fits all six series with three parameters each.</li>
+<li>The variance forecast <strong>mean-reverts slowly</strong> (<a href="#eq-garch-varfc" class="quarto-xref">Equation&nbsp;<span>9.6</span></a>), giving an <strong>adaptive return interval</strong> (<a href="#eq-garch-interval" class="quarto-xref">Equation&nbsp;<span>9.7</span></a>) that holds its conditional shape for weeks — the industry-standard basis for volatility forecasting and Value-at-Risk.</li>
+<li>Standard GARCH is <strong>symmetric</strong> and misses the <strong>leverage effect</strong>; asymmetric models (EGARCH, GJR), with <strong>gold as the counter-example</strong>, come next.</li>
+</ul>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/09-arch.html" class="pagination-link" aria-label="ARCH Models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">ARCH Models</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/11-garch-est.html" class="pagination-link" aria-label="Estimating and Evaluating Volatility Models">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimating and Evaluating Volatility Models</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Time Series Analysis in Financial Econometrics</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

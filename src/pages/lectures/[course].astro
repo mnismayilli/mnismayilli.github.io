@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCourses, type Course } from '../../utils/lectures';
+
+// One page per folder in public/lectures/. The file lists come from scanning that
+// folder at build time — see src/utils/lectures.ts.
+export async function getStaticPaths() {
+    return getCourses().map((course) => ({
+        params: { course: course.id },
+        props: { course }
+    }));
+}
+
+type Props = { course: Course };
+
+const { course } = Astro.props;
+---
+
+<BaseLayout
+    title={`${course.code ? `${course.code} · ` : ''}${course.title}`}
+    description={course.blurb}
+>
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">{course.eyebrow}</p>
+            <h1>{course.title}</h1>
+            <p>{course.intro}</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 1.5rem;">
+        <div class="container">
+            {
+                course.links.map((link) => (
+                    <a class="feature" href={link.href}>
+                        <span class="feature-label">{link.label} →</span>
+                        {link.note && <span class="feature-note">{link.note}</span>}
+                    </a>
+                ))
+            }
+
+            <article class="prose">
+                {
+                    course.top.map((file) => (
+                        <p>
+                            <a href={file.href}>
+                                {file.label} ({file.kind}) →
+                            </a>
+                        </p>
+                    ))
+                }
+
+                {
+                    course.sections.map((section) => (
+                        <>
+                            <h2>{section.title}</h2>
+                            {section.note && <p>{section.note}</p>}
+                            <table class="toc">
+                                <thead>
+                                    <tr>
+                                        <th>Session</th>
+                                        <th>Topic</th>
+                                        <th>Materials</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {section.items.map((item) => (
+                                        <tr>
+                                            <td class="toc-day">{item.label}</td>
+                                            <td>
+                                                {item.title && <strong>{item.title}</strong>}
+                                                {item.title && item.summary && <br />}
+                                                {item.summary}
+                                            </td>
+                                            <td class="toc-links">
+                                                {item.files.map((file, index) => (
+                                                    <>
+                                                        {index > 0 && <br />}
+                                                        <a href={file.href}>
+                                                            {file.label} ({file.kind})
+                                                        </a>
+                                                    </>
+                                                ))}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </>
+                    ))
+                }
+            </article>
+
+            <p style="margin-top: 2.5rem;"><a class="backlink" href="/lectures">← All lecture notes</a></p>
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    .feature {
+        display: block;
+        margin: 0 0 2.5rem;
+        padding: 1.25rem 1.4rem;
+        border: 1px solid var(--border, #e2e2e2);
+        border-left-width: 3px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: border-color 0.15s ease;
+    }
+    .feature:hover {
+        border-color: currentColor;
+    }
+    .feature-label {
+        display: block;
+        font-weight: 600;
+        font-size: 1.05rem;
+    }
+    .feature-note {
+        display: block;
+        margin-top: 0.4rem;
+        font-size: 0.92rem;
+        opacity: 0.75;
+        line-height: 1.55;
+    }
+
+    .toc {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0 2rem;
+        font-size: 0.95rem;
+    }
+    .toc th,
+    .toc td {
+        text-align: left;
+        vertical-align: top;
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid var(--border, #e2e2e2);
+    }
+    .toc thead th {
+        border-bottom-width: 2px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    .toc-day {
+        white-space: nowrap;
+        font-weight: 600;
+    }
+    .toc-links {
+        white-space: nowrap;
+    }
+</style>

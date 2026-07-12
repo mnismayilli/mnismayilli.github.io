@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>13&nbsp; Continuous-Time Models – Time Series Analysis in Financial Econometrics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/12-nonlinear.html" rel="next">
+<link href="../chapters/14-options.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c94efcbe7087408ea84692b584c735f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-fca680cf785cbab9ed9b1a0a99de9537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c94efcbe7087408ea84692b584c735f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/13-continuous-time.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Continuous-Time Models</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Time Series Analysis in Financial Econometrics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-returns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Asset Returns: Simple and Log</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributional Properties of Returns</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-linear-ts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Time Series Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-ma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Moving-Average Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-arma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ARMA Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-unit-root.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Unit-Root Nonstationarity</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/08-arima.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ARIMA Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/09-arch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">ARCH Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/10-garch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GARCH Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/11-garch-est.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimating and Evaluating Volatility Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15-extreme-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Extreme Values, Quantiles, and Value at Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Options: Contracts, Payoffs, and the Greeks</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/13-continuous-time.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Continuous-Time Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/12-nonlinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonlinear Models</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-ct-processes" id="toc-sec-ct-processes" class="nav-link active" data-scroll-target="#sec-ct-processes"><span class="header-section-number">13.1</span> Some continuous-time stochastic processes</a>
+  <ul class="collapse">
+  <li><a href="#sec-ct-brownian" id="toc-sec-ct-brownian" class="nav-link" data-scroll-target="#sec-ct-brownian"><span class="header-section-number">13.1.1</span> The Wiener process (Brownian motion)</a></li>
+  <li><a href="#sec-ct-genwiener" id="toc-sec-ct-genwiener" class="nav-link" data-scroll-target="#sec-ct-genwiener"><span class="header-section-number">13.1.2</span> Generalized Wiener process</a></li>
+  <li><a href="#sec-ct-ito" id="toc-sec-ct-ito" class="nav-link" data-scroll-target="#sec-ct-ito"><span class="header-section-number">13.1.3</span> Itô process and Itô’s lemma</a></li>
+  </ul></li>
+  <li><a href="#sec-ct-gbm" id="toc-sec-ct-gbm" class="nav-link" data-scroll-target="#sec-ct-gbm"><span class="header-section-number">13.2</span> Geometric Brownian Motion: the model of prices</a></li>
+  <li><a href="#sec-ct-dist" id="toc-sec-ct-dist" class="nav-link" data-scroll-target="#sec-ct-dist"><span class="header-section-number">13.3</span> Distributions of stock prices and log returns</a></li>
+  <li><a href="#sec-ct-fails" id="toc-sec-ct-fails" class="nav-link" data-scroll-target="#sec-ct-fails"><span class="header-section-number">13.4</span> Where GBM meets our data — and breaks</a></li>
+  <li><a href="#sec-ct-pde" id="toc-sec-ct-pde" class="nav-link" data-scroll-target="#sec-ct-pde"><span class="header-section-number">13.5</span> The Black–Scholes differential equation</a></li>
+  <li><a href="#sec-ct-bs" id="toc-sec-ct-bs" class="nav-link" data-scroll-target="#sec-ct-bs"><span class="header-section-number">13.6</span> Black–Scholes pricing formulas</a>
+  <ul class="collapse">
+  <li><a href="#sec-ct-riskneutral" id="toc-sec-ct-riskneutral" class="nav-link" data-scroll-target="#sec-ct-riskneutral"><span class="header-section-number">13.6.1</span> A risk-neutral world</a></li>
+  <li><a href="#sec-ct-formulas" id="toc-sec-ct-formulas" class="nav-link" data-scroll-target="#sec-ct-formulas"><span class="header-section-number">13.6.2</span> The formulas</a></li>
+  <li><a href="#sec-ct-bounds" id="toc-sec-ct-bounds" class="nav-link" data-scroll-target="#sec-ct-bounds"><span class="header-section-number">13.6.3</span> Lower bounds of European options</a></li>
+  <li><a href="#sec-ct-discussion" id="toc-sec-ct-discussion" class="nav-link" data-scroll-target="#sec-ct-discussion"><span class="header-section-number">13.6.4</span> Discussion</a></li>
+  </ul></li>
+  <li><a href="#sec-ct-jumps" id="toc-sec-ct-jumps" class="nav-link" data-scroll-target="#sec-ct-jumps"><span class="header-section-number">13.7</span> Jump-diffusion models</a>
+  <ul class="collapse">
+  <li><a href="#sec-ct-jumpprice" id="toc-sec-ct-jumpprice" class="nav-link" data-scroll-target="#sec-ct-jumpprice"><span class="header-section-number">13.7.1</span> Option pricing under the jump-diffusion model</a></li>
+  </ul></li>
+  <li><a href="#sec-ct-estimation" id="toc-sec-ct-estimation" class="nav-link" data-scroll-target="#sec-ct-estimation"><span class="header-section-number">13.8</span> Estimating continuous-time models</a></li>
+  <li><a href="#sec-ct-concept" id="toc-sec-ct-concept" class="nav-link" data-scroll-target="#sec-ct-concept"><span class="header-section-number">13.9</span> Concept check</a></li>
+  <li><a href="#sec-ct-appendix" id="toc-sec-ct-appendix" class="nav-link" data-scroll-target="#sec-ct-appendix"><span class="header-section-number">13.10</span> Appendix: Derivation of the Black–Scholes equation</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-continuous" class="quarto-section-identifier"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Continuous-Time Models</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Every model so far has been <strong>discrete</strong>: one observation per trading day. But the theory that underpins modern finance — above all <strong>option pricing</strong> — is written in <strong>continuous time</strong>, where prices move over infinitesimal instants <span class="math inline">\(dt\)</span>. This chapter builds that framework: the stochastic processes (Brownian motion, Itô), the <strong>Geometric Brownian Motion (GBM)</strong> model of prices, and the <strong>Black–Scholes</strong> option-pricing formulas. Then it does what the rest of the book has trained us to do — holds the elegant theory against our six tickers and the option chains of <a href="14-options.html" class="quarto-xref"><span>Chapter 12</span></a>, and sees where it breaks.</p>
+<p>The punchline is worth stating first. GBM rests on two assumptions — <strong>volatility is constant</strong> and <strong>log returns are normal</strong> — and those are exactly the two our data demolished: volatility <em>clusters</em> (Chapters 8–10) and returns are <em>fat-tailed</em> (Chapter 2). So this chapter is both the theoretical foundation <em>and</em> a full-circle account of why the empirical models were necessary.</p>
+<section id="sec-ct-processes" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="sec-ct-processes"><span class="header-section-number">13.1</span> Some continuous-time stochastic processes</h2>
+<section id="sec-ct-brownian" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="sec-ct-brownian"><span class="header-section-number">13.1.1</span> The Wiener process (Brownian motion)</h3>
+<p>The building block is the <strong>Wiener process</strong> (standard Brownian motion) <span class="math inline">\(W_t\)</span> — the continuous-time limit of a random walk. Its defining property concerns the increment over a tiny interval <span class="math inline">\(dt\)</span>:</p>
+<p><span id="eq-wiener"><span class="math display">\[
+dW_t \sim N(0,\, dt), \qquad W_T - W_0 \sim N(0,\, T).
+\tag{13.1}\]</span></span></p>
+<p>Two features matter: the variance of the increment is proportional to <em>time</em> (so the standard deviation scales like <span class="math inline">\(\sqrt{dt}\)</span> — the “square-root-of-time” rule for volatility), and increments over non-overlapping intervals are independent. A Wiener process is continuous but nowhere smooth — it wanders like a price.</p>
+</section>
+<section id="sec-ct-genwiener" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="sec-ct-genwiener"><span class="header-section-number">13.1.2</span> Generalized Wiener process</h3>
+<p>Pure Brownian motion has zero drift and unit variance rate. A <strong>generalized Wiener process</strong> adds a constant drift <span class="math inline">\(a\)</span> and scales the noise by a constant <span class="math inline">\(b\)</span>:</p>
+<p><span id="eq-genwiener"><span class="math display">\[
+dx_t = a\, dt + b\, dW_t .
+\tag{13.2}\]</span></span></p>
+<p>Over an interval <span class="math inline">\(T\)</span>, <span class="math inline">\(x\)</span> changes by <span class="math inline">\(aT\)</span> on average with standard deviation <span class="math inline">\(b\sqrt{T}\)</span>: a deterministic trend plus Brownian noise. This is the continuous-time cousin of the random-walk-with-drift from <a href="07-unit-root.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
+</section>
+<section id="sec-ct-ito" class="level3" data-number="13.1.3">
+<h3 data-number="13.1.3" class="anchored" data-anchor-id="sec-ct-ito"><span class="header-section-number">13.1.3</span> Itô process and Itô’s lemma</h3>
+<p>Allowing the drift and volatility to depend on the current state gives an <strong>Itô process</strong>,</p>
+<p><span id="eq-itoprocess"><span class="math display">\[
+dx_t = a(x_t,t)\, dt + b(x_t,t)\, dW_t .
+\tag{13.3}\]</span></span></p>
+<p>The tool for working with functions of such a process is <strong>Itô’s lemma</strong> — the continuous-time chain rule, with one extra term. For a smooth <span class="math inline">\(G(x,t)\)</span>,</p>
+<p><span id="eq-ito"><span class="math display">\[
+dG = \Bigl(G_x\, a + G_t + \tfrac{1}{2} G_{xx}\, b^2\Bigr) dt + G_x\, b\, dW_t .
+\tag{13.4}\]</span></span></p>
+<p>The extra <span class="math inline">\(\tfrac{1}{2}G_{xx}b^2\)</span> term — absent from ordinary calculus — is the signature of Itô’s lemma, and it produces the famous “<span class="math inline">\(-\sigma^2/2\)</span>” correction below.</p>
+</section>
+</section>
+<section id="sec-ct-gbm" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="sec-ct-gbm"><span class="header-section-number">13.2</span> Geometric Brownian Motion: the model of prices</h2>
+<div class="definition">
+<p><strong>Geometric Brownian Motion (GBM)</strong> is the standard continuous-time model of a price: its <em>proportional</em> changes are Brownian, which makes the price lognormal and log returns normal with constant volatility.</p>
+</div>
+<p>The standard continuous-time model for a price <span class="math inline">\(P_t\)</span> is <strong>Geometric Brownian Motion</strong>: the <em>proportional</em> change is a generalized Wiener process,</p>
+<p><span id="eq-gbm"><span class="math display">\[
+\frac{dP_t}{P_t} = \mu\, dt + \sigma\, dW_t .
+\tag{13.5}\]</span></span></p>
+<p>Here <span class="math inline">\(\mu\)</span> is the expected annual <strong>drift</strong> and <span class="math inline">\(\sigma\)</span> the annual <strong>volatility</strong>. Applying Itô’s lemma with <span class="math inline">\(G = \ln P\)</span> gives the log price:</p>
+<p><span id="eq-logprice"><span class="math display">\[
+d\ln P_t = \Bigl(\mu - \tfrac{1}{2}\sigma^2\Bigr) dt + \sigma\, dW_t,
+\tag{13.6}\]</span></span></p>
+<p>so the <strong>log price is a random walk with drift</strong> — the continuous-time form of the <span class="math inline">\(I(1)\)</span> result of <a href="07-unit-root.html" class="quarto-xref"><span>Chapter 6</span></a> — and the log <strong>return</strong> over <span class="math inline">\(T\)</span> is normal:</p>
+<p><span id="eq-lognormal"><span class="math display">\[
+\ln\frac{P_T}{P_0} \sim N\!\Bigl((\mu - \tfrac{1}{2}\sigma^2)T,\;\; \sigma^2 T\Bigr).
+\tag{13.7}\]</span></span></p>
+<p>Prices are therefore <strong>lognormal</strong>, and daily log returns are <strong>independent, normal, with constant volatility <span class="math inline">\(\sigma\)</span></strong>. Estimating the two parameters is direct: <span class="math inline">\(\hat\sigma = s_{\text{daily}}\sqrt{252}\)</span> and <span class="math inline">\(\hat\mu = \bar r_{\text{daily}}\cdot 252 + \tfrac12\hat\sigma^2\)</span>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gbm_params <span class="ot">&lt;-</span> <span class="cf">function</span>(sym) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">sprintf</span>(<span class="st">"data/%s.csv"</span>, sym)); d<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(d<span class="sc">$</span>Date)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">log</span>(d<span class="sc">$</span>Adjusted[d<span class="sc">$</span>Date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">"2026-07-01"</span>)]))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">sigma =</span> <span class="fu">sd</span>(r)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">252</span>), <span class="at">mu =</span> <span class="fu">mean</span>(r)<span class="sc">*</span><span class="dv">252</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="fu">sd</span>(r)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">252</span>))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>), gbm_params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd, numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gbm_params(sym):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> pd.read_csv(<span class="ss">f"data/</span><span class="sc">{</span>sym<span class="sc">}</span><span class="ss">.csv"</span>, parse_dates<span class="op">=</span>[<span class="st">"Date"</span>]).set_index(<span class="st">"Date"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> np.log(d[d.index <span class="op">&lt;=</span> <span class="st">"2026-07-01"</span>][<span class="st">"Adjusted"</span>]).diff().dropna()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    sigma <span class="op">=</span> r.std(ddof<span class="op">=</span><span class="dv">1</span>)<span class="op">*</span>np.sqrt(<span class="dv">252</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sigma, r.mean()<span class="op">*</span><span class="dv">252</span> <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>sigma<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> [<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>]: <span class="bu">print</span>(s, gbm_params(s))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tbl-gbm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gbm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;13.1: Geometric Brownian Motion parameters, estimated from each series
+</figcaption>
+<div aria-describedby="tbl-gbm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ticker</th>
+<th style="text-align: center;">last price</th>
+<th style="text-align: center;">volatility <span class="math inline">\(\hat\sigma\)</span></th>
+<th style="text-align: center;">drift <span class="math inline">\(\hat\mu\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">294.38</td>
+<td style="text-align: center;">28.4%</td>
+<td style="text-align: center;">26.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSFT</td>
+<td style="text-align: center;">384.28</td>
+<td style="text-align: center;">26.2%</td>
+<td style="text-align: center;">23.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AMZN</td>
+<td style="text-align: center;">241.70</td>
+<td style="text-align: center;">32.8%</td>
+<td style="text-align: center;">26.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">7483.23</td>
+<td style="text-align: center;">17.4%</td>
+<td style="text-align: center;">13.0%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">370.60</td>
+<td style="text-align: center;">16.8%</td>
+<td style="text-align: center;">7.7%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GCF</td>
+<td style="text-align: center;">4068.30</td>
+<td style="text-align: center;">17.3%</td>
+<td style="text-align: center;">8.6%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-ct-dist" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="sec-ct-dist"><span class="header-section-number">13.3</span> Distributions of stock prices and log returns</h2>
+<p>Exponentiating <a href="#eq-lognormal" class="quarto-xref">Equation&nbsp;<span>13.7</span></a>, the <strong>price is lognormal</strong> — right-skewed and bounded below by zero (the model respects limited liability). Its first two moments are</p>
+<p><span id="eq-price-moments"><span class="math display">\[
+E[P_T] = P_0\, e^{\mu T}, \qquad
+\operatorname{Var}(P_T) = P_0^2\, e^{2\mu T}\bigl(e^{\sigma^2 T} - 1\bigr),
+\tag{13.8}\]</span></span></p>
+<p>while its <strong>median</strong> is <span class="math inline">\(P_0\, e^{(\mu - \sigma^2/2)T}\)</span>. The mean sits above the median — the signature of right skew — because a few large upward moves drag the average above the typical outcome. For the S&amp;P one year out (spot <span class="math inline">\(7483\)</span>, <span class="math inline">\(\hat\mu = 13\%\)</span>, <span class="math inline">\(\hat\sigma = 17.4\%\)</span>): the <strong>mean</strong> is <span class="math inline">\(8523\)</span>, the <strong>median</strong> <span class="math inline">\(8395\)</span>, and the <strong>90% range</strong> <span class="math inline">\([6310,\ 11170]\)</span> — a <span class="math inline">\(\pm25\%\)</span>-ish band, the uncertainty dwarfing the drift.</p>
+</section>
+<section id="sec-ct-fails" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="sec-ct-fails"><span class="header-section-number">13.4</span> Where GBM meets our data — and breaks</h2>
+<p>GBM claims <strong>constant volatility</strong> and <strong>normality</strong>. Both fail, and we have already proved it.</p>
+<p><strong>Constant volatility fails.</strong> <a href="#fig-ct-gbmreal" class="quarto-xref">Figure&nbsp;<span>13.1</span></a> simulates GBM returns with the S&amp;P’s <span class="math inline">\(\sigma\)</span> beside the real ones. The simulation is a featureless, uniform band; reality <em>clusters</em> — calm stretches and violent ones, the 2020 crash towering over everything. Capturing that is exactly what ARCH and GARCH did (the discrete-time version of <strong>stochastic volatility</strong>).</p>
+<div id="fig-ct-gbmreal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ct-gbmreal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/ct_gbm_vs_real.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-gbmreal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.1: Simulated GBM returns (bottom, constant σ) against the actual S&amp;P 500 (top). GBM produces a uniform band with no clusters and no crashes; reality clusters and crashes.
+</figcaption>
+</figure>
+</div>
+<p><strong>Normality fails in the tails.</strong> Under GBM a large daily move is essentially impossible, yet every series has crash days that are enormous in <span class="math inline">\(\sigma\)</span> units:</p>
+<div id="tbl-ct-sigma" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ct-sigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;13.2: Each series’ worst day, measured against GBM
+</figcaption>
+<div aria-describedby="tbl-ct-sigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ticker</th>
+<th style="text-align: center;">worst day</th>
+<th style="text-align: center;">size under GBM</th>
+<th style="text-align: center;">GBM probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">−13.8%</td>
+<td style="text-align: center;">−7.7σ</td>
+<td style="text-align: center;">~1 in 100 trillion</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSFT</td>
+<td style="text-align: center;">−15.9%</td>
+<td style="text-align: center;">−9.6σ</td>
+<td style="text-align: center;">~1 in <span class="math inline">\(10^{21}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AMZN</td>
+<td style="text-align: center;">−15.1%</td>
+<td style="text-align: center;">−7.3σ</td>
+<td style="text-align: center;">~1 in 4 trillion</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">−12.8%</td>
+<td style="text-align: center;">−11.7σ</td>
+<td style="text-align: center;">~1 in <span class="math inline">\(10^{31}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">−10.8%</td>
+<td style="text-align: center;">−10.2σ</td>
+<td style="text-align: center;">~1 in <span class="math inline">\(10^{24}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GCF</td>
+<td style="text-align: center;">−12.1%</td>
+<td style="text-align: center;">−11.1σ</td>
+<td style="text-align: center;">~1 in <span class="math inline">\(10^{28}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The S&amp;P’s worst day is an <span class="math inline">\(11.7\sigma\)</span> event whose GBM probability has thirty zeros after the decimal — it should never occur, yet it did. The continuous-time fix is a <strong>jump-diffusion</strong> model (<a href="#sec-ct-jumps" class="quarto-xref"><span>Section 13.7</span></a>).</p>
+</section>
+<section id="sec-ct-pde" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="sec-ct-pde"><span class="header-section-number">13.5</span> The Black–Scholes differential equation</h2>
+<p>The Black–Scholes formula is not assumed — it is <strong>derived</strong> from a no-arbitrage argument. The idea: an option <span class="math inline">\(f(S,t)\)</span> can be perfectly hedged by holding <span class="math inline">\(\partial f/\partial S\)</span> shares of the stock (<strong>delta hedging</strong>), and since the hedged portfolio is riskless, it must earn the risk-free rate <span class="math inline">\(r\)</span>. That single condition yields the <strong>Black–Scholes partial differential equation</strong>:</p>
+<p><span id="eq-bspde"><span class="math display">\[
+f_t + rS\, f_S + \tfrac{1}{2}\sigma^2 S^2 f_{SS} = r f .
+\tag{13.9}\]</span></span></p>
+<p>The striking feature is what is <strong>absent</strong>: the drift <span class="math inline">\(\mu\)</span>. Because the hedge removes all the risk, the fair price cannot depend on the stock’s expected return — only on its volatility. The full step-by-step derivation is given in the <a href="#sec-ct-appendix">appendix</a>; the important consequence is developed next.</p>
+</section>
+<section id="sec-ct-bs" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="sec-ct-bs"><span class="header-section-number">13.6</span> Black–Scholes pricing formulas</h2>
+<section id="sec-ct-riskneutral" class="level3" data-number="13.6.1">
+<h3 data-number="13.6.1" class="anchored" data-anchor-id="sec-ct-riskneutral"><span class="header-section-number">13.6.1</span> A risk-neutral world</h3>
+<p>That <span class="math inline">\(\mu\)</span> vanishes from <a href="#eq-bspde" class="quarto-xref">Equation&nbsp;<span>13.9</span></a> is the gateway to the most powerful idea in derivatives pricing: <strong>risk-neutral valuation</strong>. Since the price does not depend on the real-world drift, we may compute it <em>as if</em> every asset drifted at the risk-free rate <span class="math inline">\(r\)</span> — a fictitious “risk-neutral world.” In that world an option is worth the <strong>discounted expected value of its payoff</strong>:</p>
+<p><span id="eq-riskneutral"><span class="math display">\[
+C = e^{-rT}\, E^{\mathbb{Q}}\!\bigl[\max(S_T - K,\ 0)\bigr],
+\tag{13.10}\]</span></span></p>
+<p>where the expectation <span class="math inline">\(\mathbb{Q}\)</span> uses drift <span class="math inline">\(r\)</span> in place of <span class="math inline">\(\mu\)</span>. This is not a claim that investors are risk-neutral; it is a computational device justified by the hedging argument. Optimists and pessimists, who disagree about <span class="math inline">\(\mu\)</span>, must still agree on the option’s price — because the hedge makes <span class="math inline">\(\mu\)</span> irrelevant. Evaluating <a href="#eq-riskneutral" class="quarto-xref">Equation&nbsp;<span>13.10</span></a> under the lognormal law gives the formulas.</p>
+</section>
+<section id="sec-ct-formulas" class="level3" data-number="13.6.2">
+<h3 data-number="13.6.2" class="anchored" data-anchor-id="sec-ct-formulas"><span class="header-section-number">13.6.2</span> The formulas</h3>
+<p>For a European <strong>call</strong> (right to buy at <span class="math inline">\(K\)</span> after time <span class="math inline">\(T\)</span>):</p>
+<p><span id="eq-bs"><span class="math display">\[
+C = S\,N(d_1) - K e^{-rT} N(d_2),
+\tag{13.11}\]</span></span></p>
+<p><span id="eq-bs-d"><span class="math display">\[
+d_1 = \frac{\ln(S/K) + (r + \tfrac12\sigma^2)\,T}{\sigma\sqrt{T}}, \qquad
+d_2 = d_1 - \sigma\sqrt{T},
+\tag{13.12}\]</span></span></p>
+<p>with <span class="math inline">\(N(\cdot)\)</span> the standard normal CDF. The <strong>put</strong> follows from put–call parity, <span class="math inline">\(C - P = S - K e^{-rT}\)</span>:</p>
+<p><span id="eq-bs-put"><span class="math display">\[
+P = K e^{-rT} N(-d_2) - S\,N(-d_1).
+\tag{13.13}\]</span></span></p>
+<p>Applied to the S&amp;P (spot <span class="math inline">\(S=7483\)</span>, ATM <span class="math inline">\(K=7483\)</span>, <span class="math inline">\(r=4\%\)</span>, <span class="math inline">\(T=3\)</span> months, <span class="math inline">\(\hat\sigma=17.4\%\)</span>): a call worth <strong>297 index points (<span class="math inline">\(4\%\)</span> of spot)</strong> and a put worth <strong>222</strong>, with parity exact (<span class="math inline">\(297-222 = 74.7 = S - Ke^{-rT}\)</span>). The only unobservable input is <span class="math inline">\(\sigma\)</span> — so, as <a href="14-options.html" class="quarto-xref"><span>Chapter 12</span></a> stressed, <strong>pricing an option is forecasting volatility</strong>, and everything in the GARCH chapters feeds directly into it. <a href="#fig-ct-bs" class="quarto-xref">Figure&nbsp;<span>13.2</span></a> shows the call value sitting above its payoff (the gap is time value) and its near-linear dependence on <span class="math inline">\(\sigma\)</span>.</p>
+<div id="fig-ct-bs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ct-bs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/ct_blackscholes.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-bs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.2: Black–Scholes on the S&amp;P. Left: the 3-month call value (blue) above its expiry payoff (dashed). Right: the ATM call price versus volatility — nearly linear and steep, so the price is driven by σ.
+</figcaption>
+</figure>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>bs_call <span class="ot">&lt;-</span> <span class="cf">function</span>(S, K, r, T, sigma) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  d1 <span class="ot">&lt;-</span> (<span class="fu">log</span>(S<span class="sc">/</span>K) <span class="sc">+</span> (r <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>sigma<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>T) <span class="sc">/</span> (sigma<span class="sc">*</span><span class="fu">sqrt</span>(T)); d2 <span class="ot">&lt;-</span> d1 <span class="sc">-</span> sigma<span class="sc">*</span><span class="fu">sqrt</span>(T)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  S<span class="sc">*</span><span class="fu">pnorm</span>(d1) <span class="sc">-</span> K<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>r<span class="sc">*</span>T)<span class="sc">*</span><span class="fu">pnorm</span>(d2)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">bs_call</span>(<span class="dv">7483</span>, <span class="dv">7483</span>, <span class="fl">0.04</span>, <span class="fl">0.25</span>, <span class="fl">0.174</span>)                        <span class="co"># ~297</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># implied volatility: invert the formula on a market price</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">uniroot</span>(<span class="cf">function</span>(s) <span class="fu">bs_call</span>(<span class="dv">7483</span>,<span class="dv">7483</span>,<span class="fl">0.04</span>,<span class="fl">0.25</span>,s) <span class="sc">-</span> <span class="dv">320</span>, <span class="fu">c</span>(<span class="fl">1e-4</span>, <span class="dv">2</span>))<span class="sc">$</span>root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> brentq</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bs_call(S, K, r, T, sigma):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    d1 <span class="op">=</span> (np.log(S<span class="op">/</span>K) <span class="op">+</span> (r <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>sigma<span class="op">**</span><span class="dv">2</span>)<span class="op">*</span>T)<span class="op">/</span>(sigma<span class="op">*</span>np.sqrt(T))<span class="op">;</span> d2 <span class="op">=</span> d1 <span class="op">-</span> sigma<span class="op">*</span>np.sqrt(T)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> S<span class="op">*</span>norm.cdf(d1) <span class="op">-</span> K<span class="op">*</span>np.exp(<span class="op">-</span>r<span class="op">*</span>T)<span class="op">*</span>norm.cdf(d2)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bs_call(<span class="dv">7483</span>, <span class="dv">7483</span>, <span class="fl">0.04</span>, <span class="fl">0.25</span>, <span class="fl">0.174</span>))                 <span class="co"># ~297</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(brentq(<span class="kw">lambda</span> s: bs_call(<span class="dv">7483</span>,<span class="dv">7483</span>,<span class="fl">0.04</span>,<span class="fl">0.25</span>,s) <span class="op">-</span> <span class="dv">320</span>, <span class="fl">1e-4</span>, <span class="dv">2</span>))  <span class="co"># implied vol</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ct-bounds" class="level3" data-number="13.6.3">
+<h3 data-number="13.6.3" class="anchored" data-anchor-id="sec-ct-bounds"><span class="header-section-number">13.6.3</span> Lower bounds of European options</h3>
+<p>Even without a model, no-arbitrage forces bounds on option prices. A European call can never be worth more than the stock, nor less than the stock minus the discounted strike:</p>
+<p><span id="eq-call-bound"><span class="math display">\[
+\max\!\bigl(S - K e^{-rT},\ 0\bigr) \;\le\; C \;\le\; S .
+\tag{13.14}\]</span></span></p>
+<p>The lower bound is the intuitive one: if <span class="math inline">\(C\)</span> fell below <span class="math inline">\(S - Ke^{-rT}\)</span>, you could buy the call, short the stock, and lock in a riskless profit. The corresponding put bounds are</p>
+<p><span id="eq-put-bound"><span class="math display">\[
+\max\!\bigl(K e^{-rT} - S,\ 0\bigr) \;\le\; P \;\le\; K e^{-rT} .
+\tag{13.15}\]</span></span></p>
+<p>These hold for <em>any</em> pricing model, Black–Scholes included, and are a useful sanity check: the S&amp;P call of <span class="math inline">\(297\)</span> sits comfortably inside <span class="math inline">\([\,S-Ke^{-rT},\ S\,] =
+[74.7,\ 7483]\)</span>. Because a European call is always worth <em>at least</em> its discounted intrinsic value, it is never optimal to exercise a non-dividend-paying call early — the reason American and European calls on such stocks have the same price.</p>
+</section>
+<section id="sec-ct-discussion" class="level3" data-number="13.6.4">
+<h3 data-number="13.6.4" class="anchored" data-anchor-id="sec-ct-discussion"><span class="header-section-number">13.6.4</span> Discussion</h3>
+<p>Black–Scholes is a triumph, but its assumptions are the very ones our data rejects, and knowing where it strains is part of using it well. It assumes <strong>constant volatility</strong> (reality: clustering, <a href="#fig-ct-gbmreal" class="quarto-xref">Figure&nbsp;<span>13.1</span></a>), <strong>normal returns with continuous paths</strong> (reality: fat tails and jumps, <a href="#tbl-ct-sigma" class="quarto-xref">Table&nbsp;<span>13.2</span></a>), <strong>no transaction costs</strong>, and <strong>continuous hedging</strong>. The market’s own verdict is visible in <strong>implied volatility</strong>: inverting <a href="#eq-bs" class="quarto-xref">Equation&nbsp;<span>13.11</span></a> on traded prices recovers the <span class="math inline">\(\sigma\)</span> that matches the market. If Black–Scholes were true, implied volatility would be identical across strikes. It is not — plotted against strike it forms the famous <strong>volatility smile/skew</strong>, with out-of-the-money puts trading at higher implied vol.&nbsp;The smile is the options market pricing in exactly the fat tails and time-varying volatility our data showed — the same verdict, in dollars. The fixes are the continuous-time analogues of our discrete models: <strong>stochastic volatility</strong> (Heston) for clustering and <strong>jump-diffusion</strong> for the tails.</p>
+</section>
+</section>
+<section id="sec-ct-jumps" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="sec-ct-jumps"><span class="header-section-number">13.7</span> Jump-diffusion models</h2>
+<p>To let the model produce the crashes of <a href="#tbl-ct-sigma" class="quarto-xref">Table&nbsp;<span>13.2</span></a>, Merton’s <strong>jump-diffusion</strong> adds a jump term to GBM:</p>
+<p><span id="eq-jump"><span class="math display">\[
+\frac{dP_t}{P_t} = \mu\, dt + \sigma\, dW_t + dJ_t,
+\tag{13.16}\]</span></span></p>
+<p>where <span class="math inline">\(J_t\)</span> is a compound Poisson process — rare, sudden jumps arriving at intensity <span class="math inline">\(\lambda\)</span> per year, with random sizes. Between jumps the price diffuses as GBM; occasionally it leaps. This one addition gives the model <strong>fat tails and discontinuous paths</strong>, matching the <span class="math inline">\(-11.7\sigma\)</span> days that pure GBM rules out, and it produces a volatility smile.</p>
+<section id="sec-ct-jumpprice" class="level3" data-number="13.7.1">
+<h3 data-number="13.7.1" class="anchored" data-anchor-id="sec-ct-jumpprice"><span class="header-section-number">13.7.1</span> Option pricing under the jump-diffusion model</h3>
+<p>Merton showed that a European option under jump-diffusion has a strikingly simple price: a <strong>Poisson-weighted average of Black–Scholes prices</strong>, one for each possible number of jumps before expiry:</p>
+<p><span id="eq-merton"><span class="math display">\[
+C = \sum_{n=0}^{\infty} \frac{e^{-\lambda' T}(\lambda' T)^n}{n!}\; C_{\text{BS}}(\sigma_n, r_n),
+\tag{13.17}\]</span></span></p>
+<p>where <span class="math inline">\(C_{\text{BS}}(\sigma_n, r_n)\)</span> is the ordinary Black–Scholes call price computed with a variance and drift adjusted for having <span class="math inline">\(n\)</span> jumps, and <span class="math inline">\(\lambda'\)</span> is the jump intensity adjusted for the average jump size. Intuitively, the option’s value averages over “no jump happens” (the dominant term, close to plain Black–Scholes), “one jump happens,” “two jumps,” and so on, weighted by how likely each is. The extra mass in the tails raises the price of out-of-the-money options — which is precisely the volatility smile, now <em>produced by the model</em> rather than patched in.</p>
+</section>
+</section>
+<section id="sec-ct-estimation" class="level2" data-number="13.8">
+<h2 data-number="13.8" class="anchored" data-anchor-id="sec-ct-estimation"><span class="header-section-number">13.8</span> Estimating continuous-time models</h2>
+<p>We estimate GBM’s two parameters from the same daily returns — but not equally well, and the gap is one of the deepest facts in finance.</p>
+<p><strong>Volatility is easy.</strong> The estimator <span class="math inline">\(\hat\sigma = s_{\text{daily}}\sqrt{252}\)</span> has standard error <span class="math inline">\(\approx \hat\sigma/\sqrt{2n}\)</span>, which shrinks with the number of observations. Sampling more frequently (intraday) sharpens it further — the idea behind <strong>realised volatility</strong>.</p>
+<p><strong>The drift is nearly impossible.</strong> The estimator <span class="math inline">\(\hat\mu\)</span> has standard error <span class="math inline">\(\approx \hat\sigma/\sqrt{T}\)</span>, where <span class="math inline">\(T\)</span> is the <strong>calendar span in years</strong> — depending only on total elapsed time, not on sampling frequency. Over our <span class="math inline">\(\sim\!15\)</span>-year span:</p>
+<div id="tbl-ct-est" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ct-est-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;13.3: Estimation asymmetry — volatility precise, drift barely knowable
+</figcaption>
+<div aria-describedby="tbl-ct-est-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 19%">
+<col style="width: 29%">
+<col style="width: 15%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ticker</th>
+<th style="text-align: center;"><span class="math inline">\(\hat\sigma\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\hat\sigma\)</span> 95% CI</th>
+<th style="text-align: center;"><span class="math inline">\(\hat\mu\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\hat\mu\)</span> 95% CI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">28.4%</td>
+<td style="text-align: center;">[27.7, 29.0]</td>
+<td style="text-align: center;">26.5%</td>
+<td style="text-align: center;">[11.8, 41.1]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSFT</td>
+<td style="text-align: center;">26.2%</td>
+<td style="text-align: center;">[25.6, 26.8]</td>
+<td style="text-align: center;">23.2%</td>
+<td style="text-align: center;">[ 9.6, 36.8]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AMZN</td>
+<td style="text-align: center;">32.8%</td>
+<td style="text-align: center;">[32.1, 33.6]</td>
+<td style="text-align: center;">26.4%</td>
+<td style="text-align: center;">[ 9.4, 43.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">17.4%</td>
+<td style="text-align: center;">[17.0, 17.8]</td>
+<td style="text-align: center;">13.0%</td>
+<td style="text-align: center;">[ 4.0, 22.0]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">16.8%</td>
+<td style="text-align: center;">[16.4, 17.2]</td>
+<td style="text-align: center;">7.7%</td>
+<td style="text-align: center;">[<strong>−1.0</strong>, 16.4]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GCF</td>
+<td style="text-align: center;">17.3%</td>
+<td style="text-align: center;">[16.9, 17.7]</td>
+<td style="text-align: center;">8.6%</td>
+<td style="text-align: center;">[<strong>−0.3</strong>, 17.6]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Every <strong>volatility</strong> estimate is pinned to a fraction of a percent; every <strong>drift</strong> estimate spans tens of points, and for <strong>gold</strong> the interval <em>includes zero</em> — with fifteen years of data we cannot confirm gold has a positive drift. This is the rigorous form of the theme running through the whole book: <strong>volatility can be measured; the mean cannot.</strong></p>
+</section>
+<section id="sec-ct-concept" class="level2" data-number="13.9">
+<h2 data-number="13.9" class="anchored" data-anchor-id="sec-ct-concept"><span class="header-section-number">13.9</span> Concept check</h2>
+<p>Decide first, then expand each answer.</p>
+<p><strong>Q1. For a Wiener process, the variance of the change over an interval <span class="math inline">\(T\)</span> is:</strong></p>
+<ul>
+<li><strong>(a)</strong> constant, independent of <span class="math inline">\(T\)</span>.</li>
+<li><strong>(b)</strong> proportional to <span class="math inline">\(T\)</span> (standard deviation grows like <span class="math inline">\(\sqrt{T}\)</span>).</li>
+<li><strong>(c)</strong> proportional to <span class="math inline">\(T^2\)</span>.</li>
+<li><strong>(d)</strong> zero.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> <span class="math inline">\(W_T-W_0 \sim N(0,T)\)</span> — the square-root-of-time rule.</p>
+</div>
+</div>
+</div>
+<p><strong>Q2. Applying Itô’s lemma to <span class="math inline">\(\ln P\)</span> under GBM gives a log-price drift of:</strong></p>
+<ul>
+<li><strong>(a)</strong> <span class="math inline">\(\mu\)</span>. <strong>(b)</strong> <span class="math inline">\(\mu - \tfrac12\sigma^2\)</span>. <strong>(c)</strong> <span class="math inline">\(\tfrac12\sigma^2\)</span>. <strong>(d)</strong> <span class="math inline">\(\sigma\)</span>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> The extra Itô term produces the <span class="math inline">\(-\tfrac12\sigma^2\)</span> correction.</p>
+</div>
+</div>
+</div>
+<p><strong>Q3. In the Black–Scholes PDE the drift <span class="math inline">\(\mu\)</span> disappears because:</strong></p>
+<ul>
+<li><strong>(a)</strong> it is assumed zero.</li>
+<li><strong>(b)</strong> the delta-hedged portfolio is riskless, so by no-arbitrage the price depends only on volatility — <strong>risk-neutral pricing</strong>.</li>
+<li><strong>(c)</strong> it cannot be estimated.</li>
+<li><strong>(d)</strong> the option has no time value.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> Hedging removes the risk; a riskless portfolio earns <span class="math inline">\(r\)</span>, and <span class="math inline">\(\mu\)</span> drops out. We may then price <em>as if</em> the drift were <span class="math inline">\(r\)</span> (<a href="#eq-riskneutral" class="quarto-xref">Equation&nbsp;<span>13.10</span></a>).</p>
+</div>
+</div>
+</div>
+<p><strong>Q4. A European call must satisfy the lower bound:</strong></p>
+<ul>
+<li><strong>(a)</strong> <span class="math inline">\(C \ge S\)</span>.</li>
+<li><strong>(b)</strong> <span class="math inline">\(C \ge \max(S - Ke^{-rT},\ 0)\)</span> — otherwise a riskless arbitrage exists.</li>
+<li><strong>(c)</strong> <span class="math inline">\(C \le K\)</span>.</li>
+<li><strong>(d)</strong> <span class="math inline">\(C = 0\)</span> before expiry.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> Below this bound you could buy the call, short the stock, and lock in a profit. It also implies a non-dividend call is never exercised early.</p>
+</div>
+</div>
+</div>
+<p><strong>Q5. Volatility can be estimated precisely but the drift almost not at all because:</strong></p>
+<ul>
+<li><strong>(a)</strong> volatility is observable, drift is not.</li>
+<li><strong>(b)</strong> the drift’s standard error <span class="math inline">\(\sigma/\sqrt{T}\)</span> depends only on the calendar span (more frequent sampling does not help), while volatility’s <span class="math inline">\(\sigma/\sqrt{2n}\)</span> shrinks with the number of observations.</li>
+<li><strong>(c)</strong> the drift is always zero.</li>
+<li><strong>(d)</strong> they are estimated equally well.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> Sample more often to sharpen <span class="math inline">\(\hat\sigma\)</span>; only a longer history sharpens <span class="math inline">\(\hat\mu\)</span>. Over 15 years gold’s drift interval even includes zero (<a href="#tbl-ct-est" class="quarto-xref">Table&nbsp;<span>13.3</span></a>).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <strong>Wiener process</strong> (<a href="#eq-wiener" class="quarto-xref">Equation&nbsp;<span>13.1</span></a>), <strong>generalized Wiener process</strong> (<a href="#eq-genwiener" class="quarto-xref">Equation&nbsp;<span>13.2</span></a>), and <strong>Itô process</strong> (<a href="#eq-itoprocess" class="quarto-xref">Equation&nbsp;<span>13.3</span></a>) are the building blocks; <strong>Itô’s lemma</strong>
+<ol class="example" type="1">
+<li>is the chain rule with the extra <span class="math inline">\(\tfrac12 G_{xx}b^2\)</span> term.</li>
+</ol></li>
+<li><strong>Geometric Brownian Motion</strong> (<a href="#eq-gbm" class="quarto-xref">Equation&nbsp;<span>13.5</span></a>) makes the log price a random walk with drift <span class="math inline">\(\mu-\tfrac12\sigma^2\)</span> and log returns <strong>normal, constant-σ</strong> (<a href="#eq-lognormal" class="quarto-xref">Equation&nbsp;<span>13.7</span></a>); the price is <strong>lognormal</strong> (<a href="#eq-price-moments" class="quarto-xref">Equation&nbsp;<span>13.8</span></a>). Estimated <span class="math inline">\(\sigma\)</span> is <span class="math inline">\(17\)</span>–<span class="math inline">\(33\%\)</span> (<a href="#tbl-gbm" class="quarto-xref">Table&nbsp;<span>13.1</span></a>).</li>
+<li>GBM’s two assumptions <strong>both fail</strong>: volatility clusters (<a href="#fig-ct-gbmreal" class="quarto-xref">Figure&nbsp;<span>13.1</span></a>) and returns are fat-tailed — worst days are <span class="math inline">\(7\)</span>–<span class="math inline">\(12\sigma\)</span> events (<a href="#tbl-ct-sigma" class="quarto-xref">Table&nbsp;<span>13.2</span></a>).</li>
+<li><strong>Black–Scholes</strong> is derived by delta-hedging (Appendix), which makes <span class="math inline">\(\mu\)</span> vanish and licenses <strong>risk-neutral pricing</strong> (<a href="#eq-riskneutral" class="quarto-xref">Equation&nbsp;<span>13.10</span></a>). The formulas (<a href="#eq-bs" class="quarto-xref">Equation&nbsp;<span>13.11</span></a>, <a href="#eq-bs-put" class="quarto-xref">Equation&nbsp;<span>13.13</span></a>) obey put–call parity and no-arbitrage <strong>bounds</strong> (<a href="#eq-call-bound" class="quarto-xref">Equation&nbsp;<span>13.14</span></a>); the only unobservable input is <strong>volatility</strong>, and the <strong>implied-volatility smile</strong> is the market pricing in fat tails.</li>
+<li><strong>Jump-diffusion</strong> (<a href="#eq-jump" class="quarto-xref">Equation&nbsp;<span>13.16</span></a>) adds crashes GBM cannot make; its option price is a <strong>Poisson-weighted average of Black–Scholes prices</strong> (<a href="#eq-merton" class="quarto-xref">Equation&nbsp;<span>13.17</span></a>).</li>
+<li><strong>Estimation is asymmetric</strong> (<a href="#tbl-ct-est" class="quarto-xref">Table&nbsp;<span>13.3</span></a>): <span class="math inline">\(\hat\sigma\)</span> is precise, <span class="math inline">\(\hat\mu\)</span> barely knowable — “volatility can be measured; the mean cannot.”</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec-ct-appendix" class="level2" data-number="13.10">
+<h2 data-number="13.10" class="anchored" data-anchor-id="sec-ct-appendix"><span class="header-section-number">13.10</span> Appendix: Derivation of the Black–Scholes equation</h2>
+<p>Let <span class="math inline">\(f(S,t)\)</span> be the value of an option on a stock <span class="math inline">\(S\)</span> that follows GBM (<a href="#eq-gbm" class="quarto-xref">Equation&nbsp;<span>13.5</span></a>). By Itô’s lemma (1),</p>
+<p><span id="eq-df"><span class="math display">\[
+df = \Bigl(f_t + \mu S f_S + \tfrac12 \sigma^2 S^2 f_{SS}\Bigr)dt + \sigma S f_S\, dW.
+\tag{13.18}\]</span></span></p>
+<p>Build a portfolio that is <strong>short one option and long <span class="math inline">\(f_S\)</span> shares</strong>, <span class="math inline">\(\Pi = -f + f_S\, S\)</span>, with change <span class="math inline">\(d\Pi = -df + f_S\, dS\)</span>. Substituting <a href="#eq-df" class="quarto-xref">Equation&nbsp;<span>13.18</span></a> and <a href="#eq-gbm" class="quarto-xref">Equation&nbsp;<span>13.5</span></a>, the random <span class="math inline">\(dW\)</span> terms <strong>cancel exactly</strong>:</p>
+<p><span id="eq-dpi"><span class="math display">\[
+d\Pi = \Bigl(-f_t - \tfrac12 \sigma^2 S^2 f_{SS}\Bigr) dt .
+\tag{13.19}\]</span></span></p>
+<p>The portfolio is instantaneously <strong>riskless</strong> — the option’s Brownian shock is offset by holding <span class="math inline">\(f_S\)</span> shares (<strong>delta hedging</strong>). By no-arbitrage it must earn the risk-free rate, <span class="math inline">\(d\Pi = r\Pi\, dt = r(-f + f_S S)\,dt\)</span>. Equating the two expressions for <span class="math inline">\(d\Pi\)</span> and simplifying gives the Black–Scholes PDE (<a href="#eq-bspde" class="quarto-xref">Equation&nbsp;<span>13.9</span></a>),</p>
+<p><span class="math display">\[
+f_t + rS f_S + \tfrac12 \sigma^2 S^2 f_{SS} = r f .
+\]</span></p>
+<p>Solving it with the call payoff boundary condition <span class="math inline">\(f(S,T) = \max(S-K,0)\)</span> yields the pricing formula <a href="#eq-bs" class="quarto-xref">Equation&nbsp;<span>13.11</span></a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/14-options.html" class="pagination-link" aria-label="Options: Contracts, Payoffs, and the Greeks">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Options: Contracts, Payoffs, and the Greeks</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/12-nonlinear.html" class="pagination-link" aria-label="Nonlinear Models">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonlinear Models</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Time Series Analysis in Financial Econometrics</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

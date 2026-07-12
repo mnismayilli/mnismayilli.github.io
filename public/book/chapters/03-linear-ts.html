@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Linear Time Series Analysis – Time Series Analysis in Financial Econometrics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/04-ma.html" rel="next">
+<link href="../chapters/02-distribution.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c94efcbe7087408ea84692b584c735f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-fca680cf785cbab9ed9b1a0a99de9537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c94efcbe7087408ea84692b584c735f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03-linear-ts.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Time Series Analysis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Time Series Analysis in Financial Econometrics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-returns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Asset Returns: Simple and Log</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributional Properties of Returns</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-linear-ts.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Time Series Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-ma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Moving-Average Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-arma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ARMA Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-unit-root.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Unit-Root Nonstationarity</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/08-arima.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ARIMA Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/09-arch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">ARCH Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/10-garch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GARCH Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/11-garch-est.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimating and Evaluating Volatility Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15-extreme-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Extreme Values, Quantiles, and Value at Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Options: Contracts, Payoffs, and the Greeks</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/13-continuous-time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Continuous-Time Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/12-nonlinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonlinear Models</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-stationarity" id="toc-sec-stationarity" class="nav-link active" data-scroll-target="#sec-stationarity"><span class="header-section-number">3.1</span> Stationarity</a></li>
+  <li><a href="#sec-acf" id="toc-sec-acf" class="nav-link" data-scroll-target="#sec-acf"><span class="header-section-number">3.2</span> Correlation and the autocorrelation function</a></li>
+  <li><a href="#sec-pacf" id="toc-sec-pacf" class="nav-link" data-scroll-target="#sec-pacf"><span class="header-section-number">3.3</span> Partial autocorrelation, and how it differs from the ACF</a></li>
+  <li><a href="#sec-white-noise" id="toc-sec-white-noise" class="nav-link" data-scroll-target="#sec-white-noise"><span class="header-section-number">3.4</span> White noise and linear time series</a></li>
+  <li><a href="#sec-ar" id="toc-sec-ar" class="nav-link" data-scroll-target="#sec-ar"><span class="header-section-number">3.5</span> Simple autoregressive (AR) models</a>
+  <ul class="collapse">
+  <li><a href="#sec-ar-properties" id="toc-sec-ar-properties" class="nav-link" data-scroll-target="#sec-ar-properties"><span class="header-section-number">3.5.1</span> Properties of AR models</a></li>
+  <li><a href="#sec-ar-identify" id="toc-sec-ar-identify" class="nav-link" data-scroll-target="#sec-ar-identify"><span class="header-section-number">3.5.2</span> Identifying AR models</a></li>
+  <li><a href="#sec-ar-monthly" id="toc-sec-ar-monthly" class="nav-link" data-scroll-target="#sec-ar-monthly"><span class="header-section-number">3.5.3</span> AR models at the monthly frequency</a></li>
+  <li><a href="#sec-ar-gof" id="toc-sec-ar-gof" class="nav-link" data-scroll-target="#sec-ar-gof"><span class="header-section-number">3.5.4</span> Goodness of fit</a></li>
+  <li><a href="#sec-ar-forecast" id="toc-sec-ar-forecast" class="nav-link" data-scroll-target="#sec-ar-forecast"><span class="header-section-number">3.5.5</span> Forecasting</a></li>
+  </ul></li>
+  <li><a href="#sec-concept-check" id="toc-sec-concept-check" class="nav-link" data-scroll-target="#sec-concept-check"><span class="header-section-number">3.6</span> Concept check</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-linear-ts" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Time Series Analysis</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Our objective is concrete: to build <strong>robust models and forecasting tools</strong> for the returns of the instruments we care about — AAPL, MSFT, AMZN, the S&amp;P 500, and gold. Before we can forecast, we need a language for describing how a series relates to its own past. That language is <strong>linear time series analysis</strong>, and its vocabulary — stationarity, the autocorrelation and partial-autocorrelation functions, white noise, and the autoregressive model — is what this chapter assembles. By the end we will fit our first genuine forecasting model, the AR model, to each series and see, in hard numbers, how far the mean of daily returns can (and cannot) be predicted.</p>
+<p>The R code uses base graphics plus <code>stats</code>/<code>forecast</code>; Python uses <code>statsmodels</code>.</p>
+<section id="sec-stationarity" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-stationarity"><span class="header-section-number">3.1</span> Stationarity</h2>
+<p>Every model in our toolkit assumes the series is <strong>weakly stationary</strong>: its mean, variance, and the correlation between observations <span class="math inline">\(k\)</span> steps apart do not change over time. Formally, <span class="math inline">\(\{r_t\}\)</span> is weakly stationary if</p>
+<p><span id="eq-stationary"><span class="math display">\[
+\begin{aligned}
+&amp;E[r_t] = \mu \;\text{(constant)}, \qquad
+\operatorname{Var}(r_t) = \sigma^2 \;\text{(constant)}, \\[4pt]
+&amp;\operatorname{Cov}(r_t, r_{t-k}) = \gamma_k \;\text{(depends only on the lag } k\text{)}.
+\end{aligned}
+\tag{3.1}\]</span></span></p>
+<p>The point of stationarity is estimation: only if the correlation structure is stable through time can we pool the whole sample to estimate <em>one</em> set of parameters and use them to forecast forward. A series whose behaviour drifts gives us nothing to estimate. We established in <a href="01-returns.html" class="quarto-xref"><span>Chapter 1</span></a> that our <strong>log returns are stationary</strong> while prices are not — which is exactly why every model here is built on returns. (Strict stationarity, requiring the entire joint distribution to be time-invariant, is stronger than we need; weak stationarity of the first two moments is the working assumption.)</p>
+</section>
+<section id="sec-acf" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-acf"><span class="header-section-number">3.2</span> Correlation and the autocorrelation function</h2>
+<p>The engine of linear time series is <strong>serial correlation</strong>: the correlation of a series with lagged copies of itself. The <strong>autocovariance</strong> at lag <span class="math inline">\(k\)</span> is <span class="math inline">\(\gamma_k = \operatorname{Cov}(r_t, r_{t-k})\)</span>, and dividing by the variance gives the <strong>autocorrelation function (ACF)</strong>,</p>
+<p><span id="eq-acf"><span class="math display">\[
+\rho_k = \frac{\gamma_k}{\gamma_0}
+       = \frac{\operatorname{Cov}(r_t, r_{t-k})}{\operatorname{Var}(r_t)},
+\qquad -1 \le \rho_k \le 1 .
+\tag{3.2}\]</span></span></p>
+<p>The ACF answers “how strongly does today’s return move with the return <span class="math inline">\(k\)</span> days ago?” Its sample estimate from <span class="math inline">\(T\)</span> observations is</p>
+<p><span id="eq-sample-acf"><span class="math display">\[
+\hat\rho_k = \frac{\sum_{t=k+1}^{T} (r_t-\bar r)(r_{t-k}-\bar r)}
+                  {\sum_{t=1}^{T} (r_t-\bar r)^2}.
+\tag{3.3}\]</span></span></p>
+<p>Under the hypothesis that the series is uncorrelated, each <span class="math inline">\(\hat\rho_k\)</span> is approximately <span class="math inline">\(N(0, 1/T)\)</span>, so values outside the band <span class="math inline">\(\pm 1.96/\sqrt{T}\)</span> are significant at <span class="math inline">\(5\%\)</span>. For our sample of <span class="math inline">\(T \approx 3{,}770\)</span> that band is a tight <span class="math inline">\(\pm 0.032\)</span>.</p>
+<p>Rather than eyeball <span class="math inline">\(k\)</span> correlations one at a time, the <strong>Ljung–Box</strong> test bundles the first <span class="math inline">\(m\)</span> into a single portmanteau statistic,</p>
+<p><span id="eq-ljungbox"><span class="math display">\[
+Q(m) = T(T+2) \sum_{k=1}^{m} \frac{\hat\rho_k^2}{T-k}
+\;\sim\; \chi^2_m \quad\text{under the white-noise null.}
+\tag{3.4}\]</span></span></p>
+<p>A large <span class="math inline">\(Q\)</span> rejects the hypothesis of no autocorrelation. Applied to our six return series (with <span class="math inline">\(m=10\)</span>; the <span class="math inline">\(5\%\)</span> critical value is <span class="math inline">\(18.31\)</span>), the verdict already splits the group in two:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>symbols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>est_return <span class="ot">&lt;-</span> <span class="cf">function</span>(sym) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">sprintf</span>(<span class="st">"data/%s.csv"</span>, sym)); d<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(d<span class="sc">$</span>Date)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> d[d<span class="sc">$</span>Date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">"2026-07-01"</span>), ]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diff</span>(<span class="fu">log</span>(d<span class="sc">$</span>Adjusted))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (s <span class="cf">in</span> symbols) {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">est_return</span>(s)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">c</span>(<span class="at">series =</span> s,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">acf1 =</span> <span class="fu">round</span>(<span class="fu">acf</span>(r, <span class="at">plot =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>acf[<span class="dv">2</span>], <span class="dv">3</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">LB10 =</span> <span class="fu">round</span>(<span class="fu">Box.test</span>(r, <span class="at">lag =</span> <span class="dv">10</span>, <span class="at">type =</span> <span class="st">"Ljung-Box"</span>)<span class="sc">$</span>statistic, <span class="dv">1</span>)))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd, numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.diagnostic <span class="im">import</span> acorr_ljungbox</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> acf</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> est_return(sym):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> pd.read_csv(<span class="ss">f"data/</span><span class="sc">{</span>sym<span class="sc">}</span><span class="ss">.csv"</span>, parse_dates<span class="op">=</span>[<span class="st">"Date"</span>]).set_index(<span class="st">"Date"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.log(d[d.index <span class="op">&lt;=</span> <span class="st">"2026-07-01"</span>][<span class="st">"Adjusted"</span>]).diff().dropna()</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> [<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>]:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> est_return(s)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    lb <span class="op">=</span> acorr_ljungbox(r, lags<span class="op">=</span>[<span class="dv">10</span>]).lb_stat.iloc[<span class="dv">0</span>]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s, <span class="bu">round</span>(acf(r, nlags<span class="op">=</span><span class="dv">1</span>)[<span class="dv">1</span>], <span class="dv">3</span>), <span class="bu">round</span>(lb, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tbl-ljungbox" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ljungbox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.1: Serial correlation in daily returns (<span class="math inline">\(Q(10)\)</span> 5% critical value = 18.31)
+</figcaption>
+<div aria-describedby="tbl-ljungbox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ticker</th>
+<th style="text-align: center;"><span class="math inline">\(\hat\rho_1\)</span></th>
+<th style="text-align: center;">Ljung–Box <span class="math inline">\(Q(10)\)</span></th>
+<th style="text-align: left;">White noise?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">−0.038</td>
+<td style="text-align: center;">48.0</td>
+<td style="text-align: left;">rejected (faintly)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSFT</td>
+<td style="text-align: center;">−0.097</td>
+<td style="text-align: center;">97.4</td>
+<td style="text-align: left;"><strong>rejected</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AMZN</td>
+<td style="text-align: center;">−0.016</td>
+<td style="text-align: center;">12.3</td>
+<td style="text-align: left;">not rejected</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">−0.119</td>
+<td style="text-align: center;">199.7</td>
+<td style="text-align: left;"><strong>rejected</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">−0.003</td>
+<td style="text-align: center;">4.4</td>
+<td style="text-align: left;">not rejected</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GCF</td>
+<td style="text-align: center;">−0.032</td>
+<td style="text-align: center;">16.0</td>
+<td style="text-align: left;">not rejected</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#fig-acf-grid" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> shows the ACF of all six series out to 20 lags. The visual message is unambiguous and central to our whole enterprise: <strong>daily returns are very close to uncorrelated</strong>. Almost every bar sits inside the significance band; the only consistent exception is a small <em>negative</em> spike at lag 1 for the S&amp;P 500 and Microsoft.</p>
+<div id="fig-acf-grid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-acf-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/lts_acf_grid.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-acf-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: ACF of daily returns for all six series (95% bands shaded). Nearly every autocorrelation is inside the band — daily returns are close to uncorrelated. The clearest exception is a small negative lag-1 correlation in the S&amp;P 500 and Microsoft.
+</figcaption>
+</figure>
+</div>
+<p>This is <strong>weak-form market efficiency</strong> made visible, and it sets a sober expectation for our forecasting goal: if returns barely correlate with their own past, a linear model of the <em>mean</em> return has very little to work with. The three series that fail to reject white noise — Amazon and both gold series — have, to a linear model, <em>no</em> predictable mean structure at all.</p>
+</section>
+<section id="sec-pacf" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-pacf"><span class="header-section-number">3.3</span> Partial autocorrelation, and how it differs from the ACF</h2>
+<p>The ACF has a blind spot. If today correlates with yesterday, and yesterday with the day before, then today correlates with two days ago <em>indirectly</em> — even if there is no direct link. The ACF cannot separate the direct relationship from the inherited one. The <strong>partial autocorrelation function (PACF)</strong> fixes this: the lag-<span class="math inline">\(k\)</span> partial autocorrelation is the correlation between <span class="math inline">\(r_t\)</span> and <span class="math inline">\(r_{t-k}\)</span> <strong>after removing the effect of the intermediate lags</strong> <span class="math inline">\(r_{t-1}, \dots, r_{t-k+1}\)</span>. Operationally, it is the coefficient <span class="math inline">\(\hat\phi_{kk}\)</span> on <span class="math inline">\(r_{t-k}\)</span> when you fit an autoregression of order <span class="math inline">\(k\)</span>.</p>
+<p>The distinction is what lets us read a model off the data, because the two functions have mirror-image signatures:</p>
+<div id="tbl-acf-pacf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-acf-pacf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.2: How the ACF and PACF identify a model
+</figcaption>
+<div aria-describedby="tbl-acf-pacf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 25%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Process</th>
+<th style="text-align: left;">ACF</th>
+<th style="text-align: left;">PACF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>AR(<span class="math inline">\(p\)</span>)</strong></td>
+<td style="text-align: left;">tails off (decays gradually)</td>
+<td style="text-align: left;"><strong>cuts off after lag <span class="math inline">\(p\)</span></strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>MA(<span class="math inline">\(q\)</span>)</strong></td>
+<td style="text-align: left;"><strong>cuts off after lag <span class="math inline">\(q\)</span></strong></td>
+<td style="text-align: left;">tails off</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>ARMA(<span class="math inline">\(p,q\)</span>)</strong></td>
+<td style="text-align: left;">tails off</td>
+<td style="text-align: left;">tails off</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>So a sharp PACF cutoff points to an AR model and tells you its order; a sharp ACF cutoff points to an MA model. <a href="#fig-acf-pacf" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> shows both for the S&amp;P 500. The ACF decays while the PACF has its largest spike at lag 1 (with a couple of smaller significant lags after) — the fingerprint of a low-order <strong>autoregression</strong>, the model we develop next.</p>
+<div id="fig-acf-pacf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-acf-pacf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/lts_acf_pacf.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-acf-pacf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: ACF (left) and PACF (right) of S&amp;P 500 daily returns, 20 lags. The PACF’s dominant lag-1 spike, with the ACF tailing off, is the signature of a low-order AR process.
+</figcaption>
+</figure>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">est_return</span>(<span class="st">"SPX"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span> (r, <span class="at">lag.max =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">"ACF of S&amp;P 500 returns"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pacf</span>(r, <span class="at">lag.max =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">"PACF of S&amp;P 500 returns"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.graphics.tsaplots <span class="im">import</span> plot_acf, plot_pacf</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> est_return(<span class="st">"SPX"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plot_acf (r, lags<span class="op">=</span><span class="dv">20</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>])<span class="op">;</span> plot_pacf(r, lags<span class="op">=</span><span class="dv">20</span>, ax<span class="op">=</span>ax[<span class="dv">1</span>], method<span class="op">=</span><span class="st">"ywm"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-white-noise" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-white-noise"><span class="header-section-number">3.4</span> White noise and linear time series</h2>
+<div class="definition">
+<p><strong>White noise</strong> is a sequence of uncorrelated shocks with zero mean and constant variance — the formal version of “no predictable pattern left.”</p>
+</div>
+<p>The benchmark against which all this is measured is <strong>white noise</strong>: a sequence <span class="math inline">\(\{a_t\}\)</span> with mean zero, constant variance <span class="math inline">\(\sigma^2\)</span>, and <em>no autocorrelation at any lag</em> (<span class="math inline">\(\rho_k = 0\)</span> for all <span class="math inline">\(k \neq 0\)</span>). White noise is, by construction, unforecastable from its own past — its best forecast is always its mean.</p>
+<p>Our finding in <a href="#sec-acf" class="quarto-xref"><span>Section 3.2</span></a> can now be stated sharply: <strong>in the mean, daily returns are approximately white noise.</strong> But “white noise” carries a subtlety that is decisive for our objective. Uncorrelated does <strong>not</strong> mean independent. A series can have zero linear autocorrelation yet be strongly dependent in a <em>nonlinear</em> way — and returns are exactly such a series. <a href="#fig-wn-sq" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> makes the point by comparing the ACF of the S&amp;P 500’s returns with the ACF of its <em>squared</em> returns.</p>
+<div id="fig-wn-sq" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wn-sq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/lts_wn_sq.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wn-sq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Left: ACF of S&amp;P 500 returns — essentially white noise. Right: ACF of <em>squared</em> returns — large and persistent. Returns are uncorrelated but not independent: today’s magnitude predicts tomorrow’s. This is volatility clustering.
+</figcaption>
+</figure>
+</div>
+<p>The returns themselves are uncorrelated, but the <em>squared</em> returns are strongly and persistently correlated (the lag-1 autocorrelation of squared S&amp;P returns is about <span class="math inline">\(0.44\)</span>, and it stays high for many lags). Big days follow big days; calm follows calm. This is <strong>volatility clustering</strong>, and it means the direction of tomorrow’s return is nearly unpredictable while its <em>magnitude</em> is highly predictable. For our toolkit this is the pivotal fact: it tells us the payoff in forecasting returns lies not in the mean — where AR models will struggle — but in the <strong>variance</strong>, which is the target of the GARCH models we build next.</p>
+<p>Formally, the class of models we are entering is the <strong>linear time series</strong>, in which <span class="math inline">\(r_t\)</span> is a linear combination of current and past white-noise shocks (the Wold representation),</p>
+<p><span id="eq-wold"><span class="math display">\[
+r_t = \mu + \sum_{i=0}^{\infty} \psi_i\, a_{t-i}, \qquad \psi_0 = 1,
+\tag{3.5}\]</span></span></p>
+<p>where <span class="math inline">\(\{a_t\}\)</span> is white noise and the <span class="math inline">\(\psi_i\)</span> (the <strong>impulse-response weights</strong>) describe how a shock today echoes into the future. The AR, MA, and ARMA models are simply parsimonious ways of parameterising these weights. We begin with the AR model.</p>
+</section>
+<section id="sec-ar" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-ar"><span class="header-section-number">3.5</span> Simple autoregressive (AR) models</h2>
+<div class="definition">
+<p>An <strong>autoregressive (AR) model</strong> predicts today’s value from a weighted sum of its own recent past values, plus a random shock.</p>
+</div>
+<p>An <strong>autoregressive model of order <span class="math inline">\(p\)</span></strong>, AR(<span class="math inline">\(p\)</span>), regresses the series on its own recent past:</p>
+<p><span id="eq-ar-p"><span class="math display">\[
+r_t = \phi_0 + \phi_1 r_{t-1} + \phi_2 r_{t-2} + \cdots + \phi_p r_{t-p} + a_t,
+\tag{3.6}\]</span></span></p>
+<p>with <span class="math inline">\(\{a_t\}\)</span> white noise. It is the most natural first forecasting model: to predict tomorrow, take a weighted combination of the last <span class="math inline">\(p\)</span> days. The AR(1), <span class="math inline">\(r_t = \phi_0 + \phi_1 r_{t-1} + a_t\)</span>, is the workhorse special case.</p>
+<section id="sec-ar-properties" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="sec-ar-properties"><span class="header-section-number">3.5.1</span> Properties of AR models</h3>
+<p>For the <strong>AR(1)</strong>, provided <span class="math inline">\(|\phi_1| &lt; 1\)</span>, the process is stationary with</p>
+<p><span id="eq-ar1-props"><span class="math display">\[
+\begin{aligned}
+E[r_t] &amp;= \frac{\phi_0}{1-\phi_1}, \qquad
+\operatorname{Var}(r_t) = \frac{\sigma^2}{1-\phi_1^2}, \\[4pt]
+\rho_k &amp;= \phi_1^{\,k}.
+\end{aligned}
+\tag{3.7}\]</span></span></p>
+<p>Three things to read here. The mean is <span class="math inline">\(\phi_0/(1-\phi_1)\)</span>, so the intercept is <em>not</em> the mean unless <span class="math inline">\(\phi_1=0\)</span>. The ACF decays geometrically as <span class="math inline">\(\phi_1^k\)</span> — it <strong>tails off</strong> rather than cutting off, matching <a href="#tbl-acf-pacf" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. And <span class="math inline">\(\phi_1\)</span> is the persistence: <span class="math inline">\(\phi_1&gt;0\)</span> gives momentum, <span class="math inline">\(\phi_1&lt;0\)</span> gives mean-reversion (a negative <span class="math inline">\(\phi_1\)</span>, which is what our data shows, means an up day tends to be followed by a down day).</p>
+<p>For the general AR(<span class="math inline">\(p\)</span>), stationarity requires the roots of the characteristic equation</p>
+<p><span id="eq-ar-char"><span class="math display">\[
+1 - \phi_1 z - \phi_2 z^2 - \cdots - \phi_p z^p = 0
+\tag{3.8}\]</span></span></p>
+<p>to lie <strong>outside the unit circle</strong>. The mean is <span class="math inline">\(\mu = \phi_0/(1-\phi_1-\cdots-\phi_p)\)</span>, the ACF tails off (following a difference equation set by the <span class="math inline">\(\phi\)</span>’s), and — the identification key — the <strong>PACF cuts off after lag <span class="math inline">\(p\)</span></strong>.</p>
+</section>
+<section id="sec-ar-identify" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-ar-identify"><span class="header-section-number">3.5.2</span> Identifying AR models</h3>
+<p>Identification means choosing the order <span class="math inline">\(p\)</span> — how many past lags to include. Two complementary tools do this: the <strong>PACF</strong> proposes a candidate order from its <em>shape</em>, and an <strong>information criterion</strong> selects one through a formal fit-versus-complexity trade-off. We then confirm the choice with residual diagnostics (<a href="#sec-ar-gof" class="quarto-xref"><span>Section 3.5.4</span></a>).</p>
+<p><strong>Reading a candidate order off the PACF.</strong> From <a href="#tbl-acf-pacf" class="quarto-xref">Table&nbsp;<span>3.2</span></a>, an AR(<span class="math inline">\(p\)</span>) has a PACF that is significant up to lag <span class="math inline">\(p\)</span> and then <strong>cuts off</strong>. So we count the PACF spikes poking outside the <span class="math inline">\(\pm 1.96/\sqrt{T}\)</span> band: one spike (lag 1) for Microsoft suggests AR(1); several early spikes for the S&amp;P 500 suggest a higher order; none for Amazon or gold suggests AR(0). The PACF is fast and intuitive but <em>judgmental</em> — deciding which borderline spikes are real is subjective — so we back it with a criterion that attaches a number to the trade-off.</p>
+<p><strong>What an information criterion actually does.</strong> Adding a lag can only <em>improve</em> the in-sample fit: the residual variance <span class="math inline">\(\hat\sigma^2\)</span> falls (weakly) as <span class="math inline">\(p\)</span> grows, because more parameters always fit the sample better. Chasing “best fit” alone would therefore always pick the biggest model — pure overfitting. An information criterion stops this by charging a <strong>penalty per parameter</strong>, so a lag survives only if it improves the fit by <em>more</em> than it costs:</p>
+<p><span id="eq-aic-bic"><span class="math display">\[
+\begin{aligned}
+\text{AIC} &amp;= \underbrace{T \ln(\hat\sigma^2)}_{\text{fit (smaller is better)}} + \underbrace{2k}_{\text{penalty}}, \\[4pt]
+\text{BIC} &amp;= T \ln(\hat\sigma^2) + \underbrace{k \ln T}_{\text{penalty}},
+\end{aligned}
+\tag{3.9}\]</span></span></p>
+<p>where <span class="math inline">\(\hat\sigma^2\)</span> is the residual variance and <span class="math inline">\(k\)</span> the number of estimated parameters. We fit the model at each order <span class="math inline">\(p = 0, 1, 2, \dots\)</span> and select the order with the <strong>smallest</strong> criterion.</p>
+<p><strong>Why AIC and BIC disagree.</strong> The only difference is the price per parameter: AIC charges <span class="math inline">\(2\)</span>, BIC charges <span class="math inline">\(\ln T\)</span> — here <span class="math inline">\(\ln(3762) \approx 8.2\)</span>, roughly four times more. A lag must clear a higher bar to be admitted by BIC than by AIC. Concretely, an AR coefficient of magnitude <span class="math inline">\(\phi\)</span> lowers <span class="math inline">\(T\ln\hat\sigma^2\)</span> by about <span class="math inline">\(T\phi^2\)</span>, so a lag earns its place when <span class="math inline">\(T\phi^2\)</span> beats the penalty — i.e.&nbsp;when</p>
+<p><span id="eq-ic-threshold"><span class="math display">\[
+|\phi| \gtrsim \sqrt{\tfrac{2}{T}} \approx 0.023 \;\;(\text{AIC}),
+\qquad
+|\phi| \gtrsim \sqrt{\tfrac{\ln T}{T}} \approx 0.047 \;\;(\text{BIC}).
+\tag{3.10}\]</span></span></p>
+<p>BIC’s bar is twice AIC’s. This is more than cosmetic: as the sample grows, <strong>BIC is consistent</strong> — it selects the true order with probability approaching one — whereas <strong>AIC is not</strong>, keeping a nonzero chance of over-selecting no matter how large <span class="math inline">\(T\)</span> is. With <span class="math inline">\(T \approx 3{,}800\)</span>, AIC will routinely tag tiny, economically meaningless lags as worth keeping, so we lean on <strong>BIC</strong> for parsimony and use AIC as a second opinion.</p>
+<p><strong>Watching a criterion pick the order.</strong> The idea becomes concrete when you tabulate the criterion at each order. <a href="#tbl-ic-aapl" class="quarto-xref">Table&nbsp;<span>3.3</span></a> does this for Apple, reporting each order as a <em>difference from the best</em>, <span class="math inline">\(\Delta = \text{IC} - \min\text{IC}\)</span>, so the chosen order is the one at <span class="math inline">\(\Delta = 0\)</span>.</p>
+<div id="tbl-ic-aapl" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ic-aapl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.3: AIC and BIC by AR order for Apple returns (Δ from each row’s minimum; <strong>0.0</strong> marks the choice)
+</figcaption>
+<div aria-describedby="tbl-ic-aapl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Order <span class="math inline">\(p\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Delta\)</span>AIC</td>
+<td style="text-align: center;">18.6</td>
+<td style="text-align: center;">15.2</td>
+<td style="text-align: center;">16.8</td>
+<td style="text-align: center;">16.4</td>
+<td style="text-align: center;">18.3</td>
+<td style="text-align: center;">20.2</td>
+<td style="text-align: center;">21.2</td>
+<td style="text-align: center;">16.5</td>
+<td style="text-align: center;"><strong>0.0</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta\)</span>BIC</td>
+<td style="text-align: center;"><strong>0.0</strong></td>
+<td style="text-align: center;">2.8</td>
+<td style="text-align: center;">10.7</td>
+<td style="text-align: center;">16.5</td>
+<td style="text-align: center;">24.6</td>
+<td style="text-align: center;">32.8</td>
+<td style="text-align: center;">40.0</td>
+<td style="text-align: center;">41.6</td>
+<td style="text-align: center;">31.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The two rows disagree sharply. <strong>BIC is smallest at <span class="math inline">\(p=0\)</span></strong> and climbs from there — every added lag costs more penalty than it repays, so BIC calls Apple <strong>white noise</strong>. <strong>AIC is smallest at <span class="math inline">\(p=8\)</span></strong>, dragged to the largest order on offer because its gentler penalty lets a run of individually trivial lags accumulate. This resolves the puzzle Apple posed back in <a href="#tbl-ljungbox" class="quarto-xref">Table&nbsp;<span>3.1</span></a>: Ljung–Box <em>did</em> detect autocorrelation (<span class="math inline">\(Q=48\)</span>, rejected), and it is real — but it is smeared thinly across many lags, each below BIC’s <span class="math inline">\(|\phi|\approx0.047\)</span> bar. AIC chases it into a spurious AR(8); BIC correctly keeps nothing. <strong>A significant portmanteau test does not mean a model is worth fitting</strong> — it says <em>some</em> dependence exists, not that it is large enough to exploit.</p>
+<p><strong>The order chosen for each series.</strong> Running both criteria across all six tickers lays their mean dynamics side by side:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AIC- and BIC-optimal AR order for each series</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (s <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>)) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  r   <span class="ot">&lt;-</span> <span class="fu">est_return</span>(s)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  ics <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>, <span class="cf">function</span>(p) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    f <span class="ot">&lt;-</span> <span class="fu">arima</span>(r, <span class="at">order =</span> <span class="fu">c</span>(p, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">method =</span> <span class="st">"ML"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">AIC =</span> <span class="fu">AIC</span>(f), <span class="at">BIC =</span> <span class="fu">BIC</span>(f))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(s, <span class="st">" AIC-order:"</span>, <span class="fu">which.min</span>(ics[<span class="st">"AIC"</span>, ]) <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>         <span class="st">" BIC-order:"</span>, <span class="fu">which.min</span>(ics[<span class="st">"BIC"</span>, ]) <span class="sc">-</span> <span class="dv">1</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.arima.model <span class="im">import</span> ARIMA</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ic_orders(sym, pmax<span class="op">=</span><span class="dv">8</span>):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    r   <span class="op">=</span> est_return(sym)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    fits <span class="op">=</span> [ARIMA(r, order<span class="op">=</span>(p, <span class="dv">0</span>, <span class="dv">0</span>)).fit() <span class="cf">for</span> p <span class="kw">in</span> <span class="bu">range</span>(pmax <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (<span class="bu">int</span>(np.argmin([f.aic <span class="cf">for</span> f <span class="kw">in</span> fits])),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">int</span>(np.argmin([f.bic <span class="cf">for</span> f <span class="kw">in</span> fits])))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> [<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>]:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s, <span class="st">"AIC/BIC order:"</span>, ic_orders(s))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tbl-ar-identify" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ar-identify-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.4: AR order chosen by AIC vs BIC across the six series
+</figcaption>
+<div aria-describedby="tbl-ar-identify-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ticker</th>
+<th style="text-align: center;">AIC order</th>
+<th style="text-align: center;">BIC order</th>
+<th style="text-align: left;">Chosen model</th>
+<th style="text-align: left;">Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AMZN</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><strong>AR(0)</strong> — white noise</td>
+<td style="text-align: left;">both criteria agree: nothing to model</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><strong>AR(0)</strong> — white noise</td>
+<td style="text-align: left;">both agree</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GCF</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><strong>AR(0)</strong> — white noise</td>
+<td style="text-align: left;">AIC keeps a faint lag-1; BIC rejects it</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;"><strong>AR(0)</strong> — white noise</td>
+<td style="text-align: left;">AIC over-selects (<a href="#tbl-ic-aapl" class="quarto-xref">Table&nbsp;<span>3.3</span></a>); BIC and parsimony win</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSFT</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>AR(1)</strong>, <span class="math inline">\(\hat\phi_1 = -0.10\)</span></td>
+<td style="text-align: left;">BIC keeps exactly one real lag: mild mean-reversion</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;"><strong>higher-order AR</strong></td>
+<td style="text-align: left;"><em>both</em> criteria want many lags — genuine structure</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Now the columns tell a clean story. Where <strong>AIC and BIC agree on 0</strong> (Amazon, gold) the series is unambiguously white noise. Where they <strong>disagree</strong> (gold futures, Apple, Microsoft) the gap is exactly AIC’s known over-selection, and BIC’s parsimony is the call to trust — white noise for Apple and gold-futures, a tidy <strong>AR(1)</strong> for Microsoft (<span class="math inline">\(\hat\phi_1 = -0.10\)</span>: up days mildly tend to be followed by down days). The one series where <strong>even BIC wants many lags is the S&amp;P 500</strong> — its short-horizon structure is real and multi-lag, plausibly a trace of index microstructure and lead–lag effects among its constituents.</p>
+<p>The theme unifying the table: wherever a model <em>is</em> warranted, its coefficients are tiny (<span class="math inline">\(|\hat\phi_1| \le 0.12\)</span>). The mean of daily returns carries very little exploitable structure — which is exactly why, for our forecasting objective, the leverage is in the variance, not the mean.</p>
+</section>
+<section id="sec-ar-monthly" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="sec-ar-monthly"><span class="header-section-number">3.5.3</span> AR models at the monthly frequency</h3>
+<p>Everything so far used <em>daily</em> returns. Do the same tickers behave differently at the <strong>monthly</strong> frequency? A monthly log return is the sum of about twenty-one daily ones (<a href="01-returns.html#eq-log-additive" class="quarto-xref">Equation&nbsp;<span>1.4</span></a>), and such sums are better-behaved (<a href="02-distribution.html#sec-aggregation" class="quarto-xref"><span>Section 2.6</span></a>). Aggregating each series to month-end gives about <span class="math inline">\(180\)</span> observations, on which we repeat the identification.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>monthly_return <span class="ot">&lt;-</span> <span class="cf">function</span>(sym) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">sprintf</span>(<span class="st">"data/%s.csv"</span>, sym)); d<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(d<span class="sc">$</span>Date)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> d[d<span class="sc">$</span>Date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">"2026-07-01"</span>), ]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  lp <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>Adjusted)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  last_month <span class="ot">&lt;-</span> lp[<span class="fu">tapply</span>(<span class="fu">seq_along</span>(lp), <span class="fu">cut</span>(d<span class="sc">$</span>Date, <span class="st">"month"</span>), max)]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diff</span>(last_month)                                   <span class="co"># monthly log returns</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forecast)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (s <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>)) {</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">monthly_return</span>(s)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(s, <span class="st">" n:"</span>, <span class="fu">length</span>(m),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">" LB(12):"</span>, <span class="fu">round</span>(<span class="fu">Box.test</span>(m, <span class="dv">12</span>, <span class="st">"Ljung-Box"</span>)<span class="sc">$</span>statistic, <span class="dv">1</span>),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">" BIC-order:"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">auto.arima</span>(m, <span class="at">max.p =</span> <span class="dv">6</span>, <span class="at">max.q =</span> <span class="dv">0</span>, <span class="at">d =</span> <span class="dv">0</span>, <span class="at">seasonal =</span> <span class="cn">FALSE</span>, <span class="at">ic =</span> <span class="st">"bic"</span>)<span class="sc">$</span>arma[<span class="dv">1</span>],</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> monthly_return(sym):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> pd.read_csv(<span class="ss">f"data/</span><span class="sc">{</span>sym<span class="sc">}</span><span class="ss">.csv"</span>, parse_dates<span class="op">=</span>[<span class="st">"Date"</span>]).set_index(<span class="st">"Date"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> d[d.index <span class="op">&lt;=</span> <span class="st">"2026-07-01"</span>]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.log(d[<span class="st">"Adjusted"</span>]).resample(<span class="st">"ME"</span>).last().diff().dropna()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> [<span class="st">"AAPL"</span>,<span class="st">"MSFT"</span>,<span class="st">"AMZN"</span>,<span class="st">"SPX"</span>,<span class="st">"GLD"</span>,<span class="st">"GCF"</span>]:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    m  <span class="op">=</span> monthly_return(s)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    lb <span class="op">=</span> acorr_ljungbox(m, lags<span class="op">=</span>[<span class="dv">12</span>]).lb_stat.iloc[<span class="dv">0</span>]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s, <span class="bu">len</span>(m), <span class="bu">round</span>(lb, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>With only <span class="math inline">\(\sim\!180\)</span> monthly observations the significance band widens to <span class="math inline">\(\pm 1.96/\sqrt{180} \approx \pm 0.146\)</span> — far looser than the daily <span class="math inline">\(\pm 0.032\)</span>. <a href="#tbl-ar-monthly" class="quarto-xref">Table&nbsp;<span>3.5</span></a> sets the two frequencies side by side.</p>
+<div id="tbl-ar-monthly" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ar-monthly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.5: AR structure at the monthly frequency (LB(12) 5% critical value = 21.03; band ±0.146)
+</figcaption>
+<div aria-describedby="tbl-ar-monthly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 19%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ticker</th>
+<th style="text-align: center;">Daily BIC order</th>
+<th style="text-align: center;">Monthly <span class="math inline">\(\hat\rho_1\)</span></th>
+<th style="text-align: center;">Monthly LB(12)</th>
+<th style="text-align: center;">Monthly BIC order</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AAPL</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">+0.090</td>
+<td style="text-align: center;">12.3</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSFT</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">−0.078</td>
+<td style="text-align: center;">6.7</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AMZN</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">−0.090</td>
+<td style="text-align: center;">7.1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPX</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">−0.140</td>
+<td style="text-align: center;">15.9</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">−0.046</td>
+<td style="text-align: center;">10.3</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GCF</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">−0.038</td>
+<td style="text-align: center;">11.6</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The result is unambiguous: <strong>at the monthly frequency every one of the six series is white noise.</strong> No lag-1 autocorrelation clears the band, no Ljung–Box statistic reaches its <span class="math inline">\(21.03\)</span> critical value, and BIC selects AR(0) for all six — even the S&amp;P 500, whose <em>daily</em> returns carried the richest structure of the group. <a href="#fig-daily-vs-monthly" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> shows the disappearance for the S&amp;P directly: the clear negative lag-1 spike in daily returns is simply gone once we aggregate.</p>
+<div id="fig-daily-vs-monthly" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-daily-vs-monthly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/lts_daily_vs_monthly.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-daily-vs-monthly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: S&amp;P 500 return ACF at two frequencies. The negative lag-1 spike in daily returns (left) vanishes at the monthly frequency (right), where every bar sits inside the wider band.
+</figcaption>
+</figure>
+</div>
+<p>Two forces drive this, and both matter for our objective. First, <strong>aggregation washes the structure out</strong>: the negative lag-1 autocorrelation in daily index and stock returns is a <em>high-frequency</em> effect — short-term reversal and microstructure noise such as the bid–ask bounce — and summing twenty-one days averages it away. Second, <strong>power falls</strong>: with <span class="math inline">\(180\)</span> observations instead of <span class="math inline">\(3{,}770\)</span>, the test cannot detect correlations as small as those that remain. Either way the message sharpens rather than contradicts the daily finding: <strong>the mean of returns grows <em>more</em> unforecastable, not less, as the horizon lengthens.</strong> For monthly forecasting the honest AR model is AR(0) — the best forecast of next month’s return is its long-run average. The predictability our toolkit can exploit is not in the mean at any frequency; it is in the volatility.</p>
+</section>
+<section id="sec-ar-gof" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="sec-ar-gof"><span class="header-section-number">3.5.4</span> Goodness of fit</h3>
+<p>A fitted AR model earns its keep only if its <strong>residuals are white noise</strong> — if <span class="math inline">\(\hat a_t = r_t - \hat r_t\)</span> shows no leftover autocorrelation (checked with Ljung–Box on the residuals) then the linear structure has been captured. But the more sobering diagnostic is how <em>little</em> structure there was to capture. The coefficient of determination for these fits is</p>
+<p><span id="eq-r2"><span class="math display">\[
+R^2 \approx 1 - \frac{\hat\sigma_a^2}{\hat\sigma_r^2},
+\tag{3.11}\]</span></span></p>
+<p>and for the S&amp;P 500’s AR model it is about <strong>0.018</strong> — under <span class="math inline">\(2\%\)</span> of the variance of daily returns is explained by its own past. Microsoft’s AR(1) explains about <span class="math inline">\(1\%\)</span> (<span class="math inline">\(R^2 \approx \hat\phi_1^2\)</span>). Fitting the AR does whiten the residuals’ <em>linear</em> autocorrelation, but it leaves the squared-residual correlation of <a href="#fig-wn-sq" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> completely intact — the volatility clustering is untouched, waiting for GARCH.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(<span class="fu">est_return</span>(<span class="st">"SPX"</span>), <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Box.test</span>(<span class="fu">residuals</span>(fit), <span class="at">lag =</span> <span class="dv">10</span>, <span class="at">type =</span> <span class="st">"Ljung-Box"</span>)   <span class="co"># residuals ~ white noise?</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> fit<span class="sc">$</span>sigma2 <span class="sc">/</span> <span class="fu">var</span>(<span class="fu">est_return</span>(<span class="st">"SPX"</span>))                  <span class="co"># approx R^2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.arima.model <span class="im">import</span> ARIMA</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>fit <span class="op">=</span> ARIMA(est_return(<span class="st">"SPX"</span>), order<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)).fit()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(acorr_ljungbox(fit.resid, lags<span class="op">=</span>[<span class="dv">10</span>]))              <span class="co"># residual white-noise test</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span> <span class="op">-</span> fit.resid.var() <span class="op">/</span> est_return(<span class="st">"SPX"</span>).var())     <span class="co"># approx R^2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ar-forecast" class="level3" data-number="3.5.5">
+<h3 data-number="3.5.5" class="anchored" data-anchor-id="sec-ar-forecast"><span class="header-section-number">3.5.5</span> Forecasting</h3>
+<p>Forecasting from an AR model is recursive: to forecast <span class="math inline">\(h\)</span> steps ahead, plug in earlier forecasts for the unknown future values. For the AR(1) this gives a clean closed form,</p>
+<p><span id="eq-ar1-forecast"><span class="math display">\[
+\hat r_t(h) = \mu + \phi_1^{\,h}\,(r_t - \mu),
+\tag{3.12}\]</span></span></p>
+<p>which <strong>decays to the unconditional mean</strong> <span class="math inline">\(\mu\)</span> as the horizon <span class="math inline">\(h\)</span> grows — the farther out we look, the more the forecast forgets today and reverts to the average return. Meanwhile the forecast-error variance <em>grows</em> with the horizon, from the one-step <span class="math inline">\(\sigma^2\)</span> up toward the unconditional variance <span class="math inline">\(\sigma^2/(1-\phi_1^2)\)</span>.</p>
+<p><a href="#fig-ar-forecast" class="quarto-xref">Figure&nbsp;<span>3.5</span></a> applies this to the S&amp;P 500 over our July holdout, forecasting the six trading days after the estimation window with a parsimonious AR(2).</p>
+<div id="fig-ar-forecast" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ar-forecast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/lts_forecast.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ar-forecast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.5: S&amp;P 500 AR(2) forecast over the July holdout. The point forecast (blue) collapses within two days to the unconditional mean (~0.05%, green); the 95% interval (shaded) is about ±2%; the actual returns (red) scatter inside the band with no relation to the forecast direction.
+</figcaption>
+</figure>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(<span class="fu">est_return</span>(<span class="st">"SPX"</span>), <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit, <span class="at">n.ahead =</span> <span class="dv">6</span>)          <span class="co"># $pred (forecasts) and $se (std errors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fit <span class="op">=</span> ARIMA(est_return(<span class="st">"SPX"</span>), order<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)).fit()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>fc  <span class="op">=</span> fit.get_forecast(steps<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fc.predicted_mean, fc.conf_int())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>The figure is the honest verdict on mean forecasting, and it is exactly what the theory predicts. The point forecast flattens to <span class="math inline">\(\approx 0.05\%\)</span> within two days; the <span class="math inline">\(95\%\)</span> interval is enormous relative to it (about <span class="math inline">\(\pm 2\%\)</span>, i.e.&nbsp;forty times the forecast); and the realised returns land all over that band with no directional agreement. <strong>The AR model’s most useful output is not the point forecast but the interval</strong> — an honest statement that tomorrow’s return is <span class="math inline">\(0.05\% \pm 2\%\)</span>, dominated by noise.</p>
+<p>The S&amp;P 500 is not a special case. The carousel below runs the identical exercise for all six tickers — each fit with its own identified AR order and forecast across the same July holdout. Click the arrows (or the dots) to step through them.</p>
+<style>
+#fcCarousel { max-width: 820px; margin: 1.2rem auto 3rem; }
+#fcCarousel .carousel-control-prev-icon,
+#fcCarousel .carousel-control-next-icon { filter: invert(1); background-color: rgba(0,0,0,.5); border-radius: 50%; padding: 14px; }
+#fcCarousel .carousel-indicators { bottom: -2.4rem; }
+#fcCarousel .carousel-indicators [data-bs-target] { background-color: #555; }
+</style>
+<div id="fcCarousel" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#fcCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Apple"></button>
+    <button type="button" data-bs-target="#fcCarousel" data-bs-slide-to="1" aria-label="Microsoft"></button>
+    <button type="button" data-bs-target="#fcCarousel" data-bs-slide-to="2" aria-label="Amazon"></button>
+    <button type="button" data-bs-target="#fcCarousel" data-bs-slide-to="3" aria-label="S&amp;P 500"></button>
+    <button type="button" data-bs-target="#fcCarousel" data-bs-slide-to="4" aria-label="Gold GLD"></button>
+    <button type="button" data-bs-target="#fcCarousel" data-bs-slide-to="5" aria-label="Gold futures"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active"><img src="figs/lts_fc_AAPL.png" class="d-block w-100" alt="Apple AR(0) forecast"></div>
+    <div class="carousel-item"><img src="figs/lts_fc_MSFT.png" class="d-block w-100" alt="Microsoft AR(1) forecast"></div>
+    <div class="carousel-item"><img src="figs/lts_fc_AMZN.png" class="d-block w-100" alt="Amazon AR(0) forecast"></div>
+    <div class="carousel-item"><img src="figs/lts_fc_SPX.png" class="d-block w-100" alt="S&amp;P 500 AR(2) forecast"></div>
+    <div class="carousel-item"><img src="figs/lts_fc_GLD.png" class="d-block w-100" alt="Gold GLD AR(0) forecast"></div>
+    <div class="carousel-item"><img src="figs/lts_fc_GCF.png" class="d-block w-100" alt="Gold futures AR(0) forecast"></div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#fcCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+  <button class="carousel-control-next" type="button" data-bs-target="#fcCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+</div>
+<p>Every panel is the same shape. For the <strong>AR(0)</strong> series — Amazon, both gold series, and Apple — the forecast is <em>exactly</em> the historical mean, a flat line inside a flat <span class="math inline">\(\pm 2\)</span>–<span class="math inline">\(4\%\)</span> band; for <strong>Microsoft’s AR(1)</strong> and the <strong>S&amp;P’s AR(2)</strong> there is a barely perceptible one-day wiggle before reversion. In every case the realised holdout returns scatter across the interval with no directional agreement. Across a mega-cap stock, a broad index, and gold alike, the mean of daily returns is effectively unforecastable, and the interval — not the point — is the deliverable.</p>
+<p>This is not a failure of the model; it is the model correctly reporting weak-form efficiency. And it sharpens our objective precisely. A robust forecasting toolkit for these series will not make money predicting the <em>direction</em> of daily returns — the AR model proves there is almost nothing there. Its real leverage is in the <em>magnitude</em>: the volatility clustering of <a href="#fig-wn-sq" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>, which we turn into conditional-variance forecasts and Value-at-Risk in the GARCH stage of the toolkit.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Stationarity</strong> (<a href="#eq-stationary" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>) lets us estimate one stable correlation structure from the whole sample — our returns have it, prices do not.</li>
+<li>The <strong>ACF</strong> (<a href="#eq-acf" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) measures total serial correlation; the <strong>PACF</strong> measures the <em>direct</em> correlation at a lag. Their cutoff/tail-off signatures identify the model (<a href="#tbl-acf-pacf" class="quarto-xref">Table&nbsp;<span>3.2</span></a>).</li>
+<li>Daily returns are <strong>approximately white noise in the mean</strong> — but <em>not independent</em>: squared returns are strongly correlated (<strong>volatility clustering</strong>), which is where our forecasting leverage really lies.</li>
+<li><strong>AR(<span class="math inline">\(p\)</span>)</strong> models the mean from its own past; the <strong>PACF and BIC</strong> identify the order. Across our tickers the orders differ sharply — Amazon and gold are white noise, Microsoft a clean AR(1), the S&amp;P richer — but every coefficient is tiny.</li>
+<li>AR <strong>forecasts revert to the mean</strong> with widening intervals (<a href="#eq-ar1-forecast" class="quarto-xref">Equation&nbsp;<span>3.12</span></a>); for daily returns they explain under <span class="math inline">\(2\%\)</span> of variance, so the point forecast is near-flat and the <strong>interval is the real deliverable</strong>.</li>
+<li><strong>Aggregation matters</strong>: at the <em>monthly</em> frequency all six series are white noise (AR(0)) — the mean grows <em>more</em> unforecastable as the horizon lengthens.</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-concept-check" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-concept-check"><span class="header-section-number">3.6</span> Concept check</h2>
+<p>Work through these before moving on. Each answer is collapsed — decide first, then expand it.</p>
+<p><strong>Q1. Why does our framework model returns rather than prices?</strong></p>
+<ul>
+<li><strong>(a)</strong> Returns are always positive, which the models require.</li>
+<li><strong>(b)</strong> Prices are non-stationary (they carry a unit root) while returns are approximately stationary, which is the precondition our models need.</li>
+<li><strong>(c)</strong> Returns have larger means than prices.</li>
+<li><strong>(d)</strong> Prices cannot be aggregated across time.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> Every model here assumes weak stationarity — a stable mean, variance, and autocovariance. Prices trend and wander (unit root); differencing the log price into a return removes that unit root and delivers a stationary series.</p>
+</div>
+</div>
+</div>
+<p><strong>Q2. A series has an ACF that decays gradually and a PACF that cuts off sharply after lag 1. This is the signature of:</strong></p>
+<ul>
+<li><strong>(a)</strong> an MA(1) process.</li>
+<li><strong>(b)</strong> white noise.</li>
+<li><strong>(c)</strong> an AR(1) process.</li>
+<li><strong>(d)</strong> a random walk.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(c).</strong> AR(<span class="math inline">\(p\)</span>): ACF tails off, PACF cuts off after lag <span class="math inline">\(p\)</span>. A single PACF spike with a decaying ACF is AR(1). (An MA(1) shows the mirror image — ACF cuts off, PACF tails off.)</p>
+</div>
+</div>
+</div>
+<p><strong>Q3. The S&amp;P 500’s return ACF is near zero, but the ACF of its <em>squared</em> returns is large and persistent. Daily returns are therefore:</strong></p>
+<ul>
+<li><strong>(a)</strong> independent and identically distributed.</li>
+<li><strong>(b)</strong> uncorrelated but <em>not</em> independent — dependent in their variance.</li>
+<li><strong>(c)</strong> strongly autocorrelated in the mean.</li>
+<li><strong>(d)</strong> non-stationary.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> White noise means <em>uncorrelated</em>, not independent. Zero autocorrelation in returns with strong autocorrelation in squared returns is <strong>volatility clustering</strong> — nonlinear dependence in the variance, the target of the GARCH stage.</p>
+</div>
+</div>
+</div>
+<p><strong>Q4. With ≈3,800 observations, AIC selects AR(8) for Apple while BIC selects AR(0). The best interpretation is:</strong></p>
+<ul>
+<li><strong>(a)</strong> Apple has strong eight-lag structure that BIC misses.</li>
+<li><strong>(b)</strong> AIC is always more accurate than BIC.</li>
+<li><strong>(c)</strong> AIC’s lighter per-parameter penalty (<span class="math inline">\(2\)</span> vs <span class="math inline">\(\ln T \approx 8.2\)</span>) makes it over-select trivial lags in large samples; BIC’s parsimony is more trustworthy here.</li>
+<li><strong>(d)</strong> The data are corrupted.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(c).</strong> BIC is consistent (it finds the true order as <span class="math inline">\(T\to\infty\)</span>); AIC is not and tends to over-select in large samples. Here BIC’s AR(0) — white noise — is the honest call.</p>
+</div>
+</div>
+</div>
+<p><strong>Q5. Apple’s Ljung–Box test rejects white noise (<span class="math inline">\(Q=48\)</span>), yet its chosen model is AR(0). Why is that not a contradiction?</strong></p>
+<ul>
+<li><strong>(a)</strong> The Ljung–Box test is simply wrong.</li>
+<li><strong>(b)</strong> A significant portmanteau test means <em>some</em> autocorrelation exists, but here it is too small and diffuse to justify fitting any model.</li>
+<li><strong>(c)</strong> AR(0) means the series is non-stationary.</li>
+<li><strong>(d)</strong> BIC ignores autocorrelation.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> Significance ≠ magnitude. With 3,800 observations even trivial correlations are detectable; the Ljung–Box rejects, but no single lag clears BIC’s threshold, so the practical model is white noise.</p>
+</div>
+</div>
+</div>
+<p><strong>Q6. For a stationary AR(1) with <span class="math inline">\(\phi_1 = -0.10\)</span>, as the horizon <span class="math inline">\(h\)</span> grows the point forecast:</strong></p>
+<ul>
+<li><strong>(a)</strong> explodes to infinity.</li>
+<li><strong>(b)</strong> oscillates with growing amplitude.</li>
+<li><strong>(c)</strong> converges to the unconditional mean, with a widening forecast interval.</li>
+<li><strong>(d)</strong> stays equal to the last observed value forever.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(c).</strong> <span class="math inline">\(\hat r_t(h) = \mu + \phi_1^{\,h}(r_t-\mu)\)</span>; since <span class="math inline">\(|\phi_1|&lt;1\)</span>, <span class="math inline">\(\phi_1^h
+\to 0\)</span>, so the forecast decays to <span class="math inline">\(\mu\)</span> while the error variance grows toward the unconditional variance. (Answer (d) describes a <em>random walk</em>, not a stationary AR.)</p>
+</div>
+</div>
+</div>
+<p><strong>Q7. Moving from daily to monthly returns, the S&amp;P 500’s AR structure disappears (BIC picks AR(0)). The main reason is:</strong></p>
+<ul>
+<li><strong>(a)</strong> monthly returns are non-stationary.</li>
+<li><strong>(b)</strong> temporal aggregation averages out high-frequency microstructure effects, and the far smaller sample has less power to detect tiny correlations.</li>
+<li><strong>(c)</strong> monthly returns have no mean.</li>
+<li><strong>(d)</strong> the monthly data contain errors.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(b).</strong> The daily negative lag-1 correlation is a high-frequency artifact (reversal / bid–ask bounce) that summing ~21 days washes out; and with ~180 monthly points the significance band widens to ±0.146, so small correlations become undetectable.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/02-distribution.html" class="pagination-link" aria-label="Distributional Properties of Returns">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributional Properties of Returns</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/04-ma.html" class="pagination-link" aria-label="Moving-Average Models">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Moving-Average Models</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Time Series Analysis in Financial Econometrics</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

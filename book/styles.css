@@ -1,0 +1,97 @@
+/* =============================================================
+   Readability styles — let the prose breathe
+   ============================================================= */
+
+/* Calmer, slightly larger body type */
+main { font-size: 1.02rem; }
+
+/* Looser line spacing and clearer separation between paragraphs.
+   This is the single biggest readability win across every chapter. */
+main p,
+main li {
+  line-height: 1.72;
+}
+main p {
+  margin-bottom: 1.05rem;
+}
+main li {
+  margin-bottom: 0.35rem;
+}
+
+/* More air above section headings so sections feel distinct */
+main h2 {
+  margin-top: 2.3rem;
+  margin-bottom: 0.85rem;
+}
+main h3 {
+  margin-top: 1.6rem;
+}
+
+/* Give callouts room so they read as genuine "stops" in the flow */
+.callout {
+  margin-top: 1.45rem;
+  margin-bottom: 1.45rem;
+}
+
+/* =============================================================
+   Highlight boxes for new ideas, definitions, and warnings.
+
+   Usage in Markdown:
+     ::: {.definition}
+     **Term** — one or two sentences defining it.
+     :::
+
+     ::: {.keyidea}
+     A new idea worth pausing on.
+     :::
+   Warnings/pitfalls use Quarto's built-in ::: {.callout-warning}.
+   ============================================================= */
+
+.definition,
+.keyidea {
+  padding: 0.75rem 1rem 0.55rem;
+  margin: 1.4rem 0;
+  border-radius: 5px;
+  border-left: 4px solid;
+}
+.definition > :last-child,
+.keyidea > :last-child { margin-bottom: 0; }
+
+/* Definition — blue */
+.definition {
+  background: #eef5fb;
+  border-left-color: #2c7fb8;
+}
+.definition::before {
+  content: "Definition";
+  display: block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2c7fb8;
+  margin-bottom: 0.35rem;
+}
+
+/* Key idea — teal/green */
+.keyidea {
+  background: #eef7f0;
+  border-left-color: #2e8b57;
+}
+.keyidea::before {
+  content: "Key idea";
+  display: block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2e8b57;
+  margin-bottom: 0.35rem;
+}
+
+/* Soft highlighter, if ever needed inline: [term]{.mark} */
+mark, .mark {
+  background: linear-gradient(transparent 58%, #ffe58a 58%);
+  padding: 0 0.04em;
+  color: inherit;
+}

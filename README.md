@@ -1,5 +1,44 @@
 # Mehman Ismayilli's personal website
 
+## Publishing new teaching material
+
+Course pages build themselves by scanning `public/lectures/`. To put a new lecture,
+problem set, dataset, or script on the site:
+
+1. Drop the file into `public/lectures/<course>/<week>/`. The week folder does not have
+   to exist yet — create it and it becomes a new section.
+2. Run `npm run publish`.
+
+That is the whole workflow. The file appears on its course page with a title derived
+from its filename, and GitHub Actions deploys the site about a minute later. **You never
+edit code to add a file**, and a file in the folder can never be silently missing from
+the site.
+
+To give a file a proper title, a summary, or a place in the lecture tables, add an entry
+for it in [`src/data/lectures.yml`](src/data/lectures.yml). That file is presentation
+only — it cannot hide a file from the site. Until you add an entry, the file simply shows
+up under "Additional materials".
+
+To add a whole new course, create `public/lectures/<course>/` and add a course block to
+`src/data/lectures.yml`. A page and a card on `/lectures` are generated for it.
+
+## The course book
+
+The Quarto book *Time Series Analysis in Financial Econometrics* lives in
+[`book/`](book/) and is served at **/book/**, linked from the FI 362 course page.
+
+After editing a chapter, run `npm run book` to re-render it, then `npm run publish`.
+`npm run book` renders `book/` into `public/book/`, which is committed — so the deploy
+does not need Quarto installed.
+
+Do not put the book sources back inside `public/`: everything under `public/` is copied
+to the live site verbatim, so the `.qmd` files and the render cache would be published too.
+
+`npm run publish` builds first, so a broken site is caught locally instead of failing in
+CI. It refuses to push if the build fails.
+
+---
+
 It is created Dante - Astro & Tailwind CSS Theme by justgoodui.com. 
 
 Dante is a single-author blog and portfolio theme for Astro.js. Featuring a minimal, slick, responsive and content-focused design. For more Astro.js themes please check [justgoodui.com](https://justgoodui.com/).

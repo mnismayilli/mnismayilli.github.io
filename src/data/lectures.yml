@@ -1,0 +1,396 @@
+# Course pages are built by scanning the folders in public/lectures/.
+#
+# To publish a new file: drop it into public/lectures/<course>/<week>/ and run
+# `npm run publish`. It will appear on the site under "Additional materials"
+# with a title derived from its filename — you do not have to touch this file.
+#
+# This file is only for polish: giving a file a proper title, a summary, and a
+# place in the tables below. Paths are relative to public/lectures/<course id>.
+
+courses:
+  - id: Microeconomics
+    title: Microeconomics
+    code: EC107
+    level: Undergraduate · 2026
+    eyebrow: EC107 · Undergraduate · 2026
+    blurb: >-
+      An introduction to microeconomic principles — consumer choice and demand, firm behaviour and
+      costs, and competitive markets — with lecture slides and weekly problem sets.
+    intro: >-
+      An introduction to microeconomic principles — consumer choice and demand, firm behaviour and
+      costs, and competitive markets. Each session pairs lecture slides with a problem set for
+      practice. Materials are added as the course runs.
+    top:
+      - path: Handbook.pdf
+        label: Module Handbook
+    sections:
+      - title: Week 1
+        note: 'Foundations of microeconomics: consumer choice, demand, firm behaviour, and competitive markets.'
+        items:
+          - label: Day 1
+            title: Ten Principles of Economics & Thinking Like an Economist
+            summary: >-
+              What economics is: the ten principles, opportunity cost and marginal thinking, the
+              production possibilities frontier, and the gains from trade through comparative advantage.
+            files:
+              - path: Week1/ec107-day1.pdf
+                label: Slides
+              - path: Week1_ProblemSets/ec107_Day1_PS1.pdf
+                label: Problem Set 1
+          - label: Day 2
+            title: The Market Forces of Supply and Demand
+            summary: >-
+              How markets work: demand and supply, market equilibrium, and the comparative statics of
+              price and quantity.
+            files:
+              - path: Week1/ec107-day2.pdf
+                label: Slides
+              - path: Week1_ProblemSets/ec107_Day2_PS2.pdf
+                label: Problem Set 2
+          - label: Day 3
+            title: Elasticity and Its Application
+            summary: >-
+              Price elasticity of demand, its link to total revenue, other elasticities (income and
+              cross-price), and common pitfalls.
+            files:
+              - path: Week1/ec107-day3.pdf
+                label: Slides
+              - path: Week1_ProblemSets/ec107_Day3_PS3.pdf
+                label: Problem Set 3
+          - label: Day 4
+            title: Supply, Demand, Government Policies, and the Efficiency of Markets
+            summary: >-
+              Price controls, consumer and producer surplus, market efficiency, and the deadweight loss
+              of taxes.
+            files:
+              - path: Week1/ec107-day4.pdf
+                label: Slides
+              - path: Week1_ProblemSets/ec107_Day4_PS4.pdf
+                label: Problem Set 4
+
+      - title: Week 2
+        note: 'From the cost curves to market structure: costs of production, perfect competition, monopoly, and duopoly.'
+        items:
+          - label: Day 1
+            title: Costs of Production
+            summary: >-
+              Fixed, variable and total cost; the three per-unit curves (average fixed, average variable
+              and average total cost) and marginal cost; the averaging rule that links marginal to average
+              cost; and the distinction between short-run costs and the long-run average cost curve.
+            files:
+              - path: Week2/day1_slides.pdf
+                label: Slides
+              - path: Week2_ProblemSets/day1_exercises.pdf
+                label: Problem Set 1
+          - label: Day 2
+            title: Perfect Competition
+            summary: >-
+              The four features of a competitive market and why marginal revenue equals average revenue
+              equals price for a price-taker; the profit-maximising rule MR = MC; the short-run shut-down
+              rule when price fails to cover average variable cost; and long-run entry and exit that drive
+              profit to zero.
+            files:
+              - path: Week2/day2_slides.pdf
+                label: Slides
+              - path: Week2_ProblemSets/day2_exercises.pdf
+                label: Problem Set 2
+          - label: Day 3
+            title: Monopoly
+            summary: >-
+              Sources of market power and why marginal revenue lies below price (the MR line has twice the
+              slope of demand); the monopolist's MR = MC output, with lower quantity and higher price than
+              under competition; the resulting deadweight loss; and price discrimination, first-degree and
+              third-degree across separate markets.
+            files:
+              - path: Week2/day3_slides.pdf
+                label: Slides
+              - path: Week2_ProblemSets/day3_exercises.pdf
+                label: Problem Set 3
+          - label: Day 4
+            title: 'Duopoly: Two Firms'
+            summary: >-
+              Bertrand price competition and the pressure to undercut; Cournot quantity competition solved
+              through reaction functions to a Nash equilibrium; the Stackelberg first-mover advantage; and
+              a comparison of the four market structures on a common example.
+            files:
+              - path: Week2/day4_slides.pdf
+                label: Slides
+              - path: Week2_ProblemSets/day4_exercises.pdf
+                label: Problem Set 4
+
+  - id: Int_Micro
+    title: Intermediate Microeconomics
+    code: EC306
+    level: Undergraduate · 2026
+    eyebrow: EC306 · Undergraduate · 2026
+    blurb: >-
+      Intermediate microeconomics covering consumer and producer theory, market structure, and welfare,
+      with lecture slides and weekly problem sets.
+    intro: >-
+      Consumer and producer theory, market structure, and welfare. Each session pairs lecture slides with
+      a problem set for practice. Materials are added as the course runs.
+    top:
+      - path: Module_Handbook.pdf
+        label: Module Handbook
+    sections:
+      - title: Week 1
+        note: >-
+          Building the demand and supply curves from primitives across a five-day arc: preferences,
+          optimisation, demand, production, and cost & supply.
+        items:
+          - label: Day 1
+            title: Preferences and Utility Functions
+            summary: >-
+              What the consumer wants: indifference curves, the marginal rate of substitution, and utility
+              as an ordinal representation of preferences. (Perloff Ch. 3)
+            files:
+              - path: Week1/Week1_Day1.pdf
+                label: Slides
+              - path: Week1_ProblemSet/EC306_PS1_Preferences.pdf
+                label: Problem Set 1 — Preferences
+          - label: Day 2
+            title: The Constrained Optimisation Problem
+            summary: >-
+              What the consumer can afford: the budget line and solving max u(x, y) subject to the budget
+              to pin down the chosen bundle. (Perloff Ch. 4)
+            files:
+              - path: Week1/Week1_Day2.pdf
+                label: Slides
+              - path: Week1_ProblemSet/EC306_PS2_Optimisation.pdf
+                label: Problem Set 2 — Optimisation
+          - label: Day 3
+            title: 'Demand: Hicks, Slutsky, and Elasticity'
+            summary: >-
+              Marshallian vs Hicksian (compensated) demand and the expenditure function, the Slutsky
+              substitution/income decomposition, and elasticities. (Perloff Ch. 5, §2.3)
+            files:
+              - path: Week1/Week1_Day3.pdf
+                label: Slides
+              - path: Week1_ProblemSet/EC306_PS3_Demand.pdf
+                label: Problem Set 3 — Demand
+          - label: Day 4
+            title: Firms, Production, and Production Functions
+            summary: >-
+              Crossing to the supply side: the firm's technology — production functions, isoquants, MRTS —
+              and its structural parallel with consumer theory. (Perloff Ch. 6)
+            files:
+              - path: Week1/Week1_Day4.pdf
+                label: Slides
+              - path: Week1_ProblemSet/EC306_PS4_Production.pdf
+                label: Problem Set 4 — Production
+          - label: Day 5
+            title: Costs and the Firm's Supply Curve
+            summary: >-
+              Input prices and cost minimisation, the short-run cost curves, and profit maximisation to
+              derive the supply curve — completing the demand–supply diagram from first principles.
+              (Perloff Ch. 7, §8.1–8.4)
+            files:
+              - path: Week1/Week1_Day5.pdf
+                label: Slides
+              - path: Week1_ProblemSet/EC306_PS5_Costs_Supply.pdf
+                label: Problem Set 5 — Costs & Supply
+
+      - title: Week 2
+        note: >-
+          Putting the Week 1 tools to work on a single market: supply and demand and equilibrium, welfare
+          and taxation, the competitive firm, and monopoly.
+        items:
+          - label: Day 1
+            title: Supply, Demand, and Market Equilibrium
+            summary: >-
+              Movements along a curve versus shifts of the curve and their ceteris-paribus content, solving
+              for equilibrium algebraically and on a diagram, the comparative statics of demand and supply
+              shocks, and point elasticities along a linear demand curve. (Perloff Ch. 2)
+            files:
+              - path: Week2/day1_slides.pdf
+                label: Slides
+              - path: Week2_ProblemSet/day1_exercises.pdf
+                label: Problem Set 1 — Supply & Demand
+          - label: Day 2
+            title: Welfare and Tax Incidence
+            summary: >-
+              Consumer and producer surplus as a measure of the gains from trade and why the competitive
+              equilibrium is efficient, binding price ceilings and floors and their deadweight loss, and the
+              incidence of a sales tax — pass-through, revenue, and who bears the burden. (Perloff Chs. 8–9)
+            files:
+              - path: Week2/day2_slides.pdf
+                label: Slides
+              - path: Week2_ProblemSet/day2_exercises.pdf
+                label: Problem Set 2 — Welfare & Taxes
+          - label: Day 3
+            title: Competitive Firms and Markets
+            summary: >-
+              The price-taking firm's profit problem (P = MC), building the MC, AVC and AC curves and
+              locating the shutdown and break-even prices, deriving the firm's supply curve and aggregating
+              it to the market, and long-run entry and exit to the zero-profit equilibrium. (Perloff Ch. 8)
+            files:
+              - path: Week2/day3_slides.pdf
+                label: Slides
+              - path: Week2_ProblemSet/day3_exercises.pdf
+                label: Problem Set 3 — Competitive Firm
+          - label: Day 4
+            title: Monopoly and Market Power
+            summary: >-
+              A single firm facing market demand: why marginal revenue is below price, the MR = MC output
+              and its comparison with the competitive benchmark, the surplus transfer and deadweight loss
+              via the Lerner index, and first- and third-degree price discrimination. (Perloff Chs. 11–12)
+            files:
+              - path: Week2/day4_slides.pdf
+                label: Slides
+              - path: Week2_ProblemSet/day4_exercises.pdf
+                label: Problem Set 4 — Monopoly
+
+  - id: FE
+    title: Advanced Financial Econometrics
+    code: FI362
+    level: Summer module · 2026
+    eyebrow: FI362 · 29 June – 17 July 2026
+    blurb: >-
+      An introduction to the econometrics of financial markets: asset returns, linear time-series and
+      volatility models, derivative pricing, and tail-risk measures, with applied R supplements on real
+      market data.
+    intro: >-
+      An introduction to the econometrics of financial markets: asset returns and their distributional
+      properties, linear time-series models (ARMA), volatility modelling (GARCH), continuous-time processes
+      for derivative pricing, and tail-risk measures (EVT and Value-at-Risk). Each chapter pairs lecture
+      slides with a hands-on R supplement on real data.
+    hide:
+      # The per-ticker raw downloads are inputs to the data scripts, not teaching material.
+      - data/raw/**
+    top:
+      - path: Week_1/FI362_Module_Handbook.pdf
+        label: Module Handbook
+    links:
+      # The Quarto book. Source lives in book/ at the repo root; `npm run book`
+      # renders it into public/book/, which is served at /book/.
+      - label: Read the course book
+        href: /book/
+        note: >-
+          Time Series Analysis in Financial Econometrics — a hands-on guide with R and Python,
+          following Tsay. Fifteen chapters covering returns, ARMA, unit roots, ARCH/GARCH,
+          nonlinear models, continuous-time processes, options, and extreme values.
+    sections:
+      - title: Lecture materials
+        items:
+          - label: Week 1 · Chapter 1
+            title: Introduction to Financial Econometrics
+            summary: >-
+              Asset returns and the distributional properties of returns: simple vs log returns, fat tails,
+              skewness, and non-normality tested on real market data.
+            files:
+              - path: Week_1/FI362_Ch1.pdf
+                label: Slides
+              - path: Week_1/FI362_Ch1_Supplement.html
+                label: R supplement
+              - path: Week_1/Day01_Supplement.R
+                label: R source
+          - label: Week 1 · Chapter 2
+            title: Linear Time Series Analysis and Its Applications
+            summary: >-
+              Stationarity, serial correlation, ARMA modelling, model diagnostics, and forecasting with real
+              data.
+            files:
+              - path: Week_1/FI362_Ch2.pdf
+                label: Slides
+              - path: Week_1/FI362_Ch2_Supplement.html
+                label: R supplement
+          - label: Week 2 · Chapter 3
+            title: 'Conditional Heteroskedasticity: ARCH & GARCH'
+            summary: >-
+              Volatility clustering and time-varying variance: the ARCH and GARCH families, estimation,
+              diagnostics, and volatility forecasting on real return series.
+            files:
+              - path: Week_2/Day1_ARCH.pdf
+                label: Slides
+          - label: Week 2 · Chapter 3
+            title: GARCH Extensions and Model Implementation
+            summary: >-
+              Practical GARCH modelling workflow: specification choices, estimation, interpretation of
+              volatility persistence, and implementation notes for empirical financial data.
+            files:
+              - path: Week_2/Day2_GARCH.pdf
+                label: Slides
+          - label: Week 2 · Chapter 3
+            title: 'GARCH Variants: IGARCH, GARCH-M, EGARCH'
+            summary: >-
+              Variant models and regime-switching preview, with empirical implementation files for
+              reproducible S&P 500 results.
+            files:
+              - path: Week_2/Day3_variants.pdf
+                label: Slides
+              - path: Week_2/Day3_variants_code.R
+                label: R source
+              - path: Week_2/Day3_regime_code.R
+                label: Regime code (R)
+          - label: Week 2 · Chapter 4
+            title: Nonlinear Time Series Models
+            summary: >-
+              Threshold and regime-switching frameworks for financial time series, including motivation,
+              model structure, and interpretation.
+            files:
+              - path: Week_2/Week2_NonLinear.pdf
+                label: Slides
+              - path: Week_2/sp500_nonlinear.R
+                label: R source
+              - path: Week_2/sp500_nonlinear.Rmd
+                label: R notebook
+          - label: Week 3 · Chapter 5
+            title: Extreme Value Theory and Value-at-Risk
+            summary: >-
+              Tail risk in financial returns: the extreme value distributions, threshold exceedances and
+              the mean-excess function, and Value-at-Risk estimation and backtesting.
+            files:
+              - path: Week_3/evt-lecture-slides.pdf
+                label: Slides
+
+      - title: Problem sets
+        items:
+          - label: Week 1
+            title: Problem Set 1 — Returns & ARMA
+            files:
+              - path: Week_1/FI362_ProblemSet1.pdf
+                label: Problem Set 1
+          - label: Week 2
+            title: Problem Set 2 — ARCH/GARCH
+            files:
+              - path: Week_2/ARCH_problemset.pdf
+                label: Problem Set 2
+          - label: Week 2
+            title: Problem Set 3 — GARCH Variants
+            files:
+              - path: Week_2/GARCH_problemset.pdf
+                label: Problem Set 3
+          - label: Week 2
+            title: Problem Set 4 — Nonlinear Models
+            files:
+              - path: Week_2/nonlinear_problem_set.pdf
+                label: Problem Set 4
+          - label: Week 2
+            title: Mock Midterm
+            files:
+              - path: Week_2/FI362_Mock_Midterm.pdf
+                label: Mock Midterm
+              - path: Week_2/FI362_Mock_Midterm_Solutions.pdf
+                label: Solutions
+
+      - title: Data
+        note: Datasets used in the R supplements.
+        items:
+          - label: Scripts
+            title: Data download
+            files:
+              - path: data/download_data.R
+                label: Data-download script
+          - label: Series
+            title: Prices and metadata
+            files:
+              - path: data/indices_adjclose.csv
+                label: Index prices — daily adjusted close
+              - path: data/indices_monthly.csv
+                label: Index prices — monthly
+              - path: data/sp500_monthly.csv
+                label: S&P 500 — monthly
+              - path: data/stocks_adjclose.csv
+                label: Individual stocks — adjusted close
+              - path: data/metadata.csv
+                label: Series metadata
