@@ -9,8 +9,7 @@
         "preview": "astro preview",
         "astro": "astro",
         "sync:ma": "node scripts/sync-ma-cases.mjs",
-        "book": "quarto render book --to html",
-        "publish": "node scripts/publish.mjs"
+        "book": "quarto render book --to html"
     },
     "dependencies": {
         "@astrojs/mdx": "^4.2.3",

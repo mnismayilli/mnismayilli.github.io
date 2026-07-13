@@ -118,6 +118,41 @@ courses:
               - path: Week2_ProblemSets/day4_exercises.pdf
                 label: Problem Set 4
 
+      - title: Week 3
+        note: >-
+          Strategic behaviour and market failure: choosing when the best move depends on what others do,
+          cooperation sustained by repetition, and the costs and benefits that spill onto third parties.
+        items:
+          - label: Day 1
+            title: Introduction to Game Theory
+            summary: >-
+              How people and firms make choices when the best move depends on what others do: normal-form
+              games, dominant strategies, and Nash equilibrium.
+            files:
+              - path: Week3/day1_slides.pdf
+                label: Slides
+              - path: Week3_ProblemSets/day1_exercises.pdf
+                label: Problem Set 1 — Game Theory
+          - label: Day 2
+            title: Repeated Games
+            summary: >-
+              Cooperation collapsed in one shot. When rivals meet again and again, the future can rescue it.
+            files:
+              - path: Week3/day2_slides.pdf
+                label: Slides
+              - path: Week3_ProblemSets/day2_exercises.pdf
+                label: Problem Set 2 — Repeated Games
+          - label: Day 3
+            title: Externalities, Public Goods, and the Commons
+            summary: >-
+              When a market gets the quantity wrong because costs or benefits spill onto others: marginal
+              private versus marginal social cost, the efficient quantity, and corrective taxes.
+            files:
+              - path: Week3/day3_slides.pdf
+                label: Slides
+              - path: Week3_ProblemSets/day3_exercises.pdf
+                label: Problem Set 3 — Externalities
+
   - id: Int_Micro
     title: Intermediate Microeconomics
     code: EC306
@@ -240,6 +275,52 @@ courses:
               - path: Week2_ProblemSet/day4_exercises.pdf
                 label: Problem Set 4 — Monopoly
 
+      - title: Week 3
+        note: >-
+          Strategic interaction: from the three duopoly models to the general language of game theory,
+          repetition and cooperation, and the market failures that survive competition.
+        items:
+          - label: Day 1
+            title: 'Duopoly: Bertrand, Cournot, and Stackelberg'
+            summary: >-
+              One market, three ways two firms can compete — and where each lands between monopoly and
+              perfect competition.
+            files:
+              - path: Week3/day1_slides.pdf
+                label: Slides
+              - path: Week3_ProblemSet/day1_exercises.pdf
+                label: Problem Set 1 — Duopoly
+          - label: Day 2
+            title: Introduction to Game Theory
+            summary: >-
+              From "mutual best replies" in duopoly to a general language for strategic choice: normal-form
+              games, dominance, and Nash equilibrium.
+            files:
+              - path: Week3/day2_slides.pdf
+                label: Slides
+              - path: Week3_ProblemSet/day2_exercises.pdf
+                label: Problem Set 2 — Game Theory
+          - label: Day 3
+            title: Repeated Games
+            summary: >-
+              The Prisoner's Dilemma said cooperation is doomed. Repetition — and the shadow of the future —
+              can rescue it.
+            files:
+              - path: Week3/day3_slides.pdf
+                label: Slides
+              - path: Week3_ProblemSet/day3_exercises.pdf
+                label: Problem Set 3 — Repeated Games
+          - label: Day 4
+            title: Externalities, Public Goods, and the Commons
+            summary: >-
+              When even a competitive market gets it wrong: costs and benefits that spill onto others,
+              and the goods the market under-provides.
+            files:
+              - path: Week3/day4_slides.pdf
+                label: Slides
+              - path: Week3_ProblemSet/day4_exercises.pdf
+                label: Problem Set 4 — Externalities
+
   - id: FE
     title: Advanced Financial Econometrics
     code: FI362
@@ -335,10 +416,10 @@ courses:
               - path: Week_2/sp500_nonlinear.Rmd
                 label: R notebook
           - label: Week 3 · Chapter 5
-            title: Extreme Value Theory and Value-at-Risk
+            title: Extreme Values, Quantiles, and Value at Risk
             summary: >-
-              Tail risk in financial returns: the extreme value distributions, threshold exceedances and
-              the mean-excess function, and Value-at-Risk estimation and backtesting.
+              Measuring the risk in the tail of financial returns: turning the course's recurring finding —
+              that returns are fat-tailed — into a risk number, through Value at Risk and Expected Shortfall.
             files:
               - path: Week_3/evt-lecture-slides.pdf
                 label: Slides
