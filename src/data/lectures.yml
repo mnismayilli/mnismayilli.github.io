@@ -454,6 +454,16 @@ courses:
               - path: Week_2/FI362_Mock_Midterm_Solutions.pdf
                 label: Solutions
 
+          - label: Week 3
+            title: Problem Set 5 — Extreme Values, Quantiles, and Value at Risk
+            summary: >-
+              Three exercises covering the extreme-value lectures: RiskMetrics and the risk measures, the
+              block-maxima (GEV) approach and return levels, and clustered extremes. Full worked solutions
+              are included at the end.
+            files:
+              - path: Week_3/evt-exercises.pdf
+                label: Problem Set 5
+
       - title: Data
         note: Datasets used in the R supplements.
         items:
