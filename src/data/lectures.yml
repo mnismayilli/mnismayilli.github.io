@@ -423,6 +423,16 @@ courses:
             files:
               - path: Week_3/evt-lecture-slides.pdf
                 label: Slides
+          - label: Week 3 · Chapter 6
+            title: 'Options: Contracts, Payoffs, and the Greeks'
+            summary: >-
+              From the right to trade, to the risk you hedge. An option is a contract whose value depends
+              above all on volatility — the quantity the rest of the course has spent its time modelling.
+              What an option is and the four building-block positions, what it is worth at expiry and
+              before, and the Greeks.
+            files:
+              - path: Week_3/options-lecture-slides.pdf
+                label: Slides
 
       - title: Problem sets
         items:
