@@ -158,8 +158,8 @@ main { display: block; }
 
 /* ---------------------------------------------------------- hero */
 .hero {
-  padding-top: clamp(3rem, 7vw, 5.5rem);
-  padding-bottom: clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(2.25rem, 5vw, 4rem);
+  padding-bottom: clamp(2.25rem, 4.5vw, 3.75rem);
 }
 .hero-grid {
   display: grid;
@@ -280,7 +280,7 @@ main { display: block; }
 }
 
 /* ---------------------------------------------------------- section frame */
-.section { padding-block: clamp(3rem, 6vw, 5rem); }
+.section { padding-block: clamp(2.25rem, 4.5vw, 3.5rem); }
 .section + .section { padding-top: 0; }
 
 .section-head {
@@ -288,8 +288,8 @@ main { display: block; }
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
-  padding-bottom: 1.6rem;
-  margin-bottom: 2rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.4rem;
   border-bottom: 1px solid var(--line);
 }
 .section-head h2 {
@@ -317,10 +317,10 @@ main { display: block; }
 .research-list { display: grid; gap: 0; }
 .research-item {
   display: grid;
-  grid-template-columns: 130px 1fr auto;
+  grid-template-columns: 118px 1fr auto;
   gap: 1.5rem;
   align-items: start;
-  padding: 1.7rem 0.5rem 1.7rem 0.75rem;
+  padding: 1.15rem 0.5rem 1.15rem 0.75rem;
   border-top: 1px solid var(--line);
   position: relative;
   transition: background 0.2s ease, padding-left 0.2s ease;
