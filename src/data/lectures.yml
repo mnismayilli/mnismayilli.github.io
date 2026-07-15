@@ -465,6 +465,14 @@ courses:
                 label: Solutions
 
           - label: Week 3
+            title: Mock Final Examination
+            summary: >-
+              Full mock final paper — 2 hours, 100 marks — covering the whole module.
+            files:
+              - path: Week_3/FI362_Mock_Final_Exam.pdf
+                label: Mock Final Exam
+
+          - label: Week 3
             title: Problem Set 5 — Extreme Values, Quantiles, and Value at Risk
             summary: >-
               Three exercises covering the extreme-value lectures: RiskMetrics and the risk measures, the
