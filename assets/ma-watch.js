@@ -3,7 +3,7 @@
  *
  * Fetches the weekly-synced dataset from /data/ma-watch-data.json and renders
  * the stat strip, filters, case browser, overview, and sources panels entirely
- * in the browser. Ported from the original Astro component + oecd-ma-watch.js.
+ * in the browser.
  *
  * The dataset is refreshed by scripts/sync-ma-cases.mjs (kept for the weekly
  * GitHub Action) writing to /data/ma-watch-data.json.

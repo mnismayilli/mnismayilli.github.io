@@ -1,132 +1,69 @@
-# Mehman Ismayilli's personal website
+# Mehman Ismayilli — personal website
 
-## Publishing new teaching material
+A plain, static HTML website served directly from this repository via GitHub Pages.
+**There is no build step for the site** — edit an `.html` file, commit, and push.
 
-Course pages build themselves by scanning `public/lectures/`. To put a new lecture,
-problem set, dataset, or script on the site:
+Live at **https://mnismayilli.github.io**.
 
-1. Drop the file into `public/lectures/<course>/<week>/`. The week folder does not have
-   to exist yet — create it and it becomes a new section.
-2. Run `npm run publish`.
+## Layout
 
-That is the whole workflow. The file appears on its course page with a title derived
-from its filename, and GitHub Actions deploys the site about a minute later. **You never
-edit code to add a file**, and a file in the folder can never be silently missing from
-the site.
+```text
+├── index.html            # home
+├── about/  contact/  teaching/  terms/
+├── projects/             # research index + one folder per paper
+├── blog/                 # blog index + posts
+├── lectures/             # course index + course pages (+ the lecture files themselves)
+├── ma-watch/             # M&A Watch page (shell; rendered by JS)
+├── assets/               # styles.css, main.js, lectures.js, ma-watch.js, ma-watch.css, images
+├── data/                 # lectures.json, ma-watch-data.json (data the JS renders)
+├── book/                 # rendered Quarto book, served at /book/
+├── book-src/             # Quarto book source (.qmd) — never served
+├── scripts/              # sync-ma-cases.mjs (weekly M&A data sync)
+└── favicon.svg
+```
 
-To give a file a proper title, a summary, or a place in the lecture tables, add an entry
-for it in [`src/data/lectures.yml`](src/data/lectures.yml). That file is presentation
-only — it cannot hide a file from the site. Until you add an entry, the file simply shows
-up under "Additional materials".
+The shared header and footer live in one place — [`assets/main.js`](assets/main.js) —
+and are injected into every page. To change a nav link or footer entry, edit the arrays
+at the top of that file.
 
-To add a whole new course, create `public/lectures/<course>/` and add a course block to
-`src/data/lectures.yml`. A page and a card on `/lectures` are generated for it.
+## Editing content
+
+- **Ordinary pages** (home, about, teaching, …): edit the `.html` file directly.
+- **A new research paper**: copy an existing `projects/<slug>/index.html`, edit it, and add
+  a matching entry to the research lists in `index.html` and `projects/index.html`.
+
+## Publishing lecture material
+
+The Lecture Notes pages render from [`data/lectures.json`](data/lectures.json). To publish a file:
+
+1. Drop the file into `lectures/<course>/<week>/` (create the week folder if needed).
+2. Add an entry for it in `data/lectures.json`, under the right course and section.
+
+Reload the page and it appears — no build. Each course page reads its section tables,
+top links, and feature links from that JSON.
+
+## M&A Watch
+
+The page at `/ma-watch/` is a thin shell; [`assets/ma-watch.js`](assets/ma-watch.js) fetches
+[`data/ma-watch-data.json`](data/ma-watch-data.json) and renders the stats, filters, case
+browser, overview, and sources in the browser.
+
+The dataset refreshes automatically: a GitHub Action
+([`.github/workflows/sync-ma-data.yml`](.github/workflows/sync-ma-data.yml)) runs
+`scripts/sync-ma-cases.mjs` every Monday, pulls the latest official competition-authority
+cases, and commits the updated JSON — which triggers a redeploy.
+
+To run the sync locally: `npm install` then `npm run sync:ma`.
 
 ## The course book
 
-The Quarto book *Time Series Analysis in Financial Econometrics* lives in
-[`book/`](book/) and is served at **/book/**, linked from the FI 362 course page.
+The Quarto book *Time Series Analysis in Financial Econometrics* has its source in
+[`book-src/`](book-src/) and renders into [`book/`](book/), served at **/book/** and linked
+from the FI 362 course page. After editing a chapter, run `npm run book` to re-render (needs
+[Quarto](https://quarto.org) installed); the rendered `book/` is committed, so the deploy
+does not need Quarto.
 
-After editing a chapter, run `npm run book` to re-render it, then `npm run publish`.
-`npm run book` renders `book/` into `public/book/`, which is committed — so the deploy
-does not need Quarto installed.
+## Deployment
 
-Do not put the book sources back inside `public/`: everything under `public/` is copied
-to the live site verbatim, so the `.qmd` files and the render cache would be published too.
-
-`npm run publish` builds first, so a broken site is caught locally instead of failing in
-CI. It refuses to push if the build fails.
-
----
-
-It is created Dante - Astro & Tailwind CSS Theme by justgoodui.com. 
-
-Dante is a single-author blog and portfolio theme for Astro.js. Featuring a minimal, slick, responsive and content-focused design. For more Astro.js themes please check [justgoodui.com](https://justgoodui.com/).
-
-![Dante Astro.js Theme](public/dante-preview.jpg)
-
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JustGoodUI/dante-astro-theme)
-
-If you click this☝️ button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
-
-## Theme Features:
-
-- ✅ Dark and light color mode
-- ✅ Hero section with bio
-- ✅ Portfolio collection
-- ✅ Pagination support
-- ✅ Post tags support
-- ✅ Subscription form
-- ✅ View transitions
-- ✅ Tailwind CSS
-- ✅ Mobile-first responsive layout
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## Template Integrations
-
-- @astrojs/tailwind - https://docs.astro.build/en/guides/integrations-guide/tailwind/
-- @astrojs/sitemap - https://docs.astro.build/en/guides/integrations-guide/sitemap/
-- @astrojs/mdx - https://docs.astro.build/en/guides/markdown-content/
-- @astrojs/rss - https://docs.astro.build/en/guides/rss/
-
-## Project Structure
-
-Inside of Dante Astro theme, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── data/
-│   ├── icons/
-│   ├── layouts/
-│   ├── pages/
-│   ├── styles/
-│   └── utils/
-├── astro.config.mjs
-├── package.json
-├── README.md
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro (`.astro`) components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## Astro.js Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## Want to learn more about Astro.js?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credits
-
-- Demo content generate with [Chat GPT](https://chat.openai.com/)
-- Images for demo content from [Unsplash](https://unsplash.com/)
-
-## Astro Themes by Just Good UI
-
-- [Ovidius](https://github.com/JustGoodUI/ovidius-astro-theme) is a free single author blog theme.
-
-## License
-
-Licensed under the [GPL-3.0](https://github.com/JustGoodUI/dante-astro-theme/blob/main/LICENSE) license.
+GitHub Pages is configured to **Deploy from a branch** (`main`, root). Every push to `main`
+— including the weekly M&A data sync — republishes the site. There is no site build.
