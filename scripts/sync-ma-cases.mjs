@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OUTPUT_PATH = path.resolve(__dirname, "../src/data/generated/ma-watch-data.json");
+const OUTPUT_PATH = path.resolve(__dirname, "../data/ma-watch-data.json");
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 const NOW = new Date();

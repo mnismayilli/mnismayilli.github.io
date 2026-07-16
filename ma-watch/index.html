@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>M&amp;A Watch | Mehman Ismayilli</title>
+    <meta name="description" content="Track new and ongoing public merger reviews from official OECD competition-authority sources, synced weekly." />
+    <link rel="canonical" href="https://mnismayilli.github.io/ma-watch/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/ma-watch.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8XB2EHXR95"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-8XB2EHXR95');
+    </script>
+  </head>
+  <body>
+    <main id="main">
+      <section id="oecd-ma-watch" class="ma-watch" data-ma-watch-root>
+        <!-- COMPACT HEADER -->
+        <header class="ma-head">
+          <p class="eyebrow">Competition policy · Industrial organization</p>
+          <h1>M&amp;A Watch</h1>
+          <p class="ma-lede">
+            New and ongoing public merger reviews from official OECD competition-authority registers — synced
+            weekly. Filter the docket, open any case, and jump straight to the official filing.
+          </p>
+          <dl class="ma-stat-strip" data-stat-strip></dl>
+        </header>
+
+        <!-- TABS -->
+        <div class="ma-tabs" role="tablist" aria-label="M&A Watch views">
+          <button class="ma-tab is-active" data-ma-tab="browse" role="tab" aria-selected="true">Browse cases</button>
+          <button class="ma-tab" data-ma-tab="overview" role="tab" aria-selected="false">Overview</button>
+          <button class="ma-tab" data-ma-tab="sources" role="tab" aria-selected="false">Sources &amp; method</button>
+        </div>
+
+        <!-- PANEL: BROWSE -->
+        <div class="ma-panel" data-ma-panel="browse">
+          <div class="ma-controls">
+            <div class="ma-controls__row">
+              <label class="ma-field ma-field--search">
+                <span>Search</span>
+                <input type="search" placeholder="Getty, hospital, energy, Phase 2…" data-filter-search />
+              </label>
+              <label class="ma-field">
+                <span>Country</span>
+                <select data-filter-country><option value="all">All countries</option></select>
+              </label>
+              <label class="ma-field">
+                <span>Authority</span>
+                <select data-filter-authority><option value="all">All authorities</option></select>
+              </label>
+              <label class="ma-field">
+                <span>Status</span>
+                <select data-filter-status>
+                  <option value="all">All statuses</option>
+                  <option value="ongoing">Ongoing only</option>
+                  <option value="new">Newly visible</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </label>
+              <label class="ma-field">
+                <span>Sort</span>
+                <select data-filter-sort>
+                  <option value="priority">Priority</option>
+                  <option value="freshest">Freshest first</option>
+                  <option value="opened">Newest filing</option>
+                  <option value="authority">Authority A–Z</option>
+                </select>
+              </label>
+            </div>
+            <div class="ma-controls__foot">
+              <div class="ma-toggles">
+                <button type="button" class="ma-toggle" data-toggle-ongoing aria-pressed="false">Bias to ongoing</button>
+                <button type="button" class="ma-toggle" data-toggle-new aria-pressed="false">Bias to new</button>
+              </div>
+              <span class="ma-results-meta" data-results-meta>Loading cases…</span>
+            </div>
+          </div>
+
+          <div class="ma-workspace">
+            <div class="ma-results">
+              <div class="ma-results-list" data-case-list>
+                <div class="ma-empty-state"><h3>Loading…</h3><p>Fetching the latest synced case data.</p></div>
+              </div>
+            </div>
+            <aside class="ma-detail-panel" data-case-detail></aside>
+          </div>
+        </div>
+
+        <!-- PANEL: OVERVIEW -->
+        <div class="ma-panel" data-ma-panel="overview" hidden>
+          <div data-overview></div>
+        </div>
+
+        <!-- PANEL: SOURCES & METHOD -->
+        <div class="ma-panel" data-ma-panel="sources" hidden>
+          <div data-sources></div>
+        </div>
+      </section>
+    </main>
+    <script src="/main.js"></script>
+    <script src="/ma-watch.js"></script>
+  </body>
+</html>
