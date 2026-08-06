@@ -6,7 +6,8 @@
     "description": "Mehman Ismayilli — personal site (plain static HTML). The weekly M&A Watch sync and the Quarto book are the only tooling; the site itself needs no build.",
     "scripts": {
         "sync:ma": "node scripts/sync-ma-cases.mjs",
-        "book": "quarto render book-src --to html"
+        "book": "quarto render book-src --to html",
+        "sync:fe1": "bash scripts/sync-fe1.sh"
     },
     "dependencies": {
         "cheerio": "^1.2.0"

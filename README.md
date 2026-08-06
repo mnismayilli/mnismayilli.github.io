@@ -12,13 +12,13 @@ Live at **https://mnismayilli.github.io**.
 ├── about/  contact/  teaching/  terms/
 ├── projects/             # research index + one folder per paper
 ├── blog/                 # blog index + posts
-├── lectures/             # course index + course pages (+ the lecture files themselves)
 ├── ma-watch/             # M&A Watch page (shell; rendered by JS)
-├── assets/               # styles.css, main.js, lectures.js, ma-watch.js, ma-watch.css, images
-├── data/                 # lectures.json, ma-watch-data.json (data the JS renders)
+├── assets/               # styles.css, main.js, ma-watch.js, ma-watch.css, images
+├── data/                 # ma-watch-data.json (data the JS renders)
 ├── book/                 # rendered Quarto book, served at /book/
 ├── book-src/             # Quarto book source (.qmd) — never served
-├── scripts/              # sync-ma-cases.mjs (weekly M&A data sync)
+├── FE_1/                 # rendered "Financial Econometrics I" book (source lives outside this repo)
+├── scripts/              # sync-ma-cases.mjs (weekly M&A data sync), sync-fe1.sh
 └── favicon.svg
 ```
 
@@ -31,16 +31,6 @@ at the top of that file.
 - **Ordinary pages** (home, about, teaching, …): edit the `.html` file directly.
 - **A new research paper**: copy an existing `projects/<slug>/index.html`, edit it, and add
   a matching entry to the research lists in `index.html` and `projects/index.html`.
-
-## Publishing lecture material
-
-The Lecture Notes pages render from [`data/lectures.json`](data/lectures.json). To publish a file:
-
-1. Drop the file into `lectures/<course>/<week>/` (create the week folder if needed).
-2. Add an entry for it in `data/lectures.json`, under the right course and section.
-
-Reload the page and it appears — no build. Each course page reads its section tables,
-top links, and feature links from that JSON.
 
 ## M&A Watch
 
@@ -55,13 +45,26 @@ cases, and commits the updated JSON — which triggers a redeploy.
 
 To run the sync locally: `npm install` then `npm run sync:ma`.
 
-## The course book
+## The course books
 
-The Quarto book *Time Series Analysis in Financial Econometrics* has its source in
-[`book-src/`](book-src/) and renders into [`book/`](book/), served at **/book/** and linked
-from the FI 362 course page. After editing a chapter, run `npm run book` to re-render (needs
-[Quarto](https://quarto.org) installed); the rendered `book/` is committed, so the deploy
-does not need Quarto.
+Both are Quarto books whose **rendered HTML is committed** — the deploy runs no build, so
+GitHub Pages never needs Quarto.
+
+**Time Series Analysis in Financial Econometrics** — served at **/book/**. Source is in
+[`book-src/`](book-src/) inside this repo; after editing a chapter run `npm run book`.
+
+**Financial Econometrics I** — served at **/FE_1/**. Its source lives *outside* this repo
+(`Oxford/FE_1`, which carries a large offline data cache and a Python environment), so only
+the rendered output is copied in. To republish after editing a chapter:
+
+```sh
+npm run sync:fe1                 # renders the book, then mirrors _book/ into FE_1/
+npm run sync:fe1 -- --no-render  # just copy an already-rendered _book/
+FE1_SRC=/new/path npm run sync:fe1   # if the source directory moves
+```
+
+The copy is an exact mirror (`rsync --delete`), so chapters deleted from the source stop
+being served. Both books are linked from the home page and the teaching page.
 
 ## Deployment
 

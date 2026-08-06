@@ -15,7 +15,6 @@
   const NAV_LINKS = [
     { text: 'Research', href: '/projects/' },
     { text: 'Teaching', href: '/teaching/' },
-    { text: 'Lecture Notes', href: '/lectures/' },
     { text: 'M&amp;A Watch', href: '/ma-watch/' },
   ];
 

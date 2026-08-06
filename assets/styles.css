@@ -644,33 +644,3 @@ a:focus-visible, .btn:focus-visible, button:focus-visible {
   outline-offset: 3px;
   border-radius: 4px;
 }
-
-/* ---------------------------------------------------------- lectures (course pages) */
-.feature {
-  display: block;
-  margin: 0 0 2.5rem;
-  padding: 1.25rem 1.4rem;
-  border: 1px solid var(--line);
-  border-left-width: 3px;
-  border-left-color: var(--accent);
-  border-radius: 4px;
-  text-decoration: none;
-  transition: border-color 0.15s ease;
-}
-.feature:hover { border-color: var(--accent); }
-.feature-label { display: block; font-weight: 600; font-size: 1.05rem; color: var(--ink); }
-.feature-note { display: block; margin-top: 0.4rem; font-size: 0.92rem; color: var(--muted); line-height: 1.55; }
-
-.toc { width: 100%; border-collapse: collapse; margin: 1rem 0 2rem; font-size: 0.95rem; }
-.toc th, .toc td { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--line); }
-.toc thead th {
-  border-bottom-width: 2px;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-}
-.toc-day { white-space: nowrap; font-weight: 600; }
-.toc-links { white-space: nowrap; }
-.toc-links a { display: inline-block; }
