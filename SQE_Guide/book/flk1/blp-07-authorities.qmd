@@ -1,0 +1,207 @@
+# Authorities and numbers {#sec-blp-authorities}
+
+::: {.callout-note title="How to use this chapter"}
+The SRA does **not** require you to recall case citations, except where the case name is itself the
+term practitioners use for the principle. This chapter exists so that you can revise the
+**propositions** quickly and see how they fit together, not so that you can memorise citations. The
+right-hand column is what earns the mark.
+
+The numbers, by contrast, are worth knowing — with one exception. **Tax** rates and thresholds will
+normally be given to you in the question. Everything else in the tables below — notice periods, filing
+deadlines, voting thresholds, look-back periods — will not be.
+:::
+
+## Cases
+
+### Legal personality and the veil
+
+| Case | Proposition |
+|---|---|
+| *Salomon v A Salomon & Co Ltd* [1897] AC 22 | A properly incorporated company is a legal person **distinct** from its members, even where one person owns and controls it |
+| *Macaura v Northern Assurance Co Ltd* [1925] AC 619 | A shareholder has **no insurable interest** in the company's assets |
+| *Lee v Lee's Air Farming Ltd* [1961] AC 12 | A person may be controlling shareholder, sole director **and employee** of the same company |
+| *Adams v Cape Industries plc* [1990] Ch 433 | There is **no single economic unit** doctrine; a parent is not liable for a subsidiary's debts merely because of the group relationship |
+| *Prest v Petrodel Resources Ltd* [2013] UKSC 34 | The veil is pierced only on the **evasion** principle — a pre-existing obligation deliberately frustrated by interposing a company. **Concealment** is ordinary fact-finding, not piercing |
+| *Gilford Motor Co Ltd v Horne* [1933] Ch 935 | Company formed to evade a restrictive covenant: relief against both |
+| *Jones v Lipman* [1962] 1 WLR 832 | Company used to defeat specific performance: order against both |
+
+### Formation and the constitution
+
+| Case | Proposition |
+|---|---|
+| *Kelner v Baxter* (1866) LR 2 CP 174 | A company **cannot ratify** a pre-incorporation contract |
+| *Phonogram Ltd v Lane* [1982] QB 938 | Personal liability under what is now s.51 arises even where both parties knew the company did not exist; "for and on behalf of" is **not** a clear exclusion |
+| *Braymist Ltd v Wise Finance Co Ltd* [2002] EWCA Civ 127 | The person who purported to act may also **enforce** the contract |
+| *Hickman v Kent or Romney Marsh Sheep-Breeders' Association* [1915] 1 Ch 881 | The s.33 contract binds **member to company** |
+| *Pender v Lushington* (1877) 6 Ch D 70 | It binds **company to member** as to membership rights (here, the right to vote) |
+| *Rayfield v Hands* [1960] Ch 1 | It may bind **member to member** directly |
+| *Eley v Positive Government Security Life Assurance Co* (1876) 1 Ex D 88 | It is enforceable only in respect of rights held **qua member** |
+| *Allen v Gold Reefs of West Africa Ltd* [1900] 1 Ch 656 | The power to alter the articles must be exercised **bona fide for the benefit of the company as a whole** |
+| *Citco Banking Corporation NV v Pusser's Ltd* [2007] UKPC 13 | The test is whether no reasonable person could consider the alteration to be for the company's benefit; incidental benefit to the majority does not invalidate it |
+| *Russell v Northern Bank Development Corporation Ltd* [1992] 1 WLR 588 | The **company** cannot contract out of its statutory powers; **shareholders** may bind themselves as to how they will vote |
+| *Re Duomatic Ltd* [1969] 2 Ch 365 | The unanimous informal assent of all members entitled to vote is as effective as a formal resolution |
+
+### Directors and their duties
+
+| Case | Proposition |
+|---|---|
+| *Bushell v Faith* [1970] AC 1099 | Weighted voting rights on a removal resolution are valid; s.168 requires only an ordinary resolution |
+| *Howard Smith Ltd v Ampol Petroleum Ltd* [1974] AC 821 | The power to allot shares must be used for its **proper purpose** — raising capital, not manipulating control |
+| *Eclairs Group Ltd v JKX Oil & Gas plc* [2015] UKSC 71 | Where purposes are mixed, a **"but for"** causative improper purpose invalidates the exercise |
+| *Re Smith & Fawcett Ltd* [1942] Ch 304 | Directors must act bona fide in what **they** consider is in the company's interests: the s.172 test is subjective |
+| *Charterbridge Corporation Ltd v Lloyds Bank Ltd* [1970] Ch 62 | Where the director gave the matter no thought, the court asks objectively whether an honest and intelligent person could reasonably have believed it was for the company's benefit |
+| *BTI 2014 LLC v Sequana SA* [2022] UKSC 25 | The **creditor duty** modifies s.172; engaged when the company is insolvent or bordering on insolvency, or an insolvent liquidation or administration is **probable**; owed to the **company** |
+| *Re D'Jan of London Ltd* [1994] 1 BCLC 561 | The s.174 standard is dual objective/subjective; s.1157 relief may be granted where the director acted honestly and reasonably |
+| *Re Barings plc (No 5)* [1999] 1 BCLC 433 | Delegation is permissible; the residual duty to **supervise** is not delegable |
+| *Aberdeen Railway Co v Blaikie Brothers* (1854) 1 Macq 461 | No fiduciary may place himself in a position where duty and interest conflict |
+| *Regal (Hastings) Ltd v Gulliver* [1967] 2 AC 134 | Liability to account arises from the **fact** of the profit; good faith, company benefit and the company's inability to take the opportunity are all irrelevant |
+| *Industrial Development Consultants Ltd v Cooley* [1972] 1 WLR 443 | Resignation to take a corporate opportunity is no escape |
+| *Bhullar v Bhullar* [2003] EWCA Civ 424 | An opportunity coming to a person **as a director** must be accounted for, even where the company had resolved not to pursue it |
+| *O'Donnell v Shanahan* [2009] EWCA Civ 751 | There is no "scope of business" limitation on a director's fiduciary duty |
+
+### Shareholders and minority protection
+
+| Case | Proposition |
+|---|---|
+| *Foss v Harbottle* (1843) 2 Hare 461 | The **proper claimant** for a wrong to the company is the company; the court will not interfere in matters the general meeting can ratify |
+| *Ebrahimi v Westbourne Galleries Ltd* [1973] AC 360 | Equitable considerations may make it unjust to insist on strict legal rights; the source of the **quasi-partnership** concept |
+| *Re Saul D Harrison & Sons plc* [1995] 1 BCLC 14 | Fairness is judged against the terms of the commercial relationship, ordinarily the articles |
+| *O'Neill v Phillips* [1999] 1 WLR 1092 | Unfairness requires a breach of the agreed terms or use of the rules contrary to good faith; there is **no no-fault divorce**; a fair buy-out offer defeats the petition |
+| *Re Bird Precision Bellows Ltd* [1986] Ch 658 | In a quasi-partnership exclusion case, shares are valued **pro rata**, without a minority discount |
+| *Prudential Assurance Co Ltd v Newman Industries Ltd (No 2)* [1982] Ch 204 | A shareholder cannot recover **reflective loss** |
+| *Johnson v Gore Wood & Co* [2002] 2 AC 1 | The rule confirmed and explained |
+| *Sevilleja v Marex Financial Ltd* [2020] UKSC 31 | The rule is a **bright line** confined to shareholders suing qua shareholder; it does **not** bar creditors' claims |
+| *Borland's Trustee v Steel Brothers & Co Ltd* [1901] 1 Ch 279 | A share is an interest measured by a sum of money, consisting of mutual covenants — not a share of the assets |
+
+### Share capital, charges and distributions
+
+| Case | Proposition |
+|---|---|
+| *Trevor v Whitworth* (1887) 12 App Cas 409 | Capital may not be returned to members except as the law permits |
+| *Ooregum Gold Mining Co of India Ltd v Roper* [1892] AC 125 | Shares may not be issued at a **discount** to nominal value |
+| *Re Wragg Ltd* [1897] 1 Ch 796 | A private company may accept any consideration of value; the court will not inquire into adequacy |
+| *Greenhalgh v Arderne Cinemas Ltd* [1946] 1 All ER 512 | Subdivision affecting voting power is **not** a variation of class rights |
+| *White v Bristol Aeroplane Co Ltd* [1953] Ch 65 | A bonus issue diluting voting strength affects the **enjoyment** of rights, not the rights themselves |
+| *Re Yorkshire Woolcombers Association Ltd* [1903] 2 Ch 284 | Romer LJ's three characteristics of a **floating charge** |
+| *Agnew v Commissioner of Inland Revenue (Re Brumark)* [2001] UKPC 28 | Construe the instrument, then categorise as a matter of law; the parties' label does not decide it |
+| *Re Spectrum Plus Ltd* [2005] UKHL 41 | A book debts charge leaving the company free to draw on the proceeds is a **floating** charge; *Siebe Gorman* overruled |
+| *It's a Wrap (UK) Ltd v Gula* [2006] EWCA Civ 544 | Section 847 requires knowledge of the **facts**, not of the law |
+| *Bairstow v Queens Moat Houses plc* [2001] EWCA Civ 712 | Directors are liable to restore the **full amount** of an unlawful distribution |
+
+### Insolvency
+
+| Case | Proposition |
+|---|---|
+| *BNY Corporate Trustee Services Ltd v Eurosail-UK 2007-3BL plc* [2013] UKSC 28 | The balance sheet test is not mechanical; the question is whether the company has reached the "point of no return" |
+| *Re MC Bacon Ltd* [1990] BCLC 324 | A preference requires a **desire** to prefer, not mere knowledge of the effect; security given under commercial pressure to secure continued support is not a preference |
+| *Re Produce Marketing Consortium Ltd (No 2)* (1989) 5 BCC 569 | Wrongful trading: contribution measured by the **increase in the net deficiency** |
+| *Re Continental Assurance Co of London plc* [2007] 2 BCLC 287 | The liquidator must show the continued trading actually caused loss |
+| *Re Patrick and Lyon Ltd* [1933] Ch 786 | Fraudulent trading requires "actual dishonesty involving … real moral blame" |
+| *Re AGPS BondCo plc* [2024] EWCA Civ 24 | Cross-class cram down is discretionary; "no worse off" is a threshold, and the court scrutinises fair allocation between classes |
+
+## Statutory provisions worth knowing by number
+
+A short list. These are the provisions where practitioners actually use the number as shorthand, and
+where a question is likely to refer to it.
+
+| Provision | Subject |
+|---|---|
+| **PA 1890 s.1** | Definition of partnership |
+| **PA 1890 s.5** | A partner's authority to bind the firm |
+| **PA 1890 s.24** | The default terms |
+| **PA 1890 s.44** | Distribution of assets on dissolution |
+| **CA 2006 s.33** | The constitution as a contract |
+| **CA 2006 s.51** | Pre-incorporation contracts |
+| **CA 2006 s.168** | Removal of a director by ordinary resolution |
+| **CA 2006 ss.171–177** | The general duties |
+| **CA 2006 s.190** | Substantial property transactions |
+| **CA 2006 s.197** | Loans to directors |
+| **CA 2006 s.239** | Ratification |
+| **CA 2006 s.303** | Members' power to require a general meeting |
+| **CA 2006 s.561** | Pre-emption rights on allotment |
+| **CA 2006 s.630** | Variation of class rights |
+| **CA 2006 s.830** | Distributions only out of distributable profits |
+| **CA 2006 s.859A / s.859H** | Registration of charges, and the consequence of failure |
+| **CA 2006 s.994** | Unfair prejudice |
+| **CA 2006 ss.260–264** | Derivative claims |
+| **IA 1986 s.123** | The insolvency tests |
+| **IA 1986 s.213 / s.214** | Fraudulent and wrongful trading |
+| **IA 1986 ss.238, 239, 245, 423** | Clawback |
+| **IA 1986 Sch B1 para 3** | The purpose of administration |
+| **CDDA 1986 s.6** | Mandatory disqualification for unfitness |
+
+## The numbers
+
+### Voting and members' thresholds
+
+| Threshold | What it does |
+|---|---|
+| 100% | *Duomatic* assent; introduce entrenchment |
+| 95% / 90% | Short notice of a general meeting: public / private |
+| 75% | Special resolution; variation of class rights; approval of a CVA, IVA or restructuring plan class |
+| >50% | Ordinary resolution |
+| >25% | Blocks a special resolution |
+| 20% | Threshold for a body corporate to be a **connected person** (s.254) |
+| 15% | Apply to cancel a variation of class rights (s.633) |
+| 10% | Demand a poll (s.321); require an audit (s.476) |
+| 5% | Require a general meeting (s.303); circulate a written resolution (s.292) or statement (s.314) |
+| 5% | Shareholding condition for business asset disposal relief on shares |
+
+### Periods and deadlines
+
+| Period | What it is |
+|---|---|
+| 21 days | Register a **charge** (s.859A) — the one filing whose omission destroys a right |
+| 15 days | File a special resolution (s.30) or amended articles (s.26); make a solvency statement before a reduction of capital; inspection of a s.188 or s.197 memorandum |
+| 14 days | Notify a change of directors (s.167); confirmation statement after the review period; minimum notice of a general meeting (14 **clear** days); minimum pre-emption offer period |
+| 1 month | Return of allotment (s.555) |
+| 28 days | **Special notice** to the company for a s.168 removal; lapse of a written resolution (s.297); return after a buyback (s.707); challenge a CVA or IVA |
+| 2 months | Issue a share certificate; register or refuse a transfer with reasons (s.771) |
+| 9 months / 6 months | File accounts: private / public (s.442) |
+| 9 months + 1 day | Pay corporation tax (non-large companies); pay the s.455 charge |
+| 12 months | File the corporation tax return |
+| 3 weeks | Comply with a statutory demand |
+| 5–7 weeks | The payment window after a buyback out of capital resolution (s.723) |
+| 1 year | Administration, before extension; automatic discharge from bankruptcy |
+| 2 years | Minimum disqualification under CDDA s.6; ownership period for BPR and BADR; TUV look-back (s.238) |
+| 3 years | Rollover reinvestment window (after disposal); income payments order; extortionate credit look-back |
+| 5 years | Maximum s.551 authority to allot; prohibited name restriction (s.216); bankruptcy TUV look-back (s.339) |
+
+### Money thresholds (non-tax)
+
+| Figure | What it is |
+|---|---|
+| £750 | Company statutory demand (s.123(1)(a) IA 1986) |
+| £5,000 | Creditor's bankruptcy petition threshold; lower limb of the s.191 substantial asset test |
+| £50,000 | Public company authorised minimum share capital; s.204 company business expenditure exception |
+| £100,000 / 10% | The two limbs of the s.191 "substantial" test |
+| £10,000 / £15,000 | s.207 minor loan and quasi-loan / credit transaction exceptions |
+| £15,000 or 5% | The de minimis buyback out of capital (s.692(1ZA)) |
+| £200 | Small payment for loss of office (s.221) |
+| £800 | Cap on preferential employee wages |
+| £800,000 | Cap on the prescribed part (floating charges created on or after 6 April 2020) |
+| 50% of first £10,000 + 20% of the rest | The prescribed part formula |
+| £50,000 / £2,000 / £4,000 / £75 | Debt relief order: debts / assets / vehicle / monthly surplus income |
+
+### Tax figures — 2026/27
+
+::: {.callout-caution title="These will normally be given to you"}
+| Figure | Amount |
+|---|---|
+| Personal allowance | £12,570, tapered above £100,000 |
+| Basic rate band | £37,700 |
+| Income tax rates | 20% / 40% / 45% |
+| Dividend rates | 10.75% / 35.75% / 39.35% |
+| Dividend allowance | £500 |
+| CGT annual exempt amount | £3,000 |
+| CGT rates | 18% / 24% |
+| Business asset disposal relief | 18%, £1m lifetime limit |
+| Corporation tax | 19% up to £50,000; 25% from £250,000; marginal relief between, fraction 3/200, marginal rate 26.5% |
+| s.455 charge on loans to participators | Dividend upper rate: **35.75%** for loans made on or after 6 April 2026 (33.75% before) |
+| VAT | Standard 20%, reduced 5%; registration £90,000, deregistration £88,000 |
+| National Insurance | Class 1 employee 8% / 2%; employer 15%; Class 4 6% / 2% |
+| IHT | Nil rate band £325,000; 40% on death, 20% on lifetime chargeable transfers |
+| BPR | 100% within the combined APR/BPR allowance (£2.5m from 6 April 2026, transferable between spouses); 50% above it; 50% for quoted controlling holdings and for personally owned assets used in the business |
+
+Check each of these against the position at **your** sitting's examinable law cut-off date.
+:::

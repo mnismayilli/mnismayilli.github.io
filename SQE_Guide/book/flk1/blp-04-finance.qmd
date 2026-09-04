@@ -2,28 +2,953 @@
 
 > *Assessment objective 4: financing a business.*
 
-::: {.callout-note title="Not yet written"}
-Outline below.
+## Debt or equity: the choice that frames the chapter
+
+A company that needs money has two sources, and the difference between them runs through everything
+below.
+
+| | Equity | Debt |
+|---|---|---|
+| The provider becomes | a **member** | a **creditor** |
+| Return | a **dividend**, payable only out of distributable profits, at the company's discretion | **interest**, payable whether or not there are profits |
+| Tax treatment of the return in the company's hands | **Not deductible** — dividends are paid out of taxed profits | Interest is generally **deductible** in computing taxable profits |
+| Control | Dilutes existing shareholders | No dilution, but covenants restrict what the company may do |
+| Capital | Locked in by the **maintenance of capital** rules | Repayable on the agreed terms |
+| On insolvency | Ranks **last** | Ranks ahead of members; secured creditors ahead of unsecured |
+| Security | None | Fixed and floating charges available |
+
+::: {.callout-important title="Exam trap"}
+The tax asymmetry is a favourite. Interest on borrowings is a deduction in computing the company's
+taxable trading profits; a dividend is a **distribution of profit already taxed**, and gets no
+deduction. That is why owner-managers are often advised on the split between salary, interest on a
+director's loan, and dividends — and why a question that asks which structure is most tax-efficient is
+usually testing this line.
 :::
 
-## Planned contents
+## Equity finance
 
-**Equity finance** — allotment of shares (ss.549–551 CA 2006); pre-emption rights under s.561 and
-their disapplication; transfer of shares and the directors' power to refuse registration; treasury
-shares.
+### Shares and share capital
 
-**Returning capital** — share buybacks out of distributable profits and out of capital; redemption;
-reduction of capital by the solvency statement route. *Note: the September 2026 specification adds
-detail on redemption and buyback exclusions — treat this as a signal that it is examinable.*
+Every share in a limited company having a share capital must have a **fixed nominal value** (s.542),
+and an allotment purporting to be of a share without one is void. The vocabulary matters:
 
-**Debt finance** — loans, overdrafts and debentures; the distinction between fixed and floating
-charges and why it decides outcomes on insolvency; crystallisation; registration of charges under
-s.859A and the consequence of failing to register.
+- **Nominal (par) value** — the notional value stamped on the share, and the measure of the
+  shareholder's liability. A £1 share issued at £1 and paid up carries no further liability.
+- **Issue price** — what the company actually charges. It may be more than nominal (the excess is a
+  **premium**), never less (s.580: shares must not be allotted at a **discount** to their nominal
+  value — *Ooregum Gold Mining Co of India Ltd v Roper* [1892] AC 125).
+- **Share premium account** (s.610) — the premium must be credited to this account, which is treated
+  largely as if it were share capital and is **not** distributable.
+- **Called-up** and **paid-up** capital — the amounts demanded and actually received.
+- **Allotment** and **issue** — shares are *allotted* when a person acquires the unconditional right to
+  be entered in the register of members (s.558); they are *issued* when that entry is made.
 
-**Distributions** — dividends; the requirement for profits available for distribution under s.830;
-unlawful distributions and their recovery.
+**Classes of share** most often examined:
 
-**Accounting requirements** — what the statutory accounts must contain, filing deadlines and
-audit exemption thresholds.
+| Class | Features |
+|---|---|
+| **Ordinary** | Votes, dividend at the company's discretion, residue of capital on a winding up. The default |
+| **Preference** | A fixed dividend, paid in priority; normally **presumed cumulative**, so arrears carry forward; usually **no vote** and **no participation** in surplus capital unless expressly given |
+| **Redeemable** | Issued on terms that they are, or may be, redeemed |
+| **Non-voting / deferred** | Used to separate economic and voting rights |
 
-**Conduct** — the solicitor acting on a financing where the lender and the borrower are both clients.
+### Allotting shares: the three questions
+
+A question about a new issue of shares is always answered by working through the same three steps in
+the same order.
+
+**Step 1 — Do the directors have authority to allot?**
+
+- **Section 550**: a **private company with only one class of shares** may allot shares by **board
+  decision alone**, unless the articles prohibit it.
+- **Section 551**: in every other case (a private company with more than one class, or any public
+  company) the directors need authority, given either by the **articles** or by **ordinary
+  resolution**. The authority must state the **maximum number** of shares that may be allotted and an
+  **expiry date not more than five years** away. It may be renewed, revoked or varied by ordinary
+  resolution, and must be **filed** with the Registrar within 15 days (s.30).
+- An allotment made without authority is nevertheless **valid** (s.549(6)); the directors commit an
+  offence.
+
+**Step 2 — Do pre-emption rights apply, and if so, have they been dealt with?**
+
+Section 561: a company must not allot **equity securities** to a person unless it has first offered
+them, on the same or more favourable terms, to each existing holder of **ordinary shares** in
+proportion as nearly as practicable to their existing holdings. The offer must be open for at least
+**14 days** (s.562(5)).
+
+"Equity securities" means ordinary shares or rights to subscribe for or convert into them (s.560), and
+"ordinary shares" excludes shares that carry a right to participate **only up to a specified amount**
+in **both** a distribution **and** a return of capital — so a straightforward preference share is
+outside the regime.
+
+*Exclusions* — pre-emption never applies to:
+
+- **bonus shares** (s.564);
+- an allotment for a consideration that is **wholly or partly non-cash** (s.565); or
+- shares held under an **employees' share scheme** (s.566).
+
+*Disapplication* — the routes, in increasing order of specificity:
+
+| Route | Company | Requirement |
+|---|---|---|
+| s.567 | Private only | The articles may **exclude** ss.561–562 generally |
+| s.569 | Private with **one class** only | **Special resolution**, or a provision in the articles, empowering the directors to allot as if s.561 did not apply |
+| s.570 | Any company where directors have a **general s.551 authority** | **Special resolution**, or a provision in the articles |
+| s.571 | Any company | **Special resolution** disapplying for a **specific allotment**, supported by a **directors' written statement** of their reasons, the amount to be paid and their justification, circulated with the notice of the meeting |
+
+Contravention does **not** invalidate the allotment. Section 563 makes the company and every officer
+knowingly party to the contravention jointly and severally liable to **compensate** any person to whom
+an offer should have been made, with a two-year limitation period.
+
+**Step 3 — Is the consideration acceptable, and are the filings made?**
+
+- A **private** company may accept any consideration having value. The court will not inquire into its
+  adequacy unless it is illusory or manifestly inadequate — *Re Wragg Ltd* [1897] 1 Ch 796.
+- A **public** company must not accept an undertaking to do **work or perform services** (s.585); must
+  receive at least **25% of the nominal value plus the whole of any premium** on allotment (s.586);
+  must have any **non-cash** consideration independently **valued** within the six months before the
+  allotment (s.593); and cannot accept an undertaking to be performed more than **five years** after
+  allotment (s.587).
+- **Filing**: a return of allotment with a statement of capital within **one month** (s.555); entry in
+  the **register of members**; and a **share certificate** within **two months** (s.769).
+
+::: {.callout-tip title="Worked example"}
+A private company has 100 ordinary shares of £1, all of one class, held 60 by P and 40 by Q. The
+directors wish to allot 50 new ordinary shares to a new investor for £10 each in cash. The articles are
+the unamended Model Articles.
+
+- **Authority.** One class, private company: s.550 applies, so the board may allot without a members'
+  resolution.
+- **Pre-emption.** Section 561 **does** apply — ordinary shares, cash consideration. P must be offered
+  30 and Q 20, for at least 14 days, before any can go to the investor. To allot them all to the
+  investor, the members must disapply s.561: with only one class, a **special resolution** under s.569
+  will do, so P alone (60%) is not enough — Q's agreement is needed to reach 75%.
+- **Consideration.** £1 nominal, £9 premium per share. £450 goes to the share premium account and £50
+  to share capital.
+- **Filing.** Return of allotment and statement of capital within one month; certificate within two
+  months.
+
+Change one fact: the company has ordinary **and** preference shares. Now s.550 does not apply, and the
+board also needs a s.551 authority by ordinary resolution — which P alone can pass.
+:::
+
+### Class rights and their variation
+
+**Class rights** are rights attached to a class of shares — typically dividend, voting and capital
+rights. They may be set out in the articles, in the terms of issue, or in a resolution.
+
+**Variation** (s.630): rights attached to a class may be varied **only** in accordance with provision
+in the articles for their variation, or, where the articles contain no such provision, with the
+**consent of the holders of 75% in nominal value of the issued shares of that class**, or by a
+**special resolution passed at a separate general meeting of that class**.
+
+**Objection** (s.633): holders of **not less than 15%** of the issued shares of the class, who did not
+consent to or vote in favour of the variation, may apply to the **court within 21 days** to have it
+cancelled. The variation does not take effect until confirmed. The court may disallow the variation if
+satisfied that it would **unfairly prejudice** the shareholders of the class.
+
+What counts as a variation is the narrow and heavily litigated point. The courts distinguish a
+variation of the **rights** themselves from a change in the **enjoyment** of unaltered rights:
+
+- *Greenhalgh v Arderne Cinemas Ltd* [1946] 1 All ER 512 — subdividing 10s shares into 1s shares, so
+  that a previously blocking minority lost control on a poll, was **not** a variation of class rights.
+  The right (one vote per share) was untouched; only its practical value changed.
+- *White v Bristol Aeroplane Co Ltd* [1953] Ch 65 — a bonus issue of new preference and ordinary
+  shares that diluted the existing preference shareholders' voting strength was **not** a variation.
+  Their rights as such were unaffected.
+
+::: {.callout-important title="Exam trap"}
+The *Greenhalgh* / *White* line means that most of the things a minority most resents — dilution,
+subdivision, bonus issues — are **not** variations of class rights and do not trigger s.630. The
+minority's route is s.994 unfair prejudice (@sec-blp-stakeholders), not the class rights machinery. An
+option offering a class consent requirement on facts of that kind is usually the distractor.
+:::
+
+### Transferring shares
+
+Shares are transferable in accordance with the articles (s.544). The mechanics:
+
+1. The transferor executes a **stock transfer form** (Stock Transfer Act 1963) and delivers it with the
+   share certificate to the transferee.
+2. **Stamp duty** at **0.5%** of the consideration, rounded up to the nearest £5, is paid on the form —
+   unless the consideration is £1,000 or less and the form is certified as within an exempt category.
+3. The transferee sends the stamped form and certificate to the company.
+4. Section 770: the company **may not register** a transfer unless a proper instrument of transfer has
+   been delivered to it, or the transfer is exempt.
+5. The **directors** consider the transfer. Model Article 26(5) gives them power to **refuse to
+   register**; if they do, s.771 requires them to give the transferee notice of the refusal **with
+   reasons**, together with such further information about the reasons as the transferee may reasonably
+   request, within **two months**.
+6. On registration, the transferee's name goes in the register of members and a certificate is issued
+   within **two months** (s.776).
+
+Between execution and registration the transferee holds an equitable interest and the transferor holds
+the legal title on trust for them, but is still the **member** for company law purposes — which decides
+who may vote and who receives a dividend declared in the interim.
+
+**Transmission** (Model Article 27) is different: on a member's **death or bankruptcy**, the personal
+representative or trustee becomes entitled to the shares by operation of law, and may either be
+registered as a member or execute a transfer to a third party. The directors' power to refuse
+registration applies as it would to a transfer by the deceased member.
+
+::: {.callout-important title="Exam trap"}
+Do not confuse a **transfer** (a private sale between shareholders — the company receives nothing) with
+an **allotment** (the company creates new shares and receives the money). Pre-emption rights under
+s.561 apply only to **allotments**. Pre-emption on **transfer** — a right of first refusal when an
+existing member wants to sell — exists only if the articles or a shareholders' agreement create it.
+:::
+
+### Check yourself: equity finance
+
+**Q1.** A private company has 200 issued ordinary shares of £1 each, its only class, held equally by two
+shareholders. The directors propose to allot 100 new ordinary shares to a third party for cash at £5
+each. The articles are the unamended Model Articles and no resolutions have been passed.
+
+Which of the following is correct?
+
+A. The directors may allot the shares without any members' resolution, because the company is private
+with one class of shares.
+
+B. The directors need an ordinary resolution granting authority to allot, and a special resolution
+disapplying pre-emption rights.
+
+C. The directors may allot without a s.551 authority, because s.550 applies, but they must first offer
+the shares to the existing members pro rata unless the members pass a special resolution disapplying
+s.561.
+
+D. The directors must obtain a special resolution, because the shares are being issued at a premium.
+
+E. The directors may allot the shares provided the existing members are given 7 days to object.
+
+**Q2.** A company with an issued capital of ordinary and preference shares proposes to subdivide each
+existing ordinary share into ten. The effect is that a shareholder who previously held enough ordinary
+shares to block a special resolution will no longer do so, because new ordinary shares are to be issued
+to others. The rights attaching to each ordinary share are unchanged.
+
+Which of the following is correct?
+
+A. This is a variation of class rights and requires the consent of 75% in nominal value of the ordinary
+shareholders.
+
+B. This is a variation of class rights and any 15% of the class may apply to court to cancel it.
+
+C. This is not a variation of class rights, because the rights attaching to the shares are unaltered;
+only their enjoyment is affected.
+
+D. This is a variation of class rights because it affects voting control.
+
+E. This requires the unanimous consent of all members.
+
+**Q3.** A shareholder executes a stock transfer form in favour of a buyer and hands over the form and
+the share certificate. Two weeks later, and before the company has registered the transfer, the company
+declares a final dividend.
+
+Who is entitled to the dividend as against the company?
+
+A. The buyer, because beneficial ownership passed on delivery of the executed form.
+
+B. The seller, because until the transfer is registered the seller remains the member on the register.
+
+C. Neither, because the entitlement is suspended until registration.
+
+D. The buyer, because s.770 deems the transfer effective on delivery of a proper instrument.
+
+E. The company may choose which of them to pay.
+
+**Q4.** A public company proposes to allot shares to a supplier in exchange for the supplier's
+undertaking to provide consultancy services over the next three years.
+
+Which of the following is correct?
+
+A. This is permissible, because a company may accept any consideration having value.
+
+B. This is permissible provided an independent valuation is obtained.
+
+C. This is not permissible: a public company must not accept an undertaking to do work or perform
+services as consideration for its shares.
+
+D. This is permissible provided the shares are paid up as to at least 25% in cash.
+
+E. This is permissible only if approved by special resolution.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** Two separate questions, and the trap is answering only one. **Authority**: s.550 applies —
+private company, one class of shares, articles do not prohibit — so no s.551 resolution is needed.
+**Pre-emption**: s.561 applies, because these are ordinary shares allotted for cash. The existing
+members must be offered them pro rata for at least 14 days, unless the members disapply s.561 by
+special resolution (s.569, available because there is only one class) or the articles exclude the
+regime (s.567).
+
+- **A** answers the authority question and forgets pre-emption.
+- **B** answers the pre-emption question and adds an authority requirement that s.550 removes.
+- **D** invents a rule about premiums.
+- **E** invents a 7-day period; s.562(5) requires at least 14 days.
+
+**Q2 — C.** *Greenhalgh v Arderne Cinemas Ltd* and *White v Bristol Aeroplane Co Ltd*. A subdivision or
+dilution that leaves the rights attached to each share untouched affects the **enjoyment** of those
+rights, not the rights themselves, and is not a variation for the purposes of s.630. The minority's
+route, if any, is a s.994 petition.
+
+- **A**, **B** and **D** apply s.630 and s.633 to facts the case law puts outside them.
+- **E** invents a unanimity requirement.
+
+**Q3 — B.** Membership is determined by the **register of members** (s.112). Until the transfer is
+registered, the seller remains the member and is the person entitled as against the company. In equity
+the seller holds the shares — and, as between the parties, the dividend — on trust for the buyer, but
+the company looks only to its register.
+
+- **A** and **D** confuse the equitable interest with membership, and misread s.770, which restricts
+  when a company **may register**, not when title passes.
+- **C** and **E** invent rules.
+
+**Q4 — C.** Section 585(1): a public company must not accept, in payment up of its shares or any
+premium, an undertaking given by any person that he or another should do work or perform services.
+This is one of the public-company-only capital rules, alongside ss.586, 587 and 593.
+
+- **A** states the rule for a **private** company (*Re Wragg Ltd*).
+- **B** applies the s.593 valuation requirement, which cannot cure a prohibited form of consideration.
+- **D** and **E** invent conditions.
+
+:::
+
+## Maintenance of capital
+
+### The principle
+
+*Trevor v Whitworth* (1887) 12 App Cas 409: a limited company may not return capital to its members
+except in the ways the law permits. Share capital is the fund on the faith of which creditors are
+presumed to have given credit, and it must be kept intact. Section 658 gives the modern form: a limited
+company **must not acquire its own shares**, whether by purchase, subscription or otherwise, except in
+accordance with Part 18.
+
+The permitted exits from that principle are four: a **purchase of own shares**, a **redemption**, a
+**reduction of capital**, and a **lawful distribution**. Each has its own machinery, and the machinery
+is what is examined.
+
+### Purchase of own shares (buyback)
+
+**Preconditions** applying to every buyback:
+
+- The articles must not **prohibit** it.
+- The shares must be **fully paid** (s.691(1)) and must be **paid for on purchase** (s.691(2)).
+- The purchase must not leave only **redeemable shares** in issue (s.690(2)).
+- The purchase must be funded from one of the permitted sources.
+
+**Funding** (s.692):
+
+1. **Distributable profits**;
+2. the **proceeds of a fresh issue** of shares made for the purpose of financing the purchase; or
+3. for a **private company only**, **out of capital**, either under the full Chapter 5 procedure below
+   or under the small-scale route in s.692(1ZA) — which permits a purchase out of capital, if
+   authorised by the articles, up to the **lower of £15,000 and the nominal value of 5% of the fully
+   paid share capital** in any financial year.
+
+**Approval — off-market purchases** (the normal case for a private company, since its shares are not
+traded on a recognised investment exchange):
+
+- The **contract** must be approved by **ordinary resolution** **before** the company enters into it
+  (s.694), or the contract must be conditional on approval.
+- **Section 695**: the resolution is **ineffective** if the selling member votes and the resolution
+  would **not** have been passed without their votes. In a written resolution, the selling member is
+  **not an eligible member** at all.
+- **Section 696**: a copy of the contract (or a written memorandum of its terms) must be made available
+  for inspection for at least **15 days** before the meeting and at the meeting; for a written
+  resolution, it must be sent to every eligible member with the resolution.
+
+**Afterwards:**
+
+- The shares are **cancelled**, and the issued share capital reduced accordingly — or, where purchased
+  out of distributable profits, may be held as **treasury shares** (ss.724–732), which carry no votes
+  and no dividends and may later be sold, transferred under an employees' share scheme, or cancelled.
+- A **return** must be delivered to the Registrar within **28 days** (s.707), and notice of
+  cancellation with a statement of capital within 28 days (s.708).
+- The contract must be **retained for 10 years** and be available for inspection (s.702).
+- Where the purchase is out of profits, a transfer to the **capital redemption reserve** maintains the
+  capital position (s.733).
+
+**Buyback out of capital: the private company procedure** (ss.709–723). This is the most procedurally
+detailed thing in the subject, and it is examined as a sequence:
+
+1. The company may pay out of capital only the **permissible capital payment** — the excess of the
+   purchase price over available profits and the proceeds of any fresh issue (s.710).
+2. **All the directors** make a **statement of solvency** (s.714) specifying the permissible capital
+   payment and stating their opinion that, immediately after the payment, the company will be able to
+   pay its debts, and that it will be able to continue as a going concern and pay its debts as they
+   fall due **throughout the following year**.
+3. An **auditor's report** is annexed, stating that the auditor is not aware of anything indicating
+   that the directors' opinion is unreasonable (s.714(6)).
+4. A **special resolution** is passed **within one week** after the date of the directors' statement
+   (s.716). The seller's votes are disregarded if the resolution would not otherwise have passed
+   (s.717), and the statement and report must be available at the meeting (s.718).
+5. Within **one week** of the resolution, the company publishes a notice in the **Gazette**, and either
+   in a national newspaper or by written notice to every creditor (s.719), and files the directors'
+   statement and auditor's report with the Registrar no later than the first notice (s.720).
+6. Any **creditor**, or any member who did not consent, may apply to the **court within five weeks** of
+   the resolution to cancel it (s.721).
+7. The payment must be made **no earlier than five weeks and no later than seven weeks** after the
+   resolution (s.723).
+
+::: {.callout-important title="Exam trap"}
+Three of these steps generate most of the wrong answers. The special resolution must come **within one
+week after** the directors' statement, not before it. The payment window is **five to seven weeks
+after** the resolution — not immediately, and not at large. And a **public company can never buy back
+out of capital**; if the question tells you the company is a plc, that route is closed whatever the
+procedure followed.
+:::
+
+### Redeemable shares
+
+Sections 684–689. A **private** company may issue redeemable shares if its articles do not prohibit it;
+a **public** company may do so only if **authorised by its articles**. In either case:
+
+- The company must have **non-redeemable shares** in issue at the time (s.684(4)).
+- The terms and manner of redemption may be fixed by the **directors**, if they are authorised to do so
+  by the articles or by ordinary resolution — and the terms must then be stated in the return of
+  allotment (s.685).
+- The shares must be **fully paid**, and the terms must provide for payment on redemption (s.686).
+- Redemption is funded from **distributable profits** or the **proceeds of a fresh issue**; a private
+  company may also redeem **out of capital** under the Chapter 5 procedure (s.687).
+- Redeemed shares are treated as **cancelled** on redemption (s.688).
+
+The commercial difference from a buyback: redemption rights are built into the share on issue, so no
+further members' resolution is needed at the time of redemption. A buyback is a fresh bargain and needs
+members' approval.
+
+### Reduction of capital
+
+Sections 641–653. Two routes:
+
+- **Private company**: **special resolution** supported by a **solvency statement**.
+- **Any company** (and the only route for a **public** company): **special resolution confirmed by the
+  court**.
+
+The **solvency statement** (s.643) is a statement by **each** of the directors that they have formed the
+opinion that there is **no ground** on which the company could then be found unable to pay its debts,
+and that the company will be able to pay its debts as they fall due **during the year immediately
+following** (or, if it is intended to wind up within twelve months, that it will be able to pay its
+debts in full within twelve months of the commencement of the winding up).
+
+Timing and filing:
+
+- The statement must be made **not more than 15 days before** the date on which the resolution is passed
+  (s.642(1)), and a copy must be made available to members.
+- Within **15 days after** the resolution, the company delivers to the Registrar the resolution, the
+  solvency statement, and a **statement of capital** (s.644).
+- The reduction takes effect on **registration** by the Registrar.
+
+Making a solvency statement without reasonable grounds is a **criminal offence** (s.643(4)).
+
+A reduction of capital is the standard mechanism for creating **distributable reserves** in a company
+that has accumulated losses, and for returning surplus capital to members.
+
+### Financial assistance
+
+Sections 677–683. The prohibition is now confined to public companies, and knowing its **scope** is
+most of the battle:
+
+- **Section 678**: it is unlawful for a **public company**, or for any of its subsidiaries, to give
+  financial assistance directly or indirectly for the purpose of the acquisition of shares in that
+  public company, before or at the same time as the acquisition, or to reduce or discharge a liability
+  incurred for that purpose.
+- **Section 679**: it is unlawful for a **private company** to give financial assistance for the
+  acquisition of shares in its **public holding company**.
+- Financial assistance includes gifts, guarantees, security, indemnities, loans, and any other
+  assistance that materially reduces the company's net assets (s.677).
+
+**Exceptions:**
+
+- **Purpose exceptions** (s.678(2), (4)): assistance is permitted where the company's **principal
+  purpose** is not to give it for the acquisition, or where the assistance is an **incidental part of
+  some larger purpose**, and in either case it is given **in good faith in the interests of the
+  company**.
+- **Unconditional exceptions** (s.681): a lawful **dividend**; a distribution in a winding up; an
+  **allotment of bonus shares**; a **reduction of capital**; a **redemption or purchase of own shares**;
+  anything done under a court-approved scheme of arrangement or a compromise with creditors.
+- **Conditional exceptions** (s.682): money-lending in the ordinary course of business, employees' share
+  schemes, and loans to employees other than directors — where the company is public, only if its **net
+  assets are not reduced**, or to the extent that the assistance is provided out of **distributable
+  profits**.
+
+**Consequences** (s.680): the company and every officer in default commit a **criminal offence**. The
+assistance itself, and often the transaction it supports, is unenforceable.
+
+::: {.callout-important title="Exam trap"}
+The 2006 Act **abolished** the prohibition for private companies, along with the old "whitewash"
+procedure. A private company may lawfully give financial assistance for the acquisition of its own
+shares — subject to the directors' duties, the maintenance of capital rules if the assistance amounts
+to a distribution, and the insolvency clawback provisions. An option that says a private company must
+follow a whitewash procedure is testing whether you know the regime changed.
+:::
+
+## Distributions
+
+### When a dividend may be paid
+
+**Section 829** defines a distribution as every description of distribution of a company's assets to its
+members, whether in cash or otherwise, **except**: an issue of bonus shares; a redemption or purchase of
+the company's own shares out of capital or unrealised profits; a reduction of capital; and a
+distribution of assets to members on a winding up.
+
+**Section 830** — the rule for all companies. A company may only make a distribution out of **profits
+available for the purpose**, defined as its **accumulated, realised profits** (so far as not previously
+utilised by distribution or capitalisation) **less** its **accumulated, realised losses** (so far as not
+previously written off).
+
+Four words in that definition do all the work:
+
+- **Accumulated** — you look at the company's whole history, not just the current year. A profitable
+  year does not permit a dividend if past losses exceed it.
+- **Realised** — unrealised revaluation surpluses cannot be distributed.
+- **Profits** *less* **losses** — both revenue and capital profits count, provided they are realised.
+
+**Section 831** — an **additional** test for **public companies** only. A public company may make a
+distribution only if, and to the extent that, the amount of its **net assets** is not less than the
+aggregate of its **called-up share capital and undistributable reserves**, and the distribution does not
+reduce net assets below that aggregate.
+
+**Section 836** — the amount available must be **justified by reference to relevant accounts**: normally
+the last annual accounts, but interim accounts or initial accounts may be used where the last annual
+accounts do not justify the distribution.
+
+### Mechanics
+
+Model Article 30: a **final dividend** is declared by **ordinary resolution** of the members, and may
+**not exceed** the amount recommended by the directors. The directors may pay **interim dividends** on
+their own authority. A declared final dividend becomes a **debt** owed to the members; an interim
+dividend does not, and may be reversed before payment.
+
+### Unlawful distributions
+
+**Members** (s.847): a member who, at the time of the distribution, **knows or has reasonable grounds
+for believing** that it is made in contravention of Part 23 is liable to **repay** it to the company (or,
+if the distribution was other than in cash, to pay a sum equal to its value).
+
+*It's a Wrap (UK) Ltd v Gula* [2006] EWCA Civ 544 settles what must be known: it is **knowledge of the
+facts** which constitute the contravention, not knowledge that those facts amount to a breach of the
+Act. Directors who paid themselves dividends out of a company with no distributable profits could not
+escape by saying they did not know the law. Ignorance of the legal consequence is no defence.
+
+**Directors**: a director who pays or permits an unlawful dividend is in breach of duty and liable to
+restore the sum to the company — *Bairstow v Queens Moat Houses plc* [2001] EWCA Civ 712, where
+directors were liable for the full amount of unlawful dividends paid, not merely for the company's net
+loss. Section 1157 relief may be available where the director acted honestly and reasonably.
+
+::: {.callout-important title="Exam trap"}
+The three-way distinction: an **unlawful dividend** is one paid without distributable profits; a
+**preference** is a payment that improperly advantages one creditor before an insolvency; a
+**transaction at an undervalue** is a disposal for significantly less than the company receives. A
+dividend can be attacked as all three on the same facts, and *Sequana* confirms that a dividend can be a
+transaction at an undervalue under s.423. Read the question to see which the examiner has set up.
+:::
+
+### Check yourself: capital and distributions
+
+**Q1.** A private company wishes to buy back 5,000 of its £1 ordinary shares from a retiring
+shareholder for £120,000. Its distributable profits are £40,000 and it does not propose to issue new
+shares. The articles permit purchases out of capital.
+
+Which of the following correctly describes the requirements?
+
+A. An ordinary resolution approving the contract is sufficient, because the company is private.
+
+B. The company may pay £40,000 out of profits and the balance out of capital, following the Chapter 5
+procedure: a directors' statement of solvency supported by an auditor's report, a special resolution
+passed within one week of the statement, notice in the Gazette and to creditors, and payment between
+five and seven weeks after the resolution.
+
+C. The company may not buy back the shares at all, because its distributable profits are less than the
+purchase price.
+
+D. The company must first reduce its capital by special resolution and solvency statement, and may then
+buy back the shares out of profits.
+
+E. The company may pay the whole £120,000 out of capital under s.692(1ZA), because the articles
+authorise purchases out of capital.
+
+**Q2.** A company's accumulated realised profits are £300,000 and its accumulated realised losses are
+£260,000. It has an unrealised revaluation surplus on its freehold premises of £500,000. The directors
+propose a dividend of £200,000.
+
+Which of the following is correct?
+
+A. The dividend is lawful, because the company's total reserves exceed £500,000.
+
+B. The dividend is lawful up to £40,000 only; profits available for distribution are accumulated
+realised profits less accumulated realised losses, and the revaluation surplus is unrealised.
+
+C. The dividend is lawful, because a revaluation surplus is a realised profit once the revaluation is
+recognised in the accounts.
+
+D. The dividend is lawful up to £300,000, because accumulated realised losses are disregarded.
+
+E. The dividend is unlawful in its entirety, because no dividend may be paid while accumulated losses
+remain.
+
+**Q3.** A shareholder who is also a director receives a dividend of £70,000. The company in fact had no
+distributable profits, and the shareholder knew the figures in the management accounts but believed,
+wrongly, that a dividend could lawfully be paid out of the year's trading profit while past losses were
+carried forward.
+
+Which of the following is correct?
+
+A. She need not repay the dividend, because she did not know that the payment was unlawful.
+
+B. She must repay the dividend, because s.847 requires only knowledge of the facts constituting the
+contravention, not knowledge that they render the distribution unlawful.
+
+C. She must repay only the amount by which the company was left unable to pay its creditors.
+
+D. She need not repay the dividend, because a dividend once declared is a debt due to the shareholder.
+
+E. She must repay the dividend only if the company enters liquidation within two years.
+
+**Q4.** A private company gives a guarantee to a bank to support a loan that the bank is making to an
+individual to enable him to buy the entire issued share capital of that company. The company is not a
+subsidiary of any public company.
+
+Which of the following is correct?
+
+A. The guarantee is unlawful financial assistance and the company commits a criminal offence.
+
+B. The guarantee is lawful only if a whitewash procedure is followed, involving a statutory declaration
+of solvency and an auditor's report.
+
+C. The prohibition on financial assistance applies only to public companies and to private subsidiaries
+of public companies; the guarantee is not unlawful under ss.678–679, though the directors must still
+consider their duties and the maintenance of capital and insolvency rules.
+
+D. The guarantee is lawful only if approved by special resolution.
+
+E. The guarantee is void, because a company may not assist a person to acquire its own shares in any
+circumstances.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** Section 692 permits a purchase out of distributable profits, the proceeds of a fresh issue,
+or (for a private company) out of capital. The permissible capital payment under s.710 is the excess of
+the price over available profits — £120,000 less £40,000 = £80,000 — and Chapter 5 supplies the
+machinery: directors' solvency statement (s.714) with auditor's report, special resolution within one
+week of the statement (s.716), Gazette and creditor notice within one week of the resolution (s.719),
+filings (s.720), a five-week window for objection (s.721), and payment between **five and seven weeks**
+after the resolution (s.723).
+
+- **A** gives only the s.694 contract approval and omits the entire out-of-capital procedure.
+- **C** treats insufficient profits as an absolute bar; it is a bar only for a **public** company.
+- **D** describes a workable but unnecessary alternative, and is not what the question asks about.
+- **E** misapplies s.692(1ZA), which caps the small-scale route at the **lower** of £15,000 and 5% of
+  the fully paid share capital. £120,000 far exceeds it.
+
+**Q2 — B.** Section 830: profits available for distribution are **accumulated realised profits** less
+**accumulated realised losses**. £300,000 − £260,000 = £40,000. An unrealised revaluation surplus is
+not a realised profit and cannot be distributed.
+
+- **A** and **C** treat the revaluation surplus as distributable.
+- **D** ignores accumulated losses, which is exactly what "accumulated" prevents.
+- **E** is too absolute: past losses reduce the available profits, they do not extinguish the ability to
+  pay any dividend at all.
+
+**Q3 — B.** *It's a Wrap (UK) Ltd v Gula*. Section 847 requires knowledge of the **facts** constituting
+the contravention. She knew the company's financial position; a mistake about the legal effect of those
+facts is no answer. She must repay.
+
+- **A** is the error the Court of Appeal rejected.
+- **C** invents a net loss measure; compare *Bairstow*, where directors were liable for the full amount.
+- **D** confuses the general rule that a declared final dividend is a debt with the position where the
+  distribution was unlawful in the first place.
+- **E** invents a limitation trigger.
+
+**Q4 — C.** Sections 678 and 679 prohibit financial assistance only where the shares being acquired are
+in a **public** company. The Companies Act 2006 abolished the prohibition for private companies and, with
+it, the whitewash procedure. The guarantee is not caught — though the directors must still act within
+ss.171–177, and if the guarantee is called it may be attacked under the insolvency clawback provisions.
+
+- **A** applies the public company rule to a private company.
+- **B** describes the abolished whitewash procedure.
+- **D** and **E** invent requirements.
+
+:::
+
+## Debt finance
+
+### The instruments
+
+- **Overdraft** — a facility on a current account, **repayable on demand**. Flexible and expensive, and
+  its on-demand nature makes it dangerous for a company under pressure.
+- **Term loan** — a fixed sum for a fixed period, drawn in one or more tranches, repayable by
+  instalments or at the end (a bullet repayment). Governed by a facility agreement containing
+  representations, covenants and events of default.
+- **Revolving credit facility** — a limit within which the company may draw, repay and redraw.
+- **Debenture** — in company law, a document that acknowledges or creates a debt; in practice, the
+  security document a bank takes over a company's assets, or a series of loan stock issued to
+  investors. Debentures are registrable in the same way as any other charge, and a company must keep a
+  register of debenture holders if it has one.
+
+**Covenants** are the lender's real control: financial covenants (gearing, interest cover), negative
+covenants (no further borrowing, no disposals, no dividends, **negative pledge** — no further security
+ranking ahead), and information covenants. Breach triggers an event of default, which accelerates the
+loan.
+
+### Fixed and floating charges
+
+This is the most consequential distinction in the chapter, because it decides who gets paid.
+
+A **fixed charge** attaches to specific, identified assets at the moment of creation. The chargor
+cannot dispose of them without the chargee's consent. Typical subjects: land, buildings, plant and
+machinery, shares, intellectual property.
+
+A **floating charge** hovers over a **class** of assets which changes in the ordinary course of
+business. *Re Yorkshire Woolcombers Association Ltd* [1903] 2 Ch 284, Romer LJ's three characteristics:
+
+1. it is a charge on a **class of assets**, present and future;
+2. that class is one which, in the ordinary course of the company's business, **changes from time to
+   time**; and
+3. until some step is taken by the chargee, **the company may carry on its business** and deal with
+   the assets in the ordinary course.
+
+Only a **body corporate** can grant a floating charge — which is one of the practical reasons a
+business incorporates.
+
+**The label is irrelevant.** Two cases decide this, and they are examinable by name because the
+principle is what practitioners call by them:
+
+- *Agnew v Commissioner of Inland Revenue (Re Brumark Investments Ltd)* [2001] UKPC 28 — a two-stage
+  approach: construe the instrument to find the rights and obligations the parties intended, then
+  categorise the charge as a matter of law. The parties cannot choose the label.
+- *Re Spectrum Plus Ltd* [2005] UKHL 41 — a charge over **book debts** which required the proceeds to
+  be paid into an account with the chargee bank, but permitted the company to **draw freely** on that
+  account, was a **floating** charge, whatever it called itself. *Siebe Gorman* was overruled. The
+  decisive question is whether the chargor retains **control over the proceeds**.
+
+**Crystallisation** converts a floating charge into a fixed charge over the assets then within its
+scope. It occurs on:
+
+- the commencement of **winding up**;
+- the appointment of an **administrator** or a **receiver**;
+- the company **ceasing to carry on business**;
+- any event specified in the charge instrument as causing **automatic crystallisation**; or
+- the giving of notice by the chargee, where the instrument so provides.
+
+::: {.callout-important title="Exam trap"}
+Crystallisation does **not** improve the charge holder's ranking. A crystallised floating charge is
+still, for the purposes of the insolvency priority rules and s.245 IA 1986, a floating charge — it is
+defined by reference to how it was created, not to its state at the relevant date. Candidates who think
+crystallisation promotes the holder above the preferential creditors and the prescribed part get the
+whole distribution question wrong.
+:::
+
+### Why the distinction matters
+
+| | Fixed charge | Floating charge |
+|---|---|---|
+| Ranking on insolvency | Paid first, out of the charged asset | After the expenses of the liquidation, the **preferential creditors** and the **prescribed part** |
+| Vulnerability | Ordinary clawback provisions only | Additionally vulnerable under **s.245 IA 1986** |
+| Chargor's freedom to deal | None without consent | Free, in the ordinary course, until crystallisation |
+| Appointment of administrator out of court | No | Yes, if the holder is a **qualifying floating charge holder** |
+
+### Registering charges
+
+**Section 859A**: where a company creates a charge, the company (or any person interested in it) must
+deliver to the Registrar the prescribed particulars, with a certified copy of the instrument, before
+the end of **21 days beginning with the day after the date of creation**.
+
+**Section 859H — the consequence of failure**, and the reason this deadline is worth memorising. If the
+charge is not registered in time, it is **void against a liquidator, an administrator and any creditor**
+of the company. The charge remains valid against the company itself, but the sum secured becomes
+**immediately payable**. In practice a lender whose charge is unregistered is an unsecured creditor in
+the only situation where security mattered.
+
+**Section 859F** allows the court to extend the period where the failure was accidental, due to
+inadvertence or some other sufficient cause, or is not of a nature to prejudice creditors or
+shareholders, or where it is otherwise just and equitable — usually on terms preserving the rights of
+those who acquired rights in the interim.
+
+**Section 859I(6)**: the Registrar's certificate of registration is **conclusive evidence** that the
+documents were delivered before the end of the 21-day period.
+
+Charges over **land** must additionally be registered at **HM Land Registry** to bind third parties.
+
+### Priority between charges
+
+The working rules:
+
+- A **fixed** charge over an asset ranks ahead of a **floating** charge over the same asset, even if the
+  floating charge was created first — because the company was free to deal with the asset in the
+  ordinary course.
+- Between **fixed** charges, the general rule is order of creation, subject to the rules about legal and
+  equitable interests and notice, and to registration at HM Land Registry where the asset is land.
+- Between **floating** charges over the same assets, order of creation.
+- A **negative pledge** clause in a floating charge prohibits the company from creating any later charge
+  ranking ahead. Its efficacy depends on notice: the particulars delivered under s.859D allow the
+  negative pledge to be recorded on the register, so a later chargee who searches is fixed with notice
+  and cannot obtain priority.
+
+::: {.callout-tip title="Worked example"}
+In January, Bank A takes a debenture containing a floating charge over the whole of the company's
+undertaking, including a negative pledge, and registers it within 21 days with the negative pledge
+noted. In June, Bank B takes a fixed legal mortgage over the company's warehouse and registers within
+21 days. The company goes into liquidation in December.
+
+Without the negative pledge, Bank B's later fixed charge would rank **ahead** of Bank A's earlier
+floating charge over the warehouse. With the negative pledge noted on the register, Bank B is taken to
+have had notice of it, so it cannot take priority: Bank A ranks first over the warehouse.
+
+Change one fact: Bank A registered 30 days after creation. Its charge is **void against the liquidator
+and against any creditor** under s.859H. Bank A is an unsecured creditor; Bank B's fixed charge stands.
+:::
+
+## Accounting requirements
+
+Financing questions frequently end with a filing or accounting requirement, and the details are set out
+in @sec-blp-management. The points that bear specifically on finance:
+
+- The company must keep **adequate accounting records** sufficient to show and explain its
+  transactions, disclose its financial position with reasonable accuracy at any time, and enable the
+  directors to ensure the accounts comply with the Act (s.386). Retention: **3 years** (private),
+  **6 years** (public).
+- Distributions must be **justified by reference to relevant accounts** (s.836), which is why a company
+  proposing an interim dividend part way through a loss-making year needs **interim accounts**.
+- **Filing deadlines**: accounts within 9 months of the accounting reference date (private) or 6 months
+  (public); the confirmation statement within 14 days of the end of each review period.
+- **Audit exemption** thresholds and the s.476 right of 10% of members to require an audit are set out
+  in @sec-blp-management.
+
+## The solicitor's position
+
+**Acting for lender and borrower.** A firm asked to act for both the bank and the company on a secured
+facility faces an obvious conflict of interest: the terms of the facility and of the security are
+matters on which their interests differ. The narrow exceptions in the Code of Conduct — substantially
+common interest, or competing for the same objective — will rarely be satisfied on a negotiated
+facility. Where the terms are entirely standard and not open to negotiation, and both clients give
+informed written consent, acting may be possible with effective safeguards; the safer and usually
+correct answer is that separate representation is required.
+
+**Personal guarantees.** Where a director or their spouse is asked to guarantee the company's
+borrowing, or to charge the family home, the solicitor must advise the guarantor **separately** and be
+alert to the risk of undue influence. A lender who is on notice that a guarantee is not to the
+guarantor's financial advantage, and that there is a relationship of trust, will require confirmation
+that the guarantor has received independent legal advice.
+
+**Registering the charge.** The 21-day deadline in s.859A is a classic negligence trap. Missing it makes
+the charge void against a liquidator, an administrator and any creditor, and the loss falls on the
+lender — and then on the firm.
+
+## Chapter review
+
+**Q1.** A bank takes a charge over a company's book debts. The charge document is expressed to create a
+"first fixed charge". It requires all proceeds to be paid into the company's account with the bank, but
+the company is free to draw on that account for its ordinary trading purposes without restriction. The
+company goes into liquidation.
+
+How does the charge rank?
+
+A. As a fixed charge, because it is expressed to be one and the parties' intention governs.
+
+B. As a fixed charge, because the proceeds must be paid into an account with the chargee.
+
+C. As a floating charge, because the company retained the freedom to deal with the proceeds; it
+therefore ranks after the expenses of the liquidation, the preferential creditors and the prescribed
+part.
+
+D. As a fixed charge over the debts and a floating charge over the proceeds.
+
+E. The charge is void, because a charge over future book debts cannot be created.
+
+**Q2.** A company creates a charge on 1 March. The particulars and a certified copy of the instrument
+are delivered to the Registrar on 28 March. The company enters administration in September.
+
+Which of the following is correct?
+
+A. The charge is valid, because it was registered within one month of creation.
+
+B. The charge is void against the administrator and any creditor, because it was not delivered within
+21 days beginning with the day after the date of creation; the secured sum became immediately payable.
+
+C. The charge is valid, because the Registrar issued a certificate of registration.
+
+D. The charge is void against the company itself as well as against the administrator.
+
+E. The charge is valid, because the 21-day period runs from the date the instrument is executed by all
+parties.
+
+**Q3.** A private company's articles are silent on the purchase of its own shares. The board wishes to
+buy back shares from a departing shareholder using the company's substantial distributable profits.
+
+Which of the following is correct?
+
+A. The buyback is prohibited, because the articles do not authorise it.
+
+B. The buyback may proceed: the articles need only not **prohibit** the purchase; the contract must be
+approved by ordinary resolution before the company enters into it, the shares must be fully paid and
+paid for on purchase, the selling member's votes are disregarded if the resolution would not otherwise
+have passed, and the contract must be available for inspection for 15 days before the meeting.
+
+C. The buyback requires a special resolution and a solvency statement.
+
+D. The buyback requires the Chapter 5 out-of-capital procedure, whatever the source of funds.
+
+E. The buyback is prohibited by s.658 in all circumstances.
+
+**Q4.** A company proposes to allot shares to raise capital. Which of the following, on its own,
+**removes** the need to offer the shares to existing ordinary shareholders first?
+
+A. The shares are being allotted at a premium.
+
+B. The shares are being allotted wholly in consideration for a non-cash asset.
+
+C. The directors have authority to allot under s.551.
+
+D. The company is a private company with only one class of shares.
+
+E. The allottee has agreed to a lock-up preventing resale for three years.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** *Re Spectrum Plus Ltd* [2005] UKHL 41, applying *Agnew v Commissioner of Inland Revenue*.
+The label is irrelevant; what matters is whether the chargor retained control over the proceeds. Free
+drawing rights mean the charge is **floating**, so it ranks after the expenses of the liquidation, the
+preferential creditors and the prescribed part.
+
+- **A** and **B** are the two propositions *Spectrum Plus* rejected — the second was the reasoning of
+  *Siebe Gorman*, which was overruled.
+- **D** splits the charge in a way the House of Lords declined to accept.
+- **E** is wrong: a charge over present and future book debts is perfectly valid.
+
+**Q2 — B.** Section 859A requires delivery within **21 days beginning with the day after the date of
+creation**. Creation on 1 March means the period ends on 22 March; delivery on 28 March is late. Section
+859H makes the charge **void against a liquidator, an administrator and any creditor**, and the sum
+secured becomes immediately payable. Relief is available only on an application under s.859F.
+
+- **A** applies a month, not 21 days.
+- **C** misreads s.859I(6): the certificate is conclusive that the documents were delivered before the
+  end of the period — which cannot be true where they were not, and in any event the Registrar would
+  not have accepted a late filing without a court order.
+- **D** overstates the sanction: the charge remains valid **against the company**.
+- **E** invents a start date; the period runs from creation.
+
+**Q3 — B.** Sections 690–696. There is no requirement that the articles **authorise** a buyback; the
+requirement is that they do not **prohibit** it. The shares must be fully paid (s.691(1)) and paid for
+on purchase (s.691(2)); the off-market contract must be approved by ordinary resolution before the
+company enters into it (s.694); the selling member's votes are disregarded if the resolution would not
+have passed without them (s.695); and the contract must be available for inspection for 15 days before
+the meeting and at it (s.696).
+
+- **A** reverses the test.
+- **C** imports the reduction of capital procedure.
+- **D** imports the out-of-capital procedure, which is needed only where profits and fresh issue
+  proceeds are insufficient.
+- **E** ignores that s.658 is expressly subject to Part 18.
+
+**Q4 — B.** Section 565: pre-emption rights do not apply to an allotment of equity securities that are
+paid up **otherwise than in cash**, wholly or partly. This is an exclusion that operates automatically,
+without any resolution.
+
+- **A** is irrelevant; a premium has nothing to do with pre-emption.
+- **C** addresses **authority** to allot, which is a different question from pre-emption. Section 550 or
+  s.551 gets the directors past step one; s.561 still has to be dealt with at step two.
+- **D** likewise addresses authority under s.550. Being a private company with one class makes the
+  s.569 **disapplication route** available, but a special resolution is still needed — the status alone
+  does not remove the requirement.
+- **E** is irrelevant.
+
+:::

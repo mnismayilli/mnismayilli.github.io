@@ -3,31 +3,1543 @@
 > *Assessment objective 2: the management of a business and company decision making to ensure
 > compliance with statutory and other legal requirements.*
 
-::: {.callout-note title="Not yet written"}
-Outline below. Drafted to the same depth as @sec-blp-vehicles.
+## The two-forum system
+
+Everything in this chapter rests on one structural idea. A company has **two** decision-making
+bodies, and they are not interchangeable:
+
+- The **board of directors**, which manages the business. Model Article 3 confers on the directors
+  the power to "exercise all the powers of the company", subject to the articles.
+- The **members in general meeting**, whose powers are the residue: those the Act reserves to them,
+  those the articles reserve to them, and the power to change the articles themselves.
+
+Two corollaries follow, and questions are built on both.
+
+**The members cannot manage.** If management is delegated to the board by the articles, the members
+cannot override a board decision by ordinary resolution. Their remedies are to change the articles
+by special resolution, to direct the board by **special resolution** under Model Article 4, or to
+remove the directors under s.168. They cannot simply vote to do the board's job.
+
+**Some decisions need both.** A substantial property transaction, a director's long-term service
+contract, a loan to a director, an off-market share buyback — each requires a **board** decision to
+enter into the transaction **and** a **members'** resolution to approve it. A question that gives you
+only one of the two is usually testing whether you noticed.
+
+::: {.callout-important title="Exam trap"}
+Model Article 4 requires a **special** resolution for the members to direct the directors to take, or
+refrain from, specified action. An option that has 51% of the members instructing the board is wrong.
+And even a valid direction does not invalidate anything the directors have already done.
 :::
 
-## Planned contents
+## Directors
 
-**Directors** — types (de jure, de facto, shadow); appointment; removal under s.168 CA 2006 and the
-special notice procedure; the *Bushell v Faith* clause; disqualification.
+### Who is a director
 
-**Directors' duties** — ss.171–177 CA 2006 taken one at a time, with the consequences of breach and
-ratification under s.239. The duty to promote the success of the company (s.172) and the conflict
-duties (ss.175–177) carry the most exam weight.
+Section 250 CA 2006 defines "director" to include **any person occupying the position of director,
+by whatever name called**. Substance beats title, and three categories matter:
 
-**Transactions requiring member approval** — substantial property transactions (s.190), loans to
-directors (s.197), long-term service contracts (s.188), payments for loss of office (s.217).
+- **De jure directors** — validly appointed and registered.
+- **De facto directors** — never validly appointed, but who act as directors and are held out as
+  such, taking part in corporate governance on an equal footing with the board.
+- **Shadow directors** — a person in accordance with whose directions or instructions the directors
+  are accustomed to act (s.251). A person is not a shadow director merely because the directors act
+  on advice given in a professional capacity; nor, generally, is a holding company treated as a
+  shadow director of its subsidiary for most purposes.
 
-**Company decision making** — board meetings versus general meetings; notice, quorum and voting;
-ordinary and special resolutions; written resolutions and why public companies cannot use them;
-general meetings requisitioned by members (s.303).
+The distinction has consequences. **All three** may be liable for wrongful and fraudulent trading and
+may be disqualified. The general duties in ss.171–177 apply to de jure and de facto directors, and
+apply to shadow directors "where and to the extent that they are capable of so applying" (s.170(5)).
 
-**Filing and record keeping** — confirmation statement, annual accounts, statutory registers, the
-PSC register, and the consequences of default.
+Other labels carry no separate legal meaning under the Act: an **executive** director is a director
+with a service contract, a **non-executive** director one without, and the general duties apply to
+both **identically**. There is no reduced standard for a non-executive.
 
-**Partnership decision making** — the s.24(8) majority/unanimity split and actual versus apparent
-authority under s.5 PA 1890, cross-referenced from @sec-blp-vehicles.
+::: {.callout-important title="Exam trap"}
+"Alternate director", "associate director", "director of finance" and "shadow director" are not the
+same thing. A person given the courtesy title "associate director" who is not on the board and does
+not act as one is not a director. Conversely, a controlling shareholder who dictates every board
+decision may be a shadow director and carries a director's exposure. Look at what the person **does**,
+not what the business card says.
+:::
 
-**Conduct** — the solicitor advising a board; who the client is when directors and shareholders
-disagree; and the limits of taking instructions from one director.
+### Requirements and restrictions
+
+| Requirement | Rule |
+|---|---|
+| Minimum number | Private: **1**; public: **2** (s.154) |
+| Natural person | At least one director must be a natural person (s.155) |
+| Minimum age | **16** (s.157) |
+| Disqualified persons | May not act (CDDA 1986); an undischarged bankrupt may not act without leave (CDDA s.11) |
+| Identity verification | Mandatory from 18 November 2025 (ECCTA 2023) |
+| Residence | No requirement to be UK resident |
+| Shareholding | No requirement to hold shares unless the articles impose one |
+
+### Appointment
+
+Model Article 17 gives two routes for a private company: by **ordinary resolution** of the members,
+or by **decision of the directors**. There is no requirement that vacancies be filled in any
+particular way, and no rotation requirement in the Model Articles for private companies.
+
+Whichever route is used, the company must notify the Registrar within **14 days** (s.167), and the
+appointment cannot be registered until the appointee's identity has been verified.
+
+Section 161 protects third parties: the acts of a person acting as a director are **valid**
+notwithstanding that it is afterwards discovered that there was a defect in their appointment, that
+they were disqualified, or that they were not entitled to vote.
+
+### Vacation of office and removal
+
+A director may cease to hold office in several ways, and the exam turns on distinguishing them.
+
+**Automatically, under the articles.** Model Article 18 provides that a person ceases to be a
+director when they cease to be a director by virtue of any provision of the Act or are prohibited by
+law from being one, when a bankruptcy order is made against them, when a composition is made with
+their creditors generally in satisfaction of their debts, or when they give the company notice of
+resignation. Articles frequently add further grounds — prolonged absence from board meetings, or a
+requirement to resign on ceasing to be an employee.
+
+**By resignation.** A director may resign by notice. That does not end any liability already incurred
+and does not terminate a service contract; a director who resigns in breach of their service contract
+is exposed to a claim for damages.
+
+**By removal under s.168.** This is the provision the exam cares about, and its mechanics are
+precise:
+
+- The members may remove a director by **ordinary resolution** at a **general meeting**,
+  **notwithstanding anything in any agreement between the company and the director**.
+- **Special notice** is required (s.168(2) and s.312): the members proposing the resolution must give
+  the company notice of intention at least **28 days** before the meeting. The company must
+  then give members notice of the resolution at the same time and in the same manner as notice of the
+  meeting, or, where that is not practicable, by advertisement or other means allowed by the articles
+  not less than 14 days before the meeting.
+- Section 169 gives the director the right to be **heard** at the meeting and to have written
+  representations of reasonable length circulated to members (or read out at the meeting, if received
+  too late to circulate).
+- Section 168(5): removal does **not** deprive the director of compensation or damages payable for
+  the termination of their appointment or of any appointment terminating with it.
+
+::: {.callout-important title="Exam trap"}
+Four traps live in s.168, and all four appear regularly.
+
+1. **A written resolution cannot be used.** Section 288(2) excludes resolutions under s.168 (removal
+   of a director) and s.510 (removal of an auditor) from the written resolution procedure. A general
+   meeting is mandatory.
+2. **Special notice is 28 days from the members to the company** — it is not a notice period the
+   company gives to the members.
+3. **Removal does not end the contract.** A director removed under s.168 in the middle of a five-year
+   service contract is removed, and the company owes damages. The exam's favourite phrasing is that
+   the members "cannot remove him because his contract has three years to run". They can. It just
+   costs.
+4. **Removing a director does not remove a shareholder.** Removal from the board does nothing to the
+   person's shares, their dividend, or their votes.
+:::
+
+**The *Bushell v Faith* clause.** In *Bushell v Faith* [1970] AC 1099 the articles provided that on a
+resolution to remove a director, that director's shares should carry three votes each. The House of
+Lords upheld it: s.168 (then s.184 of the 1948 Act) requires an ordinary resolution, and the articles
+may validly determine how many votes a share carries. A weighted voting clause therefore makes a
+director irremovable in practice while leaving s.168 formally intact.
+
+::: {.callout-tip title="Worked example"}
+A company has three shareholders holding 40, 40 and 20 shares. The articles contain a *Bushell v
+Faith* clause giving a director's shares five votes each on a resolution for their removal. The 20%
+holder is also a director, and the other two wish to remove him.
+
+Ordinary votes: 40 + 40 = 80 against, 20 for. With the clause: 80 against, 20 × 5 = **100** for
+retaining. The resolution fails. To defeat it, the majority must first change the **articles** — but
+that requires a special resolution of 75%, and on that resolution the clause does not apply, so they
+have 80 of 100 votes and can do it. The order of the steps is the point being tested.
+:::
+
+### Directors' service contracts
+
+Section 227 defines a director's service contract, and two rules attach:
+
+- **Section 188** — a term guaranteeing employment for a **guaranteed term exceeding two years**
+  requires approval by **ordinary resolution** of the members, with a memorandum of the proposed
+  contract made available for inspection for at least 15 days before the meeting and at the meeting.
+  If approval is not obtained, the offending **term is void** and the contract is deemed to contain a
+  term entitling the company to terminate at any time on reasonable notice.
+- **Section 228** — a copy of every director's service contract (or a written memorandum of its terms
+  if not in writing) must be kept available for inspection by members, at the registered office or an
+  alternative inspection location, for its duration and for **one year** after termination. Members
+  may inspect without charge (s.229).
+
+### Disqualification
+
+The Company Directors Disqualification Act 1986 keeps unfit people out of the boardroom. The
+examinable structure:
+
+| Section | Ground | Maximum (and minimum) |
+|---|---|---|
+| s.2 | Conviction of an indictable offence in connection with the promotion, formation, management, liquidation or striking off of a company | 15 years |
+| s.3 | Persistent breaches of companies legislation (filing defaults) | 5 years |
+| s.4 | Fraud or breach of duty revealed in a winding up | 15 years |
+| s.6 | **Unfitness** where the company has become insolvent — the court **must** disqualify | **Minimum 2**, maximum 15 |
+| s.8 | Unfitness following investigation | 15 years |
+| s.10 | Participation in wrongful or fraudulent trading | 15 years |
+| s.11 | Undischarged bankrupt, or subject to a debt relief restrictions order, acting without leave | Automatic |
+
+Section 6 is the workhorse. The matters the court must consider are set out in Schedule 1 and
+include the extent of the director's responsibility for the causes of the insolvency, for any failure
+to supply goods or services paid for, and for breaches of any applicable legislative or other
+requirement. Rather than contest proceedings, a director may give a **disqualification undertaking**
+(s.1A), with the same effect as an order.
+
+The consequences of acting while disqualified are serious, and are examined:
+
+- It is a **criminal offence** (s.13).
+- Section 15 imposes **personal liability**, jointly and severally with the company, for the debts of
+  the company incurred while the person was acting in contravention — and on any person who acts on
+  that person's instructions knowing them to be disqualified.
+- Section 15A allows the court to make a **compensation order** requiring a disqualified director to
+  pay compensation for identifiable loss caused to creditors.
+- A disqualified person may apply for **leave** to act in relation to a particular company (s.17).
+
+### Check yourself: directors
+
+**Q1.** A private company has five directors. Three of the shareholders, who between them hold 62% of
+the shares, wish to remove one of the directors, whose service contract has four years left to run.
+The articles are in the form of the Model Articles.
+
+Which of the following is the correct advice?
+
+A. The director cannot be removed until his service contract expires.
+
+B. The director may be removed by a written resolution signed by holders of a majority of the total
+voting rights.
+
+C. The director may be removed by ordinary resolution at a general meeting, provided special notice
+of the resolution is given to the company at least 28 days before the meeting; he may be
+entitled to damages for breach of his service contract.
+
+D. The director may be removed only by special resolution, because removal is a constitutional
+matter.
+
+E. The director may be removed by a decision of the other directors under Model Article 18.
+
+**Q2.** A company's articles provide that on any resolution to remove a director, the shares held by
+that director shall carry ten votes each. A director holds 15% of the shares; the remaining 85% is
+held by shareholders who wish to remove him.
+
+Which of the following is correct?
+
+A. The provision is void, because it conflicts with the members' statutory right to remove a director
+by ordinary resolution.
+
+B. The provision is valid; the director's 15% will carry 150 votes against 85, so the removal
+resolution will fail, but the majority may first alter the articles by special resolution.
+
+C. The provision is valid, and the articles cannot be altered to remove it because it is entrenched.
+
+D. The provision is void, because it discriminates between shareholders of the same class.
+
+E. The provision is valid, but may be overridden by the members by ordinary resolution.
+
+**Q3.** A wealthy investor holds no shares in a company and has never been appointed to its board.
+However, the three registered directors have for two years followed her instructions on every
+significant matter without exception, and regard themselves as accountable to her. The company enters
+insolvent liquidation.
+
+Which of the following best describes her position?
+
+A. She has no liability, because she was never appointed a director and holds no shares.
+
+B. She may be a shadow director, and as such may be liable for wrongful trading and may be
+disqualified.
+
+C. She is a de facto director, because she participated in corporate governance on an equal footing
+with the board.
+
+D. She is liable only if she received payments from the company.
+
+E. She may be liable only if the corporate veil is pierced.
+
+**Q4.** A director of an insolvent company was disqualified for six years under s.6 CDDA 1986. Eight
+months into the period, and without applying for leave, he takes over the running of a new company,
+instructing its sole registered director, who knows of the disqualification, on all matters.
+
+Which of the following is correct?
+
+A. Only the disqualified person commits an offence; the registered director bears no liability.
+
+B. The disqualified person commits a criminal offence and is personally liable for the new company's
+relevant debts; the registered director, who acted on his instructions knowing of the
+disqualification, is also personally liable for those debts.
+
+C. Neither is liable, because the disqualification relates to a different company.
+
+D. The disqualified person is liable only if the new company becomes insolvent.
+
+E. The disqualification is automatically lifted after six months of good conduct.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** Section 168 permits removal by ordinary resolution at a general meeting notwithstanding
+anything in any agreement. Special notice under s.312 must be given by the proposers to the company at
+least 28 days before the meeting. Section 168(5) preserves the director's claim for damages for
+breach of his service contract.
+
+- **A** is the headline trap. A long service contract makes removal expensive, not impossible.
+- **B** is the second trap: s.288(2) expressly excludes s.168 resolutions from the written resolution
+  procedure.
+- **D** applies the wrong majority: s.168 requires only an ordinary resolution.
+- **E** misreads Model Article 18, which lists events on which a director automatically vacates
+  office; it confers no power on the board to remove a colleague.
+
+**Q2 — B.** *Bushell v Faith* [1970] AC 1099. Weighted voting on a removal resolution is valid,
+because s.168 requires an ordinary resolution and the articles may determine the votes attaching to
+shares. 15% × 10 = 150 votes against 85. The route round it is to alter the articles by special
+resolution, on which the weighting does not apply.
+
+- **A** and **D** assert invalidity that the House of Lords rejected.
+- **C** wrongly assumes entrenchment; entrenchment requires the s.22 procedure and there is no
+  suggestion of it.
+- **E** would allow an ordinary resolution to override the articles, which it cannot.
+
+**Q3 — B.** Section 251: a shadow director is a person in accordance with whose directions or
+instructions the directors of the company are accustomed to act. Shadow directors are within the
+wrongful trading provisions (s.214 IA 1986) and the disqualification regime, and the general duties
+apply to the extent capable of applying (s.170(5)).
+
+- **A** treats appointment and shareholding as necessary. Section 250 and s.251 both look at conduct.
+- **C** describes the **de facto** director test, which requires the person to have acted **as** a
+  director on an equal footing with the board — the opposite of directing it from outside.
+- **D** invents a payment condition.
+- **E** is unnecessary: liability arises directly under statute, not by piercing the veil.
+
+**Q4 — B.** Section 13 CDDA makes acting while disqualified a criminal offence. Section 15 imposes
+personal liability, jointly and severally with the company, for the relevant debts of the company
+incurred while a person acts in contravention of a disqualification — **and** on any person who acts
+or is willing to act on the instructions of someone they know to be disqualified.
+
+- **A** overlooks the extension of s.15 to the person taking instructions.
+- **C** is wrong: disqualification is general, not company-specific, unless leave is granted under
+  s.17.
+- **D** adds an insolvency condition that s.15 does not require.
+- **E** invents a good conduct discharge.
+
+:::
+
+## Directors' duties
+
+### The framework
+
+Sections 171–177 codify the general duties. They are owed **to the company** (s.170(1)) — not to
+individual shareholders, not to creditors, not to employees. That single sentence answers a
+surprising number of questions.
+
+Section 170(2) extends two duties beyond office: a **former** director remains subject to s.175 as
+regards the exploitation of property, information or opportunity of which they became aware while a
+director, and to s.176 as regards things done or omitted before they ceased to be a director.
+
+Section 179 confirms that **more than one duty may apply** to the same conduct, and s.178 supplies
+the consequences: the remedies for breach are the same as would apply if the corresponding common law
+rule or equitable principle applied. The duties are to be **interpreted and applied in the same way
+as the common law rules and equitable principles** they replace (s.170(4)).
+
+### s.171 — Duty to act within powers
+
+A director must (a) act in accordance with the company's **constitution**, and (b) only exercise
+powers for the **purposes for which they are conferred**.
+
+Limb (b) is the proper purpose doctrine, and it is where the litigation is. The question is not
+whether the directors acted honestly or in what they believed to be the company's interests — they
+usually did — but whether the power was used for the purpose for which it exists.
+
+- *Howard Smith Ltd v Ampol Petroleum Ltd* [1974] AC 821 — directors allotted shares to defeat a
+  takeover bid and dilute a majority shareholder. The power to allot exists to raise capital, not to
+  manipulate control. Breach, despite the directors' honest belief that the bid was bad for the
+  company.
+- *Eclairs Group Ltd v JKX Oil & Gas plc* [2015] UKSC 71 — the Supreme Court applied a **"but for"**
+  test where there are mixed purposes: if the improper purpose was causative, the exercise is invalid
+  even though a proper purpose was also present.
+
+A transaction entered into in breach of s.171 may be **voidable**, but third-party rights intervene:
+see s.40 in @sec-blp-vehicles.
+
+### s.172 — Duty to promote the success of the company
+
+A director must act in the way **he considers, in good faith**, would be most likely to promote the
+success of the company **for the benefit of its members as a whole**, having regard (amongst other
+matters) to:
+
+(a) the likely **long-term** consequences of any decision;
+(b) the interests of the company's **employees**;
+(c) the need to foster the company's business relationships with **suppliers, customers and others**;
+(d) the impact of the company's operations on the **community and the environment**;
+(e) the desirability of maintaining a reputation for **high standards of business conduct**; and
+(f) the need to act **fairly** as between members of the company.
+
+Three points decide questions.
+
+**The test is subjective.** It is what the director *considers*, in good faith — *Re Smith & Fawcett
+Ltd* [1942] Ch 304: directors must act "bona fide in what they consider — not what a court may
+consider — is in the interests of the company". Where a director has given the matter no thought at
+all, the court asks objectively whether an honest and intelligent person in their position could have
+reasonably believed the transaction was for the company's benefit (*Charterbridge Corporation Ltd v
+Lloyds Bank Ltd* [1970] Ch 62).
+
+**The (a)–(f) factors are considerations, not duties.** They must be "had regard to"; they are not
+separate obligations owed to employees, suppliers or the environment. Employees have no standing to
+sue for a breach of s.172(b).
+
+**The creditor duty.** Section 172(3) makes the duty subject to any enactment or rule of law requiring
+directors in certain circumstances to consider or act in the interests of creditors. *BTI 2014 LLC v
+Sequana SA* [2022] UKSC 25 settled its content:
+
+- The creditor duty is not a free-standing duty owed **to** creditors. It is a modification of the
+  s.172 duty owed to the **company**, under which the directors must consider creditors' interests.
+- It is **engaged** when the company is insolvent or bordering on insolvency, or when an insolvent
+  liquidation or administration is **probable**. A real risk of insolvency at some future time is not
+  enough.
+- Its weight is a **sliding scale**: as insolvency becomes more likely, creditors' interests carry
+  more weight, until insolvent liquidation is inevitable, when they become paramount.
+- On the facts, a lawful dividend paid when the company was solvent but faced a long-term contingent
+  liability did **not** breach the duty, because insolvency was not imminent or probable.
+
+::: {.callout-important title="Exam trap"}
+"The directors owe a duty to the creditors" is wrong, and it is wrong in a specific way. The duty is
+owed to the **company**; creditors cannot sue on it directly. It is enforced after the event by a
+liquidator or administrator. An option giving an individual creditor a direct claim for breach of
+s.172 is the distractor.
+:::
+
+### s.173 — Duty to exercise independent judgment
+
+A director must exercise independent judgment. The duty is **not** infringed by acting in accordance
+with an agreement duly entered into by the company that restricts the future exercise of discretion
+by its directors, or in a way authorised by the company's constitution.
+
+The practical application is the nominee director appointed by an investor or a parent company: they
+must form their own view in the interests of the company on whose board they sit, and may not simply
+transmit their appointor's wishes.
+
+### s.174 — Duty to exercise reasonable care, skill and diligence
+
+The standard is the care, skill and diligence that would be exercised by a reasonably diligent person
+with:
+
+(a) the general knowledge, skill and experience that may reasonably be expected of a person carrying
+out the functions carried out by the director in relation to the company — the **objective** minimum;
+and
+(b) the general knowledge, skill and experience that **the director actually has** — the
+**subjective** element, which can only raise the standard, never lower it.
+
+- *Re D'Jan of London Ltd* [1994] 1 BCLC 561 — a director who signed an insurance proposal form
+  without reading it, rendering the policy voidable, was in breach; but he was granted partial relief
+  under what is now s.1157 because he had acted honestly and reasonably and owned most of the shares.
+- *Re Barings plc (No 5)* [1999] 1 BCLC 433 — directors may delegate, but delegation does not absolve:
+  there remains a residual duty to supervise the discharge of delegated functions, and directors must
+  acquire and maintain sufficient knowledge of the business to discharge their responsibilities.
+
+::: {.callout-important title="Exam trap"}
+Section 174 is the only general duty whose breach sounds in **damages** for negligence. The others are
+fiduciary and attract the equitable remedies — account of profits, equitable compensation, rescission,
+constructive trust, injunction. An option offering "an account of profits" for a careless failure to
+supervise is wrong; an option offering "damages" for a secret profit is also wrong.
+:::
+
+### s.175 — Duty to avoid conflicts of interest
+
+A director must avoid a situation in which he has, or **can** have, a direct or indirect interest that
+**conflicts, or possibly may conflict**, with the interests of the company. The section:
+
+- Applies **in particular** to the exploitation of any **property, information or opportunity**, and
+  it is **immaterial whether the company could take advantage of it** (s.175(2)).
+- Does **not** apply to a conflict arising in relation to a **transaction or arrangement with the
+  company itself** — that is s.177's territory (s.175(3)).
+- Is **not infringed** if the situation cannot reasonably be regarded as likely to give rise to a
+  conflict, or if the matter has been **authorised by the directors** (s.175(4)).
+
+**Board authorisation** (s.175(5)–(6)) is the practical escape route, and its mechanics differ by
+company type:
+
+| | Private company | Public company |
+|---|---|---|
+| Board may authorise if | nothing in the constitution **invalidates** such authorisation | the constitution **expressly enables** it |
+| Conflicted director's vote | Does not count | Does not count |
+| Conflicted director in quorum | Not counted | Not counted |
+
+The case law is unforgiving, and it is the strictness that is examined:
+
+- *Aberdeen Railway Co v Blaikie Brothers* (1854) 1 Macq 461 — no fiduciary may put himself in a
+  position where duty and interest conflict.
+- *Regal (Hastings) Ltd v Gulliver* [1967] 2 AC 134 — directors personally subscribed for shares in a
+  subsidiary because the company could not afford them, then sold at a profit. Liable to account,
+  **despite** acting in good faith, **despite** the company being unable to take the opportunity, and
+  **despite** the company having benefited. Liability arises from the **fact** of the profit, not from
+  fraud. (They could have protected themselves by putting it to the members in general meeting.)
+- *Industrial Development Consultants Ltd v Cooley* [1972] 1 WLR 443 — a managing director learned
+  that a third party would deal with him personally but not with his company. He resigned on a false
+  pretext and took the contract. Liable to account for the whole profit; resignation is no escape.
+- *Bhullar v Bhullar* [2003] EWCA Civ 424 — directors bought a property adjacent to the company's,
+  having learned of it while acting as directors. The company had resolved not to buy more property.
+  Liable: the opportunity came to them **as directors**, and the company's inability or unwillingness
+  to take it was irrelevant.
+- *O'Donnell v Shanahan* [2009] EWCA Civ 751 — there is no "scope of business" limitation on a
+  director's fiduciary duty; the opportunity need not fall within the company's line of business.
+
+::: {.callout-important title="Exam trap"}
+The favourite distractors here are: "the company could not have taken the opportunity anyway"; "the
+company had decided not to pursue it"; "the director acted in good faith and the company suffered no
+loss"; and "the director resigned first". **None** of them is a defence. What works is prior
+authorisation by the independent directors under s.175(5), or approval or ratification by the members.
+:::
+
+### s.176 — Duty not to accept benefits from third parties
+
+A director must not accept a benefit conferred by reason of being a director, or of doing or not doing
+anything as a director. It is not infringed if acceptance cannot reasonably be regarded as likely to
+give rise to a conflict of interest.
+
+The critical distinction from s.175: **the board cannot authorise a s.176 benefit**. Only the members
+can approve or ratify it. Corporate hospitality and ordinary business courtesies fall outside the
+section only because they cannot reasonably be regarded as likely to give rise to a conflict.
+
+### ss.177 and 182 — Declaring an interest in a transaction
+
+Two provisions, doing different jobs, and reliably confused:
+
+| | s.177 | s.182 |
+|---|---|---|
+| Applies to | a **proposed** transaction or arrangement | an **existing** transaction or arrangement |
+| Nature | a **general duty** | a **statutory obligation** |
+| Timing | **before** the company enters into it | as soon as reasonably practicable |
+| Breach | breach of duty; equitable consequences | **criminal offence** (s.183), fine |
+
+Under both, the director must declare the **nature and extent** of the interest to the **other
+directors**. Declaration may be at a board meeting, by notice in writing (s.184), or by general notice
+(s.185). Neither is required where:
+
+- the director is not aware of the interest (but is treated as aware of matters of which he ought
+  reasonably to be aware);
+- the interest cannot reasonably be regarded as likely to give rise to a conflict;
+- the other directors are already aware of it, or ought reasonably to be; or
+- it concerns the terms of the director's **service contract** that have been or are to be considered
+  by the board or a committee of it.
+
+Alongside the statutory duty sits **Model Article 14**: a director who is interested in a proposed
+transaction may **not vote** on it and is **not counted in the quorum**, subject to specified
+exceptions (a guarantee given in respect of an obligation of the company, subscription for shares or
+debentures, and certain pension arrangements) and subject to the members disapplying the article by
+ordinary resolution.
+
+::: {.callout-important title="Exam trap"}
+Declaring an interest under s.177 satisfies the **duty**; it does not by itself make the director's
+vote count. Model Article 14 is a separate obstacle, and a board meeting that is inquorate once the
+interested director is excluded cannot validly take the decision. On facts involving a two-director
+company where one is interested, the correct answer is usually that the board cannot act and the
+matter must go to the members — or Model Article 14 must first be disapplied.
+:::
+
+### Consequences of breach, ratification and relief
+
+**Remedies** (s.178). For the fiduciary duties (ss.171–173, 175–177): account of profits, equitable
+compensation, rescission of the contract, restoration of company property, injunction, and a
+constructive trust over property or profits received. A third party who receives company property with
+knowledge, or who dishonestly assists the breach, may also be liable. For s.174: **damages**.
+
+**Ratification** (s.239). Conduct amounting to negligence, default, breach of duty or breach of trust
+may be ratified by **ordinary resolution** of the members (or a higher threshold if the articles
+require). The essential mechanic:
+
+- The votes of the **director in question**, if a member, and of any member **connected** with him,
+  are **disregarded**.
+- Where ratification is by written resolution, neither the director nor any connected member is an
+  eligible member.
+- Section 239(6) preserves any rule of law as to acts that are **incapable of ratification** —
+  including acts that are illegal, that constitute a fraud on the minority, or that prejudice
+  creditors when the company is insolvent.
+
+**Court relief** (s.1157). If in proceedings for negligence, default, breach of duty or breach of
+trust it appears that the director acted **honestly and reasonably** and that having regard to all the
+circumstances he ought fairly to be excused, the court may relieve him wholly or partly.
+
+**Protection the company may and may not give** (ss.232–234). Any provision exempting a director from
+liability for negligence, default, breach of duty or breach of trust in relation to the company is
+**void** (s.232). But the company **may** purchase and maintain **directors' and officers' insurance**
+(s.233), and may give a **qualifying third party indemnity** — an indemnity against liability to
+persons other than the company, excluding criminal fines, regulatory penalties, and the costs of
+unsuccessfully defending criminal proceedings or civil proceedings brought by the company (s.234).
+
+::: {.callout-important title="Exam trap"}
+A company cannot indemnify its director against liability **to the company itself**. Options offering
+an indemnity for a breach of duty owed to the company are testing s.232. What is permitted is
+insurance, and an indemnity against liability to **third parties** within s.234.
+:::
+
+### Check yourself: directors' duties
+
+**Q1.** A director of a construction company learns, while attending a meeting on the company's
+behalf, that a valuable site is coming up for sale. The board considers the site and resolves not to
+bid, because the company has no available funds. The director then buys the site personally and
+resells it eight months later at a profit of £600,000. He acted openly and the company suffered no
+loss.
+
+Which of the following is correct?
+
+A. He is not liable, because the company had resolved not to pursue the opportunity.
+
+B. He is not liable, because the company could not have afforded the site.
+
+C. He is not liable, because he acted in good faith and the company suffered no loss.
+
+D. He is liable to account to the company for the £600,000, because he exploited an opportunity of
+which he became aware as a director, and the matter was not authorised by the independent directors
+or approved by the members.
+
+E. He is liable to pay the company damages for negligence under s.174.
+
+**Q2.** The board of a private company allots a large block of new shares to a friendly investor. The
+directors honestly believe the investor will be a stabilising influence, but their principal reason is
+to dilute a shareholder who has been pressing for their removal. The company had no need of the
+capital.
+
+Which duty is most clearly breached?
+
+A. Section 172, because the allotment was not in the interests of the members as a whole.
+
+B. Section 171(b), because the power to allot shares was exercised for an improper purpose.
+
+C. Section 174, because a reasonably diligent director would not have made the allotment.
+
+D. Section 175, because the directors had a personal interest in retaining office.
+
+E. Section 176, because the investor conferred a benefit on the directors.
+
+**Q3.** A company has two directors, Priya and Tom, and no others. It proposes to buy premises from a
+company wholly owned by Priya, at a value well below the s.190 threshold. Priya discloses the nature and
+extent of her interest fully to Tom at a board meeting before the contract is made, and both then vote in
+favour. The articles are the unamended Model Articles.
+
+Which of the following is correct?
+
+A. The board decision is valid, because Priya declared her interest under s.177 before the company
+entered into the transaction.
+
+B. The board decision is valid, because the transaction falls below the s.190 threshold.
+
+C. The board decision is invalid, because Model Article 14 prevents Priya from voting or being counted
+in the quorum, leaving the meeting inquorate; the members must disapply Model Article 14 by ordinary
+resolution, or the transaction must be approved by them.
+
+D. The board decision is invalid, because Priya has committed a criminal offence under s.183.
+
+E. The board decision is valid, because a two-director board always has a quorum of one where the other
+is interested.
+
+**Q4.** The directors of a company that is solvent, profitable and has no immediate financial
+difficulties declare a lawful dividend. The company has a long-term contingent liability of uncertain
+amount that may, on one view, render it insolvent in a decade's time. Years later the company enters
+insolvent administration and the administrators allege that the dividend breached the directors'
+duties.
+
+Which of the following best reflects the current law?
+
+A. The creditor duty was engaged, because there was a real risk that the company would become
+insolvent at some point in the future.
+
+B. The creditor duty was engaged from the moment the contingent liability arose, and the directors
+were required to treat creditors' interests as paramount.
+
+C. The creditor duty was not engaged, because it arises only when the company is insolvent or
+bordering on insolvency, or when an insolvent liquidation or administration is probable.
+
+D. The creditor duty is owed directly to creditors, who may sue the directors personally.
+
+E. The creditor duty never applies to the payment of a lawful dividend.
+
+**Q5.** A director causes his company to enter into a contract from which he makes a secret profit of
+£80,000. He holds 30% of the company's shares. His wife, who holds a further 25%, is also a member.
+The remaining 45% is held by unconnected members. A general meeting is called to ratify the director's
+conduct by ordinary resolution. All members vote: the director and his wife in favour, and members
+holding 24% of the shares also in favour, with 21% against.
+
+Is the conduct validly ratified?
+
+A. Yes — because 79% of the votes cast were in favour, which is more than a simple majority.
+
+B. Yes — because the votes of the director and of his wife are disregarded, leaving 24% in favour and
+21% against, which is a simple majority of the eligible votes cast.
+
+C. No — because the votes of the director and of his wife are disregarded, and the resolution
+therefore fails for want of a simple majority of all the shares in issue.
+
+D. No — because ratification of a secret profit requires a special resolution.
+
+E. No — because a breach of the duty to avoid conflicts of interest is incapable of ratification in
+any circumstances.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — D.** Section 175, on facts materially identical to *Bhullar v Bhullar* and *Regal (Hastings) v
+Gulliver*. Section 175(2) makes it **immaterial whether the company could take advantage** of the
+opportunity. Liability is to account for the profit; there is no requirement that the company suffered
+loss.
+
+- **A**, **B** and **C** are the three standard distractors, and each states a fact that the cases hold
+  to be irrelevant. Note the further point in *Regal*: good faith is no defence to an account.
+- **E** applies the wrong duty and the wrong remedy. A secret profit attracts an account, not damages.
+
+**Q2 — B.** *Howard Smith Ltd v Ampol Petroleum Ltd* and *Eclairs Group Ltd v JKX Oil & Gas plc*. The
+power to allot shares exists to raise capital, not to alter the balance of control. On the *Eclairs*
+"but for" analysis, the improper purpose was causative, so the exercise is invalid despite the honest
+belief.
+
+- **A** is the tempting answer, but s.172 is a **subjective** test and the directors honestly believed
+  they were acting in the company's interests — so s.171(b) is the cleaner and better answer, and the
+  question asks which duty is *most clearly* breached.
+- **C** misapplies the negligence standard; the directors were not careless.
+- **D** describes an interest that s.175(3) excludes and that the facts do not establish.
+- **E** requires a benefit conferred by a third party on the directors; there is none.
+
+**Q3 — C.** Section 177 was complied with, but compliance with the duty does not cure the **procedural**
+bar. Model Article 14 prevents an interested director from voting or being counted in the quorum, and
+none of its exceptions applies. With Priya excluded, only Tom remains, and Model Article 11 fixes the
+quorum at two. The board cannot validly resolve. The routes forward are for the members to disapply
+Model Article 14 by ordinary resolution, or to amend the articles.
+
+- **A** is the trap: it confuses discharging the duty with satisfying the article.
+- **B** is irrelevant; the s.190 threshold governs a different requirement.
+- **D** confuses s.177 (proposed transaction, general duty) with s.182 (existing transaction, criminal
+  offence for non-declaration). Priya declared, and in any event the transaction is proposed.
+- **E** invents a rule. Model Article 11(3) allows a sole director to act only where the company has
+  just one director.
+
+**Q4 — C.** *BTI 2014 LLC v Sequana SA* [2022] UKSC 25. The creditor duty is engaged when the company
+is insolvent or bordering on insolvency, or when an insolvent liquidation or administration is
+**probable**. A real risk of insolvency at some future point is not enough — which was the actual
+outcome in *Sequana* itself.
+
+- **A** applies the "real risk" test that the Supreme Court **rejected**.
+- **B** gets both the trigger and the weighting wrong: creditors' interests become paramount only when
+  insolvent liquidation is inevitable.
+- **D** is the recurring structural error. The duty is a modification of the duty owed to the
+  **company**; creditors have no direct claim.
+- **E** is too absolute — a dividend can engage the duty; it simply did not on these facts.
+
+**Q5 — B.** Section 239(3)–(4): on a resolution to ratify, the votes of the **director** and of any
+member **connected** with him are disregarded. A spouse is a member of the director's family and so a
+connected person (ss.252–253). Removing
+30% + 25% leaves 45% of the shares eligible to vote, of which 24% voted in favour and 21% against. An
+ordinary resolution requires a simple majority of the votes **cast by eligible members**, and 24
+exceeds 21. The conduct is validly ratified.
+
+- **A** reaches the right conclusion by counting the disregarded votes — the reasoning is exactly what
+  s.239 forbids, so it is not the best answer.
+- **C** applies the right exclusion but the wrong majority: an ordinary resolution needs a majority of
+  the votes cast, not of all the shares in issue.
+- **D** applies the wrong resolution type: s.239 requires an ordinary resolution unless the articles
+  say otherwise.
+- **E** overstates s.239(6). Some acts cannot be ratified — illegality, fraud on the minority, acts
+  prejudicing creditors of an insolvent company — but a secret profit in a solvent company is not among
+  them; that is exactly how the directors in *Regal (Hastings)* could have protected themselves.
+
+:::
+
+## Transactions requiring member approval
+
+Four categories of transaction are so open to abuse that Parliament requires the members to sign them
+off in addition to the board. In every case the resolution required is an **ordinary** one.
+
+### Connected persons
+
+Three of the four regimes extend to persons **connected** with a director, so the definition has to be
+learned. Sections 252–256:
+
+- **Members of the director's family** (s.253): spouse or civil partner; any other person with whom
+  the director lives as a partner in an enduring family relationship; the director's children or
+  step-children; any children or step-children of that other person who are under 18 and live with the
+  director; and the director's **parents**.
+- **Bodies corporate** with which the director is connected (s.254): where the director, together with
+  persons connected with them, holds **20% or more** of the share capital or controls 20% or more of
+  the voting power.
+- **Trustees** of a trust under which the director or a connected person is a beneficiary (s.255).
+- **Partners** of the director, acting in that capacity.
+
+::: {.callout-important title="Exam trap"}
+The family list is **exhaustive and counter-intuitive**. A director's **siblings, grandparents,
+grandchildren, aunts, uncles, nephews and nieces are NOT connected persons**, nor are adult
+step-children of an unmarried partner who do not live with the director. Examiners build questions
+around a transaction with a director's brother precisely because candidates assume family means
+family. It does not.
+:::
+
+### s.190 — Substantial property transactions
+
+A company may not enter into an arrangement under which a **director** of the company or of its
+holding company, or a person **connected** with such a director, acquires from the company (or the
+company acquires from them) a **substantial non-cash asset**, unless the arrangement has been approved
+by **ordinary resolution** of the members — or is conditional on such approval being obtained.
+
+**"Substantial"** (s.191). A non-cash asset is substantial if its value:
+
+- exceeds **£100,000**; **or**
+- exceeds **10%** of the company's asset value **and** is more than **£5,000**.
+
+The company's asset value is the value of its net assets as shown in its most recent statutory
+accounts, or, if no accounts have been prepared, the amount of its called-up share capital.
+
+**Exceptions** (s.192). Approval is not required for:
+
+- a transaction with a person in their character as a **member** of the company;
+- a transaction between a **holding company and its wholly-owned subsidiary**, or between two
+  wholly-owned subsidiaries of the same holding company;
+- a transaction by a company being **wound up** (unless a members' voluntary winding up) or **in
+  administration**.
+
+Where the director is a director of the company's **holding company**, the holding company's members
+must also approve. No resolution is required from the members of a **wholly-owned subsidiary**.
+
+**Consequences of contravention** (s.195). The arrangement is **voidable at the instance of the
+company**, unless: restitution is no longer possible; the company has been indemnified for the loss;
+rights acquired in good faith, for value and without actual notice by a third party would be affected;
+or the arrangement is **affirmed** by the members within a reasonable period. Whether or not it is
+avoided, the director or connected person, and any director who **authorised** it, is liable to
+**account** to the company for any gain and, jointly and severally, to **indemnify** the company for
+any loss. A connected person, and a director who authorised the arrangement, has a defence if they
+show they did not know the circumstances constituting the contravention; and a director connected with
+a contracting person has a defence if they took all reasonable steps to secure compliance.
+
+::: {.callout-tip title="Worked example"}
+A company's most recent accounts show net assets of £480,000. A director proposes to buy a company car
+from the company for £42,000, its market value.
+
+Is approval required? £42,000 does not exceed £100,000. But 10% of £480,000 is £48,000, and £42,000 is
+**less** than that. So the asset is not substantial on either limb, and no members' resolution is
+needed under s.190.
+
+Change the net assets to £300,000. Now 10% is £30,000; £42,000 exceeds it and also exceeds £5,000. The
+asset **is** substantial and an ordinary resolution is required — even though the price is the full
+market value, and even though the company loses nothing. **Section 190 is not about fairness; it is
+about disclosure to the members.**
+:::
+
+### s.197 — Loans to directors
+
+A company may not make a **loan** to a director of the company or of its holding company, or give a
+**guarantee or provide security** in connection with a loan made by any person to such a director,
+unless approved by **ordinary resolution**. A **memorandum** setting out the nature of the transaction,
+the amount, the purpose and the extent of the company's liability must be made available to members
+for at least 15 days before the meeting and at the meeting (or sent with a written resolution).
+
+Two extensions apply **only to public companies and companies associated with a public company**:
+
+- **s.198** — **quasi-loans** (where the company pays a sum for the director, or agrees to reimburse
+  expenditure incurred by the director, on terms that the director will reimburse the company).
+- **s.201** — **credit transactions** (supplying goods, selling land under a hire-purchase or
+  conditional sale, or otherwise disposing of land or supplying services on deferred payment terms).
+
+Sections 200 and 201 also extend the loan and quasi-loan controls to **persons connected** with a
+director, again only for public companies and their associates.
+
+**Exceptions** — the numbers matter and are examined:
+
+| Section | Exception | Limit |
+|---|---|---|
+| s.204 | Expenditure on **company business** | £50,000 |
+| s.205 | Funding a director's **defence costs** in proceedings relating to the company, or a regulatory investigation | No cap; must be repaid if the defence fails |
+| s.207(1) | **Minor loans and quasi-loans** | £10,000 |
+| s.207(2) | **Minor credit transactions** | £15,000 |
+| s.208 | **Intra-group** transactions | — |
+| s.209 | **Money-lending companies** lending in the ordinary course of business on ordinary terms | — |
+
+**Consequences of contravention** (s.213). The transaction is **voidable at the instance of the
+company** on the same four conditions as s.195, and the director or connected person, and any director
+who authorised it, must account for any gain and indemnify the company for any loss. The transaction
+may be **affirmed** by the members within a reasonable period (s.214).
+
+::: {.callout-important title="Exam trap"}
+Quasi-loans and credit transactions are unrestricted for a stand-alone **private** company. A question
+describing a private company paying a director's personal credit card bill on terms that he will
+reimburse it is describing a quasi-loan, which needs **no** approval — unless the company is associated
+with a public company. Candidates who have learned "all transactions with directors need approval"
+choose the wrong answer. (Note that there may still be a **tax** consequence: see the s.455 charge on
+loans to participators in @sec-blp-taxation.)
+:::
+
+### s.217 — Payments for loss of office
+
+A company may not make a payment for loss of office to a **director** of the company or of its holding
+company (and, under ss.218–219, in connection with a transfer of the company's undertaking or a
+takeover) unless approved by **ordinary resolution**, with a memorandum of the proposed payment made
+available in the same way.
+
+"Payment for loss of office" (s.215) includes payments made in connection with retirement from office
+or employment, and payments to connected persons or at a director's direction.
+
+**Exceptions** (ss.220–221):
+
+- Payments made in **good faith** in discharge of an **existing legal obligation** (including damages
+  for breach of such an obligation), by way of settlement or compromise of a claim arising in
+  connection with the termination, or by way of **pension** in respect of past services.
+- **Small payments**: where the aggregate does not exceed **£200**.
+
+**Consequences** (s.222). An unapproved payment is **held on trust** for the company, and any director
+who **authorised** it is jointly and severally liable to indemnify the company for any resulting loss.
+
+::: {.callout-important title="Exam trap"}
+Section 220 does most of the work in practice, and it is the discriminator. Contractual payments in
+lieu of notice, and genuine damages or settlement payments, are **not** caught, because they discharge
+an existing legal obligation. What is caught is the **ex gratia** golden handshake — the payment the
+company was not obliged to make. If the question stresses that the board wished to "recognise his long
+service", the answer is that members' approval is required.
+:::
+
+### s.188 — Long-term service contracts
+
+Covered above with directors' service contracts. Remember the distinctive sanction: it is the
+**offending term** that is void, not the contract, and the contract becomes terminable by the company
+at any time on reasonable notice.
+
+### Check yourself: transactions requiring approval
+
+**Q1.** A private company's most recent statutory accounts show net assets of £1.2 million. The board
+resolves to sell a warehouse, valued at £115,000, to the wife of one of the directors. No members'
+resolution is passed.
+
+Which of the following is correct?
+
+A. No members' approval is required, because £115,000 is less than 10% of the company's net assets.
+
+B. No members' approval is required, because the buyer is not a director.
+
+C. Members' approval by ordinary resolution was required, because the value exceeds £100,000 and the
+buyer is a person connected with a director; the arrangement is voidable at the company's instance.
+
+D. Members' approval by special resolution was required, because the transaction involves land.
+
+E. No members' approval is required, provided the warehouse is sold at full market value.
+
+**Q2.** A private company with no connection to any public company pays a director's personal hotel
+bill of £6,000, on terms that the director will reimburse the company within three months. The company
+is not a money-lending company.
+
+Which of the following is correct?
+
+A. Members' approval by ordinary resolution is required, because this is a loan to a director.
+
+B. Members' approval by ordinary resolution is required, because this is a quasi-loan and exceeds
+£5,000.
+
+C. No members' approval is required, because the quasi-loan provisions in s.198 apply only to public
+companies and companies associated with a public company.
+
+D. No members' approval is required, because the amount falls within the £10,000 minor loan exception
+in s.207.
+
+E. The payment is prohibited outright and cannot be authorised by any resolution.
+
+**Q3.** A director retires. Her service contract entitles her to six months' pay in lieu of notice, and
+the company pays her £45,000 accordingly. The board separately resolves to pay her an additional
+£25,000 "in recognition of twelve years of loyal service", to which she has no contractual
+entitlement. No members' resolution is passed in relation to either payment.
+
+Which of the following is correct?
+
+A. Both payments require approval by ordinary resolution, and both are held on trust for the company.
+
+B. Neither payment requires approval, because both arise from the director's employment.
+
+C. The £45,000 does not require approval, because it discharges an existing legal obligation; the
+£25,000 does require approval, and is held on trust for the company, with the authorising directors
+jointly and severally liable to indemnify it.
+
+D. Both payments are valid, because payments for loss of office are within the board's ordinary
+management powers.
+
+E. The £25,000 requires approval by special resolution, and the £45,000 by ordinary resolution.
+
+**Q4.** A company proposes to enter into a service contract with its managing director for a fixed term
+of four years, during which the company cannot terminate except for cause. The board approves it. No
+members' resolution is passed.
+
+Which of the following is correct?
+
+A. The whole contract is void.
+
+B. The contract is valid, because a director's service contract is a matter for the board.
+
+C. The guaranteed term is void, and the contract is deemed to contain a term entitling the company to
+terminate at any time on reasonable notice.
+
+D. The contract is voidable at the instance of the company, and the director must account for any
+salary received.
+
+E. The contract is valid, but the company commits a criminal offence.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** A spouse is a member of the director's family and therefore a connected person (s.253). The
+asset is substantial because its value **exceeds £100,000** — the two limbs of s.191 are alternatives,
+so it does not matter that £115,000 is under 10% of £1.2 million. Section 195 makes the arrangement
+voidable at the company's instance, and the director and connected person are liable to account and
+indemnify.
+
+- **A** treats the two limbs as cumulative. They are alternatives.
+- **B** ignores the extension to connected persons.
+- **D** invents a special resolution requirement; s.190 needs only an ordinary resolution.
+- **E** is the fairness fallacy. Section 190 applies at full market value; it is about members knowing,
+  not about the company being short-changed.
+
+**Q2 — C.** This is a **quasi-loan**: the company pays a sum on the director's behalf on terms that she
+will reimburse it. Section 198 applies only to **public companies and companies associated with a
+public company**. A stand-alone private company may make a quasi-loan of any size without members'
+approval.
+
+- **A** mischaracterises it as a loan; no money was lent to the director.
+- **B** applies s.198 to a company outside its scope and invents a £5,000 threshold.
+- **D** reaches the right result by the wrong route: the £10,000 exception in s.207 would matter only if
+  s.198 applied in the first place, and the sum here is £6,000 in any event.
+- **E** invents an absolute prohibition.
+
+**Q3 — C.** Section 220(1)(a): a payment made in good faith in discharge of an **existing legal
+obligation** is not a payment for loss of office requiring approval, so the contractual £45,000 is
+outside s.217. The **ex gratia** £25,000 is not owed and is a payment for loss of office. Without
+approval, s.222(1) makes it held on trust for the company, and any director who authorised it is
+jointly and severally liable to indemnify the company for resulting loss.
+
+- **A** sweeps in the contractual payment.
+- **B** and **D** ignore s.217 entirely.
+- **E** applies the wrong resolution to the ex gratia payment and wrongly requires approval for the
+  contractual one.
+
+**Q4 — C.** Section 188 requires an ordinary resolution for a guaranteed term exceeding **two** years.
+Section 189 supplies the sanction: the **offending term is void**, and the contract is deemed to
+contain a term entitling the company to terminate at any time on reasonable notice.
+
+- **A** over-applies the sanction; only the term is void.
+- **B** ignores s.188.
+- **D** applies the s.195 / s.213 consequences, which belong to substantial property transactions and
+  loans, not to service contracts.
+- **E** invents a criminal offence.
+
+:::
+
+## Company decision-making
+
+### Board meetings
+
+The Model Articles for private companies supply the default procedure:
+
+| Article | Rule |
+|---|---|
+| MA 3 | The directors may exercise all the powers of the company |
+| MA 5 | The directors may delegate to committees or individuals |
+| MA 7 | Decisions are taken **collectively**, at a meeting or by unanimous written decision; MA 7(2) allows a **sole director** to act alone where the company has only one director and the articles require no more |
+| MA 8 | A **unanimous decision** may be taken without a meeting where each eligible director indicates a shared view |
+| MA 9 | **Any director** may call a board meeting; notice must be given to each director but **need not be in writing** |
+| MA 10 | Directors may participate by any means enabling them to communicate |
+| MA 11 | **Quorum: two**, unless the directors fix a different number; if there is only one director, one |
+| MA 12–13 | The chair is appointed by the directors and has a **casting vote** |
+| MA 14 | An **interested** director may not vote or be counted in the quorum, subject to the exceptions and to disapplication by ordinary resolution |
+
+Decisions are taken by a **simple majority** of those voting. There is no concept of a "special" board
+resolution. **Minutes** must be kept for **10 years** (s.248).
+
+::: {.callout-important title="Exam trap"}
+Notice of a board meeting must be **reasonable** in the circumstances but need not be in writing, need
+not state the business, and need not be of any fixed length. A question in which a director complains
+that he was given only two hours' oral notice is usually testing whether you know there is no
+statutory notice period for board meetings — the issue is whether the notice was reasonable, judged
+against the company's practice and the urgency.
+:::
+
+### General meetings: calling and notice
+
+**Who can call one.** The directors may call a general meeting (s.302). The members may **require** the
+directors to call one under s.303, and may call one themselves under s.305 if the directors do not. The
+court may order a meeting under s.306 where it is otherwise impracticable to call one — the provision
+used where a 50/50 deadlock or a member's refusal to attend makes a quorum impossible.
+
+**The s.303 requisition.** Members holding at least **5%** of the paid-up capital carrying voting
+rights may require the directors to call a general meeting. The request must state the general nature
+of the business and may include the text of a proposed resolution. The directors must then **call** the
+meeting within **21 days** of the request, and the meeting must be **held** not more than **28 days**
+after the date of the notice convening it (s.304). If they fail, the requisitioning members (or any of
+them representing more than half of their total voting rights) may call the meeting themselves within
+three months, and the company must reimburse their reasonable expenses (s.305).
+
+**Notice** (ss.307–311):
+
+| | Private company | Public company |
+|---|---|---|
+| General meeting | **14 clear days** | **14 clear days** |
+| AGM | (not required) | **21 clear days** |
+| Short notice consent | Majority in number holding **90%** in nominal value of the shares giving a right to attend and vote (articles may raise this to 95%) | Majority in number holding **95%** |
+
+"**Clear days**" excludes the day of service and the day of the meeting; where notice is sent by post
+the articles typically deem service 48 hours after posting, so two further days must be added.
+
+The notice must state the **time, date and place** of the meeting and the **general nature of the
+business** (s.311), and must include a statement of the member's right to appoint a proxy (s.325).
+Notice must go to **every member and every director** (s.310). Accidental failure to give notice to one
+member is disregarded if the articles so provide (s.313).
+
+::: {.callout-tip title="Worked example"}
+A private company wishes to hold a general meeting on Thursday 15 October. Notice is to be posted, and
+the articles deem service 48 hours after posting.
+
+Work backwards: 14 clear days before 15 October means the notice must be **served** by 30 September at
+the latest (excluding both the day of service and the day of the meeting). Deemed service 48 hours
+after posting means the notice must be **posted** by 28 September.
+
+If the company cannot meet that deadline, its options are to move the meeting, or to obtain short
+notice consent from a majority in number of the members holding at least 90% in nominal value of the
+voting shares.
+:::
+
+### General meetings: conduct
+
+- **Quorum** (s.318): **two qualifying persons**, unless the company has only one member, in which case
+  one. A "qualifying person" is a member present in person, a corporate representative, or a proxy. Two
+  proxies for the same member do not make a quorum.
+- **Voting** (s.284): on a **show of hands**, every member present in person or by proxy has **one
+  vote**; on a **poll**, every member has **one vote per share**.
+- **Demanding a poll** (s.321): the articles may not exclude the right to demand a poll on any question
+  other than the election of the chair or the adjournment of the meeting, and may not make ineffective
+  a demand by **not fewer than five members** having the right to vote, or by members representing
+  **10%** of the total voting rights, or by members holding shares on which **10%** of the total sum
+  paid up has been paid.
+- **Proxies** (s.324): every member entitled to attend and vote may appoint a proxy, who need not be a
+  member, to exercise all their rights to attend, speak and vote.
+- **Minutes** (s.355): kept for **10 years**; minutes signed by the chair are evidence of the
+  proceedings (s.356).
+
+### Resolutions
+
+| Type | Majority | Where used |
+|---|---|---|
+| **Ordinary** (s.282) | Simple majority of votes cast | Everything not otherwise specified: appointing and removing directors, approving SPTs, loans, payments for loss of office and service contracts, declaring a final dividend, granting authority to allot under s.551, ratification under s.239 |
+| **Special** (s.283) | **75%** of votes cast | Amending the articles, changing the name, reducing capital, disapplying pre-emption rights, re-registration, winding up voluntarily, approving a buyback out of capital, directing the board under MA 4 |
+
+**Filing.** All **special** resolutions, and certain ordinary resolutions (notably a s.551 authority to
+allot), must be filed with the Registrar within **15 days** (s.30).
+
+### Written resolutions
+
+Available to **private companies only** (s.288). The mechanics are examined precisely:
+
+- The **eligible members** are those entitled to vote on the **circulation date** (s.289).
+- An **ordinary** written resolution is passed when members representing a simple majority of the
+  **total voting rights of eligible members** signify agreement; a **special** written resolution needs
+  **75% of the total voting rights of eligible members** (ss.282(2), 283(2)).
+- Agreement, once signified, **cannot be revoked** (s.296(3)).
+- The resolution **lapses** if not passed within **28 days** of the circulation date, unless the
+  articles specify a different period (s.297).
+- Members holding **5%** of the total voting rights may require the company to circulate a written
+  resolution (s.292), together with a statement of up to 1,000 words (s.292(3)).
+- **Two resolutions cannot be passed by written resolution**: removal of a **director** under s.168 and
+  removal of an **auditor** under s.510 (s.288(2)).
+
+::: {.callout-important title="Exam trap"}
+The denominator changes. At a **meeting**, the majority is of the votes actually **cast**; on a
+**written resolution**, it is of the **total voting rights of all eligible members**. A member who does
+not respond to a written resolution is, in effect, voting against it. A question giving you an
+apathetic 30% shareholder and a 71% shareholder seeking a special resolution is testing exactly this:
+71% of the total is not 75%, so the written resolution fails, while a general meeting at which only the
+71% holder votes would pass it comfortably.
+:::
+
+### Informal unanimous consent: the *Duomatic* principle
+
+*Re Duomatic Ltd* [1969] 2 Ch 365: where **all** the members entitled to vote on a matter assent to it,
+that assent is as binding as a formal resolution, even if no meeting was held and no resolution passed.
+Section 281(4)(a) preserves the principle by providing that nothing in Chapter 3 affects any rule of law
+as to things done otherwise than by passing a resolution.
+
+Its limits matter: it requires the assent of **all** members entitled to vote, given with **full
+knowledge** of what is being assented to; it cannot validate something the members themselves could not
+authorise (an unlawful distribution, or a transaction prejudicing creditors of an insolvent company);
+and it does not dispense with a statutory requirement of a **filed** resolution or a **written**
+document where the statute demands one.
+
+### Check yourself: decision-making
+
+**Q1.** A private company has two shareholders: one holding 72% and one holding 28%. The 72%
+shareholder wishes to amend the articles. She circulates a written resolution; the 28% shareholder
+ignores it and does not respond within 28 days.
+
+Which of the following is correct?
+
+A. The resolution is passed, because 72% of those who responded voted in favour.
+
+B. The resolution is passed, because a special resolution requires 75% of the votes cast and only one
+member cast a vote.
+
+C. The resolution lapses, because a special written resolution requires 75% of the total voting rights
+of eligible members, and 72% is insufficient.
+
+D. The resolution is passed, because failure to respond within 28 days is deemed agreement.
+
+E. The resolution is void, because the articles cannot be amended by written resolution.
+
+**Q2.** Members holding 6% of the paid-up voting capital of a private company deliver a request to the
+directors requiring them to call a general meeting, stating the general nature of the business and
+enclosing the text of a proposed resolution. The directors take no action.
+
+Which of the following is correct?
+
+A. The members' only remedy is to apply to the court under s.306.
+
+B. The directors were not obliged to act, because a request under s.303 requires members holding at
+least 10% of the voting capital.
+
+C. The directors were required to call the meeting within 21 days of the request, for a date not more
+than 28 days after the notice convening it; having failed to do so, the members may call the meeting
+themselves within three months and recover their reasonable expenses from the company.
+
+D. The directors were required to call the meeting within 14 days, and the members' only remedy for
+failure is an unfair prejudice petition.
+
+E. The members may pass the resolution by written resolution instead, whatever its subject matter.
+
+**Q3.** A private company's articles are the unamended Model Articles. It has three directors. One of
+them, who is abroad, is given four hours' oral notice of a board meeting at which a significant
+contract is approved by the other two. He objects that the meeting was invalid.
+
+Which of the following is correct?
+
+A. The meeting was invalid, because notice of a board meeting must be given in writing.
+
+B. The meeting was invalid, because at least 14 clear days' notice is required.
+
+C. The meeting was invalid, because a director who is abroad cannot be given valid notice.
+
+D. The meeting was valid if the notice was reasonable in the circumstances; there is no prescribed
+form or minimum period for notice of a board meeting, the quorum of two was satisfied, and a simple
+majority approved the contract.
+
+E. The meeting was invalid, because a board decision requires the participation of all directors.
+
+**Q4.** A private company has four members holding 25% each. Three of them meet informally, without
+notice, and all four subsequently indicate to each other in an exchange of emails that they agree the
+company should sell its principal asset. No meeting is held and no resolution is recorded. The
+transaction is within the board's powers, and the company is solvent.
+
+Which of the following is correct?
+
+A. The members' assent is of no effect, because no general meeting was held.
+
+B. The members' assent is effective under the *Duomatic* principle, because all the members entitled
+to vote assented with full knowledge of the matter.
+
+C. The members' assent is effective only if reduced to a signed written resolution.
+
+D. The members' assent is effective only if 75% of them assent.
+
+E. The members' assent is of no effect, because informal assent cannot bind a company in any
+circumstances.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** Section 283(2): a written resolution is passed as a special resolution if it is passed by
+members representing **not less than 75% of the total voting rights of eligible members**. The
+denominator is the total, not the votes cast. 72% falls short, and under s.297 the resolution lapses
+after 28 days.
+
+- **A** and **B** apply the meeting-based "votes cast" denominator, which is the central trap. Had a
+  general meeting been held on proper notice and only the 72% holder attended and voted, the resolution
+  would have passed.
+- **D** invents deemed agreement; silence is not assent.
+- **E** is wrong: the articles may be amended by written resolution. Only ss.168 and 510 are excluded.
+
+**Q2 — C.** Section 303 requires members holding at least **5%** of the paid-up voting capital; 6%
+qualifies. Section 304 requires the directors to call the meeting within 21 days, to be held not more
+than 28 days after the notice convening it. Section 305 gives the requisitionists the right to call the
+meeting themselves within three months and to be reimbursed their reasonable expenses.
+
+- **A** treats s.306 as the only route; it is a residual power for cases where calling a meeting is
+  impracticable.
+- **B** states the wrong threshold.
+- **D** states the wrong period and the wrong remedy.
+- **E** ignores that written resolutions cannot be used for a s.168 removal, and in any event the
+  members' s.292 right to require circulation of a written resolution is a separate mechanism.
+
+**Q3 — D.** Model Article 9: any director may call a board meeting, and notice must be given to each
+director but need not be in writing. There is no minimum period; the requirement is that notice be
+reasonable in the circumstances. The quorum under Model Article 11 is two, which was satisfied, and
+board decisions are taken by simple majority.
+
+- **A** contradicts MA 9(2) expressly.
+- **B** imports the general meeting notice period.
+- **C** contradicts MA 9(3), which addresses directors absent from the UK.
+- **E** confuses quorum with unanimity.
+
+**Q4 — B.** *Re Duomatic Ltd*, preserved by s.281(4)(a). The unanimous informal assent of all members
+entitled to vote, given with full knowledge, is as effective as a formal resolution. All four assented
+and the company is solvent, so none of the principle's limits is triggered.
+
+- **A** and **E** deny the principle altogether.
+- **C** imposes a formality *Duomatic* exists to dispense with.
+- **D** applies a special resolution threshold; *Duomatic* requires **unanimity**, which is present.
+
+:::
+
+## Records, filing and disclosure
+
+The specification asks about "documentary, record-keeping, statutory filing and disclosure
+requirements". This is dry, and it is examined, because deadlines make clean single-best-answer
+questions.
+
+### What the company must keep
+
+| Record | Provision | Retention |
+|---|---|---|
+| **Register of members** | s.113 | Must be kept; the option for a private company to keep it at Companies House was **removed** on 18 November 2025 |
+| Minutes of **general meetings** | s.355 | 10 years |
+| Minutes of **directors' meetings** | s.248 | 10 years |
+| **Directors' service contracts** | s.228 | Duration plus 1 year |
+| **Adequate accounting records** | s.386 | **3 years** (private), **6 years** (public) — s.388 |
+| Copies of **charging instruments** | s.859P | For the life of the charge |
+| Contracts for **off-market purchase of own shares** | s.702 | 10 years |
+
+::: {.callout-caution title="Verify before relying on this"}
+From **18 November 2025** the requirement for a company to keep its own **register of directors**,
+**register of directors' residential addresses**, **register of secretaries** and **PSC register** was
+**removed**. Those particulars are now filed with and held centrally by the Registrar. The **register
+of members** must still be kept by the company. If your sitting's cut-off falls **before** 18 November
+2025, the pre-reform position — local registers for all of these — is the examinable one.
+:::
+
+### What must be filed, and when
+
+| Event | Deadline |
+|---|---|
+| **Confirmation statement** | Within **14 days** of the end of each review period (12 months), confirming the company's information and its lawful purposes |
+| **Annual accounts** | **9 months** after the accounting reference date (private); **6 months** (public) — s.442 |
+| Appointment, removal or change in particulars of a **director** | **14 days** (s.167) |
+| Change of **PSC** particulars | 14 days to obtain and confirm, then 14 days to notify |
+| **Creation of a charge** | **21 days** beginning with the day after the date of creation (s.859A) |
+| **Allotment of shares** — return and statement of capital | **1 month** (s.555) |
+| **Special resolutions** and certain ordinary resolutions | **15 days** (s.30) |
+| Amended **articles** | **15 days** (s.26) |
+| Change of **registered office** | Effective on registration by the Registrar (s.87) |
+
+Failure to file is usually an **offence by the company and every officer in default**, punishable by
+fine, with **civil penalties** for late accounts that escalate with delay. Persistent default is a
+ground for **disqualification** under s.3 CDDA, and can lead the Registrar to strike the company off.
+Only in one case does non-compliance destroy a right: failure to register a **charge** within 21 days
+makes it **void against a liquidator, an administrator and any creditor** of the company (s.859H) —
+see @sec-blp-finance.
+
+### Accounts and audit
+
+Directors must prepare accounts for each financial year (s.394), circulate them to members (s.423),
+and file them (s.441). Directors are also responsible for the **directors' report** (s.415), and a
+company that is not small must include a **strategic report** (s.414A), which for a large company must
+contain a statement describing how the directors have had regard to the s.172(1) factors.
+
+**Small company exemptions.** A company that qualifies as small may file abridged or filleted accounts
+and, if it also qualifies for the audit exemption, need not have its accounts audited (s.477).
+
+::: {.callout-caution title="Thresholds — check these against your sitting"}
+For financial years beginning on or after **6 April 2025**, a company is **small** if it meets at least
+**two** of: turnover not more than **£15 million**; balance sheet total not more than **£7.5 million**;
+not more than **50** employees. A **micro-entity** meets two of: turnover not more than **£1 million**;
+balance sheet total not more than **£500,000**; not more than **10** employees. The previous small
+company limits were £10.2 million / £5.1 million / 50 employees.
+
+The size test generally requires the conditions to be met (or failed) for **two consecutive years**
+before the classification changes, except in the company's first financial year.
+:::
+
+Audit exemption is **not** available, however small the company, to a public company, an authorised
+insurance company, a banking company, an e-money issuer, a MiFID investment firm, a UCITS management
+company, or a company carrying on insurance market activity, nor generally to a member of an
+ineligible group. And under **s.476**, members holding **10%** or more of the nominal value of the
+issued share capital (or any class of it), or 10% of the members if there is no share capital, may by
+notice **require** an audit — a minority protection that survives every exemption.
+
+### Persons with significant control
+
+A PSC is an individual who, in relation to the company:
+
+- holds, directly or indirectly, more than **25%** of the shares; or
+- holds, directly or indirectly, more than **25%** of the voting rights; or
+- holds the right, directly or indirectly, to appoint or remove a **majority of the board**; or
+- otherwise exercises, or has the right to exercise, **significant influence or control**; or
+- exercises, or has the right to exercise, significant influence or control over a trust or firm which
+  itself satisfies any of the above.
+
+The company must take reasonable steps to identify its PSCs and may serve notices requiring
+information; failure to respond can lead to restrictions being placed on the relevant shares. PSC
+particulars are filed with the Registrar, and since 18 November 2025 individual PSCs must verify their
+identity.
+
+## Partnership and LLP decision-making
+
+The specification names "partnership decision-making and authority of partners" separately, and the
+rules are set out in full in @sec-blp-vehicles. The comparison worth holding in your head:
+
+| | Partnership (PA 1890 defaults) | Private company (Model Articles) |
+|---|---|---|
+| Who manages | **Every partner** (s.24(5)) | The **board** (MA 3) |
+| Ordinary decisions | Majority of partners (s.24(8)) — **one partner, one vote** | Simple majority of directors at a quorate board meeting |
+| Change in the nature of the business | **Unanimity** (s.24(8)) | Board decision; objects are unrestricted unless the articles restrict them |
+| Admitting a new owner | **Unanimity** (s.24(7)) | Board allotment or transfer, subject to the articles and pre-emption rights |
+| Expelling an owner | **Not possible** without express agreement (s.25) | Directors removable by ordinary resolution (s.168); **shareholders cannot be expelled** |
+| Binding the business to outsiders | Every partner is an agent (s.5) | The board, and those it authorises; s.40 protects third parties |
+| Ending it | Any partner may dissolve a partnership at will by notice (s.26) | Special resolution to wind up voluntarily |
+
+::: {.callout-important title="Exam trap"}
+Partnership voting is **per capita**, not by capital or profit share, unless the agreement says
+otherwise. A partner with 60% of the capital has **one vote** under s.24(8), the same as a partner with
+5%. Company voting is by shares. Mixing the two is a reliable way to lose a mark.
+:::
+
+For an LLP, the default regulations reproduce the partnership position — every member may take part in
+management, ordinary matters by majority, change in the nature of the business by unanimity, no new
+member without unanimity, and no power of expulsion — but with the two differences noted in
+@sec-blp-vehicles: a member may resign on reasonable notice, and no member can dissolve the LLP.
+
+## The solicitor's position
+
+**Who is the client?** When a solicitor is instructed by a company, the client is the **company**, not
+the director giving the instructions. Where the director's personal interests diverge from the
+company's — a substantial property transaction with himself, a loan, an ex gratia payment — the
+solicitor must be clear that they act for the company, must not advise the director personally on the
+same matter without addressing the conflict, and should ensure that the disinterested members of the
+board understand the position.
+
+**Taking instructions from one director.** A solicitor may generally act on instructions from a person
+with authority to give them, but should be alert to a director purporting to commit the company to a
+transaction that requires a board or members' resolution. Where the transaction plainly requires
+approval that has not been obtained, proceeding on one director's say-so risks facilitating a breach of
+duty.
+
+**Confidentiality and the board.** Information given to the solicitor by the company is the company's,
+not any individual director's. A director who resigns cannot demand the company's confidential
+material, and a solicitor should not disclose company information to a former director without
+authority.
+
+**When directors and shareholders disagree.** A solicitor acting for the company owes duties to the
+company as an entity. Advising a majority shareholder on how to remove the directors, while also acting
+for the company, is a conflict; the usual answer is that the solicitor must decline to act for one of
+them, and may need to cease acting for both.
+
+## Chapter review
+
+**Q1.** A private company has three directors and four shareholders. One shareholder holds 55%, and the
+three directors hold 15% each. The 55% shareholder wishes to (i) remove one of the directors and (ii)
+change the company's name. The articles are the unamended Model Articles.
+
+Which of the following correctly identifies the procedure for both?
+
+A. An ordinary resolution by written resolution for (i), and a special resolution by written
+resolution for (ii).
+
+B. An ordinary resolution at a general meeting on special notice for (i), and a special resolution
+(which may be a written resolution) for (ii) — although with only 55% of the votes she cannot pass the
+special resolution.
+
+C. A special resolution for both, at a general meeting.
+
+D. A board resolution for (i) and a special resolution for (ii).
+
+E. An ordinary resolution at a general meeting for both.
+
+**Q2.** A director of a private company arranges for the company to lend him £30,000, repayable in
+twelve months, to fund the purchase of a holiday home. The company is not associated with any public
+company and is not a money-lending company. The director has no other outstanding transaction with the
+company. No members' resolution is passed.
+
+Which of the following is correct?
+
+A. No approval is required, because the loan provisions apply only to public companies and companies
+associated with a public company.
+
+B. No approval is required, because the loan falls within the exception in s.207(1) for minor
+transactions.
+
+C. Approval by ordinary resolution, supported by a memorandum made available to the members, was
+required; the loan is voidable at the company's instance and the director must account for any gain
+and indemnify the company for any loss.
+
+D. Approval by special resolution was required, because the loan exceeds £15,000.
+
+E. The loan is prohibited outright and cannot be authorised by any resolution.
+
+**Q3.** The sole director and 100% shareholder of a company, having taken no advice, causes the company
+to make a payment that turns out to be a breach of the duty of care in s.174. The company later enters
+insolvent liquidation and the liquidator brings a claim.
+
+Which of the following is correct?
+
+A. The director may rely on his own approval as sole shareholder to ratify the breach under s.239.
+
+B. The director may not rely on ratification, because on a resolution under s.239 his own votes as the
+director in question are disregarded, and in any event the *Duomatic* principle does not validate acts
+that prejudice creditors of an insolvent company.
+
+C. The claim must fail, because a sole director cannot be in breach of duty to a company he wholly
+owns.
+
+D. The claim must fail, because the company may indemnify the director under s.234.
+
+E. The claim must succeed in full, because s.1157 relief is available only to non-executive directors.
+
+**Q4.** Which of the following requires filing at Companies House within **21 days**?
+
+A. A special resolution amending the articles.
+
+B. The appointment of a new director.
+
+C. The creation of a charge over the company's property.
+
+D. A return of allotment of shares.
+
+E. The annual accounts of a private company.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** Removal of a director requires an ordinary resolution under s.168, which **cannot** be
+passed as a written resolution (s.288(2)) and requires special notice (s.312). The 55% holder has
+enough votes for an ordinary resolution at a general meeting. Changing the name requires a **special
+resolution** (s.77), for which 75% is needed — and 55% is not enough, whether at a meeting or by
+written resolution.
+
+- **A** overlooks the s.288(2) exclusion and the 75% threshold.
+- **C** applies a special resolution to the removal.
+- **D** gives the board a removal power it does not have.
+- **E** applies an ordinary resolution to the change of name.
+
+**Q2 — C.** Section 197 applies to **all** companies, private and public alike: a loan to a director
+requires approval by ordinary resolution, with a memorandum of the transaction made available to
+members for at least 15 days before the meeting and at the meeting. The exception in s.207(1) covers
+loans and quasi-loans whose aggregate value does not exceed **£10,000**, and £30,000 exceeds it.
+Section 213 makes the unapproved transaction voidable at the company's instance and requires the
+director to account for any gain and indemnify the company for any loss.
+
+- **A** confuses s.197 with **ss.198 and 201**. It is **quasi-loans** and **credit transactions** that
+  are confined to public companies and their associates. Ordinary loans are caught whatever the company.
+- **B** applies the £10,000 exception to a £30,000 loan.
+- **D** applies the wrong resolution and the wrong threshold — £15,000 is the s.207(2) limit for
+  **credit transactions**, not loans, and the resolution required is an ordinary one.
+- **E** invents an absolute prohibition; the point of s.197 is that members may approve.
+
+**Q3 — B.** Two independent obstacles. On a s.239 resolution the votes of the **director in question**
+are disregarded, so a sole director-shareholder cannot ratify his own breach by voting his own shares.
+And the *Duomatic* principle does not extend to validating acts that prejudice creditors where the
+company is insolvent or approaching insolvency.
+
+- **A** ignores s.239(4).
+- **C** contradicts *Salomon*: the duty is owed to the company, which is a separate person from its sole
+  member.
+- **D** misapplies s.234, which permits an indemnity against liability to **third parties**, not to the
+  company; s.232 makes an indemnity against liability to the company void.
+- **E** invents a restriction on s.1157, which is available to any officer who acted honestly and
+  reasonably.
+
+**Q4 — C.** Section 859A: particulars of a charge, with the instrument, must be delivered within **21
+days** beginning with the day after the date of creation. This is also the one filing whose omission
+has a substantive consequence — the charge becomes void against a liquidator, administrator or creditor
+(s.859H).
+
+- **A** — 15 days (s.30).
+- **B** — 14 days (s.167).
+- **D** — one month (s.555).
+- **E** — 9 months after the accounting reference date (s.442).
+
+:::

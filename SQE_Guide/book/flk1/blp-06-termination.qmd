@@ -3,35 +3,1020 @@
 > *Assessment objective 6: the termination of a solvent business, corporate insolvency and personal
 > bankruptcy.*
 
-::: {.callout-note title="Not yet written"}
-Outline below.
+## The first question is always solvency
+
+Every question in this chapter turns on one preliminary fact, and the procedures available differ
+completely on either side of it.
+
+| | Solvent | Insolvent |
+|---|---|---|
+| Company | Members' voluntary liquidation; striking off | Administration; CVA; restructuring plan; creditors' voluntary liquidation; compulsory liquidation; receivership |
+| Who controls it | The **members** | The **creditors**, through an office-holder |
+| Who is paid | Creditors in full, then members | Creditors in the statutory order; members rarely |
+| Directors' duty | s.172, benefit of the members | s.172 as modified: **creditors' interests** (*Sequana*) |
+| Clawback | Not engaged | ss.238, 239, 244, 245, 423 IA 1986 |
+
+## Terminating a solvent business
+
+### Members' voluntary liquidation
+
+An MVL is the orderly winding up of a **solvent** company. The mechanism:
+
+1. The directors — or a majority of them, at a directors' meeting — make a **statutory declaration of
+   solvency** under **s.89 IA 1986**: that they have made a **full inquiry** into the company's affairs
+   and have formed the opinion that the company **will be able to pay its debts in full, together with
+   interest at the official rate, within a period not exceeding 12 months** from the commencement of
+   the winding up. A statement of the company's assets and liabilities is annexed.
+2. The declaration must be made **within the five weeks immediately preceding** the resolution to wind
+   up, or on the date of it, and must be delivered to the Registrar within 15 days after the resolution.
+3. The members pass a **special resolution** to wind up voluntarily (s.84(1)(b)), and appoint a
+   **liquidator** by ordinary resolution.
+4. The liquidator realises the assets, pays the creditors in full with interest, distributes the surplus
+   to the members, and the company is dissolved three months after the final account is filed.
+
+Two sanctions attach to the declaration. Making it **without reasonable grounds** is a criminal offence
+(s.89(4)), and if the debts are **not** paid within the stated period it is **presumed** that the
+director had no reasonable grounds (s.89(5)). If the liquidator later forms the opinion that the company
+will **not** be able to pay its debts in full within the stated period, the liquidation **converts** to a
+creditors' voluntary liquidation.
+
+### Striking off
+
+For a company with no assets, no liabilities and nothing to distribute, striking off is far cheaper than
+an MVL. **Section 1003 CA 2006**: the company applies to the Registrar to be struck off. The application
+must be made by a majority of the directors.
+
+**The application cannot be made** if, at any time in the **previous three months**, the company has:
+
+- **traded** or otherwise carried on business;
+- changed its **name**;
+- **disposed of property or rights** for value that, immediately before ceasing to trade, it held for
+  disposal or gain in the normal course of trading; or
+- engaged in any other activity, except one necessary or expedient for making the application, concluding
+  the company's affairs, or complying with a statutory requirement.
+
+Nor can it be made while the company is subject to insolvency proceedings or a s.895 compromise
+(s.1005).
+
+The directors must send a copy of the application to every **member, creditor, employee**, director who
+did not sign it, and pension trustee **within seven days** (s.1006). The Registrar advertises in the
+*Gazette* and, if no objection is received, strikes the company off after not less than two months.
+
+::: {.callout-important title="Exam trap"}
+On dissolution, **all the company's remaining property vests in the Crown as bona vacantia** (s.1012).
+A client who strikes off a company with a bank balance or an undistributed asset loses it. The right
+advice is to distribute everything first — or to use an MVL, which also has a **tax** advantage, because
+distributions in a winding up are capital receipts potentially attracting business asset disposal relief
+rather than income distributions.
+
+Restoration is possible: **administrative restoration** by application to the Registrar within six years
+where the company was struck off under s.1000–1001 while carrying on business (s.1024), or by **court
+order** under s.1029, generally within six years.
 :::
 
-## Planned contents
+### Dissolving a partnership
 
-**Solvent termination** — members' voluntary liquidation and the declaration of solvency; striking
-off under s.1003 CA 2006 and when it is not available; dissolution of a partnership under ss.32–35
-PA 1890 and the distribution of assets under s.44.
+The PA 1890 grounds (see @sec-blp-vehicles for the detail):
 
-**Corporate insolvency: the tests** — the cash flow and balance sheet tests under s.123 Insolvency
-Act 1986, and the statutory demand.
+| Section | Ground |
+|---|---|
+| s.32 | Expiry of a fixed term; completion of the single adventure; **notice** by any partner in a partnership at will |
+| s.33 | **Death or bankruptcy** of any partner (subject to contrary agreement); at the option of the other partners, where a partner's share is charged for their separate debt |
+| s.34 | **Illegality** — mandatory, and cannot be excluded by agreement |
+| s.35 | **Court order**: permanent incapacity; conduct prejudicial to the business; wilful or persistent breach of the agreement; carrying on the business only at a loss; **just and equitable** |
 
-**The procedures** — administration and the moratorium; company voluntary arrangements; creditors'
-voluntary liquidation; compulsory liquidation. What each is *for* is the discriminator, not the
-mechanics.
+On dissolution, s.38 preserves each partner's authority so far as necessary to wind up and complete
+unfinished transactions, and **s.44** governs the distribution of assets — the order and the rule that a
+loss of capital is a loss like any other, borne in the profit-sharing ratio (@sec-blp-stakeholders).
 
-**Asset recovery** — transactions at an undervalue (s.238); preferences (s.239) and the requirement
-of a desire to prefer; extortionate credit transactions; avoidance of floating charges (s.245);
-transactions defrauding creditors (s.423).
+## Is the company insolvent? The statutory tests
 
-**Personal liability of directors** — wrongful trading (s.214) and the defence of taking every step
-to minimise loss; fraudulent trading (s.213); misfeasance.
+**Section 123 IA 1986** provides the tests, and they are alternatives — satisfying any one is enough.
 
-**Order of priority** — fixed charge holders, expenses of the liquidation, preferential creditors,
-the prescribed part, floating charge holders, unsecured creditors, shareholders. This ranking is
-examined directly and repays memorising.
+- **s.123(1)(a) — the statutory demand.** A creditor owed a sum **exceeding £750**, then due, serves a
+  written demand in the prescribed form at the company's registered office, and the company for **three
+  weeks** neglects to pay, secure or compound for it.
+- **s.123(1)(b)** — execution or other process on a judgment is returned unsatisfied.
+- **s.123(1)(e) — the cash flow test.** The company is **unable to pay its debts as they fall due**.
+- **s.123(2) — the balance sheet test.** The value of the company's assets is **less than the amount of
+  its liabilities, taking into account its contingent and prospective liabilities**.
 
-**Personal bankruptcy** — the petition and the order; the trustee in bankruptcy; the bankrupt's
-estate and excluded property; discharge; individual voluntary arrangements.
+*BNY Corporate Trustee Services Ltd v Eurosail-UK 2007-3BL plc* [2013] UKSC 28 held that the balance
+sheet test is **not a mechanical exercise**. The court asks whether the company has reached the "point of
+no return" — whether, on the balance of probabilities, it will be unable to meet its liabilities. A
+temporary excess of liabilities over assets in a company with a long-dated liability profile does not
+make it insolvent.
 
-**Conduct** — a solicitor's position on discovering that a client company is trading while insolvent.
+::: {.callout-important title="Exam trap"}
+Insolvency is not a synonym for "in financial difficulty" or "in a loss-making year". It is the
+satisfaction of one of the s.123 tests. Note also that the statutory demand route is a **deemed**
+inability to pay, so a company that could pay but simply has not may be wound up on it — while a company
+that disputes the debt **on substantial grounds** cannot, because the petition would be an abuse of
+process.
+:::
+
+## The corporate procedures
+
+The discriminator between them is **what each is for**, not their mechanics. Learn the purposes.
+
+| Procedure | What it is for |
+|---|---|
+| **Part A1 moratorium** | Breathing space: a payment holiday while a rescue is put together |
+| **Administration** | Rescue, or a better outcome for creditors than winding up; comes with a strong moratorium |
+| **Company voluntary arrangement** | A **compromise with the unsecured creditors** so that the company can continue trading |
+| **Restructuring plan** | A court-sanctioned compromise that can bind **dissenting classes**, including secured creditors |
+| **Creditors' voluntary liquidation** | Ending an insolvent company, on the members' initiative |
+| **Compulsory liquidation** | Ending a company, usually on a **creditor's** petition |
+| **Fixed charge receivership** | Realising a **specific charged asset** for the benefit of the appointing chargee |
+
+### The Part A1 moratorium
+
+Introduced by the Corporate Insolvency and Governance Act 2020. A free-standing moratorium, obtained by
+the directors filing the relevant documents at court, which does **not** displace the directors: they
+remain in office and the company remains under their control, supervised by a **monitor** (a licensed
+insolvency practitioner) who must state that, in their view, **it is likely that a moratorium would
+result in the rescue of the company as a going concern**.
+
+It lasts an **initial 20 business days**, extendable by the directors for a further 20 without creditor
+consent, and beyond that with creditor consent or by the court. During it the company has a **payment
+holiday** for **pre-moratorium debts** — but must continue to pay moratorium debts and certain excluded
+pre-moratorium debts, including **rent for the moratorium period, wages and salary, goods and services
+supplied during the moratorium, and debts under financial contracts**. Creditors cannot enforce security
+or commence proceedings without the court's permission.
+
+### Administration
+
+Administration is the principal **rescue** procedure, and its structure is examined closely.
+
+**The purpose** (paragraph 3, Schedule B1), which is a **hierarchy**, not a menu:
+
+(a) **rescuing the company as a going concern**; or
+(b) achieving a **better result for the company's creditors as a whole** than would be likely if the
+company were wound up without first being in administration; or
+(c) **realising property in order to make a distribution to one or more secured or preferential
+creditors**.
+
+The administrator must perform their functions with the objective of (a) unless they think either that
+it is **not reasonably practicable**, or that (b) would achieve a better result for the creditors as a
+whole. They may pursue (c) only if they think it is not reasonably practicable to achieve (a) or (b),
+**and** they do not unnecessarily harm the interests of the creditors as a whole.
+
+**Appointment** — three routes, and the differences matter:
+
+| Route | Who | Requirements |
+|---|---|---|
+| **Court order** (para 12) | The company, the directors, or one or more **creditors** | The company **is or is likely to become unable to pay its debts**, and the order is **reasonably likely to achieve the purpose** |
+| **Out of court** (para 14) | A **qualifying floating charge holder** | A qualifying floating charge over the whole or substantially the whole of the company's property, which is **enforceable**; two business days' notice to any prior QFCH |
+| **Out of court** (para 22) | The **company or its directors** | **Five business days'** notice to any QFCH; not available if a winding-up petition is pending or an administrative receiver is in office, or if the company has been in administration on its own or its directors' appointment in the previous 12 months |
+
+**The moratorium** (paragraphs 42–44) is the practical value of administration. Once an administrator is
+appointed — and, on an interim basis, from the filing of a notice of intention — no resolution or order
+may be made for winding up, no step may be taken to **enforce security** or to **repossess goods** under
+a hire-purchase agreement, no **forfeiture** by peaceable re-entry, and no **legal process** may be
+commenced or continued, without the administrator's consent or the permission of the court.
+
+**Status and duties.** The administrator is an **officer of the court**, acts as **agent of the
+company**, and must perform their functions **in the interests of the company's creditors as a whole**.
+They may remove and appoint directors, and the directors may not exercise a management power without
+consent.
+
+**Duration**: **one year** from appointment, extendable by consent of the creditors for up to one further
+year (once), or by the court for a specified period.
+
+**Distributions**: the administrator may distribute to **secured and preferential** creditors, but needs
+the **permission of the court** to distribute to unsecured creditors (other than the prescribed part).
+
+**Exit**: automatic termination after a year; conversion to a **creditors' voluntary liquidation** (para
+83) where there will be a distribution to unsecured creditors; **dissolution** (para 84) where there will
+not; or a court order.
+
+**Pre-pack administrations** — a sale of the business negotiated before appointment and executed
+immediately afterwards — preserve value but are open to the objection that creditors have no say. Where
+the buyer is **connected** to the company, the administrator must either obtain the approval of the
+creditors or an **independent written opinion from a qualified evaluator** before completing the disposal
+in the first eight weeks.
+
+### Receivership
+
+**Administrative receivership is largely abolished.** Section 72A of the Insolvency Act 1986, inserted by
+the Enterprise Act 2002, prevents the holder of a **qualifying floating charge created on or after 15
+September 2003** from appointing an administrative receiver, subject to narrow exceptions (capital
+market arrangements, public-private partnerships, utility, project finance, financial market, registered
+social landlord and protected railway companies). Its replacement is the QFCH's power to appoint an
+**administrator** out of court.
+
+**Fixed charge receivership survives**, and the specification names it. A **fixed asset receiver** (often
+an LPA receiver, appointed under the charge or under s.101 Law of Property Act 1925) takes control of the
+**specific charged asset**, realises it, and accounts to the appointing chargee. The receiver's primary
+duty is to the **appointor**, not to the general body of creditors — which is precisely the difference
+from an administrator.
+
+### Company voluntary arrangement
+
+A CVA is a **composition in satisfaction of debts or a scheme of arrangement** with the company's
+creditors, under Part I IA 1986. It is a **contractual compromise**, supervised by an insolvency
+practitioner, that leaves the directors in control of the business.
+
+- The **directors** (or an administrator or liquidator) prepare the proposal with a **nominee**, who
+  reports on whether it has a reasonable prospect of being approved and implemented.
+- The proposal goes to the **creditors** by a decision procedure, and to the **members** at a meeting.
+- **Approval by creditors requires 75% or more in value** of those responding or voting. It is
+  **invalid** if **more than half of the total value of creditors who are not connected** with the
+  company vote against it.
+- The **members** decide by simple majority; if the two decisions differ, the **creditors' decision
+  prevails**, subject to a member's right to apply to court within 28 days.
+- Once approved, it binds **every unsecured creditor entitled to vote who had notice**, including those
+  who voted against and those who did not vote at all.
+- It **cannot affect the rights of a secured creditor to enforce their security, or the priority of a
+  preferential debt**, without that creditor's consent.
+- A creditor or member may challenge it within 28 days on the ground of **unfair prejudice** or a
+  **material irregularity** (s.6).
+
+::: {.callout-important title="Exam trap"}
+A CVA has **no moratorium of its own**. If the company needs protection from enforcement while the
+proposal is prepared, it must obtain a **Part A1 moratorium** or go into administration and propose the
+CVA from there. And a CVA cannot bind a secured creditor without consent — which is the gap that the
+Part 26A restructuring plan was created to fill.
+:::
+
+### Restructuring plan
+
+Part 26A of the Companies Act 2006, introduced by CIGA 2020. Available where the company has encountered
+or is likely to encounter **financial difficulties** affecting its ability to carry on business as a
+going concern, and the plan's purpose is to eliminate, reduce, prevent or mitigate the effect of those
+difficulties.
+
+Creditors and members are divided into **classes**. A class approves by **75% in value** of those voting
+(there is **no** majority-in-number requirement, unlike a Part 26 scheme). The court then sanctions the
+plan — and the distinctive feature is the **cross-class cram down**: the court may sanction the plan
+notwithstanding that a class has voted against it, if satisfied that:
+
+- members of the dissenting class would be **no worse off** than they would be in the **relevant
+  alternative** (what would happen if the plan were not sanctioned); and
+- the plan has been approved by at least one class who would receive a payment, or have a genuine
+  economic interest, in that relevant alternative.
+
+The Court of Appeal in *Re AGPS BondCo plc* [2024] EWCA Civ 24 (the *Adler* appeal) emphasised that the
+cram-down power is a discretion, that the "no worse off" test is a threshold rather than the whole
+inquiry, and that the court will scrutinise whether the plan fairly allocates the benefits of the
+restructuring between classes.
+
+Compare the **Part 26 scheme of arrangement**, which requires a **majority in number representing 75% in
+value** of each class and has **no** cram-down.
+
+### Liquidation
+
+**Creditors' voluntary liquidation.** Used where the company is insolvent and the members initiate the
+process:
+
+1. The directors resolve to convene a general meeting; the members pass a **special resolution** to wind
+   up voluntarily (s.84(1)(b)) and nominate a liquidator.
+2. Within 14 days, the creditors decide on a liquidator by a **decision procedure** — deemed consent or a
+   virtual meeting. **The creditors' nominee prevails** over the members'.
+3. The directors prepare a **statement of affairs**.
+4. A **liquidation committee** may be appointed.
+
+**Compulsory liquidation.** A **petition** to the court under s.124, presented by the company, the
+directors, a **creditor**, a **contributory** (a member, who must generally have held the shares for at
+least six of the last eighteen months), the Secretary of State, or the official receiver. The grounds are
+in s.122(1), and two matter:
+
+- **s.122(1)(f)** — the company is **unable to pay its debts** within s.123;
+- **s.122(1)(g)** — it is **just and equitable** to wind the company up (@sec-blp-stakeholders).
+
+Three consequences of the order are examinable:
+
+- The **winding up is deemed to commence at the presentation of the petition** (s.129), not at the order.
+- **Section 127**: any **disposition of the company's property** made after the presentation of the
+  petition is **void** unless the court orders otherwise. This is why a company facing a petition applies
+  for a **validation order** to keep trading and to keep its bank account operating.
+- **Section 130(2)**: no action or proceeding may be commenced or continued against the company without
+  the permission of the court.
+
+The **official receiver** becomes liquidator on the making of the order, unless and until another is
+appointed.
+
+**A liquidator's functions** in any liquidation: to take control of and realise the assets, to
+investigate the company's affairs and the directors' conduct, to **report to the Secretary of State** on
+whether the directors are unfit, to pursue clawback and misfeasance claims, and to distribute in the
+statutory order.
+
+### Check yourself: procedures
+
+**Q1.** A company is trading at a loss and cannot pay its trade creditors as they fall due, but the
+directors believe that with a few months' protection they could sell the business as a going concern for
+substantially more than a break-up would realise. A creditor has threatened to present a winding-up
+petition.
+
+Which procedure is most appropriate?
+
+A. A members' voluntary liquidation, because the directors believe the business has value.
+
+B. A company voluntary arrangement, which will impose an immediate moratorium preventing the creditor
+from petitioning.
+
+C. Administration, whose statutory purpose includes achieving a better result for creditors as a whole
+than winding up, and which imposes a moratorium preventing the presentation of a winding-up petition and
+the enforcement of security without consent or permission.
+
+D. A creditors' voluntary liquidation, which will preserve the business.
+
+E. An application to strike the company off under s.1003 CA 2006.
+
+**Q2.** A company proposes a CVA under which unsecured creditors will be paid 40 pence in the pound over
+three years. At the creditors' decision procedure, creditors representing 78% in value of those voting
+support it. Of the creditors who are not connected with the company, 55% in value vote against it. A
+secured creditor with a fixed charge over the company's premises did not vote and does not consent.
+
+Which of the following is correct?
+
+A. The CVA is approved, because 78% in value exceeds the 75% threshold, and it binds the secured creditor.
+
+B. The CVA is not approved, because more than half of the total value of unconnected creditors voted
+against it.
+
+C. The CVA is approved and binds all unsecured creditors, but not the secured creditor.
+
+D. The CVA is approved, but only in respect of creditors who voted in favour.
+
+E. The CVA requires the approval of 75% in number as well as in value.
+
+**Q3.** A winding-up petition is presented against a company on 4 May. On 20 May, before any order is
+made, the company pays a supplier £30,000 for goods delivered that week and continues to draw on its
+bank account. A winding-up order is made on 30 June.
+
+Which of the following is correct?
+
+A. The payments are valid, because the winding up commenced on 30 June.
+
+B. The payments are void under s.127 IA 1986 unless the court orders otherwise, because the winding up is
+deemed to have commenced on 4 May, when the petition was presented; the company should have applied for a
+validation order.
+
+C. The payments are voidable as preferences under s.239.
+
+D. The payments are valid, because they were made in the ordinary course of business.
+
+E. The payments are void, and the court has no power to validate them.
+
+**Q4.** A bank holds a qualifying floating charge over the whole of a company's undertaking, created in
+2021. The charge has become enforceable.
+
+Which of the following may the bank do?
+
+A. Appoint an administrative receiver, because it holds a floating charge over the whole of the
+undertaking.
+
+B. Appoint an administrator out of court, having given two business days' notice to any prior qualifying
+floating charge holder.
+
+C. Present a winding-up petition without proving that the company is unable to pay its debts.
+
+D. Appoint a fixed charge receiver over the whole of the company's undertaking.
+
+E. Nothing without a court order, because out-of-court appointments were abolished by the Enterprise Act
+2002.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** Administration is the rescue procedure, its statutory purposes include achieving a better
+result for the creditors as a whole than winding up (paragraph 3(1)(b), Schedule B1), and the moratorium
+in paragraphs 42–44 prevents a winding-up order or resolution, the enforcement of security and the
+commencement of legal process without consent or the court's permission. It is designed for exactly these
+facts.
+
+- **A** requires solvency and a declaration under s.89 that the company can pay its debts in full within
+  12 months, which the directors cannot make.
+- **B** is the strongest distractor: a CVA is a good tool for compromising unsecured debt, but it has **no
+  moratorium of its own**. The company would need a Part A1 moratorium or an administration.
+- **D** and **E** both bring the company to an end without any attempt to preserve the business, and
+  striking off is unavailable to a company that has traded in the last three months or is subject to
+  insolvency proceedings.
+
+**Q2 — B.** Approval of a CVA requires 75% or more in value of the creditors voting, **and** it is
+invalid if **more than half of the total value of creditors who are not connected with the company** vote
+against it. The 78% is satisfied but the second condition is not: 55% of unconnected creditors by value
+voted against.
+
+- **A** fails both on the second condition and on the proposition that a CVA binds a secured creditor,
+  which it cannot without consent.
+- **C** gets the secured creditor point right but overlooks the unconnected creditor test.
+- **D** misdescribes the effect of a CVA, which binds all unsecured creditors entitled to vote who had
+  notice.
+- **E** imports the majority-in-number requirement from a Part 26 scheme of arrangement.
+
+**Q3 — B.** Section 129: in a compulsory winding up the winding up is deemed to commence at the time of
+the **presentation of the petition**. Section 127: any disposition of the company's property after that
+time is **void** unless the court otherwise orders. Payments out of the company's bank account are
+dispositions. The remedy is a **validation order**, applied for as soon as the petition is presented.
+
+- **A** takes the date of the order.
+- **C** applies the preference regime, which requires a desire to prefer a creditor and has its own time
+  limits; s.127 operates automatically and needs no such element.
+- **D** invents an ordinary course exception, though the ordinary course of business is a factor the court
+  weighs in deciding whether to validate.
+- **E** denies the court's express power to order otherwise.
+
+**Q4 — B.** Paragraph 14 of Schedule B1: the holder of a qualifying floating charge over the whole or
+substantially the whole of the company's property may appoint an administrator out of court once the
+charge is enforceable, giving two business days' notice to the holder of any prior qualifying floating
+charge.
+
+- **A** is barred by s.72A IA 1986 for floating charges created on or after 15 September 2003, subject to
+  exceptions that do not apply to an ordinary trading company.
+- **C** requires a ground under s.122(1), which must be established.
+- **D** confuses a fixed charge receivership, which attaches to specific charged assets, with a general
+  appointment over the undertaking.
+- **E** is the opposite of the position: out-of-court appointment of an **administrator** is precisely
+  what the Enterprise Act introduced.
+
+:::
+
+## Clawing assets back for the creditors
+
+Five provisions, and the discrimination between them is the examinable skill. Two definitions first:
+
+- **"Onset of insolvency"** — in administration, the date on which the application or the notice of
+  intention to appoint was filed, or the appointment took effect; in liquidation, the date of the
+  commencement of the winding up.
+- **"Connected person"** — a director or shadow director, an **associate** of one, or an associate of the
+  company. This includes relatives, spouses and civil partners, business partners, and companies under
+  common control. The insolvency definition of "associate" is **wider** than the CA 2006 definition of a
+  connected person, and includes **siblings**.
+
+### The table
+
+| | Transaction at an undervalue (s.238) | Preference (s.239) | Extortionate credit (s.244) | Avoidance of floating charge (s.245) | Defrauding creditors (s.423) |
+|---|---|---|---|---|---|
+| **Look-back** | 2 years | **6 months**, or **2 years if connected** | 3 years | **12 months**, or **2 years if connected** | **None** |
+| **Insolvency required?** | Yes, at the time or as a result (**presumed** if connected) | Yes, at the time or as a result | No | Yes for **unconnected** only; not required if connected | **No** |
+| **Mental element** | None | **Desire** to prefer (**presumed** if connected) | Terms grossly exorbitant | None | **Purpose** of putting assets beyond reach or prejudicing a claim |
+| **Who applies** | Office-holder | Office-holder | Office-holder | Automatic invalidity | Office-holder **or a victim** |
+
+### Transactions at an undervalue (s.238)
+
+The company made a **gift**, or entered into a transaction for a consideration **significantly less** in
+value than the consideration provided by the company. Compare the value **in money or money's worth** on
+each side, from the company's perspective.
+
+**Defence** (s.238(5)): no order will be made if the company entered into the transaction **in good
+faith and for the purpose of carrying on its business**, and at the time there were **reasonable grounds
+for believing** that it would **benefit the company**.
+
+### Preferences (s.239)
+
+The company did something which **puts a creditor, a surety or a guarantor of the company's debts into a
+position which, on the company's insolvent liquidation, would be better than it would otherwise have
+been in** — and in deciding to do it the company was **influenced by a desire** to produce that effect.
+
+*Re MC Bacon Ltd* [1990] BCLC 324 is the case, and it is examined for two propositions:
+
+- **Desire, not intention.** The company must positively **want** to improve the creditor's position; it
+  is not enough that it knew that would be the consequence.
+- Granting security to a bank in order to secure the bank's **continued support**, under commercial
+  pressure, is **not** a preference: the company desired to keep trading, not to prefer the bank.
+
+The desire is **presumed** where the beneficiary is a **connected** person — other than a person connected
+by reason only of being an **employee** — and the burden shifts to them to rebut it.
+
+::: {.callout-important title="Exam trap"}
+The two most productive fact patterns:
+
+**A director repays their own loan account** shortly before liquidation. The director is a creditor, they
+are connected, so the look-back is two years and the desire to prefer is presumed. This is the classic
+preference.
+
+**A company grants a floating charge to its bank** to secure an **existing** overdraft. That is not a
+transaction at an undervalue (the company gave security, not value), and it may fail the *MC Bacon* desire
+test — but s.245 catches it precisely: a floating charge given for **past** value is invalid, because the
+provision protects only value given **at the same time as or after** the creation of the charge.
+:::
+
+### Extortionate credit transactions (s.244)
+
+A transaction providing credit to the company, entered into in the **three years** before the company
+entered administration or went into liquidation, whose terms require **grossly exorbitant** payments or
+otherwise grossly contravene ordinary principles of fair dealing. The transaction is **presumed**
+extortionate unless the contrary is proved.
+
+### Avoidance of floating charges (s.245)
+
+A floating charge created within the **relevant time** is **invalid**, **except to the extent of** the
+aggregate of:
+
+- the value of **money paid**, or **goods or services supplied**, to the company;
+- the value of any **debt of the company discharged or reduced**;
+
+in each case **at the same time as, or after, the creation of the charge**; **plus interest** on those
+amounts.
+
+The relevant time is **12 months** before the onset of insolvency, or **two years** if the charge was
+created in favour of a **connected person**. For an **unconnected** person, the company must in addition
+have been **unable to pay its debts** at the time of the charge or have become so in consequence of it;
+for a **connected** person, that condition does not apply.
+
+Note what s.245 does **not** do: it does not avoid the **debt**, only the **security**. The lender becomes
+an unsecured creditor for the amount not covered.
+
+::: {.callout-tip title="Worked example"}
+A company grants a floating charge to its bank on 1 March to secure its overdraft, which then stands at
+£400,000. Over the following months the bank advances a further £150,000. The company enters
+administration on 1 December of the same year. The bank is not connected with the company, and the
+company was unable to pay its debts on 1 March.
+
+The charge was created within 12 months of the onset of insolvency, and the insolvency condition is
+satisfied. It is therefore invalid **except to the extent of** value given at the same time as or after
+its creation — the £150,000 advanced afterwards, plus interest. The security for the pre-existing
+£400,000 is **invalid**, and the bank ranks as an **unsecured creditor** for that sum.
+
+Change one fact: the charge was granted to a **director** rather than the bank. The look-back becomes
+**two years**, and the requirement to show that the company was unable to pay its debts falls away
+entirely.
+:::
+
+### Transactions defrauding creditors (s.423)
+
+The most flexible provision, and the one with no time limit. It requires:
+
+- a **transaction at an undervalue** (defined as in s.238); and
+- that it was entered into **for the purpose** of putting assets beyond the reach of a person who is
+  making, or may at some time make, a claim against the debtor, **or** of otherwise prejudicing that
+  person's interests.
+
+There is **no insolvency requirement**, **no look-back period**, and it applies to **individuals as well
+as companies**. The application may be made by an office-holder or by a **victim** of the transaction
+(with the court's permission where the debtor is in liquidation or administration). The purpose need not
+be the sole or dominant purpose, but it must be a real, substantial purpose.
+
+*BTI 2014 LLC v Sequana SA* [2022] UKSC 25 confirmed that a **dividend**, though lawfully paid, can be a
+transaction at an undervalue within s.423.
+
+### Personal liability of directors
+
+| Provision | Who | What must be shown | Consequence |
+|---|---|---|---|
+| **s.212** misfeasance | Officers, liquidators, administrators | Misapplication or retention of money or property, or breach of fiduciary or other duty | Summary order to repay, restore or contribute |
+| **s.213** fraudulent trading | **Any person** knowingly a party | Business carried on with **intent to defraud** creditors or for any fraudulent purpose — actual **dishonesty** is required | Contribution as the court thinks proper |
+| **s.214** wrongful trading | **Directors and shadow directors** | The company has gone into **insolvent liquidation** (or insolvent administration, s.246ZB), and at some point before the commencement the director **knew or ought to have concluded that there was no reasonable prospect** that the company would avoid it | Contribution, measured by the **increase in the net deficiency** caused |
+| **ss.216–217** prohibited names | Directors and shadow directors in the 12 months before insolvent liquidation | Being a director of, or concerned in the management of, a company with the **same or a similar name** within **five years** | **Criminal offence** and **personal liability** for the debts of the new company |
+
+**Wrongful trading** is the one that repays attention:
+
+- The standard in **s.214(4)** is the same **dual objective/subjective** standard as s.174 CA 2006: the
+  general knowledge, skill and experience reasonably expected of a person carrying out those functions,
+  **and** the general knowledge, skill and experience the director actually has.
+- The **defence** in **s.214(3)** is exacting: the director must show they took **every step** with a view
+  to **minimising the potential loss to the company's creditors**. Resigning is generally the wrong step;
+  continuing to trade in the hope of a turnaround is the wrong step. Insisting on proper information,
+  taking insolvency advice, and pressing for the company to cease trading are the right ones.
+- *Re Produce Marketing Consortium Ltd (No 2)* (1989) 5 BCC 569 — the first successful claim, and the
+  source of the measure of contribution: the increase in the company's net deficiency between the date the
+  directors ought to have concluded there was no reasonable prospect and the date of liquidation.
+- *Re Continental Assurance Co of London plc* [2007] 2 BCLC 287 — the liquidator must show that the
+  continued trading actually **caused loss**; a claim fails if the deficiency would have been the same
+  anyway.
+- *Re Patrick and Lyon Ltd* [1933] Ch 786 sets the contrast for **fraudulent** trading: "actual
+  dishonesty involving … real moral blame". Its criminal counterpart is **s.993 CA 2006**, which applies
+  whether or not the company is being wound up.
+
+::: {.callout-important title="Exam trap"}
+Fraudulent trading requires **dishonesty**; wrongful trading does not. Because dishonesty is hard to
+prove, s.214 is the practical claim, and a question describing directors who were merely over-optimistic
+is a wrongful trading question. Conversely, a question describing directors who took deposits for goods
+they knew could never be delivered is describing **fraudulent** trading — and note that s.213 catches
+**any person** knowingly party to it, including a solicitor or accountant.
+:::
+
+## The order of priority
+
+This ranking is examined directly and repays memorising. In a **liquidation**, the assets are applied:
+
+1. **Fixed charge holders**, out of the proceeds of the assets subject to their charge. (Strictly, those
+   assets are outside the estate; any surplus falls into it, and any shortfall makes the chargee an
+   unsecured creditor for the balance.)
+2. **Expenses of the winding up**, including the liquidator's remuneration.
+3. **Preferential debts**, and within them:
+   - **Ordinary preferential debts** — employees' **unpaid wages** for the **four months** before the
+     relevant date, capped at **£800** per employee; **accrued holiday pay** (uncapped); certain
+     occupational pension scheme contributions; and money advanced to pay those wages.
+   - **Secondary preferential debts** — **HMRC** in respect of **VAT, PAYE, employee NICs, construction
+     industry scheme deductions and student loan deductions**, for debts arising from 1 December 2020.
+4. **The prescribed part** — a fund carved out of the **floating charge** realisations for the unsecured
+   creditors: **50% of the first £10,000**, plus **20% of the remainder**, subject to a cap of
+   **£800,000** where the floating charge was created on or after 6 April 2020 (£600,000 for earlier
+   charges). It need not be set aside if the net property is less than £10,000 and the office-holder
+   thinks the cost of distributing it would be disproportionate.
+5. **Floating charge holders.**
+6. **Unsecured (non-preferential) creditors**, *pari passu*.
+7. **Interest** on the unsecured debts since the commencement of the winding up.
+8. **Shareholders**, in accordance with the rights attaching to their shares — preference capital first
+   if the articles so provide, then the ordinary shareholders.
+
+::: {.callout-important title="Exam trap"}
+Three points generate most of the wrong answers.
+
+**HMRC is only partly preferential.** VAT, PAYE and employee NICs are secondary preferential debts, because
+the company collected that money from others. **Corporation tax and employer's NICs are not** — they rank
+as ordinary unsecured debts.
+
+**Crystallisation does not promote a floating charge.** A floating charge that has crystallised is still a
+floating charge for the purposes of this ranking. It remains behind the expenses, the preferential
+creditors and the prescribed part.
+
+**The prescribed part comes out of the floating charge holder's money**, not out of the fixed charge
+realisations, and it is for the unsecured creditors only. A floating charge holder who is left with a
+shortfall cannot claim a share of the prescribed part for that shortfall.
+:::
+
+## Personal bankruptcy
+
+### Getting there
+
+**A creditor's petition** requires a debt (or aggregate debts) of at least **£5,000**, which is
+**unsecured**, for a **liquidated** sum, payable immediately or at a future date, and which the debtor
+appears **unable to pay** or to have no reasonable prospect of paying. Inability is usually established by
+serving a **statutory demand** which the debtor fails to comply with, or to apply to set aside, within
+**three weeks**.
+
+**A debtor** no longer petitions. Since 2016 they make an **online application to an adjudicator**, who
+makes the bankruptcy order if the criteria are met.
+
+The **supervisor** of, or a person bound by, an **IVA** may also petition.
+
+### The consequences
+
+On the making of the order, the **official receiver** becomes trustee unless and until an insolvency
+practitioner is appointed. The bankrupt's **estate vests automatically** in the trustee — no conveyance is
+needed.
+
+**The estate** is all property belonging to or vested in the bankrupt at the commencement of the
+bankruptcy. **Excluded**:
+
+- **tools, books, vehicles and other items of equipment** necessary to the bankrupt for use personally in
+  their employment, business or vocation;
+- **clothing, bedding, furniture, household equipment and provisions** necessary for satisfying the basic
+  domestic needs of the bankrupt and their family;
+- property held by the bankrupt **on trust** for another;
+- most **pension** rights, and certain tenancies.
+
+**Income** is not part of the estate, but the trustee may obtain an **income payments order** — or agree
+an income payments agreement — requiring the bankrupt to pay over surplus income for up to **three
+years**, leaving enough to meet the reasonable domestic needs of the bankrupt and their family.
+
+**After-acquired property** may be claimed by the trustee by notice, generally within 42 days of becoming
+aware of it.
+
+**The family home** attracts two special rules:
+
+- **Section 283A**: the bankrupt's interest in a dwelling house which is the sole or principal residence
+  of the bankrupt, their spouse or civil partner, or a former spouse or civil partner, **revests in the
+  bankrupt** if the trustee takes no relevant step within **three years** — the "use it or lose it" rule.
+- **Section 335A**: on an application for an order for sale, the court weighs the creditors' interests
+  against the needs of the family; but **after one year** from vesting, it must assume, **unless the
+  circumstances are exceptional**, that the interests of the creditors **outweigh all other
+  considerations**. Exceptional circumstances are construed narrowly, and the ordinary hardship of losing
+  a home is not enough.
+
+**Restrictions during bankruptcy**: the bankrupt may not obtain credit of **£500** or more without
+disclosing their status, may not act as a **company director** or be concerned in the management of a
+company without the court's leave, and may not trade under a different name without disclosure.
+
+### Getting out
+
+**Discharge is automatic after one year** (s.279), and may be earlier on the official receiver's
+certificate. Discharge releases the bankrupt from most **bankruptcy debts**, but **not** from:
+
+- **fines** and other penalties;
+- obligations under a **family maintenance or property order**;
+- **student loans**;
+- damages for **personal injury** (unless the court orders otherwise);
+- debts incurred by **fraud** or fraudulent breach of trust.
+
+Where the bankrupt's conduct was culpable, the court may make a **bankruptcy restrictions order**, or the
+bankrupt may give an **undertaking**, for between **two and fifteen years**, continuing the restrictions
+after discharge.
+
+**Clawback in bankruptcy** mirrors the corporate provisions: **s.339** transactions at an undervalue (**5
+years**), **s.340** preferences (**6 months**, or **2 years** if in favour of an **associate**), with the
+insolvency requirement presumed for associates, and **s.423** transactions defrauding creditors.
+
+### The alternatives
+
+**Individual voluntary arrangement** (Part VIII IA 1986). A composition or scheme with creditors, proposed
+by the debtor with a **nominee** and, if approved, implemented by a **supervisor**. The debtor may apply
+for an **interim order** giving protection from enforcement while the proposal is considered. Approval
+requires **75% or more in value** of the creditors responding to the decision procedure, and is invalid if
+**more than half in value of the creditors who are not associates** vote against. It binds every unsecured
+creditor entitled to vote who had notice, and does not affect secured creditors' rights without consent. A
+creditor may challenge within 28 days for unfair prejudice or material irregularity.
+
+An IVA avoids the stigma, the restrictions and the automatic vesting of bankruptcy, and usually produces a
+better return for creditors — which is why it is the answer where the debtor has a continuing income or a
+business worth preserving.
+
+**Debt relief order.** For debtors with very little: **qualifying debts of £50,000 or less**, **assets of
+£2,000 or less** (disregarding a single motor vehicle worth up to **£4,000**), and **surplus monthly
+income of £75 or less**. Applied for through an approved intermediary to the official receiver, with no
+fee. It imposes a **12-month moratorium**, after which the qualifying debts are discharged.
+
+### Check yourself: insolvency and bankruptcy
+
+**Q1.** Eight months before the company entered insolvent liquidation, a director procured the company to
+repay in full a £70,000 loan he had made to it, at a time when the company was unable to pay its debts.
+Other creditors received nothing.
+
+Which of the following is correct?
+
+A. There is no remedy, because the director was entitled to be repaid a debt genuinely owed.
+
+B. The liquidator may apply to set the repayment aside as a **preference** under s.239: the director is a
+creditor who was put in a better position, the look-back period for a connected person is two years, and
+the desire to prefer is presumed.
+
+C. The liquidator may apply under s.238, because the company received no consideration for the payment.
+
+D. The repayment may be attacked only under s.423, because there is no time limit.
+
+E. There is no remedy, because the payment was made more than six months before the liquidation.
+
+**Q2.** A company granted a floating charge to its bank on 1 September to secure its existing overdraft of
+£250,000. The bank advanced no new money afterwards. The company, which was unable to pay its debts on 1
+September, entered administration on 1 June the following year. The bank is unconnected with the company.
+
+Which of the following is correct?
+
+A. The charge is valid in full, because it was properly registered within 21 days.
+
+B. The charge is invalid in full under s.245 IA 1986, because no money was paid, no goods or services were
+supplied and no debt was discharged at the same time as or after its creation; the bank ranks as an
+unsecured creditor for the £250,000.
+
+C. The charge is valid, because the look-back period for an unconnected person is six months.
+
+D. The charge is invalid, and the underlying debt of £250,000 is also extinguished.
+
+E. The charge is valid, because the company received consideration in the form of the bank's forbearance.
+
+**Q3.** A company goes into liquidation. After paying the fixed charge holder out of the charged property
+and meeting the expenses of the liquidation, the liquidator has £900,000 of floating charge realisations.
+Employees are owed £30,000 in wages for the last four months (five employees, £6,000 each), HMRC is owed
+£120,000 of VAT and PAYE and £80,000 of corporation tax, and the floating charge holder is owed £2
+million. Unsecured trade creditors are owed £700,000. The floating charge was created in 2023.
+
+Which of the following correctly states the order in which the £900,000 is applied?
+
+A. Floating charge holder in full, then anything left to the preferential creditors and then the
+unsecured creditors.
+
+B. Preferential debts (employees up to £800 each, then HMRC's VAT and PAYE), then the prescribed part for
+the unsecured creditors, then the floating charge holder, then the remaining unsecured creditors including
+HMRC's corporation tax claim.
+
+C. All of HMRC's claims as preferential debts, then the employees, then the floating charge holder.
+
+D. The unsecured creditors *pari passu* with the floating charge holder.
+
+E. Employees in full, then the floating charge holder, then HMRC.
+
+**Q4.** A bankrupt's only substantial asset is a half share in the family home, in which his spouse and two
+young children live. Fourteen months after the bankruptcy order, the trustee applies for an order for
+sale. The spouse resists on the ground that the children would have to change schools.
+
+Which of the following is correct?
+
+A. The court will refuse an order for sale, because the interests of the children are paramount.
+
+B. The trustee cannot apply, because the interest in the home has revested in the bankrupt.
+
+C. Under s.335A IA 1986, more than one year having elapsed since the interest vested in the trustee, the
+court must assume that the interests of the creditors outweigh all other considerations unless the
+circumstances are exceptional; the need to change schools is unlikely to be exceptional.
+
+D. The court will postpone sale until the youngest child reaches 18.
+
+E. The bankrupt's interest in a family home never forms part of the estate.
+
+**Q5.** A director realises that his company has no reasonable prospect of avoiding insolvent liquidation.
+He continues trading for a further eight months, hoping for a large contract that never comes, and takes no
+advice. The company's net deficiency increases by £400,000 over that period.
+
+Which of the following is correct?
+
+A. He is liable for fraudulent trading under s.213, because he knew the company could not pay.
+
+B. He has a defence under s.214(3), because he honestly believed the contract would materialise.
+
+C. He may be ordered to contribute to the company's assets for wrongful trading under s.214: he ought to
+have concluded there was no reasonable prospect of avoiding insolvent liquidation, and he did not take
+every step to minimise the potential loss to creditors; the measure is the increase in the net deficiency.
+
+D. He has no liability, because a director owes duties only to the company and not to creditors.
+
+E. He may resign to avoid liability, because s.214 applies only to directors in office at the date of
+liquidation.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** Section 239: the repayment put a **creditor** (the director) in a better position on the
+company's insolvent liquidation than he would otherwise have been in. He is a **connected person**, so the
+relevant time under s.240 is **two years** rather than six months, and the requisite **desire to prefer**
+is **presumed** unless he rebuts it. The company was insolvent at the time, satisfying s.240(2).
+
+- **A** confuses entitlement to the debt with the propriety of paying it ahead of everyone else.
+- **C** misidentifies the provision: the company discharged a genuine liability, so it received
+  consideration and this is not a transaction at an undervalue.
+- **D** is available in principle only if the transaction were at an undervalue, which it is not.
+- **E** applies the unconnected look-back period.
+
+**Q2 — B.** Section 245. The charge was created within **12 months** of the onset of insolvency and the
+company was unable to pay its debts at the time, so the charge is invalid **except to the extent of** value
+given **at the same time as or after** its creation. Nothing was given: the charge secured a **past**
+debt. The charge is therefore invalid in its entirety and the bank is unsecured for £250,000.
+
+- **A** confuses registration with validity. A properly registered charge can still be avoided by s.245.
+- **C** states the wrong period.
+- **D** overstates the effect: s.245 invalidates the **security**, not the debt.
+- **E** is the tempting commercial answer, but forbearance is not "money paid, or goods or services
+  supplied" within s.245(2).
+
+**Q3 — B.** The statutory order. Preferential debts come before the floating charge holder: the employees'
+wages, but capped at **£800 each** (£4,000 in total, with the remaining £26,000 ranking as unsecured), and
+HMRC's **VAT and PAYE** as secondary preferential debts. **Corporation tax is not preferential** and ranks
+as an ordinary unsecured debt. The **prescribed part** is then carved out of the floating charge
+realisations for the unsecured creditors — 50% of the first £10,000 plus 20% of the remainder, capped at
+£800,000. Only then does the floating charge holder take.
+
+- **A** inverts the whole ranking.
+- **C** treats all of HMRC's claims as preferential and puts them ahead of the employees; ordinary
+  preferential debts rank ahead of secondary preferential debts.
+- **D** ignores the security altogether.
+- **E** pays the employees in full, ignoring the £800 cap, and omits the prescribed part.
+
+**Q4 — C.** Section 335A(3): where the application is made **more than one year** after the first vesting
+of the estate in the trustee, the court must assume, **unless the circumstances of the case are
+exceptional**, that the interests of the bankrupt's creditors **outweigh all other considerations**. The
+ordinary consequences of a family losing its home — including disruption to children's schooling — are not
+exceptional.
+
+- **A** applies a paramountcy principle that does not exist here.
+- **B** misapplies s.283A: revesting occurs after **three years**, and only if the trustee has taken no
+  relevant step. Fourteen months is well within the period, and the application is itself a relevant step.
+- **D** describes an order the court would make only in genuinely exceptional circumstances.
+- **E** is simply wrong: the bankrupt's beneficial interest in the home forms part of the estate.
+
+**Q5 — C.** Section 214 IA 1986. The company went into insolvent liquidation; before the commencement the
+director knew, or ought to have concluded, that there was no reasonable prospect of avoiding it; and he
+cannot show under s.214(3) that he took **every step** with a view to minimising the potential loss to
+creditors — trading on in hope, without advice, is the opposite. The contribution is measured by the
+**increase in the net deficiency** caused (*Re Produce Marketing Consortium (No 2)*), here £400,000,
+subject to the causation requirement in *Re Continental Assurance*.
+
+- **A** requires **dishonesty** and "real moral blame" (*Re Patrick and Lyon*). Misplaced optimism is not
+  fraud.
+- **B** misstates the defence: honest belief is not the test; taking **every step** to minimise loss is.
+- **D** is the *Sequana* structural error, and in any event s.214 is a statutory liability independent of
+  the general duties.
+- **E** is wrong: s.214 applies to a person who **was** a director at the relevant time, and resigning is
+  generally not a step that minimises loss to creditors.
+
+:::
+
+## The solicitor's position
+
+**Discovering that a client company is trading while insolvent.** This is the scenario the specification
+invites, and the answer has several strands:
+
+- **Advise the directors** of their duties: that the s.172 duty is now modified so that creditors'
+  interests must be considered (*Sequana*), and of the risk of personal liability under s.214, of
+  disqualification, and of the clawback provisions.
+- **Advise them to take specialist insolvency advice** immediately, from a licensed insolvency
+  practitioner, and to keep a written record of the board's deliberations. The record is often the best
+  evidence of whether they took every step to minimise loss.
+- **Do not advise or assist a course of action that would be a fraud on creditors** — disposing of assets
+  at an undervalue, preferring a connected creditor, or continuing to take deposits for goods that cannot
+  be supplied. Assisting knowingly makes the solicitor a party to fraudulent trading under s.213 and, in
+  the criminal sphere, s.993 CA 2006.
+- **Remember who the client is.** The company is the client, not the directors. Where their interests
+  diverge — as they do once personal liability is in prospect — the directors need separate advice.
+- **Confidentiality** is owed to the company and survives; it is not displaced merely because the
+  solicitor disapproves of the directors' conduct. The limited exceptions are narrow.
+- **Money laundering.** If the solicitor knows or suspects that property represents the proceeds of
+  criminal conduct, the reporting obligations under the Proceeds of Crime Act 2002 are engaged, and
+  tipping off is an offence.
+- **Fees.** A solicitor who takes payment from a company they know to be insolvent, in preference to other
+  creditors, may find the payment attacked as a preference — and should consider taking money on account
+  from a third party instead.
+
+## Chapter review
+
+**Q1.** A company has ceased trading, has no assets and no liabilities, and its two directors want the
+cheapest way to bring it to an end. It last traded five months ago and has done nothing since except close
+its bank account.
+
+Which of the following is correct?
+
+A. It must go into members' voluntary liquidation, because only a liquidator can dissolve a company.
+
+B. The directors may apply to the Registrar to strike the company off under s.1003 CA 2006, having not
+traded for more than three months; they must send a copy of the application to every member, creditor,
+employee and pension trustee within seven days.
+
+C. It must go into creditors' voluntary liquidation, because it has ceased trading.
+
+D. The directors may simply stop filing, and the company will be struck off automatically without further
+obligation.
+
+E. Striking off is unavailable because the company has traded within the last twelve months.
+
+**Q2.** Which of the following statements about the *Sequana* creditor duty is correct?
+
+A. It is a free-standing duty owed directly to creditors, who may sue the directors.
+
+B. It is engaged whenever a company has any contingent liability that might one day exceed its assets.
+
+C. It is a modification of the s.172 duty owed to the company, engaged when the company is insolvent or
+bordering on insolvency, or when an insolvent liquidation or administration is probable, with creditors'
+interests weighing more heavily as insolvency approaches.
+
+D. It replaces the s.172 duty entirely from the moment the company makes a loss.
+
+E. It applies only after a liquidator has been appointed.
+
+**Q3.** An individual owes £46,000 to a range of creditors, has no assets beyond a car worth £3,200 and
+household goods, and has £60 a month of surplus income after meeting reasonable domestic needs.
+
+Which procedure is most likely to be appropriate?
+
+A. Bankruptcy on a creditor's petition, since the debts exceed £5,000.
+
+B. An individual voluntary arrangement, since 75% in value of the creditors will approve it.
+
+C. A debt relief order: the qualifying debts are under £50,000, the assets are under £2,000 disregarding a
+motor vehicle worth up to £4,000, and the surplus monthly income is under £75.
+
+D. A Part A1 moratorium.
+
+E. A company voluntary arrangement.
+
+**Q4.** A creditor is owed £4,000 by a company which has ignored every request for payment. The creditor
+wishes to present a winding-up petition and serves a statutory demand.
+
+Which of the following is correct?
+
+A. The demand is ineffective, because a company statutory demand requires a debt of at least £5,000.
+
+B. The demand may found a petition: s.123(1)(a) requires only a debt exceeding £750, and the creditor may
+petition once three weeks have elapsed — though the company may restrain the petition if it disputes the
+debt on substantial grounds.
+
+C. The demand is effective, but the creditor must in addition prove that the company is balance sheet
+insolvent under s.123(2).
+
+D. The creditor must first obtain judgment against the company before serving a statutory demand.
+
+E. The demand is effective only if it is served personally on a director of the company.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** Section 1003 CA 2006 permits a company to apply to be struck off provided it has not, in the
+**previous three months**, traded, changed its name, disposed of property for value held for disposal in
+the normal course of trading, or engaged in any other activity except one necessary for the application or
+for concluding its affairs. Five months since trading satisfies that. Section 1006 requires the copy
+application to go to members, creditors, employees, non-signing directors and pension trustees within
+**seven days**.
+
+- **A** and **C** impose a liquidation that is unnecessary where there are no assets and no liabilities.
+- **D** describes what may happen in practice but ignores the application procedure and the directors'
+  obligations, and exposes them to filing offences and disqualification under s.3 CDDA.
+- **E** applies the wrong period; the bar is three months, not twelve.
+
+**Q2 — C.** *BTI 2014 LLC v Sequana SA* [2022] UKSC 25.
+
+- **A** is the recurring structural error; the duty is owed to the company.
+- **B** applies the "real risk" trigger the Supreme Court rejected.
+- **D** and **E** state the wrong trigger points; the duty modifies s.172 rather than replacing it, and it
+  operates before any office-holder is appointed.
+
+**Q3 — C.** The DRO criteria are met on every limb: qualifying debts of £50,000 or less, assets of £2,000
+or less disregarding a single motor vehicle worth up to £4,000, and surplus monthly income of £75 or less.
+A DRO costs nothing and produces discharge after a 12-month moratorium.
+
+- **A** is available to a creditor but is disproportionate and would recover almost nothing.
+- **B** presupposes an outcome and, with £60 a month, offers creditors very little.
+- **D** and **E** are corporate procedures and are not available to an individual.
+
+**Q4 — B.** Section 123(1)(a) requires a debt **exceeding £750**, and £4,000 does. The £5,000 threshold
+belongs to a **bankruptcy** petition against an individual, and that contrast is what the question is
+testing. The qualification in option B is real: a company that disputes the debt on **substantial
+grounds** can restrain the petition as an abuse of process, so a statutory demand is the wrong tool for a
+genuinely disputed debt.
+
+- **A** imports the bankruptcy threshold.
+- **C** treats the s.123 tests as cumulative. They are **alternatives**: satisfying s.123(1)(a) is
+  enough, and the balance sheet test need not also be proved.
+- **D** invents a judgment requirement; the statutory demand exists precisely so that judgment is not
+  needed.
+- **E** invents a service requirement. Section 123(1)(a) requires the demand to be served by leaving it
+  at the company's **registered office**.
+
+:::

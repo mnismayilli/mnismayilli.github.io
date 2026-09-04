@@ -2,31 +2,1063 @@
 
 > *Assessment objective 5: taxation of a business and its stakeholders.*
 
-::: {.callout-note title="Not yet written"}
-Outline below. This is the most underestimated chapter in the subject.
+## How to use this chapter
+
+::: {.callout-caution title="Learn the mechanics; the figures will be given to you"}
+The SQE1 assessment specification states that where candidates are required to apply the monetary value
+of any exemptions and reliefs, or particular rates or thresholds, **these will be provided**. What you
+must supply is everything else: which tax applies, to which person, on which receipt, in which order the
+computation runs, and which relief is available on the facts.
+
+Every figure in this chapter is given for **2026/27** (financial year 2026 for corporation tax) and is
+marked so you can check it. Learn the structure of each computation; treat the numbers as illustrations.
 :::
 
-## Planned contents
+## The map
 
-**Income tax** — chargeable persons; the basis of charge; computing taxable income; rates and
-allowances; anti-avoidance.
+Five taxes, and the first job in any question is to identify which are in play and on whom.
 
-**Capital gains tax** — chargeable persons and chargeable disposals; computing the gain; the
-principal reliefs, in particular business asset disposal relief, rollover relief and holdover
-relief; collection.
+| Tax | Charged on | Charged to |
+|---|---|---|
+| **Income tax** | Income profits | Individuals: sole traders, partners, LLP members, employees, shareholders on dividends, lenders on interest |
+| **National Insurance** | Earnings and trading profits | Employees, employers, the self-employed |
+| **Capital gains tax** | Capital gains | Individuals, partners, trustees, personal representatives |
+| **Corporation tax** | Income profits **and** chargeable gains | Companies (and other bodies corporate) |
+| **VAT** | Taxable supplies | The business, as a collector; the final consumer bears it |
+| **Inheritance tax** | Transfers of value | Individuals and their estates — examined here **only** for business property relief |
 
-**Corporation tax** — the basis of charge; computing taxable total profits as income profits plus
-chargeable gains; allowable deductions; the main reliefs and exemptions; distributions;
-anti-avoidance. *The September 2026 specification expands the wording here — expect it to be tested.*
+::: {.callout-important title="Exam trap"}
+**Transparency is the organising idea.** A sole trader, a partnership and an LLP are **transparent**:
+the business pays no tax on its profits; the individuals are charged to income tax on their shares as
+the profits arise, **whether or not drawn**. A company is **opaque**: it pays corporation tax on its own
+profits, and the shareholder is taxed separately, and only when money comes out.
 
-**Value added tax** — the scope of the charge; registration; output and input tax; taxable, exempt
-and zero-rated supplies; invoicing, returns and records.
+The two errors this generates are (i) charging corporation tax on an LLP's profits, and (ii) taxing a
+partner only on drawings. Both appear regularly.
+:::
 
-**Inheritance tax** — business property relief as it applies to business assets.
+## Income tax
 
-::: {.callout-caution title="Rates and thresholds"}
-Tax rates, bands and thresholds change annually and are the single most perishable content in this
-text. Every figure in this chapter must be checked against the position at your sitting's examinable
-law cut-off — see @sec-cutoff. Learn the *mechanics* from this text and the *numbers* from a current
-source.
+### Who and what
+
+Income tax is charged for a **tax year** running from **6 April to 5 April** on the income of
+individuals. The categories that matter here:
+
+| Source | Charging regime |
+|---|---|
+| **Trading profits** of a sole trader or partner | ITTOIA 2005 Part 2 |
+| **Employment income** (salary, bonus, benefits in kind) | ITEPA 2003 |
+| **Property income** | ITTOIA 2005 Part 3 |
+| **Savings income** — interest, including on a director's loan or a debenture | ITTOIA 2005 Part 4 |
+| **Dividend income** | ITTOIA 2005 Part 4 |
+
+A **partner** is charged on their share of the partnership's trading profit as computed for the firm as
+a whole; the firm files a partnership return, but the tax is the partner's. The same is true of an
+**LLP member**. A **debenture holder or lender** is charged on interest as savings income. A
+**shareholder** is charged on dividends as dividend income.
+
+### The computation
+
+Income tax is calculated in a fixed sequence (ITA 2007 s.23). Follow it; questions are built to punish
+short cuts.
+
+**Step 1 — Total income.** Add the income from every source, before any deductions personal to the
+taxpayer.
+
+**Step 2 — Deduct reliefs → net income.** Reliefs deductible from total income include trading loss
+relief under s.64 ITA 2007 and interest on qualifying loans (for example, a loan to buy an interest in a
+partnership or shares in a close company).
+
+**Step 3 — Deduct the personal allowance → taxable income.** The personal allowance is **£12,570**, and
+is reduced by **£1 for every £2** of adjusted net income above **£100,000**, so it is extinguished at
+**£125,140**. Deduct it from the income taxed at the highest rates first — in practice, allocate it
+against non-savings income.
+
+**Step 4 — Split the taxable income into three slices and tax them in this order:**
+
+1. **Non-savings income** (trading and employment income, property income)
+2. **Savings income** (interest)
+3. **Dividend income**
+
+Dividends always sit at the **top**, which is why they are taxed at the taxpayer's highest marginal
+rate.
+
+**Step 5 — Apply the rates.**
+
+::: {.callout-caution title="Rates and allowances — 2026/27"}
+| | Band of taxable income | Non-savings | Savings | Dividends |
+|---|---|---|---|---|
+| Basic rate | First **£37,700** | 20% | 20% | **10.75%** |
+| Higher rate | To **£125,140** | 40% | 40% | **35.75%** |
+| Additional rate | Above £125,140 | 45% | 45% | **39.35%** |
+
+- **Personal allowance**: £12,570, tapered above £100,000
+- **Dividend allowance**: **£500**, taxed at 0% but still using up band
+- **Personal savings allowance**: £1,000 (basic rate taxpayer), £500 (higher rate), **nil** (additional
+  rate)
+- **Starting rate for savings**: £5,000 at 0%, available only to the extent non-savings income does not
+  exceed the personal allowance plus £5,000
+
+The dividend rates rose by two percentage points at the basic and higher rates with effect from **6
+April 2026**. Scotland sets its own rates and bands for non-savings, non-dividend income.
+:::
+
+**Step 6 — Deduct tax reductions** (marriage allowance, EIS and VCT relief), then **Step 7 — deduct tax
+already paid** (PAYE, tax deducted at source) to reach the amount payable.
+
+::: {.callout-tip title="Worked example"}
+Nadia is the sole shareholder and director of a trading company. In 2026/27 she takes a salary of
+£20,000 and a dividend of £45,000. She has no other income.
+
+- **Total income** £65,000; no reliefs; **net income** £65,000.
+- **Personal allowance** £12,570, set against the salary. Taxable non-savings income: £20,000 − £12,570
+  = **£7,430**. Taxable dividend income: **£45,000**.
+- **Non-savings**: £7,430 at 20% = **£1,486**.
+- **Dividends**: the £500 dividend allowance is taxed at 0% but **uses up band**. The basic rate band is
+  £37,700, of which £7,430 is already used, leaving **£30,270**.
+  - £500 at 0% = **£0** (and it consumes £500 of the remaining band, leaving £29,770)
+  - £29,770 at 10.75% = **£3,200.28**
+  - The balance of the dividend, £45,000 − £500 − £29,770 = **£14,730**, falls into the higher rate band
+    at 35.75% = **£5,265.98**
+- **Total liability**: £1,486 + £3,200.28 + £5,265.98 = **£9,952.26**, less PAYE already deducted on the
+  salary.
+
+The two mechanical points being tested: dividends are taxed **last**, and the dividend allowance is a
+**nil-rate band**, not an exemption — it uses up the basic rate band as it goes.
+:::
+
+### Computing trading profits
+
+The accounting profit is not the taxable profit. Adjust it:
+
+**Add back** — amounts deducted in the accounts that are not deductible for tax:
+
+- **Capital expenditure** and **depreciation or amortisation** (capital allowances take their place)
+- Expenditure not incurred **wholly and exclusively** for the purposes of the trade — the private
+  proportion of a car, a home, or a phone
+- **Client entertaining** (staff entertaining within limits is allowable)
+- **Fines and penalties** for breaking the law
+- **General provisions** (specific bad debt provisions are allowable)
+- **Appropriations of profit**: the proprietor's own drawings or "salary", and interest on their capital
+
+**Deduct** — amounts not in the accounts, or income taxed elsewhere:
+
+- **Capital allowances**
+- Income assessable under another head (rental income, bank interest) — taken out here and taxed in its
+  own category
+
+::: {.callout-caution title="Two recent structural changes"}
+**The cash basis is now the default** for unincorporated businesses (from 2024/25). A sole trader or
+partnership computes profits on money in and money out unless it elects for the accruals basis; the
+former turnover restrictions have gone.
+
+**Basis periods were reformed** from 2024/25. Unincorporated businesses are taxed on the profits
+**arising in the tax year** itself, rather than on the profits of the accounting period ending in it.
+The old overlap profits were relieved in the 2023/24 transition year.
+:::
+
+### Capital allowances
+
+Capital expenditure is not deductible, but **capital allowances** give relief for plant and machinery:
+
+- **Annual investment allowance**: **100%** of qualifying expenditure in the period, up to **£1,000,000**
+  a year. Available to sole traders, partnerships and companies. Not available on cars.
+- **Writing down allowance**: on the balance of the **main pool**, **18%** a year on a reducing balance;
+  on the **special rate pool** (long-life assets, integral features, cars with higher emissions),
+  **6%**.
+- **Full expensing** — a **100%** first-year allowance on new and unused main-rate plant and machinery,
+  with a **50%** first-year allowance on new special rate expenditure. This is available to **companies
+  only**, and is one of the real tax advantages of incorporation.
+
+### Relieving trading losses
+
+For a **sole trader or partner**, a trading loss can be used in several ways, and the discrimination
+between them is examinable.
+
+| Relief | What it does |
+|---|---|
+| **s.64 ITA 2007** | Set the loss against **net income** of the **tax year of the loss**, the **preceding** tax year, or both |
+| **s.72 ITA 2007** | **Early trade losses**: a loss in any of the **first four** tax years may be carried back **three** years, against income of the earliest year first |
+| **s.83 ITA 2007** | Carry **forward** against future profits of the **same trade**, indefinitely |
+| **s.89 ITA 2007** | **Terminal loss relief**: a loss of the final 12 months of trading carried back **three** years, latest first |
+| **s.261B TCGA 1992** | Having made a s.64 claim, extend it against **chargeable gains** of the same year |
+| **s.86 ITA 2007** | On **incorporation**, carry the loss forward against income received **from the company** |
+
+Two constraints:
+
+- A **s.64 claim is all or nothing** for the year claimed: you cannot restrict it to preserve the
+  personal allowance, so a claim can waste the allowance.
+- A **cap** applies (s.24A ITA 2007) to the total of certain reliefs, including s.64, set against
+  general income: the greater of **£50,000** or **25% of adjusted total income**. It does not apply to
+  losses set against profits of the same trade.
+
+::: {.callout-important title="Exam trap"}
+Match the relief to what the question tells you about the client. A **new** business with a loss and a
+previous employment history is a s.72 question — carry back three years to recover PAYE. A business
+that has **just ceased** is a s.89 question. A client who wants cash **now** points to s.64 or s.72;
+a client with no other income points to s.83. If the question mentions a large capital gain in the same
+year, s.261B is in play.
+:::
+
+### Collection
+
+Income tax on employment income is collected through **PAYE**. Everything else goes through **self
+assessment**:
+
+- **Filing**: paper return by **31 October** following the end of the tax year; online by **31 January**.
+- **Balancing payment**: **31 January** following the end of the tax year.
+- **Payments on account**: two instalments, on **31 January** during the tax year and **31 July** after
+  it, each of **50%** of the previous year's liability. Not required where the previous year's liability
+  was under £1,000 or where 80% or more was collected at source.
+
+### Check yourself: income tax
+
+**Q1.** A partner in a trading partnership is allocated a 40% share of the firm's profit of £200,000 for
+the tax year. She draws only £50,000, leaving the balance in the firm.
+
+On what amount is she charged to income tax in respect of the partnership?
+
+A. £50,000, being the amount actually drawn.
+
+B. £80,000, being her allocated share, whether or not drawn.
+
+C. £200,000, because partners are jointly liable for the firm's tax.
+
+D. Nothing; the partnership pays income tax on the whole £200,000.
+
+E. £80,000, but only when the balance is eventually withdrawn.
+
+**Q2.** A taxpayer has employment income of £45,000, bank interest of £2,000 and dividends of £8,000.
+
+In what order is her income taxed, and where does the dividend income sit?
+
+A. Dividends first, then savings income, then non-savings income.
+
+B. Non-savings income first, then savings income, then dividends, which are treated as the top slice of
+income.
+
+C. All income is aggregated and taxed at a single rate.
+
+D. Savings income first, then dividends, then non-savings income.
+
+E. Dividends are taxed separately at a flat rate regardless of the taxpayer's other income.
+
+**Q3.** A client started trading as a sole trader eighteen months ago after twelve years in
+well-paid employment. Her first two tax years of trading have both produced substantial losses, and she
+has no other current income. She needs cash urgently.
+
+Which loss relief is most likely to help?
+
+A. Section 83 ITA 2007, carrying the losses forward against future trading profits.
+
+B. Section 89 ITA 2007, terminal loss relief.
+
+C. Section 72 ITA 2007, early trade losses relief, carrying the loss back three years against the
+income of the earliest year first, generating a repayment of tax paid under PAYE.
+
+D. Section 261B TCGA 1992, setting the loss against chargeable gains.
+
+E. No relief is available, because she has no income in the current year.
+
+**Q4.** Which of the following would be **added back** in computing a sole trader's taxable trading
+profit from the accounting profit?
+
+A. Rent paid on the trading premises.
+
+B. A specific provision for a bad debt owed by a named customer.
+
+C. The proprietor's own drawings recorded in the accounts as "salary".
+
+D. Employer's National Insurance contributions on staff wages.
+
+E. Interest paid on a business loan.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** A partnership is **transparent**. It pays no income tax itself; each partner is charged on
+their **allocated share** of the profit as computed for the firm, whether or not it is drawn. 40% ×
+£200,000 = £80,000.
+
+- **A** and **E** tax drawings, which is the company model, not the partnership model.
+- **C** confuses joint liability for the firm's **debts** with liability for tax, which is several.
+- **D** treats the partnership as an opaque entity.
+
+**Q2 — B.** The statutory order in ITA 2007 is non-savings income, then savings income, then dividend
+income. Dividends are the **top slice**, which is why an additional slice of dividend income is taxed at
+the taxpayer's highest marginal rate.
+
+- **A** and **D** reverse the order.
+- **C** ignores the three-slice structure and the different dividend rates.
+- **E** describes a flat charge that does not exist; dividend rates are banded.
+
+**Q3 — C.** Section 72 ITA 2007 applies to a loss made in any of the **first four** tax years of a new
+trade, and allows it to be carried back **three** years against the taxpayer's general income, taking
+the **earliest** year first. With twelve years of employment behind her, that generates a repayment of
+PAYE — which is exactly the cash she needs.
+
+- **A** gives relief only in the future, and she has no profits yet.
+- **B** applies only on **cessation**.
+- **D** requires chargeable gains, which the facts do not give her, and requires a s.64 claim first.
+- **E** ignores the carry-back reliefs entirely.
+
+**Q4 — C.** Drawings are an **appropriation of profit**, not an expense of the trade, however they are
+labelled in the accounts. A sole trader cannot be employed by their own business, so there is no salary
+to deduct. All the other items are incurred wholly and exclusively for the purposes of the trade and are
+deductible; note in particular that a **specific** bad debt provision is allowable, whereas a general
+provision is not.
+:::
+
+## National Insurance contributions
+
+NICs are a separate charge with their own thresholds, and they are the main reason the salary/dividend
+question has an answer.
+
+::: {.callout-caution title="Rates — 2026/27"}
+| Class | Payer | Rate |
+|---|---|---|
+| **Class 1 primary** | Employee | **8%** between the primary threshold and the upper earnings limit; **2%** above |
+| **Class 1 secondary** | **Employer** | **15%** on earnings above the secondary threshold |
+| **Class 1A / 1B** | Employer | **15%** on most benefits in kind and PAYE settlement agreements |
+| **Class 2** | Self-employed | Effectively **abolished**: no liability where profits are at or above the small profits threshold, and a National Insurance credit is given instead. Voluntary contributions remain available at a small weekly rate for those below it |
+| **Class 4** | Self-employed | **6%** on profits between the lower and upper profits limits; **2%** above |
+| **Class 3** | Anyone | Voluntary, to fill gaps in a contribution record |
+
+The **employment allowance** (£10,500) reduces an eligible employer's secondary Class 1 bill. It cannot
+be claimed by a company whose only employee is a **sole director**.
+:::
+
+Three consequences worth holding on to:
+
+- **Dividends bear no National Insurance at all** — not employee's, not employer's. That is the whole
+  arithmetic of the owner-manager remuneration question.
+- **Employer's NIC is a real cost of paying salary**, and it is itself deductible in computing the
+  company's taxable profit.
+- The **self-employed pay less** than the combined employee-plus-employer burden on the same money,
+  which is why the employment status question matters to HMRC.
+
+## Capital gains tax
+
+### The four questions
+
+A CGT charge requires a **chargeable person** making a **chargeable disposal** of a **chargeable asset**
+producing a **gain**.
+
+**Chargeable person**: an individual, a partner (each partner is charged on their share of a partnership
+asset), a trustee, a personal representative. **Not** a company — a company's gains fall within
+corporation tax.
+
+**Chargeable disposal**: a sale, a **gift**, an exchange, or the loss or destruction of an asset. Note
+two things: a **gift is a disposal** and gives rise to a gain computed on market value; and **death is
+not a disposal** — the personal representatives take the assets at probate value, so the death uplift
+wipes out the accrued gain.
+
+**Chargeable asset**: everything except the exempt list — the taxpayer's main residence (within private
+residence relief), cars, gilts and qualifying corporate bonds, ISAs, assets held in a pension, chattels
+sold for £6,000 or less, and wasting chattels.
+
+### The computation
+
+```
+    Consideration (or market value, if a gift or a disposal to a connected person)
+  − Incidental costs of disposal (legal fees, agent's commission, advertising)
+  − Acquisition cost (or probate/market value)
+  − Incidental costs of acquisition
+  − Enhancement expenditure reflected in the state of the asset at disposal
+  = Chargeable gain
+```
+
+Then, across all disposals in the tax year:
+
+```
+    Total chargeable gains
+  − Current year allowable losses (compulsory, in full)
+  − Losses brought forward (only to the extent they reduce gains to the annual exempt amount)
+  − Annual exempt amount
+  = Taxable gains
+```
+
+::: {.callout-caution title="Rates and allowances — 2026/27"}
+- **Annual exempt amount**: **£3,000**
+- **Main rates**: **18%** to the extent gains fall within the taxpayer's unused **basic rate band**;
+  **24%** above it. The taxpayer's taxable income is stacked first, and gains sit on top.
+- **Business asset disposal relief**: **18%** on qualifying gains, subject to a **£1 million lifetime
+  limit**. (The rate was 10% until 5 April 2025, 14% for 2025/26, and 18% from 6 April 2026.)
+- **Investors' relief**: **18%**, £1 million lifetime limit.
+:::
+
+::: {.callout-important title="Exam trap"}
+The stacking order decides the rate. **Taxable income first, gains on top.** A taxpayer with £30,000 of
+taxable income and a £40,000 gain has £7,700 of basic rate band left (£37,700 − £30,000), so £7,700 of
+the gain is taxed at 18% and the rest at 24%. Candidates who tax the whole gain at one rate lose the
+mark.
+
+The second trap is the **order of deductions**: current year losses are set off **in full and
+compulsorily**, even if that wastes the annual exempt amount; brought-forward losses are used only down
+to the annual exempt amount, preserving it.
+:::
+
+### The business reliefs
+
+**Business asset disposal relief.** A reduced rate on qualifying gains up to a £1 million lifetime
+limit. The qualifying period is **two years** ending with the disposal. It applies to:
+
+- the disposal of the whole or part of a **business** carried on by the individual, alone or in
+  partnership (a disposal of individual assets used in a continuing business does **not** qualify);
+- the disposal of **assets of a business that has ceased**, provided the disposal is within **three
+  years** of cessation;
+- the disposal of **shares in a personal trading company**, where throughout the two years the
+  individual was an **officer or employee** of the company and held at least **5%** of the ordinary
+  share capital and voting rights, plus (broadly) an entitlement to **5%** of the profits available for
+  distribution and of assets on a winding up, or to 5% of the proceeds on a sale of the whole of the
+  ordinary share capital;
+- **associated disposals** of assets used in the business, alongside a qualifying disposal of the
+  business or shares, restricted where rent has been charged.
+
+**Rollover relief on the replacement of business assets** (s.152 TCGA 1992). Where the proceeds of a
+qualifying business asset are reinvested in another qualifying asset within the period beginning **one
+year before** and ending **three years after** the disposal, the gain is **rolled over** — deducted from
+the base cost of the new asset — so tax is deferred rather than saved. Qualifying assets include land
+and buildings occupied and used for the trade, and fixed plant and machinery (and goodwill, for an
+unincorporated business). Only the amount **reinvested** attracts relief: proceeds retained are charged.
+
+**Hold-over relief on gifts of business assets** (s.165 TCGA 1992). On a **gift** (or a sale at
+undervalue) of qualifying business assets, the donor and donee may **jointly elect** for the gain to be
+held over: the donor pays nothing, and the donee's base cost is reduced by the held-over gain, so the
+tax comes home when the donee sells. Qualifying assets include assets used in the donor's trade and
+shares in an unquoted trading company.
+
+**Incorporation relief** (s.162 TCGA 1992). Where a person transfers a business **as a going concern**,
+with **all its assets** (cash may be excluded), to a company **wholly or partly in exchange for shares**,
+the gain on the transferred assets is **rolled into the base cost of the shares**. The relief is
+**automatic** unless disapplied by election under s.162A, and is **restricted proportionately** where
+part of the consideration is not shares.
+
+::: {.callout-important title="Exam trap"}
+Distinguish the three deferral reliefs by the transaction:
+
+| Facts | Relief |
+|---|---|
+| Sold a business asset and bought a replacement | **Rollover** (s.152) |
+| Gave away a business asset or shares | **Hold-over** (s.165), by joint election |
+| Transferred the whole business to a company for shares | **Incorporation relief** (s.162), automatic |
+
+And distinguish all three from **business asset disposal relief**, which does not defer anything — it
+reduces the rate on a gain that is charged now.
+:::
+
+**Other points frequently tested:**
+
+- **Spouses and civil partners**: transfers between them living together are **no gain, no loss** — the
+  transferee takes the transferor's base cost. This is the standard planning device for using two annual
+  exempt amounts and two basic rate bands.
+- **Connected persons** (relatives in the wider sense, partners, controlled companies): the disposal is
+  deemed to be at **market value**, and a loss on a disposal to a connected person can only be set
+  against gains on later disposals to the **same** person.
+- **Payment**: **31 January** following the end of the tax year, with the return. A disposal of UK
+  **residential property** giving rise to a liability must be reported and the tax paid within **60
+  days**.
+
+### Check yourself: capital gains tax
+
+**Q1.** A taxpayer has taxable income (after the personal allowance) of £30,000. In the same tax year she
+realises a chargeable gain of £43,000 on the sale of a buy-to-let flat. She has no losses and the annual
+exempt amount is £3,000. The basic rate band is £37,700, of which her income has used £30,000.
+
+At what rate or rates is the gain taxed?
+
+A. The whole gain at 24%.
+
+B. The whole gain at 18%.
+
+C. £7,700 at 18% and the balance at 24%.
+
+D. The annual exempt amount covers £3,000 of the gain; of the remainder, £7,700 is taxed at 18% and the
+balance at 24%.
+
+E. The annual exempt amount covers £3,000 of the gain and the balance is taxed at 24%.
+
+**Q2.** A client has run a printing business as a sole trader for eleven years. She transfers the entire
+business, including all its assets other than cash, to a newly formed company in exchange for the whole
+of the issued share capital. The assets stand at a substantial gain.
+
+Which relief applies?
+
+A. Business asset disposal relief, charging the gain at the reduced rate.
+
+B. Rollover relief on the replacement of business assets.
+
+C. Incorporation relief under s.162 TCGA 1992: the gain is rolled into the base cost of the shares, and
+the relief applies automatically unless disapplied by election.
+
+D. Hold-over relief under s.165, provided the client and the company jointly elect.
+
+E. No relief; the transfer is a disposal at market value to a connected person.
+
+**Q3.** A father gives his adult son shares in the family's unquoted trading company. The shares stand at
+a gain of £250,000. The father wishes to pay no capital gains tax now.
+
+Which of the following is correct?
+
+A. No CGT arises, because a gift is not a disposal.
+
+B. No CGT arises, because transfers between family members are treated as no gain, no loss.
+
+C. CGT arises on a deemed disposal at market value, but father and son may **jointly elect** to hold the
+gain over under s.165, so that the son's base cost is reduced by the held-over gain.
+
+D. CGT arises and cannot be deferred; only business asset disposal relief is available.
+
+E. CGT arises but is automatically deferred until the son disposes of the shares.
+
+**Q4.** A client sells a warehouse used in her trade for £900,000, realising a gain of £300,000. Fourteen
+months later she buys a replacement warehouse for £700,000, also for use in the trade, and retains the
+remaining £200,000.
+
+Which of the following is correct?
+
+A. The whole gain may be rolled over, because a replacement asset was acquired within three years.
+
+B. No relief is available, because the replacement cost less than the proceeds of the original.
+
+C. Rollover relief is available on the amount reinvested; the £200,000 of proceeds retained is
+immediately chargeable, so £200,000 of the gain crystallises and £100,000 is rolled over.
+
+D. Relief is available only if the replacement was acquired within twelve months of the disposal.
+
+E. Hold-over relief under s.165 applies, because both assets were used in the trade.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — D.** Deduct the annual exempt amount from the gain first: £43,000 − £3,000 = £40,000 taxable.
+Then stack: taxable income of £30,000 uses part of the £37,700 basic rate band, leaving **£7,700**.
+£7,700 of the gain is taxed at **18%**; the remaining £32,300 at **24%**.
+
+- **A** and **B** apply a single rate.
+- **C** omits the annual exempt amount.
+- **E** wastes the unused basic rate band.
+
+**Q2 — C.** Section 162 TCGA 1992: the transfer of a business as a **going concern**, with **all its
+assets** (cash may be excluded), to a company **wholly or partly in exchange for shares**, rolls the gain
+into the base cost of the shares. The relief applies **automatically** unless the taxpayer elects under
+s.162A to disapply it.
+
+- **A** would charge the gain now at the BADR rate; incorporation relief defers it entirely, and the
+  question is which relief **applies**, not which could be claimed.
+- **B** requires the acquisition of a replacement asset, not the transfer of a business.
+- **D** applies to gifts and requires a joint election; this is a transfer for consideration in shares.
+- **E** ignores the relief.
+
+**Q3 — C.** A gift is a chargeable disposal, deemed to be at market value because father and son are
+connected. Section 165 permits a **joint election** to hold over the gain on a gift of qualifying
+business assets, including shares in an unquoted trading company. The son takes the shares with a base
+cost reduced by the held-over gain.
+
+- **A** is wrong: a gift is a disposal.
+- **B** applies the spouse rule to a parent and child.
+- **D** overlooks s.165.
+- **E** is the near-miss: hold-over is **not automatic** — it requires a joint claim by both parties.
+
+**Q4 — C.** Rollover relief under s.152 requires reinvestment in the window from **one year before** to
+**three years after** the disposal, which fourteen months satisfies. But relief extends only to the
+amount **reinvested**: where proceeds are retained, the gain crystallises pound for pound with the
+retained proceeds. £200,000 retained means £200,000 of the £300,000 gain is chargeable now and £100,000
+is rolled over into the base cost of the new warehouse.
+
+- **A** ignores the retained proceeds.
+- **B** treats partial reinvestment as fatal.
+- **D** misstates the window.
+- **E** applies the wrong relief; s.165 is for gifts.
+
+:::
+
+## Corporation tax
+
+### The charge
+
+Corporation tax is charged on the **taxable total profits** of a company for an **accounting period**,
+which cannot exceed 12 months. Unlike an individual, a company pays a single tax on **both** its income
+profits and its capital gains.
+
+```
+    Trading income (adjusted profits, after capital allowances)
+  + Property income
+  + Non-trading loan relationship profits (interest receivable)
+  + Chargeable gains
+  = Total profits
+  − Reliefs and deductions (including loss relief and qualifying charitable donations)
+  = Taxable total profits (TTP)
+```
+
+Adjustments to the accounting profit follow the same logic as for a sole trader — add back depreciation,
+client entertaining, fines and capital expenditure; deduct capital allowances. **Two differences
+matter**: a company **can** deduct directors' and employees' salaries and the employer's NICs on them
+(there is no appropriation problem, because the company is a separate person), and a company **cannot**
+deduct the dividends it pays.
+
+### Chargeable gains in a company
+
+Computed broadly as for CGT, but with three differences:
+
+- **No annual exempt amount.**
+- **Indexation allowance** is available for the period of ownership up to **December 2017**, when it was
+  frozen. It can reduce a gain to nil but cannot create or increase a loss.
+- The **substantial shareholding exemption** exempts gains on the disposal of shares where a trading
+  company has held at least 10% of another trading company for a continuous 12-month period within the
+  preceding six years.
+
+The rate is the corporation tax rate — there is no separate capital gains rate for companies.
+
+### Rates
+
+::: {.callout-caution title="Rates — financial year 2026"}
+| Augmented profits | Rate |
+|---|---|
+| Up to **£50,000** | **19%** (small profits rate) |
+| £50,000 to £250,000 | 25% with **marginal relief**, giving an effective rate rising from 19% to 25% — and a **marginal rate of 26.5%** on each extra pound in the band |
+| **£250,000** and above | **25%** (main rate) |
+
+The marginal relief fraction is **3/200**. Both limits are divided by **one plus the number of associated
+companies**, and are reduced proportionately for an accounting period of less than 12 months.
+:::
+
+Marginal relief is computed as:
+
+```
+    Standard fraction × (Upper limit − Augmented profits) × (TTP ÷ Augmented profits)
+```
+
+and is deducted from the tax charged at the main rate.
+
+::: {.callout-tip title="Worked example"}
+A company with no associated companies has taxable total profits of £100,000 for the year ended 31 March
+2027, and no franked investment income, so augmented profits are also £100,000.
+
+- Tax at the main rate: £100,000 × 25% = **£25,000**
+- Marginal relief: 3/200 × (£250,000 − £100,000) × (£100,000 ÷ £100,000) = 3/200 × £150,000 =
+  **£2,250**
+- Corporation tax payable: £25,000 − £2,250 = **£22,750**, an effective rate of 22.75%
+
+Note the practical point that the effective rate is not the marginal rate. If the company earned one
+more pound of profit, that pound would bear tax at **26.5%** — higher than the main rate itself, which is
+why companies near the £250,000 threshold receive so much advice about timing.
+:::
+
+### Relieving trading losses
+
+| Relief | What it does |
+|---|---|
+| **s.37 CTA 2010** | Set the loss against **total profits** of the **same** accounting period, and/or carry it **back 12 months** against total profits |
+| **s.45A CTA 2010** | Carry **forward** against **total profits** of later periods (for losses arising on or after 1 April 2017), and surrender within a group |
+| **s.45 CTA 2010** | Losses arising before 1 April 2017 carry forward only against profits of the **same trade** |
+| Terminal loss relief | On cessation, carry back **three** years |
+| **Group relief** | Surrender current-period losses to a **75% group** company |
+
+Carried-forward losses are subject to a **restriction**: a company (or group) may use its **£5 million
+deductions allowance** in full, but beyond that may relieve only **50%** of remaining profits with
+carried-forward losses.
+
+### Payment and collection
+
+- **Payment**: **9 months and 1 day** after the end of the accounting period, for a company that is not
+  "large".
+- **Large companies** (augmented profits above £1.5 million) pay by **quarterly instalments**; **very
+  large** companies (above £20 million) pay on an accelerated instalment timetable. The £1.5 million and
+  £20 million limits are also divided among associated companies.
+- **Return**: form CT600, within **12 months** of the end of the accounting period. Note that the filing
+  deadline is later than the payment deadline, which is counter-intuitive and examinable.
+- A company must **notify HMRC** that it is chargeable within **three months** of starting business
+  activity.
+
+### Distributions and close companies
+
+**Dividends paid** by a company are a distribution of taxed profit and are **not deductible**. Dividends
+**received** by a UK company from another company are, in most cases, **exempt** from corporation tax,
+which prevents the same profit being taxed repeatedly as it moves up a group.
+
+A **close company** is one under the control of five or fewer participators, or of participators who are
+directors. Almost every owner-managed company is close. Two anti-avoidance charges follow, and the first
+is regularly examined because it catches the director's loan account:
+
+- **Section 455 CTA 2010**: where a close company makes a **loan to a participator**, the company must
+  pay a charge on the amount of the loan at the **dividend upper rate**, due **9 months and 1 day**
+  after the end of the accounting period. It is **refundable** when the loan is repaid, released or
+  written off. The rate is **35.75%** for loans made on or after **6 April 2026** and 33.75% for loans
+  made before then — it tracks the dividend upper rate, so it moved when that rate moved. This is a
+  charge on the **company**, and it sits alongside — not instead of — the s.197 CA 2006 requirement for
+  members' approval and any benefit-in-kind charge on the director.
+- **Section 464A**: a similar charge where a close company confers a benefit on a participator otherwise
+  than by way of a loan.
+
+### Anti-avoidance in outline
+
+The specification asks for the **scope** of anti-avoidance provisions, not their detail:
+
+- The **General Anti-Abuse Rule** (Finance Act 2013) counteracts tax advantages arising from
+  **abusive** arrangements — those that cannot reasonably be regarded as a reasonable course of action —
+  applying a "double reasonableness" test, with an independent GAAR Advisory Panel.
+- **Transfer pricing** requires transactions between connected parties to be priced on **arm's length**
+  terms.
+- **DOTAS** requires the **disclosure** of notifiable tax avoidance schemes, giving each a scheme
+  reference number that users must report.
+- The **corporate interest restriction** limits the deductibility of interest for large groups.
+- **Transactions in securities** rules counteract arrangements designed to convert what would be income
+  into capital.
+- The distinction that underlies all of it: **tax avoidance** is lawful but may be counteracted; **tax
+  evasion** is criminal, and a solicitor who assists it commits an offence and breaches the SRA
+  Principles.
+
+## Value added tax
+
+### The scope of the charge
+
+VAT is charged on any **supply of goods or services** made in the **United Kingdom**, where it is a
+**taxable supply** made by a **taxable person** in the course or furtherance of any **business** carried
+on by them (s.4 VATA 1994). All four elements must be present.
+
+VAT is a tax on **consumption**, collected in stages. A registered business charges **output tax** on its
+supplies, recovers **input tax** on its purchases, and accounts to HMRC for the difference. The burden
+falls on the final, unregistered consumer.
+
+### Rates and categories
+
+| Category | Rate | Input tax recoverable? |
+|---|---|---|
+| **Standard-rated** | **20%** | Yes |
+| **Reduced-rated** — domestic fuel and power, children's car seats, certain energy-saving materials | **5%** | Yes |
+| **Zero-rated** — most food, books and newspapers, children's clothing, new residential construction, public transport, most drugs and medicines on prescription | **0%** | **Yes** |
+| **Exempt** — insurance, most financial services, education, health and welfare, postal services, most supplies of land | No VAT charged | **No** |
+| **Outside the scope** | No VAT | No |
+
+::: {.callout-important title="Exam trap"}
+**Zero-rated is not the same as exempt**, and the difference is worth real money. A business making
+zero-rated supplies charges no output tax **but recovers its input tax in full** — so it is typically in
+a repayment position with HMRC. A business making exempt supplies charges no output tax and **cannot
+recover its input tax**, which becomes an irrecoverable cost. This is the single most reliable VAT
+question in the subject.
+:::
+
+### Registration
+
+::: {.callout-caution title="Thresholds — 2026/27"}
+- **Registration threshold**: taxable turnover of **£90,000**
+- **Deregistration threshold**: **£88,000**
+
+Both have been at these levels since 1 April 2024.
+:::
+
+Registration is compulsory under either of two tests:
+
+- **The historic test.** Taxable turnover in the **preceding 12 months** (a rolling period, not a
+  financial year) has exceeded the threshold. The business must **notify HMRC within 30 days of the end
+  of the month** in which the threshold was exceeded, and is registered from the **first day of the
+  second month** after that.
+- **The future test.** There are reasonable grounds to believe that taxable turnover **in the next 30
+  days alone** will exceed the threshold. The business must notify **by the end of that 30-day period**,
+  and is registered from the **beginning** of it.
+
+**Exception**: HMRC may grant an exception from registration under the historic test where the business
+can satisfy them that turnover in the following 12 months will not exceed the **deregistration**
+threshold.
+
+**Voluntary registration** is available below the threshold, and is worth taking where the business
+makes zero-rated supplies or sells mainly to other registered businesses, because it unlocks input tax
+recovery.
+
+**Deregistration** may be requested where turnover falls below the deregistration threshold, and is
+compulsory where the business ceases to make taxable supplies.
+
+::: {.callout-important title="Exam trap"}
+The two tests use different periods and produce different registration dates. The historic test looks
+**back** over 12 months and gives a start date roughly six weeks later; the future test looks **forward
+30 days only** and registers the business from the **start** of that period, with no grace. A scenario in
+which a business wins a single large contract that will take it over the threshold within a month is a
+**future test** question, and the answer is immediate registration.
+:::
+
+### Input tax, tax points, invoices and returns
+
+**Blocked input tax** cannot be recovered even by a fully taxable business: **business entertainment**,
+**cars** (unless used exclusively for business), and anything not used for business purposes. Where a
+business makes both taxable and exempt supplies it is **partially exempt** and must apportion.
+
+**The tax point** determines the return period in which VAT is accounted for:
+
+- The **basic tax point** is the date the goods are **removed or made available**, or the date the
+  services are **completed**.
+- An **actual tax point** overrides it if a **VAT invoice is issued or payment is received before** the
+  basic tax point (that earlier date applies), or if a VAT invoice is issued **within 14 days after** the
+  basic tax point (the invoice date applies).
+
+**VAT invoices** must be issued to other registered persons within **30 days** of the supply, and must
+contain the prescribed particulars — an identifying number, the supplier's name, address and VAT
+registration number, the tax point, the customer's name and address, a description of the goods or
+services, the amount excluding VAT, the rate, and the VAT charged.
+
+**Returns and records**: returns are normally **quarterly**, filed and paid within **one month and seven
+days** of the end of the period. **Making Tax Digital** requires digital record-keeping and submission
+through compatible software. Records must be kept for **six years**. Late filing is dealt with by a
+**points-based** penalty regime, and late payment by escalating penalties and interest.
+
+## Inheritance tax: business property relief
+
+The specification limits IHT in Business Law and Practice to **business property relief**. What you need
+around it is minimal: IHT is charged at **40%** on the death estate above the **nil rate band**
+(£325,000), and at **20%** on lifetime chargeable transfers above it.
+
+**Business property relief** (IHTA 1984 ss.103–114) reduces the **value transferred** by a transfer of
+value attributable to **relevant business property**. It applies both to lifetime transfers and on death,
+and it is applied **before** the nil rate band.
+
+### What qualifies, and at what rate
+
+| Relevant business property | Rate (historic position) |
+|---|---|
+| A **business or an interest in a business** — a sole trade, or a partnership or LLP share | **100%** |
+| **Unquoted shares** in a company | **100%** |
+| **Quoted shares or securities** which gave the transferor **control** of the company | **50%** |
+| **Land, buildings, plant or machinery** owned personally and used in a business carried on by a company the transferor **controlled**, or by a **partnership** of which they were a partner | **50%** |
+| Such assets held in a **trust** in which the transferor had an interest in possession and used in their business | **50%** |
+
+### The conditions
+
+- **Two years' ownership** (s.106). The property must have been owned by the transferor throughout the
+  two years immediately before the transfer. Section 107 allows **replacement** property to count, and
+  s.108/109 aggregate periods on **succession** — notably, property inherited from a spouse counts from
+  the spouse's acquisition, and the two-year test is dispensed with where the transferor inherited it on
+  the spouse's death.
+- **Not an excluded business** (s.105(3)). No relief where the business consists **wholly or mainly** of
+  **dealing in securities, stocks or shares, land or buildings, or making or holding investments**. This
+  is the provision that denies relief to a property investment business, while a property **development**
+  or **trading** business qualifies. The test is applied "in the round" to the business as a whole.
+- **No excepted assets** (s.112). Relief is denied for the value attributable to assets that were
+  neither used wholly or mainly for the business throughout the last two years nor required for its
+  future use — the classic example being a large cash balance far in excess of the business's needs.
+- **No binding contract for sale** (s.113). If the property is subject to a binding contract for sale at
+  the date of transfer, it is not relevant business property. This is why partnership and shareholders'
+  agreements use **cross-option agreements** (reciprocal put and call options, exercisable on death)
+  rather than automatic buy-and-sell provisions: an option is not a binding contract for sale, so relief
+  is preserved.
+
+::: {.callout-caution title="A major change takes effect on 6 April 2026 — verify against your cut-off"}
+From **6 April 2026** the 100% rate is **capped**. An **allowance** applies to the **combined** value of
+agricultural property qualifying for agricultural property relief and business property qualifying for
+BPR: value within the allowance attracts **100%** relief, and value **above** it attracts **50%**.
+
+The allowance was announced at the Autumn Budget 2024 at £1 million, and was **increased to £2.5
+million** on 23 December 2025. It is **transferable between spouses and civil partners**.
+
+Separately, shares **designated as "not listed"** on the markets of a recognised stock exchange — AIM
+shares being the obvious case — move to a flat **50%** relief, and the allowance is **not** available
+against them.
+
+This is recent, and the figure moved twice. Check the position at your sitting's cut-off date before
+relying on it, and check whether the pre-6 April 2026 position (uncapped 100% relief) is the examinable
+one for you.
+:::
+
+::: {.callout-important title="Exam trap"}
+The two BPR traps that appear most often are the **investment business** exclusion in s.105(3) — a
+company whose business is letting property gets **no** relief, however substantial — and the **binding
+contract for sale** point in s.113, which is set up by telling you the partnership agreement requires the
+surviving partners to buy the deceased's share.
+:::
+
+## Putting it together: the structuring questions
+
+### Salary or dividend?
+
+For an owner-manager, the arithmetic is driven by four facts:
+
+- **Salary is deductible** in computing the company's corporation tax; a **dividend is not**.
+- **Salary attracts National Insurance** — the employee's Class 1 and, more expensively, the employer's
+  Class 1 secondary at 15%. A **dividend attracts none**.
+- A dividend can be paid **only out of distributable profits** (s.830 CA 2006 — see @sec-blp-finance).
+  Paying one without them is unlawful, whatever its tax attractions.
+- Dividend income is taxed at **lower rates** than earned income, but out of **already-taxed** profits.
+
+The usual advice is a modest salary — enough to preserve a National Insurance record and to use
+allowances — with the balance as dividends, subject to there being distributable profits and to the
+company's needs. The rise in dividend rates from 6 April 2026 has narrowed the advantage.
+
+### Incorporating an existing business
+
+The tax consequences of transferring a sole trade or partnership to a company:
+
+- **CGT**: a disposal of the business assets at market value, with **incorporation relief** (s.162)
+  available automatically where the whole business goes across as a going concern for shares — or
+  **hold-over relief** (s.165) as an alternative on a transfer of assets. Business asset disposal relief
+  may be preferable where the client wants to crystallise the gain at the reduced rate.
+- **Capital allowances**: balancing charges or allowances arise unless the assets are transferred at tax
+  written-down value under a joint election.
+- **VAT**: a **transfer of a going concern** is outside the scope of VAT provided the conditions are met,
+  including that the transferee is or becomes registered.
+- **Stamp duty land tax** on any land transferred, and **stamp duty** on any subsequent transfer of the
+  shares.
+- **Losses**: unrelieved trading losses may be carried forward under s.86 ITA 2007 against income the
+  individual receives **from the company**.
+
+::: {.callout-important title="Exam trap"}
+Incorporation relief is **automatic** where its conditions are met — the taxpayer does not claim it,
+they elect **out** of it under s.162A. That is the opposite of hold-over relief under s.165, which
+requires a **joint claim**. Questions test the difference by asking what the client must **do**.
+:::
+
+## The solicitor's position
+
+**Tax evasion.** A solicitor who knowingly assists a client to evade tax commits a criminal offence and
+breaches the SRA Principles. The distinction from lawful avoidance is one of legality, not of morality:
+misrepresenting facts to HMRC, concealing income, or backdating documents is evasion.
+
+**Failure to prevent the facilitation of tax evasion.** The Criminal Finances Act 2017 creates corporate
+offences for a body (including a law firm) that fails to prevent an associated person from criminally
+facilitating tax evasion. The defence is having reasonable prevention procedures.
+
+**Competence.** A solicitor must only act within their competence. Business tax is a specialist field,
+and the right answer in many scenarios is that the solicitor should advise the client to obtain
+specialist tax advice rather than opine on a computation themselves.
+
+**Reporting.** Suspicion that funds represent the proceeds of crime — and tax evaded is a benefit from
+criminal conduct — engages the money laundering reporting obligations, and the solicitor must not tip
+the client off.
+
+## Chapter review
+
+**Q1.** A UK trading company has taxable total profits of £180,000 for the year ended 31 March 2027. It
+has no associated companies and no franked investment income.
+
+Which of the following correctly describes the corporation tax position?
+
+A. The whole profit is taxed at 19%, because it is below £250,000.
+
+B. The whole profit is taxed at 25%, with no relief.
+
+C. The profit is taxed at the main rate of 25% with marginal relief, giving an effective rate between
+19% and 25%; each additional pound of profit in this band bears tax at a marginal rate of 26.5%.
+
+D. The first £50,000 is taxed at 19% and the balance at 25%, as separate slices.
+
+E. The company may choose between the small profits rate and the main rate.
+
+**Q2.** A business supplies children's clothing, which is zero-rated. It incurs substantial input VAT on
+its purchases and overheads.
+
+Which of the following is correct?
+
+A. It cannot register for VAT, because it makes no standard-rated supplies.
+
+B. It charges no output VAT and cannot recover its input VAT, which is an irrecoverable cost.
+
+C. It charges output VAT at 0% and may recover its input VAT in full, so it will usually be in a
+repayment position with HMRC.
+
+D. It charges output VAT at 5% and may recover its input VAT in full.
+
+E. Its supplies are exempt, so registration is not available.
+
+**Q3.** A client owns 100% of the shares in an unquoted company whose business consists wholly of buying
+residential property, letting it to tenants and holding it for capital growth. He has owned the shares
+for fifteen years. He dies, leaving the shares to his son.
+
+What is the position on business property relief?
+
+A. 100% relief, because the shares are unquoted and were owned for more than two years.
+
+B. 50% relief, because the shares gave him control.
+
+C. No relief, because the business consists wholly or mainly of making or holding investments and is
+excluded by s.105(3) IHTA 1984.
+
+D. 100% relief, but only up to the available allowance, with 50% above it.
+
+E. Relief is available only if the son continues the business for two years.
+
+**Q4.** A close company lends £60,000 to its sole shareholder-director. The loan is outstanding at the
+end of the accounting period and remains outstanding nine months and one day afterwards.
+
+Which of the following is correct?
+
+A. There is no tax consequence, because a director's loan is a balance sheet item.
+
+B. The company must pay a charge under s.455 CTA 2010 on the amount of the loan at the dividend upper
+rate, due nine months and one day after the end of the accounting period; the charge is repayable when
+the loan is repaid, released or written off.
+
+C. The shareholder must pay income tax on the loan as if it were a dividend.
+
+D. The company must pay corporation tax on the loan at the main rate of 25%.
+
+E. The loan is void, because a company may not lend to its own shareholder.
+
+**Q5.** A sole trader's business is expanding fast. Her taxable turnover for the twelve months to 31 May
+2027 was £71,000. On 3 June 2027 she signs a contract to deliver £95,000 of services within the following
+four weeks.
+
+What must she do?
+
+A. Nothing yet, because her turnover in the preceding 12 months has not exceeded £90,000.
+
+B. Notify HMRC by 30 June 2027, because she has reasonable grounds to believe her taxable turnover in
+the next 30 days alone will exceed £90,000; she will be registered from the beginning of that 30-day
+period.
+
+C. Notify HMRC within 30 days of the end of June 2027, and will be registered from 1 August 2027.
+
+D. Register only once her rolling 12-month turnover exceeds £90,000.
+
+E. Apply for an exception from registration, because the increase is a one-off.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** Augmented profits of £180,000 fall between the lower limit of £50,000 and the upper limit of
+£250,000, so tax is charged at the main rate of 25% and reduced by marginal relief of 3/200 × (£250,000 −
+£180,000) × (£180,000 ÷ £180,000) = £1,050. The result is an effective rate between 19% and 25%, and the
+marginal rate within the band is **26.5%**.
+
+- **A** applies the small profits rate above its limit.
+- **B** ignores marginal relief.
+- **D** describes a slice system that corporation tax does not use — this is the most common error, and
+  it is borrowed from income tax.
+- **E** invents an election.
+
+**Q2 — C.** Zero-rated supplies are **taxable** supplies charged at 0%. The business charges no VAT to
+its customers but recovers input tax **in full**, and therefore usually reclaims from HMRC. It counts
+towards the registration threshold and may register voluntarily below it.
+
+- **A** and **E** confuse zero-rated with exempt.
+- **B** describes the **exempt** position.
+- **D** applies the reduced rate.
+
+**Q3 — C.** Section 105(3) IHTA 1984 excludes from relevant business property a business consisting
+wholly or mainly of dealing in securities, stocks or shares, land or buildings, or **making or holding
+investments**. A residential property letting business is the paradigm case. No BPR is available,
+however long the shares have been held and however substantial the business.
+
+- **A** applies the general rule for unquoted shares without checking the exclusion.
+- **B** applies the 50% rate for **quoted** controlling shareholdings.
+- **D** applies the post-6 April 2026 allowance, which is irrelevant where the property is not relevant
+  business property at all.
+- **E** invents a continuation condition.
+
+**Q4 — B.** Section 455 CTA 2010. A loan by a close company to a participator triggers a charge on the
+**company** at the **dividend upper rate** — 35.75% for loans made on or after 6 April 2026, and 33.75%
+for loans made before that date — payable at the same time as the corporation tax for the period, and
+**refundable**
+when the loan is repaid, released or written off. Note that the s.197 CA 2006 requirement for members'
+approval applies independently, and there may also be a benefit-in-kind charge on the director if the
+loan is interest-free.
+
+- **A** ignores the charge entirely.
+- **C** describes the treatment if the loan is **written off**, not while it is outstanding.
+- **D** applies the wrong rate and mischaracterises the charge.
+- **E** invents a prohibition.
+
+**Q5 — B.** The **future test**: where there are reasonable grounds to believe that taxable turnover in
+the **next 30 days alone** will exceed the threshold, the business must notify HMRC **by the end of that
+30-day period** and is registered from its **beginning**. £95,000 in four weeks exceeds £90,000.
+
+- **A** and **D** apply only the historic test and miss the forward-looking one.
+- **C** applies the historic test's notification and registration dates, which are different.
+- **E** misapplies the exception, which is available under the **historic** test where future turnover
+  will fall below the deregistration threshold — the opposite of these facts.
+
 :::

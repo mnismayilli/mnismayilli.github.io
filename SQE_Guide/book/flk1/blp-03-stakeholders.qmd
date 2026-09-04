@@ -3,28 +3,658 @@
 > *Assessment objective 3: the interests, rights, obligations and powers of stakeholders in a
 > business.*
 
-::: {.callout-note title="Not yet written"}
-Outline below.
+## Who the stakeholders are, and what they can actually do
+
+A business has several constituencies, and the law gives each of them a different kind of leverage.
+The single most useful thing to hold in your head is that **the strength of a stakeholder's position
+depends on the mechanism available to them**, not on the strength of their grievance.
+
+| Stakeholder | Principal leverage |
+|---|---|
+| **Shareholders** | Votes; the s.994 petition; the derivative claim; the winding-up petition |
+| **Directors** | Control of day-to-day management; their service contracts |
+| **Creditors** | Contract and security; insolvency procedures; the creditor duty as enforced by an office-holder |
+| **Employees** | Employment law; a "have regard" factor under s.172; preferential status in an insolvency |
+| **Partners / LLP members** | The agreement; the PA 1890 or LLP default terms; dissolution or resignation |
+
+## Shareholders
+
+### What a share is
+
+A share is not a slice of the company's assets. *Borland's Trustee v Steel Brothers & Co Ltd* [1901]
+1 Ch 279 describes it as "the interest of a shareholder in the company measured by a sum of money,
+for the purpose of liability in the first place, and of interest in the second, but also consisting
+of a series of mutual covenants entered into by all the shareholders". It is an item of personal
+property (s.541 CA 2006), transferable in accordance with the articles (s.544).
+
+The **rights attached to a share** come from the articles, subject to the Act. A single ordinary
+share in a company with unamended Model Articles carries:
+
+- the right to **vote** — one vote on a show of hands (per member), one vote per share on a poll;
+- the right to a **dividend** if one is lawfully declared;
+- the right to a **return of capital** on a winding up, after creditors have been paid;
+- the right to **transfer** the share, subject to any restriction in the articles;
+- the right to receive **notice** of general meetings, to attend, and to appoint a proxy;
+- the right to receive the **annual accounts**;
+- the right to **inspect** the register of members and the minutes of general meetings.
+
+None of these is a right to be involved in management, to be employed by the company, or to be paid
+a dividend. Those are the three expectations that generate unfair prejudice litigation.
+
+### Becoming and ceasing to be a member
+
+Section 112: the subscribers to the memorandum are members on registration; every other person who
+agrees to become a member **and whose name is entered in the register of members** is a member. Entry
+on the register is what makes you a member — not the share certificate, and not the transfer form.
+
+A person ceases to be a member on transfer and registration of the transferee, on forfeiture or
+surrender, on a valid buyback, or on death or bankruptcy followed by registration of the personal
+representative or trustee.
+
+::: {.callout-important title="Exam trap"}
+A shareholder cannot be **expelled**. There is no company law equivalent of an expulsion clause in a
+partnership agreement, unless the articles contain a compulsory transfer provision — which good
+drafting supplies as "leaver" provisions. If the question tells you the majority "voted to remove her
+as a shareholder", the answer is that they cannot: they can remove her from the **board** under s.168,
+but her shares are her property.
 :::
 
-## Planned contents
+### The percentage thresholds
 
-**Shareholders** — the rights attaching to shares; class rights and their variation; the division of
-power between board and general meeting; what a shareholders' agreement adds that the articles
-cannot.
+More marks turn on this table than on any other single page of the subject. Learn it in both
+directions: what a given percentage lets you **do**, and what it lets you **block**.
 
-**Minority protection** — unfair prejudice petitions under s.994 CA 2006, the remedies available and
-the buy-out order in practice; derivative claims under ss.260–264 and the two-stage permission
-filter; just and equitable winding up.
+| Holding | What it enables |
+|---|---|
+| **100%** | Unanimous informal assent (*Duomatic*); introduce entrenchment (s.22) |
+| **90%** (majority in number holding 90% in nominal value) | Consent to **short notice** of a general meeting of a private company (95% for a public company) |
+| **75%** | Pass a **special resolution**: amend the articles, change the name, disapply pre-emption rights, reduce capital, approve a buyback out of capital, wind up voluntarily, direct the board under MA 4 |
+| **More than 50%** | Pass an **ordinary resolution**: appoint and remove directors, approve SPTs, loans, payments for loss of office, service contracts; declare a final dividend; grant s.551 authority to allot |
+| **More than 25%** | **Block** a special resolution |
+| **15%** of the issued shares of a class | Apply to court to have a **variation of class rights cancelled** (s.633) |
+| **10%** | Demand a **poll** (s.321); require an **audit** where the company would otherwise be exempt (s.476) |
+| **5%** | Require the directors to call a **general meeting** (s.303); require circulation of a **written resolution** (s.292) or of a **statement** (s.314) |
+| **Any single share** | Petition for **unfair prejudice** (s.994); apply for permission to bring a **derivative claim** (s.260); petition for a **just and equitable winding up** (s.122(1)(g) IA 1986) |
 
-**Directors as stakeholders** — service contracts, remuneration, and the tension between the s.172
-duty and the interests of a controlling shareholder.
+::: {.callout-tip title="Worked example"}
+A company has 100 shares: A holds 74, B holds 26.
 
-**Creditors** — when the directors' duty shifts to take creditors' interests into account, and what
-that shift actually requires.
+A cannot amend the articles, because she needs 75 and B's 26 blocks her. A **can** remove B from the
+board, appoint herself sole director, and approve any transaction requiring an ordinary resolution. B
+cannot pass anything, but he **can**: block every special resolution; requisition a general meeting;
+require an audit; demand a poll; petition under s.994; and seek permission for a derivative claim.
 
-**Partners and LLP members** — rights to management, information and profit share; expulsion; the
-consequences of the PA 1890 defaults where an agreement is silent.
+Now give A 75 and B 25. A can do everything by resolution. B's blocking power has gone — but every one
+of his individual rights survives, and it is those, not his votes, that the exam is usually about.
+:::
 
-**Conduct** — acting for a company when instructed by a majority shareholder whose interests diverge
-from the company's.
+## Minority protection
+
+### The problem, and the starting point
+
+The default rule is majority rule, and the courts do not run companies. *Foss v Harbottle* (1843) 2
+Hare 461 supplies the two principles that everything else is an exception to:
+
+- **The proper claimant rule** — where a wrong is done to the company, the **company** is the proper
+  claimant.
+- **The internal management rule** — the court will not interfere in a matter that the company in
+  general meeting can itself ratify.
+
+Three statutory or equitable routes cut through this: the **unfair prejudice petition**, the
+**derivative claim**, and the **just and equitable winding up**.
+
+### Unfair prejudice: s.994 CA 2006
+
+A member may petition on the ground that the company's affairs are being, or have been, conducted in
+a manner that is **unfairly prejudicial to the interests of members generally or of some part of the
+members** (including at least himself), or that an actual or proposed act or omission is or would be
+so prejudicial.
+
+**Both limbs are needed, and they are separate.** Conduct can be prejudicial without being unfair
+(the company genuinely needs to retain profits) and unfair without being prejudicial (a technical
+breach causing no harm).
+
+*Re Saul D Harrison & Sons plc* [1995] 1 BCLC 14 — Hoffmann LJ: fairness is judged in the context of a
+commercial relationship whose terms are contained in the articles and any collateral agreements. A
+member's expectations are ordinarily those set out in the constitution.
+
+*O'Neill v Phillips* [1999] 1 WLR 1092, the only House of Lords decision on the section, supplies the
+test:
+
+- Unfairness ordinarily requires either a **breach of the terms on which it was agreed the company's
+  affairs would be conducted**, or the use of rules "in a manner which equity would regard as
+  contrary to good faith".
+- Equitable considerations of that kind arise most readily in a **quasi-partnership**: a company
+  formed on the basis of a personal relationship involving mutual confidence, with an understanding
+  that all or some of the members will participate in management, and with restrictions on the
+  transfer of shares.
+- There is **no "no-fault divorce"**. A member who simply wants out, because trust has broken down
+  and there is no market for his shares, has no remedy under s.994 absent some unfair conduct.
+- An offer to buy the petitioner's shares at a **fair value determined by an independent expert**,
+  with equality of access to information and provision for costs, will usually make it unfair for the
+  petition to continue.
+
+**Conduct commonly held to be unfairly prejudicial:**
+
+- **Exclusion from management** in a quasi-partnership, where there was an understanding of
+  participation.
+- Diversion of the company's business or opportunities to a competing entity controlled by the
+  majority.
+- Payment of **excessive remuneration** to the controllers, coupled with a persistent refusal to pay
+  dividends — the classic way of appropriating profit while starving the minority.
+- Serious mismanagement causing loss, though mere commercial misjudgment is not enough.
+- Improper allotment of shares to dilute the minority.
+- Breaches of the articles or of a shareholders' agreement, where more than trivial.
+
+**Conduct usually held not to be:**
+
+- A single or trivial breach causing no prejudice.
+- A genuine commercial decision the minority dislikes.
+- Non-payment of dividends where there is a proper commercial reason to retain profits.
+- Loss of trust and confidence without more, in a company that is not a quasi-partnership.
+
+**Remedies** (s.996). The court may make "such order as it thinks fit", and s.996(2) gives a
+non-exhaustive list: regulating the conduct of the company's affairs in future; requiring the company
+to do or refrain from doing an act; authorising civil proceedings in the company's name; restraining
+alterations to the articles without leave; and — overwhelmingly the usual order — requiring the
+**purchase of the petitioner's shares** by other members or by the company itself, with a
+corresponding reduction of capital.
+
+**Valuation** is where these cases are actually fought:
+
+- In a **quasi-partnership** where the petitioner has been unfairly excluded, the shares are normally
+  valued **pro rata, without a minority discount** (*Re Bird Precision Bellows Ltd* [1986] Ch 658).
+- Where the company is not a quasi-partnership, or the petitioner acquired the shares as an
+  investment, a **discount for a minority holding** may be applied.
+- The valuation date is at the court's discretion, and is commonly the date of the order or the date
+  of the unfair conduct, whichever better reflects the injustice.
+
+::: {.callout-important title="Exam trap"}
+Two errors recur. First, candidates treat every falling-out as unfair prejudice; *O'Neill v Phillips*
+says otherwise, and the discriminating fact is usually whether there was an **agreed understanding**
+(express or equitable) that has been broken. Second, candidates forget that a **reasonable buy-out
+offer defeats the petition** — if the majority has offered fair value determined by an independent
+expert, the right answer is usually that the petition should not proceed.
+:::
+
+### Derivative claims: ss.260–264 CA 2006
+
+A derivative claim is brought by a **member**, on behalf of the **company**, in respect of a cause of
+action **vested in the company**, seeking relief **on the company's behalf**. Any recovery goes to the
+company, not the claimant.
+
+**Scope** (s.260(3)). The cause of action must arise from an actual or proposed act or omission
+involving **negligence, default, breach of duty or breach of trust** by a **director**. It may be
+brought against the director or another person, or both. It is available:
+
+- whether the cause of action arose before or after the claimant became a member (s.260(4)); and
+- against a **former** director, a **shadow** director, and (by s.260(5)) is not confined to breaches
+  from which the director personally benefited — negligence alone suffices, which is a significant
+  widening of the common law.
+
+**Permission is required, and there are two stages** (s.261):
+
+1. **Stage one, on the papers.** The member applies for permission, with evidence. If the application
+   and the evidence do **not disclose a prima facie case**, the court must dismiss it and may make any
+   consequential order. No notice need be given to the company at this stage; the company takes no
+   part.
+2. **Stage two, at a hearing.** If a prima facie case is shown, the court directs the company to
+   provide evidence, and decides whether to give permission.
+
+**Mandatory refusal** (s.263(2)). The court **must** refuse permission if satisfied that:
+
+- a person acting in accordance with **s.172** (the duty to promote the success of the company) would
+  **not seek to continue** the claim; or
+- the act or omission has been **authorised** by the company before it occurred; or
+- the act or omission has been **ratified** by the company since it occurred.
+
+**Discretionary factors** (s.263(3)). Otherwise the court must take into account, in particular:
+
+- whether the member is acting in **good faith**;
+- the importance a person acting under s.172 would attach to continuing the claim;
+- where the act has not yet occurred, whether it would be likely to be **authorised or ratified**;
+- where it has occurred, whether it would be likely to be **ratified**;
+- whether the **company has decided not to pursue** the claim; and
+- whether the act gives rise to a cause of action the member could pursue **in his own right**.
+
+Section 263(4): the court must have **particular regard** to the views of members who have **no
+personal interest, direct or indirect,** in the matter.
+
+::: {.callout-important title="Exam trap"}
+Choosing between the two remedies is the discrimination the examiner is usually after:
+
+| | Derivative claim | Unfair prejudice petition |
+|---|---|---|
+| Wrong done to | The **company** | The **member**, in their capacity as such |
+| Who recovers | The **company** | Usually the **petitioner**, by a buy-out |
+| Permission needed | **Yes**, two stages | No |
+| Typical facts | Director diverted an opportunity, or was negligent | Exclusion from management; excessive pay; no dividends |
+
+If the client wants **out at a fair price**, the answer is s.994. If the client wants the **company**
+to recover what a director took, and to stay in the company, the answer is a derivative claim. And
+note that a s.994 petition may itself result in an order authorising proceedings in the company's name
+under s.996(2)(c) — a route that avoids the s.261 permission filter.
+:::
+
+### Reflective loss
+
+A shareholder cannot sue in their own name for a loss which is merely the **reflection** of a loss
+suffered by the company — a fall in the value of their shares, or in the dividends they would have
+received — where the company has its own claim.
+
+- *Prudential Assurance Co Ltd v Newman Industries Ltd (No 2)* [1982] Ch 204 established the rule.
+- *Johnson v Gore Wood & Co* [2002] 2 AC 1 confirmed and explained it.
+- *Sevilleja v Marex Financial Ltd* [2020] UKSC 31 **narrowed** it decisively: the rule is a bright
+  line confined to claims by a **shareholder, in that capacity**, for loss reflective of the company's
+  loss. It does **not** bar claims by **creditors**, nor claims by a shareholder for a loss that is
+  separate and distinct from the company's.
+
+### Just and equitable winding up
+
+Section 122(1)(g) IA 1986: a company may be wound up by the court if the court is of the opinion that
+it is **just and equitable** to do so. A **contributory** (a member) may petition, but must generally
+have held the shares for at least six of the last eighteen months (s.124(2)).
+
+*Ebrahimi v Westbourne Galleries Ltd* [1973] AC 360 is the leading case, and the source of the
+quasi-partnership concept. Ebrahimi and Nazar traded as partners, incorporated the business, and later
+brought in Nazar's son; the two of them then used their majority to remove Ebrahimi from the board
+under what is now s.168. The removal was **lawful**. The House of Lords nevertheless wound the company
+up: the statutory powers are subject to equitable considerations "which may make it unjust or
+inequitable to insist on legal rights". Lord Wilberforce identified the typical elements — an
+association formed on a **personal relationship of mutual confidence**, an understanding that **all or
+some members will participate in management**, and **restrictions on transfer** so that a member
+cannot simply take his stake out and go.
+
+Other established grounds: the **substratum** of the company has failed (its whole purpose has gone);
+the company was formed for a **fraudulent purpose**; there is complete **deadlock**; or there has been
+a justifiable **loss of confidence** in the management arising from a lack of probity.
+
+::: {.callout-important title="Exam trap"}
+Winding up is a **remedy of last resort** and destroys the value it is supposed to protect. Section
+125(2) makes this explicit: where the petitioners are entitled to relief either by winding up or by
+some **other remedy**, the court must not make a winding-up order if it is of the opinion that some
+other remedy is available **and** that they are acting unreasonably in seeking winding up rather than
+pursuing it. Where the majority has offered to buy the minority out at a fair value, a winding-up
+petition will normally fail. In an exam, if s.994 would give the client what they want, s.994 is the
+answer.
+:::
+
+### Check yourself: minority protection
+
+**Q1.** Three friends incorporated a company fifteen years ago. Each holds one third of the shares, and
+each has always been a director drawing an equal salary; there has never been a dividend, and the
+articles restrict transfers. Following a personal falling-out, the other two use their combined votes
+to remove the third from the board under s.168 and to stop her salary. She remains a shareholder. The
+removal complied in every respect with the statutory procedure.
+
+Which of the following is the best advice?
+
+A. She has no remedy, because the removal complied with s.168 and the majority is entitled to exercise
+its votes as it wishes.
+
+B. She should bring a derivative claim, because the removal was a breach of the directors' duties owed
+to the company.
+
+C. She should petition under s.994: this has the hallmarks of a quasi-partnership with an understanding
+of participation in management, and her exclusion is likely to be unfairly prejudicial; the usual
+remedy is an order that her shares be bought at a value with no minority discount.
+
+D. She should petition for a just and equitable winding up under s.122(1)(g), which is the primary
+remedy for exclusion from management.
+
+E. She should sue the other two shareholders personally for the fall in the value of her shares.
+
+**Q2.** A director of a company diverted a contract worth £900,000 to a business he controls. The board
+comprises that director and two others who are his appointees and have declined to take any action. A
+member holding 4% of the shares wishes to see the company recover the profit, and wishes to remain a
+shareholder.
+
+Which of the following is the most appropriate course?
+
+A. An unfair prejudice petition, because the member has been prejudiced by the loss in value of her
+shares.
+
+B. A personal claim in the member's own name for the diminution in the value of her shares.
+
+C. An application for permission to bring a derivative claim under ss.260–264, since the cause of
+action is vested in the company and arises from a breach of duty by a director.
+
+D. A petition for a just and equitable winding up.
+
+E. Nothing, because a member holding less than 5% has no standing to bring proceedings.
+
+**Q3.** A member petitions under s.994, complaining of exclusion from management in a quasi-partnership.
+Before the hearing, the majority shareholders offer in writing to purchase her shares at a price to be
+determined by an independent accountant as an expert, on a pro rata basis with no minority discount,
+with both sides having equal access to the company's information, and offering to pay her costs to
+date.
+
+What is the likely effect of the offer?
+
+A. None; an offer to purchase cannot affect a petition once presented.
+
+B. The court is likely to hold that it is no longer unfair for the petitioner to be excluded, and to
+strike out or dismiss the petition, because a fair offer of the remedy she would obtain has been made.
+
+C. The offer is irrelevant unless it is accepted.
+
+D. The offer converts the petition into a derivative claim.
+
+E. The offer will be disregarded because the price is not fixed at the date of the offer.
+
+**Q4.** A member applies for permission to continue a derivative claim. The company's independent
+members, who have no personal interest in the matter, have resolved that pursuing the claim would harm
+the company's commercial relationships and that it should not be brought. The alleged breach has not
+been ratified.
+
+Which of the following best describes the court's approach?
+
+A. The court must grant permission, because the breach has not been ratified.
+
+B. The court must refuse permission, because the members have decided not to pursue the claim.
+
+C. The court must refuse permission if satisfied that a person acting in accordance with s.172 would
+not seek to continue the claim; otherwise it will weigh the discretionary factors in s.263(3), giving
+particular regard under s.263(4) to the views of members with no personal interest.
+
+D. The court will grant permission only if the member holds at least 5% of the shares.
+
+E. The court will grant permission automatically once a prima facie case is shown at the first stage.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** Every hallmark of a quasi-partnership identified in *Ebrahimi* is present: a company formed
+on a personal relationship, an understanding that all members participate in management, and
+restrictions on transfer. Removal that is lawful under s.168 can still be unfairly prejudicial, because
+equitable considerations may make it unjust to insist on strict legal rights (*O'Neill v Phillips*).
+The standard remedy under s.996 is a buy-out order, and in a quasi-partnership exclusion case the
+shares are normally valued **pro rata without a minority discount** (*Re Bird Precision Bellows*).
+
+- **A** states the *Foss v Harbottle* starting point and ignores the statutory exception.
+- **B** misidentifies the wrong: the harm is to her as a member, not to the company, so a derivative
+  claim is the wrong vehicle.
+- **D** is available in principle (*Ebrahimi* itself was a winding-up case) but is a remedy of last
+  resort; s.125(2) IA 1986 means a petitioner who could obtain a buy-out under s.994 and unreasonably
+  insists on winding up will be refused.
+- **E** runs into the reflective loss principle: a fall in share value mirroring the company's loss is
+  not separately recoverable by a member (*Prudential*, *Johnson v Gore Wood*, *Sevilleja v Marex*).
+
+**Q2 — C.** The cause of action — breach of the s.175 duty to avoid conflicts, and the exploitation of a
+corporate opportunity — is **vested in the company**. The client wants the company to recover and wants
+to stay in. That is the derivative claim, and s.260(3) covers it exactly. There is no minimum
+shareholding.
+
+- **A** would give her a buy-out, which is not what she wants, and the loss she has suffered is the
+  company's loss reflected in her shares.
+- **B** is barred by the reflective loss principle.
+- **D** destroys the company for no gain.
+- **E** invents a standing threshold. **Any** member may apply under s.260.
+
+**Q3 — B.** *O'Neill v Phillips*. Where the majority offers to buy the petitioner's shares at a fair
+value determined by a competent independent expert, on a pro rata basis in a quasi-partnership, with
+equality of information and provision for costs, it will usually cease to be unfair to exclude the
+petitioner from the company, and the petition should not proceed. The offer here has each of those
+features.
+
+- **A** and **C** deny the effect of a fair offer, which is the practical core of *O'Neill*.
+- **D** confuses the two remedies.
+- **E** misstates the requirement: a fair offer does **not** need a fixed price, and independent expert
+  determination is precisely what makes it fair.
+
+**Q4 — C.** Section 263(2)(a) requires **mandatory** refusal only where the court is satisfied that a
+person acting under s.172 would not seek to continue the claim. A decision by the company not to pursue
+is a **discretionary** factor under s.263(3)(e), and the views of disinterested members attract
+particular regard under s.263(4) — they are weighty, but not determinative.
+
+- **A** treats the absence of ratification as sufficient. It removes one mandatory bar, not the
+  discretion.
+- **B** elevates a discretionary factor to a mandatory bar.
+- **D** invents a shareholding requirement.
+- **E** ignores the second stage: a prima facie case gets the applicant past s.261(2), no further.
+
+:::
+
+## Directors as stakeholders
+
+Directors are stakeholders in their own right, and their interests can conflict with the company's in
+ways the Act tries to manage.
+
+**Remuneration.** Directors have no automatic right to be paid for acting as directors; the entitlement
+comes from the articles or a service contract. Model Article 19 permits the directors to undertake any
+services for the company and to be paid such remuneration as the **directors determine** — which is
+why a company controlled by its directors can pay them what it likes, and why excessive remuneration
+combined with a refusal to declare dividends is such a common s.994 complaint.
+
+**Service contracts.** See @sec-blp-management: s.188 approval for terms over two years, s.228
+inspection rights for members, and the preservation of contractual claims on removal by s.168(5).
+
+**The tension with s.172.** A director appointed by, and beholden to, a controlling shareholder still
+owes the duty to promote the success of **the company** for the benefit of **its members as a whole** —
+including the minority — and must exercise **independent judgment** under s.173. A nominee who simply
+votes as instructed is in breach of both. The point recurs in group scenarios: a director of a
+subsidiary owes duties to the **subsidiary**, not to the parent, and a decision that benefits the group
+at the subsidiary's expense is a breach.
+
+**Directors as employees.** An executive director is usually also an employee, which gives them the
+protections of employment law and preferential status in an insolvency for limited amounts — but a
+non-executive director is not, and a director who is dismissed as an employee is not thereby removed
+from the board.
+
+## Creditors
+
+Creditors have no rights under the constitution and no vote. Their leverage is contractual, and then
+statutory.
+
+**Contract and security.** A creditor's real protection is taken in advance: security over assets
+(@sec-blp-finance), personal guarantees from the directors, retention of title, and covenants
+restricting what the borrower may do. A trade creditor with none of these is at the bottom of the
+priority order.
+
+**The creditor duty.** As explained in @sec-blp-management, *BTI 2014 LLC v Sequana SA* [2022] UKSC 25
+holds that when a company is insolvent or bordering on insolvency, or an insolvent liquidation or
+administration is probable, the directors' s.172 duty is modified so that they must **consider the
+interests of creditors**, with increasing weight as insolvency approaches. Three points:
+
+- The duty is owed to the **company**, not to individual creditors. It is enforced by a liquidator or
+  administrator after the event, not by a creditor suing directly.
+- It is not triggered by a mere "real risk" of insolvency at some future date.
+- Because it is a modification of s.172, breach is a breach of duty, with the ordinary consequences —
+  and a director's conduct on this front will also feature in any wrongful trading or disqualification
+  claim.
+
+**Statutory protection.** The clawback provisions (ss.238, 239, 245, 423 IA 1986), wrongful and
+fraudulent trading, and the priority rules are the creditors' real remedies. They are dealt with in
+@sec-blp-termination.
+
+## Employees
+
+Employees are the stakeholder the Act mentions most and protects least, at least within company law:
+
+- Section 172(1)(b) requires directors to **have regard** to employees' interests. It creates no right
+  of action for employees.
+- Section 247 permits a company to make provision for employees on the cessation or transfer of its
+  business — an express reversal of the old rule that such payments were beyond the company's
+  objects — exercisable by the directors if the articles allow, or by ordinary resolution.
+- On an insolvency, employees are **ordinary preferential creditors** for limited amounts: unpaid
+  wages for the four months before the relevant date, capped per employee, accrued holiday pay, and
+  certain pension contributions. Claims above the cap rank as unsecured. See @sec-blp-termination.
+
+## Partners and LLP members
+
+The stakeholder analysis for unincorporated and hybrid vehicles is different in kind, because the
+owners **are** the managers.
+
+**Rights.** Under the PA 1890 defaults: to take part in management (s.24(5)); to an equal share of
+capital and profits (s.24(1)); to be indemnified for proper payments (s.24(2)); to 5% interest on
+advances beyond agreed capital (s.24(3)); to inspect the books (s.24(9)); to true accounts and full
+information (s.28); and to have partners account for private profits (s.29) and competing business
+(s.30).
+
+**No expulsion.** Section 25 means a majority cannot expel a partner unless the agreement confers the
+power — the direct analogue of the rule that a shareholder cannot be removed. The same is true of an
+LLP member under the default regulations.
+
+**Exit.** A partner in a partnership at will may dissolve it by notice (s.26); an LLP member may resign
+on reasonable notice but cannot dissolve the LLP.
+
+**On dissolution.** Section 44 PA 1890 sets the order in which assets are applied: first, losses,
+including losses of capital, are paid out of profits, then out of capital, and then by the partners
+individually in the proportion in which they share profits. The assets are then applied: (1) in paying
+the **debts and liabilities to non-partners**; (2) in repaying to each partner rateably what is due for
+**advances**; (3) in repaying rateably what is due in respect of **capital**; and (4) the **residue**
+is divided in the profit-sharing ratio.
+
+**Minority protection.** Section 994 CA 2006 is applied to LLPs by regulation, but the members may
+**exclude** it by unanimous written agreement — an option not available to company shareholders. For a
+general partnership there is no s.994 equivalent: the remedies are the agreement, dissolution, and a
+court order under s.35 PA 1890 (permanent incapacity, conduct prejudicial to the business, wilful or
+persistent breach, carrying on only at a loss, or just and equitable).
+
+::: {.callout-important title="Exam trap"}
+Section 44 is the provision that produces the counter-intuitive result. Where a partnership dissolves
+with a **capital deficiency**, the loss of capital is a **loss like any other**, borne in the
+profit-sharing ratio — so a partner who contributed nothing to capital may still have to contribute to
+making good the loss of a partner who did. Candidates assume that a partner who put in no capital
+cannot lose any.
+:::
+
+## The solicitor's position
+
+**Acting for the company when instructed by the majority.** A solicitor instructed by the company must
+remember that the company is the client, and that the majority shareholder is not. Advice on how to
+exclude the minority, or on how to structure a transaction that benefits the majority at the company's
+expense, is advice to the majority — and if the solicitor is also acting for the company there is a
+conflict.
+
+**Acting for two shareholders in dispute.** Where two clients' interests conflict, or there is a
+significant risk that they will, the solicitor must not act for both. The narrow exceptions —
+substantially common interest, or competing for the same objective — require informed written consent,
+effective safeguards and a reasonable belief that acting is in both clients' best interests. A
+falling-out between shareholders is very rarely a substantially common interest.
+
+**Confidentiality across a group.** Information obtained while acting for one company in a group is
+confidential to that company. Passing it to the parent without authority breaches the duty of
+confidentiality, even where the parent owns 100% of the shares.
+
+## Chapter review
+
+**Q1.** A shareholder holds 26% of the shares in a private company. The other 74% is held by the
+managing director.
+
+Which of the following can the minority shareholder do **without** the majority's cooperation?
+
+A. Remove the managing director from the board.
+
+B. Amend the articles to introduce a pre-emption right on transfer.
+
+C. Block a special resolution, require the directors to call a general meeting, require an audit, and
+petition under s.994.
+
+D. Compel the payment of a dividend.
+
+E. Compel the company to buy back her shares.
+
+**Q2.** In a partnership dissolution, after all outside creditors have been paid, the remaining assets
+are £120,000. Partner X is owed £30,000 in respect of an advance made to the firm; X's capital account
+stands at £150,000 and Y's at £50,000. X and Y share profits equally.
+
+Applying s.44 PA 1890, which of the following is correct?
+
+A. The £120,000 is divided equally between X and Y.
+
+B. X is repaid the £30,000 advance first; the remaining £90,000 is applied towards capital of £200,000,
+leaving a capital deficiency of £110,000, which is a loss borne equally, so each partner bears £55,000.
+
+C. The £120,000 is applied first to capital in proportion to the capital accounts, and X's advance
+ranks last.
+
+D. X is repaid the £30,000 and the balance of £90,000 is paid to X in part satisfaction of capital,
+because X's capital contribution was larger.
+
+E. The £120,000 is retained by the firm until the partners agree its distribution.
+
+**Q3.** A shareholder in a company that is not a quasi-partnership is dissatisfied with the board's
+strategy, which she considers commercially misguided. The company is profitable, dividends are paid,
+and there is no breach of the articles or of any agreement. She wishes to exit but there is no market
+for her shares.
+
+Which of the following is the best advice?
+
+A. She may petition under s.994, because the absence of a market for her shares is itself unfairly
+prejudicial.
+
+B. She may petition for a just and equitable winding up, because there has been an irretrievable
+breakdown in her relationship with the board.
+
+C. She has no remedy on these facts: there is no "no-fault divorce" under s.994, disagreement with a
+genuine commercial decision is not unfair prejudice, and winding up is a remedy of last resort.
+
+D. She may bring a derivative claim in respect of the board's strategic decisions.
+
+E. She may require the company to purchase her shares under s.994 as of right.
+
+**Q4.** A creditor of a company believes that the directors continued to trade and paid a large dividend
+at a time when insolvent administration was probable. The company is now in administration.
+
+Which of the following is correct?
+
+A. The creditor may sue the directors directly for breach of the duty owed to creditors under s.172(3).
+
+B. The creditor has no remedy of any kind, because directors' duties are owed only to the company.
+
+C. The creditor cannot sue on the duty directly, because it is a modification of the duty owed to the
+company; it is for the administrator to pursue the breach, and the administrator may also consider
+wrongful trading and the clawback provisions.
+
+D. The creditor may petition under s.994.
+
+E. The creditor may bring a derivative claim under s.260.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** A 26% holding blocks a special resolution (more than 25% is needed), exceeds the 5%
+threshold for requiring a general meeting under s.303, exceeds the 10% threshold for requiring an audit
+under s.476, and — like any single share — supports a s.994 petition.
+
+- **A** requires an ordinary resolution, which she cannot pass.
+- **B** requires a special resolution, which she cannot pass.
+- **D** is not within any shareholder's power: a final dividend is recommended by the directors and
+  declared by ordinary resolution, and cannot exceed the recommendation.
+- **E** is not a right; a buy-out follows only from an order under s.996 or an agreement.
+
+**Q2 — B.** Section 44(b) sets the order: outside creditors first, then **advances**, then **capital**,
+then the residue in the profit-sharing ratio. X's £30,000 advance is repaid before any capital. The
+remaining £90,000 is insufficient to repay £200,000 of capital, leaving a deficiency of £110,000. Under
+s.44(a) a **loss of capital is a loss**, borne by the partners in the proportions in which they share
+profits — equally here, so £55,000 each.
+
+- **A** ignores both the priority of advances and the capital accounts.
+- **C** inverts the order of advances and capital.
+- **D** invents a preference for the larger contributor.
+- **E** describes no rule.
+
+**Q3 — C.** *O'Neill v Phillips*: there is no no-fault divorce under s.994, and unfairness ordinarily
+requires a breach of the agreed terms or use of the rules contrary to good faith. Disagreement with a
+genuine commercial decision, in a company that is not a quasi-partnership and is complying with its
+constitution, is neither unfair nor a ground for winding up; and s.125(2) IA 1986 makes winding up a
+last resort.
+
+- **A** is precisely the argument *O'Neill* rejected.
+- **B** applies quasi-partnership reasoning where the facts exclude it.
+- **D** requires a cause of action vested in the company arising from a director's breach of duty; a
+  strategic decision within the board's powers is not one.
+- **E** treats a s.994 remedy as an entitlement rather than a discretionary order following proof of
+  unfair prejudice.
+
+**Q4 — C.** *BTI 2014 LLC v Sequana SA*. The creditor duty is not owed to creditors individually; it is
+a modification of the s.172 duty owed to the **company**, enforced by the office-holder. The
+administrator may pursue breach of duty, and should also consider wrongful trading under s.214 IA 1986
+and the clawback provisions in ss.238, 239 and 423.
+
+- **A** is the recurring structural error.
+- **B** over-corrects: the creditor's interests are protected through the office-holder's claims and
+  the insolvency regime.
+- **D** is not open to a creditor; s.994 is a **member's** remedy.
+- **E** is not open to a creditor either; s.260 requires the claimant to be a **member**.
+
+:::

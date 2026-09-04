@@ -19,6 +19,62 @@ the Statement of Solicitor Competence, the SRA Principles and the Code of Conduc
 
 Questions may draw on any combination of the subject areas within FLK1.
 
+## The examinable content, in the SRA's own words
+
+The objectives above tell you what you must be able to *do*. The list below is what you must
+**know** in order to do it. It is worth reading slowly: it is short, and everything in the paper
+comes from it.
+
+**Business organisations, rules and procedures** — excluding the Listing, Prospectus, Disclosure
+Guidance and Transparency Rules and any other FCA, London Stock Exchange, market rules or codes.
+
+- Business and organisational characteristics (sole trader / partnership / LLP / private and
+  unlisted public companies).
+- Legal personality and limited liability.
+- Procedures and documentation required to incorporate a company, form a partnership or LLP, and
+  the other steps needed to enable the entity to commence operating: **constitutional documents**;
+  **Companies House filing requirements**.
+- **Finance**: funding options — debt and equity; types of security; distribution of profits and
+  gains; financial records, information and accounting requirements.
+- **Corporate governance and compliance**: rights, duties and powers of directors and shareholders;
+  company decision-making and meetings — procedural, disclosure and approval requirements;
+  documentary, record-keeping, statutory filing and disclosure requirements; appointment and removal
+  of directors; minority shareholder protection.
+- **Partnership decision-making and authority of partners**: procedures and authority under the
+  Partnership Act 1890; common provisions in partnership agreements.
+- **Insolvency (corporate and personal)**: options and procedures — CVA, IVA, bankruptcy,
+  administration, fixed asset receivership, voluntary and compulsory liquidation; claw-back of
+  assets for creditors — preferences, transactions at an undervalue, fraudulent and wrongful
+  trading, setting aside a floating charge; order of priority for distribution to creditors.
+
+**Taxation — business**
+
+- **Income tax**: chargeable persons and entities (employees, sole traders, partners, shareholders,
+  lenders and debenture holders); basis of charge — types of income, main reliefs and exemptions;
+  the charge to tax — calculation and collection; the scope of anti-avoidance provisions.
+- **Capital gains tax**: chargeable persons and entities (sole traders, partners, shareholders);
+  basis of charge — calculation of gains, allowable deductions, main reliefs and exemptions; the
+  charge to tax; the scope of anti-avoidance provisions.
+- **Corporation tax**: basis of charge; calculation, payment and collection; tax treatment of
+  company distributions or deemed distributions to shareholders; outline of anti-avoidance
+  legislation.
+- **Value added tax**: key principles relating to scope, supply, input and output tax; registration
+  requirements and issue of VAT invoices; returns, payment of VAT and record keeping.
+- **Inheritance tax**: business property relief.
+
+Three observations about that list are worth more than they look.
+
+**"Fixed asset receivership" is in it.** Administrative receivership is nearly extinct in practice,
+but a fixed charge (LPA) receiver is not, and the specification names receivership expressly.
+
+**Inheritance tax is one line.** Business property relief only. You do not need the whole of IHT for
+FLK1 — that is FLK2's territory — but you do need BPR properly, including the changes taking effect
+on 6 April 2026.
+
+**"Unlisted public companies" appear throughout.** The public company is examined by contrast with
+the private one, and almost every difference is a rule you can state in a sentence. Those sentences
+are cheap marks.
+
 ## How this part is organised
 
 Each of the six objectives gets a chapter, in the order the SRA lists them. That ordering is not
@@ -33,14 +89,113 @@ accidental: it follows the life of a business, and the later chapters assume the
 | 5. Taxation | @sec-blp-taxation — The five taxes |
 | 6. Termination | @sec-blp-termination — Solvent exit and insolvency |
 
+@sec-blp-authorities collects the authorities and statutory provisions used across the six chapters
+in one place, for late revision.
+
+## The four questions behind almost every BLP problem
+
+Underneath the topic headings, the subject keeps asking the same four things. If a question defeats
+you, work through these in order; one of them is usually the hinge.
+
+1. **What is the vehicle, and does it have separate legal personality?** Sole trader and general
+   partnership: no. LLP and company: yes. Almost every liability question resolves on this.
+2. **Who has the power to do this — the board, the members, or both?** Company decision-making is a
+   two-forum system. Getting the forum wrong is the single most common error.
+3. **Is there a document that displaces the statutory default?** Articles, shareholders' agreement,
+   partnership agreement, members' agreement. If there is, it usually wins; if there is not, the
+   default is the answer, and the default is often counter-intuitive.
+4. **Is the company solvent?** Insolvency changes the duties (creditors' interests), unlocks
+   clawback, and reorders who gets paid.
+
 ## Two warnings before you start
 
 **This subject is disproportionately large.** Business Law and Practice is the biggest single
 subject in FLK1 and carries five taxes inside it. Candidates routinely underestimate the tax
 component because it sits at the end of the specification and looks like an appendix. It is not.
 
-**The questions cross subjects.** The specification says explicitly that questions may combine
-areas encountered in practice. A company law scenario can turn on contract formation, on a
-solicitor's conflict of interest, or on whether a floating charge crystallised. Learning this
-subject in isolation from the rest of FLK1 will leave you exposed to precisely the questions the
-examiner finds most attractive.
+**The questions cross subjects.** The specification says explicitly that questions may combine areas
+encountered in practice. A company law scenario can turn on contract formation, on a solicitor's
+conflict of interest, or on whether a floating charge crystallised. Learning this subject in
+isolation from the rest of FLK1 will leave you exposed to precisely the questions the examiner finds
+most attractive.
+
+## Check yourself
+
+**Q1.** A candidate is revising for SQE1 FLK1 and is unsure how much detail to learn about the tax
+figures used in Budget announcements.
+
+Which of the following best reflects the SRA's stated position on tax rates and thresholds in SQE1?
+
+A. Candidates must memorise all current rates, thresholds, exemptions and reliefs, as SQE1 is a
+closed book assessment.
+
+B. Tax is not examined by calculation in SQE1; only narrative understanding of the taxes is
+required.
+
+C. Candidates may be required to perform calculations, and where the monetary value of an
+exemption, relief, rate or threshold is needed to answer, that figure will normally be provided.
+
+D. Candidates are provided with a printed tax card at the assessment centre listing every rate and
+threshold in force.
+
+E. Tax figures are provided only in FLK2, because taxation is examined there in the context of
+wills and property.
+
+**Q2.** A candidate is booked to sit SQE1 in an assessment window whose first day is 11 January
+2027. An important provision of a new Act comes into force on 1 November 2026.
+
+Which of the following is correct?
+
+A. The provision is examinable, because it is in force before the assessment date.
+
+B. The provision is not examinable, because the cut-off is four calendar months before the first
+day of the assessment window, which is 11 September 2026.
+
+C. The provision is examinable only if the candidate sits in the second week of the window.
+
+D. The provision is not examinable, because the cut-off is the end of the preceding tax year.
+
+E. The provision is examinable, because candidates are always tested on the law in force on the day
+they sit.
+
+**Q3.** Which of the following is **not** part of the examinable content for Business Law and
+Practice?
+
+A. The order of priority for distribution to creditors on a liquidation.
+
+B. Business property relief for inheritance tax purposes.
+
+C. The Listing Rules and the Prospectus Rules as they apply to a company seeking admission to the
+Main Market.
+
+D. Registration requirements and the issue of VAT invoices.
+
+E. The authority of partners under the Partnership Act 1890.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** The specification states that a question may require a calculation, and that where
+candidates must apply the monetary value of exemptions, reliefs, rates or thresholds, "these will be
+provided". What is not provided is the *availability* of a relief or the conditions attaching to
+it — that is the examinable knowledge.
+
+- **A** overstates the burden and is the reason candidates waste revision time on Budget figures.
+- **B** is wrong: calculation questions are expressly contemplated.
+- **D** invents a document that does not exist; figures appear within the question, not on a card.
+- **E** is wrong: taxation is examined in Business Law and Practice, Property Law and Practice, and
+  Wills and the Administration of Estates.
+
+**Q2 — B.** The cut-off is four calendar months before the first assessment in the window. For a
+window opening on 11 January 2027 that is 11 September 2026. A change implemented *on* the cut-off
+date may be examined; one implemented on 1 November 2026 may not.
+
+- **A** and **E** apply the wrong date — the law tested is not the law on the day you sit.
+- **C** is wrong: the cut-off runs from the first day of the window and is the same for everyone in
+  it.
+- **D** invents a tax-year rule.
+
+**Q3 — C.** The specification expressly excludes the Listing, Prospectus, Disclosure Guidance and
+Transparency Rules, and any other FCA, London Stock Exchange, market rules or codes. All of the
+others are named in the content list.
+
+:::

@@ -20,6 +20,9 @@ book:
         - flk1/blp-04-finance.qmd
         - flk1/blp-05-taxation.qmd
         - flk1/blp-06-termination.qmd
+    - part: "Reference"
+      chapters:
+        - flk1/blp-07-authorities.qmd
 
 format:
   html:
