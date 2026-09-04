@@ -12,14 +12,17 @@
   const SITE_TITLE = 'Mehman Ismayilli';
 
   // Primary navigation — also reused as the footer "Site" column.
+  // Same five tabs, in the same order, as the home page header.
   const NAV_LINKS = [
-    { text: 'Research', href: '/projects/' },
+    { text: 'Home', href: '/' },
+    { text: 'Research', href: '/research/' },
     { text: 'Teaching', href: '/teaching/' },
     { text: 'M&amp;A Watch', href: '/ma-watch/' },
+    { text: 'CV', href: '/about/' },
   ];
 
+  // CV now lives in NAV_LINKS (and so in the footer's "Site" column) — not repeated here.
   const PROFILE_LINKS = [
-    { text: 'CV', href: '/about/' },
     { text: 'Contact', href: '/contact/' },
     { text: 'Oxford', href: 'https://www.economics.ox.ac.uk/people/mehman-ismayilli', ext: true },
   ];
@@ -46,7 +49,7 @@
     <header class="site-header" id="site-header">
       <div class="container nav">
         <a class="brand brand--home" href="/" aria-label="Home">
-          <span class="brand-dot"></span><span class="brand-name">Home</span>
+          <span class="brand-bar"></span><span class="brand-name">${SITE_TITLE}</span>
         </a>
         <nav aria-label="Primary">
           <ul class="nav-links" id="nav-links">${navLinksHtml}</ul>

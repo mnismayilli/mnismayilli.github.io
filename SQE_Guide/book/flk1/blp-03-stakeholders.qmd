@@ -1,0 +1,30 @@
+# Stakeholders: rights, powers and protection {#sec-blp-stakeholders}
+
+> *Assessment objective 3: the interests, rights, obligations and powers of stakeholders in a
+> business.*
+
+::: {.callout-note title="Not yet written"}
+Outline below.
+:::
+
+## Planned contents
+
+**Shareholders** — the rights attaching to shares; class rights and their variation; the division of
+power between board and general meeting; what a shareholders' agreement adds that the articles
+cannot.
+
+**Minority protection** — unfair prejudice petitions under s.994 CA 2006, the remedies available and
+the buy-out order in practice; derivative claims under ss.260–264 and the two-stage permission
+filter; just and equitable winding up.
+
+**Directors as stakeholders** — service contracts, remuneration, and the tension between the s.172
+duty and the interests of a controlling shareholder.
+
+**Creditors** — when the directors' duty shifts to take creditors' interests into account, and what
+that shift actually requires.
+
+**Partners and LLP members** — rights to management, information and profit share; expulsion; the
+consequences of the PA 1890 defaults where an agreement is silent.
+
+**Conduct** — acting for a company when instructed by a majority shareholder whose interests diverge
+from the company's.

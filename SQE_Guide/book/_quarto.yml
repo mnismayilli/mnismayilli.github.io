@@ -1,0 +1,49 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Functioning Legal Knowledge"
+  subtitle: "SQE1 FLK1 — a study text"
+  date: today
+  date-format: "D MMMM YYYY"
+  search: true
+  page-navigation: true
+  chapters:
+    - index.qmd
+    - part: "Business Law and Practice"
+      chapters:
+        - flk1/blp-00-overview.qmd
+        - flk1/blp-01-vehicles.qmd
+        - flk1/blp-02-management.qmd
+        - flk1/blp-03-stakeholders.qmd
+        - flk1/blp-04-finance.qmd
+        - flk1/blp-05-taxation.qmd
+        - flk1/blp-06-termination.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles.scss
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-copy: false
+    link-external-newwindow: true
+  pdf:
+    documentclass: scrbook
+    papersize: a4
+    fontsize: 11pt
+    linkcolor: NavyBlue
+    geometry:
+      - inner=3cm
+      - outer=3cm
+      - top=2.5cm
+      - bottom=2.5cm
+    colorlinks: true
+    number-sections: true
+
+execute:
+  echo: false
+  warning: false

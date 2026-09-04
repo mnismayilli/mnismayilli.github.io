@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Strategic delay: the model in detail | Mehman Ismayilli</title>
+    <meta name="description" content="A walkthrough of the two-period durable-goods model behind 'Strategic delay of product introductions': the first-best benchmark, over-delay of the low type under commitment, and over-delay of the high type without it." />
+    <link rel="canonical" href="https://mnismayilli.github.io/research/project-2/theory/" />
+    <meta property="og:type" content="article" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600&display=swap"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],
+          tags: 'none'
+        },
+        options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+      };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8XB2EHXR95"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-8XB2EHXR95');
+    </script>
+    <style>
+      /* Result callouts — built from the site's own tokens */
+      .result {
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--accent);
+        background: var(--surface);
+        border-radius: var(--radius);
+        padding: 1.1rem 1.25rem;
+        margin-top: 1.6rem;
+      }
+      .result > .result-label {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 0.5rem;
+      }
+      .result > :last-child { margin-bottom: 0; }
+      .result--alt { border-left-color: var(--amber); }
+      .result--alt > .result-label { color: var(--amber); }
+
+      .takeaway {
+        background: var(--accent-wash);
+        border-radius: var(--radius);
+        padding: 1.1rem 1.25rem;
+        margin-top: 1.6rem;
+      }
+      .takeaway p { margin: 0; color: var(--ink); }
+
+      .figure { margin: 1.8rem 0 0; }
+      .figure svg { width: 100%; height: auto; display: block; }
+      .figure figcaption {
+        font-size: 0.86rem;
+        color: var(--muted);
+        margin-top: 0.6rem;
+        text-align: left;
+      }
+
+      /* Wide tables must scroll inside themselves, never the page */
+      .table-scroll { overflow-x: auto; margin-top: 1.4rem; }
+      .table-scroll table { min-width: 34rem; }
+
+      /* Inline PDF viewer — tall enough to read a slide, capped to the viewport */
+      .slide-embed object {
+        display: block;
+        width: 100%;
+        height: min(78vh, 620px);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+
+      .toc { margin-top: 1.5rem; }
+      .toc ol { padding-left: 1.15rem; }
+      .toc li { margin-top: 0.25rem; }
+    </style>
+  </head>
+  <body>
+    <main id="main">
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow">Research · Theory walkthrough</p>
+          <h1>Strategic delay: the model in detail</h1>
+          <p>
+            A two-period durable-goods model in which the good has a finite economic life and
+            production gets cheaper over the product cycle. When does a monopolist introduce a
+            product later than a social planner would — and which consumers pay for it?
+          </p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 1.5rem;">
+        <div class="container">
+          <article class="prose">
+            <p class="note">
+              Companion to the working paper
+              <a href="/research/project-2/">Strategic delay of product introductions</a>,
+              with Subir Bose and Piercarlo Zanchettin. This page follows the structure of the
+              seminar presentation, which you can
+              <a href="#slides">read in full below</a>; the paper contains the full proofs.
+            </p>
+
+            <nav class="toc" aria-label="Contents">
+              <h4>Contents</h4>
+              <ol>
+                <li><a href="#question">Two forces pulling against each other</a></li>
+                <li><a href="#model">The model</a></li>
+                <li><a href="#first-best">The first-best benchmark</a></li>
+                <li><a href="#commitment">Commitment: the low type is over-delayed</a></li>
+                <li><a href="#non-commitment">Without commitment: the high type is over-delayed</a></li>
+                <li><a href="#comparison">The two regimes side by side</a></li>
+                <li><a href="#literature">Where this sits in the literature</a></li>
+                <li><a href="#slides">The seminar slides</a></li>
+              </ol>
+            </nav>
+
+            <h2 id="question">Two forces pulling against each other</h2>
+            <p>
+              A durable-good monopolist deciding <em>when</em> to introduce a product faces two
+              effects that point in opposite directions.
+            </p>
+            <ul>
+              <li>
+                <strong>Finite economic life.</strong> A unit bought late delivers fewer periods of
+                service than the same unit bought early. Willingness to pay for the
+                <em>same physical good</em> falls mechanically over the product cycle.
+              </li>
+              <li>
+                <strong>Declining marginal cost.</strong> Production technology improves within the
+                product's life, so the monopolist can supply that <em>same</em> good more cheaply
+                later than it could at launch.
+              </li>
+            </ul>
+            <p>
+              Late service is worth less to the buyer, but late production is cheaper for the seller.
+              Who should be served, and when? The question this paper asks is how the monopolist's
+              answer departs from the planner's, under two different assumptions about what the firm
+              can promise.
+            </p>
+            <div class="takeaway">
+              <p>
+                <strong>Over-delay</strong> — the object of the whole analysis. A type's consumption is
+                over-delayed if postponing it to period 2 is optimal for the <em>monopolist</em> but
+                sub-optimal for the <em>planner</em>.
+              </p>
+            </div>
+
+            <h2 id="model">The model</h2>
+            <ul>
+              <li>Two periods, \(t=\{1,2\}\). The good is perfectly durable, and its economic life ends after period 2.</li>
+              <li>Technology improves within the product cycle: \(c_{1} &gt; c_{2} \ge 0\).</li>
+              <li>
+                Two consumer types, \(V_{H} &gt; V_{L}\), with relative masses \(1-\mu\) and \(\mu\).
+                Consumers have unit demand, know their own type, and are forward-looking.
+              </li>
+              <li>Technology and the distribution of types are common knowledge; the monopolist cannot observe an individual's type.</li>
+            </ul>
+            <p>Timing of purchase is what makes the problem non-trivial. A type-\(J\) consumer compares</p>
+            \[
+              \underbrace{2V_{J}-p_{1}}_{\text{buy at launch: two periods of service}}
+              \qquad\text{versus}\qquad
+              \underbrace{V_{J}-p_{2}}_{\text{buy late: one period of service}}
+            \]
+            <p>
+              so willingness to pay is \(2V_{J}\) in period 1 and only \(V_{J}\) in period 2. The
+              decline is mechanical, not a taste for novelty.
+            </p>
+
+            <h2 id="first-best">The first-best benchmark</h2>
+            <p>
+              A benevolent planner with full information over types chooses, for each type \(J\),
+              among three production–consumption paths.
+            </p>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr><th>Path</th><th>Description</th><th>Net surplus</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>\(J_{12}\)</td><td>serve at launch, two periods of service</td><td>\(2V_{J}-c_{1}\)</td></tr>
+                  <tr><td>\(J_{2}\)</td><td>serve late, one period of service, cheaper</td><td>\(V_{J}-c_{2}\)</td></tr>
+                  <tr><td>\(J_{0}\)</td><td>never serve</td><td>\(0\)</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Delay buys a cost saving \(c_{1}-c_{2}\) at the price of one period of service worth
+              \(V_{J}\). So \(J_{2}\) beats \(J_{12}\) exactly when \(V_{J} &lt; c_{1}-c_{2}\), and
+              \(J_{2}\) beats \(J_{0}\) exactly when \(V_{J} &gt; c_{2}\).
+            </p>
+            <div class="result">
+              <p class="result-label">Condition (A) — significant cost saving</p>
+              <p>
+                Delay is <em>ever</em> efficient only if \(c_{2} &lt; V_{J} &lt; c_{1}-c_{2}\), which is
+                possible only when
+                \[ c_{2} &lt; c_{1}-c_{2}. \]
+                If the cost saving is small, the \(J_{2}\) region vanishes: the planner serves
+                immediately or never, and neither distortion below can arise.
+              </p>
+            </div>
+            <p>Applying this to both types under (A) gives the two benchmarks the analysis uses:</p>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr><th></th><th>Condition</th><th>First best</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>(A1)</td><td>\(c_{2}&lt;c_{1}-c_{2}&lt;V_{L}&lt;V_{H}\)</td><td>both types served at launch</td></tr>
+                  <tr><td>(A2)</td><td>\(c_{2}&lt;V_{L}&lt;c_{1}-c_{2}&lt;V_{H}\)</td><td>H at launch, L late</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="commitment">Commitment: the low type is over-delayed</h2>
+            <p>The monopolist announces \(\{p_{1},p_{2}\}\) at the start of period 1. Commitment here has two distinct parts:</p>
+            <ul>
+              <li>it cannot <strong>renege</strong> on an announced second-period price — a promised discount is honoured; and</li>
+              <li>it commits <strong>not to offer any new contract</strong> in period 2 — a promise <em>not</em> to discount is also credible.</li>
+            </ul>
+            <p>
+              The second part is what makes the pattern \((H_{12},L_{0})\) — serve the high type at
+              full price, never serve the low type — implementable at all. Without it, the high type
+              anticipates a period-2 discount to the low type and refuses to pay \(2V_{H}\). This is
+              the hinge on which the whole non-commitment section turns.
+            </p>
+
+            <div class="result">
+              <p class="result-label">Proposition 2 — the high type is never over-delayed</p>
+              <p>
+                Under commitment, over-delay of the high type's consumption cannot characterise the
+                monopoly equilibrium. In particular the monopolist never delays the high type when
+                \(V_{H} &gt; c_{1}-c_{2} &gt; c_{2}\).
+              </p>
+            </div>
+            <p>
+              The intuition is clean. Delaying the high type costs the monopolist that type's second
+              period of service, worth \(V_{H}\) in revenue, and buys the cost saving
+              \(c_{1}-c_{2}\) — which is <em>exactly</em> the planner's trade-off. The monopolist
+              extracts the high type's full surplus either way, so private and social incentives
+              coincide at the margin. Screening gives no extra reason to delay the <em>top</em> type,
+              because nobody sits above it whose incentive constraint delay could relax.
+            </p>
+
+            <div class="result">
+              <p class="result-label">Proposition 3 — intertemporal price discrimination</p>
+              <p>
+                Over-delay of the low type characterises the monopoly equilibrium if and only if
+                \[ V_{H} &gt; V_{L} &gt; c_{1}-c_{2} &gt; c_{2}, \tag{A1} \]
+                \[ \frac{V_{H}-V_{L}}{V_{H}-c_{2}} \;&lt;\; \mu \;&lt;\; \frac{V_{H}-V_{L}}{V_{H}-(c_{1}-c_{2})}. \tag{C1} \]
+              </p>
+            </div>
+            <p>
+              The condition on \(\mu\) is an interior interval, and the two ways of leaving it are
+              instructive: the distortion is a knife-edge between two different corner solutions.
+            </p>
+
+            <figure class="figure">
+              <svg viewBox="0 0 640 150" role="img" aria-labelledby="mu-title mu-desc">
+                <title id="mu-title">Equilibrium pattern as a function of the low type's mass</title>
+                <desc id="mu-desc">
+                  A horizontal axis in mu from 0 to 1, divided into three regions: for small mu the
+                  low type is excluded, for intermediate mu the low type is over-delayed, and for
+                  large mu the outcome coincides with the first best.
+                </desc>
+                <!-- region shading -->
+                <rect x="40" y="66" width="160" height="18" fill="var(--accent-wash)" />
+                <rect x="200" y="66" width="200" height="18" fill="var(--amber-wash)" />
+                <rect x="400" y="66" width="200" height="18" fill="var(--accent-wash)" />
+                <!-- axis -->
+                <line x1="40" y1="84" x2="608" y2="84" stroke="var(--ink)" stroke-width="1.5" />
+                <polygon points="608,84 600,80.5 600,87.5" fill="var(--ink)" />
+                <!-- ticks -->
+                <line x1="40" y1="79" x2="40" y2="89" stroke="var(--ink)" stroke-width="1.5" />
+                <line x1="200" y1="74" x2="200" y2="94" stroke="var(--accent)" stroke-width="2" />
+                <line x1="400" y1="74" x2="400" y2="94" stroke="var(--accent)" stroke-width="2" />
+                <line x1="600" y1="79" x2="600" y2="89" stroke="var(--ink)" stroke-width="1.5" />
+                <!-- tick labels -->
+                <text x="40" y="108" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--muted)">0</text>
+                <text x="600" y="108" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--muted)">1</text>
+                <text x="624" y="88" font-family="var(--mono)" font-size="13" fill="var(--ink)">μ</text>
+                <!-- region labels -->
+                <text x="120" y="56" text-anchor="middle" font-family="var(--body)" font-size="13" fill="var(--ink)">(H₁₂, L₀)</text>
+                <text x="120" y="38" text-anchor="middle" font-family="var(--body)" font-size="11.5" fill="var(--muted)">L excluded</text>
+                <text x="300" y="56" text-anchor="middle" font-family="var(--body)" font-size="13" fill="var(--amber)" font-weight="600">(H₁₂, L₂)</text>
+                <text x="300" y="38" text-anchor="middle" font-family="var(--body)" font-size="11.5" fill="var(--amber)">over-delay</text>
+                <text x="500" y="56" text-anchor="middle" font-family="var(--body)" font-size="13" fill="var(--ink)">(H₁₂, L₁₂)</text>
+                <text x="500" y="38" text-anchor="middle" font-family="var(--body)" font-size="11.5" fill="var(--muted)">first best</text>
+                <!-- threshold labels -->
+                <text x="200" y="126" text-anchor="middle" font-family="var(--body)" font-size="12" fill="var(--muted)">(V_H − V_L)⁄(V_H − c₂)</text>
+                <text x="400" y="126" text-anchor="middle" font-family="var(--body)" font-size="12" fill="var(--muted)">(V_H − V_L)⁄(V_H − (c₁ − c₂))</text>
+              </svg>
+              <figcaption>
+                Condition (C1). When \(\mu\) is too small the low type's rent is not worth paying for,
+                so it is excluded outright; when \(\mu\) is too large, uniform pricing at launch
+                dominates and the outcome is first best. Over-delay lives in between.
+              </figcaption>
+            </figure>
+
+            <p>
+              What does the distortion cost? Under (A1) the first best is \((H_{12},L_{12})\) while
+              the monopolist implements \((H_{12},L_{2})\), so
+              \[ \Delta W = \mu\bigl(V_{L}-(c_{1}-c_{2})\bigr) &gt; 0. \]
+            </p>
+            <div class="takeaway">
+              <p>
+                <strong>Delay is the moderate distortion.</strong> The alternative — outright exclusion
+                \((H_{12},L_{0})\) — costs \(\mu(2V_{L}-c_{1})\), which is strictly larger under (A1).
+                The monopolist's screening instrument destroys less surplus than exclusion would.
+              </p>
+            </div>
+
+            <h2 id="non-commitment">Without commitment: the high type is over-delayed</h2>
+            <p>
+              Now let the monopolist offer a <em>new</em> contract in period 2. The first best is
+              unchanged; only the firm's feasible set moves — and it does not grow. It shrinks by
+              exactly one element.
+            </p>
+            <div class="result result--alt">
+              <p class="result-label">\((H_{12},L_{0})\) is no longer implementable</p>
+              <p>
+                Once the high type has bought at \(p_{1}=2V_{H}\), the monopolist strictly wants to
+                offer \(p_{2}=V_{L}\) to the remaining low types whenever \(V_{L}&gt;c_{2}\). The high
+                type anticipates this and refuses to pay \(2V_{H}\).
+              </p>
+            </div>
+            <p>
+              That single deletion is what unlocks the second distortion. The comparison behind
+              Proposition 2 is no longer available, so \((H_{2},L_{0})\) becomes a live candidate —
+              and it is the <em>only</em> remaining way to serve the high type without a subsequent
+              discount to the low type.
+            </p>
+
+            <div class="result">
+              <p class="result-label">Proposition 4 — over-delay of the high type</p>
+              <p>
+                Over-delay of the high type's consumption by one period characterises the monopoly
+                equilibrium if and only if
+                \[ V_{H} &gt; c_{1}-c_{2} &gt; V_{L} &gt; c_{2}, \tag{A2} \]
+                \[ \mu &lt; \frac{(c_{1}-c_{2})-V_{L}}{c_{1}-2c_{2}}. \tag{C2} \]
+                The equilibrium pattern is \((H_{2},L_{0})\): nobody is served at launch, and only the
+                high type is served late.
+              </p>
+            </div>
+            <p>
+              (A2) is the case where the planner serves the high type at launch and the low type
+              late. (C2) says the low type's mass is small; since \(c_{1}&gt;2c_{2}\) and
+              \(c_{1}-c_{2}&gt;V_{L}\) under (A2), the bound is strictly positive.
+            </p>
+
+            <h3>Why waiting buys credibility</h3>
+            <p>
+              With commitment the monopolist would pick \((H_{12},L_{0})\): extract \(2V_{H}\) from
+              the high type and promise never to discount. Without commitment that promise is empty
+              <em>as long as a period 2 exists in which the low type can be served</em>. By waiting
+              until period 2, the monopolist reaches a date after which no further contract is
+              possible — the promise becomes credible by construction. The finite economic life is
+              doing the work.
+            </p>
+            <p>The firm weighs</p>
+            \[
+              \underbrace{V_{H}-V_{L}}_{\text{rent saved on the high type}}
+              \quad\text{against}\quad
+              \underbrace{V_{H}}_{\text{one period of service lost}}
+              -\underbrace{(c_{1}-c_{2})}_{\text{cost saved}}
+            \]
+            <p>
+              so waiting pays only when the cost saving is large, and only when there are few low
+              types to sell to in the meantime.
+            </p>
+            <p>
+              Welfare now falls short on two margins at once. Under (A2) the first best is
+              \((H_{12},L_{2})\) and the monopolist implements \((H_{2},L_{0})\):
+              \[
+                \Delta W=\underbrace{(1-\mu)\bigl(V_{H}-(c_{1}-c_{2})\bigr)}_{\text{high type served one period late}}
+                \;+\;\underbrace{\mu(V_{L}-c_{2})}_{\text{low type excluded entirely}}\;&gt;\;0
+              \]
+              Both terms are strictly positive under (A2) — two distortions, against the single
+              moderate one of the commitment regime.
+            </p>
+
+            <h2 id="comparison">The two regimes side by side</h2>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr><th></th><th>Commitment</th><th>No commitment</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Relevant first best</td><td>(A1): both at launch</td><td>(A2): H at launch, L late</td></tr>
+                  <tr><td>Equilibrium pattern</td><td>\((H_{12},L_{2})\)</td><td>\((H_{2},L_{0})\)</td></tr>
+                  <tr><td>Over-delay of H</td><td>impossible</td><td>possible</td></tr>
+                  <tr><td>Over-delay of L</td><td>yes, one period</td><td>L excluded altogether</td></tr>
+                  <tr><td>Condition on \(\mu\)</td><td>interior interval (C1)</td><td>upper bound (C2), \(\mu\) small</td></tr>
+                  <tr><td>Cost savings needed</td><td>\(c_{2}&lt;c_{1}-c_{2}\)</td><td>\(c_{2}&lt;c_{1}-c_{2}\), and \(c_{1}-c_{2}&gt;V_{L}\)</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Both distortions are phenomena of <em>fast-improving production technology</em>. A slow
+              cost decline restores immediate-or-never service and neither result survives.
+            </p>
+
+            <h2 id="literature">Where this sits in the literature</h2>
+            <p>
+              On the commitment side, the classic result is that intertemporal price discrimination
+              is sub-optimal for a durable-goods monopolist (Coase, 1972; Stokey, 1979, 1981; Gul,
+              Sonnenschein and Wilson, 1986) unless the firm can commit to its price path — via
+              capacity (Bulow, 1982; McAfee and Wiseman, 2008), R&amp;D obsolescence (Lee and Lee,
+              1998), endogenous quality (Moorthy and Png, 1992), or an inflow of new consumers
+              (Besbes and Lobel, 2015). Here it arises in equilibrium instead.
+            </p>
+            <p>
+              Read as a damaged-goods problem, the second-period good is a perishable version of the
+              first. The discrete-demand damaged-goods literature (Deneckere and McAfee, 1996;
+              McAfee, 2007; Anderson and Dana, 2009) assumes the damaged good's marginal cost need
+              not be lower, and so requires an increasing-percentage-difference condition on
+              valuations. Significant future cost savings mean no such restriction is needed here.
+            </p>
+            <div class="takeaway">
+              <p>
+                <strong>Closest antecedent.</strong> Ortner (2017) obtains over-delay of the high type
+                with <em>stochastic</em> marginal costs and an infinite horizon — the firm waits for
+                high-cost states. The over-delay here does not require future costs to be high. It
+                arises precisely because they will be <em>low</em>, and because the product dies:
+                finite economic life substitutes for persistence in costs.
+              </p>
+            </div>
+            <p>
+              Throughout, the driver is the size of the future cost saving relative to valuations,
+              not the shape of the valuation distribution — no increasing percentage differences, no
+              log-supermodularity, and no violation of Spence–Mirrlees.
+            </p>
+
+            <h2 id="slides">The seminar slides</h2>
+            <p>
+              The full 48-slide seminar deck, from which this page is condensed. It carries the
+              parts that do not compress well into prose: the nine consumption patterns as a grid,
+              each pattern's constrained maximisation with its \(IC\) and \(IR\) conditions
+              written out, and the proofs of Propositions 1–4 step by step.
+            </p>
+
+            <p class="research-actions">
+              <a class="btn btn--primary" href="strategic-delay-slides.pdf">
+                Download the slides (PDF, 48 slides) <span class="arrow">→</span>
+              </a>
+            </p>
+
+            <figure class="figure slide-embed">
+              <object data="strategic-delay-slides.pdf" type="application/pdf"
+                      aria-label="Strategic Delay of Product Introductions — seminar slides">
+                <p class="note">
+                  Your browser will not display the slides inline —
+                  <a href="strategic-delay-slides.pdf">download the PDF</a> instead.
+                </p>
+              </object>
+              <figcaption>
+                Strategic Delay of Product Introductions — Subir Bose, Mehman Ismayilli and
+                Piercarlo Zanchettin. Sections: introduction, literature, model, first best,
+                the commitment regime, the non-commitment regime, discussion, conclusion.
+              </figcaption>
+            </figure>
+
+            <p class="note" style="margin-top: 2rem;">
+              Please email me for a copy of the paper — see <a href="/contact/">contact</a>.
+            </p>
+          </article>
+
+          <p style="margin-top: 2.5rem;">
+            <a class="backlink" href="/research/project-2/">← Back to the paper</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <p class="eyebrow">Keep reading</p>
+              <h2>More research</h2>
+            </div>
+          </div>
+          <div class="research-list">
+            <a class="research-item reveal" href="/research/project-3/">
+              <span class="research-tag" data-kind="theory"><span class="dot"></span>theory</span>
+              <div class="research-body">
+                <h3>Environmental Externalities and Strategic (Un)Bundling in Complementary Goods Markets</h3>
+                <p>A theoretical study on commmodity bundling and environmental strategy in complementary goods markets.</p>
+              </div>
+              <span class="research-go" aria-hidden="true">→</span>
+            </a>
+            <a class="research-item reveal" href="/research/project-1/">
+              <span class="research-tag" data-kind="experimental"><span class="dot"></span>experimental</span>
+              <div class="research-body">
+                <h3>First-order stochastic dominance violations, risk preferences and framing effects</h3>
+                <p>An experimental and empirical analysis of decision errors under risk and uncertainty and their relationship with risk preferences and framing effects.</p>
+              </div>
+              <span class="research-go" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/assets/main.js"></script>
+  </body>
+</html>

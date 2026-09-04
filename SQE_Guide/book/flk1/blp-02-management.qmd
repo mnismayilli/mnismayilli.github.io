@@ -1,0 +1,33 @@
+# Running the business {#sec-blp-management}
+
+> *Assessment objective 2: the management of a business and company decision making to ensure
+> compliance with statutory and other legal requirements.*
+
+::: {.callout-note title="Not yet written"}
+Outline below. Drafted to the same depth as @sec-blp-vehicles.
+:::
+
+## Planned contents
+
+**Directors** — types (de jure, de facto, shadow); appointment; removal under s.168 CA 2006 and the
+special notice procedure; the *Bushell v Faith* clause; disqualification.
+
+**Directors' duties** — ss.171–177 CA 2006 taken one at a time, with the consequences of breach and
+ratification under s.239. The duty to promote the success of the company (s.172) and the conflict
+duties (ss.175–177) carry the most exam weight.
+
+**Transactions requiring member approval** — substantial property transactions (s.190), loans to
+directors (s.197), long-term service contracts (s.188), payments for loss of office (s.217).
+
+**Company decision making** — board meetings versus general meetings; notice, quorum and voting;
+ordinary and special resolutions; written resolutions and why public companies cannot use them;
+general meetings requisitioned by members (s.303).
+
+**Filing and record keeping** — confirmation statement, annual accounts, statutory registers, the
+PSC register, and the consequences of default.
+
+**Partnership decision making** — the s.24(8) majority/unanimity split and actual versus apparent
+authority under s.5 PA 1890, cross-referenced from @sec-blp-vehicles.
+
+**Conduct** — the solicitor advising a board; who the client is when directors and shareholders
+disagree; and the limits of taking instructions from one director.

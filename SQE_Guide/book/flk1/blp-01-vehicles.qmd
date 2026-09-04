@@ -1,0 +1,364 @@
+# Choosing and forming the vehicle {#sec-blp-vehicles}
+
+> *Assessment objective 1: starting a new business through the vehicle of a company, partnership,
+> LLP or as a sole trader.*
+
+## Why the choice matters
+
+A client starting a business is really choosing among four trade-offs, and almost every exam
+question on this topic is testing one of them.
+
+**Liability.** Will the founders' personal assets be exposed if the business fails? This is the
+first question most clients ask and the one they most often misunderstand.
+
+**Tax.** Is the business itself taxed, or are the owners taxed on its profits directly? The
+difference between a *transparent* vehicle and an *opaque* one drives a great deal of real-world
+structuring advice.
+
+**Formality and cost.** Some vehicles come into existence by accident. Others require registration,
+filings, accounts and a constitution.
+
+**Publicity and control.** Incorporation buys limited liability at the price of putting your
+accounts, officers and ownership on a public register.
+
+## The four vehicles at a glance
+
+|  | Sole trader | General partnership | LLP | Private company |
+|---|---|---|---|---|
+| Separate legal personality | No | No | **Yes** | **Yes** |
+| Owners' liability | Unlimited, personal | Unlimited; joint (debts), joint and several (wrongs) | Limited | Limited to amount unpaid on shares |
+| How it comes into being | Simply trading | **By conduct** — no formality needed | Incorporation at Companies House | Incorporation at Companies House |
+| Governing statute | — | Partnership Act 1890 | Limited Liability Partnerships Act 2000 | Companies Act 2006 |
+| Taxed as | Income tax on profits | Transparent — partners taxed individually | **Transparent** — members taxed individually | Corporation tax; shareholders taxed on distributions |
+| Public filing | None | None | Accounts, confirmation statement | Accounts, confirmation statement |
+| Constitution | — | Partnership agreement, or PA 1890 defaults | Members' agreement, or default regulations | Articles of association |
+
+::: {.callout-important title="Exam trap"}
+The LLP is the hybrid, and the hybrid is where questions live. It **is** a body corporate with
+separate legal personality and limited liability — but it is **taxed transparently**, like a
+partnership. Any option telling you an LLP pays corporation tax on its profits is wrong. Any option
+telling you an LLP has no separate legal personality is also wrong. Candidates who have half-learned
+the point reliably pick one or the other.
+:::
+
+## The sole trader
+
+There is nothing to form. A person who starts trading on their own account is a sole trader, and
+the business has no legal existence separate from them. Its assets are their assets, its debts are
+their debts, and its profits are their income, charged to income tax with Class 2 and Class 4
+National Insurance contributions.
+
+The absence of separate personality is the whole point. A sole trader cannot contract with their own
+business, cannot be employed by it, and cannot limit their exposure to its creditors. Against that,
+there is no registration, no constitution, no public filing and no audit.
+
+Trading names are regulated even here: the restrictions on business names in Part 41 of the
+Companies Act 2006 apply to sole traders and partnerships, not only to companies.
+
+## The general partnership
+
+### How it arises
+
+Section 1(1) of the Partnership Act 1890 defines partnership as *"the relation which subsists
+between persons carrying on a business in common with a view of profit"*.
+
+Read that carefully. It says nothing about agreement, documentation, or intention to form a
+partnership. If the elements are present, the relation exists.
+
+::: {.callout-important title="Exam trap"}
+Partnership arises **by conduct**. A scenario in which two people never signed anything, never used
+the word "partnership", and would deny being partners can still be a partnership — and each will
+then be liable for the other's business debts without limit. The examiner's favourite version is
+two friends who "just started working together". Look for business, in common, with a view of
+profit. Sharing gross returns alone does not create a partnership (s.2(2)); receipt of a share of
+profits is *prima facie* evidence but not conclusive (s.2(3)).
+:::
+
+In England and Wales a partnership has **no separate legal personality**. The firm is the partners.
+(Scots law differs — a distraction the examiner sometimes uses.)
+
+### The default terms
+
+Where the partners have no agreement, or their agreement is silent, the Act supplies terms. These
+are heavily examined because the question usually turns on what happens *absent* an agreement.
+
+| Section | Default rule |
+|---|---|
+| s.24(1) | Partners share **equally** in capital and profits, and contribute equally to losses — regardless of unequal capital contributions |
+| s.24(5) | Every partner may take part in management |
+| s.24(6) | **No** partner is entitled to a salary |
+| s.24(7) | **No** new partner may be introduced without **unanimous** consent |
+| s.24(8) | Ordinary matters decided by **majority**; a change in the **nature of the business** requires **unanimity** |
+| s.25 | **No** majority may expel a partner unless the agreement says so |
+| s.26 | A partnership at will may be dissolved by **any** partner giving notice — immediately |
+| s.28 | Duty to render true accounts and full information |
+| s.29 | Duty to account for private profits from the partnership |
+| s.30 | Duty not to compete with the firm |
+
+::: {.callout-important title="Exam trap"}
+Section 24(1) is the one that produces the unfair-looking answer. A partner who contributed £90,000
+of the capital and a partner who contributed £10,000 share profits **equally** unless they agreed
+otherwise. Candidates instinctively apportion by contribution. The Act does not.
+:::
+
+### Authority and liability to outsiders
+
+Section 5 is the partnership equivalent of agency. A partner's act binds the firm where it is *for
+carrying on in the usual way business of the kind carried on by the firm* — **unless** the partner
+had no authority **and** the third party either knew that or did not know or believe them to be a
+partner. Both limbs are needed to escape liability.
+
+::: {.callout-tip title="Worked example"}
+Anna, Ben and Chi are partners in a firm of architects. Their agreement says no partner may commit
+the firm to more than £5,000 without the others' consent. Anna orders £12,000 of drafting software
+from a supplier who knows nothing of the restriction.
+
+Is the firm bound? Ordering professional software is an act for carrying on in the usual way the
+business of a firm of architects, so s.5 is engaged. Anna lacked actual authority — but the supplier
+neither knew that nor doubted she was a partner. **The firm is bound.** The internal restriction is
+enforceable between the partners, not against the supplier. Anna is liable to indemnify her partners.
+
+Change one fact: the supplier had been told of the £5,000 limit. Now both limbs are satisfied and
+the firm is not bound.
+:::
+
+Related provisions worth knowing precisely:
+
+- **s.9** — partners are jointly liable for the firm's **debts and obligations**.
+- **ss.10–12** — partners are jointly and severally liable for **wrongs** committed in the ordinary
+  course of business.
+- **s.14** — a person who represents themselves, or knowingly allows themselves to be represented,
+  as a partner is liable as one to anyone who gives credit on the faith of it (*holding out*).
+- **s.17(1)** — an **incoming** partner is **not** liable for debts incurred before they joined.
+- **s.17(2)** — an **outgoing** partner remains liable for debts incurred while they were a partner.
+- **s.36** — and remains liable for **later** debts to those who dealt with the firm before, unless
+  notice is given: actual notice to existing customers, and *London Gazette* notice for the world.
+
+::: {.callout-important title="Exam trap"}
+The retiring partner who "told everyone" is a standing favourite. Retirement alone does not end
+exposure to future creditors who previously dealt with the firm. Actual notice to them plus Gazette
+notice is what does it.
+:::
+
+## The limited liability partnership
+
+The LLP was created by the Limited Liability Partnerships Act 2000 for professional firms that
+wanted limited liability without becoming companies. It is genuinely a hybrid.
+
+- It is a **body corporate** with separate legal personality and unlimited capacity (s.1 LLPA 2000).
+- Its owners are **members**, not partners. At least two are **designated members**, carrying the
+  administrative duties a company secretary would otherwise bear.
+- It is formed by **incorporation** — two or more persons associated for carrying on a lawful
+  business with a view of profit, subscribing to an incorporation document delivered to the
+  Registrar.
+- Its internal affairs are governed by a members' agreement; where there is none, default
+  regulations supply terms broadly mirroring the PA 1890 defaults.
+- It files accounts and a confirmation statement, so it trades **publicity** for **limited
+  liability** in the same bargain a company makes.
+- It is **tax transparent**: the LLP itself pays no corporation tax, and members are taxed
+  individually on their shares of profit.
+
+The limited liability is not absolute. Section 214A of the Insolvency Act 1986 allows a liquidator
+to claw back withdrawals made by a member in the two years before winding up, where the member knew
+or had reasonable ground to believe the LLP was, or would become, unable to pay its debts.
+
+## Companies
+
+### Private and public
+
+A private company limited by shares is the default vehicle for a small business. An unlisted public
+company is rarer and mostly examined by contrast.
+
+| | Private limited | Public |
+|---|---|---|
+| Minimum share capital | None | £50,000, at least 25% paid up |
+| May trade from incorporation | Yes | No — needs a trading certificate under s.761 CA 2006 |
+| Company secretary | Optional | **Required** |
+| Written resolutions | Available | **Not** available |
+| AGM | Not required | **Required** |
+| Offer shares to the public | **Prohibited** | Permitted |
+
+### Separate legal personality
+
+*Salomon v A Salomon & Co Ltd* [1897] AC 22 is the foundation. A properly incorporated company is a
+legal person distinct from its shareholders, even where one person owns and controls it entirely.
+Mr Salomon's company owed money to Mr Salomon, and he ranked as a secured creditor ahead of the
+unsecured ones. The House of Lords held the company was validly formed and the consequences followed.
+
+Two consequences are examined more often than the principle itself:
+
+- *Macaura v Northern Assurance Co Ltd* [1925] AC 619 — a shareholder has **no insurable interest**
+  in the company's assets. Macaura insured timber in his own name; the company owned it; his claim
+  failed.
+- *Lee v Lee's Air Farming Ltd* [1961] AC 12 — a person can be simultaneously the controlling
+  shareholder, sole director, **and an employee** of their own company. Lee's widow recovered as the
+  dependant of a worker killed in the course of employment.
+
+### Piercing the corporate veil
+
+The courts will disregard separate personality only in very narrow circumstances. *Prest v Petrodel
+Resources Ltd* [2013] UKSC 34 restated the law and drew a distinction that is the whole of the
+modern doctrine:
+
+- The **concealment** principle: the court looks *behind* the company to identify who is really
+  acting. This is not piercing at all — it is ordinary fact-finding, and it is always available.
+- The **evasion** principle: the court disregards the company where a person **under an existing
+  legal obligation** deliberately interposes a company to **frustrate or evade** it. This is the
+  only true piercing, and it is exceptional.
+
+::: {.callout-important title="Exam trap"}
+"The company was a one-man company", "the company was a sham", "the shareholder controlled
+everything", "it would be just and equitable" — none of these is sufficient. Look for a
+**pre-existing obligation** that the company was interposed to escape. Absent that, the veil stands,
+however unattractive the outcome.
+:::
+
+Statute achieves by other means much of what the common law refuses: wrongful trading (s.214
+Insolvency Act 1986) and fraudulent trading (s.213) impose personal liability on directors without
+disturbing the company's separate personality. Those are covered in @sec-blp-termination.
+
+### Formation
+
+A company is formed under s.7 CA 2006 by one or more persons subscribing to a memorandum of
+association and complying with the registration requirements. What is delivered to the Registrar:
+
+1. **Memorandum of association** (s.8) — now a short prescribed-form document in which the
+   subscribers state that they wish to form a company and agree to become members, taking at least
+   one share each. It is a **historical record** of formation; it is *not* the company's
+   constitution and cannot be amended.
+2. **Application for registration** (s.9) — form IN01, stating the proposed name, whether liability
+   is limited, whether the company is private or public, the situation of the registered office
+   (England and Wales, Wales, Scotland or Northern Ireland), a statement of capital and initial
+   shareholdings, a statement of proposed officers, and a statement of the intended registered
+   office address.
+3. **Articles of association**, unless the relevant Model Articles are adopted in full by default.
+4. **Statement of compliance** (s.13).
+5. The registration fee.
+
+The Registrar issues a **certificate of incorporation** (s.15), which is **conclusive evidence**
+that the registration requirements were met (s.15(4)). The company exists from the date on the
+certificate (s.16).
+
+::: {.callout-important title="Exam trap"}
+The memorandum under the 2006 Act is not the constitutional document it was under the 1985 Act. The
+company's constitution is its **articles**. An option describing the memorandum as containing the
+objects clause, or as amendable by special resolution, is testing whether you know the regime
+changed.
+:::
+
+::: {.callout-caution title="Verify before relying on this"}
+The Economic Crime and Corporate Transparency Act 2023 introduced identity verification for
+directors, persons with significant control and those filing at Companies House, together with
+enhanced Registrar powers. These provisions have been commencing in **stages**. Check what is in
+force, and — see @sec-cutoff — whether it falls before your sitting's examinable law cut-off, before
+treating any of it as the answer.
+:::
+
+### The articles
+
+The articles are the company's constitution. If none are registered, or the registered articles do
+not exclude or modify them, the relevant **Model Articles** apply by default (s.20 CA 2006).
+
+**Section 33** gives the articles contractual force: the provisions of a company's constitution bind
+the company and its members as if there were covenants by each to observe them. The contract is
+enforceable only in respect of **membership rights** — a member suing in some other capacity, such
+as as a solicitor engaged by the company, cannot rely on s.33.
+
+**Amendment** requires a **special resolution** (s.21) — 75%. Three limits:
+
+- A member cannot be bound by an alteration made after they became a member which requires them to
+  take more shares or increases their liability, unless they agree in writing (s.25).
+- Provisions may be **entrenched** (s.22), requiring a more restrictive procedure than a special
+  resolution. Entrenchment can be introduced only on formation or by **unanimous** agreement.
+- The power must be exercised *bona fide* for the benefit of the company as a whole (*Allen v Gold
+  Reefs of West Africa Ltd* [1900] 1 Ch 656).
+
+A copy of any amended articles must be filed within 15 days.
+
+### The company name
+
+Sections 53–57 CA 2006 restrict names: a private limited company's name must end with "limited" or
+"ltd" (or the Welsh equivalents *cyfyngedig* / *cyf*); a name that is the same as one already
+registered is prohibited; and certain sensitive or offensive words require approval. A company may
+change its name by **special resolution** (s.77), and the change takes effect when the Registrar
+issues a new certificate of incorporation on the change of name.
+
+### Off-the-shelf or tailor-made
+
+A shelf company is bought ready-formed and then adapted: the subscriber shares are transferred, new
+directors appointed, the old ones resign, the name is changed and the articles amended. Formation
+from scratch avoids that unwinding but takes slightly longer. Electronic incorporation has narrowed
+the gap so far that the shelf company is now mostly of historical interest — but it appears in
+questions, and the point being tested is usually the *sequence* of steps needed to adapt one.
+
+## The solicitor's position
+
+Two conduct issues recur in formation scenarios, and both are worth more marks than their length
+suggests.
+
+**Who is the client?** Once a company is incorporated it is a client distinct from its founders. A
+solicitor instructed to "set up the business for Anna and Ben" must be clear whether they act for
+Anna, for Ben, for both, or for the company — and the answer changes who they owe duties to when the
+founders fall out.
+
+**Conflict of interest.** Acting for two or more founders whose interests may diverge — on
+shareholdings, on control, on what happens if one leaves — engages the conflict provisions of the
+Code of Conduct. The safe course, and usually the right answer, is to advise each to take independent
+advice on the terms of the shareholders' agreement, rather than to proceed on the basis that
+everyone is currently friendly.
+
+::: {.callout-important title="Exam trap"}
+The client's consent does not cure everything. Where there is a conflict, or a significant risk of
+one, the exceptions permitting a solicitor to act are narrow and depend on the clients having a
+substantially common interest or competing for the same objective, plus informed consent and
+appropriate safeguards. An option that says "may act because both clients consented in writing" is
+usually incomplete.
+:::
+
+## Test yourself
+
+::: {.callout-note collapse="true" title="Five questions — answers hidden until you open them"}
+
+**1.** Priya contributed £80,000 to a partnership; Sam contributed £20,000. There is no written
+agreement. The firm makes £50,000 profit. How is it shared?
+
+**2.** A retiring partner writes to all the firm's existing customers announcing her retirement but
+places no notice in the *London Gazette*. A new customer, who had never dealt with the firm before,
+later contracts with it and is unpaid. Is the retired partner liable?
+
+**3.** A father, subject to a court order requiring him to transfer a specific property to his
+daughter, transfers it instead to a company he wholly owns. Will the court pierce the veil?
+
+**4.** An LLP makes £400,000 of profit. Which tax is charged on that profit, and on whom?
+
+**5.** A company's articles contain a provision requiring 90% approval to remove a director. The
+provision was inserted after incorporation by special resolution passed on a 78% vote, with no
+entrenchment procedure followed. Is it effective as an entrenched provision?
+
+---
+
+**Answers**
+
+**1.** Equally — £25,000 each. Section 24(1) provides for equal sharing of profits regardless of
+unequal capital contributions, and there is no agreement displacing it. The instinct to apportion
+80:20 is the trap.
+
+**2.** No. Section 36 protects those who **dealt with the firm before** the retirement, and requires
+actual notice to them; the *Gazette* notice protects against **new** customers. A customer who never
+dealt with the firm before the retirement cannot have relied on her membership, so the absence of
+Gazette notice does not make her liable here. (Note the contrast: had it been an *existing* customer
+who received no notice, she would be exposed.)
+
+**3.** Yes, on the evasion principle in *Prest v Petrodel*. There is a **pre-existing legal
+obligation** — the court order — and the company was interposed to frustrate it. This is the narrow
+case in which the veil is genuinely pierced.
+
+**4.** None on the LLP itself. An LLP is **tax transparent**: each member is charged to income tax
+on their share of the profit, whether or not it is drawn. Corporation tax is not in point.
+
+**5.** No. Entrenchment under s.22 may be introduced only on formation or by **unanimous** agreement
+of all the members. A 78% special resolution is enough to *amend* the articles but not to *entrench*
+a provision, so the 90% requirement is not protected against later removal by ordinary special
+resolution.
+
+:::

@@ -1,0 +1,11 @@
+/*-- scss:defaults --*/
+$primary: #14243d;
+$link-color: #2d5f9a;
+$body-color: #2b3440;
+$font-size-root: 17px;
+
+/*-- scss:rules --*/
+.callout-caution > .callout-header { background-color: #fdf0ea; }
+.callout-tip > .callout-header { background-color: #f0f6f2; }
+blockquote { border-left: 3px solid #c8a45c; color: #4a4a4a; }
+h1, h2, h3 { color: #14243d; }

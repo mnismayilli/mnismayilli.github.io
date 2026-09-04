@@ -1,0 +1,10 @@
+{
+  "student_name": "Kh. Mammadli",
+  "recipient_email": "mammadli.kh@gmail.com",
+  "cc_email": "ismayilli.mehman@gmail.com",
+  "timezone": "Europe/London",
+  "target_sitting": "SQE1 July 2027",
+  "questions_per_drill": 10,
+  "target_minutes_per_drill": 20,
+  "question_bank_purchased": false
+}

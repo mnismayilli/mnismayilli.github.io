@@ -1,0 +1,32 @@
+# Taxation of the business and its stakeholders {#sec-blp-taxation}
+
+> *Assessment objective 5: taxation of a business and its stakeholders.*
+
+::: {.callout-note title="Not yet written"}
+Outline below. This is the most underestimated chapter in the subject.
+:::
+
+## Planned contents
+
+**Income tax** — chargeable persons; the basis of charge; computing taxable income; rates and
+allowances; anti-avoidance.
+
+**Capital gains tax** — chargeable persons and chargeable disposals; computing the gain; the
+principal reliefs, in particular business asset disposal relief, rollover relief and holdover
+relief; collection.
+
+**Corporation tax** — the basis of charge; computing taxable total profits as income profits plus
+chargeable gains; allowable deductions; the main reliefs and exemptions; distributions;
+anti-avoidance. *The September 2026 specification expands the wording here — expect it to be tested.*
+
+**Value added tax** — the scope of the charge; registration; output and input tax; taxable, exempt
+and zero-rated supplies; invoicing, returns and records.
+
+**Inheritance tax** — business property relief as it applies to business assets.
+
+::: {.callout-caution title="Rates and thresholds"}
+Tax rates, bands and thresholds change annually and are the single most perishable content in this
+text. Every figure in this chapter must be checked against the position at your sitting's examinable
+law cut-off — see @sec-cutoff. Learn the *mechanics* from this text and the *numbers* from a current
+source.
+:::

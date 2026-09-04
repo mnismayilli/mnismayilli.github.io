@@ -1,0 +1,62 @@
+# How to use this text {.unnumbered}
+
+This is a study text for **SQE1 FLK1**, written against the SRA's Assessment Specification
+as it stands from 1 September 2026.
+
+## What this text is for
+
+SQE1 is not an essay exam. It is 360 single-best-answer multiple choice questions across two
+papers, at roughly 1.7 minutes each, and it tests whether you can *apply* a rule to a client's
+facts rather than whether you can recite it. This text is written to that end. Every chapter
+states the rule, explains why it exists, works an example where the rule is mechanical, and then
+names the discrimination the examiner is most likely to build a question around.
+
+Three conventions run throughout.
+
+::: {.callout-important title="Exam trap"}
+The wrong answer that looks right. These mark the places where a plausible-sounding option is
+offered and most candidates take it.
+:::
+
+::: {.callout-caution title="Verify before relying on this"}
+A point that turns on law which has moved recently, or which the author is not fully confident of.
+Check it against a current primary source before you commit it to memory.
+:::
+
+::: {.callout-tip title="Worked example"}
+A rule applied to facts, step by step, where the mechanics matter more than the statement.
+:::
+
+## The examinable law cut-off {#sec-cutoff}
+
+This matters more than it first appears. The SRA fixes an **examinable law cut-off date** for each
+sitting: for the July 2026 sitting it was 13 March 2026. Law that comes into force *after* your
+sitting's cut-off is **not examinable**, however prominent it is.
+
+The practical consequence is counter-intuitive. Learning the newest reform can lose you marks.
+Leasehold, renting and corporate transparency law are all mid-reform, commencing in stages, and it
+is entirely possible to learn a rule that is correct in practice and wrong for your paper. Where
+this text discusses a reform in progress it says so explicitly and states the pre-reform position
+as the examinable one.
+
+::: {.callout-caution title="Confirm your own cut-off"}
+Check the cut-off date for your sitting on the SQE website before revising anything time-sensitive.
+The date for July 2027 had not been published when this text was written.
+:::
+
+## Ethics is not a separate subject
+
+Professional conduct is not examined on its own in SQE1. It is embedded in scenarios across both
+papers, which means an otherwise straightforward company law question can turn on the SRA
+Principles or the Code of Conduct. This text raises conduct where it arises rather than
+quarantining it in a chapter, because that is how it will reach you in the exam.
+
+Where the Principles conflict, those which safeguard the wider public interest — the rule of law
+and the proper administration of justice — take precedence over an individual client's interests.
+That ordering decides a surprising number of questions.
+
+## Sources
+
+The syllabus structure and assessment objectives are taken from the SRA's SQE1 Assessment
+Specification. Statute references are to the legislation as amended. Case citations are given in
+full on first use in each chapter.

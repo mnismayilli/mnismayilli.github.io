@@ -1,0 +1,46 @@
+# Business Law and Practice: what is examined {#sec-blp-overview}
+
+## Assessment objectives
+
+Candidates are required to apply relevant core legal principles and rules appropriately and
+effectively, at the level of a competent newly qualified solicitor in practice, to realistic
+client-based and ethical problems and situations in the following areas:
+
+1. Starting a new business through the vehicle of a company, partnership, LLP or as a sole trader.
+2. The management of a business and company decision making to ensure compliance with statutory and
+   other legal requirements.
+3. The interests, rights, obligations and powers of stakeholders in a business.
+4. Financing a business.
+5. Taxation of a business and its stakeholders.
+6. The termination of a solvent business, corporate insolvency and personal bankruptcy.
+
+Candidates must demonstrate their ability to act honestly and with integrity and in accordance with
+the Statement of Solicitor Competence, the SRA Principles and the Code of Conduct.
+
+Questions may draw on any combination of the subject areas within FLK1.
+
+## How this part is organised
+
+Each of the six objectives gets a chapter, in the order the SRA lists them. That ordering is not
+accidental: it follows the life of a business, and the later chapters assume the earlier ones.
+
+| Objective | Chapter |
+|---|---|
+| 1. Starting a business | @sec-blp-vehicles — Choosing and forming the vehicle |
+| 2. Management and compliance | @sec-blp-management — Running the business |
+| 3. Stakeholders | @sec-blp-stakeholders — Rights, powers and protection |
+| 4. Financing | @sec-blp-finance — Equity, debt and distributions |
+| 5. Taxation | @sec-blp-taxation — The five taxes |
+| 6. Termination | @sec-blp-termination — Solvent exit and insolvency |
+
+## Two warnings before you start
+
+**This subject is disproportionately large.** Business Law and Practice is the biggest single
+subject in FLK1 and carries five taxes inside it. Candidates routinely underestimate the tax
+component because it sits at the end of the specification and looks like an appendix. It is not.
+
+**The questions cross subjects.** The specification says explicitly that questions may combine
+areas encountered in practice. A company law scenario can turn on contract formation, on a
+solicitor's conflict of interest, or on whether a floating charge crystallised. Learning this
+subject in isolation from the rest of FLK1 will leave you exposed to precisely the questions the
+examiner finds most attractive.

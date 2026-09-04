@@ -1,0 +1,151 @@
+<!-- SQE Guide daily email template.
+     Fill every {{PLACEHOLDER}}. Keep ALL styles inline: Gmail strips <style> blocks.
+     No flexbox, no grid, no external fonts, no images. Tables only. -->
+<div style="margin:0;padding:0;background:#f4f1ec;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1ec;padding:20px 12px;">
+<tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:660px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e2dcd2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+
+<!-- HEADER -->
+<tr><td style="background:#14243d;padding:22px 26px 18px 26px;">
+  <div style="font-size:19px;font-weight:700;color:#ffffff;letter-spacing:-0.2px;">SQE Guide</div>
+  <div style="font-size:12px;color:#9fb3d1;margin-top:3px;">Daily preparation for SQE1 &middot; built for you by Mehman</div>
+  <div style="height:3px;width:52px;background:#c8a45c;margin-top:12px;border-radius:2px;"></div>
+</td></tr>
+
+<!-- META STRIP -->
+<tr><td style="background:#f7f5f1;padding:11px 26px;border-bottom:1px solid #e9e4da;">
+  <span style="font-size:11px;color:#6b7684;text-transform:uppercase;letter-spacing:1.1px;font-weight:600;">{{WEEKDAY}} {{DATE}}</span>
+  <span style="color:#c9cfd8;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+  <span style="font-size:11px;color:#6b7684;letter-spacing:0.4px;">Day {{DAY_N}} of {{DAY_TOTAL}}</span>
+  <span style="color:#c9cfd8;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+  <span style="font-size:11px;color:#a3563c;font-weight:600;letter-spacing:0.4px;">{{DAYS_TO_EXAM}} days to FLK1</span>
+</td></tr>
+
+<!-- INTRO (first email only; omit this whole row afterwards) -->
+{{INTRO_BLOCK}}
+
+<!-- TOPIC CHIPS -->
+<tr><td style="padding:24px 26px 4px 26px;">
+  <div style="font-size:11px;color:#8a94a3;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin-bottom:10px;">Today</div>
+  {{TOPIC_CHIPS}}
+</td></tr>
+
+<!-- LECTURE NOTE -->
+<tr><td style="padding:18px 26px 4px 26px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td width="4" style="background:#c8a45c;border-radius:2px;"></td>
+    <td style="padding-left:12px;font-size:17px;font-weight:700;color:#14243d;">The note</td>
+  </tr></table>
+  <div style="font-size:15px;line-height:1.65;color:#2b3440;margin-top:14px;">
+    {{LECTURE_NOTE}}
+  </div>
+</td></tr>
+
+<!-- KEY POINT CALLOUT -->
+<tr><td style="padding:6px 26px 4px 26px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#fdf6e6;border:1px solid #e8d5a3;border-radius:8px;">
+    <tr><td style="padding:14px 16px;">
+      <div style="font-size:11px;color:#8a6d1f;text-transform:uppercase;letter-spacing:1.1px;font-weight:700;margin-bottom:6px;">What actually decides questions here</div>
+      <div style="font-size:14px;line-height:1.6;color:#4a3c17;">{{KEY_POINT}}</div>
+    </td></tr>
+  </table>
+</td></tr>
+
+<!-- QUESTIONS -->
+<tr><td style="padding:26px 26px 4px 26px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td width="4" style="background:#2d5f9a;border-radius:2px;"></td>
+    <td style="padding-left:12px;font-size:17px;font-weight:700;color:#14243d;">Questions</td>
+    <td align="right" style="font-size:12px;color:#8a94a3;">10 questions &middot; 17 minutes</td>
+  </tr></table>
+</td></tr>
+<tr><td style="padding:14px 26px 4px 26px;">
+  {{QUESTIONS}}
+</td></tr>
+
+<!-- STOP BAND -->
+<tr><td style="padding:20px 26px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#14243d;border-radius:8px;">
+    <tr><td align="center" style="padding:16px 18px;">
+      <div style="font-size:13px;font-weight:700;color:#c8a45c;letter-spacing:2px;text-transform:uppercase;">Stop here</div>
+      <div style="font-size:13px;color:#c5d2e4;margin-top:7px;line-height:1.55;">All ten answered before you read on. A question you look up is a question you have not learned.</div>
+    </td></tr>
+  </table>
+</td></tr>
+
+<!-- ANSWERS -->
+<tr><td style="padding:4px 26px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td width="4" style="background:#1f7a4d;border-radius:2px;"></td>
+    <td style="padding-left:12px;font-size:17px;font-weight:700;color:#14243d;">Answers</td>
+  </tr></table>
+</td></tr>
+<tr><td style="padding:14px 26px 4px 26px;">
+  {{ANSWERS}}
+</td></tr>
+
+<!-- VERIFY FLAGS (omit the row entirely if none) -->
+{{VERIFY_BLOCK}}
+
+<!-- FOOTER -->
+<tr><td style="background:#f7f5f1;padding:18px 26px;border-top:1px solid #e9e4da;">
+  <div style="font-size:11px;color:#8a94a3;line-height:1.6;">
+    {{SOURCE_LINE}}<br>
+    Something look wrong? Reply to this email. Assume the drill is wrong before you assume you are.
+  </div>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</div>
+
+<!-- ============ COMPONENT SNIPPETS — copy and fill ============
+
+TOPIC CHIP (FLK1):
+<span style="display:inline-block;background:#e6edf7;color:#1d3f78;font-size:12px;font-weight:600;padding:6px 12px;border-radius:20px;margin:0 6px 8px 0;">FLK1 &middot; SUBJECT — Topic</span>
+
+TOPIC CHIP (FLK2):
+<span style="display:inline-block;background:#f2ebdd;color:#6b5320;font-size:12px;font-weight:600;padding:6px 12px;border-radius:20px;margin:0 6px 8px 0;">FLK2 &middot; SUBJECT — Topic</span>
+
+TOPIC CHIP (review, either paper):
+<span style="display:inline-block;background:#f0f0f0;color:#5a6470;font-size:12px;padding:6px 12px;border-radius:20px;margin:0 6px 8px 0;">Review &middot; Topic</span>
+
+QUESTION BLOCK:
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#fbfaf8;border:1px solid #eae5dc;border-radius:8px;margin-bottom:14px;">
+<tr><td style="padding:16px 18px;">
+  <div style="font-size:12px;font-weight:700;color:#2d5f9a;margin-bottom:8px;">QUESTION 1</div>
+  <div style="font-size:14px;line-height:1.65;color:#2b3440;">SCENARIO TEXT</div>
+  <div style="font-size:14px;line-height:1.6;color:#2b3440;font-weight:600;margin-top:12px;">STEM QUESTION</div>
+  <div style="margin-top:12px;">
+    <div style="font-size:14px;line-height:1.55;color:#2b3440;padding:7px 0;border-top:1px solid #eee9e0;"><b style="color:#14243d;">A</b>&nbsp;&nbsp;OPTION</div>
+    ... repeat for B C D E ...
+  </div>
+</td></tr></table>
+
+ANSWER BLOCK:
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;border-left:3px solid #1f7a4d;background:#f8fbf9;border-radius:0 6px 6px 0;">
+<tr><td style="padding:14px 16px;">
+  <div style="font-size:14px;font-weight:700;color:#14243d;margin-bottom:7px;">1 &nbsp;&mdash;&nbsp; <span style="color:#1f7a4d;">B</span></div>
+  <div style="font-size:14px;line-height:1.65;color:#2b3440;">WHY IT IS RIGHT</div>
+  <div style="font-size:13px;line-height:1.6;color:#6b5a5a;margin-top:9px;padding-top:9px;border-top:1px solid #e4ece7;"><b style="color:#a33a3a;">Why not the others:</b> A ... C ... D ... E ...</div>
+</td></tr></table>
+
+VERIFY BLOCK (whole row):
+<tr><td style="padding:10px 26px 4px 26px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#fdf0ea;border:1px solid #edc4b3;border-radius:8px;">
+<tr><td style="padding:14px 16px;">
+  <div style="font-size:11px;color:#a3563c;text-transform:uppercase;letter-spacing:1.1px;font-weight:700;margin-bottom:6px;">Verify before relying on this</div>
+  <div style="font-size:13px;line-height:1.6;color:#6b3a28;">TEXT</div>
+</td></tr></table>
+</td></tr>
+
+INTRO BLOCK (first email only, whole row):
+<tr><td style="padding:22px 26px 0 26px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f5f8fc;border:1px solid #d5e2f0;border-radius:8px;">
+<tr><td style="padding:18px 20px;font-size:14px;line-height:1.7;color:#2b3440;">TEXT</td></tr>
+</table>
+</td></tr>
+
+============ -->

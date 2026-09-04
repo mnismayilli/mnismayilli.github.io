@@ -10,7 +10,7 @@ Live at **https://mnismayilli.github.io**.
 ```text
 ├── index.html            # home
 ├── about/  contact/  teaching/  terms/
-├── projects/             # research index + one folder per paper
+├── research/             # research index + one folder per paper
 ├── blog/                 # blog index + posts
 ├── ma-watch/             # M&A Watch page (shell; rendered by JS)
 ├── assets/               # styles.css, main.js, ma-watch.js, ma-watch.css, images
@@ -29,8 +29,12 @@ at the top of that file.
 ## Editing content
 
 - **Ordinary pages** (home, about, teaching, …): edit the `.html` file directly.
-- **A new research paper**: copy an existing `projects/<slug>/index.html`, edit it, and add
-  a matching entry to the research lists in `index.html` and `projects/index.html`.
+- **A new research paper**: copy an existing `research/<slug>/index.html`, edit it, and add
+  a matching entry to the research list in [`research/index.html`](research/index.html).
+- **A long-form companion page** (a model walkthrough, a seminar write-up): nest it under the
+  paper, e.g. [`research/project-2/theory/`](research/project-2/theory/index.html), and link it
+  from both the paper page and the research index. These pages pull in MathJax from a CDN for
+  the equations; nothing else on the site does.
 
 ## M&A Watch
 
@@ -64,7 +68,8 @@ FE1_SRC=/new/path npm run sync:fe1   # if the source directory moves
 ```
 
 The copy is an exact mirror (`rsync --delete`), so chapters deleted from the source stop
-being served. Both books are linked from the home page and the teaching page.
+being served. The books are currently **unlinked** from the site — they still deploy at
+`/book/` and `/FE_1/` and can be reached directly, but no page links to them.
 
 ## Deployment
 

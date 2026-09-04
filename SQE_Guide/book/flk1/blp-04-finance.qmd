@@ -1,0 +1,29 @@
+# Financing the business {#sec-blp-finance}
+
+> *Assessment objective 4: financing a business.*
+
+::: {.callout-note title="Not yet written"}
+Outline below.
+:::
+
+## Planned contents
+
+**Equity finance** — allotment of shares (ss.549–551 CA 2006); pre-emption rights under s.561 and
+their disapplication; transfer of shares and the directors' power to refuse registration; treasury
+shares.
+
+**Returning capital** — share buybacks out of distributable profits and out of capital; redemption;
+reduction of capital by the solvency statement route. *Note: the September 2026 specification adds
+detail on redemption and buyback exclusions — treat this as a signal that it is examinable.*
+
+**Debt finance** — loans, overdrafts and debentures; the distinction between fixed and floating
+charges and why it decides outcomes on insolvency; crystallisation; registration of charges under
+s.859A and the consequence of failing to register.
+
+**Distributions** — dividends; the requirement for profits available for distribution under s.830;
+unlawful distributions and their recovery.
+
+**Accounting requirements** — what the statutory accounts must contain, filing deadlines and
+audit exemption thresholds.
+
+**Conduct** — the solicitor acting on a financing where the lender and the borrower are both clients.

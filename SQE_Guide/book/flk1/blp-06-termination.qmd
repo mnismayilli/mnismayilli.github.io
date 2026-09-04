@@ -1,0 +1,37 @@
+# Termination, insolvency and bankruptcy {#sec-blp-termination}
+
+> *Assessment objective 6: the termination of a solvent business, corporate insolvency and personal
+> bankruptcy.*
+
+::: {.callout-note title="Not yet written"}
+Outline below.
+:::
+
+## Planned contents
+
+**Solvent termination** — members' voluntary liquidation and the declaration of solvency; striking
+off under s.1003 CA 2006 and when it is not available; dissolution of a partnership under ss.32–35
+PA 1890 and the distribution of assets under s.44.
+
+**Corporate insolvency: the tests** — the cash flow and balance sheet tests under s.123 Insolvency
+Act 1986, and the statutory demand.
+
+**The procedures** — administration and the moratorium; company voluntary arrangements; creditors'
+voluntary liquidation; compulsory liquidation. What each is *for* is the discriminator, not the
+mechanics.
+
+**Asset recovery** — transactions at an undervalue (s.238); preferences (s.239) and the requirement
+of a desire to prefer; extortionate credit transactions; avoidance of floating charges (s.245);
+transactions defrauding creditors (s.423).
+
+**Personal liability of directors** — wrongful trading (s.214) and the defence of taking every step
+to minimise loss; fraudulent trading (s.213); misfeasance.
+
+**Order of priority** — fixed charge holders, expenses of the liquidation, preferential creditors,
+the prescribed part, floating charge holders, unsecured creditors, shareholders. This ranking is
+examined directly and repays memorising.
+
+**Personal bankruptcy** — the petition and the order; the trustee in bankruptcy; the bankrupt's
+estate and excluded property; discharge; individual voluntary arrangements.
+
+**Conduct** — a solicitor's position on discovering that a client company is trading while insolvent.
