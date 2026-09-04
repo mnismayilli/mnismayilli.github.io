@@ -1,0 +1,414 @@
+# Trial, appeals and enforcement {#sec-dr-trial}
+
+> *Assessment objective 7: preparation of a case for a trial, the trial and any post trial steps.*
+
+## Preparing for trial
+
+### Pre-trial checklists
+
+Towards the end of the timetable the court sends the parties a **pre-trial checklist** (a listing
+questionnaire), to be filed by a specified date. It confirms whether the directions have been complied
+with, whether any further directions are needed, the witnesses to be called, whether expert evidence is
+to be given orally, the estimated length of trial, and the availability of witnesses, experts and
+advocates.
+
+If **no party** files a checklist, the court will normally make an **unless order** — that unless a
+checklist is filed within seven days, the claim will be struck out. If **one** party files and another
+does not, the court will usually fix a hearing or give directions.
+
+### Pre-trial review
+
+On the **multi-track**, and in longer or more complex cases, the court may list a **pre-trial review**,
+usually before the trial judge. Its purposes are to check that the directions have been complied with,
+to settle the trial timetable, to decide any outstanding applications, to determine the form and scope
+of the evidence, and to explore settlement one last time.
+
+### The trial bundle
+
+**CPR 39.5**: unless the court orders otherwise, the **claimant** must file a trial bundle **not more
+than 7 days and not less than 3 days** before the start of the trial. Its contents are prescribed by
+Practice Direction 32 and typically include, in this order: the claim form and all statements of case;
+a case summary and chronology where useful; the court orders and directions; the witness statements to
+be relied on; any hearsay notices; the expert reports and joint statements; and the documents disclosed
+and relied on.
+
+The bundle should be **paginated and indexed**, agreed with the other parties wherever possible, and
+accompanied by a **case summary** in more complex cases. The costs of preparing an unnecessarily bulky
+bundle may be disallowed.
+
+### Summoning witnesses
+
+A **witness summons** (CPR 34) compels a person to attend court to give evidence or to produce
+documents. Key points:
+
+- It is **issued by the court**. The court's **permission** is required where a party wishes to have a
+  summons issued **less than 7 days before the date of the trial**, or where the witness is to attend on
+  any date except the trial date, or at any hearing except the trial (CPR 34.3(2)).
+- It is **binding** if served at least **seven days** before the date the witness is required to
+  attend; the court may permit shorter service.
+- The party serving it must offer or pay **conduct money** — a sum reasonably sufficient to cover the
+  witness's travelling expenses and compensation for loss of time.
+- **Non-compliance** is a contempt of court.
+
+A summons should be considered even for a willing witness, since it protects an employed witness from
+their employer and guarantees attendance.
+
+### Other pre-trial steps
+
+- **Skeleton arguments** are required in the higher courts and are increasingly directed elsewhere.
+- **Trial fee**: the claimant must pay the hearing fee by the date specified, failing which the claim
+  will be struck out.
+- The parties should keep **settlement** under review; a Part 36 offer may be made or accepted at any
+  time before judgment, and the costs consequences of a late acceptance are severe.
+
+## The trial
+
+### Procedure
+
+The judge may vary the order, but the standard sequence is:
+
+1. **Preliminary matters** — housekeeping, applications, the trial timetable.
+2. **Claimant's opening**, often abbreviated where skeleton arguments have been read.
+3. **Claimant's evidence.** Each witness is sworn; the **witness statement stands as evidence in chief**
+   (CPR 32.5), sometimes with limited supplementary questions with permission; then
+   **cross-examination** by the defendant; then **re-examination** by the claimant, confined to matters
+   arising from cross-examination.
+4. **Defendant's evidence**, in the same way.
+5. **Expert evidence**, either in the party's case or concurrently if the court has directed
+   hot-tubbing.
+6. **Closing submissions** — normally the defendant first, then the claimant.
+7. **Judgment**, delivered orally at the end of the hearing or reserved and handed down later.
+8. **Consequential matters** — costs, interest, permission to appeal, any stay of execution.
+
+::: {.callout-important title="Exam trap"}
+A party who wishes to challenge a witness's evidence **must put its case to that witness in
+cross-examination**. A defendant who does not challenge a claimant's account in cross-examination, and
+then invites the judge in closing to reject it as untrue, will normally be held to have accepted it.
+This is the rule in *Browne v Dunn*, and it explains why cross-examination is where the case is
+actually won or lost.
+:::
+
+### Judgment and its effect
+
+- A judgment or order **takes effect from the day it is given or made**, unless the court specifies a
+  later date (CPR 40.7).
+- Unless it specifies otherwise, a party must **comply with a judgment for the payment of money within
+  14 days** (CPR 40.11).
+- **Interest before judgment** is discretionary: s.35A Senior Courts Act 1981 in the High Court and
+  s.69 County Courts Act 1984 in the County Court permit simple interest on damages for all or part of
+  the period between the cause of action arising and judgment. A claim for interest must be **pleaded**.
+- **Interest after judgment** runs on High Court judgments under s.17 Judgments Act 1838 at **8%**, and
+  on County Court judgments of **£5,000 or more** at the same rate.
+- A judgment creates a **res judicata**: the same cause of action cannot be litigated again between the
+  same parties, and issues decided are binding on them (issue estoppel). Relitigating a point that
+  could and should have been raised is an abuse of process under the rule in *Henderson v Henderson*.
+- Judgments for money are **registered** and, for judgments not satisfied within one month, entered on
+  the Register of Judgments, Orders and Fines.
+
+## Appeals
+
+### Permission
+
+Permission to appeal is **required** in almost every case (CPR 52.3). It may be sought from the **lower
+court** at the hearing at which the decision was made, or from the **appeal court** in the appellant's
+notice. A refusal by the lower court is not an appealable decision; the appellant simply asks the
+appeal court.
+
+**The test (CPR 52.6)**: permission may be given only where:
+
+- the appeal would have a **real prospect of success**; or
+- there is **some other compelling reason** for the appeal to be heard.
+
+**Second appeals (CPR 52.7)** — an appeal to the Court of Appeal from a decision of the County Court,
+the family court or the High Court which was **itself made on appeal** — face a higher threshold.
+Permission may be given only by the **Court of Appeal**, and only where it considers that the appeal
+would **both** have a **real prospect of success** **and** raise an **important point of principle or
+practice**, or that there is **some other compelling reason** for the Court of Appeal to hear it.
+
+### Time limits and procedure
+
+The **appellant's notice** must be filed within such period as the lower court directs, or, where it
+directs none, within **21 days** of the date of the decision appealed against (CPR 52.12). It must be
+served on the respondents as soon as practicable and in any event within seven days of filing.
+
+An appeal does **not** operate as a **stay** of the decision below unless the appeal court or the lower
+court orders otherwise (CPR 52.16). A successful appellant who has not obtained a stay may find the
+judgment has already been enforced.
+
+### Grounds and the nature of the appeal
+
+**CPR 52.21(1)**: every appeal is limited to a **review** of the decision of the lower court, unless a
+practice direction provides otherwise or the court considers that in the circumstances of the
+individual appeal it would be in the interests of justice to hold a **re-hearing**.
+
+**CPR 52.21(3)**: the appeal court will allow an appeal where the decision of the lower court was:
+
+(a) **wrong**; or
+(b) **unjust because of a serious procedural or other irregularity** in the proceedings in the lower
+court.
+
+New evidence is admitted only in accordance with the principles in *Ladd v Marshall* [1954] 1 WLR 1489:
+the evidence could not have been obtained with reasonable diligence for use at trial; it would probably
+have had an important influence on the result; and it is apparently credible.
+
+::: {.callout-important title="Exam trap"}
+An appeal is a **review**, not a second trial. An appellate court will not interfere with a trial
+judge's findings of **primary fact** based on oral evidence unless they are plainly wrong, because the
+trial judge saw the witnesses. Nor will it interfere with a **discretionary** case management decision
+merely because it would have exercised the discretion differently — the decision must be outside the
+range of reasonable decisions. Options offering an appeal because "the judge should have believed the
+claimant" are wrong.
+:::
+
+### Destination of appeals
+
+Set by the Access to Justice Act 1999 (Destination of Appeals) Order 2016:
+
+| Decision of | Appeal lies to |
+|---|---|
+| **District judge** of the County Court | **Circuit judge** of the County Court |
+| **Circuit judge** of the County Court | **High Court judge** |
+| **Master or district judge** of the High Court | **High Court judge** |
+| **High Court judge** | **Court of Appeal** |
+| A decision made **on appeal** in the County Court or High Court | **Court of Appeal** (a second appeal) |
+
+A **"leapfrog" transfer** is possible: under CPR 52.23 the court may order an appeal to be transferred
+to the Court of Appeal where it would raise an **important point of principle or practice** or there is
+some other compelling reason. There is a separate statutory leapfrog from the High Court to the
+**Supreme Court** under the Administration of Justice Act 1969.
+
+::: {.callout-important title="Exam trap"}
+The 2016 Order **simplified** the destinations by reference to the **judge who made the decision**. The
+old rule sending final decisions in multi-track Part 7 claims straight to the Court of Appeal has gone.
+An option routing an appeal from a circuit judge's final multi-track decision to the Court of Appeal is
+stating the pre-2016 position.
+:::
+
+## Enforcing a money judgment
+
+A judgment is not self-executing. The judgment creditor must choose a method, and the choice depends on
+what the debtor has.
+
+### Finding out what the debtor has
+
+**Order to obtain information from a judgment debtor** (CPR 71) — the "oral examination". The creditor
+applies without notice; the order requires the debtor (or, for a company, an officer) to attend court,
+usually before a court officer, to be questioned on oath about their means and to produce documents.
+The order must be served **personally** at least **14 days** before the hearing, and the debtor may
+request travelling expenses. Failure to attend or to answer may be referred to a judge, who may make a
+**suspended committal order** for contempt.
+
+Other sources: Land Registry searches, Companies House filings, credit reference searches, and asset
+tracing agents.
+
+### The methods
+
+| Method | Rule | Reaches | Best where |
+|---|---|---|---|
+| **Writ or warrant of control** | CPR 83; Sch 12 Tribunals, Courts and Enforcement Act 2007 | Goods, which enforcement agents may take control of and sell | The debtor is a trading business with valuable goods |
+| **Third party debt order** | CPR 72 | Money owed to the debtor by a third party — most often a **bank account**, but also trade debtors | The creditor knows where the debtor banks and the account is in credit |
+| **Charging order** | CPR 73 | The debtor's beneficial interest in **land**, **securities** or certain funds | The debtor owns property; slow, but secure |
+| **Attachment of earnings order** | CPR 89 | A deduction from an **employed** debtor's wages | The debtor is employed — **not** available against the self-employed, and **County Court only** |
+| **Appointment of a receiver** | CPR 69 | Income or assets not reachable by other means — rent, a partnership share | Unusual assets |
+| **Insolvency** | Insolvency Act 1986 | Everything | Pressure, or where the debtor has assets but will not pay |
+
+**Writs and warrants of control.** Enforcement agents must give the debtor a **notice of enforcement**
+of at least **seven clear days** before taking control of goods. They may not take goods that are
+exempt — tools of the trade and basic domestic items up to prescribed values — or goods belonging to
+someone else.
+
+Which court executes matters, and the High Court and County Courts Jurisdiction Order 1991, article 8,
+splits it three ways for a County Court money judgment enforced against goods:
+
+| Sum to be enforced | Where |
+|---|---|
+| **£5,000 or more** | **High Court only** — transfer up, and a **writ of control** executed by a High Court Enforcement Officer |
+| **£600 to under £5,000** | **Either** court |
+| **Less than £600** | **County Court only** — a **warrant of control** executed by a County Court enforcement agent |
+
+A judgment in proceedings arising out of an agreement **regulated by the Consumer Credit Act 1974** must
+be enforced in the **County Court**, whatever the sum. High Court enforcement is generally faster, which
+is why creditors transfer up wherever the option exists.
+
+**Third party debt orders** proceed in two stages: an **interim** order made without notice, which
+freezes the sum in the third party's hands, followed by a hearing at which a **final** order is made
+requiring payment to the creditor. The court will not make an order that causes hardship to an
+individual debtor, and a joint account is generally beyond reach unless the judgment is against all the
+account holders.
+
+**Charging orders** also proceed in two stages — **interim** then **final** — and a final charging order
+may be registered against the title. It secures the debt but does not produce money; the creditor must
+then apply for an **order for sale**, which is discretionary and, for a modest debt secured on a family
+home, frequently refused or postponed.
+
+::: {.callout-important title="Exam trap"}
+Match the method to the asset, because that is the discrimination the examiner is testing:
+
+- A debtor with a **shop full of stock** → writ or warrant of control.
+- A debtor with a **healthy bank balance** → third party debt order.
+- A debtor who **owns a house** but has no cash → charging order, then possibly an order for sale.
+- A debtor in **employment** with no assets → attachment of earnings.
+- A **self-employed** debtor → **not** attachment of earnings.
+
+The creditor is not confined to one method and may pursue several, subject to the court's control.
+:::
+
+### Enforcing abroad
+
+Where the assets are in another country, the English judgment must be recognised there.
+
+| Route | When it applies |
+|---|---|
+| **Hague 2019 Judgments Convention** | Judgments in proceedings **issued on or after 1 July 2025**, as between the UK and other contracting states — the EU, Ukraine, Uruguay, Albania and Montenegro among them. Not confined to exclusive jurisdiction clauses |
+| **Hague 2005 Choice of Court Convention** | Where the judgment was given by a court designated in an **exclusive choice of court agreement** |
+| **Administration of Justice Act 1920** and **Foreign Judgments (Reciprocal Enforcement) Act 1933** | Registration schemes for judgments of certain Commonwealth and other designated countries |
+| **Common law** | Otherwise: the creditor brings a **fresh action** on the English judgment in the foreign court, treating the judgment as a debt |
+
+The same framework operates in reverse for enforcing a **foreign** judgment in England and Wales.
+
+::: {.callout-caution title="Post-Brexit position — verify against your cut-off"}
+The Brussels Recast Regulation, which provided near-automatic enforcement across the EU, no longer
+applies to proceedings commenced in England and Wales after the end of the transition period. Between
+1 January 2021 and 1 July 2025 the position was patchy: Hague 2005 covered only exclusive jurisdiction
+clauses, and everything else fell back on the 1920 and 1933 Acts or the common law. The entry into
+force of **Hague 2019 for the UK on 1 July 2025** substantially improved matters, but it applies only
+to proceedings **issued on or after** that date.
+:::
+
+## Check yourself
+
+**Q1.** A trial is listed to begin on Monday 12 October. The claimant's solicitor asks when the trial
+bundle must be filed.
+
+Which of the following is correct?
+
+A. At least 21 days before the start of the trial.
+
+B. Not more than 7 days and not less than 3 days before the start of the trial.
+
+C. On the first day of the trial.
+
+D. At least 14 days before the start of the trial.
+
+E. Whenever the parties agree.
+
+**Q2.** A circuit judge sitting in the County Court gives a final judgment in a multi-track claim worth
+£300,000. The losing party wishes to appeal on the ground that the judge misapplied the law on
+remoteness of damage.
+
+To which court does the appeal lie, and what must the appellant establish to obtain permission?
+
+A. The Court of Appeal, because the claim was allocated to the multi-track and the decision was final.
+
+B. A High Court judge, and permission may be given only where the appeal would have a real prospect of
+success or there is some other compelling reason for it to be heard.
+
+C. The Supreme Court, because the point is one of law.
+
+D. A different circuit judge, and no permission is required.
+
+E. The Court of Appeal, and the appellant must show an important point of principle or practice.
+
+**Q3.** A judgment creditor is owed £40,000 by an individual who is self-employed as a consultant,
+rents his home, has no significant goods, but is owed £60,000 by a single large client, payable next
+month.
+
+Which method of enforcement is most likely to be effective?
+
+A. An attachment of earnings order.
+
+B. A charging order over his home.
+
+C. A third party debt order against the client who owes him £60,000.
+
+D. A warrant of control.
+
+E. A receiver by way of equitable execution over his goods.
+
+**Q4.** A defendant loses at trial. The judge found the claimant's principal witness credible and the
+defendant's witness unconvincing, having heard them both give evidence over two days. The defendant
+wishes to appeal on the basis that the judge should have preferred its witness.
+
+Which of the following is correct?
+
+A. The appeal will succeed if the appeal court, reading the transcripts, would have reached a different
+view.
+
+B. Permission is likely to be refused: an appeal is a review, not a re-hearing, and an appellate court
+will not interfere with findings of primary fact based on oral evidence unless they are plainly wrong.
+
+C. The appeal court will hear the witnesses again.
+
+D. The appeal will succeed because a finding on credibility is a question of law.
+
+E. Permission is not required where the appeal concerns findings of fact.
+
+**Q5.** A claimant obtains judgment for £250,000 against a company incorporated in Uruguay, in
+proceedings issued in England in September 2025 under an English jurisdiction clause. The company's
+assets are all in Uruguay.
+
+What is the most likely route to enforcement?
+
+A. The Brussels Recast Regulation.
+
+B. There is no route; an English judgment cannot be enforced outside the United Kingdom.
+
+C. The Hague 2019 Judgments Convention, which entered into force for the United Kingdom on 1 July 2025
+and applies to judgments in proceedings issued on or after that date, Uruguay being a contracting
+state.
+
+D. A fresh action on the judgment at common law in Uruguay, because no convention applies.
+
+E. Registration under the Foreign Judgments (Reciprocal Enforcement) Act 1933.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** CPR 39.5(2): unless the court orders otherwise, the claimant must file the trial bundle not
+more than **seven days** and not less than **three days** before the start of the trial. The window is
+deliberately narrow so that the bundle is complete but the court has time to read it.
+
+**Q2 — B.** Under the Access to Justice Act 1999 (Destination of Appeals) Order 2016, an appeal from a
+**circuit judge** in the County Court lies to a **High Court judge**. The permission test in CPR 52.6 is
+a real prospect of success or some other compelling reason.
+
+- **A** applies the pre-2016 rule sending final multi-track decisions to the Court of Appeal, which the
+  2016 Order abolished. Destination now turns on the **judge who made the decision**.
+- **C** ignores the appellate structure entirely.
+- **D** invents a horizontal appeal and dispenses with permission.
+- **E** applies the **second appeal** test in CPR 52.7, which is engaged only where the decision
+  appealed from was itself made on appeal — and states it incompletely, since that test requires a real
+  prospect of success **as well as** an important point of principle or practice, unless there is some
+  other compelling reason.
+
+**Q3 — C.** A third party debt order under CPR 72 attaches a debt owed **to** the judgment debtor by a
+third party. A single, large, identified debt falling due next month is the ideal target: the interim
+order freezes it in the client's hands and the final order directs payment to the creditor.
+
+- **A** fails because attachment of earnings requires an **employed** debtor and is not available
+  against the self-employed.
+- **B** fails because he rents; there is no beneficial interest in land to charge.
+- **D** and **E** fail because he has no significant goods.
+
+**Q4 — B.** CPR 52.21(1): an appeal is limited to a **review**. An appellate court has not seen the
+witnesses and will not interfere with findings of primary fact drawn from oral evidence unless they are
+plainly wrong or unsupported by any evidence. A submission that the judge should have believed the
+other witness is the paradigm hopeless appeal.
+
+- **A** applies a re-hearing standard.
+- **C** misdescribes appellate procedure; new evidence is admitted only on the *Ladd v Marshall*
+  principles, and witnesses are not recalled.
+- **D** mischaracterises a finding of fact as one of law.
+- **E** is wrong: permission is required whatever the ground.
+
+**Q5 — C.** The **Hague 2019 Judgments Convention** entered into force for the United Kingdom on **1
+July 2025** and applies to judgments given in proceedings **issued on or after** that date. Proceedings
+were issued in September 2025, and Uruguay is a contracting state, so the Convention provides the
+treaty route for recognition and enforcement.
+
+- **A** no longer applies to proceedings commenced in England and Wales.
+- **B** is simply wrong.
+- **D** is the fallback where no convention applies, which is not the case here.
+- **E** applies to designated countries under a reciprocal registration scheme, which is not the route
+  for Uruguay.
+
+:::

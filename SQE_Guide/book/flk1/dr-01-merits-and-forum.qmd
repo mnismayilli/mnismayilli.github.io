@@ -1,0 +1,365 @@
+# Analysing the dispute and choosing the forum {#sec-dr-merits}
+
+> *Assessment objectives 1 and 2: analysis of merits of claim or defence; arbitration, mediation and
+> litigation as an appropriate mechanism to resolve a dispute.*
+
+## Analysing the merits
+
+Before a solicitor advises anyone to sue, six questions have to be answered. A question that asks
+"what should the solicitor advise?" is usually testing whether you worked through them in order.
+
+### 1. Is there a cause of action?
+
+Identify the legal wrong and its elements, then check that the facts supply each one.
+
+| Cause of action | Elements to establish |
+|---|---|
+| **Breach of contract** | A contract existed (offer, acceptance, consideration, intention, certainty); its terms; breach of a term; causation; loss not too remote |
+| **Negligence** | Duty of care; breach; causation (factual and legal); loss of a recognised kind, not too remote |
+| **Other torts** | The elements of the specific tort — nuisance, *Rylands v Fletcher*, occupiers' liability, product liability |
+| **Debt** | A liquidated sum due under a contract; no need to prove loss, and no duty to mitigate |
+
+::: {.callout-important title="Exam trap"}
+A claim for a **debt** is not a claim for damages. The claimant need not prove loss, need not mitigate,
+and remoteness is irrelevant. That difference decides whether a defendant's "you could have sold the
+goods elsewhere" argument goes anywhere, and it decides whether the claim is for a **specified** or an
+**unspecified** sum on the claim form.
+:::
+
+### 2. Who are the correct parties?
+
+Getting this wrong is expensive, because correcting it after limitation has expired requires the
+court's permission on a restrictive test (@sec-dr-commencing).
+
+| Defendant | Named as |
+|---|---|
+| Individual | Full name |
+| Sole trader | "*Name* trading as *Business Name*" |
+| Partnership | The firm name, where the partners carried on business in that name when the cause of action accrued |
+| Company | Its full registered name, with "Limited" or "plc" |
+| LLP | Its full registered name |
+| Deceased person's estate | The personal representatives |
+| Child or protected party | Through a litigation friend |
+
+Also consider: is there more than one potential defendant? Are they **jointly and severally** liable,
+so that the claimant may sue any of them for the whole? Is there a claim for a **contribution** under
+the Civil Liability (Contribution) Act 1978 — for which the limitation period is **two years** from
+the judgment or settlement fixing the contributor's liability?
+
+### 3. Is the claim in time?
+
+Limitation is dealt with fully in @sec-dr-preaction. It comes second in the analysis only because you
+cannot date the accrual of a cause of action until you have identified it.
+
+### 4. Can it be proved?
+
+The burden is on the party who asserts, and the standard is the **balance of probabilities**. Ask what
+documents exist, who the witnesses are, whether expert evidence will be needed and whether the court
+will permit it, and what the other side is likely to disclose.
+
+### 5. Is the defendant worth suing?
+
+A judgment is worthless against a defendant with no assets. Before proceedings, check whether the
+defendant is a company still on the register and filing accounts, whether it is subject to insolvency
+proceedings, whether it owns land, and whether there is insurance or a guarantor. Advising a client to
+litigate against a shell company without raising this is a competence failure, not a tactical one.
+
+### 6. What will it cost, and who pays?
+
+- **The costs risk.** The general rule is that the unsuccessful party pays the successful party's
+  costs (CPR 44.2(2)(a)), and a claimant who loses will face a bill for the other side's costs as well
+  as its own.
+- **Funding options**: private retainer; conditional fee agreement (CFA), with a success fee that is
+  **not** recoverable from the losing party; damages-based agreement (DBA); before- or after-the-event
+  insurance; third party litigation funding; legal expenses insurance; trade union funding.
+- **Recovery** is never complete. On the standard basis a successful party typically recovers around
+  60–70% of what it has actually spent, and on the fast and intermediate tracks recovery is **fixed**
+  by the regime in CPR Part 45 regardless of what was spent.
+
+::: {.callout-caution title="Third party funding after PACCAR"}
+In *R (PACCAR Inc) v Competition Appeal Tribunal* [2023] UKSC 28 the Supreme Court held that a
+litigation funding agreement under which the funder's return was calculated as a **share of the
+damages** was a **damages-based agreement** — and therefore unenforceable unless it complied with the
+DBA Regulations. The funding market responded by restructuring agreements to calculate the return by
+reference to a multiple of the funding provided rather than a share of the recovery. Legislation to
+reverse the decision has been under consideration; check the position at your sitting's cut-off before
+treating any reform as in force.
+:::
+
+## Choosing the forum
+
+The specification asks for "the characteristics of arbitration, mediation and litigation which make
+them an appropriate mechanism to resolve a dispute". That is a comparison question, and it is best
+learned as a table plus a set of discriminating facts.
+
+### The comparison
+
+| | Litigation | Arbitration | Mediation |
+|---|---|---|---|
+| **Nature** | Adjudicative, by the state | Adjudicative, by a private tribunal | **Facilitative** — the mediator does not decide anything |
+| **Consent** | None needed; a claimant may sue | Requires an **arbitration agreement** | Requires agreement to mediate (but the court may now **order** the parties to engage) |
+| **Outcome** | Judgment, binding and enforceable | **Award**, binding and enforceable | **No outcome** unless the parties settle; a settlement binds as a contract |
+| **Who decides** | A judge assigned by the court | An arbitrator **chosen** by the parties, often with technical expertise | Nobody |
+| **Privacy** | **Public** — hearings and judgments are public | **Private and confidential** | Private and **without prejudice** |
+| **Procedure** | The CPR | Whatever the parties agree, subject to the Arbitration Act 1996 | Entirely flexible |
+| **Speed** | Slow; often 18 months to trial or more | Variable; can be slow in complex cases | Days, and often a single session |
+| **Cost** | High, but the court itself is subsidised | High — the parties pay the arbitrators and the venue | **Low** |
+| **Appeal** | Available with permission | Very limited — ss.67–69 Arbitration Act 1996 | Not applicable |
+| **Third parties** | Can be joined | **Cannot** be joined without consent | Can attend by agreement |
+| **Relationship** | Adversarial; usually destroys it | Adversarial, but less publicly | **Preserves** it |
+| **Enforcement abroad** | Depends on treaties; patchy | **Excellent** — the New York Convention, with over 170 states | Only as a contract |
+
+### The discriminating facts
+
+Exam questions signal the answer through the facts. Learn the signals.
+
+**Points to mediation**: the parties have an **ongoing commercial relationship** they want to preserve;
+the dispute involves emotion or reputation as much as money; the sums are modest relative to the costs;
+the parties want a **creative** outcome a court could not order (an apology, a new supply contract, a
+payment plan); speed matters; confidentiality matters.
+
+**Points to arbitration**: the contract already contains an **arbitration clause**; the dispute is
+**technical** and the parties want a decision-maker who understands the subject; the parties are in
+different countries and enforcement will be needed abroad; **confidentiality** is essential;
+finality is wanted, with no long appeal process.
+
+**Points to litigation**: there is **no agreement** to arbitrate or mediate and the other side will not
+engage; the claimant needs a **precedent** or a public vindication; the claim needs a remedy only a
+court can give — an **injunction** against a third party, a **freezing order**, or **default
+judgment**; a **third party** must be joined; the claim is a straightforward **debt** where summary
+judgment is likely; the limitation period is about to expire.
+
+::: {.callout-important title="Exam trap"}
+Two errors recur. First, candidates describe mediation as producing a "binding decision". It does not:
+the mediator has **no power to decide**. What binds is the settlement agreement the parties sign, and
+until they sign, either can walk away. Second, candidates treat an arbitration clause as optional. It
+is not: if the contract contains one, the court will normally **stay** court proceedings brought in
+breach of it under **s.9 of the Arbitration Act 1996**, unless the arbitration agreement is null and
+void, inoperative or incapable of being performed.
+:::
+
+### Arbitration in a little more detail
+
+Arbitration in England and Wales is governed by the **Arbitration Act 1996**.
+
+- **Founded on agreement.** Section 6: an arbitration agreement is an agreement to submit present or
+  future disputes to arbitration. It is **separable** from the contract containing it (s.7), so a
+  challenge to the validity of the main contract does not of itself destroy the arbitration agreement.
+- **Party autonomy.** Section 1 sets out the principles: the object is the fair resolution of disputes
+  by an impartial tribunal without unnecessary delay or expense; the parties are free to agree how
+  their disputes are resolved, subject to safeguards in the public interest; and the court should not
+  intervene except as provided by the Act.
+- **The stay.** Section 9: a party to an arbitration agreement against whom court proceedings are
+  brought may apply for a **stay**, and the court **must** grant it unless satisfied that the
+  agreement is null and void, inoperative, or incapable of being performed.
+- **The tribunal.** The parties choose the number of arbitrators and the method of appointment (ss.15–16);
+  the tribunal may rule on its own **jurisdiction** (s.30 — *competence-competence*).
+- **The award** is final and binding (s.58) and enforceable with the court's permission as if it were a
+  judgment (s.66).
+- **Challenges are narrow**: s.67 (substantive jurisdiction), s.68 (**serious irregularity** causing
+  substantial injustice), and s.69 (appeal on a **point of law**, which the parties may exclude by
+  agreement and which in any event requires permission).
+
+::: {.callout-caution title="The Arbitration Act 2025 — verify against your cut-off"}
+The **Arbitration Act 2025** received Royal Assent on 24 February 2025 and its substantive amendments
+to the 1996 Act came into force on **1 August 2025**, applying to arbitrations and related court
+proceedings commenced on or after that date. The main changes:
+
+- **Governing law of the arbitration agreement**: where the parties have not expressly chosen it, the
+  law of the **seat** applies — reversing the previous common law default.
+- **Summary disposal**: a new **s.39A** empowers a tribunal, on a party's application, to make an award
+  on a summary basis where a party has **no real prospect of succeeding** on a claim, defence or issue.
+- **Arbitrator's duty of disclosure**: a statutory duty to disclose circumstances that might reasonably
+  give rise to justifiable doubts as to impartiality.
+- **Section 44 orders** may be made **against third parties**.
+- **Emergency arbitrators** are expressly recognised where the parties have adopted rules providing for
+  them.
+- Section 67 challenges to jurisdiction are restricted, so that a party that participated in the
+  arbitration cannot generally run new evidence or new grounds on a full rehearing.
+
+Check whether this is within your examinable law cut-off. If it is, note that the 1996 Act remains the
+governing statute — the 2025 Act amends it rather than replacing it.
+:::
+
+### Mediation, and the court's power to compel it
+
+Mediation is a facilitated negotiation. A neutral third party helps the parties reach their own
+settlement; the mediator has no power to impose one. Sessions are conducted **without prejudice** and
+under a confidentiality agreement, so what is said cannot later be put before the court.
+
+The law here moved decisively, and it is the most likely ADR question on the paper.
+
+- *Halsey v Milton Keynes General NHS Trust* [2004] EWCA Civ 576 held — or was long read as holding —
+  that to **oblige** unwilling parties to mediate would obstruct their right of access to the court
+  under Article 6 ECHR. It also established that a successful party who **unreasonably refuses** ADR
+  may be penalised in costs, and set out the factors: the nature of the dispute, the merits, the extent
+  of other settlement attempts, whether the costs of ADR would be disproportionately high, delay, and
+  whether ADR had a reasonable prospect of success.
+- ***Churchill v Merthyr Tydfil County Borough Council*** [2023] EWCA Civ 1416 held that the passage in
+  *Halsey* was **not binding**, and that the court **can** lawfully stay proceedings and **order** the
+  parties to engage in a non-court-based dispute resolution process — provided the order does not
+  impair the claimant's right to a judicial hearing, and is proportionate to the legitimate aim of
+  settling the dispute fairly, quickly and at reasonable cost.
+- The **CPR were amended on 1 October 2024** to reflect this. The overriding objective now expressly
+  includes **"promoting or using alternative dispute resolution"** (CPR 1.1(2)(f)), and active case
+  management includes **"ordering or encouraging the parties to use, and facilitating the use of,
+  alternative dispute resolution"** (CPR 1.4(2)(e)). Corresponding changes were made to the court's
+  powers on allocation and directions.
+- Separately, since **22 May 2024**, mediation through the free **Small Claims Mediation Service** has
+  been **compulsory** for most Part 7 money claims allocated to the small claims track with a value up
+  to £10,000.
+
+::: {.callout-important title="Exam trap"}
+An option that says "the court cannot compel the parties to mediate, because that would breach Article
+6" states the **pre-*Churchill*** position and is wrong. But do not overcorrect: the court still cannot
+compel the parties to **settle**, and the refusal-to-mediate costs sanction in *Halsey* survives — what
+*Churchill* changed is the court's power to **order engagement** with a process.
+:::
+
+## The solicitor's duty to advise on ADR
+
+A solicitor must advise the client on the options for resolving the dispute, and must do so at the
+outset and keep it under review. This is not merely good practice:
+
+- The **Practice Direction on Pre-Action Conduct and Protocols** requires the parties to consider
+  whether negotiation or some other form of ADR may enable settlement, and warns that the court may
+  require evidence that the parties considered it.
+- **Costs consequences** follow from an unreasonable refusal (*Halsey*), and the court may now
+  **order** engagement (*Churchill*).
+- Under the **Code of Conduct**, a solicitor must provide a competent service and must give the client
+  information in a way they can understand, so that the client can make informed decisions — including
+  about the costs and risks of litigating rather than settling.
+
+::: {.callout-important title="Exam trap"}
+The **client decides** whether to mediate; the solicitor advises. But a solicitor who fails to raise
+ADR at all, or who advises that a refusal carries no risk, has given negligent advice. The right answer
+in a scenario where the client says "I want my day in court" is usually that the solicitor should
+advise on the **costs risk of refusing**, record the advice, and — if the client persists — act on
+instructions, not that the solicitor must refuse to act or must mediate anyway.
+:::
+
+## Check yourself
+
+**Q1.** Two companies have traded together for fifteen years. A dispute has arisen over the quality of
+goods supplied under the most recent order, worth £60,000. Both wish to continue trading together. The
+supply contract contains no dispute resolution clause. The buyer's solicitor is asked to advise on the
+most appropriate mechanism.
+
+Which of the following is the best advice?
+
+A. Arbitration, because the dispute is technical and an arbitrator can be chosen for their expertise.
+
+B. Litigation, because only a court can order the supplier to pay.
+
+C. Mediation, because it is quick and inexpensive, is confidential, allows a commercially creative
+outcome, and is the mechanism most likely to preserve the trading relationship — and the parties
+remain free to litigate if it fails.
+
+D. Arbitration, because the parties can be compelled to arbitrate under s.9 of the Arbitration Act
+1996.
+
+E. Litigation, because there is no arbitration agreement and the court will not permit mediation
+without one.
+
+**Q2.** A contract between an English company and a German company contains a clause providing that all
+disputes shall be referred to arbitration in London. The German company nevertheless issues
+proceedings in the High Court in London. The English company wishes to hold it to the arbitration
+clause.
+
+What should the English company do, and what is the likely outcome?
+
+A. File a defence and ask the court to transfer the claim to arbitration.
+
+B. Apply under s.9 of the Arbitration Act 1996 for a stay of the court proceedings; the court must
+grant the stay unless satisfied that the arbitration agreement is null and void, inoperative or
+incapable of being performed.
+
+C. Apply for summary judgment, because the claim is bound to fail.
+
+D. Do nothing, because the arbitration clause automatically deprives the court of jurisdiction.
+
+E. Apply to strike the claim out under CPR 3.4 as an abuse of process.
+
+**Q3.** A defendant in a multi-track claim refuses the claimant's repeated invitations to mediate,
+giving no reason. The defendant wins at trial.
+
+Which of the following best describes the court's approach to costs?
+
+A. The defendant will recover its costs in full, because the successful party is always entitled to
+its costs.
+
+B. The court has no power to take a refusal to mediate into account.
+
+C. The court may reduce or disallow part of the successful defendant's costs if the refusal was
+unreasonable, applying the factors in *Halsey*; and since 1 October 2024 the overriding objective
+expressly includes promoting or using alternative dispute resolution.
+
+D. The defendant will be ordered to pay the claimant's costs, because it refused to mediate.
+
+E. The refusal is irrelevant, because mediation is voluntary and cannot be ordered.
+
+**Q4.** A client asks whether a mediator will decide who is right.
+
+Which of the following is correct?
+
+A. The mediator will make a binding determination, which may be appealed only on a point of law.
+
+B. The mediator will make a recommendation which becomes binding after 21 days unless rejected.
+
+C. The mediator has no power to decide the dispute; the process is facilitative, and any outcome takes
+effect as a settlement contract between the parties.
+
+D. The mediator will make a binding determination unless the parties agree otherwise in advance.
+
+E. The mediator will decide the dispute, but the decision is enforceable only if the court approves it.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** Every fact in the question points to mediation: a long-standing relationship both sides
+want to preserve, a modest sum relative to litigation costs, and no dispute resolution clause forcing
+another route. Mediation is confidential, cheap, fast, and can produce outcomes a court cannot order —
+a credit note, a revised specification, a continuing supply arrangement. Crucially, it costs the client
+nothing in rights: if it fails, litigation remains available.
+
+- **A** is a plausible distractor, but arbitration requires an **agreement**, and there is none. The
+  parties could agree to arbitrate now, but that is slower, more expensive and no better at preserving
+  the relationship.
+- **B** and **E** overstate the case for litigation. A mediated settlement is enforceable as a
+  contract, and can be converted into a consent order.
+- **D** inverts s.9, which allows a party to **stay court proceedings brought in breach of** an
+  arbitration agreement. It cannot create an obligation to arbitrate where none was agreed.
+
+**Q2 — B.** Section 9 Arbitration Act 1996. A party to an arbitration agreement against whom
+proceedings are brought in respect of a matter within that agreement may apply for a stay, and the
+court **must** grant it unless satisfied that the agreement is null and void, inoperative or incapable
+of being performed. The stay is mandatory, not discretionary.
+
+- **A** is doubly wrong: there is no mechanism to "transfer" a claim to arbitration, and filing a
+  defence risks being treated as a step in the proceedings, which bars a s.9 application.
+- **C** and **E** attack the merits or the propriety of the claim; the objection is to the **forum**.
+- **D** overstates the effect: an arbitration clause does not deprive the court of jurisdiction
+  automatically. The defendant must **apply**, and must do so before taking a step in the proceedings.
+
+**Q3 — C.** *Halsey v Milton Keynes General NHS Trust* established that a successful party who
+unreasonably refuses ADR may be deprived of some or all of its costs, and set out the factors for
+assessing reasonableness. The 1 October 2024 amendments strengthened the position by writing
+"promoting or using alternative dispute resolution" into CPR 1.1(2)(f) and the case management duty
+into CPR 1.4(2)(e).
+
+- **A** overstates CPR 44.2(2)(a): costs follow the event, but "the court may make a different order",
+  and conduct is an express factor under 44.2(4)(a).
+- **B** and **E** deny a power the court plainly has — and **E** additionally states the pre-*Churchill*
+  position.
+- **D** goes too far the other way. The usual sanction is a reduction in or disallowance of the
+  successful party's costs, not a reversal of the costs order.
+
+**Q4 — C.** Mediation is **facilitative**. The mediator helps the parties negotiate but has no
+adjudicative power. If the parties reach terms, those terms bind as a **contract**, and are commonly
+recorded in a settlement agreement or a consent or Tomlin order. Until then either party may walk away.
+
+- **A** and **D** describe **arbitration**.
+- **B** describes something closer to early neutral evaluation or expert determination with a
+  contractual acceptance mechanism, and in any event misstates it.
+- **E** invents a court approval requirement.
+
+:::

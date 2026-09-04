@@ -1,0 +1,492 @@
+# Running the claim {#sec-dr-case-management}
+
+> *Assessment objective 5: case management and any interim applications relevant to a claim.*
+
+## The overriding objective
+
+**CPR 1.1(1)**: the Rules are a new procedural code with the overriding objective of enabling the court
+to deal with cases **justly and at proportionate cost**.
+
+**CPR 1.1(2)**: dealing with a case justly and at proportionate cost includes, so far as is
+practicable:
+
+(a) ensuring that the parties are on an **equal footing** and can participate fully in proceedings, and
+that parties and witnesses can give their best evidence;
+(b) **saving expense**;
+(c) dealing with the case in ways which are **proportionate** to the amount of money involved, the
+importance of the case, the complexity of the issues, and the financial position of each party;
+(d) ensuring that it is dealt with **expeditiously and fairly**;
+(e) allotting to it an **appropriate share of the court's resources**, while taking into account the
+need to allot resources to other cases;
+(f) **promoting or using alternative dispute resolution**; and
+(g) **enforcing compliance** with rules, practice directions and orders.
+
+**CPR 1.2** requires the court to give effect to the overriding objective when it exercises any power
+or interprets any rule. **CPR 1.3** imposes a duty on the **parties** to help the court further it.
+**CPR 1.4** requires the court to further the objective by **actively managing cases**, which includes
+encouraging co-operation, identifying the issues at an early stage, deciding promptly which issues need
+full investigation, fixing timetables, and — under **CPR 1.4(2)(e)** — **"ordering or encouraging the
+parties to use, and facilitating the use of, alternative dispute resolution"**.
+
+::: {.callout-caution title="The ADR amendments of 1 October 2024"}
+Sub-paragraph **1.1(2)(f)** and the words "ordering or" in **1.4(2)(e)** were inserted with effect from
+**1 October 2024**, following *Churchill v Merthyr Tydfil County Borough Council* [2023] EWCA Civ 1416.
+They confirm that the court may **order** parties to engage in a non-court dispute resolution process,
+not merely encourage them. If your examinable law cut-off falls before 1 October 2024, the older
+wording applies — but for any current sitting these are the operative provisions.
+:::
+
+## Allocation to a track
+
+### The directions questionnaire
+
+Once a defence is filed, the court provisionally allocates the claim and sends the parties a
+**directions questionnaire** (form N180 for the small claims track, N181 for the others). It must be
+filed by the date specified. The questionnaire asks about settlement and ADR, the track the party
+considers appropriate, disclosure, witnesses, experts, trial length and availability.
+
+The court may order a **stay** of up to one month to allow for settlement (CPR 26.5), and in most
+small claims a **referral to the Small Claims Mediation Service** now follows automatically
+(CPR 26.6).
+
+### The four tracks
+
+**CPR 26.9** sets the scope of each track.
+
+| Track | Value | Key features |
+|---|---|---|
+| **Small claims** | Not more than **£10,000** — but personal injury only where general damages for pain, suffering and loss of amenity are not more than **£1,000**, and RTA whiplash claims where those damages are not more than **£5,000** | Informal hearing; strictly limited costs (CPR 27.14); compulsory mediation for most money claims |
+| **Fast track** | More than £10,000 but not more than **£25,000** | Trial of **one day** or less; oral expert evidence limited to **one expert per party per field**, in no more than **two fields**; **complexity bands 1–4**; **fixed recoverable costs** |
+| **Intermediate track** | More than £25,000 but not more than **£100,000** | Trial of not more than **three days**; oral expert evidence likely limited to **two experts per party**; ordinarily no more than **three parties**; **complexity bands 1–4**; **fixed recoverable costs** |
+| **Multi-track** | More than £100,000, or otherwise unsuitable for a lower track | Case management conference; **costs budgeting**; assessed rather than fixed costs |
+
+The intermediate track was introduced on **1 October 2023** alongside the extension of fixed
+recoverable costs. Both the fast and intermediate tracks are further **assigned to a complexity band**
+(1 to 4), which determines the level of fixed costs — band 1 being the least complex.
+
+### The factors
+
+**CPR 26.13(1)** lists the matters the court considers when allocating:
+
+- the **financial value** of the claim;
+- the nature of the **remedy** sought;
+- the likely **complexity** of the facts, law or evidence;
+- the **number of parties**;
+- the value of any **counterclaim** and its complexity;
+- the amount of **oral evidence** likely to be required;
+- the **importance** of the claim to persons who are not parties;
+- the **views** expressed by the parties; and
+- the **circumstances** of the parties.
+
+::: {.callout-important title="Exam trap"}
+Value is the starting point, not the answer. A £15,000 claim raising a novel point of law, involving
+five parties and requiring three days of evidence will be allocated to the **multi-track** despite its
+value. Conversely the parties' agreement does not bind the court: CPR 26.13 lists their views as one
+factor among nine.
+
+Note also how personal injury value is measured on the small claims track. It is the **general damages
+for pain, suffering and loss of amenity** that must not exceed £1,000 (or £5,000 for RTA whiplash) —
+not the total claim. A claim worth £8,000 in total but £2,000 in general damages is **not** a small
+claim.
+:::
+
+## Directions and case management conferences
+
+### Fast and intermediate tracks
+
+The court gives **standard directions** without a hearing wherever possible. A typical fast track
+timetable, running from allocation, is:
+
+| Step | Typical timing |
+|---|---|
+| Disclosure by list | 4 weeks |
+| Inspection | 5 weeks |
+| Exchange of witness statements | 10 weeks |
+| Exchange of expert reports | 14 weeks |
+| Sending of pre-trial checklists | 20 weeks |
+| Filing of pre-trial checklists | 22 weeks |
+| **Trial** | **30 weeks** |
+
+The intermediate track has its own standard directions with a similar shape, extended to reflect a
+trial of up to three days.
+
+### Multi-track
+
+The court will either give directions and fix a timetable, or fix a **case management conference**
+(CMC) or, where costs budgets are to be considered, a **costs and case management conference**
+(CCMC). At a CMC the court will review the statements of case, identify the issues, consider whether
+the claim can be resolved without trial, decide on disclosure, witness and expert evidence, and fix a
+trial window.
+
+### Costs budgets
+
+**CPR 3.12** applies costs management to **all Part 7 multi-track claims**, with exceptions — notably
+where the claim is valued at **£10 million or more** and certain claims involving children.
+
+**CPR 3.13**: every party except a litigant in person must **file and exchange** a budget in **Precedent
+H**:
+
+- where the stated value of the claim is **less than £50,000**, with the **directions questionnaire**;
+- in any other case, **not later than 21 days before the first case management conference**.
+
+Budget discussion reports must be filed **not later than 7 days** before the CCMC.
+
+**CPR 3.14 — the sanction.** A party that fails to file a budget when required will be treated as
+having filed a budget comprising **only the applicable court fees**.
+
+The court then makes a **costs management order** recording the extent to which budgets are agreed or,
+where not agreed, the figures it approves. Once made, the court will not depart from an approved or
+agreed budget on assessment **unless satisfied that there is good reason to do so** — which is what
+makes budgeting so consequential.
+
+::: {.callout-important title="Exam trap"}
+CPR 3.14 is draconian and is examined for that reason. The defaulting party is not merely criticised;
+it is limited to **court fees**, and recovering anything more requires relief from sanctions under CPR
+3.9 on the *Denton* test. The rule applies to a failure to file a budget **at all**, or to file it in
+time; a budget that is filed late but before the CCMC still engages it, and relief must be sought.
+:::
+
+## Sanctions and relief from sanctions
+
+**CPR 3.8**: where a party has failed to comply with a rule, practice direction or court order, any
+**sanction** imposed for that failure **has effect unless** the party in default applies for and
+obtains **relief**.
+
+Sanctions may be built into the rules (as with CPR 3.14), or imposed by order — most commonly an
+**unless order**, which provides that unless a step is taken by a stated date, a specified consequence
+follows automatically.
+
+**CPR 3.9(1)**: on an application for relief, the court will consider **all the circumstances of the
+case, so as to enable it to deal justly with the application**, including the need:
+
+(a) for litigation to be conducted **efficiently and at proportionate cost**; and
+(b) to **enforce compliance** with rules, practice directions and orders.
+
+### The *Denton* test
+
+***Denton v TH White Ltd*** [2014] EWCA Civ 906 supplies a **three-stage** approach, and it should be
+recited in that order:
+
+1. **Identify and assess the seriousness and significance** of the breach. If the breach is neither
+   serious nor significant, relief will usually be granted and the court need not spend much time on
+   stages two and three.
+2. **Consider why the default occurred.** Is there a good reason for it? Overlooking a deadline,
+   pressure of work, and a solicitor's oversight are not good reasons; a sudden illness or a
+   debilitating event may be.
+3. **Evaluate all the circumstances of the case**, so as to deal justly with the application, giving
+   **particular weight** to the two factors in CPR 3.9(1)(a) and (b).
+
+*Denton* corrected the over-strict application that followed *Mitchell v News Group Newspapers Ltd*
+[2013] EWCA Civ 1537, and the Court of Appeal took the opportunity to warn that **opportunistic
+opposition** to reasonable relief applications would itself be penalised in costs.
+
+::: {.callout-important title="Exam trap"}
+The two factors in CPR 3.9(1) are given **particular weight** at stage three, but they are not
+paramount and they are not a trump. An answer that says relief must be refused because the need to
+enforce compliance is decisive misstates *Denton*. Equally, an answer that treats stage three as a
+free-ranging discretion in which all factors weigh equally misstates it in the other direction.
+:::
+
+## Striking out
+
+**CPR 3.4(2)** — the court may strike out a statement of case if it appears:
+
+(a) that the statement of case discloses **no reasonable grounds** for bringing or defending the claim;
+(b) that it is an **abuse of the court's process** or is otherwise likely to obstruct the just disposal
+of the proceedings;
+(c) that there has been a **failure to comply** with a rule, practice direction or court order; or
+(d) that the claim is a **SLAPP claim** and the claimant has failed to show that it is more likely than
+not that the claim would succeed at trial.
+
+::: {.callout-caution title="The SLAPP strike-out — verify against your cut-off"}
+Ground (d) implements ss.194–195 of the **Economic Crime and Corporate Transparency Act 2023**, which
+came into force on **18 June 2025**, together with a corresponding amendment to the court's costs
+discretion in CPR 44.2. A claim is a SLAPP for these purposes where it restrains, or is intended to
+restrain, freedom of speech; the speech concerns information relating to **economic crime**; the
+publication is for a purpose connected with the public interest in combating economic crime; and the
+claimant's conduct is intended to cause **harassment, alarm, distress, expense or other harm** beyond
+that ordinarily encountered in properly conducted litigation.
+
+The SRA's warning notice on SLAPPs is named expressly in the assessment specification, so the conduct
+dimension — a solicitor must not pursue litigation whose purpose is to silence rather than to vindicate
+a legal right — is as likely to be examined as the rule itself.
+:::
+
+Striking out is a draconian remedy and the court will consider whether a lesser sanction, or an
+opportunity to amend, would meet the case.
+
+## Interim applications
+
+### The procedure: Part 23
+
+- The application is made on form **N244**, stating **what order is sought and why** (CPR 23.6), and is
+  supported by **evidence** — normally a witness statement, though the application notice itself may be
+  verified by a statement of truth and stand as evidence.
+- It must be **served as soon as practicable** after issue and, unless a rule provides otherwise, at
+  least **three clear days** before the hearing (CPR 23.7).
+- **Without notice** applications are permitted where there is **exceptional urgency**, where the
+  overriding objective is best furthered by doing so, by consent, with the court's permission, where a
+  rule permits it, or where **giving notice would defeat the purpose** of the application — the freezing
+  injunction being the obvious case. An applicant proceeding without notice owes a duty of **full and
+  frank disclosure** of everything material, including matters adverse to their case; the respondent
+  may apply to set aside within seven days of service of the order.
+- The court may deal with an application **without a hearing** if the parties agree, or if the court
+  does not consider a hearing appropriate.
+- Costs of an interim application are normally **summarily assessed** at the end of the hearing.
+
+### Summary judgment: Part 24
+
+**The test (CPR 24.3).** The court may give summary judgment against a claimant or a defendant on the
+whole of a claim or on a particular issue if:
+
+- the party has **no real prospect** of succeeding on the claim, defence or issue; **and**
+- there is **no other compelling reason** why the case or issue should be disposed of at a trial.
+
+**Both limbs are required.** A "compelling reason" might be that the claim raises a point of general
+importance, that further evidence is expected to become available, or that a related claim is to be
+tried at the same time.
+
+*Swain v Hillman* [2001] 1 All ER 91: "real" means **realistic** as opposed to **fanciful**. The court
+must not conduct a **mini-trial** on the documents. *Easyair Ltd v Opal Telecom Ltd* [2009] EWHC 339
+(Ch) collects the principles: the court considers the evidence that can reasonably be expected to be
+available at trial, and should hesitate to decide a short point of law only where the facts are
+uncertain or the area of law is developing.
+
+**Procedure.** A claimant may not apply until the defendant has filed an acknowledgment of service or a
+defence, unless the court gives permission (CPR 24.4). The respondent must have at least **14 days'
+notice** of the hearing and of the issues to be decided; the respondent's evidence must be filed and
+served at least **7 days** before the hearing; and any evidence in reply at least **3 days** before.
+
+**The possible orders**: judgment on the claim; striking out or dismissal of the claim; dismissal of
+the application; or a **conditional order** — permitting a party to continue only if it pays money into
+court or takes a specified step, appropriate where the case is improbable but not fanciful.
+
+::: {.callout-important title="Exam trap"}
+Distinguish the three ways of disposing of a case early:
+
+| Application | Question asked |
+|---|---|
+| **Strike out** (CPR 3.4(2)(a)) | Taking the pleaded facts at their highest and assuming they are true, do they disclose a **legally recognisable claim**? |
+| **Summary judgment** (CPR 24.3) | Looking at the **evidence**, does the party have a **real prospect** of success? |
+| **Default judgment** (Part 12) | Has the defendant simply **failed to respond in time**? |
+
+A defective **pleading** points to strike out; a hopeless **case on the evidence** points to summary
+judgment; **silence** points to default judgment. Applications are commonly made in the alternative.
+:::
+
+### Interim payments
+
+**CPR 25.23** sets out the conditions. The court may order an interim payment only where:
+
+- the **defendant has admitted liability** to pay damages or some other sum of money to the claimant;
+- the claimant has **obtained judgment** against the defendant for damages to be assessed or for a sum
+  of money to be assessed;
+- the court is satisfied that, **if the claim went to trial, the claimant would obtain judgment for a
+  substantial amount of money** against the defendant from whom the payment is sought;
+- in a possession claim, the defendant would be held liable to pay a sum for the defendant's occupation
+  and use of the land; or
+- there are **two or more defendants** and the court is satisfied that, if the claim went to trial, the
+  claimant would obtain judgment for a substantial amount of money against **at least one of them** —
+  subject to conditions about insurance and public funding.
+
+**The restriction (CPR 25.20).** The court **must not order an interim payment of more than a
+reasonable proportion of the likely amount of the final judgment**, and must take into account
+contributory negligence and any relevant set-off or counterclaim.
+
+The application may not be made before the end of the period for filing an acknowledgment of service,
+and the fact that an interim payment has been made is **not to be disclosed to the trial judge** until
+all questions of liability and quantum have been decided.
+
+### Interim injunctions
+
+An interim injunction is a discretionary equitable remedy granted to hold the position until trial.
+The governing framework is ***American Cyanamid Co v Ethicon Ltd*** [1975] AC 396:
+
+1. Is there a **serious question to be tried**? This is a low threshold — the claim must not be
+   frivolous or vexatious. The court does **not** weigh the relative strength of the cases at this
+   stage.
+2. Would **damages be an adequate remedy** for the claimant if the injunction were refused and the
+   claimant succeeded at trial? If so, no injunction.
+3. If not, would the **cross-undertaking in damages** adequately compensate the defendant if the
+   injunction were granted and the claimant lost? If so, an injunction is more likely.
+4. If damages would not adequately compensate either side, where does the **balance of convenience**
+   lie?
+5. If the balance is even, take the course that **preserves the status quo**.
+
+The applicant must almost always give a **cross-undertaking in damages** — an undertaking to the court
+to compensate the respondent for loss caused by the injunction if it turns out to have been wrongly
+granted. The court will want evidence of the applicant's ability to honour it.
+
+**Modifications** to *American Cyanamid* arise where:
+
+- the injunction would in practice **dispose of the whole action** (for example a restrictive covenant
+  with a short remaining term), where the court will look at the merits more closely;
+- the application is for a **mandatory** injunction, requiring a higher degree of assurance that the
+  claimant will succeed; or
+- the application affects **freedom of expression**, where s.12(3) Human Rights Act 1998 requires the
+  claimant to establish that it is **likely** to succeed at trial.
+
+**Freezing injunctions** (CPR 25.12–25.14) are a distinct species. The applicant must show a **good
+arguable case** on the merits, that the respondent has **assets**, and a **real risk of dissipation** of
+those assets — not merely that the respondent may become unable to pay. They are almost always sought
+**without notice**, engaging the duty of full and frank disclosure, and the order includes an
+exception for ordinary living and legal expenses. A freezing order does **not** give the applicant any
+security or priority over the frozen assets.
+
+**Search orders** (CPR 25.15–25.19) permit entry to premises to search for and preserve evidence. They
+require an extremely strong prima facie case, very serious potential or actual damage, clear evidence
+that the respondent has incriminating material, and a real possibility that it will be destroyed. A
+**supervising solicitor**, independent of the applicant's firm, must be appointed to serve and oversee
+execution of the order.
+
+## Check yourself
+
+**Q1.** A claimant brings a claim for £22,000 for breach of a building contract. Liability is disputed
+on straightforward facts, the trial is expected to take one day, and each party wants to call one
+expert surveyor. There are two parties.
+
+To which track will the claim be allocated?
+
+A. The small claims track, because the dispute is straightforward.
+
+B. The fast track, because the value is more than £10,000 but not more than £25,000, the trial will
+last one day, and expert evidence is within the permitted limits.
+
+C. The intermediate track, because expert evidence is required.
+
+D. The multi-track, because the claim involves expert evidence.
+
+E. The fast track, but only if both parties agree.
+
+**Q2.** A defendant in a multi-track claim worth £600,000 fails to file a costs budget before the CCMC.
+Its solicitor had diarised the wrong date.
+
+What is the consequence, and what should the defendant do?
+
+A. There is no consequence; the court will simply require the budget to be filed late.
+
+B. The claim will be struck out under CPR 3.4(2)(c).
+
+C. The defendant is treated as having filed a budget comprising only the applicable court fees (CPR
+3.14), and must apply for relief from sanctions under CPR 3.9, on which the court will apply the
+three-stage test in *Denton v TH White Ltd*.
+
+D. The court will disallow the defendant's costs entirely and no relief is available.
+
+E. The consequence applies only if the defendant loses at trial.
+
+**Q3.** A defendant applies for summary judgment. The claimant's case depends on an oral agreement
+which the defendant denies was ever made. The claimant has produced a witness statement from a person
+who says he was present when the agreement was made; the defendant has produced three statements to the
+contrary and contemporaneous documents that are inconsistent with the claimant's account.
+
+Which of the following is the most likely outcome?
+
+A. Summary judgment will be granted, because the weight of the evidence favours the defendant.
+
+B. Summary judgment will be refused, because there is a conflict of factual evidence which can only be
+resolved by hearing the witnesses; the court must not conduct a mini-trial, and the claimant's case is
+realistic rather than fanciful.
+
+C. Summary judgment will be granted, because an oral agreement can never be proved.
+
+D. The court will strike out the claim under CPR 3.4(2)(a).
+
+E. The court will enter default judgment for the defendant.
+
+**Q4.** A claimant seeks an interim injunction to restrain a former employee from working for a
+competitor, in breach of a restrictive covenant with eleven months left to run. Trial is unlikely to
+take place within that period.
+
+Which of the following best describes the court's approach?
+
+A. The court will apply *American Cyanamid* without modification, and will not consider the merits.
+
+B. The court will grant the injunction automatically, because a covenant is a contractual right.
+
+C. Because the injunction would in practice dispose of the whole action — trial will come too late to
+matter — the court will look more closely at the merits than the *American Cyanamid* threshold would
+normally require; the claimant will also be required to give a cross-undertaking in damages.
+
+D. Interim injunctions are not available in employment cases.
+
+E. The court will refuse the injunction because damages are always an adequate remedy for breach of a
+restrictive covenant.
+
+**Q5.** A party misses a deadline for exchanging witness statements by two days because its solicitor
+was hospitalised unexpectedly. The other party has suffered no prejudice, and the trial date is not
+affected. The other party opposes the application for relief on the ground that the need to enforce
+compliance is paramount.
+
+Which of the following is correct?
+
+A. Relief must be refused, because CPR 3.9(1)(b) requires the court to enforce compliance.
+
+B. Relief will be granted: applying *Denton*, the breach is neither serious nor significant, there is a
+good reason for it, and all the circumstances favour relief. The opposing party risks a costs sanction
+for taking an opportunistic point.
+
+C. Relief may be granted only if the party pays the other side's costs of the entire action.
+
+D. Relief is unavailable because CPR 3.8 provides that sanctions have effect.
+
+E. The court has no discretion where a rule imposes an automatic sanction.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** CPR 26.9: the fast track covers claims of more than £10,000 but not more than £25,000, where
+the trial is likely to last no longer than one day and oral expert evidence is limited to one expert
+per party in each of no more than two fields. Every element is satisfied.
+
+- **A** applies the small claims limit of £10,000.
+- **C** and **D** treat expert evidence as pushing the claim up a track. It does not; the fast track
+  expressly contemplates one expert per party.
+- **E** makes allocation depend on the parties' agreement. Under CPR 26.13 their views are one of nine
+  factors, and the decision is the court's.
+
+**Q2 — C.** CPR 3.14 provides that a party that fails to file a budget when required will be treated as
+having filed a budget comprising only the applicable court fees. The remedy is an application for
+**relief from sanctions** under CPR 3.9, decided on the three-stage *Denton* test. A diary error is
+unlikely to be a good reason at stage two, so the defendant's prospects turn on stages one and three.
+
+- **A** ignores the automatic sanction.
+- **B** applies the wrong rule; strike out is not the sanction for a budget failure.
+- **D** overstates the position: relief is available, however difficult.
+- **E** invents a condition; the sanction bites on assessment whatever the outcome.
+
+**Q3 — B.** *Swain v Hillman*: "real" prospect means realistic, not fanciful, and the court must not
+conduct a mini-trial. A genuine conflict of oral evidence, supported on the claimant's side by a witness
+who says he was present, is quintessentially a matter for trial, however unpromising the documents look.
+
+- **A** invites the court to weigh evidence, which is precisely what Part 24 does not permit.
+- **C** is legally wrong: oral contracts are enforceable and provable.
+- **D** applies the wrong test. Strike out under CPR 3.4(2)(a) asks whether the **pleaded case**
+  discloses reasonable grounds, assuming the facts to be true — and here it does.
+- **E** misuses default judgment, which is about failure to respond in time.
+
+**Q4 — C.** Where the practical effect of granting or refusing interim relief is to determine the action
+— because the covenant will have expired before trial — the court departs from the strict *American
+Cyanamid* approach and takes a view on the merits, since the "serious question to be tried" threshold
+would otherwise decide the case without any assessment of it. A cross-undertaking in damages will be
+required as a matter of course.
+
+- **A** applies *American Cyanamid* mechanically and ignores the recognised exception.
+- **B** and **D** state rules that do not exist.
+- **E** is too absolute. Damages are frequently an **inadequate** remedy for breach of a restrictive
+  covenant, because the loss of confidential information or client connection is hard to quantify.
+
+**Q5 — B.** *Denton v TH White Ltd*. **Stage one**: a two-day delay causing no prejudice and not
+imperilling the trial date is neither serious nor significant, and where that is so relief will usually
+be granted without much need for stages two and three. **Stage two**: a solicitor's sudden
+hospitalisation is capable of being a good reason. **Stage three**: all the circumstances plainly favour
+relief. The Court of Appeal in *Denton* expressly warned that parties who unreasonably oppose relief
+applications of this kind should expect to be penalised in costs.
+
+- **A** treats CPR 3.9(1)(b) as paramount. It is given particular weight at stage three, not decisive
+  effect.
+- **C** invents a condition out of all proportion to the breach.
+- **D** misreads CPR 3.8, which provides that a sanction has effect **unless** relief is obtained — the
+  rule that makes relief applications necessary, not one that makes them impossible.
+- **E** denies the existence of CPR 3.9.
+
+:::

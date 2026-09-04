@@ -1,0 +1,551 @@
+# Proving the case {#sec-dr-evidence}
+
+> *Assessment objective 6: the evidence needed and disclosure steps required in commencing, responding
+> to, progressing or defending a claim.*
+
+## The framework of civil evidence
+
+### Relevance and admissibility
+
+Evidence is **admissible** if it is **relevant** to a fact in issue — that is, if it makes the existence
+of that fact more or less probable — and is not excluded by a rule. Civil evidence is far more
+permissive than criminal evidence: hearsay is admissible, and the court's principal tools are
+**weight** and **case management** rather than exclusion.
+
+**CPR 32.1** gives the court a broad power to control evidence: it may give directions as to the issues
+on which it requires evidence, the nature of the evidence it requires, and the way in which it is to be
+placed before the court; it may **exclude** evidence that would otherwise be admissible; and it may
+limit cross-examination.
+
+### Burden and standard of proof
+
+- The **legal burden** rests on the party who **asserts** — normally the claimant on the elements of
+  the claim, and the defendant on any positive defence (contributory negligence, limitation,
+  frustration, illegality).
+- The **standard** is the **balance of probabilities**: more likely than not. There is no sliding scale
+  for serious allegations, though the inherent improbability of an allegation is a matter the court may
+  take into account in deciding whether it has been proved.
+- The **evidential burden** may shift during a trial, and some rules assist a claimant — *res ipsa
+  loquitur* in negligence, and the presumption in s.11 Civil Evidence Act 1968 that a person convicted
+  of an offence committed it.
+
+### Hearsay
+
+Hearsay is a statement made otherwise than by a person giving oral evidence in the proceedings, which
+is tendered as evidence of the matters stated.
+
+**Section 1 Civil Evidence Act 1995: hearsay is not to be excluded in civil proceedings on the ground
+that it is hearsay.** The question is one of **weight**, not admissibility.
+
+Three consequences follow:
+
+- **Notice** (s.2 CEA 1995 and CPR 33.2). A party who intends to rely on hearsay must give notice. Where
+  the hearsay is contained in a witness statement of a person **not being called**, the party must
+  inform the other parties when serving the statement and give the reason the witness will not be
+  called. Failure to give notice does **not** make the evidence inadmissible, but the court may take it
+  into account in weighing the evidence and in costs.
+- **Calling the maker** (s.3 CEA 1995 and CPR 33.4). Where the maker of the hearsay statement is not
+  called, another party may apply for permission to call that person for **cross-examination** on the
+  statement.
+- **Weight** (s.4 CEA 1995). The court considers whether it would have been reasonable and practicable
+  to call the maker; whether the statement was made contemporaneously; whether it involves **multiple
+  hearsay**; whether any person had a **motive to conceal or misrepresent**; whether the original
+  statement was edited or made in collaboration for a particular purpose; and whether the
+  circumstances suggest an attempt to prevent proper evaluation of its weight.
+
+::: {.callout-important title="Exam trap"}
+The instinct carried over from criminal law — that hearsay is inadmissible unless an exception applies
+— is exactly wrong in civil proceedings. An option stating that a witness statement from an absent
+witness is "inadmissible because it is hearsay" is wrong. The correct analysis is that it is
+**admissible**, that **notice** should be given, that the other party may apply to call the maker for
+cross-examination, and that the court will attach **less weight** to it because it has not been tested.
+:::
+
+## Witness evidence
+
+### Witness statements
+
+A witness statement is a signed statement containing the evidence which that person would be allowed to
+give **orally** (CPR 32.4). At trial it stands as the witness's **evidence in chief** unless the court
+orders otherwise (CPR 32.5), and the witness is then tendered for cross-examination.
+
+Requirements under Practice Direction 32:
+
+- It must be in the **witness's own words** and, so far as practicable, in their own language, expressed
+  in the **first person**.
+- It must state the **source** of any matters of information or belief.
+- It must not contain **argument**, **opinion** (unless the witness is an expert or the opinion is one a
+  lay witness may give, such as speed or identity), or extensive **commentary on documents**.
+- It must be verified by a **statement of truth**, with the contempt of court warning.
+
+**Consequences of failure to serve.** Under CPR 32.10, if a witness statement is not served within the
+time specified by the court, the witness **may not be called to give oral evidence** unless the court
+gives permission — which requires relief from sanctions.
+
+::: {.callout-caution title="PD 57AC — trial witness statements in the Business and Property Courts"}
+For trials in the Business and Property Courts, **Practice Direction 57AC** imposes additional
+requirements: the statement must set out only matters of fact of which the witness has **personal
+knowledge** that are relevant to the issues; it must identify by list the **documents the witness has
+referred to or been referred to** for the purpose of providing the evidence; the witness must sign a
+**confirmation of compliance**; and the party's legal representative must endorse a **certificate of
+compliance**. Breach can lead to the statement being struck out, withdrawn or redrafted, and to adverse
+costs orders.
+:::
+
+### Affidavits
+
+An affidavit is a **sworn** statement, made on oath or affirmation before a person authorised to
+administer it. Affidavits are more formal and more expensive than witness statements, and are required
+only where a rule, practice direction or court order says so — most importantly for applications for
+**freezing injunctions** and **search orders**, and in **contempt** proceedings. A party may choose to
+use an affidavit instead of a witness statement, but will not recover the extra cost unless the court
+orders otherwise.
+
+### Compelling attendance
+
+A **witness summons** (CPR 34) requires a witness to attend court to give evidence or to produce
+documents. It is issued by the court, and is binding if served at least **seven days** before the date
+on which the witness is required to attend — the court may permit shorter service. The party serving it
+must offer or pay a sum reasonably sufficient to cover the witness's travel expenses and compensation
+for loss of time. Failure to comply is a contempt of court.
+
+## Expert evidence
+
+### The controls
+
+Opinion evidence is generally inadmissible; **s.3 Civil Evidence Act 1972** makes an expert's opinion on
+a relevant matter admissible where the expert is qualified to give it.
+
+Part 35 exists to restrain the cost and partisanship of expert evidence, and three rules do the work:
+
+- **CPR 35.1**: expert evidence shall be **restricted to that which is reasonably required** to resolve
+  the proceedings.
+- **CPR 35.4**: **no party may call an expert or put in an expert's report without the court's
+  permission**. When applying, the party must identify the field, the issues the evidence will address,
+  where practicable the expert's name, and an estimate of the costs.
+- **CPR 35.3 — the overriding duty**: it is the duty of an expert to **help the court** on matters
+  within their expertise, and **that duty overrides any obligation to the person from whom the expert
+  has received instructions or by whom they are paid**.
+
+::: {.callout-important title="Exam trap"}
+Permission under CPR 35.4 is the single most examined point in this topic. A party who instructs an
+expert without first obtaining permission has spent money it may never recover, and cannot rely on the
+report. An option saying "the party may adduce the report because it obtained it before proceedings"
+is wrong. Note the further distinction: a **shadow** or **advisory** expert, instructed to advise the
+party rather than to give evidence, needs no permission and is protected by litigation privilege — but
+cannot be relied on at trial.
+:::
+
+### The report
+
+Practice Direction 35 prescribes the contents: the expert's qualifications; the literature and material
+relied on; a statement of who carried out any test or experiment; the **substance of all material
+instructions**, written and oral, on the basis of which the report was written; a summary of the range
+of opinion where there is one, and reasons for the expert's own opinion; a summary of conclusions; and
+a statement that the expert understands and has complied with their duty to the court. It must be
+verified by a **statement of truth** in the prescribed form.
+
+::: {.callout-important title="Exam trap"}
+The **substance of the instructions** stated in the report is **not privileged**, and CPR 35.10(4)
+provides that the court will not order disclosure of any specific document or permit cross-examination
+about the instructions unless it is satisfied there are **reasonable grounds to consider the statement
+of instructions to be inaccurate or incomplete**. So instructions are partially exposed, but the
+threshold for going behind the summary is high.
+:::
+
+### Written questions and discussions
+
+**CPR 35.6 — written questions.** A party may put written questions to the other side's expert (or to a
+single joint expert). Unless the court orders or the other party agrees otherwise, the questions may be
+put **once only**, must be put **within 28 days** of service of the report, and must be **for the
+purpose of clarification** of the report. The answers form part of the report. If the expert does not
+answer, the court may direct that the instructing party may not rely on the evidence, or may not
+recover the expert's fees.
+
+**CPR 35.12 — discussions between experts.** The court may direct a discussion between experts to
+identify and discuss the issues, and where possible to reach agreement. The court may specify the
+issues. The experts must prepare a **statement** for the court showing the issues on which they agree
+and those on which they disagree, with a summary of the reasons.
+
+Two rules about that discussion are reliably tested:
+
+- The **content** of the discussion is **not to be referred to at trial** unless the parties agree.
+- Where the experts **reach agreement**, that agreement **does not bind the parties** unless they
+  expressly agree to be bound by it.
+
+### Single joint experts
+
+**CPR 35.7**: where two or more parties wish to submit expert evidence on a particular issue, the court
+may direct that it be given by a **single joint expert**. If the parties cannot agree who, the court may
+select from a list prepared by the parties, or direct the manner of selection.
+
+**CPR 35.8**: each instructing party may give instructions to the expert, copying them to the other
+parties. Each instructing party is **jointly and severally liable** for the expert's fees.
+
+Single joint experts are the norm on the fast track and on quantum issues, and are less common where a
+central issue in a high-value dispute turns on contested expert opinion.
+
+**Concurrent evidence** ("hot-tubbing") is permitted under PD 35: the court may direct that experts
+give their evidence together, with the judge putting questions and the experts commenting on each
+other's answers.
+
+## Disclosure and inspection
+
+### The concepts
+
+**Disclosure** is stating that a document exists or has existed (CPR 31.2). **Inspection** is the
+separate right to look at it and take a copy (CPR 31.3). A party may disclose a document but withhold
+inspection — on grounds of **privilege**, or because inspection would be **disproportionate**, or
+because the party no longer has it.
+
+A **document** is "anything in which information of any description is recorded" (CPR 31.4) — which
+plainly includes emails, text messages, metadata, databases and voicemails.
+
+A party discloses documents which are or have been in its **control** (CPR 31.8): documents which it
+has or has had **physical possession** of, or has or has had a **right to possession** of, or has or
+has had a **right to inspect or take copies** of.
+
+### Standard disclosure
+
+**CPR 31.6**: standard disclosure requires a party to disclose only:
+
+(a) the documents on which it **relies**;
+(b) the documents which **adversely affect its own case**, **adversely affect another party's case**, or
+**support another party's case**; and
+(c) the documents which it is required to disclose by a relevant practice direction.
+
+::: {.callout-important title="Exam trap"}
+Standard disclosure is not a duty to disclose "everything relevant". It is deliberately narrower — and,
+crucially, it is **not** confined to helpful documents. A party must disclose documents that **damage
+its own case**. That is the whole point, and it is the source of most of the questions: the client who
+says "I'm not producing that email, it's fatal" must be told that they have no choice.
+:::
+
+**The search** (CPR 31.7). A party must make a **reasonable search**. What is reasonable depends on the
+number of documents involved, the nature and complexity of the proceedings, the ease and expense of
+retrieval, and the significance of any document likely to be located. A party who has not searched a
+category or class of document on the ground that to do so would be unreasonable must **say so** in the
+disclosure statement.
+
+**The list and the statement** (CPR 31.10). Disclosure is made by serving a **list of documents** in
+form N265, in three parts: documents in the party's control which it does not object to the other side
+inspecting; documents in its control which it **objects** to producing (privileged documents, described
+by class); and documents which are **no longer** in its control, with an explanation of what became of
+them. The list includes a **disclosure statement** setting out the extent of the search, certifying
+that the party understands the duty to disclose, and stating that to the best of their knowledge they
+have carried it out.
+
+**The continuing duty** (CPR 31.11). The duty of disclosure **continues until the proceedings are
+concluded**. A party who later comes into possession of a disclosable document must notify the other
+parties immediately.
+
+### Orders for disclosure
+
+- **Specific disclosure** (CPR 31.12): an order requiring a party to disclose specified documents or
+  classes of documents, to carry out a search to the extent stated, or to disclose any documents
+  located as a result. It is used where the applicant believes standard disclosure has been inadequate,
+  and must be supported by evidence.
+- **Pre-action disclosure** (s.33 Senior Courts Act 1981, s.52 County Courts Act 1984, CPR 31.16). The
+  court may order disclosure before proceedings where the applicant and respondent are **likely to be
+  parties** to subsequent proceedings, the documents fall within **standard disclosure**, and
+  disclosure is **desirable** in order to dispose fairly of the anticipated proceedings, to assist the
+  dispute to be resolved without proceedings, or to save costs. The applicant normally pays the costs.
+- **Non-party disclosure** (s.34 Senior Courts Act 1981, CPR 31.17). Available only **after**
+  proceedings have started. The documents must be likely to **support the applicant's case or adversely
+  affect the case of one of the other parties**, and disclosure must be **necessary** to dispose fairly
+  of the claim or to save costs. Again, the applicant normally pays.
+- A ***Norwich Pharmacal*** order is a distinct jurisdiction, compelling a person **mixed up** in
+  wrongdoing (however innocently) to disclose information identifying the wrongdoer, so that the
+  applicant can bring a claim.
+
+### Electronic disclosure
+
+Practice Direction 31B applies to electronic documents. The parties must discuss the scope of
+electronic disclosure **before** the first case management conference — the categories of documents,
+the date ranges, the custodians, the search terms and the format of exchange — and may be required to
+complete an **Electronic Documents Questionnaire**. Keyword searching, de-duplication and
+technology-assisted review are expressly contemplated. The overriding consideration is
+**proportionality**.
+
+::: {.callout-caution title="PD 57AD — Disclosure in the Business and Property Courts"}
+Since **1 October 2022**, disclosure in the Business and Property Courts is governed by **Practice
+Direction 57AD**, which replaced the disclosure pilot in PD 51U. It is a **different regime** from CPR
+Part 31, and the differences are structural:
+
+- **Initial Disclosure**: key documents relied on and necessary for the other party to understand the
+  case must be served **with the statements of case**, subject to limits.
+- **Extended Disclosure** requires a party to identify **Issues for Disclosure** and to request one of
+  five **Models**:
+
+  | Model | Effect |
+  |---|---|
+  | **A** | Disclosure confined to known adverse documents |
+  | **B** | Limited disclosure — key documents plus known adverse documents |
+  | **C** | Request-led search-based disclosure of particular documents or narrow classes |
+  | **D** | Narrow search-based disclosure, with or without narrative documents — the closest to standard disclosure |
+  | **E** | Wide search-based disclosure, including documents that may lead to a train of inquiry |
+
+- A **Disclosure Review Document** is completed jointly, and there is a free-standing duty to disclose
+  **known adverse documents** regardless of the model ordered.
+
+Outside the Business and Property Courts — which is where most claims are — **CPR Part 31 and standard
+disclosure still apply**. Read the question carefully to see which court you are in.
+:::
+
+## Privilege
+
+Privilege is a **right to withhold inspection** of a document that must still be **disclosed** (listed
+by class in part 2 of the list). It belongs to the **client**, not the solicitor, and only the client
+can waive it.
+
+### Legal advice privilege
+
+Confidential communications between a **lawyer and client**, made for the **dominant purpose** of
+giving or receiving **legal advice**. It applies whether or not litigation is contemplated.
+
+- *Three Rivers District Council v Bank of England (No 5)* [2003] EWCA Civ 474 gave "**client**" a
+  narrow meaning: only those employees specifically **tasked with seeking and receiving legal advice**
+  on the corporation's behalf. Communications between the lawyer and other employees are not covered.
+- *Three Rivers District Council v Bank of England (No 6)* [2004] UKHL 48 gave "**legal advice**" a wide
+  meaning: it extends beyond advice on legal rights and liabilities to advice as to what should
+  prudently and sensibly be done in the **relevant legal context** — including presentational advice
+  before an inquiry.
+
+### Litigation privilege
+
+Confidential communications between a **lawyer and client**, or between either of them and a **third
+party**, where:
+
+- litigation is **in progress or in reasonable contemplation**; and
+- the communication was made for the **dominant purpose** of that litigation — conducting it, obtaining
+  evidence or advice about it.
+
+- *Waugh v British Railways Board* [1980] AC 521 established the **dominant purpose** test: an internal
+  report prepared for two purposes of equal weight — railway safety and litigation — was **not**
+  privileged.
+- *Serious Fraud Office v Eurasian Natural Resources Corporation Ltd* [2018] EWCA Civ 2006 held that a
+  criminal investigation may make litigation reasonably in contemplation, and that documents created to
+  obtain legal advice about how to **avoid** or **settle** contemplated litigation fall within the
+  privilege.
+
+::: {.callout-important title="Exam trap"}
+Litigation privilege covers **third party** communications — an expert's report, a witness proof, an
+investigator's findings — where legal advice privilege does not. That is why a **shadow expert**
+instructed to advise rather than to give evidence is protected, and why an accident report prepared for
+the dominant purpose of litigation is protected while one prepared to improve safety is not.
+:::
+
+### Without prejudice communications
+
+Communications made in a **genuine attempt to settle an existing dispute** cannot be put before the
+court. The rule rests on public policy and on the implied agreement of the parties.
+
+- It is the **substance** that matters, not the label. Writing "without prejudice" on an open assertion
+  of claim does not protect it, and omitting the label from a genuine settlement offer does not destroy
+  the protection.
+- *Rush & Tompkins Ltd v Greater London Council* [1989] AC 1280: the protection extends to
+  communications with **other parties** to the same litigation, and survives the settlement of the
+  dispute as against a party who was not involved in the negotiations.
+- *Unilever plc v Procter & Gamble Co* [2000] 1 WLR 2436 lists the **exceptions**: whether a
+  **settlement was concluded** and on what terms; **rectification** of a settlement; **estoppel**;
+  **unambiguous impropriety** (a threat or perjury under cover of the privilege); explaining **delay**;
+  and an offer expressly made "**without prejudice save as to costs**".
+- A "**without prejudice save as to costs**" (Calderbank) offer is protected until liability and quantum
+  are decided, and may then be shown to the court on the question of costs.
+
+### Other privileges, and waiver
+
+- **Privilege against self-incrimination**: a party need not produce a document that would tend to
+  expose them to criminal proceedings or a penalty.
+- **Common interest privilege**: a privileged document may be shared with a party having a common
+  interest in the subject matter without loss of privilege.
+- **Public interest immunity**: documents may be withheld where disclosure would damage the public
+  interest.
+
+**Waiver** may be express or implied. Deploying part of a privileged document in the proceedings — for
+example, relying on part of a legal opinion to explain why a party acted as it did — will generally
+waive privilege in the **whole of that document**, and possibly in the transaction to which it relates.
+This is the rule against **cherry-picking**, and it is why partial deployment is dangerous. Privilege
+is not waived by an **inadvertent** disclosure where the mistake was obvious; CPR 31.20 provides that
+where a party inadvertently allows a privileged document to be inspected, the party who has inspected
+it may use it only with the **permission of the court**.
+
+::: {.callout-important title="Exam trap"}
+Privilege belongs to the **client**. A solicitor cannot waive it, and cannot disclose a privileged
+document because they think it would be fairer to do so. Equally, a solicitor who receives an obviously
+privileged document sent to them by mistake must stop reading it, notify the other side, and return or
+destroy it — and must not use it without the court's permission.
+:::
+
+## The solicitor's position
+
+**Advising on the duty of disclosure.** The client must be told, in writing and at the outset, that
+disclosure requires production of documents that **harm** their case, that the duty is **continuing**,
+and that documents must be **preserved**. A solicitor who allows a client to destroy or withhold
+disclosable documents risks being party to a contempt and breaches the duty not to mislead the court.
+
+**Document preservation.** As soon as litigation is contemplated, the client should be told to suspend
+routine document destruction — including automatic email deletion policies.
+
+**Not misleading the court.** A solicitor must not make a statement to the court knowing it to be
+untrue, must not put forward evidence they know to be false, and must draw the court's attention to
+relevant cases and statutory provisions likely to have a **material effect** on the outcome, even where
+they are against the client's case.
+
+**Where the client's account changes.** If a client admits that a served witness statement is untrue,
+the solicitor cannot continue to rely on it. The client must be advised to correct it; if they refuse,
+the solicitor must **cease to act**, without disclosing the reason.
+
+**Witnesses.** A solicitor must not **coach** a witness or rehearse evidence, and must not interfere
+with the evidence of any witness. Taking a proof of evidence is proper; suggesting what the witness
+should say is not.
+
+## Check yourself
+
+**Q1.** A claimant wishes to rely at trial on a signed statement from a witness who has since emigrated
+and cannot be called. The defendant objects that the statement is hearsay.
+
+Which of the following is correct?
+
+A. The statement is inadmissible, because the witness cannot be cross-examined.
+
+B. The statement is admissible: hearsay is not excluded in civil proceedings on the ground that it is
+hearsay. The claimant should give notice under CPR 33.2; the defendant may apply for permission to call
+the maker for cross-examination; and the court will assess weight under s.4 of the Civil Evidence Act
+1995.
+
+C. The statement is admissible only if the court gives permission under CPR 32.1.
+
+D. The statement is inadmissible unless the claimant obtains a witness summons.
+
+E. The statement is admissible only if it was made contemporaneously with the events described.
+
+**Q2.** A company's in-house legal team asks employees across the business for factual information about
+a transaction, in order to advise the board. Litigation is not yet in prospect. The employees'
+responses are later sought on disclosure.
+
+Are the responses protected by legal advice privilege?
+
+A. Yes, because they were created for the purpose of obtaining legal advice.
+
+B. Yes, because all communications within a company are privileged once lawyers are involved.
+
+C. No, on the *Three Rivers (No 5)* approach: for legal advice privilege the "client" is confined to
+those employees tasked with seeking and receiving legal advice on the company's behalf, and
+communications with other employees are not covered.
+
+D. No, because legal advice privilege does not apply to in-house lawyers.
+
+E. Yes, because litigation privilege applies whenever a company takes legal advice.
+
+**Q3.** A party wishes to rely on the evidence of a consulting engineer. It obtained a detailed report
+before proceedings were issued and has now filed a directions questionnaire.
+
+Which of the following is correct?
+
+A. The party may rely on the report at trial, because it was obtained before proceedings began.
+
+B. The party may rely on the report provided it serves it on the other side.
+
+C. No party may call an expert or put in an expert's report without the court's permission (CPR 35.4);
+the party must apply, identifying the field, the issues to be addressed, the expert's name where
+practicable, and an estimate of costs.
+
+D. The report is inadmissible because it is opinion evidence.
+
+E. Permission is required only where the party wishes to call the expert to give oral evidence.
+
+**Q4.** During disclosure, a defendant's solicitor identifies an internal email in which the defendant's
+managing director admits that the goods supplied were substandard. The defendant instructs the
+solicitor not to include it in the list of documents.
+
+What should the solicitor do?
+
+A. Follow the client's instructions, because privilege belongs to the client.
+
+B. Include the email in part 2 of the list as a privileged document.
+
+C. Advise the client that the email falls within standard disclosure under CPR 31.6(b) because it
+adversely affects the defendant's own case, that it must be disclosed, and that if the client refuses
+the solicitor must cease to act.
+
+D. Disclose the email without telling the client, because the duty to the court prevails.
+
+E. Destroy the email, because it was created before proceedings were issued.
+
+**Q5.** Two experts hold a discussion directed by the court under CPR 35.12 and reach agreement on the
+cost of remedial works. One party's solicitor tells the client that the claim is now settled at that
+figure.
+
+Which of the following is correct?
+
+A. The advice is correct: an agreement between experts binds the parties.
+
+B. The advice is incorrect: where experts reach agreement in a discussion, that agreement does not bind
+the parties unless they expressly agree to be bound by it.
+
+C. The advice is correct, because the court directed the discussion.
+
+D. The advice is incorrect, because expert discussions have no legal effect of any kind and the
+statement cannot be shown to the court.
+
+E. The advice is correct, unless a party applies to set the agreement aside within 21 days.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** Section 1 Civil Evidence Act 1995 abolished the rule against hearsay in civil proceedings.
+The consequences are procedural and evidential rather than exclusionary: notice under s.2 and CPR 33.2,
+the right of the other party to apply under s.3 and CPR 33.4 to call the maker for cross-examination,
+and the s.4 weight factors — of which "whether it would have been reasonable and practicable to produce
+the maker" is the first, and emigration is a good answer to it.
+
+- **A** imports the criminal law instinct, which is the trap.
+- **C** confuses the court's general power to control evidence with an admissibility requirement.
+- **D** misuses a witness summons, which compels attendance and cannot reach a person abroad.
+- **E** turns a **weight** factor under s.4 into an admissibility condition.
+
+**Q2 — C.** *Three Rivers (No 5)*. For the purposes of **legal advice** privilege the "client" is
+confined to those employees authorised to seek and receive legal advice for the corporation.
+Information gathered from other employees is not privileged on that basis. Litigation privilege would
+cover it — but only if litigation were in reasonable contemplation, which the facts exclude.
+
+- **A** and **B** apply an organisation-wide conception of the client that *Three Rivers (No 5)*
+  rejected.
+- **D** is wrong: in-house lawyers attract legal advice privilege when acting in a legal capacity.
+- **E** invokes litigation privilege where there is no litigation in reasonable contemplation.
+
+**Q3 — C.** CPR 35.4(1): no party may call an expert or put in evidence an expert's report without the
+court's permission. The application is normally made in the directions questionnaire or at the CMC, and
+CPR 35.4(2) prescribes what must be identified.
+
+- **A** and **B** overlook the permission requirement entirely, which is the most commonly missed point
+  in Part 35.
+- **D** is wrong: s.3 Civil Evidence Act 1972 makes qualified expert opinion admissible.
+- **E** is the sophisticated distractor: permission is required to **put in the report** as well as to
+  call the expert.
+
+**Q4 — C.** CPR 31.6(b) requires disclosure of documents which **adversely affect the disclosing
+party's own case**. That is exactly what this email does. The client has no choice, and the solicitor
+cannot serve a list they know to be incomplete without misleading the court. If the client will not
+comply, the solicitor must cease to act — without disclosing the reason, because it is confidential.
+
+- **A** confuses privilege, which the client owns, with the duty of disclosure, which the client cannot
+  waive away.
+- **B** is a misuse of part 2 of the list. The email is not privileged; an internal commercial email is
+  not a lawyer-client communication and no litigation privilege attaches to a document created in the
+  ordinary course of business.
+- **D** breaches the duty of confidentiality and the duty to act on instructions; the answer is to
+  advise, not to act unilaterally.
+- **E** would be destruction of evidence, a contempt, and potentially a criminal offence.
+
+**Q5 — B.** CPR 35.12(5): where experts reach agreement in a discussion, that agreement **does not bind
+the parties** unless the parties **expressly agree** to be bound by it. The parties remain free to
+argue for a different figure, though doing so in the face of an agreed expert position carries obvious
+forensic and costs risk.
+
+- **A**, **C** and **E** all give the experts' agreement a binding effect it does not have.
+- **D** overstates the point in the other direction: the **content of the discussion** may not be
+  referred to at trial without the parties' agreement (CPR 35.12(4)), but the **joint statement** of
+  agreement and disagreement is produced precisely so that the court can see it.
+
+:::

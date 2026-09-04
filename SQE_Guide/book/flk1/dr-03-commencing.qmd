@@ -1,0 +1,532 @@
+# Issuing, serving, pleading and responding {#sec-dr-commencing}
+
+> *Assessment objective 4: commencing, responding to or progressing a claim.*
+
+## Issuing the claim form
+
+Proceedings are **started** when the court **issues** a claim form at the claimant's request (CPR 7.2)
+— but for limitation purposes the claim is **brought** when the claim form is **received** by the court
+office. Both propositions matter, and they answer different questions.
+
+The **Part 7** procedure is the standard route for a disputed claim. **Part 8** is for claims where
+there is unlikely to be a substantial dispute of fact, and where the rules require or permit it.
+
+### The claim form (N1)
+
+CPR 16.2 requires the claim form to:
+
+- **name the parties** correctly;
+- contain a **concise statement of the nature of the claim**;
+- **specify the remedy** sought — though the court may grant a remedy the claimant has not asked for;
+- where money is claimed, contain a **statement of value** (CPR 16.3): the amount claimed, or a
+  statement that the claimant expects to recover not more than £10,000, more than £10,000 but not more
+  than £25,000, more than £25,000 but not more than £100,000, or more than £100,000 — and, if issued
+  in the High Court, why the claimant is entitled to issue there;
+- be verified by a **statement of truth**.
+
+The **court fee** is calculated on the value claimed, so pleading the claim too high is expensive and
+pleading it too low caps recovery.
+
+### Naming the parties
+
+| Defendant | Named as |
+|---|---|
+| Individual | Full name, with title |
+| Sole trader | "*Name* trading as *Business Name*" |
+| Partnership | The firm name, where the partners carried on business under it when the cause of action accrued |
+| Company | The full registered name, including "Limited" or "plc" |
+| LLP | The full registered name |
+| Child or protected party | By or through a **litigation friend** |
+| Estate | The personal representatives, or if none, an order appointing a person to represent the estate |
+
+### Adding, removing and substituting parties
+
+**CPR 19.2**: the court may **remove**, **add** or **substitute** a party where it is desirable so that
+the court can resolve all matters in dispute, or where there is an issue between an existing party and
+the new party which it is desirable to resolve.
+
+**CPR 19.4**: the court's **permission** is required to add or substitute a party **after** the claim
+form has been served. Before service, the claimant may amend as of right.
+
+**CPR 19.6 — after limitation has expired.** This is the restrictive rule, and it is examined. The
+court may add or substitute a party **only if**:
+
+- the relevant limitation period **was current when the proceedings were started**; **and**
+- the addition or substitution is **necessary**.
+
+It is "necessary" **only** if the court is satisfied that:
+
+(a) the new party is to be **substituted for a party who was named in the claim form by mistake** for
+the new party;
+(b) the claim **cannot properly be carried on** by or against the original party unless the new party
+is added or substituted; or
+(c) the original party has **died** or had a **bankruptcy order** made against them and their interest
+or liability has passed to the new party.
+
+::: {.callout-important title="Exam trap"}
+The mistake limb in CPR 19.6(3)(a) covers a mistake **as to name**, not a change of mind about **who to
+sue**. Naming "ABC Trading Ltd" when the contracting party was "ABC Trading (Northern) Ltd" is a
+mistake. Deciding, after limitation has expired, that you should have sued the director personally as
+well as the company is not — that is a new claim against a new party, and CPR 19.6 will not permit it.
+:::
+
+## Serving the claim form
+
+### The time limit
+
+**CPR 7.5**: the claimant must complete the **step required** by **12.00 midnight on the calendar day
+four months after the date of issue** of the claim form. Where the claim form is to be served **out of
+the jurisdiction**, the period is **six months** (CPR 7.5(2)).
+
+The "step required" depends on the method:
+
+| Method | Step required |
+|---|---|
+| First class post, DX or other next business day delivery | **Posting**, leaving with, delivering to or collection by the relevant service provider |
+| Delivery to or leaving at a permitted address | **Delivering** to or leaving the document at the relevant place |
+| Personal service under CPR 6.5 | **Leaving** it with the individual |
+| Electronic method | **Sending** the email or other transmission |
+
+::: {.callout-important title="Exam trap"}
+Under CPR 7.5 the claimant must complete the **step**, not achieve service, within four months. Posting
+the claim form by first class post on the last day is compliant even though deemed service falls
+afterwards. This is the single most frequently misunderstood rule in the service topic.
+:::
+
+### Extending time for service
+
+**CPR 7.6.** An application to extend must generally be made **within** the period for service. If made
+**after** it has expired, the court may only extend if:
+
+- the court has **failed to serve** the claim form; or
+- the claimant has taken **all reasonable steps** to comply with CPR 7.5 but has been unable to do so;
+  **and**
+- in either case, the claimant has acted **promptly** in making the application.
+
+This is deliberately severe, because an extension after limitation has expired deprives the defendant
+of an accrued limitation defence.
+
+### The methods and the address
+
+**CPR 6.3** — permitted methods: personal service; first class post, DX or other next business day
+delivery service; leaving it at a specified place; fax or other means of **electronic communication**;
+or any method authorised by the court.
+
+::: {.callout-important title="Exam trap"}
+Service by **email** is valid only where the party to be served, or their solicitor, has **indicated in
+writing** that they are willing to accept service by that means and given an address for it. In *Barton
+v Wright Hassall LLP* [2018] UKSC 12 a litigant in person emailed the claim form to the defendant's
+solicitors on the last day, without having established their willingness to accept email service. The
+Supreme Court refused to validate it retrospectively under CPR 6.15(2), and the claim was lost.
+:::
+
+**Who to serve** (CPR 6.7): if the defendant has given in writing the business address of a solicitor
+authorised to accept service, the claim form **must** be served on that solicitor. Otherwise CPR 6.9
+supplies the place:
+
+| Defendant | Place of service |
+|---|---|
+| Individual | Usual or last known **residence** |
+| Individual being sued in the name of a business | Usual or last known residence, or the **principal or last known place of business** |
+| Partnership sued in the firm name | Usual or last known residence of a partner, or the **principal or last known place of business** of the partnership |
+| **Company** registered in England and Wales | The **principal office**, or any place of business having a **real connection** with the claim |
+
+A company may alternatively be served at its **registered office** under s.1139 Companies Act 2006.
+
+### Deemed service
+
+**CPR 6.14 — the claim form.** A claim form served within the United Kingdom is deemed to be served on
+the **second business day after completion of the relevant step** under CPR 7.5(1). There is a single
+rule and no method-by-method table, whatever the actual date of delivery.
+
+**CPR 6.26 — every other document.** Here there *is* a table:
+
+| Method | Deemed date of service |
+|---|---|
+| First class post, DX or other next business day delivery | The **second day** after posting, if that is a business day; otherwise the **next business day** after that day |
+| Delivering to or leaving at a permitted address | If before **4.30 p.m. on a business day**, that day; otherwise the **next business day** |
+| Personal service | Same rule as above |
+| Fax | Same rule as above |
+| Other electronic method | Same rule as above |
+
+::: {.callout-tip title="Worked example"}
+A claim form is issued on Monday 4 May. The claimant posts it by first class post on Friday 28 August.
+
+**Is service in time?** The four-month period expires at midnight on 4 September. The **step required**
+for postal service is **posting**, which happened on 28 August. Service is in time.
+
+**When is it deemed served?** CPR 6.14: the **second business day** after completion of the step.
+Posting was Friday; the first business day after is Monday 31 August, the second is Tuesday 1
+September. Deemed service is **Tuesday 1 September**, whatever day it actually arrived.
+
+**When is the defence due?** Fourteen days from service of the **particulars of claim**. If the
+particulars were served with the claim form, an acknowledgment of service or defence is due by 15
+September; filing an acknowledgment extends the defence to 29 September.
+:::
+
+### Service by an alternative method
+
+**CPR 6.15.** Where there is a **good reason**, the court may authorise service by a method or at a
+place not otherwise permitted. Under **CPR 6.15(2)** it may also, on the same test, order that steps
+already taken to bring the claim form to the defendant's attention are to be treated as good service.
+The order must specify the method, the **deemed date of service**, and the period for responding.
+
+### Service out of the jurisdiction
+
+Two routes, and the distinction decides the question:
+
+**Without permission** (CPR 6.32–6.33). Available where the English court has power to determine the
+claim under the Civil Jurisdiction and Judgments Act 1982, where the contract contains a term to the
+effect that the **English court shall have jurisdiction**, or under the Hague 2005 Convention.
+
+**With permission** (CPR 6.36). The claimant must satisfy the **three requirements** set out in
+@sec-dr-preaction: a good arguable case within a **PD 6B gateway**, a **serious issue to be tried**, and
+that **England is the proper place**. The application is made without notice, supported by evidence, and
+the claimant owes a duty of **full and frank disclosure**.
+
+**Mechanics abroad.** Service may be effected through the **foreign government or judicial authority**
+or the British consular authority (CPR 6.42), through a **Hague Service Convention** channel where the
+destination state is a party, or by any method **permitted by the law of the country** in which service
+is to be effected (CPR 6.40(3)) — but **never** by a method that is contrary to that country's law.
+The period for responding is extended by PD 6B according to the destination.
+
+## Statements of case
+
+### Particulars of claim
+
+**CPR 16.4**: a **concise statement of the facts** on which the claimant relies; a claim for **interest**
+if any, with the basis and, for a specified sum, the percentage rate, the dates from and to which it is
+claimed and the daily rate; any claim for **aggravated or exemplary damages** or **provisional damages**;
+and a **statement of truth**.
+
+The particulars must be served with the claim form or **within 14 days** after service of the claim
+form (CPR 7.4), and in any event within the four-month period for serving the claim form.
+
+The content follows the cause of action:
+
+| Contract claim | Tort (negligence) claim |
+|---|---|
+| The status of the parties | The status of the parties |
+| The **contract**: date, parties, whether written or oral, consideration | The facts giving rise to a **duty of care** |
+| The **terms** relied on, express or implied | The **duty** owed |
+| **Performance** by the claimant | The acts or omissions constituting **breach** |
+| The **breach**, with particulars | **Causation** |
+| **Causation** and **loss**, with a schedule of loss | The **damage**, with a schedule of loss |
+| Interest | Interest |
+
+### Defence
+
+**CPR 16.5** requires the defendant to state, in relation to **each allegation**, whether it is:
+
+- **denied** — and if so, the defendant must state the **reasons** for the denial and, if putting
+  forward a different version of events, state that version;
+- **admitted**; or
+- **neither admitted nor denied**, because the defendant is unable to admit or deny it and requires the
+  claimant to prove it.
+
+**Failure to deal with an allegation is a deemed admission** — except that a defendant who fails to deal
+with an allegation but has set out the nature of their case in relation to the issue is taken to
+require it to be proved, and a defendant who fails to deal with an allegation about the **amount of
+money claimed** is taken to require it to be proved. The defence must dispute the claimant's statement
+of value if the defendant disputes it, and must give its own.
+
+The defence must also plead any **positive case** and any **limitation** defence, and must be verified
+by a statement of truth.
+
+### Reply, Part 20 claims and further information
+
+**Reply** (CPR 16.7). Optional. A claimant who does not file one is not taken to admit the matters
+raised in the defence. A reply is needed to answer a positive case in the defence that the particulars
+of claim do not already address.
+
+**Additional claims under Part 20:**
+
+| Claim | Permission needed? |
+|---|---|
+| **Counterclaim against the claimant** | **No**, if filed with the defence; otherwise yes (CPR 20.4) |
+| Counterclaim against a person **other than** the claimant | **Yes** (CPR 20.5) |
+| Claim for **contribution or indemnity against a co-defendant** | **No**, if filed with the defence, or within 28 days of a party being added (CPR 20.6) |
+| Any **other additional claim** — for example against a third party | **No**, if issued **before or at the same time as** the defence is filed; otherwise **yes** (CPR 20.7) |
+
+An additional claim is treated as a claim in its own right, and Part 20 applies the ordinary rules to
+it with modifications.
+
+**Further information** (CPR 18). A party may serve a **written request** for clarification of any matter
+in dispute or additional information about it, giving a date for response. If the other party does not
+comply, an **application** may be made. The request must be **concise and strictly confined** to what is
+reasonably necessary and proportionate.
+
+### Amendments
+
+**CPR 17.1**: a party may amend a statement of case **at any time before it has been served** on any
+other party. After service, amendment requires the **written consent of all the other parties** or the
+**permission of the court**.
+
+**CPR 17.4 — amendment after limitation has expired.** Where the relevant limitation period was current
+when the proceedings started, the court may allow an amendment only:
+
+- to add or substitute a **new claim** arising out of **the same facts or substantially the same facts**
+  as a claim already made; or
+- to correct a **mistake as to the name of a party**, where the mistake was **genuine** and not one
+  which would cause reasonable doubt as to the identity of the party; or
+- to **alter the capacity** in which a party claims.
+
+The court will also consider whether the amendment is in accordance with the overriding objective —
+lateness, the effect on the trial date and the costs consequences all bear on the discretion.
+
+### The statement of truth
+
+Every statement of case must be verified by a statement of truth. Since April 2020 the prescribed
+wording is:
+
+> I believe that the facts stated in this [document] are true. I understand that proceedings for
+> contempt of court may be brought against anyone who makes, or causes to be made, a false statement in
+> a document verified by a statement of truth without an honest belief in its truth.
+
+It may be signed by the party, by a person with authority (for a company, a person holding a senior
+position, who must state which), or by the party's legal representative — who signs on the party's
+behalf and must have the party's authority and have explained the consequences.
+
+::: {.callout-important title="Exam trap"}
+A solicitor may sign a statement of truth on the client's behalf, but may **never** verify a statement
+the solicitor knows or believes to be false. Where the client insists on advancing an account the
+solicitor knows to be untrue, the solicitor must not draft or sign it, and will usually have to **cease
+to act** — without disclosing the reason, because the reason is confidential.
+:::
+
+## Responding to a claim
+
+### The time limits
+
+| Step | Time limit |
+|---|---|
+| **Acknowledgment of service** | **14 days** after service of the particulars of claim (CPR 10.3) |
+| **Defence**, where no acknowledgment filed | **14 days** after service of the particulars of claim (CPR 15.4) |
+| **Defence**, where an acknowledgment has been filed | **28 days** after service of the particulars of claim |
+| **Agreed extension** of the defence | Up to a further **28 days**, by agreement, notifying the court in writing (CPR 15.5) — so a maximum of **56 days** without a court order |
+| **Application disputing jurisdiction** | **14 days** after filing the acknowledgment of service (CPR 11) |
+
+### The options
+
+**Admit** (Part 14). The defendant may admit the whole or part of the claim. For a **specified** sum,
+the claimant may then obtain judgment; the defendant may ask for time to pay, and the rate of payment
+is determined by the court or by agreement.
+
+**Defend.** File an acknowledgment of service and/or a defence, and consider a counterclaim.
+
+**Dispute the court's jurisdiction** (Part 11). The defendant must **first file an acknowledgment of
+service** — filing one is not a submission to the jurisdiction — and then apply **within 14 days**. If
+the defendant files a **defence** without applying, they are **treated as having accepted** that the
+court has jurisdiction.
+
+**Do nothing** — and face default judgment.
+
+::: {.callout-important title="Exam trap"}
+To challenge jurisdiction, the defendant must **acknowledge service and then apply within 14 days**.
+Doing nothing loses the point (default judgment follows) and filing a defence loses it too (submission).
+The acknowledgment of service form has a tick box for "I intend to contest jurisdiction" precisely for
+this purpose.
+:::
+
+### Default judgment
+
+**Part 12.** The claimant may obtain judgment in default where the defendant has failed to file an
+acknowledgment of service **or** a defence, and the time for doing so has expired. It is entered
+administratively on request for a specified sum, and on application otherwise.
+
+Default judgment is **not** available where:
+
+- the claim is under **Part 8**;
+- the defendant has applied for **summary judgment** or to have the claim **struck out**, and the
+  application has not been disposed of;
+- the defendant has **satisfied** the claim; or
+- the defendant has **admitted** the claim and applied for time to pay.
+
+**Setting aside** (Part 13):
+
+- **CPR 13.2 — mandatory.** The court **must** set the judgment aside if it was **wrongly entered** —
+  because the time for responding had not in fact expired, or the claim had been satisfied, or the
+  defendant had filed an acknowledgment or defence in time.
+- **CPR 13.3 — discretionary.** The court **may** set it aside if the defendant has a **real prospect
+  of successfully defending** the claim, or if it appears to the court that there is **some other good
+  reason** why the judgment should be set aside or the defendant should be allowed to defend. On any
+  such application the court **must have regard to whether the application was made promptly**.
+
+::: {.callout-tip title="Worked example"}
+Particulars of claim are deemed served on 1 October. The defendant, who has been abroad, files nothing.
+On 20 October the claimant enters default judgment. The defendant returns on 5 November, and applies to
+set the judgment aside on 20 December, saying the goods were defective.
+
+**Was the judgment properly entered?** The defence was due by 15 October and nothing was filed, so yes.
+CPR 13.2 does not apply.
+
+**Will it be set aside?** Only under CPR 13.3, and the defendant must show a real prospect of
+successfully defending — a defective goods defence may well qualify. But the court **must have regard
+to promptness**, and a six-week delay after returning is a serious obstacle. On these facts the
+application may fail on delay alone, and if it succeeds the defendant will almost certainly bear the
+costs thrown away.
+:::
+
+### Discontinuance and settlement
+
+**Discontinuance** (Part 38). The claimant may discontinue at any time by filing and serving a **notice
+of discontinuance**. Permission is required where the court has granted an **interim injunction** or
+where any party has given an **undertaking** to the court, or where the claimant has received an
+**interim payment**. Where there is more than one claimant, the consent of the others or the court's
+permission is needed. Unless the court orders otherwise, the claimant is **liable for the defendant's
+costs** to the date of discontinuance (CPR 38.6).
+
+**Settlement** may be recorded by:
+
+- a **consent order**, where the terms are to be enforceable as an order of the court and there is
+  nothing confidential;
+- a **Tomlin order** — an order **staying** the proceedings on agreed terms set out in a **schedule**,
+  with permission to apply for the purpose of carrying those terms into effect. The schedule is not
+  part of the order and need not be a matter of public record, which is why it is used where the terms
+  are confidential or go beyond what the court could order;
+- acceptance of a **Part 36 offer**, which stays the claim automatically; or
+- a simple **settlement agreement**, with the claim then discontinued.
+
+## Check yourself
+
+**Q1.** A claim form is issued on 3 March. On 30 June the claimant's solicitor posts it to the
+defendant's solicitors, who are authorised in writing to accept service, by first class post. It
+arrives on 2 July.
+
+Which of the following is correct?
+
+A. Service is out of time, because the claim form was not received by the defendant's solicitors within
+four months of issue.
+
+B. Service is in time: the step required for postal service is posting, which was completed on 30 June,
+within four months of issue; the claim form is deemed served on the second business day after posting.
+
+C. Service is in time, and the claim form is deemed served on the day it arrived, 2 July.
+
+D. Service is out of time, because service on solicitors is not permitted.
+
+E. Service is in time, and the claim form is deemed served on the day it was posted, 30 June.
+
+**Q2.** Particulars of claim are deemed served on a defendant on Tuesday 6 October. The defendant files
+an acknowledgment of service on 15 October, indicating an intention to defend.
+
+By when must the defence be filed, assuming no agreement or order extending time?
+
+A. 20 October, being 14 days after the acknowledgment of service.
+
+B. 20 October, being 14 days after service of the particulars of claim.
+
+C. 3 November, being 28 days after service of the particulars of claim.
+
+D. 12 November, being 28 days after the acknowledgment of service.
+
+E. 1 December, being 56 days after service of the particulars of claim.
+
+**Q3.** A claimant sued "Northgate Logistics Limited". The contracting party was in fact "Northgate
+Logistics (UK) Limited", a different company in the same group with a similar name. The limitation
+period expired two months after the claim form was issued. The claimant now applies to substitute the
+correct company.
+
+Which of the following is correct?
+
+A. The application must be refused, because the limitation period has expired.
+
+B. The application may be granted under CPR 19.6 if the limitation period was current when the
+proceedings were started and the substitution is necessary — which it is where the new party is being
+substituted for a party named in the claim form by mistake for the new party.
+
+C. The application may be granted as of right, because the claim form has not yet been amended.
+
+D. The application must be refused, because the claimant chose to sue a different legal person and that
+is not a mistake as to name.
+
+E. The claimant must issue fresh proceedings and rely on s.33 of the Limitation Act 1980.
+
+**Q4.** A defendant based in Germany is served with an English claim form. The defendant believes the
+English court has no jurisdiction because the contract contains an exclusive German jurisdiction clause.
+
+What must the defendant do to preserve the point?
+
+A. File a defence setting out the jurisdiction objection.
+
+B. Write to the court explaining that it does not accept jurisdiction, and take no further step.
+
+C. File an acknowledgment of service indicating an intention to contest jurisdiction, and apply under
+Part 11 within 14 days after filing it.
+
+D. Apply for summary judgment under Part 24.
+
+E. Ignore the proceedings, because a foreign defendant cannot be bound by an English judgment.
+
+**Q5.** A defendant, having filed a defence, wishes to bring a claim for an indemnity against a
+sub-contractor who is not a party to the proceedings. The defence was filed three weeks ago.
+
+Which of the following is correct?
+
+A. The defendant may issue the additional claim without permission at any time.
+
+B. The defendant requires the court's permission, because the additional claim was not issued before or
+at the same time as the defence was filed.
+
+C. The defendant may only bring the claim in separate proceedings.
+
+D. The defendant requires the consent of the claimant.
+
+E. The defendant may issue the additional claim without permission because it is a claim for an
+indemnity.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** CPR 7.5(1): the claimant must complete the **step required** within four months of issue,
+and for first class post that step is **posting**. Posting on 30 June, from a claim form issued on 3
+March, is within four months. Deemed service under CPR 6.14 is the **second business day** after
+completion of the step, regardless of actual delivery.
+
+- **A** and **D** apply the wrong test: what matters is the step, not receipt, and CPR 6.7 requires
+  service on a solicitor authorised in writing to accept it.
+- **C** applies the actual date of delivery. CPR 6.14 is a deeming provision and the real date is
+  irrelevant.
+- **E** deems service on the day of the step, which is what CPR 6.14 expressly does not do.
+
+**Q2 — C.** CPR 15.4(1)(b): where the defendant files an acknowledgment of service, the defence must be
+filed **28 days after service of the particulars of claim** — not 28 days after the acknowledgment.
+Twenty-eight days from 6 October is 3 November.
+
+- **A** and **D** run time from the acknowledgment, which is the classic error.
+- **B** applies the 14-day period that operates only where no acknowledgment is filed.
+- **E** applies the maximum available **with** an agreed extension under CPR 15.5, which the facts
+  exclude.
+
+**Q3 — B.** CPR 19.6. The limitation period was current when the proceedings were started, and
+substitution is "necessary" under CPR 19.6(3)(a) where the new party is to be substituted for a party
+named in the claim form **by mistake** for the new party. Suing the wrong company in a group because of
+a similar name is a classic mistake as to identity of this kind, provided the mistake was genuine and
+would not cause reasonable doubt as to who was intended.
+
+- **A** treats the expiry of limitation as an absolute bar, which CPR 19.6 exists to qualify.
+- **C** ignores the need for permission after service and the special rule after limitation.
+- **D** is the strongest distractor, and would be right if the claimant had deliberately sued one legal
+  person and later changed its mind. Here the intention was always to sue the contracting party.
+- **E** applies s.33, which is available only in personal injury and fatal accident claims.
+
+**Q4 — C.** CPR Part 11. The defendant must file an **acknowledgment of service** — which is not a
+submission to the jurisdiction — and then apply for an order declaring that the court has no
+jurisdiction, or should not exercise it, **within 14 days** after filing the acknowledgment.
+
+- **A** is fatal: filing a defence without making the application means the defendant is **treated as
+  having accepted** that the court has jurisdiction.
+- **B** and **E** invite default judgment.
+- **D** attacks the merits, not the forum, and engaging with the merits risks submission.
+
+**Q5 — B.** CPR 20.7(3): an additional claim other than a counterclaim against the claimant or a claim
+for contribution or indemnity **against an existing co-defendant** may be made without permission only
+if it is issued **before or at the same time as** the defendant files their defence. The defence was
+filed three weeks ago, so permission is required.
+
+- **A** and **E** overlook the timing condition. Note the distinction being tested: CPR 20.6 allows a
+  contribution or indemnity claim against an **existing co-defendant** without permission if filed with
+  the defence; this sub-contractor is **not yet a party**, so CPR 20.7 applies.
+- **C** is wrong: Part 20 exists so that related claims can be tried together.
+- **D** requires a consent the rules do not call for.
+
+:::

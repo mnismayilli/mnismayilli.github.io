@@ -20,9 +20,20 @@ book:
         - flk1/blp-04-finance.qmd
         - flk1/blp-05-taxation.qmd
         - flk1/blp-06-termination.qmd
+    - part: "Dispute Resolution"
+      chapters:
+        - flk1/dr-00-overview.qmd
+        - flk1/dr-01-merits-and-forum.qmd
+        - flk1/dr-02-preaction.qmd
+        - flk1/dr-03-commencing.qmd
+        - flk1/dr-04-case-management.qmd
+        - flk1/dr-05-evidence-disclosure.qmd
+        - flk1/dr-06-trial.qmd
+        - flk1/dr-07-costs.qmd
     - part: "Reference"
       chapters:
         - flk1/blp-07-authorities.qmd
+        - flk1/dr-08-authorities.qmd
 
 format:
   html:

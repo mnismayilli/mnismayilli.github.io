@@ -1,0 +1,158 @@
+# Dispute Resolution: authorities, rules and numbers {#sec-dr-authorities}
+
+::: {.callout-note title="How to use this chapter"}
+Dispute Resolution is a **procedure** subject, so unlike Business Law and Practice the numbers here
+really do have to be learned. Rule numbers matter less than the **rule itself** — but the time limits,
+thresholds and tests are the substance of the questions.
+
+The SRA does not require case citations except where the case name is the term practitioners use for
+the principle. *American Cyanamid*, *Denton*, *Spiliada*, *Churchill* and *Ladd v Marshall* all qualify.
+:::
+
+## Cases
+
+| Case | Proposition |
+|---|---|
+| ***Churchill v Merthyr Tydfil County Borough Council*** [2023] EWCA Civ 1416 | The court **can** stay proceedings and **order** the parties to engage in non-court dispute resolution, provided it does not impair the right to a judicial hearing and is proportionate. The *Halsey* passage to the contrary was not binding |
+| *Halsey v Milton Keynes General NHS Trust* [2004] EWCA Civ 576 | A successful party who **unreasonably refuses** ADR may be deprived of costs; sets out the factors for assessing reasonableness |
+| ***Spiliada Maritime Corp v Cansulex Ltd*** [1987] AC 460 | *Forum non conveniens*: the court stays proceedings where another available forum is **clearly or distinctly more appropriate** — the "natural forum" |
+| *FS Cairo (Nile Plaza) LLC v Brownlie* [2021] UKSC 45 | "Damage" in the tort jurisdiction gateway means any **significant damage** sustained in England, not only the initial damage |
+| *Barton v Wright Hassall LLP* [2018] UKSC 12 | Service by **email** without the recipient's written indication of willingness is invalid, and will not readily be validated retrospectively under CPR 6.15(2) |
+| ***Denton v TH White Ltd*** [2014] EWCA Civ 906 | **Relief from sanctions**: (1) seriousness and significance of the breach; (2) why it occurred; (3) all the circumstances, giving particular weight to CPR 3.9(1)(a) and (b) |
+| *Mitchell v News Group Newspapers Ltd* [2013] EWCA Civ 1537 | The over-strict predecessor to *Denton*, corrected by it |
+| *Swain v Hillman* [2001] 1 All ER 91 | "**Real** prospect of success" means realistic, not fanciful; no mini-trial on a summary judgment application |
+| *Easyair Ltd v Opal Telecom Ltd* [2009] EWHC 339 (Ch) | Collects the summary judgment principles, including the treatment of evidence expected to be available at trial |
+| ***American Cyanamid Co v Ethicon Ltd*** [1975] AC 396 | **Interim injunctions**: serious question to be tried; adequacy of damages; balance of convenience; status quo |
+| *Waugh v British Railways Board* [1980] AC 521 | **Litigation privilege** requires litigation to be the **dominant purpose** |
+| *Three Rivers DC v Bank of England (No 5)* [2003] EWCA Civ 474 | For **legal advice privilege**, the "client" is confined to those tasked with seeking and receiving the advice |
+| *Three Rivers DC v Bank of England (No 6)* [2004] UKHL 48 | "**Legal advice**" extends to advice on what should prudently and sensibly be done in the relevant legal context |
+| *SFO v Eurasian Natural Resources Corporation Ltd* [2018] EWCA Civ 2006 | A criminal investigation may put litigation in reasonable contemplation; documents created to obtain advice on avoiding or settling litigation are covered |
+| *Rush & Tompkins Ltd v GLC* [1989] AC 1280 | **Without prejudice** protection extends to other parties to the same litigation and survives settlement |
+| *Unilever plc v Procter & Gamble Co* [2000] 1 WLR 2436 | The exceptions to without prejudice privilege, including **unambiguous impropriety** |
+| *Ladd v Marshall* [1954] 1 WLR 1489 | **New evidence on appeal**: unobtainable with reasonable diligence; probably an important influence; apparently credible |
+| *Dymocks Franchise Systems (NSW) Pty Ltd v Todd* [2004] UKPC 39 | **Non-party costs**: the touchstone is whether the non-party is the "**real party**" — funding **and** controlling or benefiting |
+| *Ridehalgh v Horsefield* [1994] Ch 205 | **Wasted costs**: improper, unreasonable or negligent conduct; causation; and whether it is just to make the order |
+| *Ho v Adelekun* [2021] UKSC 43 and *Cartwright v Venduct Engineering Ltd* [2018] EWCA Civ 1654 | Both **reversed** by the April 2023 amendment to CPR 44.14 |
+| *R (PACCAR Inc) v Competition Appeal Tribunal* [2023] UKSC 28 | A litigation funding agreement giving the funder a **share of damages** is a DBA, and unenforceable unless compliant |
+| *Henderson v Henderson* (1843) 3 Hare 100 | Relitigating a point that could and should have been raised is an **abuse of process** |
+
+## Statutory and rule provisions
+
+| Provision | Subject |
+|---|---|
+| **Limitation Act 1980** ss.2, 5, 8 | Tort 6 years; simple contract 6 years; specialty 12 years |
+| ss.11, 14 | Personal injury: 3 years from accrual or date of knowledge |
+| ss.14A, 14B | Latent damage: 3 years from knowledge, 15-year longstop |
+| s.28 | Disability — time runs from the end of the disability |
+| s.32 | Fraud, concealment, mistake |
+| s.33 | Discretion to disapply — **personal injury and fatal accidents only** |
+| **Civil Evidence Act 1995** ss.1–4 | Hearsay admissible; notice; calling the maker; weight |
+| **Civil Evidence Act 1972** s.3 | Expert opinion evidence admissible |
+| **Senior Courts Act 1981** s.33, s.34 | Pre-action and non-party disclosure |
+| s.35A | Interest on damages |
+| s.51 | Costs, including non-party and wasted costs |
+| **Judgments Act 1838** s.17 | Post-judgment interest at 8% |
+| **Arbitration Act 1996** ss.1, 6, 7, 9, 30, 58, 66, 67–69 | Principles; arbitration agreements; separability; **stay**; jurisdiction; award; enforcement; challenges |
+| **Arbitration Act 2025** | In force **1 August 2025**: governing law of the arbitration agreement; s.39A summary disposal; duty of disclosure; s.44 third parties; emergency arbitrators |
+| **Rome I**, Arts 3, 4, 6, 8, 9 | Applicable law of contracts |
+| **Rome II**, Arts 4, 5–8, 14 | Applicable law of non-contractual obligations |
+| **Hague 2005** / **Hague 2019** | Exclusive choice of court agreements / recognition and enforcement (UK from **1 July 2025**) |
+| **ECCTA 2023** ss.194–195 | SLAPPs — in force **18 June 2025**; CPR 3.4(2)(d) and the CPR 44.2 amendment |
+
+| CPR | Subject |
+|---|---|
+| **1.1, 1.4** | Overriding objective, including **ADR** from 1 October 2024 |
+| **3.4(2)** | Strike out, including the **SLAPP** ground |
+| **3.9** | Relief from sanctions |
+| **3.13, 3.14** | Costs budgets and the court-fees-only sanction |
+| **6.14, 6.26** | Deemed service of the claim form and of other documents |
+| **6.15** | Service by an alternative method |
+| **6.36**, PD 6B 3.1 | Service out with permission; the gateways |
+| **7.5, 7.6** | Time for serving the claim form; extension |
+| **11** | Disputing jurisdiction |
+| **12, 13** | Default judgment and setting aside |
+| **15.4, 15.5** | Time for filing a defence; agreed extension |
+| **16.4, 16.5** | Particulars of claim; defence |
+| **17.4** | Amendment after limitation has expired |
+| **18** | Further information |
+| **19.6** | Adding or substituting a party after limitation |
+| **20.4–20.7** | Additional claims |
+| **23.7** | Three clear days' notice of an application |
+| **24.3** | Summary judgment |
+| **25.20, 25.23** | Interim payments — restriction and conditions |
+| **25.27** | Security for costs |
+| **26.9, 26.13** | Scope of each track; matters relevant to allocation |
+| **31.6, 31.7, 31.10–31.12, 31.16, 31.17** | Standard disclosure, search, list, continuing duty, specific, pre-action, non-party |
+| **32.5, 32.10** | Witness statements as evidence in chief; consequence of failure to serve |
+| **33.2, 33.4** | Hearsay notice; calling the maker |
+| **34.5** | Witness summons — 7 days |
+| **35.3, 35.4, 35.6, 35.7, 35.12** | Expert's duty; permission; written questions; single joint expert; discussions |
+| **36.5, 36.13, 36.17** | Form of a Part 36 offer; costs of acceptance; consequences at judgment |
+| **38.6** | Costs on discontinuance |
+| **39.5** | Trial bundle |
+| **40.7, 40.11** | Effect of judgment; 14 days to pay |
+| **44.2, 44.3** | Costs discretion; standard and indemnity bases |
+| **44.13–44.16** | QOCS |
+| **45** | Fixed recoverable costs |
+| **46.2, 46.8** | Non-party costs; wasted costs |
+| **47** | Detailed assessment |
+| **52.6, 52.7, 52.12, 52.21** | Permission; second appeals; 21 days; review and grounds |
+| **69, 71, 72, 73, 83, 89** | Receivers; obtaining information; third party debt orders; charging orders; control of goods; attachment of earnings |
+| **PD 7A** | High Court / County Court thresholds |
+| **PD 31B**, **PD 57AD** | Electronic disclosure; disclosure in the Business and Property Courts |
+| **PD 57AC** | Trial witness statements in the Business and Property Courts |
+
+## The numbers
+
+### Time limits
+
+| Period | What it is |
+|---|---|
+| **3 clear days** | Notice of an interim application (CPR 23.7) |
+| **7 days** | Service of a witness summons before attendance; respondent's evidence before a summary judgment hearing; trial bundle earliest filing |
+| **3 days** | Trial bundle latest filing; evidence in reply on a summary judgment application |
+| **24 hours** | Statement of costs before a hearing to be summarily assessed |
+| **14 days** | Acknowledgment of service; defence where no acknowledgment; application disputing jurisdiction after acknowledgment; notice of a summary judgment hearing; compliance with a money judgment; service of a CPR 71 order before the hearing |
+| **21 days** | Relevant period on a Part 36 offer (minimum); appellant's notice; points of dispute; costs budgets before the first CMC |
+| **28 days** | Defence where an acknowledgment has been filed; written questions to an expert after service of the report; agreed extension of a defence (maximum further period); challenge to a CVA or IVA |
+| **56 days** | Maximum for a defence by agreement, without a court order |
+| **4 months** | Service of the claim form within the jurisdiction |
+| **6 months** | Service of the claim form outside the jurisdiction |
+| **3 months** | Commencing detailed assessment |
+| **30 weeks** | Typical fast track trial from allocation |
+| **7 clear days** | Notice of enforcement before taking control of goods |
+
+### Money thresholds
+
+| Figure | What it is |
+|---|---|
+| **£10,000** | Small claims track limit; compulsory Small Claims Mediation Service |
+| **£1,000 / £5,000** | Small claims track: general damages limit for personal injury / RTA whiplash |
+| **£25,000** | Fast track upper limit |
+| **£100,000** | Intermediate track upper limit; High Court money claim threshold |
+| **£50,000** | High Court personal injury threshold; costs budget filed with the DQ below this value |
+| **£10 million** | Costs budgeting does not apply at or above this value |
+| **£500,000 / £60,000** | IPEC damages cap / costs cap on liability (£30,000 on quantum) |
+| **£75,000** | Cap on the Part 36 additional amount |
+| **10% / 5%** | The Part 36 additional amount: 10% of the first £500,000, 5% thereafter |
+| **10% above base rate** | Maximum enhanced interest under CPR 36.17(4); maximum interest penalty for protocol breach |
+| **8%** | Post-judgment interest |
+| **£600 / £5,000** | Enforcement against goods: under £600 County Court only; £5,000 or more High Court only; in between, either (CCA-regulated judgments always County Court) |
+| **£5,000** | County Court judgments at or above this carry interest |
+
+### The tests
+
+| Test | Where |
+|---|---|
+| **No real prospect of success and no other compelling reason** | Summary judgment, CPR 24.3 |
+| **Real prospect of success or some other compelling reason** | Permission to appeal, CPR 52.6 |
+| **Real prospect of success AND an important point of principle or practice, or some other compelling reason** | Second appeals, CPR 52.7 |
+| **Wrong, or unjust because of a serious procedural or other irregularity** | Grounds of appeal, CPR 52.21(3) |
+| **Real prospect of successfully defending, or some other good reason** — with regard to **promptness** | Setting aside default judgment, CPR 13.3 |
+| **Serious question to be tried; damages inadequate; balance of convenience; status quo** | Interim injunction, *American Cyanamid* |
+| **Good arguable case; real risk of dissipation** | Freezing injunction |
+| **Seriousness and significance; why; all the circumstances** | Relief from sanctions, *Denton* |
+| **Good arguable case in a gateway; serious issue to be tried; England the proper place** | Permission to serve out |
+| **Clearly or distinctly more appropriate forum** | *Forum non conveniens*, *Spiliada* |
+| **Dominant purpose** | Litigation privilege, *Waugh* |
+| **A reasonable proportion of the likely amount of the final judgment** | Interim payments, CPR 25.20 |

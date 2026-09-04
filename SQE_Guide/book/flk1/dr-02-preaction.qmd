@@ -1,0 +1,516 @@
+# Before proceedings {#sec-dr-preaction}
+
+> *Assessment objective 3: pre-action considerations and steps.*
+
+## Limitation
+
+Limitation is the first thing a litigator checks and the last thing they can fix. It is examined by
+calculation, so learn the period, the trigger date, and the exceptions.
+
+### The periods
+
+| Claim | Period | Runs from | Provision |
+|---|---|---|---|
+| **Simple contract** | **6 years** | The date of **breach** | s.5 Limitation Act 1980 |
+| Contract under **deed** (specialty) | **12 years** | The date of breach | s.8 |
+| **Tort** generally | **6 years** | The date the cause of action **accrued** — for negligence, when **damage** is suffered | s.2 |
+| **Negligence** causing latent damage (not personal injury) | 6 years from accrual **or** **3 years** from the **starting date**, whichever expires **later** — subject to a **15-year longstop** | Knowledge of the material facts about the damage | ss.14A, 14B |
+| **Personal injury** | **3 years** | The later of the date of **accrual** and the claimant's **date of knowledge** | ss.11, 14 |
+| **Fatal accidents** | **3 years** | The later of the date of **death** and the dependant's date of knowledge | s.12 |
+| **Defective products** (Consumer Protection Act 1987) | **3 years**, with a **10-year longstop** from when the product was put into circulation | Damage or knowledge | s.11A |
+| **Contribution** between wrongdoers | **2 years** | The judgment or settlement fixing the liability to be contributed to | s.10 |
+| Recovery of **land** | 12 years | Accrual | s.15 |
+
+::: {.callout-important title="Exam trap"}
+For a **contract** claim, time runs from the **breach** — not from when the claimant discovered it, and
+not from when the loss was suffered. For a **tort** claim in negligence, time runs from when **damage
+occurs**, which may be much later than the negligent act. A question that gives you a negligently
+drafted document, a breach years later, and damage later still is testing exactly this: the contract
+claim may be statute-barred while the tortious claim is alive.
+:::
+
+### Knowledge, and the extensions
+
+**Date of knowledge** (s.14) for a personal injury claim: the date on which the claimant first knew
+that the injury was **significant**, that it was **attributable** in whole or in part to the act or
+omission alleged to constitute negligence, and the **identity of the defendant**. Knowledge includes
+what the claimant might reasonably have been expected to acquire, including from expert advice it was
+reasonable to seek. Knowledge that, as a matter of law, the act amounted to negligence is **irrelevant**.
+
+**Section 14A** applies the same idea to other negligence claims: the claimant gets the longer of six
+years from accrual, or three years from the date they had both the knowledge required to bring the
+action and the right to bring it — subject to the absolute **15-year longstop** in s.14B, which runs
+from the negligent act or omission and applies even if the claimant never had knowledge.
+
+**Section 28 — disability.** If the claimant was a **child** or **lacked capacity** *when the cause of
+action accrued*, time does not begin to run until the disability ends: a child's period therefore runs
+from their **18th birthday**, so a child injured at seven has until their 21st birthday to bring a
+personal injury claim. Supervening disability does **not** stop the clock.
+
+**Section 32 — fraud, concealment and mistake.** Where the action is based on the defendant's fraud,
+where a fact relevant to the claimant's right of action has been **deliberately concealed** by the
+defendant, or where the action is for relief from the consequences of a **mistake**, time does not
+begin to run until the claimant has **discovered** the fraud, concealment or mistake, or **could with
+reasonable diligence have discovered** it.
+
+**Sections 29–31 — acknowledgment and part payment.** In a claim for a debt or other liquidated sum, a
+written, signed **acknowledgment** of the debt, or a **part payment**, restarts the six-year clock — but
+cannot revive a claim already statute-barred.
+
+**Section 33 — the discretion.** In **personal injury and fatal accident** claims only, the court has an
+equitable discretion to **disapply** the primary limitation period where it is equitable to do so,
+having regard to the prejudice to each party and to the s.33(3) factors: the length of and reasons for
+the delay, the effect of the delay on the **cogency of the evidence**, the defendant's conduct after
+the cause of action arose, the duration of any disability, how promptly the claimant acted once they
+knew, and the steps the claimant took to obtain advice.
+
+::: {.callout-important title="Exam trap"}
+Section 33 is confined to personal injury and fatal accident claims. There is **no** general judicial
+discretion to extend limitation in a contract or property claim, however sympathetic the facts. An
+option offering the court a discretion to disapply the six-year contract period is always wrong.
+:::
+
+### How limitation operates
+
+- It is a **procedural** defence. It bars the **remedy**, not the right, and it must be **pleaded** in
+  the defence — the court will not take the point of its own motion. (Conversion under s.3 and land
+  under s.17 are the exceptions, where title is extinguished.)
+- The claim is **brought** when the claim form is **received by the court office**, not when it is
+  sealed. Practice Direction 7A says so, and a claim form delivered on the last day is in time even if
+  it is issued days later.
+- If the period is about to expire and the pre-action protocol has not been complied with, the
+  claimant should **issue** to protect the position and then invite the court to **stay** the
+  proceedings so that the protocol steps can be completed.
+- Parties may agree a **standstill agreement** to suspend time while they negotiate. Draft it
+  carefully: an agreement that merely says the parties "will not take a limitation point" is a
+  contractual promise, not an extension.
+
+## Practice Direction – Pre-Action Conduct and Protocols
+
+Where no approved protocol covers the dispute, the **Practice Direction on Pre-Action Conduct and
+Protocols** applies. Its aims (para 3) are that the parties should:
+
+- **understand each other's position**;
+- make **decisions** about how to proceed;
+- try to **settle** the issues without proceedings;
+- consider a form of **ADR**;
+- support the **efficient management** of proceedings; and
+- **reduce the costs** of resolving the dispute.
+
+### The steps
+
+Paragraph 6 sets out what the parties should do where no protocol applies:
+
+1. The **claimant** writes to the defendant with **concise details** of the claim — the basis on which
+   it is made, a summary of the facts, what the claimant wants from the defendant, and, if money, how
+   the amount is calculated.
+2. The **defendant** responds within a **reasonable time** — 14 days in a straightforward case, and no
+   more than three months in a very complex one — saying whether the claim is accepted and, if not,
+   the reasons, together with an explanation of which facts and parts of the claim are disputed and
+   whether the defendant is making a counterclaim.
+3. The parties **disclose key documents** relevant to the issues in dispute.
+4. The parties **consider ADR**.
+
+Paragraph 4 imposes **proportionality**: the steps taken must be proportionate, and the Practice
+Direction must not be used as a tactical device to generate costs or to gain an unfair advantage.
+
+### ADR and the last resort principle
+
+Litigation is a **last resort** (para 8). The parties should consider whether negotiation or another
+form of ADR might enable them to settle, and the court **may require evidence** that the parties
+considered it. **Silence** in response to an invitation to participate may itself be unreasonable and
+may lead to a costs sanction.
+
+### Non-compliance and its consequences
+
+The court will look at whether the parties have complied **in substance**; minor or technical failures
+are not penalised. Where there has been a significant failure, the court may:
+
+- **stay** the proceedings while the missed steps are taken;
+- order the party at fault to **pay costs**, in whole or in part;
+- order those costs on the **indemnity basis**;
+- if the party at fault is a **claimant** who has been awarded a sum of money, deprive it of **interest**
+  or award interest at a lower rate;
+- if the party at fault is a **defendant** ordered to pay a sum of money, award **interest** at a rate
+  up to **10% above base rate**.
+
+::: {.callout-important title="Exam trap"}
+Failure to comply with a protocol does **not** invalidate the claim, and it is not a ground for
+striking out. The sanctions are about **costs and interest**, and occasionally a stay. An option saying
+the claim will be struck out because the claimant did not send a letter before claim is wrong.
+:::
+
+### The approved protocols
+
+Where an approved protocol applies, it displaces the Practice Direction's generic steps. Those most
+likely to appear:
+
+| Protocol | Distinctive features |
+|---|---|
+| **Personal Injury** | Letter of claim in two copies (one for insurers); defendant has 21 days to acknowledge and **3 months** thereafter to investigate and state whether liability is admitted; agreed expert procedure with the claimant nominating names |
+| **Debt Claims** | Applies where a **business** claims from an **individual**. Letter of claim with an information sheet, reply form and financial statement; the debtor has **30 days** to respond; a further 30 days if documents are requested; the creditor must give **14 days'** notice before issuing |
+| **Professional Negligence** | Preliminary notice; letter of claim; the professional has **21 days** to acknowledge and **3 months** to investigate and provide a letter of response and/or settlement |
+| **Construction and Engineering** | Letter of claim, response, and a **pre-action meeting** |
+| **Clinical Disputes** | Request for records; letter of claim; **4 months** to respond |
+
+Each shares a common shape — letter of claim, acknowledgment, substantive response, disclosure of key
+documents, consideration of ADR — and each attaches its own timetable. The **structure** is examinable;
+the individual timetables less so, except for the debt claims protocol, which is distinctive because it
+protects consumers.
+
+## Applicable law
+
+Which country's law governs the dispute is decided by **assimilated** versions of the Rome I and Rome II
+Regulations, which continue to apply in England and Wales after Brexit.
+
+### Contract: Rome I
+
+**Article 3 — party choice.** The contract is governed by the law chosen by the parties. The choice
+must be **express or clearly demonstrated** by the terms or the circumstances. Parties may choose the
+law for the whole or part of the contract, and may change it.
+
+**Article 4 — no choice.** A cascade:
+
+1. **Specific rules** by contract type:
+
+   | Contract | Governing law |
+   |---|---|
+   | Sale of **goods** | The **seller's** habitual residence |
+   | Provision of **services** | The **service provider's** habitual residence |
+   | A right *in rem* in, or a tenancy of, **immovable property** | Where the property is **situated** |
+   | **Franchise** | The **franchisee's** habitual residence |
+   | **Distribution** | The **distributor's** habitual residence |
+   | Sale of goods by **auction** | Where the auction takes place |
+
+2. Otherwise, or where the contract falls into more than one category: the law of the country where the
+   party required to effect the **characteristic performance** has their habitual residence.
+3. **Escape clause** (Art 4(3)): if it is clear from all the circumstances that the contract is
+   **manifestly more closely connected** with another country, that country's law applies.
+4. Failing all of that (Art 4(4)): the law of the country with which it is **most closely connected**.
+
+**Protective rules.** Article 6 (consumer contracts) and Article 8 (individual employment contracts)
+provide that a choice of law cannot deprive the consumer of the protection of the mandatory rules of
+their habitual residence, or the employee of the mandatory rules of the country where they habitually
+work. **Article 9** preserves the **overriding mandatory provisions** of the forum, and **Article 21**
+allows the court to refuse to apply a foreign rule that is manifestly incompatible with public policy.
+
+For a company, "habitual residence" means its **place of central administration**; for a person acting
+in the course of business, their **principal place of business**.
+
+### Tort: Rome II
+
+**Article 4(1) — the general rule.** The applicable law is that of the country in which the **damage
+occurs**, irrespective of the country in which the **event giving rise** to the damage occurred, and
+irrespective of the countries in which the **indirect consequences** of that event occur.
+
+**Article 4(2).** If, at the time the damage occurs, both the person claimed to be liable and the person
+sustaining damage have their **habitual residence in the same country**, the law of that country
+applies instead.
+
+**Article 4(3) — escape clause.** If the tort is **manifestly more closely connected** with another
+country, that country's law applies. A **pre-existing relationship** between the parties, such as a
+contract, is expressly identified as capable of establishing that connection.
+
+**Article 14 — choice.** The parties may choose the applicable law: **after** the event giving rise to
+the damage, or **before** it if all the parties are pursuing a commercial activity and the agreement is
+freely negotiated.
+
+**Special regimes**: product liability (Art 5, a cascade), unfair competition (Art 6), environmental
+damage (Art 7, where the claimant may elect for the law of the country in which the event occurred),
+and intellectual property (Art 8, the law of the country for which protection is claimed, with **no**
+freedom to choose).
+
+::: {.callout-important title="Exam trap"}
+Article 4(1) is counter-intuitive and reliably tested. The law is that of the place where the **damage**
+occurs, **not** where the wrongful act was committed. A defective component made negligently in France
+and fitted to a machine that injures a worker in England produces **English** law under Art 4(1) —
+unless Art 4(2) or Art 4(3) displaces it. Note also that Rome II **excludes defamation and privacy**,
+for which the common law rules apply.
+:::
+
+## Jurisdiction
+
+Since the end of the transition period the **Brussels Recast Regulation** no longer applies to
+proceedings commenced in England and Wales. Three regimes now matter.
+
+### Hague 2005 — exclusive choice of court agreements
+
+Where a contract contains an **exclusive** jurisdiction clause in favour of the courts of a contracting
+state, the **2005 Hague Convention on Choice of Court Agreements** requires the chosen court to hear
+the case and other contracting states to decline. The contracting parties include the EU, the UK,
+Mexico, Singapore and Montenegro. The Convention does not cover **asymmetric** (one-sided) clauses on
+the prevailing view, and does not cover non-exclusive clauses.
+
+### Hague 2019 — recognition and enforcement
+
+The **2019 Hague Judgments Convention** entered into force for the **United Kingdom on 1 July 2025**,
+applying to judgments arising out of proceedings **issued on or after** that date. It provides a
+treaty basis for the recognition and enforcement of judgments between contracting states — the EU,
+Ukraine, Uruguay, Albania and Montenegro among them — and is significantly wider than Hague 2005
+because it is not confined to exclusive jurisdiction clauses.
+
+### The common law rules
+
+Where neither Convention applies, the English court's jurisdiction depends on **service**.
+
+**Defendant within the jurisdiction.** Service of the claim form on a defendant present in England and
+Wales founds jurisdiction **as of right**. The defendant's remedy is to apply for a **stay** on the
+ground of *forum non conveniens*.
+
+*Spiliada Maritime Corp v Cansulex Ltd* [1987] AC 460 supplies the test: the court will stay
+proceedings if the defendant shows that there is **another available forum which is clearly or
+distinctly more appropriate** — the "natural forum", with which the action has the **most real and
+substantial connection**. The burden then shifts to the claimant to show that justice nevertheless
+requires the trial to take place in England.
+
+**Defendant outside the jurisdiction.** The claimant needs the court's **permission** to serve out
+(CPR 6.36), unless one of the exceptions in CPR 6.32–6.33 applies — most importantly where the contract
+contains a term to the effect that the English court shall have jurisdiction, or where jurisdiction
+arises under Hague 2005.
+
+To obtain permission, the claimant must establish three things:
+
+1. A **good arguable case** that the claim falls within one of the **gateways** in Practice Direction
+   6B, paragraph 3.1;
+2. A **serious issue to be tried** on the merits — a real prospect of success; and
+3. That **England is the proper place** in which to bring the claim (*forum conveniens*).
+
+The gateways most often examined:
+
+| Category | Gateway |
+|---|---|
+| General | The defendant is **domiciled** within the jurisdiction; a claim for an **injunction** ordering the defendant to do or refrain from doing an act within the jurisdiction; the defendant is a **necessary or proper party** to a claim against another defendant |
+| **Contract** | The contract was **made within** the jurisdiction; made **by or through an agent** within the jurisdiction; is **governed by English law**; contains a term conferring **English jurisdiction**; or the **breach** was committed within the jurisdiction |
+| **Tort** | **Damage** was or will be **sustained** within the jurisdiction; or the damage results from an **act committed**, or likely to be committed, within the jurisdiction |
+
+*FS Cairo (Nile Plaza) LLC v Brownlie* [2021] UKSC 45 confirmed that "damage" in the tort gateway bears
+its ordinary meaning and covers any **significant** damage sustained in England — including continuing
+pain and financial loss suffered here after an accident abroad. The gateway is broad; the real filter is
+the third requirement, *forum conveniens*.
+
+::: {.callout-important title="Exam trap"}
+Keep the three limbs separate. Satisfying a gateway is **not** enough: the claimant must also show a
+serious issue to be tried and that England is the **proper place**. And keep jurisdiction separate from
+**applicable law** — an English court can and often does apply foreign law, so the fact that French law
+governs a contract does not deprive the English court of jurisdiction.
+:::
+
+## Where to start proceedings
+
+### High Court or County Court
+
+Practice Direction 7A allocates business between them:
+
+| Claim | Where it may be started |
+|---|---|
+| Money claim (not personal injury) of **£100,000 or less** | **County Court only** |
+| Money claim of **more than £100,000** | County Court or High Court |
+| **Personal injury** claim worth **less than £50,000** | **County Court only** |
+| **Personal injury** claim worth **£50,000 or more** | County Court or High Court |
+
+A claimant issuing in the High Court must state in the claim form that it expects to recover more than
+£100,000 (or, for personal injury, £50,000 or more), or that an enactment requires the claim to be
+started in the High Court, or that the claim is to proceed in a specialist High Court list.
+
+Beyond value, the factors pointing to the High Court are the **financial value and amount in dispute**,
+the **complexity** of the facts, legal issues, remedies or procedures, and the **importance** of the
+outcome to the public in general.
+
+A case started in the wrong court is not a nullity: the court may **transfer** it (ss.40–42 County
+Courts Act 1984), and may penalise the claimant in **costs** for starting in the High Court
+unnecessarily.
+
+### The divisions and the specialist courts
+
+The High Court has three divisions: the **King's Bench Division** (contract and tort, including most
+commercial disputes and personal injury), the **Chancery Division** (business, property, trusts, land,
+intellectual property, companies and insolvency), and the **Family Division**.
+
+The **Business and Property Courts** are an umbrella for the specialist lists:
+
+| Court or list | Business |
+|---|---|
+| **Commercial Court** (KBD) | National and international commercial disputes — sale of goods, insurance, banking, shipping |
+| **Circuit Commercial Courts** | Commercial claims of lower value, outside London |
+| **Technology and Construction Court** (KBD) | Building and engineering disputes, professional negligence against construction professionals, IT disputes |
+| **Admiralty Court** (KBD) | Shipping, collisions, salvage |
+| **Financial List** | Financial markets claims of £50 million or more, or requiring market expertise |
+| **Intellectual Property Enterprise Court** (Chancery) | Lower-value IP claims, with a **£500,000** damages cap and recoverable costs capped at **£60,000** on liability and £30,000 on quantum |
+| Companies, Insolvency, Competition, Property, Trusts, Revenue lists | As their names suggest |
+
+## The solicitor's position
+
+**Advising on limitation.** A missed limitation period is the archetypal negligence claim against a
+litigation solicitor. The date must be calculated and diarised at the outset, and where it is close the
+right course is to **issue protectively** rather than to complete the protocol.
+
+**Not taking unfair advantage.** A solicitor must not take unfair advantage of a third party, which
+constrains the tone and content of a letter before claim to a litigant in person: threatening
+consequences that cannot follow, or asserting a claim known to be bad, breaches the Code of Conduct.
+The **SRA warning notice on SLAPPs** — strategic lawsuits against public participation — is expressly
+flagged in the assessment specification, and identifies aggressive pre-action correspondence designed
+to silence rather than to resolve as a conduct risk.
+
+**Confidentiality in pre-action correspondence.** A letter marked "without prejudice" is protected only
+if it is a genuine attempt to settle a dispute; the label alone does not create the privilege, and
+labelling an open assertion of claim "without prejudice" does not make it so.
+
+**Undertakings.** Any undertaking given in pre-action correspondence — to preserve documents, to hold
+funds, not to issue before a date — is personally binding on the solicitor and enforceable by the
+court. Give none that is not within your control.
+
+## Check yourself
+
+**Q1.** A surveyor negligently valued a property on 1 March 2018. The claimant relied on the valuation
+and bought the property on 1 June 2018, suffering an immediate loss. The claimant did not discover the
+negligence until 1 September 2024, when a second survey revealed it. The claimant consults a solicitor
+on 1 October 2026. There is no contract under deed.
+
+Which of the following is correct?
+
+A. Both the contract and the tort claims are statute-barred, and no extension is available.
+
+B. The contract claim is statute-barred, but the tortious claim may be brought under s.14A of the
+Limitation Act 1980, which gives the claimant three years from the date of knowledge, expiring on
+1 September 2027, subject to the 15-year longstop in s.14B.
+
+C. Both claims remain in time, because time did not begin to run until the negligence was discovered.
+
+D. The court may exercise its discretion under s.33 to disapply the limitation period.
+
+E. The tortious claim is statute-barred, but the contract claim remains in time because a contract
+claim runs from the date of discovery.
+
+**Q2.** An English company sells machinery to a Spanish company. The contract contains no choice of law
+clause and no jurisdiction clause. A dispute arises about whether the machinery conformed to the
+contract.
+
+Which law governs the contract?
+
+A. Spanish law, because the buyer is Spanish and the goods were delivered there.
+
+B. English law, because the seller has its habitual residence in England and the contract is one for
+the sale of goods.
+
+C. The law of the country with which the contract is most closely connected, which will always be that
+of the place of delivery.
+
+D. English law, because proceedings would be issued in England.
+
+E. There is no applicable law until the parties agree one.
+
+**Q3.** A claimant is injured in a road accident in Portugal caused by the negligent driving of another
+English resident, who was also on holiday there. Both are habitually resident in England. The claimant
+issues proceedings in England.
+
+Which law applies to the tort?
+
+A. Portuguese law, under Article 4(1) of Rome II, because that is where the damage occurred.
+
+B. English law, under Article 4(2) of Rome II, because both parties were habitually resident in the
+same country when the damage occurred.
+
+C. English law, because the claim was issued in England and the forum applies its own law.
+
+D. Portuguese law, because the event giving rise to the damage occurred there and Article 4(1) looks to
+the place of the event.
+
+E. The claimant may choose which law applies.
+
+**Q4.** A claimant issues a claim for £85,000 for breach of a commercial supply contract, with no
+personal injury element, in the High Court.
+
+Which of the following is correct?
+
+A. The claim is properly issued, because a claim for more than £50,000 may be issued in the High Court.
+
+B. The claim should have been started in the County Court, because a money claim of £100,000 or less
+may only be started there; the court may transfer it and may penalise the claimant in costs.
+
+C. The claim is a nullity and must be reissued.
+
+D. The claim is properly issued, because commercial claims may always be issued in the High Court.
+
+E. The claim should have been issued in the Commercial Court.
+
+**Q5.** A defendant fails to respond at all to a letter of claim sent under the Practice Direction on
+Pre-Action Conduct and Protocols, and ignores an invitation to mediate. Proceedings are issued and the
+defendant ultimately succeeds at trial.
+
+Which of the following is the most likely consequence of the defendant's pre-action conduct?
+
+A. The claim will be struck out for failure to comply with the Practice Direction.
+
+B. There is no consequence, because the defendant won.
+
+C. The court may take the non-compliance into account in exercising its discretion as to costs, and may
+reduce or disallow part of the successful defendant's costs or order costs on a different basis.
+
+D. The defendant will be ordered to pay interest at up to 10% above base rate.
+
+E. The court must order a stay of the proceedings.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — B.** The **contract** claim accrued on **breach** — the negligent valuation on 1 March 2018 — so
+the six-year period under s.5 expired on 1 March 2024. The **tortious** claim accrued when **damage**
+was suffered on 1 June 2018, so the primary six-year period under s.2 expired on 1 June 2024. But s.14A
+gives the claimant the **longer** of six years from accrual and **three years from the date of
+knowledge**. Knowledge came on 1 September 2024, so the claim may be brought until 1 September 2027 —
+comfortably covering a consultation in October 2026. The s.14B **15-year longstop** runs from the
+negligent act (1 March 2018) and does not expire until 2033.
+
+- **A** overlooks s.14A entirely.
+- **C** applies a discoverability rule to the contract claim, where none exists.
+- **D** applies s.33, which is confined to **personal injury and fatal accident** claims.
+- **E** reverses the position: it is the **tort** claim that benefits from the knowledge extension, not
+  the contract claim.
+
+**Q2 — B.** Rome I, Article 4(1)(a): in the absence of choice, a contract for the **sale of goods** is
+governed by the law of the country where the **seller** has their habitual residence. The seller is
+English, so English law applies. (For a company, habitual residence means its place of central
+administration.)
+
+- **A** applies the buyer's law, which is the opposite of the rule.
+- **C** skips the specific rules in Art 4(1) and goes straight to a closest-connection test, and then
+  states it inflexibly. Article 4(3) is an **escape clause** requiring a *manifestly* closer connection.
+- **D** confuses jurisdiction with applicable law. An English court frequently applies foreign law.
+- **E** is simply wrong: Rome I supplies the answer where the parties have not.
+
+**Q3 — B.** Rome II, Article 4(2): where both the person claimed to be liable and the person sustaining
+damage are habitually resident in the **same country** when the damage occurs, the law of that country
+applies **instead of** the Art 4(1) rule. Both are habitually resident in England, so English law
+governs — including on quantification of damages.
+
+- **A** and **D** apply Art 4(1) without checking Art 4(2), and **D** additionally misstates Art 4(1),
+  which looks to where the **damage** occurs, not the event.
+- **C** assumes the forum applies its own law, which is what the Rome Regulations exist to prevent.
+- **E** offers a unilateral choice that exists only under Art 7 (environmental damage). Article 14
+  requires **agreement**.
+
+**Q4 — B.** Practice Direction 7A: proceedings may only be **started** in the High Court if the value of
+the claim exceeds **£100,000** (or, for personal injury, is £50,000 or more). £85,000 is below the
+threshold, so the claim belongs in the County Court.
+
+- **A** applies the personal injury threshold to a non-personal injury claim.
+- **C** overstates the consequence: starting in the wrong court is an irregularity, not a nullity. The
+  court may transfer under s.40 County Courts Act 1984.
+- **D** invents a rule; the Commercial Court has its own criteria and the value here is far below what
+  it would ordinarily take.
+- **E** compounds the error.
+
+**Q5 — C.** Non-compliance with the Practice Direction is taken into account in the exercise of the
+court's **costs** discretion (CPR 44.2(4)(a) — conduct, including conduct before proceedings). The
+court may reduce or disallow part of the successful party's costs, or award costs on the indemnity
+basis against the party at fault. Ignoring an invitation to mediate compounds the point: silence in
+response to such an invitation may itself be unreasonable.
+
+- **A** overstates the sanction; failure to comply with a protocol does not invalidate or defeat a
+  claim.
+- **B** ignores the court's power to deprive even a **successful** party of costs for its conduct.
+- **D** applies a sanction available against a **defendant ordered to pay a sum of money** — this
+  defendant won and pays nothing.
+- **E** describes a discretionary remedy, and one directed at incomplete protocol steps before trial,
+  not at a defendant who has already succeeded.
+
+:::

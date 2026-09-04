@@ -1,0 +1,195 @@
+# Dispute Resolution: what is examined {#sec-dr-overview}
+
+## Assessment objectives
+
+Candidates are required to apply relevant core legal principles and rules appropriately and
+effectively, at the level of a competent newly qualified solicitor in practice, to realistic
+client-based and ethical problems and situations in the following areas:
+
+1. Analysis of merits of claim or defence.
+2. Arbitration, mediation and litigation as an appropriate mechanism to resolve a dispute.
+3. Pre-action considerations and steps.
+4. Commencing, responding to or progressing a claim.
+5. Case management and any interim applications relevant to a claim.
+6. The evidence needed and disclosure steps required in commencing, responding to, progressing or
+   defending a claim.
+7. Preparation of a case for a trial, the trial and any post trial steps.
+8. Procedures and processes relevant to costs involved in dispute resolution.
+
+Candidates must demonstrate their ability to act honestly and with integrity and in accordance with
+the Statement of Solicitor Competence, the SRA Principles and the Code of Conduct.
+
+Questions may draw on any combination of the subject areas within FLK1.
+
+## The examinable content, in the SRA's own words
+
+**Different options for dispute resolution** — the characteristics of arbitration, mediation and
+litigation which make them an appropriate mechanism to resolve a dispute.
+
+**Resolving a dispute through a civil claim** — preliminary considerations: limitation, pre-action
+protocols; parties and causes of action; calculating limitation periods for claims in contract and
+tort; Practice Direction – Pre-action Conduct; principles and purpose of pre-action protocols
+governing particular claims and consequences for failure to follow their terms; applicable law —
+mechanisms to determine which country's laws apply to a contractual or tortious claim issued in the
+courts of England and Wales; jurisdiction — mechanisms to determine jurisdiction over an
+international contractual or tortious claim.
+
+**Where to start proceedings** — allocation of business between the High Court and the County Court;
+jurisdiction of the specialist courts.
+
+**Issuing and serving proceedings** — issuing a claim form; adding, removing or substituting parties;
+service of a claim form within the jurisdiction; procedure for service outside the jurisdiction (with
+or without the court's permission) and mechanisms for effecting valid service in another
+jurisdiction; deemed dates of service and time limits for serving proceedings; service by an
+alternative method.
+
+**Responding to a claim** — admitting the claim; acknowledging service and filing a defence and/or
+counterclaim; disputing the court's jurisdiction; entering and setting aside judgment in default;
+discontinuance and settlement; time limits for responding to a claim.
+
+**Statements of case** — purpose, structure and content of a claim form, particulars of claim, or
+defence relating to a claim in contract or tort; purpose, structure and content of a reply, Part 20
+claim, or defence to Part 20 claim; requests for further information; amendments.
+
+**Interim applications** — procedure for making an application; purpose, procedure and evidence
+required for summary judgment, interim payments and interim injunctions.
+
+**Case management** — the overriding objective; track allocation; case management directions for
+cases proceeding on the fast or multi-tracks; non-compliance with orders, sanctions and relief; costs
+and case management conferences.
+
+**Evidence** — relevance, hearsay and admissibility; the burden and standard of proof; expert
+evidence (opinion evidence, duties of experts, single joint experts, discussion between experts);
+witness evidence (witness statements, affidavits).
+
+**Disclosure and inspection** — standard disclosure; orders for disclosure; specific disclosure;
+pre-action and non-party disclosure; electronic disclosure; privilege and without prejudice
+communications; waiver of privilege.
+
+**Trial** — summoning witnesses; preparations for trial (purpose of pre-trial checklists and hearings;
+purpose of trial bundles); trial procedure; the nature and effect of judgment.
+
+**Costs** — costs management and budgeting; inter-partes costs orders (interim and final); non-party
+costs; qualified one-way costs shifting; Part 36 and other offers; security for costs; fixed and
+assessed costs.
+
+**Appeals** — permission; destination of appeals; grounds for appeals.
+
+**Enforcement of money judgments** — oral examination; methods of enforcement; procedure and
+mechanisms for effecting valid enforcement in another jurisdiction.
+
+::: {.callout-important title="Exam trap"}
+Notice what the specification does **not** say. There is no mention of the small claims track
+procedure in detail, of family or criminal procedure, or of judicial review. And notice what it
+**does** say that candidates routinely skip: **applicable law and jurisdiction**, **non-party costs**,
+**enforcement abroad**, and **destination of appeals**. Those four are small topics with a high
+question-per-page ratio, precisely because they are neglected.
+:::
+
+## How this part is organised
+
+Each chapter takes one or more of the eight objectives, in the order a real dispute unfolds.
+
+| Objective | Chapter |
+|---|---|
+| 1. Merits; 2. Choice of forum | @sec-dr-merits — Analysing the dispute and choosing the forum |
+| 3. Pre-action considerations and steps | @sec-dr-preaction — Before proceedings |
+| 4. Commencing and responding | @sec-dr-commencing — Issuing, serving, pleading and responding |
+| 5. Case management and interim applications | @sec-dr-case-management — Running the claim |
+| 6. Evidence and disclosure | @sec-dr-evidence — Proving the case |
+| 7. Trial and post-trial | @sec-dr-trial — Trial, appeals and enforcement |
+| 8. Costs | @sec-dr-costs — Who pays, and how much |
+
+@sec-dr-authorities collects the authorities, rule numbers and time limits in one place.
+
+## The shape of a civil claim
+
+Almost every Dispute Resolution question sits at one point on this timeline. Locating the question on
+it is usually half the work.
+
+| Stage | What happens |
+|---|---|
+| **Analysis** | Cause of action, parties, limitation, evidence, merits, funding, the defendant's ability to pay |
+| **Pre-action** | Letter of claim, response, disclosure, ADR — under the relevant protocol or the Practice Direction |
+| **Issue** | Claim form issued; limitation stops |
+| **Service** | Claim form served within 4 months (6 outside the jurisdiction); particulars of claim |
+| **Response** | Acknowledgment of service within 14 days; defence within 14 or 28 days; counterclaim; or default judgment |
+| **Allocation** | Directions questionnaire; allocation to the small claims, fast, intermediate or multi-track |
+| **Case management** | Directions; costs budgets on the multi-track; CMC or CCMC; interim applications |
+| **Disclosure** | Lists of documents; inspection; privilege |
+| **Evidence** | Exchange of witness statements; expert reports; experts' discussions |
+| **Pre-trial** | Pre-trial checklists; pre-trial review; trial bundle |
+| **Trial** | Openings, evidence, submissions, judgment, costs |
+| **After** | Appeal (21 days); enforcement |
+
+## Six ideas that decide most questions
+
+**Limitation stops on issue, not service.** The claim is brought when the claim form is *received* by
+the court, not when it is sealed and not when it reaches the defendant.
+
+**The court's permission is the hinge.** Service out, adding a party after limitation, amending after
+limitation, relief from sanctions, expert evidence, an appeal, distributing to unsecured creditors —
+each turns on whether permission is needed and on what test.
+
+**Every deadline has a consequence.** Miss the deadline for filing a defence and the claimant may
+enter default judgment. Miss the deadline for a costs budget and you are treated as having filed one
+comprising only the court fees. Miss the deadline for service of the claim form and, in most cases,
+the claim is over.
+
+**Track allocation drives everything downstream.** It decides the directions, the extent of expert
+evidence, the trial length, whether costs are budgeted, and whether costs are fixed or assessed.
+
+**Costs are a weapon, not an afterthought.** Part 36, budgets, indemnity costs and QOCS are examined
+as tactical instruments, because that is how they are used.
+
+**Conduct is embedded.** The duty not to mislead the court, the limits on what a solicitor may do
+with a client's untruthful instructions, and the rules on undertakings surface constantly in
+litigation scenarios.
+
+## Check yourself
+
+**Q1.** Which of the following is **not** part of the examinable content for Dispute Resolution?
+
+A. The mechanisms for determining which country's law applies to a tortious claim issued in the
+courts of England and Wales.
+
+B. The grounds on which permission to appeal may be granted.
+
+C. The procedure for applying for judicial review of a decision of a public body.
+
+D. Qualified one-way costs shifting.
+
+E. Pre-action and non-party disclosure.
+
+**Q2.** A solicitor is asked at what point in the life of a claim the limitation clock is stopped.
+
+Which of the following is correct?
+
+A. When the letter of claim is sent under the relevant pre-action protocol.
+
+B. When the claim form is received by the court.
+
+C. When the claim form is sealed and issued by the court.
+
+D. When the claim form is served on the defendant.
+
+E. When the particulars of claim are served.
+
+::: {.callout-note collapse="true" title="Answers and explanations"}
+
+**Q1 — C.** Judicial review is not within the Dispute Resolution content list. Constitutional and
+administrative law appears elsewhere in FLK1, but the procedural machinery of judicial review is not
+examined here. Each of the other four is named expressly in the specification.
+
+**Q2 — B.** For limitation purposes a claim is **brought** when the claim form is **received by the
+court office**, not when it is issued. Practice Direction 7A makes this explicit, and it matters
+because a claim form delivered on the last day of the limitation period but not sealed until several
+days later is still in time.
+
+- **A** confuses the protocol stage with the commencement of proceedings; a letter of claim does not
+  stop time.
+- **C** is the near-miss and the answer most candidates give. Issue is when proceedings **start** for
+  the purposes of CPR 7.2; receipt is what stops the limitation clock.
+- **D** and **E** are later still — service can lawfully occur four months after issue.
+
+:::
