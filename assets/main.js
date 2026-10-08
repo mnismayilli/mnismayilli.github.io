@@ -17,6 +17,7 @@
     { text: 'Home', href: '/' },
     { text: 'Research', href: '/research/' },
     { text: 'Teaching', href: '/teaching/' },
+    { text: 'Supervision', href: '/supervision/' },
     { text: 'M&amp;A Watch', href: '/ma-watch/' },
     { text: 'CV', href: '/about/' },
   ];
