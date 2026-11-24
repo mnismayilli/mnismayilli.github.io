@@ -1,0 +1,82 @@
+/* Interactive figures (see figures.js). The static image stays in the page as
+   a fallback and is hidden once the interactive version has been drawn. */
+.gametree.has-ifig .ifig-fallback { display: none; }
+
+.ifig {
+  background: #fff;
+  color: #1f2328;
+  border: 1px solid #dde2e8;
+  border-radius: 8px;
+  padding: 0.6rem 0.6rem 0.5rem;
+  margin: 0 auto;
+  max-width: 640px;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.ifig-stage { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ifig-svg {
+  display: block;
+  width: 100%;
+  min-width: 480px;
+  height: auto;
+  font-family: "Source Serif 4", "Georgia", "Times New Roman", serif;
+}
+.ifig-svg text { user-select: none; }
+
+.ifig-steps { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.4rem 0 0.2rem; }
+.ifig-btn,
+.ifig-reset {
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid #c6ccd4;
+  background: #f6f8fa;
+  color: #1f2328;
+  cursor: pointer;
+}
+.ifig-btn:hover, .ifig-reset:hover { background: #eaeef2; }
+.ifig-btn:disabled { opacity: 0.45; cursor: default; }
+.ifig-btn--primary { background: #1f4e95; border-color: #1f4e95; color: #fff; }
+.ifig-btn--primary:hover:not(:disabled) { background: #173c74; }
+.ifig-btn:focus-visible, .ifig-reset:focus-visible, .ifig input:focus-visible, .ifig select:focus-visible {
+  outline: 2px solid #1f4e95; outline-offset: 2px;
+}
+
+.ifig-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.35rem 1rem;
+  align-items: end;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed #dde2e8;
+}
+.ifig-controls:empty { display: none; }
+.ifig-ctl { display: flex; flex-direction: column; gap: 0.1rem; font-size: 0.82rem; color: #3b4148; margin: 0; }
+.ifig-ctl__label { display: flex; justify-content: space-between; gap: 0.5rem; }
+.ifig-ctl__val { font-variant-numeric: tabular-nums; color: #1f4e95; font-weight: 600; }
+.ifig-ctl input[type="range"] { width: 100%; accent-color: #1f4e95; margin: 0; }
+.ifig-ctl--toggle { flex-direction: row; align-items: center; gap: 0.4rem; }
+.ifig-ctl select { font: inherit; padding: 0.15rem 0.3rem; }
+.ifig-controls .ifig-reset { justify-self: start; }
+
+.ifig-readout { margin-top: 0.45rem; color: #3b4148; }
+.ifig-readout p { margin: 0 0 0.3rem; line-height: 1.45; font-size: 0.86rem; }
+.ifig-readout p:last-child { margin-bottom: 0; }
+.ifig-readout b { color: #1f2328; }
+
+.ifig-payoffs { margin-top: 0.4rem; font-size: 0.82rem; }
+.ifig-payoffs summary { cursor: pointer; color: #1f4e95; }
+.ifig-payoffs table { margin: 0.4rem 0; border-collapse: collapse; }
+.ifig-payoffs th, .ifig-payoffs td { padding: 0.15rem 0.5rem; border-bottom: 1px solid #eef0f3; text-align: left; }
+.ifig-payoffs input[type="number"] { width: 4.2rem; font: inherit; padding: 0.1rem 0.25rem; border: 1px solid #c6ccd4; border-radius: 4px; }
+
+/* Dark theme (Quarto's darkly): keep the panel light so the figure colours read
+   the same way, and soften the border. */
+body.quarto-dark .ifig { border-color: #3a3f46; }
+
+@media print {
+  .ifig-controls, .ifig-steps, .ifig-payoffs, .ifig-reset { display: none !important; }
+}

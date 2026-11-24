@@ -104,6 +104,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../figures.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -505,7 +506,7 @@ window.Quarto = {
 U_i(q, p) \;=\; \theta_i \cdot q \;-\; p, \qquad i \in \{H, L\}.
 \]</span></p>
 <p>The outside option, not purchasing, yields utility <span class="math inline">\(U_i = 0\)</span>.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig01">
 <p><img src="../figures/w11-fig01.svg" class="img-fluid" alt="Gross valuation lines for the two consumer types: the high type's line is steeper than the low type's, both through the origin."></p>
 </div>
 </section>
@@ -518,7 +519,7 @@ U_i(q, p) \;=\; \theta_i \cdot q \;-\; p, \qquad i \in \{H, L\}.
 </ul>
 <p><strong>Information structure.</strong> Nature draws each consumer’s type according to the prior <span class="math inline">\((\lambda, 1-\lambda)\)</span>. The monopolist knows this distribution but <em>cannot</em> identify which individual consumers are high value and which are low value.</p>
 <p>This is the informational asymmetry that drives the entire analysis. The monopolist knows that a proportion <span class="math inline">\(\lambda\)</span> of the market values quality highly, but cannot tell who they are when a consumer walks through the door.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig02">
 <p><img src="../figures/w11-fig02.svg" class="img-fluid" alt="The two valuation lines with the damaged and original quality levels marked, showing each type's gross valuation of each good."></p>
 </div>
 </section>
@@ -721,7 +722,7 @@ p = \theta_H \cdot q_T
 \frac{\theta_L(q_T - q_B) + c_B - c_T}{\theta_H(q_T - q_B) + c_B - c_T} \;\leq\; \lambda \;\leq\; \frac{\theta_L q_B - c_B}{\theta_H q_B - c_B}
 \]</span></p>
 <p>The damaged good is therefore a middle-ground strategy. It is optimal only when the share of high-value consumers is neither too small, in which case pooling is more profitable, nor too large, in which case excluding low-value consumers is preferable.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig03">
 <p><img src="../figures/w11-fig03.svg" class="img-fluid" alt="Profit from pooling, exclusion and screening plotted against the share of high types. Pooling is flat, exclusion rises steeply from the origin, and screening lies between them, optimal over an intermediate window."></p>
 </div>
 <div class="answerbox">
@@ -774,7 +775,7 @@ p = \theta_H \cdot q_T
 <p><span class="math display">\[
 \text{DWL} \;=\; \theta_L\,(q_T - q_B) \;+\; (c_B - c_T).
 \]</span></p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig04">
 <p><img src="../figures/w11-fig04.svg" class="img-fluid" alt="Quality-price space with the steeper high-type indifference curve and flatter low-type curve. The high type's contract sits at efficient quality; the low type's is distorted down to the damaged quality, with the welfare loss shaded."></p>
 </div>
 <p>Reading the figure:</p>
@@ -1388,7 +1389,7 @@ U^S = -\bigl(\tfrac{1}{2} - (\theta + b)\bigr)^2
 </ol>
 </div>
 <p>The receiver learns <em>which cell</em> <span class="math inline">\(\theta\)</span> belongs to, but not the precise value of <span class="math inline">\(\theta\)</span> itself.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig06">
 <p><img src="../figures/w11-fig06.svg" class="img-fluid" alt="Posterior belief after message m_j: a uniform density over the interval between the two boundaries, with the optimal action marked at the midpoint."></p>
 <p>Posterior belief and optimal response after message <span class="math inline">\(m_j\)</span>.</p>
 </div>
@@ -1402,7 +1403,7 @@ U^S = -\bigl(\tfrac{1}{2} - (\theta + b)\bigr)^2
 <h4 data-number="3.2.4.1" class="anchored" data-anchor-id="the-incentive-compatibility-condition"><span class="header-section-number">3.2.4.1</span> The incentive compatibility condition</h4>
 <p>For the partition to be an equilibrium, sender types must not want to deviate to a different message. These incentives determine the locations of the <em>interior boundaries</em> <span class="math inline">\(\theta_j\)</span>, for <span class="math inline">\(j = 1, \ldots, N-1\)</span>.</p>
 <p>At each boundary, the sender must be <em>exactly indifferent</em> between sending message <span class="math inline">\(m_j\)</span>, which induces receiver action <span class="math inline">\(a_j\)</span>, and message <span class="math inline">\(m_{j+1}\)</span>, which induces <span class="math inline">\(a_{j+1}\)</span>. If she strictly preferred one message, types near the boundary would deviate and the partition would unravel.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig07">
 <p><img src="../figures/w11-fig07.svg" class="img-fluid" alt="Incentive compatibility at a boundary: the two receiver actions marked on a line with the boundary type's bliss point exactly midway between them, equal distances marked on either side."></p>
 <p>Incentive compatibility at boundary <span class="math inline">\(\theta_j\)</span>.</p>
 </div>
@@ -1634,7 +1635,7 @@ b &lt; \frac{1}{2N(N-1)}.
 </tbody>
 </table>
 <p>The same relationship can be read off a graph. The figure below plots <span class="math inline">\(N^*(b)\)</span> against the bias <span class="math inline">\(b\)</span> as a descending step function. Each horizontal segment is a range of bias over which the same number of partition steps is sustainable, and the dashed vertical drops mark the thresholds <span class="math inline">\(b = 1/(2N(N-1))\)</span> at which one more step becomes impossible.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig08">
 <p><img src="../figures/w11-fig08.svg" class="img-fluid" alt="Maximum number of partition steps plotted against bias as a descending step function, falling to one at b equals one quarter."></p>
 </div>
 <p>At the left-hand edge, as <span class="math inline">\(b \to 0\)</span>, arbitrarily fine communication is possible and <span class="math inline">\(N^*\)</span> grows without bound. At <span class="math inline">\(b \geq 1/4\)</span> the function has fallen to <span class="math inline">\(N^* = 1\)</span> and only the babbling equilibrium survives. The key message is that <strong>informativeness is strictly decreasing in bias</strong>. Greater misalignment between sender and receiver necessarily produces coarser communication.</p>
@@ -1647,7 +1648,7 @@ b &lt; \frac{1}{2N(N-1)}.
 <li><strong>The action axis (below).</strong> The grey arrows lead down to the receiver’s response. Each message induces the conditional mean <span class="math inline">\(a_j\)</span>, the midpoint of the corresponding cell.</li>
 <li><strong>The widths (orange brackets).</strong> The cells grow wider moving up the type space, because the IC condition requires each to be <span class="math inline">\(4b\)</span> wider than the previous one.</li>
 </ul>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig09">
 <p><img src="../figures/w11-fig09.svg" class="img-fluid" alt="Three-step partition of the type space into cells of increasing width, with arrows mapping each cell to the receiver's action at its midpoint."></p>
 </div>
 <p>Types near the top are therefore pooled within wider intervals, so the receiver obtains coarser posterior information about them than about types near the bottom.</p>
@@ -1696,7 +1697,7 @@ b &lt; \frac{1}{2N(N-1)}.
 <p>At first glance the sender might seem to benefit from coarse communication, since she can pool with types that induce higher actions, exploiting her upward bias. But this intuition is misleading from an <em>ex ante</em> perspective, before the sender learns her type.</p>
 <p>Ex ante, the sender does not know whether she will be a low type or a high type. Consider a sender who turns out to be near the bottom of a cell: the receiver’s action, the cell midpoint, overshoots her ideal by a substantial margin. Conversely, a sender near the top of the cell finds the action undershooting her ideal. In both cases the sender suffers from the mismatch between the coarse action and her true bliss point.</p>
 <p>The key insight is that <strong>the sender cannot systematically exploit coarse communication</strong>, because she does not control which type she draws. Ex ante, she would prefer the receiver to have finer information, so that the action tracks her realised bliss point more closely, regardless of what that realisation turns out to be.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig10">
 <p><img src="../figures/w11-fig10.svg" class="img-fluid" alt="Within one partition cell, the receiver's action at the midpoint overshoots a low type's bliss point and undershoots a high type's."></p>
 </div>
 </section>
@@ -1832,7 +1833,7 @@ a_1 = \frac{0 + \tfrac{1}{4}}{2} = \frac{1}{8}, \qquad a_2 = \frac{\tfrac{1}{4} 
 </tbody>
 </table>
 <p>The equilibrium geometry is shown below. The upper bar is the type space, split at <span class="math inline">\(\theta_1 = 1/4\)</span> into a narrow “low” cell and a “high” cell three times its width. The grey arrows lead down to the action axis, where the two messages induce <span class="math inline">\(a_1 = 1/8\)</span> and <span class="math inline">\(a_2 = 5/8\)</span>. The red point between them is the boundary type’s bliss point at <span class="math inline">\(3/8\)</span>, and the green arrows confirm that it sits equidistant from both actions.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig11">
 <p><img src="../figures/w11-fig11.svg" class="img-fluid" alt="Two-step partition with boundary at one quarter: the narrow low cell and wider high cell above, arrows down to the two induced actions, and the boundary type's bliss point equidistant between them."></p>
 </div>
 </section>
@@ -2333,7 +2334,7 @@ w_H^* = w_L^* = w_{e^*}
 </section>
 <section id="the-first-best-in-contract-space" class="level4" data-number="3.3.3.5">
 <h4 data-number="3.3.3.5" class="anchored" data-anchor-id="the-first-best-in-contract-space"><span class="header-section-number">3.3.3.5</span> The first-best in contract space</h4>
-<div class="gametree">
+<div class="gametree" data-fig="w11-fig05">
 <p><img src="../figures/w11-fig05.svg" class="img-fluid" alt="Contract space with the wage after the good outcome on the horizontal axis and after the bad outcome on the vertical axis. Participation curves for high and low effort are shown, tangent to iso-cost lines on the 45-degree full-insurance line."></p>
 </div>
 <p>The diagram plots the wage paid after the good outcome, <span class="math inline">\(w_H\)</span>, on the horizontal axis against the wage paid after the bad outcome, <span class="math inline">\(w_L\)</span>, on the vertical axis. Every point in the box is a feasible contract.</p>
@@ -2607,7 +2608,7 @@ p_H\, w_H^{**} + (1-p_H)\, w_L^{**} \;&gt;\; v^{-1}\!\bigl(\overline{u} + g(e_H)
 </div>
 <p>The proof of Result 3 reveals the exact source of the agency cost. It is the <strong>risk premium</strong> the owner must pay to compensate the risk-averse manager for bearing the income variance that (IC) forces upon her.</p>
 <p>The distortion can be seen directly in contract space.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w11-risk-averse">
 <p><img src="../figures/w11-risk-averse.png" class="img-fluid" alt="Contract space showing the 45-degree full-insurance line, the participation curve IR_H, the incentive curve IC, and the second-best contract C at their intersection, with the agency cost marked."></p>
 </div>
 <p>Reading the diagram:</p>
@@ -3554,6 +3555,19 @@ u_H = 29,\quad u_L = 9 \quad\Longrightarrow\quad w_H = 841,\ w_L = 81,\ \mathbb{
   } else {
     init();
   }
+})();
+</script>
+<script>
+/* Loads figures.js relative to the book root, whichever folder this page is
+   in (index.html at the root, chapters/*.html one level down). The root is
+   read off the site_libs stylesheet link that Quarto puts in every page. */
+(function () {
+  var link = document.querySelector('link[href*="site_libs/"]');
+  var root = link ? link.getAttribute('href').split('site_libs/')[0] : '';
+  var s = document.createElement('script');
+  s.src = root + 'figures.js';
+  s.defer = true;
+  document.head.appendChild(s);
 })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

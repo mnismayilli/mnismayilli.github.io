@@ -1786,7 +1786,7 @@ at the root node, choosing between *Enter* and *Stay Out*. If the Entrant enters
 Incumbent then moves, choosing between *Accommodate* and *Fight*. If the Entrant stays
 out, the game ends immediately.
 
-::: {.gametree}
+::: {.gametree data-fig="tree01"}
 ![](../figures/tree01.svg){fig-alt="Game tree for the Market Entry Game. The Entrant moves first, choosing Enter or Stay Out; after Enter, the Incumbent chooses Accommodate, giving payoffs (2,1), or Fight, giving (-1,0). Stay Out gives (0,3)."}
 :::
 
@@ -1872,7 +1872,7 @@ In the extensive form, we draw the Entrant moving first, but place the Incumbent
 decision nodes in a single information set (indicated by a dashed line), reflecting that
 the Incumbent does not know whether the Entrant has entered or stayed out:
 
-::: {.gametree}
+::: {.gametree data-fig="tree02"}
 ![](../figures/tree02.svg){fig-alt="Extensive form of the simultaneous Market Entry Game. The Incumbent's two decision nodes are joined by a dashed line into a single information set, so the Incumbent cannot tell whether the Entrant entered or stayed out."}
 :::
 
@@ -1918,7 +1918,7 @@ Consider an extended version of the Market Entry Game where, after the Entrant e
 and the Incumbent fights, the Entrant can choose to *Persist* (P) or *Exit* (X). The
 game tree is:
 
-::: {.gametree}
+::: {.gametree data-fig="tree03"}
 ![](../figures/tree03.svg){fig-alt="Extended Market Entry Game tree. After Enter and Fight, the Entrant moves again, choosing Persist with payoffs (-2,-1) or Exit with payoffs (-1,2)."}
 :::
 
@@ -2128,7 +2128,7 @@ Since $1 > 0$, the Incumbent optimally chooses *Accommodate*.
 replace the Incumbent's decision node with the terminal payoff $(2, 1)$. The reduced tree
 is:
 
-::: {.gametree}
+::: {.gametree data-fig="tree04"}
 ![](../figures/tree04.svg){fig-alt="Reduced Market Entry Game tree after backward induction: the Entrant chooses between Enter, now leading directly to payoffs (2,1), and Stay Out, leading to (0,3)."}
 :::
 
@@ -2182,7 +2182,7 @@ Importantly, this outcome is sustained by *credible* threats: the Incumbent *wou
 if entry occurred (because the Entrant would then exit, making fighting profitable), and
 the Entrant correctly anticipates this chain of reasoning.
 
-::: {.gametree}
+::: {.gametree data-fig="tree05"}
 ![](../figures/tree05.svg){fig-alt="Extended Market Entry Game with the backward induction path highlighted in blue: Stay Out at the root, Fight by the Incumbent, and Exit by the Entrant."}
 :::
 
@@ -2374,7 +2374,7 @@ Construct the full extensive-form representation of this game. Your tree should 
 
 The complete game tree is:
 
-::: {.gametree}
+::: {.gametree data-fig="tree06"}
 ![](../figures/tree06.svg){fig-alt="Game tree for the Investment Game. Firm A chooses Invest or Not Invest; Firm B then chooses Enter or Stay Out; if B enters, Firm A chooses High or Low price."}
 :::
 
@@ -2447,7 +2447,7 @@ Firm A chooses **I** (Invest). Outcome: $(4, 0)$.
 The equilibrium outcome is $(4, 0)$: Firm A invests, Firm B stays out, and Firm A earns a
 payoff of 4.
 
-::: {.gametree}
+::: {.gametree data-fig="tree07"}
 ![](../figures/tree07.svg){fig-alt="Investment Game tree with the subgame perfect equilibrium path highlighted: Firm A invests, Firm B stays out, giving payoffs (4,0)."}
 :::
 

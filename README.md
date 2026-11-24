@@ -54,6 +54,12 @@ npm run serve        # http://localhost:4400
 Unchanged: see `scripts/sync-ma-cases.mjs` (weekly GitHub Action, commits `data/ma-watch-data.json`),
 `npm run book:econa`, `npm run sync:fe1`.
 
+The Economics Block A1 book (`MAFE_EconA-src/`) has interactive figures: `figures.js` draws each figure as an
+SVG with sliders, step-by-step backward induction and editable payoffs, replacing the static image in the
+`::: {.gametree data-fig="<id>"}` block (the image stays as the no-JavaScript and PDF fallback). `figures.css`
+styles the panels and `interactive.html` loads the script; all three are wired up in `_quarto.yml`. Re-render
+with `npm run book:econa` after editing them.
+
 ## Deployment
 
 GitHub Pages, **Deploy from a branch** (`main`, root). Every push republishes the site.

@@ -3,6 +3,8 @@ project:
   # Render straight into the static site root's /MAFE_EconA/ folder, so the book
   # is served at /MAFE_EconA/. The sources here are never published raw.
   output-dir: ../MAFE_EconA
+  resources:
+    - figures.js
 
 book:
   title: "Economics Block A1"
@@ -26,8 +28,8 @@ format:
     theme:
       light: cosmo
       dark: darkly
-    css: styles.css
-    include-after-body: quiz.html
+    css: [styles.css, figures.css]
+    include-after-body: [quiz.html, interactive.html]
     toc: true
     toc-depth: 3
     number-sections: true

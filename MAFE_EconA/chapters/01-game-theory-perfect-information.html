@@ -105,6 +105,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../figures.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -1775,7 +1776,7 @@ R_1(p_2) = \frac{a(1-\theta) + c}{2} + \frac{\theta}{2} p_2, \qquad \frac{\parti
 <section id="game-tree-for-the-market-entry-game" class="level4" data-number="1.4.2.1">
 <h4 data-number="1.4.2.1" class="anchored" data-anchor-id="game-tree-for-the-market-entry-game"><span class="header-section-number">1.4.2.1</span> Game tree for the Market Entry Game</h4>
 <p>The extensive form of the Market Entry Game is depicted below. The Entrant moves first at the root node, choosing between <em>Enter</em> and <em>Stay Out</em>. If the Entrant enters, the Incumbent then moves, choosing between <em>Accommodate</em> and <em>Fight</em>. If the Entrant stays out, the game ends immediately.</p>
-<div class="gametree">
+<div class="gametree" data-fig="tree01">
 <p><img src="../figures/tree01.svg" class="img-fluid" alt="Game tree for the Market Entry Game. The Entrant moves first, choosing Enter or Stay Out; after Enter, the Incumbent chooses Accommodate, giving payoffs (2,1), or Fight, giving (-1,0). Stay Out gives (0,3)."></p>
 </div>
 <p>Reading the tree from top to bottom:</p>
@@ -1821,7 +1822,7 @@ R_1(p_2) = \frac{a(1-\theta) + c}{2} + \frac{\theta}{2} p_2, \qquad \frac{\parti
 <h4 data-number="1.4.4.1" class="anchored" data-anchor-id="example-simultaneous-market-entry-game"><span class="header-section-number">1.4.4.1</span> Example: simultaneous Market Entry Game</h4>
 <p>Suppose we modify the Market Entry Game so that the Entrant and the Incumbent make their decisions <em>simultaneously</em>. The Entrant still chooses <em>Enter</em> or <em>Stay Out</em>, and the Incumbent simultaneously chooses <em>Accommodate</em> or <em>Fight</em> (committing to a response before knowing the Entrant’s decision). The payoffs remain as before, with the convention that if the Entrant stays out, the Incumbent’s choice is irrelevant, and the payoffs are <span class="math inline">\((0, 3)\)</span> regardless.</p>
 <p>In the extensive form, we draw the Entrant moving first, but place the Incumbent’s two decision nodes in a single information set (indicated by a dashed line), reflecting that the Incumbent does not know whether the Entrant has entered or stayed out:</p>
-<div class="gametree">
+<div class="gametree" data-fig="tree02">
 <p><img src="../figures/tree02.svg" class="img-fluid" alt="Extensive form of the simultaneous Market Entry Game. The Incumbent's two decision nodes are joined by a dashed line into a single information set, so the Incumbent cannot tell whether the Entrant entered or stayed out."></p>
 </div>
 <div class="highlightbox">
@@ -1848,7 +1849,7 @@ R_1(p_2) = \frac{a(1-\theta) + c}{2} + \frac{\theta}{2} p_2, \qquad \frac{\parti
 <section id="strategies-in-a-more-complex-example" class="level4" data-number="1.4.5.2">
 <h4 data-number="1.4.5.2" class="anchored" data-anchor-id="strategies-in-a-more-complex-example"><span class="header-section-number">1.4.5.2</span> Strategies in a more complex example</h4>
 <p>Consider an extended version of the Market Entry Game where, after the Entrant enters and the Incumbent fights, the Entrant can choose to <em>Persist</em> (P) or <em>Exit</em> (X). The game tree is:</p>
-<div class="gametree">
+<div class="gametree" data-fig="tree03">
 <p><img src="../figures/tree03.svg" class="img-fluid" alt="Extended Market Entry Game tree. After Enter and Fight, the Entrant moves again, choosing Persist with payoffs (-2,-1) or Exit with payoffs (-1,2)."></p>
 </div>
 <p>Now the Entrant has <strong>two</strong> information sets:</p>
@@ -2005,7 +2006,7 @@ R_1(p_2) = \frac{a(1-\theta) + c}{2} + \frac{\theta}{2} p_2, \qquad \frac{\parti
 </ul>
 <p>Since <span class="math inline">\(1 &gt; 0\)</span>, the Incumbent optimally chooses <em>Accommodate</em>.</p>
 <p><strong>Step 2: replace the Incumbent’s node.</strong> Knowing the Incumbent will Accommodate, we replace the Incumbent’s decision node with the terminal payoff <span class="math inline">\((2, 1)\)</span>. The reduced tree is:</p>
-<div class="gametree">
+<div class="gametree" data-fig="tree04">
 <p><img src="../figures/tree04.svg" class="img-fluid" alt="Reduced Market Entry Game tree after backward induction: the Entrant chooses between Enter, now leading directly to payoffs (2,1), and Stay Out, leading to (0,3)."></p>
 </div>
 <p><strong>Step 3: the Entrant’s decision node (root).</strong> At the root, the Entrant chooses between:</p>
@@ -2039,7 +2040,7 @@ R_1(p_2) = \frac{a(1-\theta) + c}{2} + \frac{\theta}{2} p_2, \qquad \frac{\parti
 </ul>
 <p>Since <span class="math inline">\(0 &gt; -1\)</span>, the Entrant optimally chooses <em>Stay Out</em>.</p>
 <p><strong>Backward induction solution</strong>: The Entrant stays out. The outcome is <span class="math inline">\((0, 3)\)</span>. Importantly, this outcome is sustained by <em>credible</em> threats: the Incumbent <em>would</em> fight if entry occurred (because the Entrant would then exit, making fighting profitable), and the Entrant correctly anticipates this chain of reasoning.</p>
-<div class="gametree">
+<div class="gametree" data-fig="tree05">
 <p><img src="../figures/tree05.svg" class="img-fluid" alt="Extended Market Entry Game with the backward induction path highlighted in blue: Stay Out at the root, Fight by the Incumbent, and Exit by the Entrant."></p>
 </div>
 </section>
@@ -2246,7 +2247,7 @@ R_1(p_2) = \frac{a(1-\theta) + c}{2} + \frac{\theta}{2} p_2, \qquad \frac{\parti
 <li>All terminal nodes, labelled with payoff vectors</li>
 </ul>
 <p>The complete game tree is:</p>
-<div class="gametree">
+<div class="gametree" data-fig="tree06">
 <p><img src="../figures/tree06.svg" class="img-fluid" alt="Game tree for the Investment Game. Firm A chooses Invest or Not Invest; Firm B then chooses Enter or Stay Out; if B enters, Firm A chooses High or Low price."></p>
 </div>
 </section>
@@ -2303,7 +2304,7 @@ R_1(p_2) = \frac{a(1-\theta) + c}{2} + \frac{\theta}{2} p_2, \qquad \frac{\parti
 <li><strong>Firm B’s strategy</strong>: Stay Out after I; Enter after N.</li>
 </ul>
 <p>The equilibrium outcome is <span class="math inline">\((4, 0)\)</span>: Firm A invests, Firm B stays out, and Firm A earns a payoff of 4.</p>
-<div class="gametree">
+<div class="gametree" data-fig="tree07">
 <p><img src="../figures/tree07.svg" class="img-fluid" alt="Investment Game tree with the subgame perfect equilibrium path highlighted: Firm A invests, Firm B stays out, giving payoffs (4,0)."></p>
 </div>
 <div class="highlightbox">
@@ -3192,6 +3193,19 @@ Competition authorities often scrutinise such practices even when they appear in
   } else {
     init();
   }
+})();
+</script>
+<script>
+/* Loads figures.js relative to the book root, whichever folder this page is
+   in (index.html at the root, chapters/*.html one level down). The root is
+   read off the site_libs stylesheet link that Quarto puts in every page. */
+(function () {
+  var link = document.querySelector('link[href*="site_libs/"]');
+  var root = link ? link.getAttribute('href').split('site_libs/')[0] : '';
+  var s = document.createElement('script');
+  s.src = root + 'figures.js';
+  s.defer = true;
+  document.head.appendChild(s);
 })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

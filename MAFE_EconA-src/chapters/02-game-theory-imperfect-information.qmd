@@ -1839,7 +1839,7 @@ something about the incumbent's private cost type.
 The game tree below shows the payoff structure, the single-crossing condition, and how
 the decision nodes and information sets are represented.
 
-::: {.gametree}
+::: {.gametree data-fig="w9-fig01"}
 ![](../figures/w9-fig01.svg){fig-alt="Game tree for sequential entry with cost uncertainty. Nature draws the incumbent's cost as Low or High with probability one half each; the incumbent then chooses Fight or Accommodate, and the entrant's two information sets are shown as dashed arcs joining the nodes it cannot distinguish."}
 :::
 
@@ -2191,7 +2191,7 @@ $$
 - The steepness of this trade-off varies systematically across consumer types, a crucial
   property that drives the entire screening mechanism.
 
-::: {.gametree}
+::: {.gametree data-fig="w9-indifference"}
 ![](../figures/w9-indifference.svg){fig-alt="Indifference curves in wealth space. The low-risk consumer's indifference curve through the endowment point E is steeper than the high-risk consumer's, and both cross the certainty line."}
 
 Indifference curves.
@@ -2486,7 +2486,7 @@ impossible because it would unravel the separating equilibrium.
 
 The figure below illustrates the separating equilibrium in $(q,\alpha)$-space.
 
-::: {.gametree}
+::: {.gametree data-fig="w9-fig02"}
 ![](../figures/w9-fig02.svg){fig-alt="Separating equilibrium in coverage-premium space. The high-risk contract sits at full coverage on the high-risk zero-profit line; the low-risk contract sits at partial coverage on the low-risk zero-profit line, where the high-risk indifference curve binds. The unattainable first-best low-risk contract is marked in grey."}
 :::
 
@@ -2628,7 +2628,7 @@ This difference in slopes creates a wedge in $(q,\alpha)$-space. The wedge lies 
 low-risk indifference curve, so low-risk consumers prefer the new contract, but above the
 high-risk indifference curve, so high-risk consumers do not.
 
-::: {.gametree}
+::: {.gametree data-fig="w9-fig03"}
 ![](../figures/w9-fig03.svg){fig-alt="A cream-skimming contract C lies in the wedge between the two types' indifference curves through the pooling contract P."}
 
 A cream-skimming contract $C$ lies in the wedge between the two types' indifference
@@ -3648,7 +3648,7 @@ $$
 making deviation profitable for high-productivity workers and eliminating the pooling
 equilibrium.
 
-::: {.gametree}
+::: {.gametree data-fig="w9-fig04"}
 ![](../figures/w9-fig04.svg){fig-alt="Education-wage space showing each type's indifference curve through the pooling contract P, the threshold education levels e-dagger and e-bar-H, and the shaded band of deviations that break the pool."}
 
 Each type's indifference curve through the pooling contract $P$ shows the wage it needs

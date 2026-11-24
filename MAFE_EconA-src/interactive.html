@@ -1,0 +1,13 @@
+<script>
+/* Loads figures.js relative to the book root, whichever folder this page is
+   in (index.html at the root, chapters/*.html one level down). The root is
+   read off the site_libs stylesheet link that Quarto puts in every page. */
+(function () {
+  var link = document.querySelector('link[href*="site_libs/"]');
+  var root = link ? link.getAttribute('href').split('site_libs/')[0] : '';
+  var s = document.createElement('script');
+  s.src = root + 'figures.js';
+  s.defer = true;
+  document.head.appendChild(s);
+})();
+</script>

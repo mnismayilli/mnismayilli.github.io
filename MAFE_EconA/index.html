@@ -106,6 +106,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="figures.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -585,6 +586,19 @@ Status
   } else {
     init();
   }
+})();
+</script>
+<script>
+/* Loads figures.js relative to the book root, whichever folder this page is
+   in (index.html at the root, chapters/*.html one level down). The root is
+   read off the site_libs stylesheet link that Quarto puts in every page. */
+(function () {
+  var link = document.querySelector('link[href*="site_libs/"]');
+  var root = link ? link.getAttribute('href').split('site_libs/')[0] : '';
+  var s = document.createElement('script');
+  s.src = root + 'figures.js';
+  s.defer = true;
+  document.head.appendChild(s);
 })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

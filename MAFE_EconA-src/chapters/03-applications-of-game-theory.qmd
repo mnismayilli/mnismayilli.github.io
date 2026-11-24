@@ -200,7 +200,7 @@ $$
 
 The outside option, not purchasing, yields utility $U_i = 0$.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig01"}
 ![](../figures/w11-fig01.svg){fig-alt="Gross valuation lines for the two consumer types: the high type's line is steeper than the low type's, both through the origin."}
 :::
 
@@ -221,7 +221,7 @@ This is the informational asymmetry that drives the entire analysis. The monopol
 that a proportion $\lambda$ of the market values quality highly, but cannot tell who they
 are when a consumer walks through the door.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig02"}
 ![](../figures/w11-fig02.svg){fig-alt="The two valuation lines with the damaged and original quality levels marked, showing each type's gross valuation of each good."}
 :::
 
@@ -611,7 +611,7 @@ The damaged good is therefore a middle-ground strategy. It is optimal only when 
 high-value consumers is neither too small, in which case pooling is more profitable, nor too
 large, in which case excluding low-value consumers is preferable.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig03"}
 ![](../figures/w11-fig03.svg){fig-alt="Profit from pooling, exclusion and screening plotted against the share of high types. Pooling is flat, exclusion rises steeply from the origin, and screening lies between them, optimal over an intermediate window."}
 :::
 
@@ -705,7 +705,7 @@ $$
 \text{DWL} \;=\; \theta_L\,(q_T - q_B) \;+\; (c_B - c_T).
 $$
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig04"}
 ![](../figures/w11-fig04.svg){fig-alt="Quality-price space with the steeper high-type indifference curve and flatter low-type curve. The high type's contract sits at efficient quality; the low type's is distorted down to the damaged quality, with the welfare loss shaded."}
 :::
 
@@ -1559,7 +1559,7 @@ value.
 The receiver learns *which cell* $\theta$ belongs to, but not the precise value of $\theta$
 itself.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig06"}
 ![](../figures/w11-fig06.svg){fig-alt="Posterior belief after message m_j: a uniform density over the interval between the two boundaries, with the optimal action marked at the midpoint."}
 
 Posterior belief and optimal response after message $m_j$.
@@ -1591,7 +1591,7 @@ which induces receiver action $a_j$, and message $m_{j+1}$, which induces $a_{j+
 strictly preferred one message, types near the boundary would deviate and the partition would
 unravel.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig07"}
 ![](../figures/w11-fig07.svg){fig-alt="Incentive compatibility at a boundary: the two receiver actions marked on a line with the boundary type's bliss point exactly midway between them, equal distances marked on either side."}
 
 Incentive compatibility at boundary $\theta_j$.
@@ -1889,7 +1889,7 @@ $b$ as a descending step function. Each horizontal segment is a range of bias ov
 same number of partition steps is sustainable, and the dashed vertical drops mark the
 thresholds $b = 1/(2N(N-1))$ at which one more step becomes impossible.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig08"}
 ![](../figures/w11-fig08.svg){fig-alt="Maximum number of partition steps plotted against bias as a descending step function, falling to one at b equals one quarter."}
 :::
 
@@ -1912,7 +1912,7 @@ read in three layers:
 - **The widths (orange brackets).** The cells grow wider moving up the type space, because the
   IC condition requires each to be $4b$ wider than the previous one.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig09"}
 ![](../figures/w11-fig09.svg){fig-alt="Three-step partition of the type space into cells of increasing width, with arrows mapping each cell to the receiver's action at its midpoint."}
 :::
 
@@ -2018,7 +2018,7 @@ because she does not control which type she draws. Ex ante, she would prefer the
 have finer information, so that the action tracks her realised bliss point more closely,
 regardless of what that realisation turns out to be.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig10"}
 ![](../figures/w11-fig10.svg){fig-alt="Within one partition cell, the receiver's action at the midpoint overshoots a low type's bliss point and undershoots a high type's."}
 :::
 
@@ -2187,7 +2187,7 @@ arrows lead down to the action axis, where the two messages induce $a_1 = 1/8$ a
 $a_2 = 5/8$. The red point between them is the boundary type's bliss point at $3/8$, and the
 green arrows confirm that it sits equidistant from both actions.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig11"}
 ![](../figures/w11-fig11.svg){fig-alt="Two-step partition with boundary at one quarter: the narrow low cell and wider high cell above, arrows down to the two induced actions, and the boundary type's bliss point equidistant between them."}
 :::
 
@@ -2922,7 +2922,7 @@ and social efficiency coincide exactly.
 
 #### The first-best in contract space
 
-::: {.gametree}
+::: {.gametree data-fig="w11-fig05"}
 ![](../figures/w11-fig05.svg){fig-alt="Contract space with the wage after the good outcome on the horizontal axis and after the bad outcome on the vertical axis. Participation curves for high and low effort are shown, tangent to iso-cost lines on the 45-degree full-insurance line."}
 :::
 
@@ -3403,7 +3403,7 @@ the owner must pay to compensate the risk-averse manager for bearing the income 
 
 The distortion can be seen directly in contract space.
 
-::: {.gametree}
+::: {.gametree data-fig="w11-risk-averse"}
 ![](../figures/w11-risk-averse.png){fig-alt="Contract space showing the 45-degree full-insurance line, the participation curve IR_H, the incentive curve IC, and the second-best contract C at their intersection, with the agency cost marked."}
 :::
 

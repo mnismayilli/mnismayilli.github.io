@@ -105,6 +105,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../figures.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -1760,7 +1761,7 @@ R^{\mathrm{FPA}}
 <p>Fighting is costly for both incumbent types, but it is much more costly for the high-cost type. Switching from <em>Accommodate</em> (<span class="math inline">\(A\)</span>) to <em>Fight</em> (<span class="math inline">\(F\)</span>) reduces the high-cost incumbent’s payoff by 3 units, compared with only 1 unit for the low-cost incumbent.</p>
 <p>Because the two types face different costs of fighting, their strategic choices may differ. This makes the incumbent’s action informative, allowing the entrant to infer something about the incumbent’s private cost type.</p>
 <p>The game tree below shows the payoff structure, the single-crossing condition, and how the decision nodes and information sets are represented.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w9-fig01">
 <p><img src="../figures/w9-fig01.svg" class="img-fluid" alt="Game tree for sequential entry with cost uncertainty. Nature draws the incumbent's cost as Low or High with probability one half each; the incumbent then chooses Fight or Accommodate, and the entrant's two information sets are shown as dashed arcs joining the nodes it cannot distinguish."></p>
 </div>
 <p>Reading the tree:</p>
@@ -1943,7 +1944,7 @@ EU_i(q, \alpha) = (1-p_i) \, u(W - q) + p_i \, u(W - q - L + \alpha L)
 <li>This reflects the value that risk-averse individuals place on reducing their exposure to financial uncertainty.</li>
 <li>The steepness of this trade-off varies systematically across consumer types, a crucial property that drives the entire screening mechanism.</li>
 </ul>
-<div class="gametree">
+<div class="gametree" data-fig="w9-indifference">
 <p><img src="../figures/w9-indifference.svg" class="img-fluid" alt="Indifference curves in wealth space. The low-risk consumer's indifference curve through the endowment point E is steeper than the high-risk consumer's, and both cross the certainty line."></p>
 <p>Indifference curves.</p>
 </div>
@@ -2096,7 +2097,7 @@ q_L^* = p_L \alpha_L^* L,
 <p>The distortion — namely bearing residual risk despite being insured — is the welfare cost that low-risk consumers pay because of the information asymmetry. They would prefer full coverage, and an insurer would be happy to provide it at <span class="math inline">\(p_LL\)</span>, but doing so is impossible because it would unravel the separating equilibrium.</p>
 </div>
 <p>The figure below illustrates the separating equilibrium in <span class="math inline">\((q,\alpha)\)</span>-space.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w9-fig02">
 <p><img src="../figures/w9-fig02.svg" class="img-fluid" alt="Separating equilibrium in coverage-premium space. The high-risk contract sits at full coverage on the high-risk zero-profit line; the low-risk contract sits at partial coverage on the low-risk zero-profit line, where the high-risk indifference curve binds. The unattainable first-best low-risk contract is marked in grey."></p>
 </div>
 <p>Reading the figure:</p>
@@ -2180,7 +2181,7 @@ EU_H(q^{cs}, \alpha^{cs}) &lt; EU_H(q^p, \alpha^p) \qquad \text{(Deter-H)}
 <li>Low-risk consumers have flatter indifference curves. They are more sensitive to premium savings and less concerned about a small reduction in coverage.</li>
 </ul>
 <p>This difference in slopes creates a wedge in <span class="math inline">\((q,\alpha)\)</span>-space. The wedge lies below the low-risk indifference curve, so low-risk consumers prefer the new contract, but above the high-risk indifference curve, so high-risk consumers do not.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w9-fig03">
 <p><img src="../figures/w9-fig03.svg" class="img-fluid" alt="A cream-skimming contract C lies in the wedge between the two types' indifference curves through the pooling contract P."></p>
 <p>A cream-skimming contract <span class="math inline">\(C\)</span> lies in the wedge between the two types’ indifference curves through the pooling contract <span class="math inline">\(P\)</span>: below <span class="math inline">\(U_L^p\)</span> (low-risk consumers prefer it), above <span class="math inline">\(U_H^p\)</span> (high-risk consumers do not), and above <span class="math inline">\(q = p_L\alpha L\)</span> (profitable when bought only by low-risk consumers).</p>
 </div>
@@ -2861,7 +2862,7 @@ c_L(e^{\dagger}) = (1-\lambda)(\theta_H-\theta_L)
 \mu(H\mid e')=1
 \]</span></p>
 <p>making deviation profitable for high-productivity workers and eliminating the pooling equilibrium.</p>
-<div class="gametree">
+<div class="gametree" data-fig="w9-fig04">
 <p><img src="../figures/w9-fig04.svg" class="img-fluid" alt="Education-wage space showing each type's indifference curve through the pooling contract P, the threshold education levels e-dagger and e-bar-H, and the shaded band of deviations that break the pool."></p>
 <p>Each type’s indifference curve through the pooling contract <span class="math inline">\(P\)</span> shows the wage it needs to be willing to deviate to education <span class="math inline">\(e\)</span>. For <span class="math inline">\(e' &gt; e^{\dagger}\)</span>, the low type would need more than <span class="math inline">\(\theta_H\)</span>, so it would never deviate. For <span class="math inline">\(e' &lt; \bar{e}_H\)</span>, the high type needs less than <span class="math inline">\(\theta_H\)</span>. For any <span class="math inline">\(e'\)</span> between the two, the Intuitive Criterion sets <span class="math inline">\(\mu(H\mid e')=1\)</span>, the wage jumps from <span class="math inline">\(\theta_L\)</span> to <span class="math inline">\(\theta_H\)</span>, and the high type deviates: pooling is eliminated.</p>
 </div>
@@ -3167,6 +3168,19 @@ T &lt; \lambda c_H(e_H^*).
   } else {
     init();
   }
+})();
+</script>
+<script>
+/* Loads figures.js relative to the book root, whichever folder this page is
+   in (index.html at the root, chapters/*.html one level down). The root is
+   read off the site_libs stylesheet link that Quarto puts in every page. */
+(function () {
+  var link = document.querySelector('link[href*="site_libs/"]');
+  var root = link ? link.getAttribute('href').split('site_libs/')[0] : '';
+  var s = document.createElement('script');
+  s.src = root + 'figures.js';
+  s.defer = true;
+  document.head.appendChild(s);
 })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
