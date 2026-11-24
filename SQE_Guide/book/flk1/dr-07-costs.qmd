@@ -252,6 +252,18 @@ own regime — but the practical effect is the same.
 
 ## Qualified one-way costs shifting
 
+::: {.callout-caution title="Scope: QOCS came off the list in September 2026"}
+"Qualified one-way costs shifting" was **removed** from the Dispute Resolution content list following
+the SRA's 2026 annual review. The costs bullets now read: costs management and budgeting; inter-partes
+costs orders (interim and final); non-party costs; Part 36 and other offers; security for costs; fixed
+and assessed costs.
+
+QOCS is retained here because it is the reason personal injury litigation behaves differently from
+everything else on costs, and because a scenario about a losing personal injury claimant makes no sense
+without it. But it is no longer a topic to learn in its own right, and the detail of the exceptions is
+now well beyond what the specification asks for.
+:::
+
 **QOCS** (CPR 44.13–44.17) modifies the general rule in **personal injury** litigation, so that an
 unsuccessful claimant is not ordinarily exposed to the defendant's costs.
 

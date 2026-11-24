@@ -1,0 +1,44 @@
+# Preface {.unnumbered}
+
+These are the lecture notes for **Economics Block A1** on the MSc in Applied
+Financial Economics (MAFE).
+
+The notes follow the course as taught: each chapter develops the theory, states the
+results precisely, and works through the derivations in full rather than leaving them
+as exercises. Where a result is used later in the course, the chapter that needs it
+says where it came from.
+
+The notes are written to be read alongside the lectures, not instead of them. They are
+deliberately self-contained on the mathematics — if a step matters for the argument, it
+is on the page.
+
+::: {.callout-note}
+## Status
+
+This book is being written up from the course material. Chapters appear here as they
+are drafted.
+:::
+
+## How to use these notes {.unnumbered}
+
+Each chapter is organised the same way:
+
+- **the setup** — the economic environment and the assumptions being made;
+- **the analysis** — the derivations, with the algebra shown;
+- **what it means** — the economics the result delivers, and its limits.
+
+Definitions and results worth pausing on are boxed:
+
+::: {.definition}
+**Definition** — stated terms are boxed like this so they are easy to find again.
+:::
+
+::: {.keyidea}
+Ideas that carry through several chapters are boxed like this.
+:::
+
+## Conventions {.unnumbered}
+
+Vectors are column vectors unless stated otherwise, and $x'$ denotes the transpose of
+$x$. Expectations are taken with respect to the information set named in the subscript,
+so $\mathbb{E}_t[\cdot]$ conditions on everything known at date $t$.

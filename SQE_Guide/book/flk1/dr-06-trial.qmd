@@ -4,10 +4,10 @@
 
 ## Preparing for trial
 
-### Pre-trial checklists
+### Pre-trial checklists (listing questionnaires)
 
-Towards the end of the timetable the court sends the parties a **pre-trial checklist** (a listing
-questionnaire), to be filed by a specified date. It confirms whether the directions have been complied
+Towards the end of the timetable the court sends the parties a **pre-trial checklist**, also called a
+**listing questionnaire**, to be filed by a specified date. It confirms whether the directions have been complied
 with, whether any further directions are needed, the witnesses to be called, whether expert evidence is
 to be given orally, the estimated length of trial, and the availability of witnesses, experts and
 advocates.
@@ -86,6 +86,58 @@ cross-examination**. A defendant who does not challenge a claimant's account in 
 then invites the judge in closing to reject it as untrue, will normally be held to have accepted it.
 This is the rule in *Browne v Dunn*, and it explains why cross-examination is where the case is
 actually won or lost.
+:::
+
+### Modes of address, etiquette and questioning
+
+The September 2026 specification adds these expressly to "trial procedure", so they are now examinable
+in their own right.
+
+**Modes of address.** Since guidance issued by the Lord Chief Justice and Senior President of Tribunals
+on **1 December 2022**, the judges formerly addressed as "Sir" or "Madam" are addressed simply as
+**"Judge"**.
+
+| Judge | Addressed in court as |
+|---|---|
+| Supreme Court Justice; Court of Appeal judge; **High Court judge** | **"My Lord" / "My Lady"** |
+| **Circuit judge**; Recorder | **"Your Honour"** |
+| **District judge** (County Court or High Court); **Master**; Insolvency and Companies Court Judge; tribunal judge | **"Judge"** |
+
+The change affects only how a judge is **addressed in court**. It does not alter judicial **titles**,
+which have a statutory basis, or how judgments are recorded — a High Court judge remains "Mr Justice
+X" or "Mrs Justice X" and is referred to in the third person that way.
+
+**Court room etiquette.** The conventions are not rules of law, but a newly qualified solicitor is
+expected to know them:
+
+- **Stand** when the judge enters and leaves, and whenever you address the court; **bow** (a slight
+  inclination of the head) on entering and leaving the courtroom.
+- Only **one advocate stands at a time**. Sit down when your opponent is on their feet, and do not
+  interrupt — if you must intervene, rise and wait to be invited.
+- Address the **judge**, not your opponent, and refer to your opponent as "my learned friend" (or "my
+  friend" where they are not counsel) rather than by name.
+- **Robes** are worn by advocates for trials in the High Court and the Court of Appeal, but not in the
+  County Court for most hearings, not in chambers, and not at interim applications.
+- Phones off; no eating; water only. Do not read documents the court is not reading, and do not react
+  visibly to evidence.
+
+**Leading and non-leading questions.** A **leading question** either suggests the answer within the
+question, or assumes the existence of a fact which is in dispute and has not yet been proved. "You
+never inspected the scaffolding, did you?" is leading; "What, if anything, did you do about the
+scaffolding?" is not.
+
+| Stage | Leading questions? |
+|---|---|
+| **Examination in chief** | **Not permitted**, except on formal or undisputed matters (name, address, employment) or where the court gives permission. In practice the witness statement stands as evidence in chief under CPR 32.5, so this stage is usually very short |
+| **Cross-examination** | **Permitted**, and the standard technique. Cross-examination is where a party puts its case to the witness |
+| **Re-examination** | **Not permitted**, and confined to matters arising out of cross-examination. It may not be used to introduce new material |
+
+::: {.callout-important title="Exam trap"}
+The rule tracks the **stage**, not the advocate. A defendant's advocate may not lead their **own**
+witness in chief, and may not lead in re-examination of their own witness, but may lead throughout
+cross-examination of the claimant's witnesses. An option stating that leading questions are always
+permissible for the party who did not call the witness is right; one stating that they are permitted in
+re-examination is wrong.
 :::
 
 ### Judgment and its effect
@@ -189,9 +241,10 @@ stating the pre-2016 position.
 A judgment is not self-executing. The judgment creditor must choose a method, and the choice depends on
 what the debtor has.
 
-### Finding out what the debtor has
+### Obtaining information from the judgment debtor
 
-**Order to obtain information from a judgment debtor** (CPR 71) — the "oral examination". The creditor
+**Obtaining information from a judgment debtor** (CPR 71) — the order formerly described as an "oral
+examination", and the term the September 2026 specification now uses. The creditor
 applies without notice; the order requires the debtor (or, for a company, an officer) to attend court,
 usually before a court officer, to be questioned on oath about their means and to produce documents.
 The order must be served **personally** at least **14 days** before the hearing, and the debtor may
@@ -254,6 +307,15 @@ The creditor is not confined to one method and may pursue several, subject to th
 :::
 
 ### Enforcing abroad
+
+::: {.callout-caution title="Scope: enforcement abroad came off the list in September 2026"}
+"Procedure and mechanisms for effecting valid enforcement in another jurisdiction" was **removed** from
+the Dispute Resolution content list following the SRA's 2026 annual review. The list now reads simply:
+obtaining information from a judgment debtor; methods of enforcement.
+
+What follows is retained as practical background, and because the same treaty framework explains why a
+solicitor advises on forum in the first place. It is no longer a topic to memorise.
+:::
 
 Where the assets are in another country, the English judgment must be recognised there.
 

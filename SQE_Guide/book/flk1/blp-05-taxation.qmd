@@ -100,11 +100,40 @@ rate.
   exceed the personal allowance plus £5,000
 
 The dividend rates rose by two percentage points at the basic and higher rates with effect from **6
-April 2026**. Scotland sets its own rates and bands for non-savings, non-dividend income.
+April 2026**; the additional rate was unchanged. Scotland sets its own rates and bands for non-savings,
+non-dividend income.
+
+**Coming in April 2027.** Rates on **savings and property income** rise by two percentage points across
+all bands, to **22%, 42% and 47%**, from **6 April 2027**, and property income is taxed at its own set
+of rates. That is **not** the position for 2026/27, and it is not examinable for any sitting whose
+cut-off falls before 6 April 2027 — but check yours.
 :::
 
 **Step 6 — Deduct tax reductions** (marriage allowance, EIS and VCT relief), then **Step 7 — deduct tax
 already paid** (PAYE, tax deducted at source) to reach the amount payable.
+
+### Wales: the Welsh rates of income tax
+
+The September 2026 specification asks for "calculation of income tax **in each of England and Wales**",
+so the devolved position is now examinable.
+
+- Under the Government of Wales Act 2006 the Senedd may set a Welsh basic, higher and additional rate
+  of income tax, charged on the **non-savings, non-dividend** income of **Welsh taxpayers**.
+- The mechanism is subtraction and replacement: for a Welsh taxpayer, the **UK rates are reduced by
+  10p** in each band, and the **Welsh rate** for that band is added back. Savings and dividend income
+  are **not** devolved and are taxed at UK rates throughout.
+- A **Welsh taxpayer** is defined by s.116E Government of Wales Act 2006, essentially by reference to
+  where the individual's sole or main place of residence is during the tax year.
+- **Personal allowances, reliefs and bands are not devolved** — only the rates. So the £12,570 personal
+  allowance and the £37,700 basic rate band apply in Wales exactly as in England.
+
+::: {.callout-important title="Exam trap"}
+For **2026/27 the Welsh rates are set at 10p in each band**, so a Welsh taxpayer's income tax is
+**identical** to an English taxpayer's. The point being tested is therefore the **mechanism** and its
+**limits**, not a different number: that only non-savings, non-dividend income is affected, that the
+allowance and the bands are unchanged, and that Wales is not Scotland — Scotland has its own **bands**
+as well as its own rates, and more of them.
+:::
 
 ::: {.callout-tip title="Worked example"}
 Nadia is the sole shareholder and director of a trading company. In 2026/27 she takes a salary of
@@ -163,12 +192,30 @@ Capital expenditure is not deductible, but **capital allowances** give relief fo
 
 - **Annual investment allowance**: **100%** of qualifying expenditure in the period, up to **£1,000,000**
   a year. Available to sole traders, partnerships and companies. Not available on cars.
-- **Writing down allowance**: on the balance of the **main pool**, **18%** a year on a reducing balance;
+- **Writing down allowance**: on the balance of the **main pool**, **14%** a year on a reducing balance;
   on the **special rate pool** (long-life assets, integral features, cars with higher emissions),
   **6%**.
 - **Full expensing** — a **100%** first-year allowance on new and unused main-rate plant and machinery,
   with a **50%** first-year allowance on new special rate expenditure. This is available to **companies
   only**, and is one of the real tax advantages of incorporation.
+- **40% first-year allowance** — for new expenditure on main-pool plant and machinery that does not
+  qualify for full expensing, most importantly **assets acquired for leasing**. Unlike full expensing it
+  is available to **unincorporated businesses as well as companies**. Second-hand assets, cars and
+  assets leased overseas are excluded.
+
+::: {.callout-caution title="Capital allowances changed in 2026 — check your cut-off"}
+Two changes announced at the Autumn Budget 2025 take effect in the 2026/27 year and reverse what most
+textbooks written before then say:
+
+- The **main pool writing down allowance fell from 18% to 14%**, from **1 April 2026** for corporation
+  tax and **6 April 2026** for income tax. The **special rate pool remains at 6%**. A **hybrid rate**
+  applies to a chargeable period that straddles the change, apportioned by reference to the parts of
+  the period falling before and after it.
+- The **40% first-year allowance** was introduced from **1 January 2026**.
+
+If your examinable law cut-off falls before those dates, the old 18% main pool rate is the examinable
+figure and the 40% allowance does not exist.
+:::
 
 ### Relieving trading losses
 
@@ -674,6 +721,14 @@ carried-forward losses.
 **Dividends paid** by a company are a distribution of taxed profit and are **not deductible**. Dividends
 **received** by a UK company from another company are, in most cases, **exempt** from corporation tax,
 which prevents the same profit being taxed repeatedly as it moves up a group.
+
+::: {.callout-caution title="Scope note"}
+The September 2026 specification asks for the tax treatment of company **distributions** to
+shareholders. The former reference to "**or deemed distributions**" has been **removed**. The close
+company charges below are retained because s.455 is a charge on the **company** rather than a deemed
+distribution, and because the director's loan account is where company law (s.197 CA 2006) and tax meet
+— but the wider deemed distribution rules no longer need learning for their own sake.
+:::
 
 A **close company** is one under the control of five or fewer participators, or of participators who are
 directors. Almost every owner-managed company is close. Two anti-avoidance charges follow, and the first

@@ -1,15 +1,16 @@
 {
-    "name": "mnismayilli-site",
-    "type": "module",
-    "version": "1.0.0",
-    "private": true,
-    "description": "Mehman Ismayilli — personal site (plain static HTML). The weekly M&A Watch sync and the Quarto book are the only tooling; the site itself needs no build.",
-    "scripts": {
-        "sync:ma": "node scripts/sync-ma-cases.mjs",
-        "book": "quarto render book-src --to html",
-        "sync:fe1": "bash scripts/sync-fe1.sh"
-    },
-    "dependencies": {
-        "cheerio": "^1.2.0"
-    }
+  "name": "mnismayilli-site",
+  "type": "module",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Mehman Ismayilli — personal site (plain static HTML). The weekly M&A Watch sync and the Quarto course books are the only tooling; the site itself needs no build.",
+  "scripts": {
+    "serve": "python3 -m http.server 4400 --directory .",
+    "sync:ma": "node scripts/sync-ma-cases.mjs",
+    "book:econa": "quarto render MAFE_EconA-src --to html",
+    "sync:fe1": "bash scripts/sync-fe1.sh"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  }
 }

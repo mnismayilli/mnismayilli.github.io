@@ -4,7 +4,13 @@
     {
       "name": "static",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4400", "--directory", "."],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4400",
+        "--directory",
+        "."
+      ],
       "port": 4400
     }
   ]

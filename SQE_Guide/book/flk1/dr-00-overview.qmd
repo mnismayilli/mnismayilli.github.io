@@ -31,8 +31,8 @@ protocols; parties and causes of action; calculating limitation periods for clai
 tort; Practice Direction – Pre-action Conduct; principles and purpose of pre-action protocols
 governing particular claims and consequences for failure to follow their terms; applicable law —
 mechanisms to determine which country's laws apply to a contractual or tortious claim issued in the
-courts of England and Wales; jurisdiction — mechanisms to determine jurisdiction over an
-international contractual or tortious claim.
+courts of England and Wales; Practice Direction – preliminary considerations for the use of the
+**Welsh language** in civil proceedings.
 
 **Where to start proceedings** — allocation of business between the High Court and the County Court;
 jurisdiction of the specialist courts.
@@ -55,7 +55,8 @@ claim, or defence to Part 20 claim; requests for further information; amendments
 required for summary judgment, interim payments and interim injunctions.
 
 **Case management** — the overriding objective; track allocation; case management directions for
-cases proceeding on the fast or multi-tracks; non-compliance with orders, sanctions and relief; costs
+cases proceeding on the **fast, intermediate, or multi-tracks**; non-compliance with orders,
+sanctions and relief; costs
 and case management conferences.
 
 **Evidence** — relevance, hearsay and admissibility; the burden and standard of proof; expert
@@ -66,23 +67,52 @@ witness evidence (witness statements, affidavits).
 pre-action and non-party disclosure; electronic disclosure; privilege and without prejudice
 communications; waiver of privilege.
 
-**Trial** — summoning witnesses; preparations for trial (purpose of pre-trial checklists and hearings;
-purpose of trial bundles); trial procedure; the nature and effect of judgment.
+**Trial** — summoning witnesses; preparations for trial (purpose of pre-trial checklists
+(**listing questionnaires**) and hearings; purpose of trial bundles); trial procedure **including
+modes of address, court room etiquette and the difference between leading and non-leading
+questions**; the nature and effect of judgment.
 
 **Costs** — costs management and budgeting; inter-partes costs orders (interim and final); non-party
-costs; qualified one-way costs shifting; Part 36 and other offers; security for costs; fixed and
+costs; Part 36 and other offers; security for costs; fixed and
 assessed costs.
 
 **Appeals** — permission; destination of appeals; grounds for appeals.
 
-**Enforcement of money judgments** — oral examination; methods of enforcement; procedure and
-mechanisms for effecting valid enforcement in another jurisdiction.
+**Enforcement of money judgments** — **obtaining information from a judgment debtor**; methods of
+enforcement.
+
+::: {.callout-caution title="What the September 2026 review changed"}
+The Dispute Resolution content list was revised after the SRA's 2026 annual review, and three topics
+came **out** while several went **in**. This matters more here than anywhere else in FLK1, because
+textbooks and question banks written before the review still treat the deleted topics as examinable.
+
+**Removed from the list**
+
+- **Jurisdiction** — "mechanisms to determine jurisdiction over an international contractual or
+  tortious claim". Note carefully that **applicable law** (Rome I and Rome II) **remains**, and so
+  does **service of a claim form outside the jurisdiction**. It is the *forum* question that has gone.
+- **Qualified one-way costs shifting.**
+- **Procedure and mechanisms for effecting valid enforcement in another jurisdiction.**
+
+**Added or expanded**
+
+- **Practice Direction – preliminary considerations for the use of the Welsh language in civil
+  proceedings** — a wholly new bullet, which replaced the jurisdiction one.
+- Case management directions now expressly cover the **intermediate track**.
+- Trial procedure now expressly includes **modes of address, court room etiquette, and the difference
+  between leading and non-leading questions**.
+- "Oral examination" is now **"obtaining information from a judgment debtor"**.
+
+This text still covers the removed topics, because they remain part of competent practice and can
+surface as background in a scenario — but each is clearly marked, so you can judge how much time it
+deserves.
+:::
 
 ::: {.callout-important title="Exam trap"}
 Notice what the specification does **not** say. There is no mention of the small claims track
 procedure in detail, of family or criminal procedure, or of judicial review. And notice what it
-**does** say that candidates routinely skip: **applicable law and jurisdiction**, **non-party costs**,
-**enforcement abroad**, and **destination of appeals**. Those four are small topics with a high
+**does** say that candidates routinely skip: **applicable law**, the **Welsh language practice
+direction**, **non-party costs**, and **destination of appeals**. Those are small topics with a high
 question-per-page ratio, precisely because they are neglected.
 :::
 

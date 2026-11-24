@@ -1,0 +1,1720 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="color-scheme" content="light" />
+<title>Island Markets</title>
+<meta name="description" content="A six-player classroom game on general equilibrium under uncertainty: Arrow–Debreu securities, market completeness and Radner economies." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mqtt@5.10.1/dist/mqtt.min.js"></script>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f1f3f1; --card: #ffffff; --soft: #f6f7f5; --ink: #1a201e; --ink-2: #3b433f; --muted: #5f6865;
+  --line: #dfe4e1; --line-2: #c9d0cc;
+  --accent: #1f4741; --accent-2: #416b64; --accent-wash: #e3ecea;
+  --mark: #7a3b42; --mark-wash: #f5e9ea;
+  --good: #1b7a4b; --good-wash: #e3f3ea; --bad: #b3261e; --bad-wash: #fbe9e7; --warn: #8a5a00; --warn-wash: #fdf2d8;
+  --display: "Newsreader", Georgia, serif; --body: "Source Sans 3", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --r: 14px; --shadow: 0 1px 2px rgba(26,32,30,.06), 0 4px 14px rgba(26,32,30,.05);
+}
+*, *::before, *::after { box-sizing: border-box; } * { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.2; color: var(--ink); }
+h1 { font-size: clamp(2rem, 5vw, 3rem); } h2 { font-size: 1.55rem; } h3 { font-size: 1.2rem; }
+p + p { margin-top: .55rem; }
+b, strong { font-weight: 600; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+.muted { color: var(--muted); } .small { font-size: .9rem; } .tiny { font-size: .8rem; }
+.mono, .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.katex { font-size: 1.04em; }
+.katex-display { overflow-x: auto; overflow-y: hidden; }
+
+/* top bar */
+.top { background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
+.top .wrap { display: flex; align-items: center; gap: .6rem 1rem; flex-wrap: wrap; padding-top: .6rem; padding-bottom: .6rem; }
+.brand { font-family: var(--display); font-size: 1.25rem; font-weight: 600; color: var(--accent); }
+.spacer { flex: 1; }
+.chip { display: inline-flex; align-items: center; gap: .35rem; padding: .2rem .65rem; border-radius: 999px; font-size: .85rem; background: var(--soft); border: 1px solid var(--line); color: var(--ink-2); white-space: nowrap; }
+.chip.me { background: var(--accent-wash); border-color: transparent; color: var(--accent); font-weight: 600; }
+.chip.ok { background: var(--good-wash); border-color: transparent; color: var(--good); }
+.chip.bad { background: var(--bad-wash); border-color: transparent; color: var(--bad); }
+.chip.warn { background: var(--warn-wash); border-color: transparent; color: var(--warn); }
+.chip.code { font-family: var(--mono); font-size: 1rem; letter-spacing: .15em; background: var(--accent); color: #fff; border: 0; }
+.steps { display: flex; gap: .25rem; flex-wrap: wrap; }
+.steps span { font-size: .8rem; padding: .18rem .6rem; border-radius: 999px; color: var(--muted); }
+.steps span.on { background: var(--accent); color: #fff; font-weight: 600; }
+.steps span.done { color: var(--accent-2); }
+.steps span.done::before { content: '✓ '; }
+
+main { padding: 1.2rem 0 5rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 1.1rem 1.25rem; box-shadow: var(--shadow); }
+.stack > * + * { margin-top: 1rem; }
+.grid2 { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); align-items: start; }
+
+/* "what to do now" banner */
+.now { display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap; background: var(--accent); color: #fff; border-radius: var(--r); padding: 1rem 1.25rem; }
+.now .step { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; opacity: .8; font-weight: 600; }
+.now h2 { color: #fff; font-size: 1.6rem; margin: .1rem 0 .2rem; }
+.now p { color: rgba(255,255,255,.9); max-width: 62ch; }
+.now .actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.now button.primary { background: #fff; color: var(--accent); border-color: #fff; }
+.now button.ghost { color: #fff; border-color: rgba(255,255,255,.5); }
+.now.wait { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+.now.wait h2 { color: var(--ink); } .now.wait p { color: var(--ink-2); }
+
+/* story */
+.story .tag { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-2); font-weight: 600; }
+.story h2 { margin: .15rem 0 .5rem; }
+.story p { color: var(--ink-2); }
+.story .goal { background: var(--accent-wash); border-radius: 10px; padding: .55rem .8rem; margin-top: .7rem; color: var(--ink); }
+.sec { margin: 1.4rem 0 .6rem; }
+
+/* weather tiles */
+.tiles { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
+.tile { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }
+.tile-h { background: var(--w); padding: .55rem .9rem; display: flex; align-items: baseline; gap: .45rem; }
+.tile-h .ic { font-size: 1.3rem; } .tile-h b { font-family: var(--display); font-size: 1.25rem; font-weight: 600; color: var(--c); }
+.tile-h .pr { margin-left: auto; font-size: .85rem; color: var(--muted); }
+.tile-b { padding: .6rem .9rem .8rem; display: grid; gap: .35rem; }
+.kv { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; color: var(--ink-2); font-size: .95rem; }
+.kv b { font-family: var(--mono); font-weight: 500; color: var(--ink); white-space: nowrap; }
+.kv.big b { font-size: 1.35rem; }
+.kv.me { color: var(--ink); font-weight: 600; }
+.kv.hl { background: var(--soft); margin: 0 -.5rem; padding: .25rem .5rem; border-radius: 8px; }
+.up { color: var(--good); } .down { color: var(--bad); }
+.plan { border-top: 1px dashed var(--line-2); margin-top: .3rem; padding-top: .55rem; }
+.plan label { font-weight: 600; font-size: .95rem; display: block; margin-bottom: .3rem; }
+
+/* inputs */
+button { font: inherit; font-weight: 600; font-size: .95rem; border-radius: 10px; padding: .55rem 1.05rem; border: 1px solid var(--line-2); background: var(--card); color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+button.primary:hover { background: var(--accent-2); }
+button.big { font-size: 1.05rem; padding: .7rem 1.3rem; }
+button.ghost { background: transparent; }
+button.sm { padding: .3rem .65rem; font-size: .85rem; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+input, select, textarea { font: inherit; color: var(--ink); background: var(--card); border: 1.5px solid var(--line-2); border-radius: 10px; padding: .45rem .65rem; min-width: 0; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-wash); }
+input.num { width: 100%; text-align: right; font-size: 1.1rem; }
+.stepper { display: grid; grid-template-columns: 2.6rem 1fr 2.6rem; gap: .35rem; }
+.stepper button { justify-content: center; padding: .4rem 0; font-size: 1.2rem; line-height: 1; }
+input.code { font-family: var(--mono); text-transform: uppercase; letter-spacing: .3em; font-size: 1.4rem; text-align: center; width: 100%; }
+textarea { width: 100%; min-height: 300px; font-family: var(--mono); font-size: .8rem; }
+.fld { display: grid; gap: .3rem; font-size: .92rem; color: var(--ink-2); }
+
+/* budget + advice */
+.budget .bar { height: 12px; background: var(--soft); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin: .5rem 0; }
+.budget .bar i { display: block; height: 100%; border-radius: 999px; background: var(--good); transition: width .2s; }
+.budget .bar i.over { background: var(--bad); } .budget .bar i.under { background: #d99400; }
+.msg { border-radius: 10px; padding: .6rem .8rem; font-size: .95rem; }
+.msg.ok { background: var(--good-wash); color: #13573a; } .msg.bad { background: var(--bad-wash); color: #8c1d16; } .msg.warn { background: var(--warn-wash); color: #6b4600; } .msg.info { background: var(--accent-wash); color: var(--accent); }
+.msg + .msg { margin-top: .5rem; }
+.worth { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: .3rem 0 .6rem; }
+.worth div { display: grid; } .worth b { font-family: var(--mono); font-size: 1.6rem; font-weight: 500; } .worth span { font-size: .82rem; color: var(--muted); }
+.news { background: var(--warn-wash); border-radius: 10px; padding: .6rem .85rem; color: #5c3d00; }
+.news.ok { background: var(--good-wash); color: #13573a; }
+
+/* assets */
+.assets { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.asset { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: .8rem .95rem; box-shadow: var(--shadow); display: grid; gap: .45rem; }
+.asset .nm { font-family: var(--display); font-size: 1.2rem; font-weight: 600; }
+.pays { display: flex; gap: .3rem; flex-wrap: wrap; font-size: .88rem; color: var(--muted); align-items: center; }
+.pay { border-radius: 8px; padding: .1rem .5rem; font-family: var(--mono); font-size: .88rem; background: var(--w); color: var(--c); font-weight: 500; }
+
+/* tables */
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { padding: .4rem .6rem; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-weight: 600; color: var(--muted); font-size: .82rem; }
+th:first-child, td:first-child { text-align: left; }
+td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+tr.me td { background: var(--accent-wash); font-weight: 600; }
+tr.tot td { border-top: 2px solid var(--line-2); font-weight: 600; }
+.swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; margin-right: .4rem; vertical-align: 1px; }
+
+/* results */
+.score { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.score .total { font-family: var(--display); font-size: 3rem; font-weight: 600; color: var(--accent); line-height: 1; }
+.pills { display: flex; gap: .5rem; flex-wrap: wrap; }
+.pill { background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: .35rem .7rem; display: grid; }
+.pill b { font-family: var(--mono); font-size: 1.15rem; font-weight: 500; } .pill span { font-size: .78rem; color: var(--muted); }
+.lesson { border-left: 4px solid var(--accent); }
+.lesson ol { padding-left: 1.2rem; margin-top: .4rem; color: var(--ink-2); } .lesson li + li { margin-top: .45rem; }
+.mcq { border: 1px solid var(--line); border-radius: 12px; padding: .75rem .9rem; background: var(--card); }
+.mcq + .mcq { margin-top: .7rem; }
+.mcq .q { font-weight: 600; margin-bottom: .35rem; }
+.mcq label { display: flex; gap: .55rem; align-items: flex-start; padding: .35rem .45rem; border-radius: 8px; cursor: pointer; color: var(--ink-2); }
+.mcq label:hover { background: var(--soft); }
+.mcq label.right { background: var(--good-wash); color: var(--ink); } .mcq label.wrong { background: var(--bad-wash); }
+.mcq input { margin-top: .35rem; accent-color: var(--accent); }
+details.more { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: .8rem 1.1rem; }
+details.more > summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+details.more[open] > summary { margin-bottom: .7rem; }
+details.more h3 { margin: 1rem 0 .4rem; font-size: 1.1rem; }
+
+/* seats */
+.seat { display: grid; grid-template-columns: 10px 1fr auto; gap: .55rem; align-items: center; padding: .45rem 0; border-bottom: 1px solid var(--line); }
+.seat:last-child { border-bottom: 0; }
+.seat .nm { font-weight: 600; line-height: 1.2; white-space: nowrap; }
+.seat .sub { font-size: .8rem; color: var(--muted); }
+.seat select { width: 2.6rem; padding: .15rem .2rem; font-size: .8rem; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; background: var(--line-2); }
+.dot.on { background: var(--good); } .dot.off { background: var(--bad); }
+.layout { display: grid; grid-template-columns: 270px 1fr; gap: 1rem; align-items: start; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+/* misc */
+.bigcode { font-family: var(--mono); font-size: clamp(3rem, 9vw, 5rem); letter-spacing: .25em; color: var(--accent); font-weight: 500; }
+.hero { padding: 2.2rem 0 1.2rem; }
+.hero p { color: var(--ink-2); max-width: 60ch; margin-top: .5rem; font-size: 1.08rem; }
+.choices { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); }
+.choice { display: grid; gap: .7rem; align-content: start; }
+.choice .ic { font-size: 2rem; }
+.wheel-wrap { display: grid; place-items: center; padding: .5rem 0; }
+.wheel { width: min(300px, 78vw); height: auto; }
+.wheel g.rot { transform-origin: 160px 160px; }
+.wheel text { font-family: var(--display); font-size: 19px; fill: #fff; font-weight: 600; }
+.realized { font-family: var(--display); font-size: 2.2rem; text-align: center; }
+.chart { width: 100%; height: auto; display: block; }
+.chart text { fill: var(--muted); font-family: var(--body); font-size: 15px; }
+.chart .grid line { stroke: var(--line); }
+.chart .hit { fill: transparent; } .chart .hit:hover { fill: rgba(31,71,65,.06); }
+.legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .85rem; color: var(--ink-2); margin-top: .4rem; }
+.legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.legend i.dash { height: 0; border-top: 2px dashed currentColor; background: none !important; }
+#tip { position: fixed; z-index: 100; pointer-events: none; background: var(--ink); color: #fff; padding: .45rem .6rem; border-radius: 8px; font-size: .82rem; line-height: 1.4; max-width: 260px; display: none; }
+#toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 90; display: grid; gap: .4rem; }
+#toast div { background: var(--ink); color: #fff; padding: .6rem 1rem; border-radius: 10px; font-size: .95rem; box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+#toast div.bad { background: var(--bad); }
+.modal-bg { position: fixed; inset: 0; background: rgba(26,32,30,.45); z-index: 60; display: flex; align-items: flex-start; justify-content: center; padding: 3vh 12px; overflow-y: auto; }
+.modal { background: var(--bg); border-radius: 16px; max-width: 1000px; width: 100%; padding: 1rem; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 1rem 0; }
+.hidden { display: none !important; }
+@media (max-width: 600px) { .now h2 { font-size: 1.3rem; } th, td { padding: .3rem .4rem; } }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="tip"></div>
+<div id="toast"></div>
+<div id="modal"></div>
+
+<script>
+'use strict';
+/* =====================================================================
+   ISLAND MARKETS — general equilibrium under uncertainty, played live
+   Engine · scenarios · host logic · networking (MQTT relay) · UI
+   ===================================================================== */
+
+/* ---------------------------------------------------------------- engine */
+const E = {};
+E.u   = (c, g) => g === 1 ? Math.log(c) : Math.pow(c, 1 - g) / (1 - g);
+E.up  = (c, g) => Math.pow(c, -g);
+E.upp = (c, g) => -g * Math.pow(c, -g - 1);
+E.ce  = (U, g) => g === 1 ? Math.exp(U) : Math.pow((1 - g) * U, 1 / (1 - g));
+E.EU  = (pi, c, g) => c.some(x => !(x > 0)) ? -Infinity : c.reduce((s, cs, k) => s + pi[k] * E.u(cs, g), 0);
+E.CE  = (pi, c, g) => { const U = E.EU(pi, c, g); return isFinite(U) ? E.ce(U, g) : 0; };
+E.dot = (a, b) => a.reduce((s, x, i) => s + x * b[i], 0);
+E.cons = (e, A, th, cash = 0) => e.map((es, s) => es + cash + A.reduce((t, row, j) => t + row[s] * (th[j] || 0), 0));
+E.solveLin = (M, b) => {
+  const n = b.length, a = M.map((r, i) => [...r, b[i]]);
+  for (let i = 0; i < n; i++) {
+    let p = i; for (let r = i + 1; r < n; r++) if (Math.abs(a[r][i]) > Math.abs(a[p][i])) p = r;
+    [a[i], a[p]] = [a[p], a[i]];
+    if (Math.abs(a[i][i]) < 1e-13) return null;
+    for (let r = 0; r < n; r++) if (r !== i) { const f = a[r][i] / a[i][i]; for (let k = i; k <= n; k++) a[r][k] -= f * a[i][k]; }
+  }
+  return a.map((r, i) => r[n] / r[i]);
+};
+E.rank = (A) => {
+  const a = A.map(r => r.slice()); let rk = 0; const rows = a.length, cols = a[0].length;
+  for (let c = 0; c < cols && rk < rows; c++) {
+    let p = rk; for (let r = rk + 1; r < rows; r++) if (Math.abs(a[r][c]) > Math.abs(a[p][c])) p = r;
+    if (Math.abs(a[p][c]) < 1e-9) continue;
+    [a[rk], a[p]] = [a[p], a[rk]];
+    for (let r = 0; r < rows; r++) if (r !== rk) { const f = a[r][c] / a[rk][c]; for (let k = c; k < cols; k++) a[r][k] -= f * a[rk][k]; }
+    rk++;
+  }
+  return rk;
+};
+function nullBasis(q) {
+  const J = q.length, B = [], qn = Math.hypot(...q), vs = [q.map(x => x / qn)];
+  for (let k = 0; k < J && B.length < J - 1; k++) {
+    let v = Array.from({ length: J }, (_, i) => +(i === k));
+    for (const w of vs) { const d = E.dot(v, w); v = v.map((x, i) => x - d * w[i]); }
+    const n = Math.hypot(...v); if (n > 1e-8) { v = v.map(x => x / n); vs.push(v); B.push(v); }
+  }
+  return B;
+}
+/* optimal portfolio: max Σ π_s u(e_s + (Aᵀθ)_s)  s.t.  q·θ = 0  (Newton in the null space of q) */
+E.optimal = (e, A, q, pi, g = 1) => {
+  const J = q.length, S = e.length, N = nullBasis(q), K = N.length;
+  if (!K) return new Array(J).fill(0);
+  const Bm = Array.from({ length: S }, (_, s) => N.map(v => v.reduce((t, x, j) => t + x * A[j][s], 0)));
+  let z = new Array(K).fill(0);
+  const cOf = z => e.map((es, s) => es + E.dot(Bm[s], z));
+  const f = z => E.EU(pi, cOf(z), g);
+  for (let it = 0; it < 120; it++) {
+    const c = cOf(z);
+    const gr = Array.from({ length: K }, (_, k) => c.reduce((t, cs, s) => t + pi[s] * E.up(cs, g) * Bm[s][k], 0));
+    if (Math.hypot(...gr) < 1e-11) break;
+    const H = Array.from({ length: K }, (_, k) => Array.from({ length: K }, (_, l) => c.reduce((t, cs, s) => t + pi[s] * E.upp(cs, g) * Bm[s][k] * Bm[s][l], 0)));
+    let d = E.solveLin(H, gr.map(x => -x)); if (!d || !d.every(isFinite)) d = gr;
+    let t = 1; const f0 = f(z); let moved = false;
+    while (t > 1e-12) { const zn = z.map((x, k) => x + t * d[k]); if (f(zn) >= f0 - 1e-15) { z = zn; moved = true; break; } t /= 2; }
+    if (!moved) break;
+  }
+  return Array.from({ length: J }, (_, j) => N.reduce((t, v, k) => t + v[j] * z[k], 0));
+};
+E.qFromP = (A, p) => A.map(row => E.dot(row, p));
+E.normP = p => { const t = p.reduce((a, b) => a + b, 0); return p.map(x => x / t); };
+/* auctioneer: state-price parameterised tâtonnement (keeps prices arbitrage-free) */
+E.tatStep = (agg, p, Z, A, kappa = 0.8) => {
+  const dc = agg.map((_, s) => A.reduce((t, row, j) => t + row[s] * Z[j], 0));
+  return E.normP(p.map((ps, s) => ps * Math.pow(Math.min(4, Math.max(0.25, (agg[s] + dc[s]) / agg[s])), kappa)));
+};
+/* closest arbitrage-free state prices with A p = q (projection, then positivity) */
+E.projectP = (A, q, p0) => {
+  const AAt = A.map(r => A.map(r2 => E.dot(r, r2)));
+  const res = q.map((qj, j) => qj - E.dot(A[j], p0));
+  const y = E.solveLin(AAt, res);
+  let p = y ? p0.map((ps, s) => ps + A.reduce((t, row, j) => t + row[s] * y[j], 0)) : p0.slice();
+  p = p.map((x, s) => Math.max(x, 0.1 * p0[s]));
+  return E.normP(p);
+};
+E.equilibrium = (eco) => {
+  let p = eco.pi.slice();
+  const pis = eco.endow.map((_, i) => (eco.beliefs && eco.beliefs[i]) || eco.pi);
+  const Zof = q => { const Z = new Array(eco.A.length).fill(0); eco.endow.forEach((e, i) => E.optimal(e, eco.A, q, pis[i], eco.gamma).forEach((x, j) => Z[j] += x)); return Z; };
+  for (let it = 0; it < 500; it++) {
+    const Z = Zof(E.qFromP(eco.A, p));
+    if (Math.max(...Z.map(Math.abs)) < 1e-10) break;
+    p = E.tatStep(eco.agg, p, Z, eco.A, it < 50 ? 0.8 : 0.4);
+  }
+  const q = E.qFromP(eco.A, p);
+  return { p, q, Z: Zof(q) };
+};
+E.ration = (orders, J) => {
+  const ex = orders.map(o => o ? o.slice() : new Array(J).fill(0));
+  for (let j = 0; j < J; j++) {
+    let B = 0, S = 0; ex.forEach(o => { if (o[j] > 0) B += o[j]; else S -= o[j]; });
+    const V = Math.min(B, S);
+    ex.forEach(o => { if (o[j] > 0) o[j] *= B > 0 ? V / B : 0; else if (o[j] < 0) o[j] *= S > 0 ? V / S : 0; });
+  }
+  return ex;
+};
+/* Radner (two goods, Cobb–Douglas α): indirect utility in state s with grain-wealth m is ln m + κ_s */
+const R = {};
+R.kappa = (alpha, rho) => rho.map(r => alpha * Math.log(alpha) + (1 - alpha) * Math.log((1 - alpha) / r));
+R.V = (pi, alpha, rho, m) => m.some(x => !(x > 0)) ? 0 : Math.exp(m.reduce((t, x, s) => t + pi[s] * (Math.log(x) + R.kappa(alpha, rho)[s]), 0));
+R.m = (sc, i, rho) => sc.grain[i].map((x, s) => x + rho[s] * sc.fish[i][s]);
+
+/* ------------------------------------------------------------ scenarios */
+const ROLES = [
+  { name: 'Farmer A', icon: '🌾' }, { name: 'Farmer B', icon: '🌾' },
+  { name: 'Fisher A', icon: '🎣' }, { name: 'Fisher B', icon: '🎣' },
+  { name: 'Roofer A', icon: '🔨' }, { name: 'Roofer B', icon: '🔨' },
+];
+const SERIES = ['#2a78d6', '#eb6834', '#1baf7a', '#c98500', '#d55181', '#008300'];
+const STATES = [
+  { name: 'Sun', icon: '☀️', prob: 0.5, color: '#d99400', wash: '#fdf4de' },
+  { name: 'Rain', icon: '🌧️', prob: 0.3, color: '#2a78d6', wash: '#e7f0fb' },
+  { name: 'Storm', icon: '⛈️', prob: 0.2, color: '#5b4bb8', wash: '#eeebf8' },
+];
+const arrow = (unit) => STATES.map((s, k) => ({ name: `${s.name} claim`, sym: `A_{${k + 1}}`, payoff: STATES.map((_, j) => +(j === k)), unit }));
+const R2_ENDOW = [[50, 15, 5], [40, 20, 10], [15, 40, 10], [20, 25, 15], [5, 10, 25], [20, 10, 15]];
+const GOAL_PLAN = String.raw`Choose how much grain you want in each weather. Your plan cannot cost more than your harvest is worth. You maximise expected utility with $u(c)=\ln c$.`;
+
+const DEFAULT_ROUNDS = [
+{
+  id: 'r1', kind: 'assets', title: 'Island insurance', tag: 'Arrow–Debreu · no aggregate risk',
+  states: STATES, gamma: 1, hint: 2, assets: arrow('grain'),
+  endow: [[40, 15, 5], [30, 20, 10], [10, 40, 10], [15, 25, 20], [5, 10, 45], [20, 10, 30]],
+  story: 'Tomorrow brings Sun, Rain or Storm. Farmers harvest most in Sun, fishers in Rain, roofers in Storm. The island’s <b>total</b> harvest is 120 whatever the weather.',
+  market: 'Today you can trade three <b>contingent claims</b> (Arrow securities). A <i>Sun claim</i> pays 1 grain tomorrow only if it is sunny, and likewise for Rain and Storm. A sure grain (one claim of each) costs 1.',
+  goal: GOAL_PLAN,
+  lesson: [
+    String.raw`Prices equal probabilities, $p=(0.5,\,0.3,\,0.2)$, because the island’s total harvest never changes.`,
+    String.raw`Everyone <b>fully insures</b>: the best plan gives the same grain in every weather, equal to the value of your harvest $w_i=\sum_s p_s e_{is}$.`,
+    'There is a claim for every weather, so the market is complete and the outcome is Pareto optimal (first welfare theorem).',
+  ],
+  concept: [
+    { q: 'In equilibrium, how will your grain differ across the three weathers?', options: ['It will be the same in every weather (full insurance).', 'It will be proportional to my harvest in each weather.', 'It will be highest in the most likely weather.', 'It depends on whether I am richer than average.'], correct: 0, explain: 'Total harvest is 120 in every state and beliefs are common, so p_s = π_s: claims are actuarially fair and every risk-averse islander fully insures, c_is = w_i.' },
+    { q: 'Which result guarantees that this equilibrium is Pareto optimal?', options: ['First welfare theorem: every contingent commodity is traded (complete markets).', 'Second welfare theorem: preferences are convex.', 'First welfare theorem: agents are risk-neutral.', 'None: uncertainty breaks the welfare theorems.'], correct: 0, explain: 'Debreu (1959, ch. 7): treat goods in different states as different commodities and the first welfare theorem applies, provided every contingent commodity is traded.' },
+  ],
+  debrief: String.raw`<p><b>Your problem.</b> $\max_c \sum_s \pi_s\ln c_s$ subject to $\sum_s p_s c_s = \sum_s p_s e_{is}\equiv w_i$. The first-order condition $\pi_s/c_s=\lambda p_s$ gives $c_{is}=\pi_s w_i/p_s$.</p>
+<p><b>Market clearing</b> $\sum_i c_{is}=\bar e_s$ gives $p_s=\pi_s W/\bar e_s$ with $W=\sum_s p_s\bar e_s$. Since $\bar e_s=120$ in every state, $p_s=\pi_s$ and $c_{is}=w_i$: full insurance. Every MRS between states equals the price ratio, so MRS are equal across islanders (Borch rule).</p>
+<p class="muted"><b>Discuss.</b> (i) If Fisher A believed Rain had probability 0.5, what would happen to $p_2$? (ii) With $L$ goods and $S$ states, Arrow–Debreu needs $S\times L$ markets.</p>`,
+},
+{
+  id: 'r2', kind: 'assets', title: 'The storm year', tag: 'Arrow–Debreu · aggregate risk',
+  states: STATES, gamma: 1, hint: 2, assets: arrow('grain'), endow: R2_ENDOW,
+  story: 'This season the weather hits everyone together: the island harvests <b>150</b> grain in Sun, <b>120</b> in Rain and only <b>80</b> in Storm.',
+  market: 'The same three contingent claims trade. A sure grain still costs 1.',
+  goal: GOAL_PLAN,
+  lesson: [
+    String.raw`Grain is scarce in Storm, so Storm grain is expensive: $p=(0.4,\,0.3,\,0.3)$, although Storm has only a 20% chance. The rule is $p_s\propto \pi_s/\bar e_s$.`,
+    String.raw`Nobody can escape aggregate risk. Each islander gets the same <b>share</b> of the island total in every weather: $c_{is}=\frac{w_i}{W}\bar e_s$.`,
+    String.raw`$p_s/\pi_s=(0.8,\,1,\,1.5)$ is the stochastic discount factor: a grain is worth most when times are bad.`,
+  ],
+  concept: [
+    { q: 'Where is the price per unit of probability, p_s / π_s, highest?', options: ['In Storm: the island has the least grain.', 'In Sun: the most likely weather.', 'It is the same in every weather.', 'In Rain: the middle weather.'], correct: 0, explain: 'With identical log utility, p_s/π_s ∝ 1/ē_s: grain is most valuable where it is scarce for the island as a whole.' },
+    { q: 'Can trade remove everybody’s risk this time?', options: ['No. Aggregate risk must be borne; each islander holds a fixed share of the island total.', 'Yes, as long as there is a claim for every weather.', 'Yes, but only the richest islanders bear risk.', 'No, because the market is incomplete.'], correct: 0, explain: 'Mutuality principle: in a Pareto optimum individual consumption depends only on aggregate consumption. With equal CRRA utility, c_is = (w_i/W)·ē_s.' },
+  ],
+  debrief: String.raw`<p>From $c_{is}=\pi_s w_i/p_s$ and $\sum_i c_{is}=\bar e_s$: $p_s=\dfrac{\pi_s/\bar e_s}{\sum_t \pi_t/\bar e_t}=(0.4,0.3,0.3)$ and $c_{is}=\dfrac{w_i}{W}\bar e_s$ with $W=120$.</p>
+<p>The risk-neutral probabilities $(0.4,0.3,0.3)$ put more weight on the bad state than $\pi=(0.5,0.3,0.2)$. Consumption follows a linear sharing rule (mutuality principle).</p>
+<p class="muted"><b>Discuss.</b> (i) Storm insurance has fair value 0.2 but costs 0.3. Why? (ii) If roofers were more risk-averse, who would bear more aggregate risk?</p>`,
+},
+{
+  id: 'r3', kind: 'assets', title: 'Only a bond and a share', tag: 'Radner economy · incomplete markets',
+  states: STATES, gamma: 1, hint: 2,
+  assets: [
+    { name: 'Bond', sym: 'B', payoff: [1, 1, 1], unit: 'grain' },
+    { name: 'Share', sym: 'S', payoff: [3, 2, 0], unit: 'grain' },
+  ],
+  endow: R2_ENDOW,
+  story: 'Same island and same harvests as the <b>storm year</b> in Part 1 (150 / 120 / 80). But the claims market has closed.',
+  market: 'Only two assets trade today: a <b>Bond</b> paying 1 grain in every weather (price 1) and a <b>Share</b> paying 3, 2 and 0 grain in Sun, Rain and Storm. You choose how many shares to buy or sell; your bond position adjusts automatically to pay for it.',
+  goal: 'Find the share position that maximises your expected utility.',
+  lesson: [
+    'Two assets, three weathers: the market is <b>incomplete</b> (payoff matrix rank 2 &lt; 3). Some risks cannot be traded.',
+    'The island gains much less from trade than in Part 1’s storm year (about 8.7 vs 14.5 sure grain). Fishers gain almost nothing: no mix of bond and share isolates Rain.',
+    'Islanders’ personal values of grain in each weather now differ, so the outcome is not Pareto optimal (with one good it is still constrained efficient).',
+  ],
+  concept: [
+    { q: 'With only the bond (1,1,1) and the share (3,2,0), how many independent risks can be traded?', options: ['Two of three: the payoff matrix has rank 2 < 3, so the market is incomplete.', 'Three: two assets plus your harvest cover everything.', 'One: only the share is risky.', 'It depends on prices.'], correct: 0, explain: 'Possible net trades are θ_B(1,1,1) + θ_S(3,2,0): a 2-dimensional subspace of R³.' },
+    { q: 'Is this round’s equilibrium Pareto optimal?', options: ['Generally not. Personal state prices differ; with one good it is still constrained efficient (Diamond, 1967).', 'Yes, by the first welfare theorem.', 'Yes, because a risk-free bond trades.', 'No, and it is not even constrained efficient.'], correct: 0, explain: 'Islanders equalise marginal utility per unit of money across the assets they can trade, not across states. With one good no planner using the same assets can do better (Diamond 1967); with several goods that fails generically (Geanakoplos–Polemarchakis 1986).' },
+  ],
+  debrief: String.raw`<p>First-order conditions: $q_j=\sum_s \frac{\pi_s u'(c_{is})}{\lambda_i}\,d_{js}$ for $j\in\{B,S\}$. Every islander prices the two traded assets the same way, but their personal state prices $\pi_s u'(c_{is})/\lambda_i$ differ. No arbitrage pins down only a <b>set</b> of state prices: $p_1+p_2+p_3=1$ and $3p_1+2p_2=q_S$.</p>
+<p class="muted"><b>Discuss.</b> Which single extra asset would make this round identical to the storm year?</p>`,
+},
+{
+  id: 'r4', kind: 'assets', title: 'Financial innovation', tag: 'Radner economy · an option completes the market',
+  states: STATES, gamma: 1, hint: 1,
+  assets: [
+    { name: 'Bond', sym: 'B', payoff: [1, 1, 1], unit: 'grain' },
+    { name: 'Share', sym: 'S', payoff: [3, 2, 0], unit: 'grain' },
+    { name: 'Call (K=1)', sym: 'C', payoff: [2, 1, 0], unit: 'grain' },
+  ],
+  endow: R2_ENDOW,
+  story: 'Same island and harvests again (the storm year). The exchange now lists a <b>call option</b> on the share with strike 1. It pays max(share − 1, 0), which is 2, 1 and 0 grain.',
+  market: 'Bond, share and call all trade. Three independent assets for three weathers means you can build any plan. So just choose how much grain you want in each weather: the game shows the portfolio of bonds, shares and calls that delivers it.',
+  goal: GOAL_PLAN,
+  lesson: [
+    'Three independent assets for three weathers: the market is <b>complete</b> again.',
+    String.raw`Every claim can be built from the assets: Sun $=2C-S$, Rain $=2S-3C$, Storm $=B-S+C$. So the asset prices follow from Part 1’s storm-year state prices $(0.4,0.3,0.3)$: share $=1.8$, call $=1.1$.`,
+    'The allocation is exactly Part 1’s storm-year allocation: a Radner economy with complete asset markets gives the Arrow–Debreu outcome (Arrow 1953).',
+  ],
+  concept: [
+    { q: 'If the exchange had listed a put with strike 3, paying (0,1,3), instead of the call, the market would be…', options: ['Still incomplete: the put equals 3·Bond − Share, so it adds nothing new.', 'Complete: options always complete markets.', 'Open to arbitrage.', 'Complete, but only if the put cost 1.2.'], correct: 0, explain: '(0,1,3) = 3(1,1,1) − (3,2,0). The call (2,1,0) is not a combination of bond and share, so it raises the rank to 3.' },
+    { q: 'Compared with the storm year in Part 1 (complete claims), this round’s allocation is…', options: ['Identical: complete asset markets give the Arrow–Debreu allocation.', 'Worse: there are no contingent claims.', 'Better: options add extra hedging.', 'Indeterminate.'], correct: 0, explain: 'Arrow (1953): with S independent assets any claim can be replicated. Prices are q = A p with the storm-year state prices: q_S = 1.8, q_C = 1.1.' },
+  ],
+  debrief: String.raw`<p>$\det A\neq0$, so the market is complete. Replication: $e_1=2C-S$, $e_2=2S-3C$, $e_3=B-S+C$. No arbitrage forces $q=Ap$ with $p=(0.4,0.3,0.3)$, so $q_S=1.8$ and $q_C=1.1$. Options on an asset with distinct payoffs in each state complete the market (Ross 1976).</p>
+<p class="muted"><b>Discuss.</b> Replication needs large offsetting positions. What frictions would make a market that is complete in principle incomplete in practice?</p>`,
+},
+{
+  id: 'r5', kind: 'radner', title: 'Two harvests', tag: 'Radner economy · spot markets & expectations',
+  states: STATES, gamma: 1, hint: 1, alpha: 0.5, goods: ['grain', 'fish'],
+  assets: arrow('grain'),
+  grain: [[60, 20, 5], [45, 30, 10], [5, 20, 5], [5, 20, 10], [15, 10, 30], [20, 20, 20]],
+  fish:  [[0, 0, 0], [5, 10, 0], [30, 100, 5], [25, 90, 5], [5, 20, 15], [10, 20, 15]],
+  story: 'Tomorrow islanders eat two goods, <b>grain and fish</b>, and spend half their wealth on each: $u=\tfrac12\ln x+\tfrac12\ln y$. Fishers land huge catches in Rain.',
+  market: 'Today: three claims that pay <b>grain</b> in each weather. Tomorrow: once the weather is known, a <b>spot market</b> opens where fish is traded for grain. To plan today you must <b>guess tomorrow’s fish price</b> in each weather, because it decides what your fish are worth.',
+  goal: 'Enter your expected fish price for each weather, then choose your wealth (in grain) for each weather. Tomorrow you trade fish for grain.',
+  lesson: [
+    String.raw`Fish prices are $\rho=(2,\,0.5,\,2)$ grain per fish. Fish is cheap in Rain because there is so much of it.`,
+    'With correct expectations the claim prices are again (0.4, 0.3, 0.3). Three grain claims plus a spot market reproduce the full Arrow–Debreu economy with 6 contingent goods.',
+    'Wrong expectations are costly: a fisher who expects fish to stay at 1 in Rain overvalues their Rain catch, sells too many Rain claims, and ends up much worse off.',
+  ],
+  concept: [
+    { q: 'To choose your claim trades today, you need to know…', options: ['The claim prices and the fish price that will hold in each weather (rational expectations).', 'Only the claim prices.', 'Only which weather will happen.', 'Everybody else’s harvest.'], correct: 0, explain: 'Your wealth in state s is x_s + ρ_s y_s, which depends on ρ_s. Radner (1972) equilibrium = optimal plans + market clearing + correct price expectations.' },
+    { q: 'How many contracts must trade today to reach the efficient outcome?', options: ['3 grain claims (plus spot markets tomorrow), instead of 6 contingent goods.', '6 in both cases.', '2: one per good.', '1: a sure bond is enough.'], correct: 0, explain: 'Arrow (1953): S securities paying in one good plus spot markets replace the S × L contingent-commodity markets.' },
+  ],
+  debrief: String.raw`<p><b>Spot market.</b> With Cobb–Douglas preferences, $x=\alpha m_s$ and $\rho_s y=(1-\alpha)m_s$, so $\rho_s=\frac{1-\alpha}{\alpha}\frac{X_s}{Y_s}=(2,0.5,2)$.</p>
+<p><b>Today.</b> Utility in state $s$ is $\ln m_{is}+$ constant, so today's problem is the single-good log problem with wealth $m_{is}=x_{is}+\rho_s y_{is}$. Hence $q_s\propto\pi_s/X_s=(0.4,0.3,0.3)$.</p>
+<p class="muted"><b>Discuss.</b> Would anything change if the claims paid in fish? What goes wrong with incomplete assets and several goods (Hart 1975)?</p>`,
+},
+];
+
+/* ------------------------------------------------------------ general-audience texts (no prior economics needed) */
+const GOAL_GEN = 'Choose how much grain you want in each weather, within your budget. Like most people, each extra grain makes you a little less happy than the one before, so a decent amount in every weather usually beats feast-or-famine.';
+const GENERAL = {
+  r1: {
+    tag: 'Part 1 · Sharing risk with weather tickets',
+    story: 'You live on an island. Tomorrow the weather will be <b>Sun</b> (50% chance), <b>Rain</b> (30%) or <b>Storm</b> (20%), and your harvest depends on it. Farmers do well in Sun, fishers in Rain, and roofers (who repair storm damage) in Storm. Altogether, the island always harvests <b>120 grain</b>, whatever the weather.',
+    market: 'Today, before anyone knows the weather, you can trade <b>weather tickets</b>. A <i>Sun ticket</i> pays 1 grain tomorrow if it is sunny and nothing otherwise; the same goes for Rain and Storm tickets. You can buy tickets, or sell tickets backed by your own harvest. One ticket of each kind guarantees 1 grain whatever happens, so the three prices add up to 1.',
+    goal: GOAL_GEN,
+    predictHint: 'Hint: the island has the same total grain in every weather, so no weather is a “bad year” for the island as a whole. What would be a fair price for a ticket that pays 1 grain with a 50% chance?',
+    lesson: [
+      'Ticket prices ended up equal to the chances (0.50, 0.30, 0.20), because the island has the same total grain whatever the weather. Nobody pays extra for safety.',
+      'The best plan gave you <b>the same grain in every weather</b>: islanders insured each other. Economists call this <i>full insurance</i>.',
+      'Because every weather had its own ticket, no further swap could make someone better off without hurting someone else. Economists say the market outcome is <i>efficient</i> (Pareto optimal).',
+    ],
+    concept: [
+      { q: 'The island’s total harvest is the same in every weather. What is the smartest plan for you?', options: ['Arrange to have the same amount of grain whatever the weather.', 'Bet everything on the most likely weather, Sun.', 'Keep my harvest as it is; trading is risky.', 'Buy as many Storm tickets as possible because Storms are rare.'], correct: 0, explain: 'Each extra grain matters less when you already have plenty, so an even amount in every weather makes you happiest on average. Here prices are fair, so evening things out costs you nothing.' },
+      { q: 'Why can every islander gain from trading tickets?', options: ['Each is rich in a different weather, so they can swap risks: farmers sell Sun grain and buy Storm grain from roofers.', 'Trading creates extra grain.', 'The auctioneer hands out free grain.', 'They can’t; trade only moves grain around.'], correct: 0, explain: 'Trade doesn’t create grain, but it moves grain to the weather where each person values it most. Swapping risks makes everybody better off.' },
+    ],
+    debrief: '<p><b>Why an even plan?</b> Suppose you have 10 grain in Sun and 40 in Rain. One more grain in Sun adds a lot of happiness; the 40th grain in Rain adds little. So you sell some Rain grain and buy Sun grain, and keep going until an extra grain is equally valuable in every weather. With fair prices, that happens exactly when you have the same amount everywhere.</p><p><b>Why are prices equal to the chances?</b> Total grain is the same in every weather, so everyone can be evened out at once. No weather is scarce for the island, so there is no reason to pay more than the fair price.</p>',
+  },
+  r2: {
+    tag: 'Part 1 · When a storm hits everyone',
+    story: 'A new season. This time the weather hits everyone together: the island harvests <b>150</b> grain in Sun, <b>120</b> in Rain and only <b>80</b> in Storm.',
+    market: 'The same three weather tickets trade, and one of each still guarantees 1 grain, so the prices add up to 1.',
+    goal: GOAL_GEN,
+    predictHint: 'Hint: grain is scarce for everybody in Storm. Will people pay more or less than the “fair” 0.20 for a Storm ticket? What has to happen to the other two prices?',
+    lesson: [
+      'The Storm ticket cost <b>0.30</b> although Storms happen only 20% of the time: grain is precious when everyone is short. That is why insurance against widespread disasters is expensive.',
+      'No one could escape the Storm. The best plan gave each islander the same <b>share</b> of the island’s total in every weather, so everyone took a hit in the Storm. Trade spreads a shared loss; it cannot remove it.',
+      'Prices reflect both chances and scarcity. Economists call price ÷ chance the <i>stochastic discount factor</i>: here 0.8 in Sun, 1 in Rain and 1.5 in Storm.',
+    ],
+    concept: [
+      { q: 'This year the Storm hits everyone. Which ticket will be expensive compared with its chance?', options: ['The Storm ticket: grain is scarce for the whole island then.', 'The Sun ticket: Sun is the most likely weather.', 'None: prices always equal the chances.', 'The Rain ticket: it is the middle case.'], correct: 0, explain: 'Many people want grain for the Storm and few can supply it, so the Storm price rises above its chance (0.20) until buyers and sellers balance.' },
+      { q: 'Can trading protect everybody from the Storm?', options: ['No. There is simply less grain in a Storm, so everyone must accept less; trade only shares the shortfall.', 'Yes, if everyone buys enough Storm tickets.', 'Yes, but only for the richest islanders.', 'No, because there is no Storm ticket.'], correct: 0, explain: 'Tickets move grain between people, not between weathers. With 80 grain in a Storm, the island as a whole must eat less then.' },
+    ],
+    debrief: '<p><b>Why is Storm grain expensive?</b> At “fair” prices (0.5, 0.3, 0.2) everyone would want an even plan, but the island cannot give everyone as much in Storm as in Sun. Too many people want Storm grain, so its price rises (and Sun grain gets cheaper) until demand matches the 80 grain available.</p><p><b>Who bears the risk?</b> Everybody, in proportion to their wealth. Each islander ends up with the same fraction of the island total in every weather.</p>',
+  },
+  r3: {
+    tag: 'Part 2 · Only a bond and a share',
+    story: 'Same island and same harvests as the <b>storm year</b> in Part 1 (150 / 120 / 80). But the weather-ticket market has closed.',
+    market: 'Only two contracts trade today: a <b>Bond</b> that pays 1 grain whatever the weather (price 1), and a <b>Share</b> in the island farm that pays 3 grain in Sun, 2 in Rain and 0 in Storm. You choose how many shares to buy or sell; the bond automatically pays for it.',
+    goal: 'Find the number of shares that makes you happiest on average. The tip box tells you whether to buy more or fewer.',
+    predictHint: 'Hint: in Part 1 a grain cost about 0.4 in Sun, 0.3 in Rain and 0.3 in Storm. If prices were similar, what would a share paying 3, 2 and 0 be worth?',
+    lesson: [
+      'With only a bond and a share you <b>cannot build a ticket for each weather</b>: anything that pays in Rain also pays in Sun. Economists call this an <i>incomplete market</i>.',
+      'The island gained much less from trade than in Part 1 (about 8.7 instead of 14.5 sure grain). Fishers, whose risk is Rain, gained almost nothing.',
+      'Missing markets mean some useful deals simply cannot be made, and people end up valuing grain in each weather differently.',
+    ],
+    concept: [
+      { q: 'With only the bond and the share, can you build a “Rain only” ticket?', options: ['No: any mix of them that pays in Rain also pays in Sun.', 'Yes: buy a share and sell a bond.', 'Yes: buy two shares.', 'It depends on the prices.'], correct: 0, explain: 'The share pays 3, 2, 0 and the bond 1, 1, 1. Every combination is “bond amount + share amount × (3, 2, 0)”, which can never pay in Rain alone.' },
+      { q: 'Compared with having a ticket for every weather, the island will…', options: ['gain less from trade: some risks can no longer be shared.', 'gain more: shares are more exciting.', 'gain exactly the same.', 'not trade at all.'], correct: 0, explain: 'Fewer kinds of contract mean fewer possible swaps, so some gains from trade are lost.' },
+    ],
+    debrief: '<p><b>What went wrong?</b> A fisher wants to sell Rain grain and buy Sun and Storm grain. With tickets that was easy. With a bond and a share, selling Rain grain means selling shares, which also sells Sun grain, which the fisher did not want. So fishers barely trade.</p>',
+  },
+  r4: {
+    tag: 'Part 2 · A new contract fixes the market',
+    story: 'Same island again. A new contract appears: a <b>call option</b> on the share. It pays the share’s payout minus 1 when that is positive: <b>2</b> in Sun, <b>1</b> in Rain, <b>0</b> in Storm.',
+    market: 'Bond, share and call all trade. With three different contracts you can build any plan, so just choose how much grain you want in each weather. The game shows the bonds, shares and calls you need.',
+    goal: GOAL_GEN,
+    predictHint: 'Hint: if a grain costs 0.4 in Sun, 0.3 in Rain and 0.3 in Storm (as in Part 1), what is a contract paying 3, 2, 0 worth? And one paying 2, 1, 0?',
+    lesson: [
+      'One clever contract (the call) let islanders <b>build every weather ticket again</b>. For example, 2 calls minus 1 share pays 1 grain in Sun only.',
+      'Prices followed from Part 1’s grain prices: share = 3×0.4 + 2×0.3 = 1.8 and call = 2×0.4 + 1×0.3 = 1.1. A contract is worth what it pays in each weather times the price of grain in that weather.',
+      'Everyone ended up <b>exactly as well off as in Part 1</b>. A few well-chosen financial contracts can do the job of a full set of insurance tickets (economists: Arrow, 1953).',
+    ],
+    concept: [
+      { q: 'Why does the call option (2, 1, 0) help?', options: ['Together with the bond and share it can build any weather ticket, so every risk can be shared again.', 'It is cheaper than the share.', 'It pays more in Storm.', 'It doesn’t help; it is just another share.'], correct: 0, explain: '2 calls − 1 share pays (1, 0, 0), 2 shares − 3 calls pays (0, 1, 0), and bond − share + call pays (0, 0, 1). With all three tickets rebuilt, the market works like Part 1.' },
+      { q: 'Compared with the storm year in Part 1, islanders will end up…', options: ['exactly as well off: three different contracts are as good as three weather tickets.', 'worse off: there are no weather tickets.', 'better off: options are extra insurance.', 'impossible to say.'], correct: 0, explain: 'Anything you could do with tickets you can now do with bonds, shares and calls, so the outcome is the same.' },
+    ],
+    debrief: '<p><b>Building tickets from contracts.</b> Sun ticket = 2 calls − 1 share (pays 4−3, 2−2, 0). Rain ticket = 2 shares − 3 calls. Storm ticket = 1 bond − 1 share + 1 call. Since any ticket can be built, the market is <i>complete</i> again, and prices must agree with Part 1, otherwise someone could make free money by building and reselling.</p>',
+  },
+  r5: {
+    tag: 'Part 2 · Two goods and a guess about prices',
+    story: 'Tomorrow islanders eat two things, <b>grain and fish</b>, and like to split their spending half and half. Fishers land huge catches when it rains.',
+    market: 'Today you can trade weather tickets paid in <b>grain</b>. Tomorrow, once the weather is known, a <b>fish market</b> opens where fish is swapped for grain. To plan today you must <b>guess what a fish will be worth</b> in each weather, because that decides how rich your fish make you.',
+    goal: '1) Guess the fish price for each weather. 2) Choose how much wealth (counted in grain) you want in each weather. 3) Tomorrow, trade fish for grain.',
+    predictHint: 'Hint: when fish is plentiful, each fish buys less grain. Look at the island totals: in which weather is there lots of fish compared with grain? People spend half on each, so the fish price ≈ total grain ÷ total fish.',
+    lesson: [
+      'Fish was cheap in Rain (0.5 grain) and dear in Sun and Storm (2 grain): a glut makes prices fall.',
+      'Islanders who guessed fish prices correctly did as well as if there had been a ticket for every good in every weather, with far fewer markets.',
+      'A wrong guess was costly: fishers who expected fish to be worth 1 grain in Rain thought they were rich in Rain, sold too many Rain tickets, and had to dump fish later. Economists call correct guesses about future prices <i>rational expectations</i>.',
+    ],
+    concept: [
+      { q: 'To decide today how many Rain tickets to sell, what do you need to guess?', options: ['What my fish will be worth (in grain) if it rains.', 'Only today’s ticket prices.', 'Which weather will happen.', 'How much other islanders own.'], correct: 0, explain: 'Your wealth in Rain = grain + fish × fish price. If you overestimate the fish price you think you are richer in Rain than you will be.' },
+      { q: 'Fishers catch huge amounts of fish when it rains. What happens to the fish price then?', options: ['It falls: lots of fish, so each fish buys less grain.', 'It rises: fishers are happy.', 'It stays at 1.', 'There is no fish market in Rain.'], correct: 0, explain: 'With 240 fish and 120 grain on the island in Rain, and people wanting to spend equally on both, one fish trades for half a grain.' },
+    ],
+    debrief: '<p><b>Fish prices.</b> People spend half on grain and half on fish, so the total value of fish equals the total value of grain: fish price = total grain ÷ total fish = 150/75 = 2 in Sun, 120/240 = 0.5 in Rain, 80/40 = 2 in Storm.</p><p><b>Why the guess matters.</b> Today you trade grain tickets based on how rich you expect to be in each weather. Guess the fish price wrong and you insure the wrong weather.</p>',
+  },
+};
+const HOWTO = [
+  ['🏝️', 'You are an islander', 'Your harvest tomorrow depends on the weather: Sun, Rain or Storm. You don’t know which will come.'],
+  ['🎟️', 'Trade to protect yourself', 'Today you can trade contracts that pay grain in particular weathers, like insurance.'],
+  ['😊', 'Aim for a steady life', 'Each extra grain makes you a bit less happy than the last (your 10th meal matters less than your 1st). So a decent amount in every weather beats feast-or-famine. The game scores a plan as “as good as X grain for sure”.'],
+  ['⚖️', 'Prices balance supply and demand', 'Everyone submits a plan. If more people want to buy than sell, the price rises, and you can revise. It stops when buyers and sellers match.'],
+  ['⭐', 'Points', 'Guess the prices (up to 100), trade well (about 100) and answer two quick questions (50). The weather is drawn after you decide, so luck doesn’t count.'],
+];
+const GLOSSARY = [
+  ['Weather ticket', 'Pays 1 grain if a particular weather happens, nothing otherwise. Economists: Arrow security or contingent claim.'],
+  ['Bond', 'Pays the same amount whatever happens.'],
+  ['Share', 'Pays more in good times and less in bad times.'],
+  ['Call option', 'Pays the share’s payout above a set level (here 1), or nothing.'],
+  ['Budget', 'What you buy must be paid for by what you sell. Your harvest is your wealth.'],
+  ['“As good as X grain for sure”', 'The certain amount you would accept instead of your risky plan (certainty equivalent).'],
+  ['Market clears', 'Buyers want exactly what sellers offer. The prices then are the equilibrium prices.'],
+  ['Complete market', 'You can build a ticket for every weather. If you can’t, the market is incomplete.'],
+  ['Spot market', 'A market that opens after the weather is known (here, fish for grain).'],
+];
+const GEN_FINAL = {
+  1: '<li><b>Insurance by trading.</b> When each weather has its own ticket, people who are rich in different weathers can insure each other, and everyone is better off.</li><li><b>Prices reflect scarcity.</b> Insurance against something that hits everyone (a Storm year) is expensive, and nobody can escape it completely; trade only shares the loss.</li></ol><p style="margin-top:.6rem"><b>Coming in Part 2:</b> what if there is <i>not</i> a ticket for every weather?</p>',
+  2: '<li><b>Missing markets hurt.</b> With only a bond and a share, some risks can’t be shared and everyone gains less.</li><li><b>Clever contracts can fix it.</b> One option was enough to rebuild every weather ticket, and the island did as well as in Part 1.</li><li><b>Good guesses matter.</b> With a fish market tomorrow, people needed to guess fish prices correctly today; wrong guesses led to bad decisions.</li></ol>',
+};
+const GEN_RECAP = '<b>Where we left off (Part 1).</b> In the <b>storm year</b> the island harvested 150, 120 and 80 grain in Sun, Rain and Storm. With a ticket for every weather, a grain cost 0.4 in Sun and 0.3 in Rain and Storm. Everyone ended up with the same share of the island total in every weather, and the island gained about <b>14.5</b> sure grain from trading. Part 2 keeps <b>the same island and harvests</b> but changes <b>what can be traded</b>.';
+function forAudience(rounds, aud) {
+  if (aud !== 'general') return rounds;
+  return rounds.map(r => {
+    const g = GENERAL[r.id]; if (!g) return r;
+    const assets = r.assets.map(a => ({ ...a, name: a.name.replace(/ claim$/, ' ticket') }));
+    return { ...r, ...g, assets, mathDebrief: r.debrief, hint: 2 };
+  });
+}
+
+const PARTS = [
+  { id: 1, name: 'Part 1 · Arrow–Debreu', short: 'Arrow–Debreu', minutes: 35, rounds: ['r1', 'r2'],
+    blurb: 'A claim for every weather. Students discover full insurance, then how the market prices aggregate risk.' },
+  { id: 2, name: 'Part 2 · Radner economies', short: 'Radner', minutes: 55, rounds: ['r3', 'r4', 'r5'],
+    blurb: 'Trade in assets instead of claims: an incomplete market, an option that completes it, and spot markets that need correct price expectations.' },
+];
+const PART_GEN = { 1: { name: 'Part 1 · Sharing risk', blurb: 'Islanders trade “weather tickets” to insure each other, first in a normal year, then in a storm year that hits everyone.' }, 2: { name: 'Part 2 · When markets are missing', blurb: 'Only a few contracts can be traded. What is lost, how a clever new contract fixes it, and why good guesses about future prices matter.' } };
+const partName = (k, aud) => aud === 'general' ? PART_GEN[k].name : PARTS[k - 1].name;
+const partBlurb = (k, aud) => aud === 'general' ? PART_GEN[k].blurb : PARTS[k - 1].blurb;
+const roundsOfPart = k => JSON.parse(JSON.stringify(DEFAULT_ROUNDS.filter(r => k === 0 || PARTS[k - 1].rounds.includes(r.id))));
+const PART2_RECAP = String.raw`<b>Where we left off (Part 1).</b> In the <b>storm year</b> the island harvested 150, 120 and 80 grain in Sun, Rain and Storm. With a complete market of contingent claims, state prices were $p=(0.4,\,0.3,\,0.3)$, every islander consumed a fixed <i>share</i> of the island total, and the island gained about <b>14.5</b> sure grain from trade. Part 2 keeps <b>the same island and harvests</b> but changes <b>what can be traded</b>.`;
+function stormYearGain() { const th = theory(DEFAULT_ROUNDS.find(r => r.id === 'r2')); return sum(th.per.map(p => p.CE - p.CE0)); }
+
+/* ------------------------------------------------------------- helpers */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fx = (x, d = 2) => (x == null || !isFinite(x)) ? '—' : (Math.abs(x) < 0.5 * Math.pow(10, -d) ? (0).toFixed(d) : (+x).toFixed(d));
+const sgn = (x, d = 2) => (x == null || !isFinite(x)) ? '—' : (x > 0 ? '+' : '') + fx(x, d);
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const sum = a => a.reduce((s, x) => s + x, 0);
+const geomean = a => Math.exp(sum(a.map(Math.log)) / a.length);
+const isSure = pay => pay.every(x => Math.abs(x - 1) < 1e-12);
+const assetsA = sc => sc.assets.map(a => a.payoff);
+const piOf = (sc, i) => (sc.beliefs && sc.beliefs[i]) || sc.states.map(s => s.prob);
+const fIdx = sc => sc.assets.map((a, j) => j).filter(j => !isSure(sc.assets[j].payoff));
+const nS = sc => sc.states.length;
+function forecastLabels(sc) {
+  const L = fIdx(sc).map(j => ({ label: `Price of ${sc.assets[j].name}`, tex: `q_{${sc.assets[j].sym}}` }));
+  if (sc.kind === 'radner') sc.states.forEach((s, k) => L.push({ label: `Spot fish price in ${s.name}`, tex: `\\rho_{${k + 1}}` }));
+  return L;
+}
+function endowOf(sc, i) { return sc.kind === 'radner' ? sc.grain[i] : sc.endow[i]; }
+
+/* theory: equilibrium of the round's economy, answer key */
+function theory(sc) {
+  const A = assetsA(sc), pi = sc.states.map(s => s.prob), g = sc.gamma || 1, n = ROLES.length;
+  if (sc.kind === 'radner') {
+    const a = sc.alpha, S = nS(sc);
+    const X = sc.states.map((_, s) => sum(sc.grain.map(r => r[s]))), Y = sc.states.map((_, s) => sum(sc.fish.map(r => r[s])));
+    const rho = X.map((x, s) => (1 - a) / a * x / Y[s]);
+    const m = sc.grain.map((_, i) => R.m(sc, i, rho));
+    const agg = sc.states.map((_, s) => sum(m.map(r => r[s])));
+    const eq = E.equilibrium({ pi, gamma: 1, A, endow: m, agg });
+    const per = m.map(mi => { const th = E.optimal(mi, A, eq.q, pi, 1); const c = E.cons(mi, A, th); return { th, c, CE: R.V(pi, a, rho, c), CE0: R.V(pi, a, rho, mi) }; });
+    return { p: eq.p, q: eq.q, rho, X, Y, m, agg, W: E.dot(eq.p, agg), per, truthF: [...fIdx(sc).map(j => eq.q[j]), ...rho] };
+  }
+  const agg = sc.states.map((_, s) => sum(sc.endow.map(r => r[s])));
+  const eq = E.equilibrium({ pi, gamma: g, A, endow: sc.endow, agg, beliefs: sc.beliefs });
+  const per = sc.endow.map((e, i) => { const pii = piOf(sc, i); const th = E.optimal(e, A, eq.q, pii, g); const c = E.cons(e, A, th); return { th, c, CE: E.CE(pii, c, g), CE0: E.CE(pii, e, g) }; });
+  return { p: eq.p, q: eq.q, agg, W: E.dot(eq.p, agg), per, truthF: fIdx(sc).map(j => eq.q[j]) };
+}
+/* t=0 "wealth vector" an agent uses to evaluate a portfolio */
+function baseVec(sc, i, rho) { return sc.kind === 'radner' ? R.m(sc, i, rho) : sc.endow[i]; }
+function optimalFor(sc, i, q, rho) { return E.optimal(baseVec(sc, i, rho), assetsA(sc), q, piOf(sc, i), sc.gamma || 1); }
+function validateOrder(sc, i, q, th, rho) {
+  if (!Array.isArray(th) || th.length !== sc.assets.length || !th.every(x => typeof x === 'number' && isFinite(x))) return 'Enter a number for every asset.';
+  const cost = E.dot(q, th);
+  if (cost > 0.01) return `Budget violated: this order costs ${fx(cost, 3)} > 0. Sell more or buy less.`;
+  const c = E.cons(baseVec(sc, i, rho), assetsA(sc), th);
+  const bad = c.findIndex(x => !(x > 0));
+  if (bad >= 0) return `Infeasible: you would be unable to deliver in ${sc.states[bad].name} (consumption ${fx(c[bad])} ≤ 0).`;
+  return null;
+}
+function personalStatePrices(pi, c, g) { const v = c.map((cs, s) => pi[s] * E.up(Math.max(cs, 1e-6), g)); return E.normP(v); }
+function forecastScore(f, truth) {
+  if (!f) return 0;
+  const errs = truth.map((t, k) => (f[k] > 0 && t > 0) ? Math.min(1, Math.abs(Math.log(f[k] / t))) : 1);
+  return 100 * Math.exp(-4 * sum(errs) / errs.length);
+}
+/* state-price set consistent with incomplete-market prices (S = 3 grid scan) */
+function statePriceRanges(A, q) {
+  if (A[0].length !== 3) return null;
+  const lo = [1, 1, 1], hi = [0, 0, 0]; let found = false; const st = 0.0025;
+  for (let a = st; a < 1; a += st) for (let b = st; a + b < 1; b += st) {
+    const p = [a, b, 1 - a - b];
+    if (A.every((row, j) => Math.abs(E.dot(row, p) - q[j]) < 0.004 * Math.max(1, q[j]))) { found = true; p.forEach((x, s) => { lo[s] = Math.min(lo[s], x); hi[s] = Math.max(hi[s], x); }); }
+  }
+  return found ? { lo, hi } : null;
+}
+
+/* ------------------------------------------------------------- the game (host-authoritative) */
+const DEFAULT_SETTINGS = { tol: 0.01, maxIter: 10, kappa: 0.8, timer: 0, open: 'forecast', autoClear: true, hints: {} };
+class Game {
+  constructor(rounds, settings) {
+    const shuffleQ = c => { const idx = c.options.map((_, j) => j); for (let k = idx.length - 1; k > 0; k--) { const m = Math.floor(Math.random() * (k + 1)); [idx[k], idx[m]] = [idx[m], idx[k]]; } return { ...c, options: idx.map(j => c.options[j]), correct: idx.indexOf(c.correct) }; };
+    rounds = rounds.map(r => ({ ...r, concept: (r.concept || []).map(shuffleQ) }));
+    this.rounds = rounds; this.S = { ...DEFAULT_SETTINGS, ...settings };
+    this.seats = ROLES.map((ro, i) => ({ i, role: ro.name, kind: 'empty', name: '', token: null, connected: false }));
+    this.r = -1; this.phase = 'lobby'; this.rs = null; this.th = null; this.scores = ROLES.map(() => []); this.subs = [];
+    this.history = [];
+  }
+  static restore(o) { const g = new Game(o.rounds, o.S); Object.assign(g, o); g.subs = []; g.seats.forEach(s => s.connected = s.kind === 'local'); return g; }
+  serialize() { const { subs, ...o } = this; return o; }
+  on(fn) { this.subs.push(fn); }
+  changed() { this.subs.forEach(f => f()); }
+  get sc() { return this.rounds[this.r]; }
+  waitingSeats() { return this.seats.filter(s => (s.kind === 'human' && s.connected) || s.kind === 'local' || s.kind === 'manual'); }
+  hintLevel() { const h = this.S.hints[this.r]; return h == null ? this.sc.hint : h; }
+
+  join(token, name) {
+    let s = this.seats.find(s => s.token === token && s.kind === 'human');
+    if (!s && name) s = this.seats.find(s => s.kind === 'human' && !s.connected && s.name.toLowerCase() === name.toLowerCase());
+    if (!s) s = this.seats.find(s => s.kind === 'empty') || this.seats.find(s => s.kind === 'bot');
+    if (!s) return -1;
+    const wasBot = s.kind === 'bot';
+    s.kind = 'human'; s.token = token; s.name = name || s.role; s.connected = true;
+    if (wasBot && this.rs) { delete this.rs.orders[s.i]; if (this.rs.spot) delete this.rs.spot.orders[s.i]; }
+    this.changed(); return s.i;
+  }
+  setSeatKind(i, kind) {
+    const s = this.seats[i]; s.kind = kind; s.connected = kind === 'local';
+    if (kind !== 'human') { s.token = null; s.name = kind === 'bot' ? `${s.role} (bot)` : kind === 'manual' ? `${s.role} (entered by host)` : ''; }
+    if (kind === 'bot' && this.rs) { if (this.phase === 'trading') this.botOrders(); if (this.phase === 'spot') this.botSpot(); }
+    this.changed(); this.maybeAuto();
+  }
+  start() {
+    this.seats.forEach(s => { if (s.kind === 'empty') { s.kind = 'bot'; s.name = `${s.role} (bot)`; } });
+    this.r = 0; this.beginRound();
+  }
+  beginRound() {
+    this.th = theory(this.sc);
+    this.rs = { forecasts: {}, answers: {}, iter: 0, p: null, q: null, orders: {}, history: [], cleared: false, stalled: false, exec: null, execQ: null, nature: null, spot: null, results: null, deadline: null };
+    this.phase = 'briefing'; this.changed();
+  }
+  advance() {
+    const ph = this.phase, rs = this.rs;
+    if (ph === 'lobby') return this.start();
+    if (ph === 'briefing') { this.phase = 'forecast'; this.botForecasts(); }
+    else if (ph === 'forecast') { this.openMarket(); this.phase = 'trading'; this.botOrders(); this.armTimer(); }
+    else if (ph === 'trading') { if (!rs.exec) this.execute(); this.phase = 'nature'; rs.deadline = null; }
+    else if (ph === 'nature') {
+      if (!rs.nature) { this.draw(); return; }
+      if (this.sc.kind === 'radner') { this.openSpot(); this.phase = 'spot'; this.botSpot(); this.armTimer(); }
+      else { this.finish(); this.phase = 'results'; }
+    }
+    else if (ph === 'spot') { if (!rs.spot.exec) this.executeSpot(); this.finish(); this.phase = 'results'; rs.deadline = null; }
+    else if (ph === 'results') { if (this.r < this.rounds.length - 1) { this.r++; this.beginRound(); return; } this.phase = 'final'; }
+    this.changed(); this.maybeAuto();
+  }
+  handle(i, msg) {
+    if (!msg || typeof msg !== 'object') return null;
+    if (msg.t === 'forecast') return this.submitForecast(i, msg.f, msg.ans);
+    if (msg.t === 'order') return this.submitOrder(i, msg.th);
+    if (msg.t === 'spot') return this.submitSpot(i, msg.dy);
+    return null;
+  }
+  submitForecast(i, f, ans) {
+    if (this.phase !== 'forecast') return 'Forecasts are closed.';
+    const n = forecastLabels(this.sc).length;
+    if (!Array.isArray(f) || f.length !== n) return 'Fill in every forecast.';
+    f = f.map(Number); if (!f.every(x => isFinite(x) && x > 0)) return 'Forecasts must be positive numbers.';
+    this.rs.forecasts[i] = f;
+    this.rs.answers[i] = Array.isArray(ans) ? ans.map(x => (x == null ? null : +x)) : [];
+    this.changed(); return null;
+  }
+  botForecasts() { this.seats.forEach(s => { if (s.kind === 'bot') { this.rs.forecasts[s.i] = this.th.truthF.slice(); this.rs.answers[s.i] = this.sc.concept.map(c => c.correct); } }); }
+  avgForecast() {
+    const fs = this.seats.filter(s => s.kind !== 'bot').map(s => this.rs.forecasts[s.i]).filter(Boolean);
+    if (!fs.length) return null;
+    return fs[0].map((_, k) => geomean(fs.map(f => f[k])));
+  }
+  openMarket() {
+    const sc = this.sc, rs = this.rs, A = assetsA(sc), pi = sc.states.map(s => s.prob);
+    let p = pi.slice();
+    const avg = this.S.open === 'forecast' ? this.avgForecast() : null;
+    if (avg) {
+      const fi = fIdx(sc); const q = sc.assets.map(() => 1); fi.forEach((j, k) => q[j] = avg[k]);
+      p = E.projectP(A, q, pi);
+    }
+    rs.p = p; rs.q = E.qFromP(A, p); rs.iter = 1; rs.orders = {}; rs.history = []; rs.cleared = false; rs.stalled = false;
+  }
+  botOrders() { const rs = this.rs; this.seats.forEach(s => { if (s.kind === 'bot') rs.orders[s.i] = optimalFor(this.sc, s.i, rs.q, this.th.rho); }); }
+  submitOrder(i, th) {
+    if (this.phase !== 'trading' || this.rs.cleared || this.rs.stalled || this.rs.exec) return 'The market is not taking orders right now.';
+    th = Array.isArray(th) ? th.map(Number) : th;
+    const err = validateOrder(this.sc, i, this.rs.q, th, this.th.rho); if (err) return err;
+    this.rs.orders[i] = th; this.changed(); this.maybeAuto(); return null;
+  }
+  allIn(map) { return this.waitingSeats().every(s => map[s.i]); }
+  maybeAuto() {
+    if (!this.S.autoClear || !this.rs) return;
+    if (this.phase === 'trading' && !this.rs.cleared && !this.rs.stalled && !this.rs.exec && this.allIn(this.rs.orders)) this.computeIter();
+    else if (this.phase === 'spot' && this.rs.spot && !this.rs.spot.cleared && !this.rs.spot.stalled && !this.rs.spot.exec && this.allIn(this.rs.spot.orders)) this.computeSpot();
+  }
+  snapshot() {
+    const rs = this.rs, J = this.sc.assets.length;
+    const orders = this.seats.map(s => rs.orders[s.i] ? rs.orders[s.i].slice() : null);
+    const Z = new Array(J).fill(0); orders.forEach(o => o && o.forEach((x, j) => Z[j] += x));
+    const err = Math.max(...Z.map((z, j) => Math.abs(z) * rs.q[j])) / this.th.W;
+    const h = { iter: rs.iter, q: rs.q.slice(), p: rs.p.slice(), Z, err, orders, n: orders.filter(Boolean).length };
+    if (rs.history.length && rs.history[rs.history.length - 1].iter === rs.iter) rs.history[rs.history.length - 1] = h; else rs.history.push(h);
+    return h;
+  }
+  computeIter() {
+    const rs = this.rs, h = this.snapshot();
+    if (h.err <= this.S.tol) { rs.cleared = true; rs.deadline = null; }
+    else if (rs.iter >= this.S.maxIter) { rs.stalled = true; rs.deadline = null; }
+    else {
+      rs.p = E.tatStep(this.th.agg, rs.p, h.Z, assetsA(this.sc), this.S.kappa);
+      rs.q = E.qFromP(assetsA(this.sc), rs.p); rs.iter++; rs.orders = {}; this.botOrders(); this.armTimer();
+    }
+    this.changed(); this.maybeAuto();
+  }
+  setPrices(q) {
+    const rs = this.rs; if (this.phase !== 'trading' || rs.exec) return;
+    rs.p = E.projectP(assetsA(this.sc), q, rs.p); rs.q = E.qFromP(assetsA(this.sc), rs.p);
+    if (rs.history.length && rs.history[rs.history.length - 1].iter === rs.iter) rs.iter++;
+    rs.orders = {}; rs.cleared = false; rs.stalled = false; this.botOrders(); this.armTimer(); this.changed(); this.maybeAuto();
+  }
+  reopen() { const rs = this.rs; if (rs.exec) return; rs.stalled = false; rs.cleared = false; this.S.maxIter = Math.max(this.S.maxIter, rs.iter + 5); rs.p = E.tatStep(this.th.agg, rs.p, rs.history[rs.history.length - 1].Z, assetsA(this.sc), this.S.kappa); rs.q = E.qFromP(assetsA(this.sc), rs.p); rs.iter++; rs.orders = {}; this.botOrders(); this.armTimer(); this.changed(); this.maybeAuto(); }
+  execute() {
+    const rs = this.rs, J = this.sc.assets.length;
+    const h = (rs.history.length && rs.history[rs.history.length - 1].iter === rs.iter) ? rs.history[rs.history.length - 1] : this.snapshot();
+    const ex = E.ration(h.orders, J);
+    rs.exec = ex.map(th => ({ th, cash: -E.dot(h.q, th) }));
+    rs.execQ = h.q.slice(); rs.execP = h.p.slice(); rs.execIter = h.iter; rs.deadline = null;
+  }
+  draw() {
+    const pr = this.sc.states.map(s => s.prob); let u = Math.random() * sum(pr), s = 0;
+    while (s < pr.length - 1 && u > pr[s]) { u -= pr[s]; s++; }
+    this.rs.nature = { s, at: Date.now() }; this.changed();
+  }
+  /* --- spot market (Radner, two goods) --- */
+  openSpot() {
+    const sc = this.sc, rs = this.rs, s = rs.nature.s;
+    const g = this.seats.map((_, i) => sc.grain[i][s] + rs.exec[i].th[s] + rs.exec[i].cash);
+    const y = this.seats.map((_, i) => sc.fish[i][s]);
+    const avg = this.S.open === 'forecast' ? this.avgForecast() : null;
+    const rho = avg ? avg[fIdx(sc).length + s] : 1;
+    rs.spot = { s, g, y, rho, rho0: rho, iter: 1, orders: {}, history: [], cleared: false, stalled: false, exec: null };
+  }
+  botSpot() {
+    const sp = this.rs.spot, a = this.sc.alpha;
+    this.seats.forEach(s => { if (s.kind === 'bot') { const M = sp.g[s.i] + sp.rho * sp.y[s.i]; sp.orders[s.i] = [(1 - a) * M / sp.rho - sp.y[s.i]]; } });
+  }
+  submitSpot(i, dy) {
+    const sp = this.rs.spot;
+    if (this.phase !== 'spot' || !sp || sp.cleared || sp.stalled || sp.exec) return 'The spot market is not taking orders right now.';
+    dy = Number(dy); if (!isFinite(dy)) return 'Enter a number.';
+    if (!(sp.g[i] - sp.rho * dy > 0)) return 'You cannot pay for that much fish.';
+    if (!(sp.y[i] + dy > 0)) return 'You cannot sell more fish than you have.';
+    sp.orders[i] = [dy]; this.changed(); this.maybeAuto(); return null;
+  }
+  spotSnapshot() {
+    const sp = this.rs.spot, orders = this.seats.map(s => sp.orders[s.i] ? sp.orders[s.i].slice() : null);
+    const Z = sum(orders.map(o => o ? o[0] : 0)), Y = sum(sp.y), G = sum(sp.g);
+    const h = { iter: sp.iter, rho: sp.rho, Z, err: Math.abs(Z) * sp.rho / (G + sp.rho * Y), orders, n: orders.filter(Boolean).length };
+    if (sp.history.length && sp.history[sp.history.length - 1].iter === sp.iter) sp.history[sp.history.length - 1] = h; else sp.history.push(h);
+    return h;
+  }
+  computeSpot() {
+    const sp = this.rs.spot, h = this.spotSnapshot();
+    if (h.err <= this.S.tol) { sp.cleared = true; this.rs.deadline = null; }
+    else if (sp.iter >= this.S.maxIter) { sp.stalled = true; this.rs.deadline = null; }
+    else { const Y = sum(sp.y); sp.rho *= Math.pow(clamp((Y + h.Z) / Y, 0.25, 4), this.S.kappa); sp.iter++; sp.orders = {}; this.botSpot(); this.armTimer(); }
+    this.changed(); this.maybeAuto();
+  }
+  executeSpot() {
+    const sp = this.rs.spot;
+    const h = (sp.history.length && sp.history[sp.history.length - 1].iter === sp.iter) ? sp.history[sp.history.length - 1] : this.spotSnapshot();
+    const ex = E.ration(h.orders, 1);
+    sp.exec = ex.map((o, i) => { let gf = sp.g[i] - h.rho * o[0], yf = sp.y[i] + o[0]; return { dy: o[0], gf: Math.max(gf, 0.01), yf: Math.max(yf, 0.01) }; });
+    sp.execRho = h.rho;
+  }
+  armTimer() { this.rs.deadline = this.S.timer > 0 ? Date.now() + this.S.timer * 1000 : null; }
+  tick() {
+    const rs = this.rs; if (!rs || !rs.deadline || Date.now() < rs.deadline) return;
+    rs.deadline = null;
+    if (this.phase === 'trading' && !rs.cleared && !rs.stalled && !rs.exec) this.computeIter();
+    else if (this.phase === 'spot' && rs.spot && !rs.spot.cleared && !rs.spot.stalled && !rs.spot.exec) this.computeSpot();
+  }
+  finish() {
+    const sc = this.sc, rs = this.rs, th = this.th, A = assetsA(sc), g = sc.gamma || 1;
+    const per = this.seats.map((seat, i) => {
+      const f = rs.forecasts[i] || null, ans = rs.answers[i] || [];
+      const fScore = forecastScore(f, th.truthF);
+      const cScore = sc.concept.reduce((t, c, k) => t + (ans[k] === c.correct ? 25 : 0), 0);
+      const ex = rs.exec[i], T = th.per[i]; let c, CE, sScore = null, spot = null;
+      if (sc.kind === 'radner') {
+        c = th.m[i].map((x, s) => x + ex.th[s] + ex.cash);
+        CE = R.V(sc.states.map(s => s.prob), sc.alpha, th.rho, c);
+        const sp = rs.spot, se = sp.exec[i], a = sc.alpha, rf = sp.execRho, M = sp.g[i] + rf * sp.y[i];
+        const uAct = a * Math.log(se.gf) + (1 - a) * Math.log(se.yf);
+        const uOpt = M > 0 ? a * Math.log(a * M) + (1 - a) * Math.log((1 - a) * M / rf) : uAct;
+        const ratio = Math.exp(uAct - uOpt);
+        sScore = 50 * clamp(1 - 10 * (1 - ratio), 0, 1);
+        spot = { g: sp.g[i], y: sp.y[i], dy: se.dy, gf: se.gf, yf: se.yf, ratio };
+      } else { c = E.cons(sc.endow[i], A, ex.th, ex.cash); CE = E.CE(piOf(sc, i), c, g); }
+      const d = 0.02 * T.CE;
+      const wScore = clamp(100 * (CE - T.CE0 + d) / (T.CE - T.CE0 + d), 0, 120);
+      const total = Math.round(fScore + wScore + cScore + (sScore || 0));
+      return { f, ans, fScore, cScore, wScore, sScore, total, c, CE, th: ex.th, cash: ex.cash, spd: personalStatePrices(piOf(sc, i), c, sc.kind === 'radner' ? 1 : g), spot, bot: seat.kind === 'bot' };
+    });
+    const gainA = sum(per.map((p, i) => p.CE - th.per[i].CE0)), gainT = sum(th.per.map(p => p.CE - p.CE0));
+    rs.results = { per, avgF: this.avgForecast(), gainA, gainT, s: rs.nature.s };
+    per.forEach((p, i) => this.scores[i][this.r] = p.total);
+    this.history[this.r] = { title: sc.title, gainA, gainT, q: rs.execQ, qT: th.q };
+  }
+  board() { return this.seats.map((s, i) => ({ i, role: s.role, name: s.name, bot: s.kind === 'bot', total: sum(this.scores[i].filter(x => x != null)), rounds: this.scores[i] })); }
+
+  /* the view one seat is allowed to see */
+  viewFor(i) {
+    const rs = this.rs, sc = this.sc, ph = this.phase, reveal = ph === 'results' || ph === 'final';
+    const v = { me: i, aud: this.S.aud || 'econ', part: this.S.part || 0, bench: this.S.bench || null, phase: ph, r: this.r, nR: this.rounds.length, roundTitles: this.rounds.map(r => r.title), board: this.board(), hist: this.history, tol: this.S.tol, maxIter: this.S.maxIter,
+      seats: this.seats.map(s => ({ role: s.role, name: s.name, kind: s.kind, connected: s.connected })) };
+    if (!sc || !rs) return v;
+    v.sc = reveal ? sc : { ...sc, concept: sc.concept.map(c => ({ q: c.q, options: c.options })), debrief: '', lesson: [] };
+    v.hint = this.hintLevel();
+    const subMap = ph === 'forecast' ? rs.forecasts : ph === 'trading' ? rs.orders : ph === 'spot' && rs.spot ? rs.spot.orders : {};
+    v.rs = {
+      iter: rs.iter, q: rs.q, cleared: rs.cleared, stalled: rs.stalled,
+      history: rs.history.map(h => ({ iter: h.iter, q: h.q, Z: h.Z, err: h.err, n: h.n })),
+      submitted: this.seats.map(s => !!subMap[s.i]),
+      myForecast: rs.forecasts[i] || null, myAnswers: rs.answers[i] || null, myOrder: rs.orders[i] || null,
+      exec: rs.exec ? rs.exec[i] : null, execQ: rs.execQ, execIter: rs.execIter,
+      nature: rs.nature ? { s: rs.nature.s, age: Date.now() - rs.nature.at } : null,
+      deadlineIn: rs.deadline ? rs.deadline - Date.now() : null,
+    };
+    if (rs.spot) { const sp = rs.spot; v.rs.spot = { s: sp.s, rho: sp.rho, iter: sp.iter, cleared: sp.cleared, stalled: sp.stalled, g: sp.g[i], y: sp.y[i], myOrder: sp.orders[i] || null, exec: sp.exec ? sp.exec[i] : null, execRho: sp.execRho, history: sp.history.map(h => ({ iter: h.iter, rho: h.rho, Z: h.Z, err: h.err, n: h.n })) }; }
+    if (reveal) { v.rs.results = rs.results; v.th = { q: this.th.q, p: this.th.p, rho: this.th.rho, per: this.th.per, truthF: this.th.truthF, agg: this.th.agg }; v.rs.historyFull = rs.history.map(h => ({ iter: h.iter, q: h.q })); if (rs.spot) v.rs.spotAll = { g: rs.spot.g, y: rs.spot.y, exec: rs.spot.exec, execRho: rs.spot.execRho }; }
+    return v;
+  }
+}
+
+/* ------------------------------------------------------------- networking (MQTT-over-WebSocket relay) */
+/* The professor's browser is the server. Messages travel through public MQTT brokers over wss://, which
+   works behind most firewalls without accounts or installs. The host listens on every broker at once;
+   each student uses the first broker that answers. */
+const BROKERS = ['wss://broker.hivemq.com:8884/mqtt', 'wss://broker.emqx.io:8084/mqtt', 'wss://test.mosquitto.org:8081/mqtt'];
+const TOPIC = code => `islandmkts/v1/${code}`;
+const CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+const newCode = () => Array.from({ length: 5 }, () => CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)]).join('');
+const rid = () => Math.random().toString(36).slice(2, 10);
+function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k)); if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch { return null; } }
+function myToken() { let t = null; try { t = sessionStorage.getItem('islandmkts-token'); if (!t) { t = rid() + rid() + Date.now().toString(36); sessionStorage.setItem('islandmkts-token', t); } } catch { t = t || rid() + rid(); } return t; }
+const parse = buf => { try { return JSON.parse(typeof buf === 'string' ? buf : new TextDecoder().decode(buf)); } catch { return null; } };
+
+function hostNet(game, code, onStatus) {
+  if (typeof mqtt === 'undefined') { onStatus('error'); return null; }
+  const T = TOPIC(code), links = new Map(); // seat -> { client, token, last }
+  const status = () => { const n = clients.filter(c => c.connected).length; onStatus(n ? 'online' : 'reconnecting', `${n}/${clients.length}`); };
+  const sendTo = (client, token, obj) => { if (client && client.connected) client.publish(`${T}/down/${token}`, JSON.stringify(obj), { qos: 1 }); };
+  const push = i => { const l = links.get(i); if (l) sendTo(l.client, l.token, { t: 'view', v: game.viewFor(i) }); };
+  const seatOf = token => { for (const [i, l] of links) if (l.token === token) return i; return null; };
+  function onUp(client, buf) {
+    const msg = parse(buf); if (!msg || typeof msg !== 'object') return;
+    const token = String(msg.token || '').slice(0, 64); if (!token) return;
+    if (msg.t === 'hello') {
+      const i = game.join(token, String(msg.name || '').trim().slice(0, 40));
+      if (i < 0) { sendTo(client, token, { t: 'full' }); return; }
+      for (const [k, l] of links) if (l.token === token && k !== i) links.delete(k);
+      links.set(i, { client, token, last: Date.now() }); push(i); return;
+    }
+    const i = seatOf(token);
+    if (i == null) { if (msg.t !== 'bye') sendTo(client, token, { t: 'rehello' }); return; }
+    const l = links.get(i); l.last = Date.now(); l.client = client;
+    if (msg.t === 'bye') { game.seats[i].connected = false; game.changed(); return; }
+    if (!game.seats[i].connected && game.seats[i].kind === 'human') { game.seats[i].connected = true; game.changed(); }
+    if (msg.t === 'ping') { sendTo(client, token, { t: 'pong' }); return; }
+    const err = game.handle(i, msg);
+    sendTo(client, token, { t: 'ack', ok: !err, msg: err || 'Received ✓' });
+  }
+  const clients = BROKERS.map(url => {
+    const c = mqtt.connect(url, { clientId: `imk-h-${code}-${rid()}`, reconnectPeriod: 4000, connectTimeout: 8000, clean: true, keepalive: 30 });
+    c.on('connect', () => { c.subscribe(`${T}/up`, { qos: 1 }); status(); });
+    c.on('message', (_, buf) => onUp(c, buf));
+    c.on('close', status); c.on('offline', status); c.on('error', () => {});
+    return c;
+  });
+  let pending = false;
+  game.on(() => { if (pending) return; pending = true; setTimeout(() => { pending = false; for (const i of links.keys()) push(i); }, 120); });
+  setInterval(() => { const now = Date.now(); let ch = false; for (const [i, l] of links) { const s = game.seats[i]; if (s.kind !== 'human' || s.token !== l.token) { links.delete(i); continue; } if (s.connected && now - l.last > 25000) { s.connected = false; ch = true; } } if (ch) game.changed(); }, 5000);
+  return { kick(i) { const l = links.get(i); if (l) { sendTo(l.client, l.token, { t: 'kicked' }); links.delete(i); } } };
+}
+
+function clientNet(code, name, onMsg, onStatus) {
+  if (typeof mqtt === 'undefined') { onStatus('error'); return null; }
+  const T = TOPIC(code), token = myToken();
+  let client = null, b = 0, gotView = false, lastHost = 0, hellos = 0, dead = false, everConnected = false;
+  const up = obj => { if (client && client.connected) { client.publish(`${T}/up`, JSON.stringify({ ...obj, token }), { qos: 1 }); return true; } return false; };
+  const hello = () => { hellos++; up({ t: 'hello', name }); };
+  function connect() {
+    if (dead) return;
+    const url = BROKERS[b % BROKERS.length]; everConnected = false; hellos = 0;
+    client = mqtt.connect(url, { clientId: `imk-c-${rid()}`, reconnectPeriod: 0, connectTimeout: 7000, clean: true, keepalive: 30, will: { topic: `${T}/up`, payload: JSON.stringify({ t: 'bye', token }), qos: 0, retain: false } });
+    client.on('connect', () => { everConnected = true; onStatus(gotView ? 'connected' : 'connecting'); client.subscribe(`${T}/down/${token}`, { qos: 1 }, () => hello()); });
+    client.on('message', (_, buf) => {
+      const msg = parse(buf); if (!msg) return; lastHost = Date.now();
+      if (msg.t === 'view') { if (!gotView || App.status !== 'connected') onStatus('connected'); gotView = true; }
+      if (msg.t === 'rehello') { hello(); return; }
+      if (msg.t === 'kicked') { dead = true; onStatus('kicked'); try { client.end(true); } catch {} }
+      onMsg(msg);
+    });
+    client.on('close', () => { if (dead) return; onStatus('reconnecting'); const c = client; setTimeout(() => { if (client === c) { if (!everConnected) b++; connect(); } }, 2000); });
+    client.on('error', () => {});
+  }
+  setInterval(() => {
+    if (dead || !client || !client.connected) return;
+    if (!gotView) { if (hellos >= 5) { onStatus('noroom'); b++; try { client.end(true); } catch {} return; } hello(); return; }
+    up({ t: 'ping' });
+    if (Date.now() - lastHost > 30000) { onStatus('reconnecting'); hello(); }
+  }, 3500);
+  connect();
+  window.addEventListener('pagehide', () => up({ t: 'bye' }));
+  return { send: m => { if (up(m)) return true; toast('Not connected — retrying…', 'bad'); return false; } };
+}
+
+/* ------------------------------------------------------------- UI state */
+const App = { mode: null, game: null, net: null, code: null, view: null, send: null, status: '', drafts: {}, showKey: false, modalSeat: null, modalView: null, spun: {}, spinStart: {}, name: '' };
+function toast(msg, kind = '') { const d = document.createElement('div'); d.textContent = msg; if (kind) d.className = kind; $('#toast').appendChild(d); setTimeout(() => d.remove(), 3400); }
+function draft(id, fallback) { return id in App.drafts ? App.drafts[id] : (fallback == null ? '' : String(fallback)); }
+function numIn(id, fallback, extra = '') { return `<input type="text" inputmode="decimal" class="num" id="${id}" data-draft value="${esc(draft(id, fallback))}" ${extra}/>`; }
+function readNum(id) { const el = document.getElementById(id); const v = el ? el.value.trim().replace(',', '.') : ''; return v === '' ? NaN : Number(v); }
+function readStr(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+const pct = x => `${Math.round(100 * x)}%`;
+const r2 = x => Math.round(x * 100) / 100;
+
+let renderQueued = false;
+function render() { if (renderQueued) return; renderQueued = true; const go = () => { if (!renderQueued) return; renderQueued = false; doRender(); }; requestAnimationFrame(go); setTimeout(go, 60); }
+function doRender() {
+  const ae = document.activeElement, fid = ae && ae.id, sel = ae && 'selectionStart' in ae ? [ae.selectionStart, ae.selectionEnd] : null;
+  const y = window.scrollY;
+  let html;
+  if (!App.mode) html = landing();
+  else if (App.mode === 'setup') html = hostSetup();
+  else if (App.mode === 'host') html = hostScreen();
+  else html = playerScreen();
+  $('#app').innerHTML = html;
+  $('#modal').innerHTML = App.modalSeat != null && App.game ? seatModal(App.modalSeat) : '';
+  if (fid) { const el = document.getElementById(fid); if (el) { el.focus(); if (sel && el.setSelectionRange) try { el.setSelectionRange(sel[0], sel[1]); } catch {} } }
+  window.scrollTo(0, y);
+  afterRender();
+}
+function mathIn(el) { if (window.renderMathInElement) try { renderMathInElement(el, { delimiters: [{ left: '$$', right: '$$', display: true }, { left: '$', right: '$', display: false }], throwOnError: false }); } catch {} }
+function afterRender() {
+  mathIn(document.body);
+  document.querySelectorAll('[data-live]').forEach(el => updateLive(el.dataset.live));
+  document.querySelectorAll('[data-spotlive]').forEach(el => updateSpotLive(el.dataset.spotlive));
+  document.querySelectorAll('[data-fsumbox]').forEach(el => updateFsum(el.dataset.fsumbox));
+  document.querySelectorAll('.wheel[data-spin]').forEach(spinWheel);
+}
+
+/* ------------------------------------------------------------- building blocks */
+function inputMode(sc) { const A = assetsA(sc), S = nS(sc); if (A.length === S && E.rank(A) === S) return 'plan'; return sc.assets.some(a => isSure(a.payoff)) ? 'assets' : 'general'; }
+const isArrowSet = sc => sc.assets.length === nS(sc) && sc.assets.every((a, j) => a.payoff.every((x, s) => x === (s === j ? 1 : 0)));
+const statePrices = (sc, q) => E.solveLin(assetsA(sc), q);
+const stW = st => st.wash || '#f3f4f2';
+function tiles(sc, body, only) {
+  return `<div class="tiles">${sc.states.map((st, s) => (only != null && s !== only) ? '' : `<div class="tile" style="--c:${st.color};--w:${stW(st)}"><div class="tile-h"><span class="ic">${st.icon || ''}</span><b>${esc(st.name)}</b><span class="pr">${pct(st.prob)} chance</span></div><div class="tile-b">${body(s)}</div></div>`).join('')}</div>`;
+}
+const kv = (label, value, cls = '') => `<div class="kv ${cls}"><span>${label}</span><b>${value}</b></div>`;
+function pays(sc, a) { return `<div class="pays">pays ${a.payoff.map((x, s) => `<span class="pay" style="--c:${sc.states[s].color};--w:${stW(sc.states[s])}" title="${esc(sc.states[s].name)}">${sc.states[s].icon || esc(sc.states[s].name)} ${fx(x, x % 1 ? 2 : 0)}</span>`).join('')}</div>`; }
+function arrowOf(now, before) { if (before == null || Math.abs(now / before - 1) < 0.0005) return ''; return now > before ? ' <span class="up">▲</span>' : ' <span class="down">▼</span>'; }
+function now(step, title, text, actions = '', wait = false) {
+  return `<div class="now ${wait ? 'wait' : ''}"><div><div class="step">${step}</div><h2>${title}</h2>${text ? `<p>${text}</p>` : ''}</div>${actions ? `<div class="actions">${actions}</div>` : ''}</div>`;
+}
+const STEP_NAMES = [['briefing', 'Read'], ['forecast', 'Predict'], ['trading', 'Trade'], ['nature', 'Weather'], ['spot', 'Spot market'], ['results', 'Results']];
+function stepsBar(sc, phase) {
+  if (!sc || ['lobby', 'final'].includes(phase)) return '';
+  const list = STEP_NAMES.filter(p => p[0] !== 'spot' || sc.kind === 'radner'); const idx = list.findIndex(p => p[0] === phase);
+  return `<span class="steps">${list.map((p, k) => `<span class="${k === idx ? 'on' : k < idx ? 'done' : ''}">${k + 1} ${p[1]}</span>`).join('')}</span>`;
+}
+const partTag = v => v.part ? `Part ${v.part} · ` : '';
+function stepLabel(v, ph) { const list = STEP_NAMES.filter(p => p[0] !== 'spot' || v.sc.kind === 'radner'); return `${partTag(v)}Round ${v.r + 1} of ${v.nR} · Step ${list.findIndex(p => p[0] === ph) + 1} of ${list.length}`; }
+const isGen = v => !!v && v.aud === 'general';
+function howToCard(open = true) { return `<details class="more"${open ? ' open' : ''}><summary>How to play</summary><div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,175px),1fr))">${HOWTO.map(([ic, t, d], k) => `<div class="tile" style="--c:var(--accent);--w:var(--accent-wash)"><div class="tile-h"><span class="ic">${ic}</span><b>${k + 1}. ${t}</b></div><div class="tile-b"><span style="color:var(--ink-2)">${d}</span></div></div>`).join('')}</div></details>`; }
+const glossaryCard = () => `<details class="more"><summary>Words you’ll meet</summary><div class="tbl"><table><tbody>${GLOSSARY.map(([w, d]) => `<tr><td style="white-space:normal;vertical-align:top"><b>${w}</b></td><td style="white-space:normal;text-align:left;color:var(--ink-2)">${d}</td></tr>`).join('')}</tbody></table></div></details>`;
+const recapCard = v => v.part === 2 ? `<div class="card lesson"><p>${isGen(v) ? GEN_RECAP : PART2_RECAP}</p>${v.bench && v.bench.gainA != null ? `<p class="small muted" style="margin-top:.4rem">Your class achieved ${fx(v.bench.gainA, 1)} of the possible ${fx(v.bench.gainT, 1)} in Part 1.</p>` : ''}</div>` : '';
+
+function economyTable(sc, me, seats) {
+  const isR = sc.kind === 'radner';
+  const cell = (i, s) => isR ? `${fx(sc.grain[i][s], 0)} 🌾 · ${fx(sc.fish[i][s], 0)} 🐟` : fx(sc.endow[i][s], 0);
+  const rows = ROLES.map((ro, i) => `<tr class="${i === me ? 'me' : ''}"><td><span class="swatch" style="background:${SERIES[i]}"></span>${ro.icon} ${esc(ro.name)}${seats && seats[i]?.kind === 'human' ? ` <span class="muted small">· ${esc(seats[i].name)}</span>` : ''}</td>${sc.states.map((_, s) => `<td class="n">${cell(i, s)}</td>`).join('')}</tr>`).join('');
+  const agg = sc.states.map((_, s) => isR ? `${fx(sum(sc.grain.map(r => r[s])), 0)} 🌾 · ${fx(sum(sc.fish.map(r => r[s])), 0)} 🐟` : fx(sum(sc.endow.map(r => r[s])), 0));
+  return `<div class="tbl"><table><thead><tr><th>Islander</th>${sc.states.map(s => `<th>${s.icon} ${esc(s.name)}</th>`).join('')}</tr></thead><tbody>${rows}<tr class="tot"><td>Island total</td>${agg.map(a => `<td class="n">${a}</td>`).join('')}</tr></tbody></table></div>`;
+}
+function situation(v, compact = false) {
+  const sc = v.sc, me = v.me != null && v.me >= 0 ? v.me : null, isR = sc.kind === 'radner';
+  const X = isR ? sc.states.map((_, s) => sum(sc.grain.map(r => r[s]))) : null, Y = isR ? sc.states.map((_, s) => sum(sc.fish.map(r => r[s]))) : null;
+  const agg = isR ? null : sc.states.map((_, s) => sum(sc.endow.map(r => r[s])));
+  let h = (isGen(v) && !compact ? howToCard(v.r === 0) : '') + (v.r === 0 && !compact ? recapCard(v) : '') + `<div class="card story"><div class="tag">${esc(sc.tag)}</div><h2>${esc(sc.title)}</h2><p>${sc.story || sc.intro || ''}</p><p>${sc.market || ''}</p>${sc.goal ? `<p class="goal">🎯 ${sc.goal}</p>` : ''}</div>`;
+  h += `<h3 class="sec">${me != null ? 'Your harvest tomorrow' : 'Harvests tomorrow'}</h3>` + tiles(sc, s => isR
+    ? kv('Island total', `${X[s]} 🌾 · ${Y[s]} 🐟`) + (me != null ? kv('You', `${sc.grain[me][s]} 🌾 · ${sc.fish[me][s]} 🐟`, 'me big') : '')
+    : kv('Island total', fx(agg[s], 0)) + (me != null ? kv('You', `${fx(sc.endow[me][s], 0)} grain`, 'me big') : ''));
+  if (!isArrowSet(sc)) h += `<h3 class="sec">What you can trade today</h3><div class="assets">${sc.assets.map(a => `<div class="asset"><div class="nm">${esc(a.name)}</div>${pays(sc, a)}${isSure(a.payoff) ? '<span class="muted small">Price fixed at 1 (the numeraire).</span>' : ''}</div>`).join('')}</div>`;
+  h += `<details class="more" style="margin-top:1rem"><summary>Everyone’s harvest (useful for predicting prices)</summary>${economyTable(sc, me, v.seats)}</details>`;
+  if (isGen(v) && !compact) h += `<div style="margin-top:1rem">${glossaryCard()}</div>`;
+  return h;
+}
+function seatList(seats, submitted, opts = {}) {
+  return seats.map((s, i) => `<div class="seat"><span class="swatch" style="background:${SERIES[i]};margin:0"></span><div><div class="nm">${ROLES[i].icon} ${esc(s.role)}</div><div class="sub">${s.kind === 'human' ? `<span class="dot ${s.connected ? 'on' : 'off'}"></span> ${esc(s.name)}` : s.kind === 'bot' ? '🤖 robot' : s.kind === 'manual' ? '✍️ you enter' : s.kind === 'local' ? 'you' : 'empty'}</div></div>
+  <div class="row" style="gap:.3rem">${submitted ? (submitted[i] ? '<span class="chip ok">✓</span>' : '<span class="chip">…</span>') : ''}${opts.host ? seatMenu(s, i) : ''}</div></div>`).join('');
+}
+function seatMenu(s, i) {
+  return `<select data-seat-kind="${i}" title="Seat options"><option value="" selected>⋯</option><option value="bot">Make robot</option><option value="manual">I will enter for them</option><option value="empty">Free the seat</option>${s.kind === 'manual' || s.kind === 'human' ? '<option value="act">Enter decisions now…</option>' : ''}</select>`;
+}
+
+/* charts */
+function lineChart({ xs, series, height = 250, yFmt = v => fx(v, 2), zeroLine = false }) {
+  const W = 560, H = height, L = 58, Rr = 16, T = 12, B = 40;
+  const all = series.flatMap(s => s.ys.filter(v => v != null && isFinite(v)));
+  if (!all.length) return '';
+  let lo = Math.min(...all), hi = Math.max(...all); if (zeroLine) { lo = Math.min(lo, 0); hi = Math.max(hi, 0); }
+  if (hi - lo < 1e-9) { hi += 0.5; lo -= 0.5; } const pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
+  const X = k => L + (xs.length === 1 ? (W - L - Rr) / 2 : k * (W - L - Rr) / (xs.length - 1)), Y = v => T + (hi - v) * (H - T - B) / (hi - lo);
+  const grid = Array.from({ length: 5 }, (_, k) => lo + (hi - lo) * k / 4);
+  const lines = series.map(s => { const pts = s.ys.map((v, k) => v == null ? null : [X(k), Y(v)]).filter(Boolean); return `<polyline fill="none" stroke="${s.color}" stroke-width="2" ${s.dash ? 'stroke-dasharray="6 5"' : ''} stroke-linejoin="round" stroke-linecap="round" points="${pts.map(p => p.join(',')).join(' ')}"/>${s.dash ? '' : pts.map(p => `<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="${s.color}" stroke="#fff" stroke-width="2"/>`).join('')}`; }).join('');
+  const colW = xs.length > 1 ? (W - L - Rr) / (xs.length - 1) : W - L - Rr;
+  const hits = xs.map((x, k) => { const tip = `<b>${esc(x)}</b><br>` + series.map(s => s.ys[k] == null ? '' : `<span style="color:${s.color}">●</span> ${esc(s.name)}: ${yFmt(s.ys[k])}`).filter(Boolean).join('<br>'); return `<rect class="hit" x="${X(k) - colW / 2}" y="${T}" width="${colW}" height="${H - T - B}" data-tip="${esc(tip)}"/>`; }).join('');
+  const svg = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img"><g class="grid">${grid.map(v => `<line x1="${L}" x2="${W - Rr}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${L - 8}" y="${Y(v) + 5}" text-anchor="end">${yFmt(v)}</text>`).join('')}</g>
+  ${zeroLine ? `<line x1="${L}" x2="${W - Rr}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--line-2)"/>` : ''}
+  <g>${xs.map((x, k) => `<text x="${X(k)}" y="${H - 12}" text-anchor="middle">${esc(x)}</text>`).join('')}</g>${hits}${lines}</svg>`;
+  const legend = series.length > 1 ? `<div class="legend">${series.map(s => `<span style="color:${s.color}"><i class="${s.dash ? 'dash' : ''}" style="background:${s.color}"></i><span style="color:var(--ink-2)">${esc(s.name)}</span></span>`).join('')}</div>` : '';
+  return svg + legend;
+}
+document.addEventListener('mousemove', e => {
+  const t = e.target.closest && e.target.closest('[data-tip]'), tip = $('#tip');
+  if (!t) { tip.style.display = 'none'; return; }
+  tip.innerHTML = t.dataset.tip; tip.style.display = 'block';
+  const w = tip.offsetWidth, h = tip.offsetHeight; let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 14; if (y + h > innerHeight - 8) y = e.clientY - h - 14;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+});
+
+/* nature's wheel */
+function wheel(sc, nature, key) {
+  const cx = 160, cy = 160, r = 150; let a0 = -90, segs = '';
+  sc.states.forEach((s) => {
+    const a1 = a0 + 360 * s.prob, la = (a1 - a0) > 180 ? 1 : 0, rad = d => d * Math.PI / 180;
+    const p0 = [cx + r * Math.cos(rad(a0)), cy + r * Math.sin(rad(a0))], p1 = [cx + r * Math.cos(rad(a1)), cy + r * Math.sin(rad(a1))];
+    const mid = rad((a0 + a1) / 2), tx = cx + r * 0.6 * Math.cos(mid), ty = cy + r * 0.6 * Math.sin(mid);
+    segs += `<path d="M${cx},${cy} L${p0[0]},${p0[1]} A${r},${r} 0 ${la} 1 ${p1[0]},${p1[1]} Z" fill="${s.color}" stroke="#fff" stroke-width="3"/><text x="${tx}" y="${ty}" text-anchor="middle" dominant-baseline="middle">${esc(s.name)}</text>`;
+    a0 = a1;
+  });
+  let target = 0;
+  if (nature) { let c = -90; for (let k = 0; k < nature.s; k++) c += 360 * sc.states[k].prob; const mid = c + 180 * sc.states[nature.s].prob; target = 360 * 5 + (-90 - mid); }
+  return `<div class="wheel-wrap"><svg class="wheel" viewBox="0 0 320 330" ${nature ? `data-spin="${key}" data-target="${target}" data-age="${nature.age ?? 0}"` : ''}><g class="rot">${segs}<circle cx="${cx}" cy="${cy}" r="14" fill="#fff" stroke="var(--line-2)"/></g><path d="M160,30 l-13,-26 h26 z" fill="var(--ink)"/></svg></div>`;
+}
+function spinWheel(svg) {
+  const key = svg.dataset.spin, target = +svg.dataset.target, age = +svg.dataset.age, g = svg.querySelector('g.rot');
+  if (App.spun[key] || age > 4500) { g.style.transform = `rotate(${target}deg)`; App.spun[key] = true; return; }
+  const first = !App.spinStart[key]; if (first) App.spinStart[key] = Date.now();
+  const left = Math.max(300, 4000 - (Date.now() - App.spinStart[key]));
+  g.style.transform = 'rotate(0deg)';
+  requestAnimationFrame(() => requestAnimationFrame(() => { g.style.transition = `transform ${left}ms cubic-bezier(.17,.67,.2,1)`; g.style.transform = `rotate(${target}deg)`; }));
+  if (first) setTimeout(() => { App.spun[key] = true; render(); }, 4200);
+}
+const spunDone = key => !!App.spun[key];
+
+/* ------------------------------------------------------------- landing */
+function landing() {
+  const params = new URLSearchParams(location.search), jc = (params.get('join') || '').toUpperCase();
+  const saved = store('islandmkts-host');
+  return `<header class="top"><div class="wrap"><span class="brand">Island Markets</span><span class="spacer"></span><a class="small" href="guide.html">Instructor guide</a></div></header>
+  <main><div class="wrap">
+    <section class="hero"><h1>Island Markets</h1>
+      <p>Six islanders, uncertain weather, and markets for insurance. The game comes in two parts, <b>sharing risk</b> and <b>when markets are missing</b>, which can be played in different weeks. No economics needed. In each round you <b>predict</b> prices, <b>trade</b> to make your own future as good as possible, then see what the <b>weather</b> brings and what the theory says.</p></section>
+    <div class="choices">
+      <div class="card choice"><span class="ic">🎓</span><h2>I’m a student</h2>
+        <label class="fld">Room code from your professor<input class="code" id="j-code" maxlength="5" value="${esc(draft('j-code', jc))}" data-draft autocomplete="off" placeholder="ABCDE"/></label>
+        <label class="fld">Your first name<input id="j-name" maxlength="40" value="${esc(draft('j-name', store('islandmkts-name') || ''))}" data-draft autocomplete="given-name"/></label>
+        <button class="primary big" data-act="join">Join the game</button></div>
+      <div class="card choice"><span class="ic">🧑‍🏫</span><h2>I’m the professor</h2>
+        <p class="muted">Open a room, share your screen, and give students the code. Missing students are replaced by robots.</p>
+        <button class="primary big" data-act="setup">Open a room</button>${saved ? `<button class="ghost" data-act="resume">Resume room ${esc(saved.code)}${saved.game?.S?.part ? ` (Part ${saved.game.S.part})` : ''}</button>` : ''}</div>
+      <div class="card choice"><span class="ic">🧭</span><h2>Practise alone</h2>
+        <p class="muted">Play one islander against five robots that always choose the best plan. No economics needed at Beginner level.</p>
+        <label class="fld">Level<select id="solo-aud"><option value="general">Beginner (no economics needed)</option><option value="econ">Economics student</option></select></label>
+        <label class="fld">Part<select id="solo-part"><option value="1">Part 1 · Sharing risk (Arrow–Debreu)</option><option value="2">Part 2 · When markets are missing (Radner)</option><option value="0">Both parts</option></select></label>
+        <label class="fld">Play as<select id="solo-role">${ROLES.map((r, i) => `<option value="${i}">${r.icon} ${r.name}</option>`).join('')}</select></label>
+        <button class="big" data-act="solo">Start practice</button></div>
+    </div>
+  </div></main>`;
+}
+
+/* ------------------------------------------------------------- host setup */
+function hostSetup() {
+  const st = App.setup;
+  const head = `<header class="top"><div class="wrap"><span class="brand">Island Markets</span><span class="chip">Professor</span><span class="spacer"></span><button class="ghost sm" data-act="${st.part == null ? 'home' : 'pick-part'}" data-part="">← Back</button></div></header>`;
+  const audSwitch = `<div class="card row" style="justify-content:space-between"><div><b>Who is playing?</b> <span class="muted small">${st.aud === 'general' ? 'Plain language, “weather tickets”, a how-to-play guide, prediction hints and tips in every round. No economics needed.' : 'Technical language (Arrow securities, state prices, Radner equilibrium) and fading hints.'}</span></div><div class="row"><button class="${st.aud === 'general' ? 'primary' : ''}" data-act="set-aud" data-aud="general">General audience</button><button class="${st.aud === 'econ' ? 'primary' : ''}" data-act="set-aud" data-aud="econ">Economics students</button></div></div>`;
+  if (st.part == null) return head + `<main><div class="wrap stack">${now('Before the seminar', 'Which part are you running today?', 'Each part is a separate session with its own room and leaderboard, so you can run Part 2 in a later week.')}${audSwitch}
+    <div class="choices">${PARTS.map(P => `<div class="card choice"><span class="chip" style="justify-self:start">about ${P.minutes} min · ${P.rounds.length} rounds</span><h2>${esc(partName(P.id, st.aud))}</h2><p class="muted">${esc(partBlurb(P.id, st.aud))}</p><ol style="padding-left:1.2rem;color:var(--ink-2)">${DEFAULT_ROUNDS.filter(r => P.rounds.includes(r.id)).map(r => `<li>${esc(r.title)}</li>`).join('')}</ol><button class="primary big" data-act="pick-part" data-part="${P.id}">Set up Part ${P.id} ▸</button></div>`).join('')}
+    <div class="card choice"><span class="chip" style="justify-self:start">about 90 min · 5 rounds</span><h2>Both parts in one session</h2><p class="muted">All five rounds back to back.</p><button class="big" data-act="pick-part" data-part="0">Set up both ▸</button></div></div></div></main>`;
+  const P = st.part ? PARTS[st.part - 1] : null;
+  return head + `<main><div class="wrap stack">
+  ${now('Before the seminar', P ? `Open a room for ${esc(partName(P.id, st.aud))}` : 'Open a room for both parts', P ? `About ${P.minutes} minutes. Untick rounds to shorten the session.` : 'About 90 minutes. Untick rounds to shorten the session.', `<button class="primary big" data-act="open-room">Open the room ▸</button>`)}${audSwitch}
+  <div class="card"><h3>Rounds</h3><div class="tbl"><table><thead><tr><th>Play</th><th style="text-align:left">Round</th><th>Hints for students</th></tr></thead><tbody>
+    ${st.rounds.map((r, k) => `<tr><td><input type="checkbox" data-setup-round="${k}" ${st.use[k] ? 'checked' : ''}/></td><td style="white-space:normal;text-align:left"><b>${k + 1}. ${esc(r.title)}</b> <span class="muted small">${esc(r.tag)}</span></td><td><select data-setup-hint="${k}">${[[0, 'None'], [1, 'Show utility'], [2, 'Utility + tips']].map(([h, l]) => `<option value="${h}" ${(st.hints[k] ?? (st.aud === 'general' ? 2 : r.hint)) === h ? 'selected' : ''}>${l}</option>`).join('')}</select></td></tr>`).join('')}
+  </tbody></table></div></div>
+  <details class="more"><summary>Market settings (optional)</summary>
+    <div class="grid2" style="gap:.8rem">
+      <label class="fld">Seconds per bidding round (0 = no timer)<input id="s-tim" class="num" value="${esc(draft('s-tim', st.S.timer))}" data-draft/></label>
+      <label class="fld">Maximum bidding rounds<input id="s-max" class="num" value="${esc(draft('s-max', st.S.maxIter))}" data-draft/></label>
+      <label class="fld">Market clears when imbalance is below (% of wealth)<input id="s-tol" class="num" value="${esc(draft('s-tol', st.S.tol * 100))}" data-draft/></label>
+      <label class="fld">Price adjustment speed (0.2–1.5)<input id="s-kap" class="num" value="${esc(draft('s-kap', st.S.kappa))}" data-draft/></label>
+      <label class="fld">First prices<select id="s-open"><option value="forecast" ${st.S.open === 'forecast' ? 'selected' : ''}>Students’ average prediction</option><option value="probs" ${st.S.open === 'probs' ? 'selected' : ''}>Probabilities</option></select></label>
+      <label class="fld">Next bidding round starts<select id="s-auto"><option value="1" ${st.S.autoClear ? 'selected' : ''}>Automatically when everyone has submitted</option><option value="0" ${!st.S.autoClear ? 'selected' : ''}>Only when I click</option></select></label>
+    </div></details>
+  <details class="more"><summary>Use your own exercise (edit rounds as JSON)</summary>
+    <p class="small muted">Each round is plain data: states and probabilities, asset payoffs, six harvests, questions and texts. Equilibria, answer keys and scores are recomputed automatically. See the instructor guide for the format.</p>
+    <textarea id="s-json" spellcheck="false">${esc(draft('s-json', JSON.stringify(st.rounds, null, 1)))}</textarea>
+    <div class="row" style="margin-top:.5rem"><button class="sm" data-act="json-apply">Apply JSON</button><button class="sm ghost" data-act="json-reset">Restore default rounds</button></div></details>
+  </div></main>`;
+}
+function readSetup() {
+  const st = App.setup;
+  const tol = readNum('s-tol'), mx = readNum('s-max'), k = readNum('s-kap'), tm = readNum('s-tim');
+  if (isFinite(tol) && tol > 0) st.S.tol = tol / 100;
+  if (isFinite(mx) && mx >= 1) st.S.maxIter = Math.round(mx);
+  if (isFinite(k) && k > 0) st.S.kappa = clamp(k, 0.1, 2);
+  if (isFinite(tm) && tm >= 0) st.S.timer = Math.round(tm);
+  if ($('#s-open')) st.S.open = $('#s-open').value;
+  if ($('#s-auto')) st.S.autoClear = $('#s-auto').value === '1';
+}
+function validateRounds(rs) {
+  if (!Array.isArray(rs) || !rs.length) throw new Error('Expected a non-empty array of rounds.');
+  rs.forEach((r, k) => {
+    const S = r.states?.length; if (!S) throw new Error(`Round ${k + 1}: states missing.`);
+    if (Math.abs(sum(r.states.map(s => s.prob)) - 1) > 1e-6) throw new Error(`Round ${k + 1}: probabilities must sum to 1.`);
+    if (!r.assets?.length || r.assets.some(a => a.payoff?.length !== S)) throw new Error(`Round ${k + 1}: each asset needs a payoff for every state.`);
+    const A = assetsA(r);
+    if (E.rank([...A, r.states.map(() => 1)]) !== E.rank(A)) throw new Error(`Round ${k + 1}: a riskless payoff (1,…,1) must be in the span of the assets (it is the numeraire).`);
+    if (r.kind === 'radner') { if (r.grain?.length !== 6 || r.fish?.length !== 6) throw new Error(`Round ${k + 1}: need six grain and six fish vectors.`); if (!(r.alpha > 0 && r.alpha < 1)) throw new Error(`Round ${k + 1}: alpha must be in (0,1).`); if (E.rank(A) !== S) throw new Error(`Round ${k + 1}: two-good rounds need complete Arrow securities.`); }
+    else if (r.endow?.length !== 6 || r.endow.some(e => e.length !== S || e.some(x => !(x > 0)))) throw new Error(`Round ${k + 1}: need six strictly positive harvest vectors of length ${S}.`);
+    r.concept = r.concept || []; r.gamma = r.gamma || 1; r.hint = r.hint ?? 2; r.lesson = r.lesson || []; r.debrief = r.debrief || ''; r.tag = r.tag || ''; r.kind = r.kind || 'assets';
+    r.story = r.story || r.intro || ''; r.market = r.market || ''; r.goal = r.goal || '';
+    const pal = [['#d99400', '#fdf4de'], ['#2a78d6', '#e7f0fb'], ['#5b4bb8', '#eeebf8'], ['#1b8a5a', '#e3f3ea'], ['#c2410c', '#fdebe1']];
+    r.states.forEach((s, j) => { s.color = s.color || pal[j % 5][0]; s.wash = s.wash || pal[j % 5][1]; s.icon = s.icon || ''; });
+    r.assets.forEach((a, j) => { a.sym = a.sym || `a_{${j + 1}}`; a.unit = a.unit || 'grain'; });
+  });
+  return rs;
+}
+
+/* ------------------------------------------------------------- player screens */
+function playerHeader(v) {
+  const role = ROLES[v.me];
+  const myScore = v.board ? v.board[v.me]?.total : 0;
+  const st = { connected: ['ok', '● online'], connecting: ['warn', 'connecting…'], reconnecting: ['warn', 'reconnecting…'], noroom: ['bad', 'room not found'], kicked: ['bad', 'removed'], error: ['bad', 'offline'], local: ['ok', 'practice'] }[App.status] || ['', App.status];
+  return `<header class="top"><div class="wrap"><span class="brand">Island Markets</span>
+  ${role ? `<span class="chip me">${role.icon} You are ${esc(role.name)}</span>` : ''}
+  ${v.sc && v.phase !== 'final' ? stepsBar(v.sc, v.phase) : ''}
+  <span class="spacer"></span>${v.r >= 0 && v.sc ? `<span class="chip">${partTag(v)}Round ${v.r + 1}/${v.nR}</span>` : ''}<span class="chip">⭐ <b class="mono">${Math.round(myScore || 0)}</b></span><span class="chip ${st[0]}">${esc(st[1])}</span></div></header>`;
+}
+function playerScreen() {
+  const v = App.view;
+  if (!v) return `${playerHeader({ me: -1 })}<main><div class="wrap">${now('Joining', `Connecting to room ${esc(App.code)}…`, 'Keep this tab open. If the professor has not opened the room yet, we keep trying.', '', true)}</div></main>`;
+  return `${playerHeader(v)}<main><div class="wrap stack">${playerMain(v, '')}</div></main>`;
+}
+/* in practice mode the student also drives the clock: actions go into the banner */
+function soloAct(v) {
+  if (App.mode !== 'solo') return '';
+  const G = App.game, ph = G.phase, rs = G.rs;
+  if (ph === 'briefing') return '<button class="primary big" data-act="advance">I’ve read it ▸</button>';
+  if (ph === 'trading') return rs.cleared || rs.stalled ? '<button class="primary big" data-act="advance">Execute trades ▸</button>' : '';
+  if (ph === 'nature') return !rs.nature ? '<button class="primary big" data-act="advance">Spin the wheel</button>' : spunDone(`${G.r}-${rs.nature.s}`) ? `<button class="primary big" data-act="advance">${G.sc.kind === 'radner' ? 'Go to the spot market ▸' : 'See results ▸'}</button>` : '';
+  if (ph === 'spot') return rs.spot.cleared || rs.spot.stalled ? '<button class="primary big" data-act="advance">Execute & see results ▸</button>' : '';
+  if (ph === 'results') return `<button class="primary big" data-act="advance">${G.r < G.rounds.length - 1 ? 'Next round ▸' : 'Finish ▸'}</button>`;
+  return '';
+}
+function playerMain(v, pre) {
+  const ph = v.phase;
+  if (ph === 'lobby') return now('Waiting room', `Welcome, ${esc(v.seats[v.me].name)}!`, `You are <b>${ROLES[v.me].icon} ${esc(ROLES[v.me].name)}</b> for the whole game. The professor will start soon.`, '', true) + (isGen(v) ? howToCard(true) : '') + recapCard(v) + `<div class="card"><h3>Islanders</h3>${seatList(v.seats, null)}</div>`;
+  if (ph === 'final') return finalView(v);
+  if (ph === 'briefing') return now(stepLabel(v, ph), 'Read the situation', App.mode === 'solo' ? 'Look at your harvest in each weather and at what can be traded.' : 'Look at your harvest in each weather and at what can be traded. Predictions open when the professor is ready.', soloAct(v)) + situation(v);
+  if (ph === 'forecast') return forecastPanel(v, pre);
+  if (ph === 'trading') return tradePanel(v, pre);
+  if (ph === 'nature') return naturePanel(v);
+  if (ph === 'spot') return spotPanel(v, pre);
+  if (ph === 'results') return resultsView(v);
+  return '';
+}
+
+/* step 2: predict */
+function forecastPanel(v, pre) {
+  const sc = v.sc, mine = v.rs.myForecast, ans = v.rs.myAnswers || [], nf = fIdx(sc).length, isR = sc.kind === 'radner';
+  const id = k => `${pre}r${v.r}-f${k}`;
+  let inputs;
+  if (isArrowSet(sc)) {
+    inputs = tiles(sc, s => `<label class="fld">Price today of 1 grain if ${esc(sc.states[s].name)}${numIn(id(s), mine ? mine[s] : '', `data-fsum="${pre}"`)}</label>` + (isR ? `<label class="fld">Fish price tomorrow if ${esc(sc.states[s].name)} (grain per fish)${numIn(id(nf + s), mine ? mine[nf + s] : '')}</label>` : ''))
+      + `<p class="small" style="margin-top:.5rem" id="${pre}fsum" data-fsumbox="${pre}"></p>`;
+  } else {
+    inputs = `<div class="assets">${fIdx(sc).map((j, k) => `<div class="asset"><div class="nm">${esc(sc.assets[j].name)}</div>${pays(sc, sc.assets[j])}<label class="fld">Your predicted price (bond = 1)${numIn(id(k), mine ? mine[k] : '')}</label></div>`).join('')}</div>`;
+  }
+  const done = !!mine;
+  return now(stepLabel(v, 'forecast'), isGen(v) ? 'Guess the prices' : 'Predict the equilibrium prices', isGen(v) ? 'At what prices will buyers and sellers balance? Close guesses earn up to 100 points. Then answer two quick questions (25 points each). It’s fine to guess: you’ll see the answer later.' : 'What prices will make supply equal demand? Close predictions earn up to 100 points. Then answer two quick questions (25 points each).', '')
+    + `<div class="card"><h3 style="margin-bottom:.6rem">Your ${isGen(v) ? 'guess' : 'prediction'}</h3>${sc.predictHint ? `<div class="msg info" style="margin-bottom:.8rem">💡 ${sc.predictHint}</div>` : ''}${inputs}</div>
+    <div class="card"><h3 style="margin-bottom:.6rem">Two quick questions</h3>
+    ${sc.concept.map((c, k) => { const rid = `${pre}r${v.r}-c${k}`; return `<div class="mcq"><div class="q">${k + 1}. ${esc(c.q)}</div>${c.options.map((o, j) => { const checked = App.drafts[rid] != null ? +App.drafts[rid] === j : ans[k] === j; return `<label><input type="radio" name="${rid}" value="${j}" data-radio="${rid}" ${checked ? 'checked' : ''}/> <span>${esc(o)}</span></label>`; }).join('')}</div>`; }).join('')}
+    <div class="row" style="margin-top:1rem"><button class="primary big" data-act="send-forecast" data-pre="${pre}">${done ? 'Update my answers' : 'Submit'}</button>${done ? `<span class="chip ok">✓ Submitted${App.mode === 'solo' ? '' : ' — you can change them until the market opens'}</span>` : ''}${App.mode === 'solo' && done ? '<button class="big" data-act="advance">Open the market ▸</button>' : ''}</div></div>
+    <details class="more"><summary>Show the situation again</summary>${situation(v)}</details>`;
+}
+function updateFsum(pre) {
+  const box = document.getElementById(pre + 'fsum'); if (!box) return;
+  const v = pre ? App.modalView : App.view; if (!v) return;
+  const vals = v.sc.states.map((_, s) => readNum(`${pre}r${v.r}-f${s}`));
+  if (!vals.every(isFinite)) { box.innerHTML = '<span class="muted">Hint: the three prices should add up to 1, because one of each guarantees 1 grain, which costs 1.</span>'; return; }
+  const t = sum(vals); box.innerHTML = Math.abs(t - 1) < 0.005 ? `<span class="chip ok">✓ Prices add up to 1</span>` : `<span class="chip warn">Your prices add up to ${fx(t, 3)}; they should add up to 1</span>`;
+}
+
+/* step 3: trade */
+function rhoHatOf(v, pre) {
+  const sc = v.sc; if (sc.kind !== 'radner') return null;
+  const nf = fIdx(sc).length;
+  return sc.states.map((_, s) => { const x = readNum(`${pre}r${v.r}-rh${s}`); if (isFinite(x) && x > 0) return x; const f = v.rs.myForecast; return f ? f[nf + s] : 1; });
+}
+function prevQ(rs) { const h = rs.history.find(h => h.iter === rs.iter - 1); return h ? h.q : null; }
+function marketNews(v) {
+  const sc = v.sc, rs = v.rs, last = rs.history[rs.history.length - 1];
+  if (rs.exec) return `<div class="news ok">✅ Trades done. Next: the weather.</div>`;
+  if (rs.cleared) return `<div class="news ok">✅ <b>The market has cleared</b>: supply equals demand at these prices. ${App.mode === 'solo' ? 'Execute your trades.' : 'The professor will now execute the trades.'}</div>`;
+  if (rs.stalled) return `<div class="news">⏸ The bidding limit was reached. The professor will execute trades as they stand or allow more rounds.</div>`;
+  if (!last || last.iter !== rs.iter - 1) return `<div class="news">📣 <b>Bidding round ${rs.iter}.</b> These are the opening prices. Make your plan and submit it. If buyers and sellers don’t match, prices will adjust and you can revise.</div>`;
+  const parts = sc.assets.map((a, j) => { const z = last.Z[j]; if (Math.abs(z) < 0.05) return null; return z > 0 ? `<b>${esc(a.name)}</b>: more buyers than sellers → price ▲` : `<b>${esc(a.name)}</b>: more sellers than buyers → price ▼`; }).filter(Boolean);
+  return `<div class="news">📣 <b>Bidding round ${rs.iter}.</b> Last round: ${parts.join('; ') || 'almost balanced'}. <b>Check your plan at the new prices and resubmit.</b></div>`;
+}
+function tradePanel(v, pre) {
+  const sc = v.sc, rs = v.rs, mode = inputMode(sc), isR = sc.kind === 'radner', closed = rs.cleared || rs.stalled || rs.exec, r = v.r;
+  const pq = prevQ(rs), myOrd = rs.myOrder, nf = fIdx(sc).length;
+  const rho0 = isR ? sc.states.map((_, s) => readNum(`${pre}r${r}-rh${s}`)).map((x, s) => isFinite(x) ? x : (rs.myForecast ? rs.myForecast[nf + s] : 1)) : null;
+  const base0 = baseVec(sc, v.me, rho0);
+  const subN = rs.submitted.filter(Boolean).length;
+  const timer = rs.deadlineIn != null ? ` ⏱ <span class="mono" data-countdown="${Date.now() + rs.deadlineIn}">${Math.max(0, Math.round(rs.deadlineIn / 1000))}</span>s left.` : '';
+  const title = mode === 'plan' ? (isR ? 'Plan your wealth in each weather' : 'Choose your grain for each weather') : 'Choose your position';
+  const text = mode === 'plan' ? `Set an amount for each weather, keep within your budget, then submit.${timer}` : `Pick how many ${esc(sc.assets.filter(a => !isSure(a.payoff)).map(a => a.name.toLowerCase() + 's').join(' and '))} to buy (+) or sell (−), then submit.${timer}`;
+  let h = now(stepLabel(v, 'trading'), title, text, soloAct(v)) + marketNews(v);
+  if (mode === 'plan') {
+    const p = statePrices(sc, rs.q), pp = pq ? statePrices(sc, pq) : null;
+    const initC = s => myOrd ? r2(base0[s] + sc.assets.reduce((t, a, j) => t + a.payoff[s] * myOrd[j], 0)) : r2(base0[s]);
+    h += tiles(sc, s => kv(isArrowSet(sc) ? 'Price of 1 grain here' : isGen(v) ? 'Cost of 1 grain here' : 'Implied price of 1 grain here', fx(p[s], 3) + arrowOf(p[s], pp && pp[s]), 'hl')
+      + (isR ? `<label class="fld" style="margin-top:.2rem">Your expected fish price ${numIn(`${pre}r${r}-rh${s}`, rho0[s], `data-livein="${pre}"`)}</label>` + kv(`Harvest ${sc.grain[v.me][s]} 🌾 + ${sc.fish[v.me][s]} 🐟 ≈`, `<span id="${pre}hv${s}">${fx(base0[s], 1)}</span> grain`)
+        : kv('Your harvest', `${fx(sc.endow[v.me][s], 0)} grain`))
+      + `<div class="plan"><label for="${pre}r${r}-c${s}">${isR ? 'Wealth you want (grain)' : 'Grain you want'}</label><div class="stepper"><button data-act="bump" data-id="${pre}r${r}-c${s}" data-d="-1" data-pre="${pre}" ${closed ? 'disabled' : ''}>−</button>${numIn(`${pre}r${r}-c${s}`, initC(s), `data-livein="${pre}" ${closed ? 'disabled' : ''}`)}<button data-act="bump" data-id="${pre}r${r}-c${s}" data-d="1" data-pre="${pre}" ${closed ? 'disabled' : ''}>+</button></div></div>`
+      + kv('Trade', `<span id="${pre}tr${s}">—</span>`));
+    if (!isArrowSet(sc)) h += `<div class="card"><h3>The portfolio that delivers your plan</h3><div id="${pre}port"></div></div>`;
+  } else {
+    const k = sc.assets.findIndex(a => isSure(a.payoff));
+    h += `<div class="assets">${sc.assets.map((a, j) => {
+      const auto = mode === 'assets' && j === k;
+      return `<div class="asset"><div class="row" style="justify-content:space-between"><span class="nm">${esc(a.name)}</span><span class="chip">price <b class="mono">${fx(rs.q[j], 3)}</b>${arrowOf(rs.q[j], pq && pq[j])}</span></div>${pays(sc, a)}
+      ${auto ? `<div class="kv"><span>Your position (automatic, pays for the rest)</span><b id="${pre}auto">—</b></div>` : `<label class="fld">Units to buy (+) or sell (−)<div class="stepper"><button data-act="bump" data-id="${pre}r${r}-o${j}" data-d="-1" data-pre="${pre}" ${closed ? 'disabled' : ''}>−</button>${numIn(`${pre}r${r}-o${j}`, myOrd ? r2(myOrd[j]) : 0, `data-livein="${pre}" ${closed ? 'disabled' : ''}`)}<button data-act="bump" data-id="${pre}r${r}-o${j}" data-d="1" data-pre="${pre}" ${closed ? 'disabled' : ''}>+</button></div></label>`}</div>`;
+    }).join('')}</div>`;
+    h += `<h3 class="sec">What you will have tomorrow</h3>` + tiles(sc, s => kv('Your harvest', fx(sc.endow[v.me][s], 0)) + kv('From your assets', `<span id="${pre}from${s}">—</span>`) + kv('You get', `<span id="${pre}get${s}">—</span>`, 'me big'));
+  }
+  h += `<div class="grid2"><div class="card budget" id="${pre}budget"></div><div class="card" id="${pre}advice"></div></div>`;
+  h += `<div class="card row" style="justify-content:space-between"><div class="row">
+      ${mode === 'plan' ? `<button data-act="fit" data-pre="${pre}" ${closed ? 'disabled' : ''}>Fit to budget</button><button class="ghost" data-act="reset-plan" data-pre="${pre}" ${closed ? 'disabled' : ''}>Back to my harvest</button>` : `<button class="ghost" data-act="zero-order" data-pre="${pre}" ${closed ? 'disabled' : ''}>Reset</button>`}</div>
+      <div class="row">${myOrd ? `<span class="chip ok">✓ Submitted for bidding round ${rs.iter}</span>` : ''}<span class="muted small">${subN}/6 submitted</span><button class="primary big" data-act="send-order" data-pre="${pre}" ${closed ? 'disabled' : ''}>${myOrd ? 'Resubmit' : 'Submit my plan'}</button></div></div>`;
+  h += `<details class="more"><summary>Bidding history</summary>${historyTable(sc, rs.history, v.tol, isGen(v))}</details><details class="more"><summary>Show the situation again</summary>${situation(v)}</details>`;
+  return `<div class="stack" data-live="${pre}">${h}</div>`;
+}
+function computePlan(v, pre) {
+  const sc = v.sc, rs = v.rs, mode = inputMode(sc), A = assetsA(sc), r = v.r, rho = rhoHatOf(v, pre), base = baseVec(sc, v.me, rho);
+  if (mode === 'plan') {
+    const p = statePrices(sc, rs.q);
+    const c = sc.states.map((_, s) => { const x = readNum(`${pre}r${r}-c${s}`); return isFinite(x) ? x : base[s]; });
+    const z = c.map((x, s) => x - base[s]);
+    const th = E.solveLin(sc.states.map((_, s) => A.map(row => row[s])), z) || A.map(() => 0);
+    return { mode, p, c, base, th, q: rs.q, cost: E.dot(p, z), w: E.dot(p, base), planCost: E.dot(p, c) };
+  }
+  const k = sc.assets.findIndex(a => isSure(a.payoff));
+  const th = sc.assets.map((_, j) => { if (mode === 'assets' && j === k) return 0; const x = readNum(`${pre}r${r}-o${j}`); return isFinite(x) ? x : 0; });
+  if (mode === 'assets') th[k] = -sc.assets.reduce((t, _, j) => j === k ? t : t + rs.q[j] * th[j], 0) / rs.q[k];
+  return { mode, c: E.cons(base, A, th), base, th, q: rs.q, cost: E.dot(rs.q, th), k };
+}
+function updateLive(pre) {
+  const v = pre ? App.modalView : App.view; if (!v || v.phase !== 'trading' || !document.getElementById(pre + 'budget')) return;
+  const sc = v.sc, rs = v.rs, H = v.hint, g = sc.gamma || 1, pi = piOf(sc, v.me), isR = sc.kind === 'radner';
+  const P = computePlan(v, pre), ok = P.c.every(x => x > 0);
+  const set = (id, html) => { const el = document.getElementById(pre + id); if (el) el.innerHTML = html; };
+  sc.states.forEach((_, s) => {
+    set(`tr${s}`, `<span class="${P.c[s] - P.base[s] > 0.005 ? 'up' : P.c[s] - P.base[s] < -0.005 ? 'down' : ''}">${P.c[s] - P.base[s] > 0.005 ? 'buy ' : P.c[s] - P.base[s] < -0.005 ? 'sell ' : ''}${fx(Math.abs(P.c[s] - P.base[s]), 2)}</span>`);
+    set(`hv${s}`, fx(P.base[s], 1)); set(`from${s}`, sgn(P.c[s] - P.base[s])); set(`get${s}`, `<span class="${P.c[s] > 0 ? '' : 'down'}">${fx(P.c[s], 2)}</span>`);
+  });
+  if (P.mode === 'assets') set('auto', sgn(P.th[P.k]));
+  if (P.mode === 'plan' && !isArrowSet(sc)) set('port', `<div class="tbl"><table><thead><tr><th>Asset</th><th>Price</th><th>Units (+ buy / − sell)</th></tr></thead><tbody>${sc.assets.map((a, j) => `<tr><td>${esc(a.name)}</td><td class="n">${fx(rs.q[j], 3)}</td><td class="n">${sgn(P.th[j])}</td></tr>`).join('')}</tbody></table></div><p class="small muted" style="margin-top:.4rem">This is what you will actually trade when you submit.</p>`);
+  /* budget */
+  let b;
+  if (P.mode === 'plan') {
+    const ratio = P.w > 0 ? P.planCost / P.w : 0, over = P.cost > 0.01, under = P.cost < -0.01 * Math.max(1, P.w);
+    b = `<h3>Budget</h3><p>${isR ? 'Your harvest (at your expected fish prices)' : 'Your harvest'} is worth <b class="mono">${fx(P.w, 2)}</b> at today’s prices. Your plan costs <b class="mono">${fx(P.planCost, 2)}</b>.</p>
+      <div class="bar"><i class="${over ? 'over' : under ? 'under' : ''}" style="width:${clamp(100 * ratio, 0, 100).toFixed(1)}%"></i></div>
+      ${over ? `<div class="msg bad">Over budget by ${fx(P.cost, 2)}. Lower some amounts, or press <b>Fit to budget</b>.</div>` : under ? `<div class="msg warn">${fx(-P.cost, 2)} left unspent, and unspent money is wasted. Raise some amounts, or press <b>Fit to budget</b>.</div>` : '<div class="msg ok">✓ Your plan uses exactly your budget.</div>'}
+      ${!ok ? '<div class="msg bad">Every amount must be positive.</div>' : ''}`;
+  } else {
+    b = `<h3>Budget</h3>${P.mode === 'assets' ? `<p>Your bond position adjusts automatically, so your trades always pay for themselves.</p>` : `<p>Net cost of your trades: <b class="mono">${sgn(P.cost)}</b> (must be ≤ 0).</p>`}${!ok ? '<div class="msg bad">This position leaves you with negative grain in some weather. Trade less.</div>' : '<div class="msg ok">✓ Feasible.</div>'}`;
+  }
+  set('budget', b);
+  /* advice */
+  let a = '<h3>How good is this plan?</h3>';
+  if (H === 0) a += '<p class="muted">No hints this round: rely on your theory.</p>';
+  else if (!ok) a += '<p class="muted">Fix the plan first.</p>';
+  else {
+    const CE = E.CE(pi, P.c, g), CE0 = E.CE(pi, P.base, g);
+    a += `<div class="worth"><div><b>${fx(CE, 2)}</b><span>your plan is as good as this much ${isR ? 'wealth' : 'grain'} for sure</span></div><div><b class="${CE >= CE0 ? 'up' : 'down'}">${sgn(CE - CE0, 2)}</b><span>compared with not trading</span></div></div>`;
+    if (H >= 2) a += nudge(sc, P, pi, g, isGen(v));
+  }
+  set('advice', a);
+  const adv = document.getElementById(pre + 'advice'); if (adv) mathIn(adv);
+}
+function nudge(sc, P, pi, g, gen = false) {
+  if (P.mode === 'plan') {
+    if (P.cost > 0.01) return '<div class="msg info">💡 First bring the plan within budget.</div>';
+    const val = P.c.map((c, s) => pi[s] * E.up(c, g) / P.p[s]);
+    const hi = val.indexOf(Math.max(...val)), lo = val.indexOf(Math.min(...val)), gap = val[hi] / val[lo] - 1;
+    let m = gap < 0.01 ? `<div class="msg ok">✓ <b>Balanced.</b> ${gen ? 'An extra coin would make you equally happier in every weather, so this is your best plan at these prices.' : 'An extra coin raises your expected utility equally in every weather, so this is your best plan at these prices.'}</div>`
+      : `<div class="msg info">💡 A coin spent on <b>${esc(sc.states[hi].name)}</b> grain ${gen ? 'makes you happier on average' : 'adds more expected utility'} than one spent on <b>${esc(sc.states[lo].name)}</b> grain. Move some from ${esc(sc.states[lo].name)} to ${esc(sc.states[hi].name)}.</div>`;
+    if (P.cost < -0.01) m += '<div class="msg warn">You also have unspent budget.</div>';
+    return m + (gen ? '' : `<p class="tiny muted" style="margin-top:.4rem">The tip compares $\\pi_s u'(c_s)/p_s$ across weathers.</p>`);
+  }
+  const k = P.k >= 0 ? P.k : 0, mu = j => sc.assets[j].payoff.reduce((t, d, s) => t + pi[s] * E.up(P.c[s], g) * d, 0) / P.q[j];
+  const base = mu(k);
+  const tips = sc.assets.map((a, j) => { if (j === k) return ''; const r = mu(j) / base - 1; if (Math.abs(r) < 0.005) return `<div class="msg ok">✓ <b>${esc(a.name)}</b>: your position is about right.</div>`; return `<div class="msg info">💡 Buying ${r > 0 ? 'more' : 'fewer (or selling more)'} <b>${esc(a.name.toLowerCase())}s</b> would ${gen ? 'make you happier on average' : 'raise your expected utility'}.</div>`; }).join('');
+  return tips + (gen ? '' : `<p class="tiny muted" style="margin-top:.4rem">Compares $\\frac{1}{q_j}\\sum_s\\pi_s u'(c_s)d_{js}$ with the bond’s.</p>`);
+}
+function historyTable(sc, hist, tol, gen = false) {
+  if (!hist.length) return '<p class="muted small">No bidding rounds completed yet.</p>';
+  return `<div class="tbl"><table><thead><tr><th>Round</th>${sc.assets.map(a => `<th>Price ${esc(a.name)}</th>`).join('')}${sc.assets.map(a => `<th>${gen ? 'Wanted − offered' : 'Excess demand'} ${esc(a.name)}</th>`).join('')}<th>Orders</th></tr></thead><tbody>
+  ${hist.map(h => `<tr><td>${h.iter}${h.err <= tol ? ' ✓' : ''}</td>${h.q.map(x => `<td class="n">${fx(x, 3)}</td>`).join('')}${h.Z.map(z => `<td class="n ${Math.abs(z) < 0.05 ? '' : z > 0 ? 'up' : 'down'}">${sgn(z, 1)}</td>`).join('')}<td class="n">${h.n}/6</td></tr>`).join('')}
+  </tbody></table></div><p class="tiny muted" style="margin-top:.3rem">${gen ? 'Wanted − offered' : 'Excess demand'} = units wanted − units offered. Positive pushes the price up.</p>`;
+}
+
+/* step 4: weather (and spot market) */
+function naturePanel(v) {
+  const sc = v.sc, rs = v.rs, key = `${v.r}-${rs.nature?.s}`, done = rs.nature && spunDone(key);
+  let mine = '';
+  if (done && rs.exec && v.me != null && v.me >= 0) {
+    const s = rs.nature.s;
+    if (sc.kind === 'radner') mine = `<p class="small muted" style="text-align:center">You will hold <b>${fx(sc.grain[v.me][s] + rs.exec.th[s] + rs.exec.cash, 1)}</b> grain and <b>${sc.fish[v.me][s]}</b> fish. Next: the spot market.</p>`;
+    else mine = `<p style="text-align:center">You get <b class="mono">${fx(E.cons(sc.endow[v.me], assetsA(sc), rs.exec.th, rs.exec.cash)[s], 1)}</b> grain (your harvest was ${fx(sc.endow[v.me][s], 0)}).</p>`;
+  }
+  return now(stepLabel(v, 'nature'), done ? `It’s ${sc.states[rs.nature.s].icon} ${esc(sc.states[rs.nature.s].name)}!` : 'Tomorrow arrives…', rs.nature ? '' : (App.mode === 'solo' ? 'Spin the wheel to draw the weather.' : 'The professor is about to spin the wheel.'), soloAct(v), !soloAct(v))
+    + `<div class="card">${wheel(sc, rs.nature, key)}${done ? `<p class="realized">${sc.states[rs.nature.s].icon} ${esc(sc.states[rs.nature.s].name)}</p>` : ''}${mine}<p class="small muted" style="text-align:center;margin-top:.4rem">Your score does not depend on luck: plans are judged before the weather is known.</p></div>`;
+}
+function spotPanel(v, pre) {
+  const sc = v.sc, rs = v.rs, sp = rs.spot, st = sc.states[sp.s], closed = sp.cleared || sp.stalled || sp.exec;
+  const id = `${pre}r${v.r}-dy`, ph = sp.history.find(h => h.iter === sp.iter - 1);
+  let news;
+  if (sp.exec) news = '<div class="news ok">✅ Spot trades done. Results next.</div>';
+  else if (sp.cleared) news = `<div class="news ok">✅ <b>The fish market has cleared.</b> ${App.mode === 'solo' ? 'Execute and see your results.' : 'Waiting for the professor.'}</div>`;
+  else if (ph) news = `<div class="news">📣 Last round: ${ph.Z > 0 ? 'more fish wanted than offered → price ▲' : 'more fish offered than wanted → price ▼'}. Check your order at the new price and resubmit.</div>`;
+  else news = `<div class="news">📣 The fish market opens at the class’s average predicted price.</div>`;
+  const owe = sp.g <= 0 ? `<div class="msg bad">⚠️ Your claim sales leave you owing <b>${fx(-sp.g, 1)}</b> grain in ${esc(st.name)}. You must <b>sell fish</b> to cover it. Did you expect fish to be worth more here than it is?</div>` : '';
+  return now(stepLabel(v, 'spot'), `${isGen(v) ? 'Fish market' : 'Spot market'}: it’s ${st.icon} ${esc(st.name)}`, 'Trade fish for grain to get the mix you like best (you spend half on each), then submit.', soloAct(v)) + news + owe
+    + `<div class="grid2"><div class="card"><div class="worth"><div><b>${fx(sp.g, 1)}</b><span>grain you hold</span></div><div><b>${fx(sp.y, 1)}</b><span>fish you hold</span></div><div><b>${fx(sp.rho, 3)}${arrowOf(sp.rho, ph && ph.rho)}</b><span>price of 1 fish (in grain)</span></div></div>
+    <label class="fld" style="margin-top:.5rem">Fish to buy (+) or sell (−)<div class="stepper"><button data-act="bump" data-id="${id}" data-d="-1" data-pre="${pre}" data-spot="1" ${closed ? 'disabled' : ''}>−</button>${numIn(id, sp.myOrder ? r2(sp.myOrder[0]) : 0, `data-spotin="${pre}" ${closed ? 'disabled' : ''}`)}<button data-act="bump" data-id="${id}" data-d="1" data-pre="${pre}" data-spot="1" ${closed ? 'disabled' : ''}>+</button></div></label>
+    <div class="row" style="margin-top:.9rem;justify-content:flex-end">${sp.myOrder ? '<span class="chip ok">✓ Submitted</span>' : ''}<span class="muted small">${rs.submitted.filter(Boolean).length}/6</span><button class="primary big" data-act="send-spot" data-pre="${pre}" ${closed ? 'disabled' : ''}>${sp.myOrder ? 'Resubmit' : 'Submit'}</button></div></div>
+    <div class="card" id="${pre}spotlive" data-spotlive="${pre}"></div></div>`;
+}
+function updateSpotLive(pre) {
+  const box = document.getElementById(pre + 'spotlive'); if (!box) return;
+  const v = pre ? App.modalView : App.view; if (!v || v.phase !== 'spot') return;
+  const sc = v.sc, sp = v.rs.spot, a = sc.alpha, H = v.hint;
+  let dy = readNum(`${pre}r${v.r}-dy`); if (!isFinite(dy)) dy = 0;
+  const g = sp.g - sp.rho * dy, y = sp.y + dy, ok = g > 0 && y > 0;
+  let h = `<h3>After this trade</h3><div class="worth"><div><b class="${g > 0 ? '' : 'down'}">${fx(g, 1)}</b><span>grain</span></div><div><b class="${y > 0 ? '' : 'down'}">${fx(y, 1)}</b><span>fish</span></div></div>`;
+  if (!ok) h += y <= 0 && g > 0 ? '<div class="msg bad">You need some fish: you like both goods, so having none is the worst outcome. Buy at least a little.</div>' : '<div class="msg bad">Not possible: you would end up with no grain or no fish.</div>';
+  else if (H >= 2 || App.mode === 'solo' || H >= 1) {
+    const mrs = ((1 - a) / y) / (a / g);
+    h += Math.abs(mrs / sp.rho - 1) < 0.01 ? '<div class="msg ok">✓ Best mix at this price.</div>' : mrs > sp.rho ? '<div class="msg info">💡 One more fish is worth more to you than it costs. Buy more fish.</div>' : '<div class="msg info">💡 One more fish is worth less to you than it costs. Buy fewer, or sell some.</div>';
+  }
+  box.innerHTML = h;
+}
+
+/* step 5: results */
+function resultsView(v) {
+  const sc = v.sc, rs = v.rs, R0 = rs.results, th = v.th, me = v.me != null && v.me >= 0 ? v.me : null, isR = sc.kind === 'radner';
+  if (!R0) return '';
+  const st = sc.states[R0.s], my = me != null ? R0.per[me] : null, host = App.mode === 'host';
+  const labels = forecastLabels(sc);
+  const mkt = [...fIdx(sc).map(j => rs.execQ[j]), ...(isR ? sc.states.map((_, s) => s === R0.s ? rs.spot?.execRho : null) : [])];
+  let h = now(host ? `${partTag(v)}Round ${v.r + 1} of ${v.nR} · Results` : stepLabel(v, 'results'), `Results: the weather was ${st.icon} ${esc(st.name)}`, host ? 'Talk through the three lessons, then move on.' : 'Here is how you did and what the round shows.', host ? `<button class="primary big" data-act="advance">${v.r < v.nR - 1 ? 'Next round ▸' : 'Finish ▸'}</button>` : soloAct(v));
+  if (my) h += `<div class="card score"><div><div class="muted small">Your round score</div><div class="total">${my.total}</div></div><div class="pills">
+    <div class="pill"><b>${Math.round(my.fScore)}</b><span>prediction /100</span></div><div class="pill"><b>${Math.round(my.wScore)}</b><span>trading /100</span></div><div class="pill"><b>${my.cScore}</b><span>questions /${25 * sc.concept.length}</span></div>${my.sScore != null ? `<div class="pill"><b>${Math.round(my.sScore)}</b><span>spot market /50</span></div>` : ''}</div></div>`;
+  if (sc.lesson && sc.lesson.length) h += `<div class="card lesson"><h3>What this round shows</h3><ol>${sc.lesson.map(l => `<li>${l}</li>`).join('')}</ol></div>`;
+  if (my) {
+    const T = th.per[me];
+    h += `<div class="card"><h3>Your plan vs. the best plan</h3><div class="worth"><div><b>${fx(my.CE, 2)}</b><span>your result, as sure ${isR ? 'wealth' : 'grain'}</span></div><div><b>${fx(T.CE, 2)}</b><span>best plan in equilibrium</span></div><div><b>${fx(T.CE0, 2)}</b><span>if you had not traded</span></div></div>
+    ${tiles(sc, s => kv('You got', fx(my.c[s], 1), 'me') + kv('Best plan', fx(T.c[s], 1)) + kv(isR ? 'Harvest value' : 'Your harvest', fx(isR ? (sc.grain[me][s] + th.rho[s] * sc.fish[me][s]) : sc.endow[me][s], 1)))}
+    <p class="tiny muted" style="margin-top:.5rem">Trading score = 100 × (your gain over not trading) ÷ (the gain from the best plan), so it can exceed 100 if others’ mistakes helped you.${isR ? ' Wealth is valued at the true fish prices.' : ''}</p></div>`;
+  } else {
+    h += `<div class="card"><h3>Class outcome</h3><div class="tbl"><table><thead><tr><th>Islander</th><th>Result (sure ${isR ? 'wealth' : 'grain'})</th><th>Best plan</th><th>No trade</th><th>Score</th></tr></thead><tbody>
+    ${R0.per.map((p, i) => `<tr><td><span class="swatch" style="background:${SERIES[i]}"></span>${esc(v.seats[i].kind === 'human' ? v.seats[i].name : ROLES[i].name)}${p.bot ? ' 🤖' : ''} <span class="muted small">${ROLES[i].name}</span></td><td class="n"><b>${fx(p.CE)}</b></td><td class="n">${fx(th.per[i].CE)}</td><td class="n">${fx(th.per[i].CE0)}</td><td class="n">${p.total}</td></tr>`).join('')}
+    <tr class="tot"><td>Island’s total gain from trade</td><td class="n">${sgn(R0.gainA)}</td><td class="n">${sgn(R0.gainT)}</td><td></td><td></td></tr></tbody></table></div></div>`;
+  }
+  h += `<div class="grid2"><div class="card"><h3>Prices</h3><div class="tbl"><table><thead><tr><th></th>${my ? '<th>You predicted</th>' : ''}<th>Class average</th><th>Market</th><th>Theory</th></tr></thead><tbody>
+    ${labels.map((l, k) => `<tr><td>${esc(l.label.replace('Price of ', ''))}</td>${my ? `<td class="n">${my.f ? fx(my.f[k], 3) : '—'}</td>` : ''}<td class="n">${R0.avgF ? fx(R0.avgF[k], 3) : '—'}</td><td class="n">${mkt[k] == null ? '<span class="muted">—</span>' : fx(mkt[k], 3)}</td><td class="n"><b>${fx(th.truthF[k], 3)}</b></td></tr>`).join('')}
+    </tbody></table></div></div>
+    <div class="card"><h3>Quick questions: answers</h3>${sc.concept.map((c, k) => { const right = R0.per.filter(p => !p.bot && p.ans[k] === c.correct).length, n = R0.per.filter(p => !p.bot).length; const mine = my ? my.ans[k] : null; return `<div class="mcq"><div class="q">${k + 1}. ${esc(c.q)}</div><label class="right"><span>✓</span><span>${esc(c.options[c.correct])}</span></label>${my && mine != null && mine !== c.correct ? `<label class="wrong"><span>✗</span><span>You chose: ${esc(c.options[mine])}</span></label>` : ''}<p class="small muted" style="margin-top:.3rem">${esc(c.explain)}</p><p class="tiny muted">${right}/${n} students correct.</p></div>`; }).join('')}</div></div>`;
+  h += leaderboard(v);
+  h += `<details class="more"${host ? ' open' : ''}><summary>Full solution and class data</summary>${moreDetail(v)}</details>`;
+  return h;
+}
+function moreDetail(v) {
+  const sc = v.sc, rs = v.rs, R0 = rs.results, th = v.th, S = nS(sc), isR = sc.kind === 'radner', me = v.me;
+  let h = `<h3>${isGen(v) ? 'Why it works' : 'The theory'}</h3><div>${sc.debrief}</div>${sc.mathDebrief ? `<details class="more" style="margin-top:.6rem"><summary>The maths (optional)</summary>${sc.mathDebrief}</details>` : ''}`;
+  h += `<h3>Every islander</h3><div class="tbl"><table><thead><tr><th>Islander</th>${sc.states.map(s => `<th>${s.icon} got</th>`).join('')}${sc.states.map(s => `<th>${s.icon} best</th>`).join('')}<th>Result</th><th>Best</th><th>Score</th></tr></thead><tbody>
+  ${R0.per.map((p, i) => `<tr class="${i === me ? 'me' : ''}"><td><span class="swatch" style="background:${SERIES[i]}"></span>${esc(ROLES[i].name)}${p.bot ? ' 🤖' : ''}</td>${p.c.map(x => `<td class="n">${fx(x, 1)}</td>`).join('')}${th.per[i].c.map(x => `<td class="n muted">${fx(x, 1)}</td>`).join('')}<td class="n">${fx(p.CE)}</td><td class="n">${fx(th.per[i].CE)}</td><td class="n">${p.total}</td></tr>`).join('')}</tbody></table></div>`;
+  h += `<h3>Personal value of 1 grain in each weather</h3><p class="small muted">${isGen(v) ? 'How much each islander would pay for one more grain in each weather (scaled to add up to 1). When every weather can be traded, everyone agrees, and these equal the market prices.' : `$\\pi_s u'(c_{is})$, scaled to sum to 1. When markets are complete these are equal for everyone and equal the state prices.`}</p><div class="tbl"><table><thead><tr><th>Islander</th>${sc.states.map(s => `<th>${s.icon} ${esc(s.name)}</th>`).join('')}</tr></thead><tbody>
+  ${R0.per.map((p, i) => `<tr class="${i === me ? 'me' : ''}"><td>${esc(ROLES[i].name)}</td>${p.spd.map(x => `<td class="n">${fx(x, 3)}</td>`).join('')}</tr>`).join('')}<tr class="tot"><td>Theory state prices</td>${th.p.map(x => `<td class="n">${fx(x, 3)}</td>`).join('')}</tr></tbody></table></div>`;
+  if (sc.kind === 'assets' && E.rank(assetsA(sc)) < S) { const rg = statePriceRanges(assetsA(sc), rs.execQ); if (rg) h += `<p class="small">State prices consistent with market prices: ${sc.states.map((s, k) => `${s.name} ∈ [${fx(rg.lo[k], 2)}, ${fx(rg.hi[k], 2)}]`).join(', ')}.</p>`; }
+  if (isR && rs.spotAll) h += `<h3>Spot market (cleared at ${fx(rs.spotAll.execRho, 3)}; theory ${fx(th.rho[R0.s], 3)})</h3><div class="tbl"><table><thead><tr><th>Islander</th><th>Grain before</th><th>Fish before</th><th>Fish bought</th><th>Grain after</th><th>Fish after</th><th>Score</th></tr></thead><tbody>${R0.per.map((p, i) => `<tr class="${i === me ? 'me' : ''}"><td>${esc(ROLES[i].name)}</td><td class="n">${fx(p.spot.g, 1)}</td><td class="n">${fx(p.spot.y, 1)}</td><td class="n">${sgn(p.spot.dy, 1)}</td><td class="n">${fx(p.spot.gf, 1)}</td><td class="n">${fx(p.spot.yf, 1)}</td><td class="n">${Math.round(p.sScore)}</td></tr>`).join('')}</tbody></table></div>`;
+  const hist = rs.historyFull || [];
+  if (hist.length > 1) { const fi = fIdx(sc); const series = []; fi.forEach((j, k) => { series.push({ name: sc.assets[j].name, color: SERIES[k], ys: hist.map(x => x.q[j]) }); series.push({ name: `${sc.assets[j].name} (theory)`, color: SERIES[k], dash: true, ys: hist.map(() => th.q[j]) }); }); h += `<h3>How prices moved during bidding</h3>${lineChart({ xs: hist.map(x => `round ${x.iter}`), series, yFmt: x => fx(x, 3) })}`; }
+  const order = sc.states.map((_, s) => s).sort((a, b) => th.agg[a] - th.agg[b]);
+  h += `<h3>Consumption across weathers</h3><p class="small muted">Weathers ordered by the island total. Flat lines mean full insurance; lines rising with the total mean shared aggregate risk.</p>${lineChart({ xs: order.map(s => `${sc.states[s].name} (${fx(th.agg[s], 0)})`), series: R0.per.map((p, i) => ({ name: ROLES[i].name, color: SERIES[i], ys: order.map(s => p.c[s]) })), yFmt: x => fx(x, 1) })}`;
+  h += welfareAcross(v);
+  return h;
+}
+function welfareAcross(v) {
+  const hs = (v.hist || []).map((h, k) => h ? { ...h, k } : null).filter(Boolean);
+  const b = v.bench;
+  if (hs.length + (b ? 1 : 0) < 2) return '';
+  return `<h3>Gains from trade across rounds</h3><div class="tbl"><table><thead><tr><th>Round</th><th>Class achieved</th><th>Theory</th></tr></thead><tbody>${b ? `<tr><td>Part 1 · The storm year (complete claims)</td><td class="n">${b.gainA != null ? sgn(b.gainA) : '—'}</td><td class="n">${sgn(b.gainT)}</td></tr>` : ''}${hs.map(h => `<tr><td>${v.part ? `Part ${v.part} · ` : ''}${h.k + 1}. ${esc(h.title)}</td><td class="n">${sgn(h.gainA)}</td><td class="n">${sgn(h.gainT)}</td></tr>`).join('')}</tbody></table></div><p class="tiny muted">Total certainty-equivalent gain over not trading.${v.part === 1 ? '' : ' The storm year and the one-good Radner rounds share the same harvests, so differences come only from which assets trade.'}</p>`;
+}
+function leaderboard(v) {
+  const b = v.board.slice().sort((a, c) => (a.bot - c.bot) || (c.total - a.total)); let rank = 0;
+  return `<div class="card"><h3>Leaderboard</h3><div class="tbl"><table><thead><tr><th>#</th><th style="text-align:left">Player</th>${v.roundTitles.map((t, k) => `<th>R${k + 1}</th>`).join('')}<th>Total</th></tr></thead><tbody>
+  ${b.map(p => `<tr class="${p.i === v.me ? 'me' : ''}"><td>${p.bot ? '' : ++rank}</td><td style="text-align:left">${ROLES[p.i].icon} ${esc(p.bot ? ROLES[p.i].name + ' 🤖' : p.name || ROLES[p.i].name)}</td>${v.roundTitles.map((_, r) => `<td class="n">${p.rounds[r] ?? '—'}</td>`).join('')}<td class="n"><b>${Math.round(p.total)}</b></td></tr>`).join('')}</tbody></table></div><p class="tiny muted">Robots always play the best plan; they are shown for comparison and not ranked.</p></div>`;
+}
+const FINAL_LESSONS = {
+  1: String.raw`<li><b>Arrow–Debreu.</b> Treat grain in each weather as a separate good. With a market for each, the welfare theorems hold and idiosyncratic risk is insured away.</li>
+  <li><b>Pricing aggregate risk.</b> State price = probability × marginal utility of the island’s total: $p_s\propto\pi_s u'(\bar e_s)$. Everyone shares aggregate risk.</li></ol><p style="margin-top:.6rem"><b>Coming in Part 2:</b> what if there is <i>not</i> a claim for every weather, and islanders can only trade a bond and a share?</p>`,
+  2: String.raw`<li><b>Incomplete markets.</b> With fewer independent assets than weathers some risks cannot be traded, personal valuations differ, and gains from trade are lost.</li>
+  <li><b>Completing markets.</b> $S$ independent assets suffice (Arrow 1953); an option can do it (Ross 1976). Then Radner = Arrow–Debreu.</li>
+  <li><b>Spot markets and expectations.</b> Claims in one good plus spot markets replace all contingent goods, but only if everyone correctly anticipates spot prices.</li></ol>`,
+};
+function finalView(v) {
+  if (v.part) return now(`End of ${esc(partName(v.part, v.aud))}`, 'What the island taught us', '', App.mode === 'solo' ? '<button class="primary big" data-act="home">Back to start</button>' : '') + `<div class="card lesson"><ol>${(isGen(v) ? GEN_FINAL : FINAL_LESSONS)[v.part]}</div><div class="card">${welfareAcross(v) || '<p class="muted">—</p>'}</div>${leaderboard(v)}`;
+  return now('Game over', 'What the island taught us', '', App.mode === 'solo' ? '<button class="primary big" data-act="home">Back to start</button>' : '') + `<div class="card lesson"><ol>
+  <li><b>Arrow–Debreu.</b> Treat grain in each weather as a separate good. With a market for each, the welfare theorems hold and idiosyncratic risk is insured away.</li>
+  <li><b>Pricing aggregate risk.</b> State price = probability × marginal utility of the island’s total: $p_s\\propto\\pi_s u'(\\bar e_s)$. Everyone shares aggregate risk.</li>
+  <li><b>Incomplete markets.</b> With fewer independent assets than weathers some risks cannot be traded, personal valuations differ, and gains from trade are lost.</li>
+  <li><b>Completing markets.</b> $S$ independent assets suffice (Arrow 1953); an option can do it (Ross 1976). Then Radner = Arrow–Debreu.</li>
+  <li><b>Spot markets and expectations.</b> Claims in one good plus spot markets replace all contingent goods, but only if everyone correctly anticipates spot prices.</li></ol></div>
+  <div class="card">${welfareAcross(v) || ''}</div>${leaderboard(v)}`;
+}
+
+/* ------------------------------------------------------------- professor screens */
+function hostScreen() {
+  const G = App.game, sc = G.sc, rs = G.rs, ph = G.phase;
+  const st = { online: ['ok', '● room online'], reconnecting: ['warn', 'connecting…'], error: ['bad', 'offline'], '': ['warn', 'starting…'] }[App.status] || ['warn', App.status];
+  const joinUrl = `${location.origin}${location.pathname}?join=${App.code}`;
+  const submitted = rs ? (ph === 'forecast' ? rs.forecasts : ph === 'trading' ? rs.orders : ph === 'spot' && rs.spot ? rs.spot.orders : null) : null;
+  const subArr = submitted ? G.seats.map(s => !!submitted[s.i]) : null;
+  return `<header class="top"><div class="wrap"><span class="brand">Island Markets</span><span class="chip code">${esc(App.code)}</span>
+  ${sc ? stepsBar(sc, ph) : ''}<span class="spacer"></span>${G.S.part ? `<span class="chip">${esc(partName(G.S.part, G.S.aud))}</span>` : ''}${G.r >= 0 && sc ? `<span class="chip">Round ${G.r + 1}/${G.rounds.length}</span>` : ''}
+  <label class="small row" style="gap:.3rem" title="Shows the theoretical answers to you. Untick before sharing your screen."><input type="checkbox" data-act="toggle-key" ${App.showKey ? 'checked' : ''}/> answer key</label>
+  <span class="chip ${st[0]}">${esc(st[1])}</span><button class="ghost sm" data-act="end-host">End</button></div></header>
+  <main><div class="wrap layout"><aside class="card"><h3>Players</h3>${seatList(G.seats, subArr, { host: true })}
+  <hr/><p class="tiny muted">Join link</p><p class="tiny mono" style="word-break:break-all">${esc(joinUrl)}</p><button class="sm" data-act="copy-link" data-url="${esc(joinUrl)}" style="margin-top:.4rem">Copy link</button></aside>
+  <section class="stack">${hostMain()}</section></div></main>`;
+}
+function hostV() { const v = App.game.viewFor(-1); v.me = null; return v; }
+function hostMain() {
+  const G = App.game, sc = G.sc, rs = G.rs, ph = G.phase;
+  const nHumans = G.seats.filter(s => s.kind === 'human').length;
+  const key = App.showKey && sc ? `<div class="msg warn"><b>Answer key (only you should see this).</b> ${forecastLabels(sc).map((l, k) => `${esc(l.label.replace('Price of ', ''))} = <b class="mono">${fx(G.th.truthF[k], 3)}</b>`).join(' · ')}</div>` : '';
+  if (ph === 'lobby') return now('Waiting room', `${nHumans} of 6 students have joined`, 'Students open the game page and type the code below. Empty seats become robots when you start.', '<button class="primary big" data-act="advance">Start the game ▸</button>')
+    + `<div class="card" style="text-align:center"><p class="muted">Room code</p><div class="bigcode">${esc(App.code)}</div><p class="mono small" style="word-break:break-all">${esc(location.origin + location.pathname)}</p></div>
+    ${isGen(hostV()) ? howToCard(true) : ''}${recapCard(hostV())}<div class="card"><h3>Today’s rounds${G.S.part ? ` · ${esc(partName(G.S.part, G.S.aud))}` : ''}</h3><ol style="padding-left:1.2rem;margin-top:.4rem">${G.rounds.map(r => `<li><b>${esc(r.title)}</b> <span class="muted small">${esc(r.tag)}</span></li>`).join('')}</ol></div>`;
+  if (ph === 'final') return finalView(hostV());
+  const v = hostV();
+  if (ph === 'briefing') return now(`Round ${G.r + 1} of ${G.rounds.length} · Step 1`, 'Students are reading the situation', 'Read the story aloud, then open predictions.', '<button class="primary big" data-act="advance">Open predictions ▸</button>') + key + situation(v);
+  if (ph === 'forecast') {
+    const n = G.seats.filter(s => s.kind !== 'bot' && rs.forecasts[s.i]).length, need = G.seats.filter(s => s.kind !== 'bot').length;
+    return now(`Round ${G.r + 1} · Step 2`, `Predictions: ${n} of ${need} in`, 'Students predict prices and answer two questions. Open the market when most have submitted.', '<button class="primary big" data-act="advance">Open the market ▸</button>') + key + situation(v);
+  }
+  if (ph === 'trading') return hostTrading(key);
+  if (ph === 'nature') {
+    const k = `${G.r}-${rs.nature?.s}`, done = rs.nature && spunDone(k);
+    return now(`Round ${G.r + 1} · Step 4`, done ? `It’s ${sc.states[rs.nature.s].icon} ${esc(sc.states[rs.nature.s].name)}!` : 'Nature decides the weather', 'Scores do not depend on the draw: plans are judged before the weather is known.',
+      !rs.nature ? '<button class="primary big" data-act="advance">Spin the wheel</button>' : done ? `<button class="primary big" data-act="advance">${sc.kind === 'radner' ? 'Open the spot market ▸' : 'Show results ▸'}</button>` : '')
+      + `<div class="card">${wheel(sc, rs.nature ? { s: rs.nature.s, age: Date.now() - rs.nature.at } : null, k)}${done ? `<p class="realized">${sc.states[rs.nature.s].icon} ${esc(sc.states[rs.nature.s].name)}</p>` : ''}</div>`;
+  }
+  if (ph === 'spot') return hostSpot(key);
+  if (ph === 'results') return resultsView(v);
+  return '';
+}
+function hostTrading(key) {
+  const G = App.game, sc = G.sc, rs = G.rs, last = rs.history[rs.history.length - 1], pq = prevQ(rs);
+  const n = Object.keys(rs.orders).length;
+  const waiting = G.waitingSeats().filter(s => !rs.orders[s.i]).map(s => s.name || s.role);
+  const btn = rs.cleared ? '<button class="primary big" data-act="advance">Execute trades ▸</button>' : rs.stalled ? '<button class="primary big" data-act="advance">Execute as is ▸</button><button class="ghost" data-act="reopen">Allow 5 more rounds</button>' : '';
+  const text = rs.cleared ? 'Supply equals demand. Execute the trades.' : rs.stalled ? 'The bidding limit was reached. Execute (orders are scaled down proportionally) or allow more rounds.' : `Bidding round ${rs.iter}: ${n} of 6 plans in.${waiting.length ? ` Waiting for ${waiting.map(esc).join(', ')}.` : ''}${rs.deadline ? ` ⏱ <span class="mono" data-countdown="${rs.deadline}">${Math.max(0, Math.round((rs.deadline - Date.now()) / 1000))}</span>s` : ''}`;
+  let h = now(`Round ${G.r + 1} · Step 3 · Market`, rs.cleared ? '✅ The market has cleared' : 'The market is open', text, btn) + key;
+  if (inputMode(sc) === 'plan' && isArrowSet(sc)) {
+    h += tiles(sc, s => kv('Price of 1 grain', fx(rs.q[s], 3) + arrowOf(rs.q[s], pq && pq[s]), 'big') + (last ? kv('Last round excess demand', `<span class="${last.Z[s] > 0.05 ? 'up' : last.Z[s] < -0.05 ? 'down' : ''}">${sgn(last.Z[s], 1)}</span>`) : ''));
+  } else {
+    h += `<div class="assets">${sc.assets.map((a, j) => `<div class="asset"><div class="nm">${esc(a.name)}</div>${pays(sc, a)}${kv('Price', `${fx(rs.q[j], 3)}${arrowOf(rs.q[j], pq && pq[j])}`, 'big')}${last ? kv('Last round excess demand', sgn(last.Z[j], 1)) : ''}</div>`).join('')}</div>`;
+  }
+  h += `<details class="more"><summary>Auctioneer controls</summary><div class="row" style="margin-bottom:.8rem">${!rs.cleared && !rs.stalled ? '<button data-act="compute">Next bidding round now (don’t wait)</button>' : ''}${!rs.cleared ? '<button data-act="advance">Execute now</button>' : ''}</div>
+    <p class="small muted">Post your own prices (they are made arbitrage-free so that a sure grain costs 1):</p><div class="row">${sc.assets.map((a, j) => `<label class="fld" style="width:9rem">${esc(a.name)}${numIn(`h-px${j}`, +rs.q[j].toFixed(4))}</label>`).join('')}<button class="sm" data-act="set-prices">Post prices</button></div></details>`;
+  h += `<details class="more"><summary>Bidding history</summary>${historyTable(sc, rs.history, G.S.tol, G.S.aud === 'general')}${rs.history.length > 1 ? lineChart({ xs: rs.history.map(x => `round ${x.iter}`), series: sc.assets.map((a, j) => ({ name: a.name, color: SERIES[j], ys: rs.history.map(x => x.Z[j]) })), yFmt: x => fx(x, 1), zeroLine: true }) : ''}</details>`;
+  return h;
+}
+function hostSpot(key) {
+  const G = App.game, sc = G.sc, sp = G.rs.spot, st = sc.states[sp.s];
+  const n = Object.keys(sp.orders).length;
+  const btn = sp.cleared || sp.stalled ? '<button class="primary big" data-act="advance">Execute & show results ▸</button>' : '';
+  return now(`Round ${G.r + 1} · Spot market · ${st.icon} ${esc(st.name)}`, sp.cleared ? '✅ The fish market has cleared' : `Fish market: ${n} of 6 orders in`, `Price of 1 fish: ${fx(sp.rho, 3)} grain (opened at the class prediction ${fx(sp.rho0, 3)}).`, btn) + key
+    + `<details class="more"><summary>Auctioneer controls</summary><div class="row">${!sp.cleared && !sp.stalled ? '<button data-act="compute-spot">Next bidding round now</button>' : ''}<button data-act="advance">Execute now</button></div></details>
+    <details class="more"><summary>Bidding history</summary><div class="tbl"><table><thead><tr><th>Round</th><th>Fish price</th><th>Excess demand</th><th>Orders</th></tr></thead><tbody>${sp.history.map(x => `<tr><td>${x.iter}</td><td class="n">${fx(x.rho, 3)}</td><td class="n">${sgn(x.Z, 1)}</td><td class="n">${x.n}/6</td></tr>`).join('')}</tbody></table></div></details>`;
+}
+function seatModal(i) {
+  const G = App.game; const v = G.viewFor(i); App.modalView = v;
+  const can = ['forecast', 'trading', 'spot'].includes(v.phase);
+  return `<div class="modal-bg" data-act="close-modal-bg"><div class="modal stack"><div class="row" style="justify-content:space-between"><h2>Entering for ${ROLES[i].icon} ${esc(ROLES[i].name)}</h2><button data-act="close-modal">Close</button></div>
+  ${can ? playerMain(v, `m${i}-`) : '<p class="muted">Nothing to enter at this step.</p>'}</div></div>`;
+}
+
+/* ------------------------------------------------------------- events */
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.matches('[data-draft]')) App.drafts[t.id] = t.value;
+  if (t.dataset.livein != null) updateLive(t.dataset.livein);
+  if (t.dataset.spotin != null) updateSpotLive(t.dataset.spotin);
+  if (t.dataset.fsum != null) updateFsum(t.dataset.fsum);
+  if (t.id === 's-json') App.drafts['s-json'] = t.value;
+});
+document.addEventListener('change', e => {
+  const t = e.target;
+  if (t.dataset.radio) App.drafts[t.dataset.radio] = t.value;
+  if (t.dataset.setupRound != null) App.setup.use[+t.dataset.setupRound] = t.checked;
+  if (t.dataset.setupHint != null) App.setup.hints[+t.dataset.setupHint] = +t.value;
+  if (t.dataset.seatKind != null && t.value) {
+    const i = +t.dataset.seatKind, k = t.value; t.value = '';
+    if (k === 'act') { App.modalSeat = i; render(); return; }
+    if (App.net) App.net.kick(i); App.game.setSeatKind(i, k); if (k === 'manual') App.modalSeat = i; render();
+  }
+});
+function setVal(id, val) { App.drafts[id] = String(val); const el = document.getElementById(id); if (el) el.value = String(val); }
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const act = b.dataset.act, pre = b.dataset.pre || '';
+  if (act === 'close-modal-bg' && e.target !== b) return;
+  const G = App.game;
+  const send = (msg) => {
+    if (pre && pre.startsWith('m')) { const i = +pre.slice(1, pre.indexOf('-')); const err = G.handle(i, msg); toast(err || 'Entered ✓', err ? 'bad' : ''); return; }
+    if (App.mode === 'solo') { const err = G.handle(App.soloSeat, msg); if (err) toast(err, 'bad'); else toast('Submitted ✓'); return; }
+    App.send && App.send(msg);
+  };
+  const vv = pre ? App.modalView : App.view;
+  switch (act) {
+    case 'home': if (App.mode === 'solo') store('islandmkts-solo', null); location.href = location.pathname; break;
+    case 'join': {
+      const code = (readStr('j-code') || '').toUpperCase().replace(/[^A-Z0-9]/g, ''), name = (readStr('j-name') || '').trim();
+      if (code.length !== 5) return toast('Enter the 5-letter room code.', 'bad'); if (!name) return toast('Enter your first name.', 'bad');
+      store('islandmkts-name', name); startClient(code, name); break;
+    }
+    case 'setup': App.setup = { aud: 'general', part: null, rounds: [], use: [], hints: {}, S: { ...DEFAULT_SETTINGS } }; App.mode = 'setup'; render(); break;
+    case 'set-aud': App.setup.aud = b.dataset.aud; render(); break;
+    case 'pick-part': { const k = b.dataset.part === '' ? null : +b.dataset.part; const rs = k == null ? [] : roundsOfPart(k); Object.assign(App.setup, { part: k, rounds: rs, use: rs.map(() => true), hints: {}, custom: false }); delete App.drafts['s-json']; window.scrollTo(0, 0); render(); break; }
+    case 'json-apply': try { const rs = validateRounds(JSON.parse(App.drafts['s-json'] ?? $('#s-json').value)); App.setup.rounds = rs; App.setup.use = rs.map(() => true); App.setup.hints = {}; App.setup.custom = true; delete App.drafts['s-json']; toast(`Loaded ${rs.length} rounds ✓`); render(); } catch (err) { toast('JSON error: ' + err.message, 'bad'); } break;
+    case 'json-reset': App.setup.rounds = roundsOfPart(App.setup.part || 0); App.setup.use = App.setup.rounds.map(() => true); App.setup.custom = false; App.setup.hints = {}; delete App.drafts['s-json']; render(); break;
+    case 'open-room': {
+      readSetup(); const st = App.setup; const rounds = st.rounds.filter((_, k) => st.use[k]); if (!rounds.length) return toast('Select at least one round.', 'bad');
+      const hints = {}; st.rounds.forEach((r, k) => { if (st.use[k] && st.hints[k] != null) hints[rounds.indexOf(r)] = st.hints[k]; });
+      const extra = st.part ? { part: st.part } : {};
+      if (st.part === 2 && !st.custom) { const p1 = store('islandmkts-part1'); extra.bench = { gainT: stormYearGain(), gainA: p1 && isFinite(p1.gainA) ? p1.gainA : null }; }
+      extra.aud = st.aud;
+      startHost(new Game(st.custom ? rounds : forAudience(rounds, st.aud), { ...st.S, hints, ...extra }), newCode()); break;
+    }
+    case 'resume': { const s = store('islandmkts-host'); if (s) startHost(Game.restore(s.game), s.code); break; }
+    case 'solo': startSolo(+$('#solo-role').value, +$('#solo-part').value, $('#solo-aud').value); break;
+    case 'advance': G.advance(); break;
+    case 'compute': G.computeIter(); break;
+    case 'compute-spot': G.computeSpot(); break;
+    case 'reopen': G.reopen(); break;
+    case 'set-prices': { const q = G.sc.assets.map((_, j) => readNum(`h-px${j}`)); if (!q.every(x => x > 0)) return toast('Prices must be positive.', 'bad'); G.sc.assets.forEach((_, j) => delete App.drafts[`h-px${j}`]); G.setPrices(q); break; }
+    case 'toggle-key': App.showKey = b.checked; render(); break;
+    case 'copy-link': try { await navigator.clipboard.writeText(b.dataset.url); toast('Link copied ✓'); } catch { toast('Copy failed: select the link manually.', 'bad'); } break;
+    case 'end-host': if (confirm('End this session? Students will be disconnected. (The game stays saved in this browser so you can resume.)')) location.href = location.pathname; break;
+    case 'close-modal': case 'close-modal-bg': App.modalSeat = null; render(); break;
+    case 'bump': {
+      const id = b.dataset.id, cur = readNum(id), step = +b.dataset.d;
+      setVal(id, r2((isFinite(cur) ? cur : 0) + step));
+      if (b.dataset.spot) updateSpotLive(pre); else updateLive(pre);
+      break;
+    }
+    case 'fit': {
+      const P = computePlan(vv, pre); if (!(P.planCost > 0)) return;
+      const f = P.w / P.planCost; vv.sc.states.forEach((_, s) => setVal(`${pre}r${vv.r}-c${s}`, r2(P.c[s] * f)));
+      updateLive(pre); break;
+    }
+    case 'reset-plan': { const P = computePlan(vv, pre); vv.sc.states.forEach((_, s) => setVal(`${pre}r${vv.r}-c${s}`, r2(P.base[s]))); updateLive(pre); break; }
+    case 'zero-order': vv.sc.assets.forEach((_, j) => setVal(`${pre}r${vv.r}-o${j}`, 0)); updateLive(pre); break;
+    case 'send-forecast': {
+      const sc = vv.sc, n = forecastLabels(sc).length, f = Array.from({ length: n }, (_, k) => readNum(`${pre}r${vv.r}-f${k}`));
+      if (!f.every(x => x > 0)) return toast('Enter a positive number for every price.', 'bad');
+      const ans = sc.concept.map((_, k) => { const el = document.querySelector(`input[name="${pre}r${vv.r}-c${k}"]:checked`); return el ? +el.value : null; });
+      if (ans.some(a => a == null) && !confirm('You have not answered every question. Submit anyway?')) return;
+      send({ t: 'forecast', f, ans }); break;
+    }
+    case 'send-order': {
+      let P = computePlan(vv, pre);
+      if (P.mode === 'plan' && P.cost > 0.01 && P.cost <= 0.01 * P.w && P.planCost > 0) {
+        const f = P.w / P.planCost; vv.sc.states.forEach((_, s) => setVal(`${pre}r${vv.r}-c${s}`, Math.floor(P.c[s] * f * 1000) / 1000)); updateLive(pre); P = computePlan(vv, pre);
+        toast('Your plan was a little over budget, so it was scaled down slightly to fit.');
+      }
+      if (P.mode === 'plan' && P.cost > 0.01) return toast('Your plan costs more than your harvest is worth. Press “Fit to budget”.', 'bad');
+      if (!P.c.every(x => x > 0)) return toast('Every amount must stay positive.', 'bad');
+      const err = validateOrder(vv.sc, vv.me, vv.rs.q, P.th, rhoHatOf(vv, pre)); if (err) return toast(err, 'bad');
+      send({ t: 'order', th: P.th }); break;
+    }
+    case 'send-spot': { const dy = readNum(`${pre}r${vv.r}-dy`); if (!isFinite(dy)) return toast('Enter a number.', 'bad'); send({ t: 'spot', dy }); break; }
+  }
+});
+setInterval(() => {
+  document.querySelectorAll('[data-countdown]').forEach(el => { el.textContent = Math.max(0, Math.round((+el.dataset.countdown - Date.now()) / 1000)); });
+  if (App.game && (App.mode === 'host' || App.mode === 'solo')) App.game.tick();
+}, 500);
+window.addEventListener('load', render);
+
+/* ------------------------------------------------------------- start-up */
+function startHost(game, code) {
+  App.mode = 'host'; App.game = game; App.code = code; App.status = '';
+  let saveT = null;
+  game.on(() => {
+    render(); clearTimeout(saveT); saveT = setTimeout(() => store('islandmkts-host', { code, game: game.serialize() }), 300);
+    const k = game.rounds.findIndex(r => r.id === 'r2'); const h = k >= 0 && game.history[k];
+    if (h) store('islandmkts-part1', { gainA: h.gainA, gainT: h.gainT, at: Date.now() });
+  });
+  App.net = hostNet(game, code, (s, detail) => { if (App.status === s && App.statusDetail === detail) return; App.status = s; App.statusDetail = detail; render(); });
+  history.replaceState(null, '', location.pathname);
+  store('islandmkts-host', { code, game: game.serialize() });
+  render();
+}
+function startClient(code, name) {
+  App.mode = 'player'; App.code = code; App.name = name; App.status = 'connecting'; App.view = null;
+  history.replaceState(null, '', `${location.pathname}?join=${code}`);
+  const net = clientNet(code, name, msg => {
+    if (msg.t === 'view') { const prev = App.view; App.view = msg.v; if (!prev || prev.r !== msg.v.r) App.drafts = Object.fromEntries(Object.entries(App.drafts).filter(([k]) => !/^r\d+-/.test(k) || k.startsWith(`r${msg.v.r}-`))); render(); }
+    else if (msg.t === 'ack') toast(msg.msg, msg.ok ? '' : 'bad');
+    else if (msg.t === 'full') { toast('The room is full.', 'bad'); App.status = 'error'; render(); }
+  }, s => { App.status = s; render(); });
+  App.send = net ? net.send : null;
+  render();
+}
+function startSolo(role, part = 0, aud = 'general') {
+  const g = new Game(forAudience(roundsOfPart(part), aud), { aud, timer: 0, autoClear: true, open: 'forecast', ...(part ? { part } : {}), ...(part === 2 ? { bench: { gainT: stormYearGain(), gainA: null } } : {}) });
+  const s = g.seats[role]; s.kind = 'local'; s.name = 'You'; s.connected = true;
+  App.mode = 'solo'; App.game = g; App.soloSeat = role; App.status = 'local';
+  g.on(() => { App.view = g.viewFor(role); render(); });
+  g.start();
+}
+render();
+</script>
+</body>
+</html>

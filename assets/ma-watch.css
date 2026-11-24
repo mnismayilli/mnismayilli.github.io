@@ -148,7 +148,7 @@
   transition: all 0.16s ease;
 }
 .ma-toggle:hover { border-color: var(--accent); color: var(--accent-ink); }
-.ma-toggle.is-active { background: var(--ink); border-color: var(--ink); color: #fff; }
+.ma-toggle.is-active { background: var(--accent); border-color: var(--accent); color: var(--color-accent-contrast); }
 .ma-results-meta { margin-left: auto; font-family: var(--mono); font-size: 0.76rem; color: var(--muted); }
 
 /* ── workspace ───────────────────────────────────────────────────────────── */
@@ -283,14 +283,14 @@
   flex-shrink: 0;
   font-family: var(--mono);
   font-size: 0.74rem;
-  background: var(--ink);
-  color: #fff;
+  background: var(--accent);
+  color: var(--color-accent-contrast);
   border-radius: 999px;
   padding: 0.5rem 0.85rem;
   white-space: nowrap;
   transition: background 0.16s ease;
 }
-.ma-detail-link:hover { background: var(--accent); color: #fff; }
+.ma-detail-link:hover { background: var(--accent-ink); color: var(--color-accent-contrast); filter: brightness(1.1); }
 .ma-detail-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
 .ma-detail-copy { color: var(--ink-soft); margin-top: 1rem; line-height: 1.6; }
 .ma-detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.55rem; margin-top: 1.1rem; }

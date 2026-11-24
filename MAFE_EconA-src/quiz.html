@@ -1,0 +1,159 @@
+<script>
+/* Interactive section quizzes.
+   Markup produced by the .qmd source:
+
+     <div class="quiz" data-answer="B">
+       <p><strong>1.</strong> question…</p>
+       <ol type="A" class="upper-alpha">…one <li> per option…</ol>
+       <div class="explain">…worked explanation…</div>
+     </div>
+
+   Chapters may instead give feedback per option, in which case the .explain
+   box is replaced by one .feedback div per option:
+
+     <div class="quiz" data-answer="C">
+       <p><strong>Question 1</strong> …</p>
+       <ol type="A">…</ol>
+       <div class="feedback" data-option="A">…why A is wrong…</div>
+       <div class="feedback" data-option="B">…</div>
+     </div>
+
+   Progressive enhancement: with JavaScript off, the options render as a plain
+   lettered list and the explanation stays visible, so the page still works.
+   This script hides the explanation, turns each option into a button, and
+   reveals the explanation once an option is chosen. */
+(function () {
+  var LETTERS = "ABCDEFGH".split("");
+
+  function typesetIfNeeded(el) {
+    // Explanations start display:none. MathJax normally typesets them anyway,
+    // but if anything was missed, typeset on reveal (never twice).
+    if (el.querySelector("mjx-container")) return;
+    if (window.MathJax && typeof window.MathJax.typesetPromise === "function") {
+      window.MathJax.typesetPromise([el]).catch(function () {});
+    }
+  }
+
+  function initQuiz(quiz) {
+    var correct = (quiz.getAttribute("data-answer") || "").trim().toUpperCase();
+    var list = quiz.querySelector("ol, ul");
+    if (!list || !correct) return;
+
+    // Two supported shapes: one shared .explain box, or one .feedback div per
+    // option keyed by letter. Per-option feedback wins when both are present.
+    var explain = quiz.querySelector(".explain");
+    var feedback = {};
+    var hasFeedback = false;
+    Array.prototype.forEach.call(quiz.querySelectorAll(".feedback[data-option]"), function (fb) {
+      feedback[(fb.getAttribute("data-option") || "").trim().toUpperCase()] = fb;
+      hasFeedback = true;
+    });
+    if (!explain && !hasFeedback) return;
+
+    var anchor = explain || feedback[Object.keys(feedback)[0]];
+
+    var items = Array.prototype.filter.call(list.children, function (el) {
+      return el.tagName === "LI";
+    });
+    if (items.length < 2) return;
+
+    list.classList.add("quiz-options");
+
+    var status = document.createElement("p");
+    status.className = "quiz-status";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    anchor.parentNode.insertBefore(status, anchor);
+
+    function panels() {
+      return explain ? [explain] : Object.keys(feedback).map(function (k) { return feedback[k]; });
+    }
+    panels().forEach(function (el) { el.classList.add("quiz-hidden"); });
+
+    var reset = document.createElement("button");
+    reset.type = "button";
+    reset.className = "quiz-reset quiz-hidden";
+    reset.textContent = "Try again";
+    quiz.appendChild(reset);
+
+    var buttons = [];
+    var answered = false;
+
+    items.forEach(function (li, idx) {
+      var letter = LETTERS[idx];
+
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "quiz-option";
+
+      var tag = document.createElement("span");
+      tag.className = "quiz-letter";
+      tag.setAttribute("aria-hidden", "true");
+      tag.textContent = letter;
+
+      var text = document.createElement("span");
+      text.className = "quiz-text";
+      // Move the existing nodes rather than re-serialising innerHTML, so any
+      // MathJax output already rendered inside the option survives intact.
+      while (li.firstChild) text.appendChild(li.firstChild);
+
+      btn.appendChild(tag);
+      btn.appendChild(text);
+      li.appendChild(btn);
+      buttons.push(btn);
+
+      btn.addEventListener("click", function () {
+        if (answered) return;
+        answered = true;
+
+        var isRight = letter === correct;
+
+        buttons.forEach(function (b, j) {
+          b.disabled = true;
+          if (LETTERS[j] === correct) b.classList.add("is-answer");
+        });
+        btn.classList.add("is-chosen", isRight ? "is-correct" : "is-wrong");
+
+        status.textContent = isRight
+          ? "Correct."
+          : "Not quite — the correct answer is " + correct + ".";
+        status.classList.add(isRight ? "was-correct" : "was-wrong");
+
+        var panel = explain || feedback[letter];
+        if (panel) {
+          panel.classList.add(isRight ? "fb-correct" : "fb-wrong");
+          panel.classList.remove("quiz-hidden");
+          typesetIfNeeded(panel);
+        }
+        reset.classList.remove("quiz-hidden");
+      });
+    });
+
+    reset.addEventListener("click", function () {
+      answered = false;
+      buttons.forEach(function (b) {
+        b.disabled = false;
+        b.classList.remove("is-chosen", "is-correct", "is-wrong", "is-answer");
+      });
+      status.textContent = "";
+      status.classList.remove("was-correct", "was-wrong");
+      panels().forEach(function (el) {
+        el.classList.add("quiz-hidden");
+        el.classList.remove("fb-correct", "fb-wrong");
+      });
+      reset.classList.add("quiz-hidden");
+      buttons[0].focus();
+    });
+  }
+
+  function init() {
+    document.querySelectorAll(".quiz").forEach(initQuiz);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>

@@ -314,6 +314,26 @@ This is one of the public-company-only capital rules, alongside ss.586, 587 and 
 
 ## Maintenance of capital
 
+::: {.callout-caution title="Scope: what the September 2026 specification includes and excludes"}
+The Functioning Legal Knowledge was revised for assessments from 1 September 2026, and the finance
+bullet now reads: funding options — debt and equity "**including the redemption and buyback of shares,
+but excluding other reductions of share capital and excluding financial assistance pursuant to the
+Companies Act 2006**".
+
+So within this part:
+
+- **Purchase of own shares** and **redemption** are expressly **in scope**, and should be learned
+  thoroughly, including the out-of-capital procedure for a private company.
+- **Reduction of capital** under ss.641–653 — the special resolution and solvency statement route — is
+  now **outside the list**.
+- **Financial assistance** under ss.677–683 is now **outside the list**.
+
+Both excluded topics are retained below, in smaller compass, because a reduction of capital is how a
+buy-out order under s.996 is funded and how distributable reserves are created, and because knowing
+that financial assistance is a **public company** problem stops you giving the wrong answer on a
+private company question. Learn them as context, not as examinable detail.
+:::
+
 ### The principle
 
 *Trevor v Whitworth* (1887) 12 App Cas 409: a limited company may not return capital to its members

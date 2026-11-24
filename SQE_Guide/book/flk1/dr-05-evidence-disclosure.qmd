@@ -258,6 +258,19 @@ parties immediately.
   wrongdoing (however innocently) to disclose information identifying the wrongdoer, so that the
   applicant can bring a claim.
 
+::: {.callout-caution title="New: CPR 31.12A, from 6 April 2026"}
+The Civil Procedure (Amendment) Rules 2026 inserted a new **CPR 31.12A** with effect from **6 April
+2026**. It empowers the court to **order a party to request any person to produce**, for disclosure and
+inspection, any document which may support that party's case or adversely affect the case of another
+party.
+
+The distinction from CPR 31.17 is worth holding on to: **non-party disclosure under CPR 31.17** is an
+order **against the non-party**, who must be served and heard; **CPR 31.12A** is an order **against a
+party**, requiring it to go and **ask** someone else. It is useful where a party has practical access
+to documents held by an associate, an insurer or a former agent that it does not "control" within CPR
+31.8. Check whether it is in force at your sitting's cut-off.
+:::
+
 ### Electronic disclosure
 
 Practice Direction 31B applies to electronic documents. The parties must discuss the scope of

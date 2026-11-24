@@ -223,7 +223,10 @@ opportunity to amend, would meet the case.
   supported by **evidence** — normally a witness statement, though the application notice itself may be
   verified by a statement of truth and stand as evidence.
 - It must be **served as soon as practicable** after issue and, unless a rule provides otherwise, at
-  least **three clear days** before the hearing (CPR 23.7).
+  least **3 days** before the hearing (CPR 23.7(1)(b)). Because **CPR 2.8** computes a period expressed
+  in days as **clear days** — excluding both the day the period begins and the day of the event — and
+  because for a period of **5 days or less** weekends and bank holidays do not count at all, three days
+  in practice means three clear **business** days.
 - **Without notice** applications are permitted where there is **exceptional urgency**, where the
   overriding objective is best furthered by doing so, by consent, with the court's permission, where a
   rule permits it, or where **giving notice would defeat the purpose** of the application — the freezing

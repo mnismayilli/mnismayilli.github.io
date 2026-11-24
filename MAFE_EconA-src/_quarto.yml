@@ -1,0 +1,43 @@
+project:
+  type: book
+  # Render straight into the static site root's /MAFE_EconA/ folder, so the book
+  # is served at /MAFE_EconA/. The sources here are never published raw.
+  output-dir: ../MAFE_EconA
+
+book:
+  title: "Economics Block A1"
+  subtitle: "Lecture notes for the MSc in Applied Financial Economics"
+  author: "Mehman Ismayilli"
+  date: today
+  search: true
+  page-footer: "Economics Block A1 — MSc Applied Financial Economics"
+  chapters:
+    - index.qmd
+    - chapters/01-game-theory-perfect-information.qmd
+    - chapters/02-game-theory-imperfect-information.qmd
+    - chapters/03-applications-of-game-theory.qmd
+
+bibliography: references.bib
+
+# The notes are prose and mathematics only — no R or Python session is needed to
+# render the book, so the site deploy never has to run a language runtime.
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    include-after-body: quiz.html
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    number-depth: 4
+    code-copy: true
+    code-overflow: wrap
+    fontsize: 1.02rem
+    linestretch: 1.7
+    html-math-method: mathjax
+  pdf:
+    documentclass: scrbook
+    number-sections: true
+    keep-tex: false

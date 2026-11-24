@@ -56,7 +56,7 @@ the principle. *American Cyanamid*, *Denton*, *Spiliada*, *Churchill* and *Ladd 
 | **Arbitration Act 2025** | In force **1 August 2025**: governing law of the arbitration agreement; s.39A summary disposal; duty of disclosure; s.44 third parties; emergency arbitrators |
 | **Rome I**, Arts 3, 4, 6, 8, 9 | Applicable law of contracts |
 | **Rome II**, Arts 4, 5–8, 14 | Applicable law of non-contractual obligations |
-| **Hague 2005** / **Hague 2019** | Exclusive choice of court agreements / recognition and enforcement (UK from **1 July 2025**) |
+| **Hague 2005** / **Hague 2019** | Exclusive choice of court agreements / recognition and enforcement (UK from **1 July 2025**) — *jurisdiction and enforcement abroad were removed from the content list in September 2026* |
 | **ECCTA 2023** ss.194–195 | SLAPPs — in force **18 June 2025**; CPR 3.4(2)(d) and the CPR 44.2 amendment |
 
 | CPR | Subject |
@@ -92,7 +92,7 @@ the principle. *American Cyanamid*, *Denton*, *Spiliada*, *Churchill* and *Ladd 
 | **39.5** | Trial bundle |
 | **40.7, 40.11** | Effect of judgment; 14 days to pay |
 | **44.2, 44.3** | Costs discretion; standard and indemnity bases |
-| **44.13–44.16** | QOCS |
+| **44.13–44.16** | QOCS — *removed from the content list in September 2026; background only* |
 | **45** | Fixed recoverable costs |
 | **46.2, 46.8** | Non-party costs; wasted costs |
 | **47** | Detailed assessment |
@@ -100,6 +100,8 @@ the principle. *American Cyanamid*, *Denton*, *Spiliada*, *Churchill* and *Ladd 
 | **69, 71, 72, 73, 83, 89** | Receivers; obtaining information; third party debt orders; charging orders; control of goods; attachment of earnings |
 | **PD 7A** | High Court / County Court thresholds |
 | **PD 31B**, **PD 57AD** | Electronic disclosure; disclosure in the Business and Property Courts |
+| **31.12A** | New from 6 April 2026: power to order a party to request a third party to produce documents |
+| **Welsh language PD** | Use of the Welsh language in civil proceedings — *new to the content list in September 2026* |
 | **PD 57AC** | Trial witness statements in the Business and Property Courts |
 
 ## The numbers

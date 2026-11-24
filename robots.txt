@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mnismayilli.github.io/sitemap.xml

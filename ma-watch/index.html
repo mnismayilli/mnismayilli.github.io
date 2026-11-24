@@ -1,83 +1,55 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>M&amp;A Watch | Mehman Ismayilli</title>
-    <meta name="description" content="Track new and ongoing public merger reviews from official OECD competition-authority sources, synced weekly." />
-    <link rel="canonical" href="https://mnismayilli.github.io/ma-watch/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600&display=swap"
-    />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/assets/styles.css" />
-    <link rel="stylesheet" href="/assets/ma-watch.css" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8XB2EHXR95"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-8XB2EHXR95');
-    </script>
-  </head>
-  <body>
-    <main id="main">
-      <section id="oecd-ma-watch" class="ma-watch" data-ma-watch-root>
-        <!-- COMPACT HEADER -->
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M&amp;A Watch | Mehman Ismayilli</title>
+  <meta name="description" content="New and ongoing public merger reviews from official OECD competition-authority registers, synced weekly. Filter the docket and jump to the official filing.">
+  <link rel="canonical" href="https://mnismayilli.github.io/ma-watch/">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#fbf8f2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
+  <meta property="og:site_name" content="Mehman Ismayilli">
+  <meta property="og:title" content="M&amp;A Watch | Mehman Ismayilli">
+  <meta property="og:description" content="New and ongoing public merger reviews from official OECD competition-authority registers, synced weekly. Filter the docket and jump to the official filing.">
+  <meta property="og:url" content="https://mnismayilli.github.io/ma-watch/">
+  <meta property="og:image" content="https://mnismayilli.github.io/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/assets/ma-watch.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="top">
+    <div class="wrap top__inner">
+      <a class="brand" href="/"><span class="brand__mark" aria-hidden="true">MI</span>Mehman Ismayilli</a>
+      <nav class="nav" aria-label="Site"><ul><li><a href="/research/">Research</a></li><li><a href="/teaching/">Teaching</a></li><li><a href="/cv/">CV</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+    </div>
+  </header>
+  <main id="content">
+    <div class="wrap">
+      <section id="oecd-ma-watch" class="ma-watch" data-ma-watch-root data-colour="violet">
         <header class="ma-head">
-          <p class="eyebrow">Competition policy · Industrial organization</p>
+          <p class="kicker">Competition policy · Data</p>
           <h1>M&amp;A Watch</h1>
-          <p class="ma-lede">
-            New and ongoing public merger reviews from official OECD competition-authority registers — synced
-            weekly. Filter the docket, open any case, and jump straight to the official filing.
-          </p>
+          <p class="ma-lede">New and ongoing public merger reviews from official OECD competition-authority registers, synced weekly. Filter the docket, open any case, and jump straight to the official filing.</p>
           <dl class="ma-stat-strip" data-stat-strip></dl>
         </header>
-
-        <!-- TABS -->
-        <div class="ma-tabs" role="tablist" aria-label="M&A Watch views">
-          <button class="ma-tab is-active" data-ma-tab="browse" role="tab" aria-selected="true">Browse cases</button>
-          <button class="ma-tab" data-ma-tab="overview" role="tab" aria-selected="false">Overview</button>
-          <button class="ma-tab" data-ma-tab="sources" role="tab" aria-selected="false">Sources &amp; method</button>
+        <div class="ma-tabs" role="tablist" aria-label="M&amp;A Watch views">
+          <button type="button" class="ma-tab is-active" data-ma-tab="browse" role="tab" aria-selected="true">Browse cases</button>
+          <button type="button" class="ma-tab" data-ma-tab="overview" role="tab" aria-selected="false">Overview</button>
+          <button type="button" class="ma-tab" data-ma-tab="sources" role="tab" aria-selected="false">Sources &amp; method</button>
         </div>
-
-        <!-- PANEL: BROWSE -->
         <div class="ma-panel" data-ma-panel="browse">
           <div class="ma-controls">
             <div class="ma-controls__row">
-              <label class="ma-field ma-field--search">
-                <span>Search</span>
-                <input type="search" placeholder="Getty, hospital, energy, Phase 2…" data-filter-search />
-              </label>
-              <label class="ma-field">
-                <span>Country</span>
-                <select data-filter-country><option value="all">All countries</option></select>
-              </label>
-              <label class="ma-field">
-                <span>Authority</span>
-                <select data-filter-authority><option value="all">All authorities</option></select>
-              </label>
-              <label class="ma-field">
-                <span>Status</span>
-                <select data-filter-status>
-                  <option value="all">All statuses</option>
-                  <option value="ongoing">Ongoing only</option>
-                  <option value="new">Newly visible</option>
-                  <option value="completed">Completed</option>
-                </select>
-              </label>
-              <label class="ma-field">
-                <span>Sort</span>
-                <select data-filter-sort>
-                  <option value="priority">Priority</option>
-                  <option value="freshest">Freshest first</option>
-                  <option value="opened">Newest filing</option>
-                  <option value="authority">Authority A–Z</option>
-                </select>
-              </label>
+              <label class="ma-field ma-field--search"><span>Search</span><input type="search" placeholder="Getty, hospital, energy, Phase 2…" data-filter-search></label>
+              <label class="ma-field"><span>Country</span><select data-filter-country><option value="all">All countries</option></select></label>
+              <label class="ma-field"><span>Authority</span><select data-filter-authority><option value="all">All authorities</option></select></label>
+              <label class="ma-field"><span>Status</span><select data-filter-status><option value="all">All statuses</option><option value="ongoing">Ongoing only</option><option value="new">Newly visible</option><option value="completed">Completed</option></select></label>
+              <label class="ma-field"><span>Sort</span><select data-filter-sort><option value="priority">Priority</option><option value="freshest">Freshest first</option><option value="opened">Newest filing</option><option value="authority">Authority A–Z</option></select></label>
             </div>
             <div class="ma-controls__foot">
               <div class="ma-toggles">
@@ -87,29 +59,49 @@
               <span class="ma-results-meta" data-results-meta>Loading cases…</span>
             </div>
           </div>
-
           <div class="ma-workspace">
-            <div class="ma-results">
-              <div class="ma-results-list" data-case-list>
-                <div class="ma-empty-state"><h3>Loading…</h3><p>Fetching the latest synced case data.</p></div>
-              </div>
-            </div>
+            <div class="ma-results"><div class="ma-results-list" data-case-list><div class="ma-empty-state"><h3>Loading…</h3><p>Fetching the latest synced case data.</p></div></div></div>
             <aside class="ma-detail-panel" data-case-detail></aside>
           </div>
         </div>
-
-        <!-- PANEL: OVERVIEW -->
-        <div class="ma-panel" data-ma-panel="overview" hidden>
-          <div data-overview></div>
-        </div>
-
-        <!-- PANEL: SOURCES & METHOD -->
-        <div class="ma-panel" data-ma-panel="sources" hidden>
-          <div data-sources></div>
-        </div>
+        <div class="ma-panel" data-ma-panel="overview" hidden><div data-overview></div></div>
+        <div class="ma-panel" data-ma-panel="sources" hidden><div data-sources></div></div>
+        <noscript><p class="note">This page renders the case data with JavaScript. The raw dataset is at <a href="/data/ma-watch-data.json">/data/ma-watch-data.json</a>.</p></noscript>
       </section>
-    </main>
-    <script src="/assets/main.js"></script>
+    </div>
     <script src="/assets/ma-watch.js"></script>
-  </body>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__inner">
+        <div>
+          <p class="foot__name">Mehman Ismayilli</p>
+          <p>Senior Lecturer in Economics<br>Department of Economics and The Queen's College, University of Oxford</p>
+          <p style="margin-top:0.6rem">Room 242, Manor Road Building, Oxford OX1 3UQ</p>
+        </div>
+        <div>
+          <h2>On this site</h2>
+          <ul>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li><a href="/cv/">Curriculum vitae</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/ma-watch/">M&amp;A Watch</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Elsewhere</h2>
+          <ul>
+            <li><a href="mailto:mehman.ismayilli@economics.ox.ac.uk">Email</a></li>
+            <li><a href="https://www.economics.ox.ac.uk/people/mehman-ismayilli" rel="noopener">Oxford profile</a></li>
+            <li><a href="https://www.linkedin.com/in/mismayilli/" rel="me noopener">LinkedIn</a></li>
+            <li><a href="https://x.com/IsmayilliMehman" rel="me noopener">X</a></li>
+            <li><a href="https://ind-econ.github.io" rel="noopener">Network of Industrial Economists</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__base"><span>© 2026 Mehman Ismayilli</span><span>No cookies, no tracking · Updated November 2026</span></div>
+    </div>
+  </footer>
+</body>
 </html>

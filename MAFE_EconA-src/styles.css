@@ -1,0 +1,315 @@
+/* =============================================================
+   Readability styles — let the prose breathe
+   ============================================================= */
+
+/* Calmer, slightly larger body type */
+main { font-size: 1.02rem; }
+
+/* Looser line spacing and clearer separation between paragraphs.
+   This is the single biggest readability win across every chapter. */
+main p,
+main li {
+  line-height: 1.72;
+}
+main p {
+  margin-bottom: 1.05rem;
+}
+main li {
+  margin-bottom: 0.35rem;
+}
+
+/* More air above section headings so sections feel distinct */
+main h2 {
+  margin-top: 2.3rem;
+  margin-bottom: 0.85rem;
+}
+main h3 {
+  margin-top: 1.6rem;
+}
+
+/* Give callouts room so they read as genuine "stops" in the flow */
+.callout {
+  margin-top: 1.45rem;
+  margin-bottom: 1.45rem;
+}
+
+/* =============================================================
+   Highlight boxes for new ideas, definitions, and warnings.
+
+   Usage in Markdown:
+     ::: {.definition}
+     **Term** — one or two sentences defining it.
+     :::
+
+     ::: {.keyidea}
+     A new idea worth pausing on.
+     :::
+   Warnings/pitfalls use Quarto's built-in ::: {.callout-warning}.
+   ============================================================= */
+
+.definition,
+.keyidea {
+  padding: 0.75rem 1rem 0.55rem;
+  margin: 1.4rem 0;
+  border-radius: 5px;
+  border-left: 4px solid;
+}
+.definition > :last-child,
+.keyidea > :last-child { margin-bottom: 0; }
+
+/* Definition — blue */
+.definition {
+  background: #eef5fb;
+  border-left-color: #2c7fb8;
+}
+.definition::before {
+  content: "Definition";
+  display: block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2c7fb8;
+  margin-bottom: 0.35rem;
+}
+
+/* Key idea — teal/green */
+.keyidea {
+  background: #eef7f0;
+  border-left-color: #2e8b57;
+}
+.keyidea::before {
+  content: "Key idea";
+  display: block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2e8b57;
+  margin-bottom: 0.35rem;
+}
+
+/* Soft highlighter, if ever needed inline: [term]{.mark} */
+mark, .mark {
+  background: linear-gradient(transparent 58%, #ffe58a 58%);
+  padding: 0 0.04em;
+  color: inherit;
+}
+
+/* =============================================================
+   Boxed environments carried over from the LaTeX storyboard.
+
+   Usage in Markdown:
+     ::: {.infobox}      — the LaTeX `alertbox`  (notation, asides)
+     ::: {.highlightbox} — the LaTeX `highlightbox` (insights to keep)
+     ::: {.exercisebox}  — the LaTeX `exercisebox`
+     ::: {.answerbox}    — the LaTeX `answerbox`
+     ::: {.theorem}      — the LaTeX `theorem`
+   ============================================================= */
+
+.infobox,
+.highlightbox,
+.exercisebox,
+.answerbox,
+.explain,
+.theorem {
+  padding: 0.75rem 1rem 0.55rem;
+  margin: 1.4rem 0;
+  border-radius: 5px;
+  border-left: 4px solid;
+}
+.infobox > :last-child,
+.highlightbox > :last-child,
+.exercisebox > :last-child,
+.answerbox > :last-child,
+.explain > :last-child,
+.theorem > :last-child { margin-bottom: 0; }
+
+.infobox::before,
+.highlightbox::before,
+.exercisebox::before,
+.answerbox::before,
+.explain::before,
+.theorem::before {
+  display: block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+/* Info / notation — amber */
+.infobox { background: #fdf6e3; border-left-color: #b8860b; }
+.infobox::before { content: "Info"; color: #8a6400; }
+
+/* Highlight — rose */
+.highlightbox { background: #fdeef1; border-left-color: #c2185b; }
+.highlightbox::before { content: "Highlight"; color: #a3154c; }
+
+/* Exercise — indigo */
+.exercisebox { background: #eef0fb; border-left-color: #3f51b5; }
+.exercisebox::before { content: "Exercise"; color: #30409c; }
+
+/* Answer — green */
+.answerbox,
+.explain { background: #eef7f0; border-left-color: #2e8b57; }
+.answerbox::before,
+.explain::before { content: "Answer"; color: #2e8b57; }
+
+/* Theorem — slate */
+.theorem { background: #eef1f4; border-left-color: #4a6378; }
+.theorem::before { content: "Theorem"; color: #3b5267; }
+
+/* Game trees are black-on-transparent SVGs produced from the original TikZ
+   source, so they need a light plate to stay legible under the dark theme. */
+.gametree img {
+  max-width: 100%;
+  height: auto;
+  background: #fff;
+  border-radius: 4px;
+  padding: 0.6rem 0.4rem;
+}
+.gametree { margin: 1.5rem 0; text-align: center; }
+
+/* =============================================================
+   Interactive section quizzes.
+
+   The .qmd emits a .quiz div holding the question, a lettered
+   ordered list of options, and a .explain box. quiz.html turns
+   the options into buttons and reveals .explain once one is
+   chosen. Everything below the first rule is JS-enhanced state;
+   with JS off the list and explanation simply render as prose.
+   ============================================================= */
+
+.quiz {
+  margin: 1.6rem 0;
+  padding: 1rem 1.15rem 0.85rem;
+  border: 1px solid #d8dde3;
+  border-radius: 6px;
+  background: #fcfdfe;
+}
+.quiz > :first-child { margin-top: 0; }
+.quiz > :last-child { margin-bottom: 0; }
+
+/* Hidden until the reader commits to an answer. */
+.quiz-hidden { display: none !important; }
+
+/* Option list — the native A/B/C/D markers are the no-JS fallback;
+   once enhanced, the letter moves inside the button instead. */
+.quiz-options { margin: 0.9rem 0 0.2rem; padding-left: 1.6rem; }
+.quiz-options li { margin-bottom: 0.45rem; }
+.quiz-options:has(.quiz-option) { list-style: none; padding-left: 0; }
+
+.quiz-option {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  line-height: 1.6;
+  color: inherit;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccd4dc;
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.quiz-option:hover:not(:disabled) { background: #eef4fa; border-color: #7da7cc; }
+.quiz-option:focus-visible { outline: 2px solid #2c7fb8; outline-offset: 2px; }
+.quiz-option:disabled { cursor: default; opacity: 1; }
+
+.quiz-letter {
+  flex: 0 0 auto;
+  min-width: 1.45em;
+  height: 1.45em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.82rem;
+  border-radius: 50%;
+  background: #e6ecf2;
+  color: #3b5267;
+}
+.quiz-text { flex: 1 1 auto; }
+
+/* Chosen correctly — green. */
+.quiz-option.is-correct { background: #e8f5ec; border-color: #2e8b57; }
+.quiz-option.is-correct .quiz-letter { background: #2e8b57; color: #fff; }
+
+/* Chosen wrongly — red. */
+.quiz-option.is-wrong { background: #fdeced; border-color: #c0392b; }
+.quiz-option.is-wrong .quiz-letter { background: #c0392b; color: #fff; }
+
+/* The right answer, when the reader picked a different one. */
+.quiz-option.is-answer:not(.is-chosen) {
+  border-color: #2e8b57;
+  border-style: dashed;
+  background: #f3faf5;
+}
+.quiz-option.is-answer:not(.is-chosen) .quiz-letter { background: #cfe6d8; color: #1f6340; }
+
+.quiz-status {
+  margin: 0.85rem 0 0;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.quiz-status.was-correct { color: #2e8b57; }
+.quiz-status.was-wrong { color: #c0392b; }
+
+.quiz-reset {
+  font: inherit;
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #ccd4dc;
+  border-radius: 4px;
+  background: #fff;
+  color: #3b5267;
+  cursor: pointer;
+}
+.quiz-reset:hover { background: #eef4fa; border-color: #7da7cc; }
+.quiz-reset:focus-visible { outline: 2px solid #2c7fb8; outline-offset: 2px; }
+
+/* Dark theme (Quarto's darkly) — keep contrast on the quiz chrome. */
+.quarto-dark .quiz { background: #2b3035; border-color: #444b52; }
+.quarto-dark .quiz-option { background: #343a40; border-color: #4d555d; }
+.quarto-dark .quiz-option:hover:not(:disabled) { background: #3d454d; border-color: #7da7cc; }
+.quarto-dark .quiz-letter { background: #4a525a; color: #e6ecf2; }
+.quarto-dark .quiz-option.is-correct { background: #24402f; border-color: #3fa06a; }
+.quarto-dark .quiz-option.is-wrong { background: #452626; border-color: #d4564a; }
+.quarto-dark .quiz-option.is-answer:not(.is-chosen) { background: #2c3b33; border-color: #3fa06a; }
+.quarto-dark .quiz-reset { background: #343a40; border-color: #4d555d; color: #e6ecf2; }
+
+/* Per-option quiz feedback (used where the source gives a response to every
+   option rather than one shared explanation). Styled like the answer box, but
+   tinted by whether the chosen option was right. */
+.feedback {
+  padding: 0.75rem 1rem 0.55rem;
+  margin: 1.4rem 0;
+  border-radius: 5px;
+  border-left: 4px solid #4a6378;
+  background: #eef1f4;
+}
+.feedback > :last-child { margin-bottom: 0; }
+.feedback::before {
+  display: block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  content: "Feedback";
+  color: #3b5267;
+}
+.feedback.fb-correct { background: #eef7f0; border-left-color: #2e8b57; }
+.feedback.fb-correct::before { color: #2e8b57; }
+.feedback.fb-wrong { background: #fdeef0; border-left-color: #c0392b; }
+.feedback.fb-wrong::before { color: #a8322a; }
+
+.quarto-dark .feedback { background: #343a40; border-left-color: #6b7681; }
+.quarto-dark .feedback.fb-correct { background: #24402f; border-left-color: #3fa06a; }
+.quarto-dark .feedback.fb-wrong { background: #452626; border-left-color: #d4564a; }

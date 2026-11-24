@@ -1350,7 +1350,9 @@ insurance company, a banking company, an e-money issuer, a MiFID investment firm
 company, or a company carrying on insurance market activity, nor generally to a member of an
 ineligible group. And under **s.476**, members holding **10%** or more of the nominal value of the
 issued share capital (or any class of it), or 10% of the members if there is no share capital, may by
-notice **require** an audit — a minority protection that survives every exemption.
+notice **require** an audit — a minority protection that survives every exemption. The notice cannot be
+given before the financial year to which it relates, and must be given **not later than one month before
+the end of that year**.
 
 ### Persons with significant control
 

@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Island Markets Guide</title>
+<meta name="description" content="Instructor guide for Island Markets: a six-player classroom game on general equilibrium under uncertainty, Arrow–Debreu securities, market completeness and Radner economies." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<style>
+:root { color-scheme: light; --paper:#f1f3f1; --surface:#fbfcfb; --ink:#1a201e; --ink-soft:#3b433f; --muted:#575f5c; --line:rgba(26,32,30,.14); --accent:#1f4741; --accent-wash:rgba(31,71,65,.09); --mark:#7a3b42; --mark-wash:rgba(122,59,66,.09);
+  --display:"Newsreader",Georgia,serif; --body:"Source Sans 3",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace; }
+*,*::before,*::after { box-sizing: border-box; } * { margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 16px 5rem; }
+header { padding: 2.5rem 0 1rem; border-bottom: 1px solid var(--line); margin-bottom: 1.5rem; }
+.eyebrow { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.2; }
+h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin: .3rem 0 .6rem; }
+h2 { font-size: 1.65rem; margin: 2.4rem 0 .6rem; padding-top: .6rem; border-top: 1px solid var(--line); }
+h3 { font-size: 1.2rem; margin: 1.5rem 0 .4rem; }
+p, ul, ol { color: var(--ink-soft); } p + p { margin-top: .7rem; }
+ul, ol { padding-left: 1.3rem; margin: .5rem 0; } li + li { margin-top: .3rem; }
+.lede { font-size: 1.12rem; color: var(--ink-soft); }
+.btn { display: inline-block; background: var(--accent); color: var(--paper); padding: .55rem 1rem; border-radius: 9px; font-weight: 600; text-decoration: none; margin-top: .6rem; }
+.callout { border-left: 3px solid var(--accent); background: var(--accent-wash); padding: .7rem .9rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
+.callout.mark { border-color: var(--mark); background: var(--mark-wash); }
+.tbl { overflow-x: auto; margin: .8rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { padding: .35rem .55rem; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
+th .katex { text-transform: none; letter-spacing: 0; }
+th:first-child, td:first-child { text-align: left; }
+td { font-family: var(--mono); font-variant-numeric: tabular-nums; } td:first-child { font-family: var(--body); }
+tr.tot td { border-top: 1.5px solid var(--muted); font-weight: 600; }
+code, pre { font-family: var(--mono); font-size: .85rem; }
+pre { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: .8rem 1rem; overflow-x: auto; color: var(--ink-soft); }
+nav.toc { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: .8rem 1.1rem; margin: 1rem 0; }
+nav.toc ol { margin: .2rem 0; }
+details { margin: .6rem 0; } summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.katex-display { overflow-x: auto; overflow-y: hidden; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: .5rem 1.5rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Instructor guide · MSc Microeconomics / Financial Economics</p>
+  <h1>Island Markets</h1>
+  <p class="lede">A live, six-player market game on <b>general equilibrium under uncertainty</b>: Arrow–Debreu contingent claims, the pricing of aggregate risk, incomplete markets, completing markets with options, and Radner equilibrium with spot markets and rational expectations.</p>
+  <a class="btn" href="./">Open the game →</a>
+</header>
+
+<nav class="toc"><b>Contents</b><ol>
+  <li><a href="#glance">At a glance</a></li><li><a href="#objectives">Learning objectives</a></li><li><a href="#design">Why it is designed this way</a></li>
+  <li><a href="#plan">Session plan (two parts)</a></li><li><a href="#run">Running it online</a></li><li><a href="#rounds">Round-by-round solutions and debrief</a></li>
+  <li><a href="#scoring">Scoring</a></li><li><a href="#exercise">Combining it with your exercise</a></li><li><a href="#refs">References</a></li></ol></nav>
+
+<h2 id="glance">1. At a glance</h2>
+<div class="grid2">
+<ul><li><b>Players:</b> 6 (Farmer A/B, Fisher A/B, Roofer A/B). Fewer students? Robots fill empty seats and play the theoretical optimum.</li>
+<li><b>Time:</b> two sessions: Part 1 · Arrow–Debreu ≈ 35 min (2 rounds); Part 2 · Radner ≈ 55 min (3 rounds). Or both in one ≈ 90-minute session.</li>
+<li><b>Format:</b> online seminar. You share your screen; each student plays on their own laptop.</li></ul>
+<ul><li><b>Prerequisites:</b> none in <i>General audience</i> mode; for <i>Economics students</i>: expected utility, Lagrangian optimisation, Walrasian equilibrium with certainty.</li>
+<li><b>Tech:</b> one web page, no accounts, no installs. Students need the link and a 5-character room code.</li>
+<li><b>Practice mode:</b> students can replay alone against robots for revision.</li></ul>
+</div>
+<p>Every round has the same four steps: <b>forecast</b> the equilibrium prices, answer a two-question <b>concept check</b>, <b>trade</b> in a Walrasian market where an auctioneer adjusts prices to excess demand, and a <b>debrief</b> that puts the class's outcome next to the theory. Nature's draw only adds drama: scores reward ex-ante decisions, not the weather.</p>
+
+<h3>Two audiences</h3>
+<p>When you open a room you choose <b>who is playing</b>:</p>
+<ul>
+<li><b>General audience</b> (default): no prior economics needed. Contracts are called <i>weather tickets</i>, <i>bonds</i>, <i>shares</i> and <i>options</i> and explained in everyday words. Round 1 opens with a five-card <b>How to play</b> guide (including why a steady life beats feast-or-famine) and a <b>glossary</b>. Every prediction has a <b>hint</b>, tips are on in every round, the quick questions test intuition rather than theory, and each lesson ends with “economists call this …”. The equations are kept in an optional “The maths” section of the results. The two parts are titled <i>Sharing risk</i> and <i>When markets are missing</i>.</li>
+<li><b>Economics students</b>: the technical version described in this guide (Arrow securities, state prices, Radner equilibrium, LaTeX derivations, fading hints).</li>
+</ul>
+<p>The economics, numbers and solutions below are identical in both versions; only the language and scaffolding differ. Students can also practise alone at <i>Beginner</i> or <i>Economics student</i> level.</p>
+<p>With a general audience, slow down at two moments: read the <b>How to play</b> cards aloud before Round 1 (≈ 3 minutes), and after each round ask “who was surprised by the prices, and why?” before revealing the lessons.</p>
+
+<h2 id="objectives">2. Learning objectives</h2>
+<p>By the end of the session students should be able to:</p>
+<ol>
+<li><b>Formulate and solve</b> an individual's optimal portfolio / contingent-consumption problem under uncertainty and interpret its first-order conditions as marginal utility per unit of money equalised across securities (Rounds 1–4).</li>
+<li><b>Derive</b> Arrow–Debreu equilibrium state prices and allocations; explain full insurance without aggregate risk and the linear sharing rule with aggregate risk (Rounds 1–2).</li>
+<li><b>Interpret</b> state prices as probability × marginal utility, and distinguish physical probabilities, risk-neutral probabilities and the stochastic discount factor (Round 2).</li>
+<li><b>Diagnose</b> market completeness from the rank of the payoff matrix, compute the set of state prices consistent with incomplete-market asset prices, and explain why personal state prices diverge (Round 3).</li>
+<li><b>Replicate</b> Arrow securities with a bond, a share and an option; price derivatives by no arbitrage; state and apply the equivalence of complete-market Radner and Arrow–Debreu equilibria (Round 4).</li>
+<li><b>Explain</b> the role of spot-price expectations in a Radner economy with several goods, and why $S$ securities plus spot markets replace $S\times L$ contingent-commodity markets (Round 5).</li>
+</ol>
+
+<h2 id="design">3. Why it is designed this way</h2>
+<ul>
+<li><b>Predict → act → reflect.</b> The forecast forces students to commit to a model before seeing the market (a predict–observe–explain cycle). The debrief then confronts their prediction with the market outcome and the theory. Wrong forecasts are the most productive moment of the session.</li>
+<li><b>Simple inputs.</b> When markets are complete, students simply choose <i>how much grain they want in each weather</i> and see a budget bar (value of plan vs value of harvest). In Round 4 the game shows the bond/share/call portfolio that delivers their plan, so replication is visible. In Round 3 they choose one number, the share position, and the bond balances the budget automatically.</li>
+<li><b>The decision problem is the task.</b> The market is a Walrasian tâtonnement, not a double auction. Students are price-takers, so there is no bargaining to hide behind: in every iteration they must solve their own optimisation problem at the posted prices. That is optimal decision-making inside general equilibrium, which is what you want to assess.</li>
+<li><b>A controlled experiment on market structure.</b> Rounds 2, 3 and 4 use <i>identical</i> endowments, preferences and beliefs. Only the set of traded securities changes (complete contingent claims → bond + share → bond + share + call). Differences in prices and welfare are therefore caused by market structure alone, and the class sees that Round 4 reproduces Round 2 exactly.</li>
+<li><b>Scaffolding that fades.</b> With <i>Utility + tips</i> (Rounds 1–3) students see how much their plan is worth in sure grain plus a plain-language tip based on the first-order condition (e.g. “a coin spent on Storm grain adds more expected utility than one spent on Sun grain”). That makes $\pi_s u'(c_s)/p_s$ equalisation tangible. <i>Show utility</i> (Rounds 4–5) drops the tip, so students must rely on theory. You can change this per round in setup.</li>
+<li><b>Heterogeneous roles with a story.</b> Farmers are Sun-rich, fishers Rain-rich, roofers Storm-rich. That gives everyone gains from trade and makes "who insures whom" easy to talk about. In Round 3 the fishers barely gain because Rain risk lies outside the asset span, which makes incompleteness personal.</li>
+<li><b>Mistakes are visible and costly.</b> In Round 5 a fisher who expects the fish price to stay at 1 (instead of falling to 0.5 in Rain) sells too many Rain claims and has to dump fish on the spot market. In testing, this cut the welfare score to zero. Rational expectations stop being an abstract assumption.</li>
+</ul>
+
+<h2 id="plan">4. Session plan: two parts</h2>
+<p>The game comes in two parts. Each is a separate session with its own room code and leaderboard, so you can teach Arrow–Debreu one week and Radner economies later. When you open a room, choose <b>Part 1</b>, <b>Part 2</b>, or <b>Both parts</b> (all five rounds in one ≈ 90-minute session).</p>
+<h3>Part 1 · Arrow–Debreu (≈ 35 minutes)</h3>
+<div class="tbl"><table><thead><tr><th>Time</th><th>Activity</th><th>Your role</th></tr></thead><tbody>
+<tr><td>0–6</td><td style="font-family:var(--body);text-align:left;white-space:normal">Join, roles, how the auctioneer works</td><td style="font-family:var(--body);text-align:left;white-space:normal">Share your screen with the room code; explain predict / trade / results and scoring</td></tr>
+<tr><td>6–20</td><td style="font-family:var(--body);text-align:left;white-space:normal">Round 1 — Island insurance</td><td style="font-family:var(--body);text-align:left;white-space:normal">Let them struggle for 3–4 minutes on the prediction; debrief full insurance and the FOC</td></tr>
+<tr><td>20–32</td><td style="font-family:var(--body);text-align:left;white-space:normal">Round 2 — The storm year</td><td style="font-family:var(--body);text-align:left;white-space:normal">Debrief: SDF, risk-neutral probabilities, linear sharing rule</td></tr>
+<tr><td>32–35</td><td style="font-family:var(--body);text-align:left;white-space:normal">Wrap-up</td><td style="font-family:var(--body);text-align:left;white-space:normal">End screen: lessons and a teaser for Part 2 (“what if there is not a claim for every weather?”)</td></tr>
+</tbody></table></div>
+<h3>Part 2 · Radner economies (≈ 55 minutes, any later week)</h3>
+<p>Part 2 opens with a <b>recap card</b> of Part 1 (the storm-year island, state prices (0.4, 0.3, 0.3), total gains ≈ 14.5) in the waiting room and in the first briefing, so students who forgot the details can follow. If you ran Part 1 in the same browser, the recap and the final “gains across rounds” table also show what <i>your class</i> achieved in Part 1, next to the Part 2 rounds.</p>
+<div class="tbl"><table><thead><tr><th>Time</th><th>Activity</th><th>Your role</th></tr></thead><tbody>
+<tr><td>0–5</td><td style="font-family:var(--body);text-align:left;white-space:normal">Join and recap</td><td style="font-family:var(--body);text-align:left;white-space:normal">Read the recap card aloud; remind them of the storm-year state prices</td></tr>
+<tr><td>5–20</td><td style="font-family:var(--body);text-align:left;white-space:normal">Round 1 — Only a bond and a share</td><td style="font-family:var(--body);text-align:left;white-space:normal">Allow more bidding rounds; debrief rank, state-price set, personal state prices, welfare loss</td></tr>
+<tr><td>20–33</td><td style="font-family:var(--body);text-align:left;white-space:normal">Round 2 — Financial innovation</td><td style="font-family:var(--body);text-align:left;white-space:normal">Pause after the prediction and ask a student to replicate the Sun claim aloud</td></tr>
+<tr><td>33–50</td><td style="font-family:var(--body);text-align:left;white-space:normal">Round 3 — Two harvests</td><td style="font-family:var(--body);text-align:left;white-space:normal">Stress the fish-price predictions; after the spot market, compare naive and rational expectations</td></tr>
+<tr><td>50–55</td><td style="font-family:var(--body);text-align:left;white-space:normal">Synthesis</td><td style="font-family:var(--body);text-align:left;white-space:normal">Use the gains-from-trade table: storm year 14.5 → bond+share 8.7 → with option 14.5</td></tr>
+</tbody></table></div>
+<div class="callout"><b>Breakout option.</b> With more than six students, run pairs: each seat is a two-person team that shares one screen in a breakout room. Teams argue before committing, which improves the debrief.</div>
+
+<h2 id="run">5. Running it online</h2>
+<h3>Before the seminar (5 minutes)</h3>
+<ol>
+<li>Open the game and click <b>Practise alone</b> (choose the part) once to see the student screens. Students can also practise each part alone afterwards.</li>
+<li>Click <b>Open a room</b> and pick <b>Part 1</b>, <b>Part 2</b> or <b>Both</b>. Choose rounds and hint levels; the market settings can stay at their defaults.</li>
+<li>Click <b>Open the room ▸</b>. The top bar should say <i>● room online</i>.</li>
+</ol>
+<h3>During the seminar</h3>
+<ul>
+<li>Students open the link, type the code and their name. The sidebar shows who is connected (green dot) and who has submitted (✓).</li>
+<li>The green banner at the top of every screen tells you (and students) what happens now; its button moves the game on. A new <b>bidding round</b> starts automatically when every connected student has submitted. Under <i>Auctioneer controls</i>, <b>Next bidding round now</b> moves on without waiting for a slow student. Set a timer in setup for a fixed pace (90 s per bidding round works well).</li>
+<li>When the market clears, click <b>Execute trades</b>. If it hits the bidding limit, execute as is (orders are scaled down proportionally) or allow five more rounds.</li>
+<li><b>Post your own prices</b> (under Auctioneer controls) lets you demonstrate a point, for example by posting actuarially fair prices in Round 2 and asking why the Storm claim is in excess demand.</li>
+<li>Tick <b>answer key</b> to see the theoretical prices. <b>Untick it before you share your screen.</b></li>
+<li><b>Seat menu (⋯):</b> <i>Make robot</i>, or <i>I will enter for them</i> to type a student's decisions if their connection fails (they can tell you their numbers in chat). <i>Free the seat</i> lets someone else take it.</li>
+<li>If your browser reloads, choose <b>Resume room</b> on the landing page. Students reconnect automatically.</li>
+</ul>
+<div class="callout mark"><b>Network and privacy.</b> Your browser runs the game. Messages travel through public MQTT relays over encrypted WebSockets (HiveMQ, EMQX and Mosquitto public brokers), so there are no accounts or servers to maintain. The relays are public: ask students to enter first names or nicknames only. If one relay is blocked on a network, the page uses another automatically.</div>
+
+<h2 id="rounds">6. Round-by-round solutions and debrief</h2>
+<p>Common structure: three states (Sun, Rain, Storm) with $\pi=(0.5,0.3,0.2)$, log utility $U_i=\sum_s\pi_s\ln c_{is}$, and the numeraire is a sure unit of grain at $t=1$ ($\sum_s p_s=1$). Endowments are public. CE is the certainty equivalent $\exp(EU)$.</p>
+
+<p class="eyebrow" style="margin-top:1.5rem">Part 1 · Arrow–Debreu</p>
+<h3>Round 1 — Island insurance (Arrow–Debreu, no aggregate risk)</h3>
+<p>Endowments (Sun, Rain, Storm): FA (40,15,5), FB (30,20,10), FiA (10,40,10), FiB (15,25,20), RA (5,10,45), RB (20,10,30). Aggregate: 120 in every state.</p>
+$$\max_c \sum_s\pi_s\ln c_s\ \text{ s.t. }\ \sum_s p_s c_s=w_i\ \Rightarrow\ c_{is}=\frac{\pi_s w_i}{p_s},\qquad \sum_i c_{is}=\bar e_s\ \Rightarrow\ p_s=\frac{\pi_s W}{\bar e_s}=\pi_s .$$
+<div class="tbl"><table><thead><tr><th>Islander</th><th>Wealth $w_i$</th><th>Buy Sun</th><th>Buy Rain</th><th>Buy Storm</th><th>$c_{is}$ (all $s$)</th><th>CE: no trade → eq.</th></tr></thead><tbody>
+<tr><td>Farmer A</td><td>25.5</td><td>−14.50</td><td>10.50</td><td>20.50</td><td>25.50</td><td>19.66 → 25.50</td></tr>
+<tr><td>Farmer B</td><td>23.0</td><td>−7.00</td><td>3.00</td><td>13.00</td><td>23.00</td><td>21.32 → 23.00</td></tr>
+<tr><td>Fisher A</td><td>19.0</td><td>9.00</td><td>−21.00</td><td>9.00</td><td>19.00</td><td>15.16 → 19.00</td></tr>
+<tr><td>Fisher B</td><td>19.0</td><td>4.00</td><td>−6.00</td><td>−1.00</td><td>19.00</td><td>18.52 → 19.00</td></tr>
+<tr><td>Roofer A</td><td>14.5</td><td>9.50</td><td>4.50</td><td>−30.50</td><td>14.50</td><td>9.55 → 14.50</td></tr>
+<tr><td>Roofer B</td><td>19.0</td><td>−1.00</td><td>9.00</td><td>−11.00</td><td>19.00</td><td>17.62 → 19.00</td></tr>
+<tr class="tot"><td>Total CE gain</td><td></td><td></td><td></td><td></td><td></td><td>+18.17</td></tr></tbody></table></div>
+<p><b>Typical mistakes.</b> Forecasting prices proportional to aggregate endowment (all 1/3) or to own endowment; forgetting that the budget is $\sum_s p_s z_s\le 0$ (net trades), not $\sum_s p_s c_s\le\sum_s e_s$.</p>
+<details><summary>Debrief prompts and model answers</summary><ul>
+<li><i>Why does everybody fully insure?</i> Fair prices + strictly concave $u$ + common beliefs ⇒ the FOC $\pi_s u'(c_s)=\lambda p_s=\lambda\pi_s$ gives $u'(c_s)$ constant.</li>
+<li><i>What if Fisher A believed Rain had probability 0.5?</i> Their demand for Rain consumption rises, $p_2$ rises above 0.3, they no longer fully insure (they bet on Rain), and the others sell them Rain claims. Speculative trade from heterogeneous priors. You can run this by adding a <code>beliefs</code> field (§8).</li>
+<li><i>Borch rule:</i> $u_i'(c_{is})/u_i'(c_{it})=u_j'(c_{js})/u_j'(c_{jt})$ — MRS equalised across agents.</li></ul></details>
+
+<h3>Round 2 — The storm year (aggregate risk)</h3>
+<p>Endowments: FA (50,15,5), FB (40,20,10), FiA (15,40,10), FiB (20,25,15), RA (5,10,25), RB (20,10,15). Aggregate (150,120,80). These endowments are reused in Rounds 3 and 4.</p>
+$$p_s=\frac{\pi_s/\bar e_s}{\sum_t\pi_t/\bar e_t}=(0.4,\,0.3,\,0.3),\qquad m_s=\frac{p_s}{\pi_s}=(0.8,\,1,\,1.5),\qquad c_{is}=\frac{w_i}{W}\bar e_s,\ W=120.$$
+<div class="tbl"><table><thead><tr><th>Islander</th><th>$w_i$</th><th>Share $w_i/W$</th><th>Net trades (Sun, Rain, Storm)</th><th>$c_i$</th><th>CE: no trade → eq.</th></tr></thead><tbody>
+<tr><td>Farmer A</td><td>26.0</td><td>0.217</td><td>(−17.50, 11.00, 12.33)</td><td>(32.50, 26.00, 17.33)</td><td>21.98 → 26.80</td></tr>
+<tr><td>Farmer B</td><td>25.0</td><td>0.208</td><td>(−8.75, 5.00, 6.67)</td><td>(31.25, 25.00, 16.67)</td><td>24.62 → 25.77</td></tr>
+<tr><td>Fisher A</td><td>21.0</td><td>0.175</td><td>(11.25, −19.00, 4.00)</td><td>(26.25, 21.00, 14.00)</td><td>18.56 → 21.65</td></tr>
+<tr><td>Fisher B</td><td>20.0</td><td>0.167</td><td>(5.00, −5.00, −1.67)</td><td>(25.00, 20.00, 13.33)</td><td>20.19 → 20.62</td></tr>
+<tr><td>Roofer A</td><td>12.5</td><td>0.104</td><td>(10.63, 2.50, −16.67)</td><td>(15.63, 12.50, 8.33)</td><td>8.49 → 12.89</td></tr>
+<tr><td>Roofer B</td><td>15.5</td><td>0.129</td><td>(−0.62, 5.50, −4.67)</td><td>(19.38, 15.50, 10.33)</td><td>15.34 → 15.98</td></tr>
+<tr class="tot"><td>Total CE gain</td><td></td><td></td><td></td><td></td><td>+14.52</td></tr></tbody></table></div>
+<details><summary>Debrief prompts and model answers</summary><ul>
+<li><i>Storm insurance has fair value 0.2 but costs 0.3. Is it overpriced?</i> No: it pays when aggregate consumption, and so everyone's consumption, is lowest and marginal utility is highest. The SDF is 1.5 there.</li>
+<li><i>Risk-neutral probabilities</i> $p_s/\sum_t p_t=(0.4,0.3,0.3)$ tilt weight toward the bad state. Pricing any payoff $d$ as $\sum_s p_s d_s=E^{\mathbb Q}[d]$ reproduces market prices.</li>
+<li><i>Mutuality principle:</i> in any Pareto optimum with common beliefs, $c_{is}$ depends on $s$ only through $\bar e_s$. With identical CRRA the sharing rule is linear. In the debrief chart the consumption lines are proportional to the aggregate.</li>
+<li><i>What if Roofers were more risk-averse ($\gamma=3$)?</i> They would bear less aggregate risk and others would insure them. Set <code>"gamma"</code> per round (common to all agents) in the JSON, or discuss it qualitatively.</li></ul></details>
+
+<p class="eyebrow" style="margin-top:1.5rem">Part 2 · Radner economies (in the game these are Rounds 1–3 of Part 2)</p>
+<h3>Round 3 — Only a bond and a share (Radner, incomplete)</h3>
+<p>Assets: Bond $(1,1,1)$, $q_B=1$; Share $(3,2,0)$. Rank 2 &lt; 3. There is no closed form, so the equilibrium is computed numerically: <b>$q_S=1.8227$</b> (versus 1.8 under complete markets).</p>
+$$\text{FOC:}\quad q_j=\sum_s \frac{\pi_s u'(c_{is})}{\lambda_i}\,d_{js},\quad j\in\{B,S\}.$$
+<div class="tbl"><table><thead><tr><th>Islander</th><th>$\theta_B$</th><th>$\theta_S$</th><th>$c_i$</th><th>CE: no trade → eq.</th><th>R2 CE</th></tr></thead><tbody>
+<tr><td>Farmer A</td><td>14.74</td><td>−8.09</td><td>(40.48, 13.57, 19.74)</td><td>21.98 → 25.26</td><td>26.80</td></tr>
+<tr><td>Farmer B</td><td>8.41</td><td>−4.61</td><td>(34.57, 19.18, 18.41)</td><td>24.62 → 25.54</td><td>25.77</td></tr>
+<tr><td>Fisher A</td><td>−0.74</td><td>0.41</td><td>(15.48, 40.07, 9.26)</td><td>18.56 → 18.58</td><td>21.65</td></tr>
+<tr><td>Fisher B</td><td>−2.56</td><td>1.40</td><td>(21.65, 25.25, 12.44)</td><td>20.19 → 20.30</td><td>20.62</td></tr>
+<tr><td>Roofer A</td><td>−16.39</td><td>8.99</td><td>(15.59, 11.59, 8.61)</td><td>8.49 → 12.67</td><td>12.89</td></tr>
+<tr><td>Roofer B</td><td>−3.47</td><td>1.90</td><td>(22.24, 10.34, 11.53)</td><td>15.34 → 15.50</td><td>15.98</td></tr>
+<tr class="tot"><td>Total CE gain</td><td></td><td></td><td></td><td>+8.65</td><td>+14.52</td></tr></tbody></table></div>
+<p><b>State-price set.</b> No arbitrage only requires $p>0$ with $p_1+p_2+p_3=1$ and $3p_1+2p_2=1.8227$, i.e. $p_2=0.9114-1.5p_1$, $p_3=0.0886+0.5p_1$, $p_1\in(0,\,0.6076)$. Each agent's personal state prices lie in this set but differ across agents (shown in the debrief table).</p>
+<details><summary>Debrief prompts and model answers</summary><ul>
+<li><i>Who loses most from incompleteness?</i> The fishers: Fisher A gains almost nothing (CE 18.56 → 18.58 vs 21.65 in Round 2). Their risk is concentrated in Rain, and no portfolio of $(1,1,1)$ and $(3,2,0)$ isolates Rain without also loading on Sun.</li>
+<li><i>Is the allocation Pareto optimal?</i> No: personal state prices differ, so MRS between states differ. With one good it is <b>constrained</b> efficient (Diamond 1967). With several goods, constrained efficiency fails generically (Geanakoplos and Polemarchakis 1986).</li>
+<li><i>Which single extra security would restore Round 2?</i> Any payoff outside span$\{(1,1,1),(3,2,0)\}$. That leads into Round 4.</li>
+<li><i>Why might the auctioneer need more iterations?</i> Optimal demands are no longer closed-form, so students rely on the marginal-utility diagnostics.</li></ul></details>
+
+<h3>Round 4 — Financial innovation (completing with a call)</h3>
+<p>Assets: Bond $(1,1,1)$, Share $(3,2,0)$, Call on the share with $K=1$: $(2,1,0)$. $\det A=-1\neq0$, so the market is complete.</p>
+$$e_1=2C-S,\quad e_2=2S-3C,\quad e_3=B-S+C;\qquad q=Ap\ \Rightarrow\ q_S=1.8,\ q_C=1.1 .$$
+<div class="tbl"><table><thead><tr><th>Islander</th><th>$\theta_B$</th><th>$\theta_S$</th><th>$\theta_C$</th><th>$c_i$ (= Round 2)</th></tr></thead><tbody>
+<tr><td>Farmer A</td><td>12.33</td><td>27.17</td><td>−55.67</td><td>(32.50, 26.00, 17.33)</td></tr>
+<tr><td>Farmer B</td><td>6.67</td><td>12.08</td><td>−25.83</td><td>(31.25, 25.00, 16.67)</td></tr>
+<tr><td>Fisher A</td><td>4.00</td><td>−53.25</td><td>83.50</td><td>(26.25, 21.00, 14.00)</td></tr>
+<tr><td>Fisher B</td><td>−1.67</td><td>−13.33</td><td>23.33</td><td>(25.00, 20.00, 13.33)</td></tr>
+<tr><td>Roofer A</td><td>−16.67</td><td>11.04</td><td>−2.92</td><td>(15.63, 12.50, 8.33)</td></tr>
+<tr><td>Roofer B</td><td>−4.67</td><td>16.29</td><td>−22.42</td><td>(19.38, 15.50, 10.33)</td></tr></tbody></table></div>
+<p>Fastest solution path: take the desired net trade $z_i=c_i^{R2}-e_i$ from Round 2 and solve $A^\top\theta_i=z_i$, or buy $z_{is}$ units of each replicated Arrow security.</p>
+<details><summary>Debrief prompts and model answers</summary><ul>
+<li><i>Why would a put with strike 3, $(0,1,3)$, not complete the market?</i> It equals $3B-S$, so it is redundant (put–call parity with a worthless call).</li>
+<li><i>Arrow (1953) and Radner (1972):</i> with $S$ independent securities and correct expectations, the Radner equilibrium allocation equals the Arrow–Debreu allocation. Ross (1976): options on one asset with distinct state payoffs complete the market.</li>
+<li><i>Large positions:</i> replication can require large offsetting positions (Fisher A: −53 shares, +83.5 calls). Discuss transaction costs and margin requirements as frictions that make "complete in principle" incomplete in practice.</li>
+<li><i>Is financial innovation always good?</i> Not when markets stay incomplete after it (Hart 1975; Elul 1995).</li></ul></details>
+
+<h3>Round 5 — Two harvests (Radner with spot markets)</h3>
+<p>Goods: grain $x$, fish $y$; $U_i=\sum_s\pi_s[\tfrac12\ln x_{is}+\tfrac12\ln y_{is}]$. At $t=0$, three Arrow securities paying grain. At $t=1$, a spot market for fish at $\rho_s$ (grain per fish). Aggregates: grain $X=(150,120,80)$, fish $Y=(75,240,40)$.</p>
+$$\rho_s=\frac{1-\alpha}{\alpha}\frac{X_s}{Y_s}=(2,\,0.5,\,2),\qquad m_{is}=x_{is}+\rho_s y_{is},\qquad q_s=\frac{\pi_s/X_s}{\sum_t \pi_t/X_t}=(0.4,\,0.3,\,0.3).$$
+<p>Indirect utility in state $s$ is $\ln m_{is}+\kappa_s$, so the $t=0$ problem is the Round 2 problem with endowment $m_{is}$: $m_{is}+\theta_{is}=\pi_s W_i/q_s$, where $W_i=\sum_s q_s m_{is}$. At $t=1$ each agent spends half of their grain-wealth on fish.</p>
+<div class="tbl"><table><thead><tr><th>Islander</th><th>$m_i$ at true ρ</th><th>Arrow trades $\theta_i$</th><th>CE: no trade → eq.</th><th>CE if ρ̂ = 1 (naive)</th></tr></thead><tbody>
+<tr><td>Farmer A</td><td>(60, 20, 5)</td><td>(−20.62, 11.50, 16.00)</td><td>11.43 → 14.14</td><td>14.14</td></tr>
+<tr><td>Farmer B</td><td>(55, 35, 10)</td><td>(−10.62, 0.50, 13.67)</td><td>14.87 → 15.93</td><td>15.83</td></tr>
+<tr><td>Fisher A</td><td>(65, 70, 15)</td><td>(−0.62, −18.50, 19.33)</td><td>21.58 → 23.11</td><td>12.44</td></tr>
+<tr><td>Fisher B</td><td>(55, 65, 20)</td><td>(4.37, −17.50, 11.67)</td><td>20.56 → 21.32</td><td>13.19</td></tr>
+<tr><td>Roofer A</td><td>(25, 20, 60)</td><td>(17.50, 14.00, −37.33)</td><td>12.12 → 15.26</td><td>14.43</td></tr>
+<tr><td>Roofer B</td><td>(40, 30, 50)</td><td>(10.00, 10.00, −23.33)</td><td>16.70 → 17.95</td><td>17.14</td></tr>
+<tr class="tot"><td>Total CE gain</td><td></td><td></td><td>+10.45</td><td></td></tr></tbody></table></div>
+<p>The last column shows each islander's CE if they alone had valued fish at $\hat\rho=1$ in every state. Farmer A holds no fish, so nothing changes for them. The fishers lose about 40% of their certainty equivalent, because they think Rain is a rich state and sell Rain claims they cannot cover cheaply.</p>
+<details><summary>Debrief prompts and model answers</summary><ul>
+<li><i>How many markets?</i> Arrow–Debreu needs $S\times L=6$ contingent-commodity markets at $t=0$; Radner uses 3 Arrow securities plus one spot market in the realised state (Arrow 1953).</li>
+<li><i>What does Radner equilibrium require beyond Walrasian equilibrium?</i> Every agent's expectation of each state's spot price must equal the price that actually clears that spot market (perfect foresight / rational expectations).</li>
+<li><i>Would paying the securities in fish change anything?</i> No: with complete markets the choice of numeraire good is irrelevant.</li>
+<li><i>Natural hedge:</i> the fish glut in Rain makes fish cheap there, so fishers' grain-wealth is less volatile than their fish harvest. Relative-price movements provide partial insurance.</li>
+<li><i>Advanced:</i> with incomplete real assets and several goods, spot prices depend on asset trades. That brings pecuniary externalities, Hart's (1975) counterexample to existence, and generic constrained inefficiency.</li></ul></details>
+
+<h2 id="scoring">7. Scoring</h2>
+<ul>
+<li><b>Forecast (max 100):</b> $100\exp(-4\bar\varepsilon)$, where $\bar\varepsilon$ is the mean of $\min(1,|\ln(f_k/f_k^*)|)$ over forecast items. A 5% error scores ≈ 82 and a 20% error ≈ 48.</li>
+<li><b>Welfare (0–120):</b> $100\cdot\frac{CE_i-CE_i^0+\delta}{CE_i^*-CE_i^0+\delta}$ with $\delta=0.02\,CE_i^*$. $CE^0$ is no trade and $CE^*$ is the theoretical equilibrium of that round's market structure. The smoothing $\delta$ keeps the score meaningful when the attainable gain is tiny (e.g. Fisher A in Round 3). Robots score ≈ 100.</li>
+<li><b>Concept check:</b> 25 points per question.</li>
+<li><b>Spot market (Round 5, max 50):</b> loses 5 points per 1% shortfall of utility from the best bundle at the clearing spot price.</li>
+<li>All scores are ex ante: the weather draw affects only the realised consumption shown in the debrief.</li>
+</ul>
+
+<h2 id="exercise">8. Combining it with your exercise</h2>
+<p>Two sequences work well:</p>
+<ol>
+<li><b>Exercise first, game as transfer (recommended).</b> Students solve your exercise before the seminar. The game then asks them to use the same tools under time pressure, in a market with other people's mistakes, and with new twists (incompleteness, replication, expectations). Ask them to bring their exercise solutions and refer to them in debriefs.</li>
+<li><b>Game first, exercise as consolidation.</b> Play Rounds 1–2 cold, then assign the exercise and play Rounds 3–5 in the following session.</li>
+</ol>
+<p>To play <b>your exercise's own economy</b>, open <i>Set up a room → Use your own exercise</i> and edit the JSON. Each round is plain data, and equilibria, answer keys and scores are recomputed automatically. A minimal round:</p>
+<pre>{
+ "id": "x1", "kind": "assets", "title": "My exercise, part (a)",
+ "tag": "Arrow–Debreu · two states",
+ "states": [ {"name":"Good","icon":"📈","prob":0.6}, {"name":"Bad","icon":"📉","prob":0.4} ],
+ "gamma": 1,               // CRRA coefficient (1 = log)
+ "hint": 2,                // 0, 1 or 2
+ "assets": [ {"name":"Good claim","sym":"A_1","payoff":[1,0]},
+             {"name":"Bad claim","sym":"A_2","payoff":[0,1]} ],
+ "endow": [[10,2],[8,4],[2,10],[4,8],[6,6],[5,5]],   // exactly six players
+ "beliefs": null,          // optional: six probability vectors for heterogeneous priors
+ "intro": "&lt;p&gt;HTML with $\\LaTeX$ …&lt;/p&gt;", "task": "…", "debrief": "…",
+ "concept": [ {"q":"…","options":["…","…"],"correct":0,"explain":"…"} ]
+}</pre>
+<p>Rules: probabilities sum to 1; six strictly positive endowment vectors; the riskless payoff $(1,\dots,1)$ must be in the span of the assets (it is the numeraire). For a two-good Radner round use <code>"kind":"radner"</code> with <code>"alpha"</code>, <code>"grain"</code> and <code>"fish"</code> (six vectors each) and complete Arrow securities. Remove the <code>//</code> comments above before pasting: JSON does not allow them.</p>
+
+<h2 id="refs">9. References</h2>
+<ul style="font-size:.95rem">
+<li>Arrow, K. J. (1953/1964). The role of securities in the optimal allocation of risk-bearing. <i>Review of Economic Studies</i> 31(2), 91–96.</li>
+<li>Debreu, G. (1959). <i>Theory of Value</i>, ch. 7. Yale University Press.</li>
+<li>Diamond, P. A. (1967). The role of a stock market in a general equilibrium model with technological uncertainty. <i>American Economic Review</i> 57(4), 759–776.</li>
+<li>Elul, R. (1995). Welfare effects of financial innovation in incomplete markets economies with several consumption goods. <i>Journal of Economic Theory</i> 65(1), 43–78.</li>
+<li>Geanakoplos, J., &amp; Polemarchakis, H. (1986). Existence, regularity, and constrained suboptimality of competitive allocations when the asset market is incomplete. In Heller, Starr &amp; Starrett (eds.), <i>Essays in Honor of K. J. Arrow</i>, vol. III.</li>
+<li>Hart, O. D. (1975). On the optimality of equilibrium when the market structure is incomplete. <i>Journal of Economic Theory</i> 11(3), 418–443.</li>
+<li>Holt, C. A. (1999). Teaching economics with classroom experiments. <i>Southern Economic Journal</i> 65(3), 603–610.</li>
+<li>Mas-Colell, A., Whinston, M. D., &amp; Green, J. R. (1995). <i>Microeconomic Theory</i>, ch. 19. Oxford University Press.</li>
+<li>Plott, C. R., &amp; Sunder, S. (1988). Rational expectations and the aggregation of diverse information in laboratory security markets. <i>Econometrica</i> 56(5), 1085–1118.</li>
+<li>Radner, R. (1972). Existence of equilibrium of plans, prices, and price expectations in a sequence of markets. <i>Econometrica</i> 40(2), 289–303.</li>
+<li>Ross, S. A. (1976). Options and efficiency. <i>Quarterly Journal of Economics</i> 90(1), 75–89.</li>
+</ul>
+</div></body></html>

@@ -30,11 +30,14 @@ Guidance and Transparency Rules and any other FCA, London Stock Exchange, market
 
 - Business and organisational characteristics (sole trader / partnership / LLP / private and
   unlisted public companies).
-- Legal personality and limited liability.
+- Legal personality and limited liability (sole trader / partnership / LLP / private and unlisted
+  public companies).
 - Procedures and documentation required to incorporate a company, form a partnership or LLP, and
   the other steps needed to enable the entity to commence operating: **constitutional documents**;
   **Companies House filing requirements**.
-- **Finance**: funding options — debt and equity; types of security; distribution of profits and
+- **Finance**: funding options — debt and equity (**including the redemption and buyback of shares,
+  but excluding other reductions of share capital and excluding financial assistance pursuant to the
+  Companies Act 2006**); types of security; distribution of profits and
   gains; financial records, information and accounting requirements.
 - **Corporate governance and compliance**: rights, duties and powers of directors and shareholders;
   company decision-making and meetings — procedural, disclosure and approval requirements;
@@ -51,16 +54,36 @@ Guidance and Transparency Rules and any other FCA, London Stock Exchange, market
 
 - **Income tax**: chargeable persons and entities (employees, sole traders, partners, shareholders,
   lenders and debenture holders); basis of charge — types of income, main reliefs and exemptions;
-  the charge to tax — calculation and collection; the scope of anti-avoidance provisions.
+  the charge to tax — **calculation of income tax in each of England and Wales** and collection; the scope
+  of anti-avoidance provisions.
 - **Capital gains tax**: chargeable persons and entities (sole traders, partners, shareholders);
   basis of charge — calculation of gains, allowable deductions, main reliefs and exemptions; the
   charge to tax; the scope of anti-avoidance provisions.
-- **Corporation tax**: basis of charge; calculation, payment and collection; tax treatment of
-  company distributions or deemed distributions to shareholders; outline of anti-avoidance
+- **Corporation tax**: basis of charge (**calculation of income profits and chargeable gains,
+  allowable deductions, main reliefs and exemptions**); the charge to tax — calculation, payment and
+  collection; tax treatment of
+  company **distributions** to shareholders; outline of anti-avoidance
   legislation.
 - **Value added tax**: key principles relating to scope, supply, input and output tax; registration
   requirements and issue of VAT invoices; returns, payment of VAT and record keeping.
 - **Inheritance tax**: business property relief.
+
+::: {.callout-caution title="What the September 2026 review changed"}
+The SRA revised the Functioning Legal Knowledge following its 2026 annual review, and the changes to
+Business Law and Practice affect what is worth revising:
+
+- **Reductions of share capital other than a redemption or buyback are now excluded**, and so is
+  **financial assistance** under the Companies Act 2006. Redemption and buyback are expressly named as
+  **included**. This narrows @sec-blp-finance appreciably.
+- **Income tax** now refers to the calculation of income tax "in each of **England and Wales**", which
+  brings the **Welsh rates of income tax** into view.
+- **Corporation tax** wording is expanded to name income profits, chargeable gains, allowable
+  deductions and reliefs — and the reference to **"deemed distributions" has been removed**.
+- **Legal personality and limited liability** is now expressly tied to the four vehicles.
+
+Older textbooks and question banks will not reflect this. Where this text covers something now outside
+the list, it says so, so that you can decide how much time it deserves.
+:::
 
 Three observations about that list are worth more than they look.
 

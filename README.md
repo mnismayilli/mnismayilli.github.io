@@ -1,77 +1,59 @@
 # Mehman Ismayilli — personal website
 
 A plain, static HTML website served directly from this repository via GitHub Pages.
-**There is no build step for the site** — edit an `.html` file, commit, and push.
+**There is no build step** — edit an `.html` file, commit, and push. Live at **https://mnismayilli.github.io**.
 
-Live at **https://mnismayilli.github.io**.
+Design notes, the sitemap and the audit results are in [docs/DESIGN.md](docs/DESIGN.md).
 
 ## Layout
 
 ```text
-├── index.html            # home
-├── about/  contact/  teaching/  terms/
-├── research/             # research index + one folder per paper
-├── blog/                 # blog index + posts
-├── ma-watch/             # M&A Watch page (shell; rendered by JS)
-├── assets/               # styles.css, main.js, ma-watch.js, ma-watch.css, images
-├── data/                 # ma-watch-data.json (data the JS renders)
-├── book/                 # rendered Quarto book, served at /book/
-├── book-src/             # Quarto book source (.qmd) — never served
-├── FE_1/                 # rendered "Financial Econometrics I" book (source lives outside this repo)
-├── scripts/              # sync-ma-cases.mjs (weekly M&A data sync), sync-fe1.sh
-└── favicon.svg
+├── index.html                 # home: photo, bio, selected research, sections
+├── research/
+│   ├── index.html             # all papers, grouped by status, with a topic filter
+│   ├── <slug>/index.html      # one page per paper (abstract, links, BibTeX, Scholar meta tags)
+│   ├── <slug>.bib             # BibTeX file for each paper
+│   └── strategic-delay-product-introductions/model/   # model walkthrough (maths pre-rendered with KaTeX)
+├── teaching/index.html        # courses, office hours, materials, earlier teaching
+├── cv/index.html              # curriculum vitae (printable)
+├── contact/index.html
+├── ma-watch/index.html        # M&A Watch shell; assets/ma-watch.js renders data/ma-watch-data.json
+├── 404.html · sitemap.xml · robots.txt · favicon.svg
+├── assets/
+│   ├── site.css               # the whole design system (tokens at the top)
+│   ├── fonts/                 # Fraunces, Source Serif 4 and Inter, self-hosted
+│   ├── img/                   # photo (jpg + webp) and the Open Graph image
+│   ├── katex/                 # KaTeX stylesheet and fonts for the model page
+│   └── ma-watch.css · ma-watch.js
+├── data/ma-watch-data.json    # refreshed weekly by scripts/sync-ma-cases.mjs (GitHub Action)
+├── FE_1/  MAFE_EconA/        # rendered Quarto course books; sources in MAFE_EconA-src/ and outside the repo (see scripts/sync-fe1.sh)
+├── teaching/ge-uncertainty-game/   # Island Markets classroom game
+├── about/ supervision/ blog/ terms/ research/project-*/   # redirects from old URLs
+└── scripts/  .github/workflows/
 ```
-
-The shared header and footer live in one place — [`assets/main.js`](assets/main.js) —
-and are injected into every page. To change a nav link or footer entry, edit the arrays
-at the top of that file.
 
 ## Editing content
 
-- **Ordinary pages** (home, about, teaching, …): edit the `.html` file directly.
-- **A new research paper**: copy an existing `research/<slug>/index.html`, edit it, and add
-  a matching entry to the research list in [`research/index.html`](research/index.html).
-- **A long-form companion page** (a model walkthrough, a seminar write-up): nest it under the
-  paper, e.g. [`research/project-2/theory/`](research/project-2/theory/index.html), and link it
-  from both the paper page and the research index. These pages pull in MathJax from a CDN for
-  the equations; nothing else on the site does.
+- **A new paper**: copy `research/strategic-delay-product-introductions/index.html` to `research/<slug>/index.html`, edit the
+  title block (label, title, authors), the abstract and keywords, the facts box and links on the right, and the `citation_*`
+  meta tags in `<head>`. Add a `research/<slug>.bib`, an `<li class="entry">` on `research/index.html` (set `data-topics` and
+  `data-tint`), and a line on `cv/index.html`. Add the URL to `sitemap.xml`.
+- **Topics**: the four filter topics on `research/index.html` are `io`, `env`, `exp`, `teach`; the tints are `blue`, `green`,
+  `rose`, `amber` (plus `violet` and `teal`), defined at the top of `assets/site.css`.
+- **Courses, CV, contact details**: edit the page directly.
+- **Header and footer** are repeated in each page; search for `class="top"` and `class="foot"` to change a link everywhere.
 
-## M&A Watch
-
-The page at `/ma-watch/` is a thin shell; [`assets/ma-watch.js`](assets/ma-watch.js) fetches
-[`data/ma-watch-data.json`](data/ma-watch-data.json) and renders the stats, filters, case
-browser, overview, and sources in the browser.
-
-The dataset refreshes automatically: a GitHub Action
-([`.github/workflows/sync-ma-data.yml`](.github/workflows/sync-ma-data.yml)) runs
-`scripts/sync-ma-cases.mjs` every Monday, pulls the latest official competition-authority
-cases, and commits the updated JSON — which triggers a redeploy.
-
-To run the sync locally: `npm install` then `npm run sync:ma`.
-
-## The course books
-
-Both are Quarto books whose **rendered HTML is committed** — the deploy runs no build, so
-GitHub Pages never needs Quarto.
-
-**Time Series Analysis in Financial Econometrics** — served at **/book/**. Source is in
-[`book-src/`](book-src/) inside this repo; after editing a chapter run `npm run book`.
-
-**Financial Econometrics I** — served at **/FE_1/**. Its source lives *outside* this repo
-(`Oxford/FE_1`, which carries a large offline data cache and a Python environment), so only
-the rendered output is copied in. To republish after editing a chapter:
+## Local preview
 
 ```sh
-npm run sync:fe1                 # renders the book, then mirrors _book/ into FE_1/
-npm run sync:fe1 -- --no-render  # just copy an already-rendered _book/
-FE1_SRC=/new/path npm run sync:fe1   # if the source directory moves
+npm run serve        # http://localhost:4400
 ```
 
-The copy is an exact mirror (`rsync --delete`), so chapters deleted from the source stop
-being served. The books are currently **unlinked** from the site — they still deploy at
-`/book/` and `/FE_1/` and can be reached directly, but no page links to them.
+## M&A Watch and the course books
+
+Unchanged: see `scripts/sync-ma-cases.mjs` (weekly GitHub Action, commits `data/ma-watch-data.json`),
+`npm run book:econa`, `npm run sync:fe1`.
 
 ## Deployment
 
-GitHub Pages is configured to **Deploy from a branch** (`main`, root). Every push to `main`
-— including the weekly M&A data sync — republishes the site. There is no site build.
+GitHub Pages, **Deploy from a branch** (`main`, root). Every push republishes the site.

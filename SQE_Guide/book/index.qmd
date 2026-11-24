@@ -130,10 +130,17 @@ The specification also flags that scenarios may be drawn from SRA warning notice
 
 ## Coverage and honest limits
 
-This text covers Business Law and Practice — the largest single subject in FLK1 — to the depth the
-specification requires. It does not cover the other FLK1 subjects, and it excludes what the
-specification excludes: the Listing, Prospectus, Disclosure Guidance and Transparency Rules, and any
-other FCA, London Stock Exchange, market rules or codes.
+This text covers **Business Law and Practice** and **Dispute Resolution** — the two largest subjects in
+FLK1 — to the depth the specification requires. It does not cover the other FLK1 subjects.
+
+It is written against the Functioning Legal Knowledge as revised following the SRA's **2026 annual
+review**, which made more changes than usual. Several topics that older textbooks still treat as core
+have been **removed** from the content list, and a few have been **added**. Where this text covers
+something that is now outside the list it says so in a marked box, so that you can decide how much time
+it deserves; @sec-blp-overview and @sec-dr-overview set out the changes in full.
+
+It also excludes what the specification excludes: the Listing, Prospectus, Disclosure Guidance and
+Transparency Rules, and any other FCA, London Stock Exchange, market rules or codes.
 
 It is written to be right. Where the law has moved between drafting and your sitting, or where a
 provision is commencing in stages, the text flags it rather than smoothing it over. Statute

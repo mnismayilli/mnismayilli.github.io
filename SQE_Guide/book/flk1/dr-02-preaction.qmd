@@ -230,6 +230,22 @@ for which the common law rules apply.
 
 ## Jurisdiction
 
+::: {.callout-caution title="Scope: jurisdiction came off the list in September 2026"}
+The bullet "jurisdiction — mechanisms to determine jurisdiction over an international contractual or
+tortious claim" was **removed** from the Dispute Resolution content list following the SRA's 2026
+annual review, and replaced by the Welsh language practice direction bullet below.
+
+Two things stayed, and they are the reason this section is retained rather than deleted:
+
+- **Applicable law** — Rome I and Rome II — is still expressly examinable.
+- **Service of a claim form outside the jurisdiction, with or without the court's permission**, is
+  still expressly examinable — and permission to serve out cannot be explained without the gateways
+  and *forum conveniens*.
+
+Read what follows as the necessary background to service out, not as a topic to be memorised in its
+own right.
+:::
+
 Since the end of the transition period the **Brussels Recast Regulation** no longer applies to
 proceedings commenced in England and Wales. Three regimes now matter.
 
@@ -337,6 +353,43 @@ The **Business and Property Courts** are an umbrella for the specialist lists:
 | **Financial List** | Financial markets claims of £50 million or more, or requiring market expertise |
 | **Intellectual Property Enterprise Court** (Chancery) | Lower-value IP claims, with a **£500,000** damages cap and recoverable costs capped at **£60,000** on liability and £30,000 on quantum |
 | Companies, Insolvency, Competition, Property, Trusts, Revenue lists | As their names suggest |
+
+## The Welsh language in civil proceedings
+
+The September 2026 specification adds a bullet of its own: "Practice Direction – preliminary
+considerations for the use of the **Welsh language** in civil proceedings". It is a short topic and a
+cheap mark.
+
+**The principle.** The practice direction gives effect to the Welsh Language Act 1993 and the Welsh
+Language (Wales) Measure 2011: in the administration of justice in Wales, the **English and Welsh
+languages are to be treated on the basis of equality**. It applies to civil proceedings **in Wales or
+having a connection with Wales**, and it binds courts sitting in England as well where the case has
+that connection.
+
+**What it requires, stage by stage:**
+
+| Stage | Requirement |
+|---|---|
+| **General** | Proceedings may be conducted **entirely in Welsh** where all the parties and witnesses consent. Documents may be filed in **either** language, and HMCTS provides Welsh-language forms and translation |
+| **Duty to notify** | It is the duty of a party who wishes to use Welsh, or whose witness may, to **tell the court as soon as it is anticipated** that Welsh is likely to be used — not to spring it on the court later |
+| **Directions questionnaire** | The party must give details in the **directions questionnaire**: which witnesses may give evidence in Welsh, and which Welsh-language documents are expected to be used |
+| **Case management** | At any interlocutory hearing the parties should alert the court to the possible use of Welsh, and must confirm the position and give fuller detail in the **pre-trial checklist** |
+| **Listing** | The diary manager, in consultation with the designated civil judge and the **Welsh Language Liaison Judge**, will where practicable list the case before a **Welsh-speaking judge** and at a court equipped with **simultaneous translation** facilities |
+| **Interpreters** | Where an interpreter is needed, the **court** arranges one from the list of approved court interpreters, provided sufficient notice has been given |
+| **Oaths** | Court officers must tell witnesses and jurors that they may take the oath or affirm in **Welsh or English** |
+| **Difficulties** | Questions about the practice direction are referred to the **Welsh Language Liaison Judge** |
+
+::: {.callout-important title="Exam trap"}
+Two points do the work. First, the obligation is on the **party** to give notice **early**, and the
+consequence of not doing so is practical — the case may not be listed before a Welsh-speaking judge or
+in a court with translation facilities, and an adjournment may follow, with costs. Second, the
+interpreter is arranged and paid for by the **court**, not the party: this is not like an interpreter
+for a foreign-language witness, whom the party must arrange and fund.
+
+More broadly, the specification's front matter warns that although Wales is not a separate legal
+jurisdiction, "the laws that apply in England may be different from the laws that apply in Wales" —
+which is why the Welsh rates of income tax now appear in Business Law and Practice too.
+:::
 
 ## The solicitor's position
 
