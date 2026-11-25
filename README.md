@@ -60,6 +60,10 @@ SVG with sliders, step-by-step backward induction and editable payoffs, replacin
 styles the panels and `interactive.html` loads the script; all three are wired up in `_quarto.yml`. Re-render
 with `npm run book:econa` after editing them.
 
+Unlisted material lives under `MAFE_EconA-src/<name>-<token>/` and is listed under `resources:` in `_quarto.yml`,
+so it is served at `/MAFE_EconA/<name>-<token>/` without appearing in the book's navigation, search or the sitemap
+(the page itself carries `noindex`). Share the URL directly.
+
 ## Deployment
 
 GitHub Pages, **Deploy from a branch** (`main`, root). Every push republishes the site.

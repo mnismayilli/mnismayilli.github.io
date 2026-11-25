@@ -5,6 +5,10 @@ project:
   output-dir: ../MAFE_EconA
   resources:
     - figures.js
+    # Unlisted solutions deck (Week 12 Large Group Discussion). Not linked from
+    # any page and marked noindex; shared by URL only. Built from
+    # Oxford/Week12/slides (npm run build) and copied here.
+    - week12-solutions-7f3a/index.html
 
 book:
   title: "Economics Block A1"
